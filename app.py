@@ -7,6 +7,9 @@ import urllib.parse
 from flask import Flask, request, jsonify, send_file, render_template
 import scm_core
 import tizen_core
+import lg_core
+import sony_core
+import hisense_core
 
 app = Flask(__name__)
 app.config['MAX_CONTENT_LENGTH'] = 2 * 1024 * 1024  # 2 MB upload limit for DOS protection
@@ -64,6 +67,30 @@ def guide():
 def faq():
     return render_lang('faq.html')
 
+def _detect_brand(filename: str) -> str:
+    """Dosya adı/uzantısına göre marka tespit et."""
+    name_lower = filename.lower()
+    if name_lower.endswith('.tll'):
+        return 'lg'
+    if 'sdb.xml' in name_lower:
+        return 'sony'
+    if 'servicelist.db' in name_lower or 'channel.db' in name_lower:
+        return 'hisense'
+    if name_lower.endswith('.zip'):
+        return 'tizen'
+    return 'samsung'   # varsayılan .scm
+
+
+def _brand_ext(brand: str) -> str:
+    """Marka → dosya uzantısı."""
+    return {
+        'lg':      'tll',
+        'sony':    'xml',
+        'hisense': 'db',
+        'tizen':   'zip',
+    }.get(brand, 'scm')
+
+
 @app.route('/upload', methods=['POST'])
 def upload():
     if 'file' not in request.files:
@@ -71,21 +98,36 @@ def upload():
     file = request.files['file']
     if file.filename == '':
         return jsonify({'error': 'Dosya seçilmedi'}), 400
-    
-    is_zip = file.filename.lower().endswith('.zip')
-    ext = 'zip' if is_zip else 'scm'
+
+    brand = _detect_brand(file.filename)
+    ext   = _brand_ext(brand)
     filepath = os.path.join(UPLOAD_DIR, f'uploaded.{ext}')
     file.save(filepath)
-    
+
     try:
-        if is_zip:
+        if brand == 'lg':
+            ed = lg_core.LgEditor(filepath)
+            ed.extract()
+            channels = ed.get_channels()
+            ed.cleanup()
+        elif brand == 'sony':
+            ed = sony_core.SonyEditor(filepath)
+            ed.extract()
+            channels = ed.get_channels()
+            ed.cleanup()
+        elif brand == 'hisense':
+            ed = hisense_core.HisenseEditor(filepath)
+            ed.extract()
+            channels = ed.get_channels()
+            ed.cleanup()
+        elif brand == 'tizen':
             tizen = tizen_core.TizenEditor(filepath)
             tizen.extract()
             channels = tizen.get_channels()
             tizen.cleanup()
         else:
             channels = scm_core.get_channels(filepath)
-            
+
         return jsonify({'channels': channels})
     except Exception as e:
         return jsonify({'error': str(e)}), 500
@@ -93,56 +135,90 @@ def upload():
 @app.route('/build', methods=['POST'])
 def build():
     data = request.json
-    edited_list = data.get('channels', [])
+    edited_list  = data.get('channels', [])
     original_name = data.get('filename', 'channel_list.scm')
-    
-    edited_channels = {}
-    for i, ch in enumerate(edited_list):
-        edited_channels[int(ch['Slot'])] = {
-            'No': i + 1,
-            'Name': ch['Name'],
-            'Lock': ch.get('Lock', False),
-            'Encrypted': ch.get('Encrypted', 'No'),
-            'Hide': ch.get('Hide', False),
-            'Skip': ch.get('Skip', False),
-            'Fav1': ch.get('Fav1', False),
-            'Fav2': ch.get('Fav2', False),
-            'Fav3': ch.get('Fav3', False),
-            'Fav4': ch.get('Fav4', False),
-            'Fav5': ch.get('Fav5', False)
-        }
-        
-    is_zip = original_name.lower().endswith('.zip')
-    ext = 'zip' if is_zip else 'scm'
+
+    brand = _detect_brand(original_name)
+    ext   = _brand_ext(brand)
     original_file = os.path.join(UPLOAD_DIR, f'uploaded.{ext}')
-    new_file = os.path.join(UPLOAD_DIR, f'yeni_kanal_listesi.{ext}')
-    
+    new_file      = os.path.join(UPLOAD_DIR, f'yeni_kanal_listesi.{ext}')
+
     try:
-        if is_zip:
+        if brand in ('lg', 'sony', 'hisense'):
+            # Yeni marka motorları: channel dict doğrudan iletilir
+            new_channels = []
+            for i, ch in enumerate(edited_list):
+                new_channels.append({
+                    'id':   int(ch.get('id', ch.get('Slot', i))),
+                    'num':  i + 1,
+                    'name': ch.get('name', ch.get('Name', '')),
+                    'lock': ch.get('lock', ch.get('Lock', False)),
+                    'hide': ch.get('hide', ch.get('Hide', False)),
+                    'skip': ch.get('skip', ch.get('Skip', False)),
+                    'fav1': ch.get('fav1', ch.get('Fav1', False)),
+                    'fav2': ch.get('fav2', ch.get('Fav2', False)),
+                    'fav3': ch.get('fav3', ch.get('Fav3', False)),
+                    'fav4': ch.get('fav4', ch.get('Fav4', False)),
+                    'fav5': ch.get('fav5', ch.get('Fav5', False)),
+                })
+
+            if brand == 'lg':
+                ed = lg_core.LgEditor(original_file)
+                ed.extract()
+                ed.update_channels(new_channels, new_file)
+                ed.cleanup()
+            elif brand == 'sony':
+                ed = sony_core.SonyEditor(original_file)
+                ed.extract()
+                ed.update_channels(new_channels, new_file)
+                ed.cleanup()
+            elif brand == 'hisense':
+                ed = hisense_core.HisenseEditor(original_file)
+                ed.extract()
+                ed.update_channels(new_channels, new_file)
+                ed.cleanup()
+            success = True
+
+        elif brand == 'tizen':
             tizen = tizen_core.TizenEditor(original_file)
             tizen.extract()
-            
             tizen_channels = []
-            for slot, ch in edited_channels.items():
+            for i, ch in enumerate(edited_list):
                 tizen_channels.append({
-                    'id': slot,
-                    'num': ch['No'],
-                    'lock': ch['Lock'],
+                    'id':   int(ch.get('Slot', i)),
+                    'num':  i + 1,
+                    'lock': ch.get('Lock', False),
                     'hide': ch.get('Hide', False),
                     'skip': ch.get('Skip', False),
-                    'fav1': ch['Fav1'],
-                    'fav2': ch['Fav2'],
-                    'fav3': ch['Fav3'],
-                    'fav4': ch['Fav4'],
-                    'fav5': ch['Fav5'],
+                    'fav1': ch.get('Fav1', False),
+                    'fav2': ch.get('Fav2', False),
+                    'fav3': ch.get('Fav3', False),
+                    'fav4': ch.get('Fav4', False),
+                    'fav5': ch.get('Fav5', False),
                 })
-            
             tizen.update_channels(tizen_channels, new_file)
             tizen.cleanup()
             success = True
+
         else:
+            # Samsung SCM
+            edited_channels = {}
+            for i, ch in enumerate(edited_list):
+                edited_channels[int(ch['Slot'])] = {
+                    'No': i + 1,
+                    'Name': ch['Name'],
+                    'Lock': ch.get('Lock', False),
+                    'Encrypted': ch.get('Encrypted', 'No'),
+                    'Hide': ch.get('Hide', False),
+                    'Skip': ch.get('Skip', False),
+                    'Fav1': ch.get('Fav1', False),
+                    'Fav2': ch.get('Fav2', False),
+                    'Fav3': ch.get('Fav3', False),
+                    'Fav4': ch.get('Fav4', False),
+                    'Fav5': ch.get('Fav5', False),
+                }
             success = scm_core.build_scm_direct(original_file, new_file, edited_channels)
-            
+
         if success:
             safe_name = urllib.parse.quote(original_name)
             return jsonify({'success': True, 'download_url': f'/download?name={safe_name}'})
@@ -154,10 +230,10 @@ def build():
 @app.route('/download')
 def download():
     download_name = request.args.get('name', 'channel_list.scm')
-    is_zip = download_name.lower().endswith('.zip')
-    ext = 'zip' if is_zip else 'scm'
+    brand = _detect_brand(download_name)
+    ext   = _brand_ext(brand)
     filepath = os.path.join(UPLOAD_DIR, f'yeni_kanal_listesi.{ext}')
-    
+
     if os.path.exists(filepath):
         return send_file(filepath, as_attachment=True, download_name=download_name)
     else:
