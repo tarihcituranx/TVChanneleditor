@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 100">
+  <text x="50%" y="52%" dominant-baseline="middle" text-anchor="middle"
+        font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif"
+        font-weight="900" font-size="46" fill="#000000" letter-spacing="1">SONY</text>
+  <text x="50%" y="80%" dominant-baseline="middle" text-anchor="middle"
+        font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif"
+        font-weight="400" font-size="12" fill="#555555" letter-spacing="8">BRAVIA</text>
+</svg>

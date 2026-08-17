@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 100">
+  <text x="50%" y="52%" dominant-baseline="middle" text-anchor="middle"
+        font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif"
+        font-weight="900" font-size="32" fill="#0047bb" letter-spacing="2">Panasonic</text>
+  <text x="50%" y="80%" dominant-baseline="middle" text-anchor="middle"
+        font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif"
+        font-weight="400" font-size="12" fill="#888" letter-spacing="6">VIERA</text>
+</svg>
