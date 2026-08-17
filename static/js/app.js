@@ -111,6 +111,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div class="col-drag">⋮⋮</div>
                 <div class="col-check"><input type="checkbox" class="row-checkbox" data-idx="${li.dataset.index}"></div>
                 <div class="col-no">${index + 1}</div>
+                <div class="col-flags">
+                    <span class="flag-icon lock-icon ${ch.Lock ? 'active' : ''}" title="Çocuk Kilidi" onclick="toggleFlag(${li.dataset.index}, 'Lock')">🔒</span>
+                    <span class="flag-icon fav-icon ${ch.Fav1 ? 'active' : ''}" title="Favori" onclick="toggleFlag(${li.dataset.index}, 'Fav1')">⭐</span>
+                </div>
                 <div class="col-name">${ch.Name}</div>
                 <div class="col-type">${ch.Type}</div>
                 <div class="col-freq" style="${freqColor}">${ch.Freq} ${ch.Pol} ${ch.Sym}${freqWarning}</div>
@@ -177,6 +181,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     window.deleteChannel = function(index) {
         channels.splice(index, 1);
+        renderChannels(searchInput.value);
+    }
+
+    window.toggleFlag = function(index, flagName) {
+        channels[index][flagName] = !channels[index][flagName];
         renderChannels(searchInput.value);
     }
 

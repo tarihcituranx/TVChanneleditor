@@ -66,7 +66,14 @@ def build():
     for i, ch in enumerate(edited_list):
         edited_channels[int(ch['Slot'])] = {
             'No': i + 1,
-            'Name': ch['Name']
+            'Name': ch['Name'],
+            'Lock': ch.get('Lock', False),
+            'Encrypted': ch.get('Encrypted', 'No'),
+            'Fav1': ch.get('Fav1', False),
+            'Fav2': ch.get('Fav2', False),
+            'Fav3': ch.get('Fav3', False),
+            'Fav4': ch.get('Fav4', False),
+            'Fav5': ch.get('Fav5', False)
         }
         
     original_scm = os.path.join(UPLOAD_DIR, 'uploaded.scm')

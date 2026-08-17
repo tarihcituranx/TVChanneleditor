@@ -173,10 +173,37 @@ def get_channels(scm_path):
         else: sType = "SD"
         name_bytes = rec[36:36+96]
         name = name_bytes.decode('utf-16be', errors='ignore').split('\0')[0]
-        encrypted = "Yes" if rec[136] == 1 else "No"
+        
+        # Tersine Mühendislik (ChanSort tabanlı):
+        is_encrypted = (rec[136] & 0x01) != 0
+        encrypted = "Yes" if is_encrypted else "No"
+        
+        is_locked = (rec[13] & 0x01) != 0
+        fav1 = struct.unpack('<i', rec[140:144])[0] > 0
+        fav2 = struct.unpack('<i', rec[144:148])[0] > 0
+        fav3 = struct.unpack('<i', rec[148:152])[0] > 0
+        fav4 = struct.unpack('<i', rec[152:156])[0] > 0
+        fav5 = struct.unpack('<i', rec[156:160])[0] > 0
+        
         tp_index = struct.unpack('<H', rec[18:20])[0]
         freq_info = tp_dict.get(tp_index, {'freq': '???', 'sym': '???', 'pol': '?'})
-        channels.append({'Slot': i // 168, 'No': channelNo, 'Name': name, 'Type': sType, 'Encrypted': encrypted, 'Freq': freq_info['freq'], 'Pol': freq_info['pol'], 'Sym': freq_info['sym']})
+        
+        channels.append({
+            'Slot': i // 168, 
+            'No': channelNo, 
+            'Name': name, 
+            'Type': sType, 
+            'Encrypted': encrypted, 
+            'Freq': freq_info['freq'], 
+            'Pol': freq_info['pol'], 
+            'Sym': freq_info['sym'],
+            'Lock': is_locked,
+            'Fav1': fav1,
+            'Fav2': fav2,
+            'Fav3': fav3,
+            'Fav4': fav4,
+            'Fav5': fav5
+        })
     channels.sort(key=lambda x: x['No'])
     return channels
 
@@ -199,6 +226,32 @@ def build_scm_direct(original_scm, new_scm, edited_channels):
                                 name_bytes = edits['Name'].encode('utf-16be')[:94]
                                 for j in range(96): rec[36+j] = 0
                                 rec[36:36+len(name_bytes)] = name_bytes
+                                
+                                # Lock Flag (Offset 13)
+                                if edits.get('Lock', False):
+                                    rec[13] |= 0x01
+                                else:
+                                    rec[13] &= ~0x01
+                                
+                                # Encrypted Flag (Offset 136)
+                                if edits.get('Encrypted') == 'Yes':
+                                    rec[136] |= 0x01
+                                else:
+                                    rec[136] &= ~0x01
+                                
+                                # Fav 1-5 Flags
+                                fav1_val = edits['No'] if edits.get('Fav1', False) else -1
+                                fav2_val = edits['No'] if edits.get('Fav2', False) else -1
+                                fav3_val = edits['No'] if edits.get('Fav3', False) else -1
+                                fav4_val = edits['No'] if edits.get('Fav4', False) else -1
+                                fav5_val = edits['No'] if edits.get('Fav5', False) else -1
+                                
+                                struct.pack_into('<i', rec, 140, fav1_val)
+                                struct.pack_into('<i', rec, 144, fav2_val)
+                                struct.pack_into('<i', rec, 148, fav3_val)
+                                struct.pack_into('<i', rec, 152, fav4_val)
+                                struct.pack_into('<i', rec, 156, fav5_val)
+                                
                                 active_records.append(rec)
                         for rec in active_records:
                             csum = sum(rec[:167]) % 256
@@ -212,6 +265,7 @@ def build_scm_direct(original_scm, new_scm, edited_channels):
                         zout.writestr(item, data)
         return True
     except Exception as e:
+        print(f"Build error: {e}")
         return False
 
 

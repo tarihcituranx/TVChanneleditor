@@ -199,6 +199,22 @@ li.dragging {
 .col-type { width: 80px; color: var(--text-secondary); }
 .col-freq { width: 140px; font-variant-numeric: tabular-nums; color: var(--text-secondary); }
 .col-action { width: 40px; text-align: right; }
+.col-flags { width: 70px; display: flex; gap: 5px; justify-content: center; }
+
+.flag-icon {
+    cursor: pointer;
+    opacity: 0.3;
+    font-size: 1.1rem;
+    transition: all 0.2s;
+    user-select: none;
+}
+.flag-icon:hover {
+    opacity: 0.8;
+}
+.flag-icon.active {
+    opacity: 1;
+    filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.5));
+}
 
 .delete-btn {
     background: none;
