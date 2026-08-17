@@ -81,6 +81,18 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    function escapeHTML(str) {
+        return str.replace(/[&<>'"]/g, 
+            tag => ({
+                '&': '&amp;',
+                '<': '&lt;',
+                '>': '&gt;',
+                "'": '&#39;',
+                '"': '&quot;'
+            }[tag] || tag)
+        );
+    }
+
     function renderChannels(filter = '') {
         channelList.innerHTML = '';
         
@@ -115,7 +127,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     <span class="flag-icon lock-icon ${ch.Lock ? 'active' : ''}" title="Çocuk Kilidi" onclick="toggleFlag(${li.dataset.index}, 'Lock')">🔒</span>
                     <span class="flag-icon fav-icon ${ch.Fav1 ? 'active' : ''}" title="Favori" onclick="toggleFlag(${li.dataset.index}, 'Fav1')">⭐</span>
                 </div>
-                <div class="col-name">${ch.Name}</div>
+                <div class="col-name">${escapeHTML(ch.Name)}</div>
                 <div class="col-type">${ch.Type}</div>
                 <div class="col-freq" style="${freqColor}">${ch.Freq} ${ch.Pol} ${ch.Sym}${freqWarning}</div>
                 <div class="col-action">
