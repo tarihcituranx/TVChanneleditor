@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html lang="{{ lang | default('tr') }}">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Samsung TV SCM Editor{% endblock %}</title>
+    <meta name="description" content="Easily upload, organize, unlock, and restore your Samsung Smart TV (E/F Series) channel list (.scm files) with our free, fast, and browser-based SCM Editor.">
+    <title>Samsung Channel Editor | SCM Editor</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/static/css/style.css">
     {% block head %}{% endblock %}
@@ -26,9 +27,8 @@
                 
                 <a href="/faq" class="nav-link">❓ FAQ</a>
             </nav>
-            <!-- Gelecekte eklenecek dil seçeneği altyapısı -->
-            <div style="position: absolute; top: 10px; right: 20px;">
-                <select id="lang-selector" style="background: rgba(255,255,255,0.1); color: white; border: none; padding: 5px; border-radius: 5px;">
+            <div style="position: absolute; top: 20px; right: 20px;">
+                <select id="lang-selector" aria-label="Language Selection" style="background: rgba(255,255,255,0.1); color: white; border: none; padding: 5px; border-radius: 5px; cursor: pointer;">
                     <option value="tr">🇹🇷 Turkish</option>
                     <option value="en">🇬🇧 English</option>
                 </select>
