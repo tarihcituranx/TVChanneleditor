@@ -6,7 +6,7 @@ import urllib.parse
 import cgi
 import scm_core
 
-PORT = 5000
+PORT = int(os.environ.get('PORT', 5000))
 UPLOAD_DIR = 'uploads'
 os.makedirs(UPLOAD_DIR, exist_ok=True)
 
