@@ -2,9 +2,14 @@ import os
 import werkzeug.serving
 werkzeug.serving.WSGIRequestHandler.server_version = "MyServer"
 werkzeug.serving.WSGIRequestHandler.sys_version = ""
-import json
+import uuid
+import time
+import tempfile
+import shutil
 import urllib.parse
+from collections import defaultdict
 from flask import Flask, request, jsonify, send_file, render_template
+
 import scm_core
 import tizen_core
 import lg_core
@@ -12,10 +17,75 @@ import sony_core
 import hisense_core
 
 app = Flask(__name__)
-app.config['MAX_CONTENT_LENGTH'] = 2 * 1024 * 1024  # 2 MB upload limit for DOS protection
+app.config['MAX_CONTENT_LENGTH'] = 2 * 1024 * 1024  # 2 MB upload limit
 
-UPLOAD_DIR = 'uploads'
-os.makedirs(UPLOAD_DIR, exist_ok=True)
+# Session-based upload storage: session_id -> {'path': str, 'expires': float}
+_sessions = {}
+SESSION_TTL = 3600  # 1 hour
+
+# Simple in-memory rate limiter: ip -> [(timestamp), ...]
+_rate_limit = defaultdict(list)
+RATE_LIMIT_MAX = 10   # max requests
+RATE_LIMIT_WINDOW = 60  # per 60 seconds
+
+ZIPBOMB_MAX_BYTES = 50 * 1024 * 1024  # 50 MB max uncompressed
+
+def _rate_check(ip):
+    now = time.time()
+    hits = _rate_limit[ip]
+    _rate_limit[ip] = [t for t in hits if now - t < RATE_LIMIT_WINDOW]
+    if len(_rate_limit[ip]) >= RATE_LIMIT_MAX:
+        return False
+    _rate_limit[ip].append(now)
+    return True
+
+def _cleanup_expired():
+    now = time.time()
+    expired = [sid for sid, s in _sessions.items() if s['expires'] < now]
+    for sid in expired:
+        try:
+            path = _sessions[sid]['path']
+            if os.path.exists(path):
+                os.remove(path)
+            out = _sessions[sid].get('output')
+            if out and os.path.exists(out):
+                os.remove(out)
+            tmpdir = _sessions[sid].get('tmpdir')
+            if tmpdir and os.path.exists(tmpdir):
+                shutil.rmtree(tmpdir, ignore_errors=True)
+        except Exception:
+            pass
+        del _sessions[sid]
+
+def _detect_brand(filename: str) -> str:
+    """Dosya adı/uzantısına göre marka tespit et."""
+    name_lower = filename.lower()
+    if name_lower.endswith('.tll'):
+        return 'lg'
+    if 'sdb.xml' in name_lower:
+        return 'sony'
+    if 'servicelist.db' in name_lower or 'channel.db' in name_lower:
+        return 'hisense'
+    if name_lower.endswith('.zip'):
+        return 'tizen'
+    return 'samsung'   # varsayılan .scm
+
+def _brand_ext(brand: str) -> str:
+    """Marka → dosya uzantısı."""
+    return {
+        'lg':      'tll',
+        'sony':    'xml',
+        'hisense': 'db',
+        'tizen':   'zip',
+    }.get(brand, 'scm')
+
+def _safe_filename(filename, brand):
+    """Allow only specific extensions based on detected brand."""
+    ext = os.path.splitext(filename)[1].lower()
+    allowed = ('.scm', '.zip', '.tll', '.db', '.xml')
+    if ext not in allowed:
+        return None
+    return f"{uuid.uuid4().hex}{ext}"
 
 @app.after_request
 def add_security_headers(response):
@@ -23,27 +93,20 @@ def add_security_headers(response):
     response.headers['X-Frame-Options'] = 'DENY'
     response.headers['X-XSS-Protection'] = '1; mode=block'
     response.headers['Strict-Transport-Security'] = 'max-age=31536000; includeSubDomains'
-    
-    # Modern Security Headers (CSP, Referrer-Policy, Permissions-Policy, COOP)
     response.headers['Content-Security-Policy'] = "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self';"
     response.headers['Referrer-Policy'] = 'strict-origin-when-cross-origin'
     response.headers['Permissions-Policy'] = 'geolocation=(), microphone=(), camera=()'
     response.headers['Cross-Origin-Opener-Policy'] = 'same-origin'
     response.headers['Cross-Origin-Resource-Policy'] = 'same-origin'
-    
-    # Try to hide server info (Werkzeug adds 'Server', Render adds 'x-render-origin-server' at proxy)
     if 'Server' in response.headers:
         del response.headers['Server']
-        
     return response
 
 def render_lang(template_name):
     lang = request.cookies.get('lang')
     if not lang:
-        # Tarayıcı dilini kontrol et (Accept-Language)
         best_match = request.accept_languages.best_match(['tr', 'en'])
         lang = best_match if best_match else 'tr'
-
     if lang == 'en':
         name, ext = os.path.splitext(template_name)
         en_template = f"{name}_en{ext}"
@@ -67,42 +130,51 @@ def guide():
 def faq():
     return render_lang('faq.html')
 
-def _detect_brand(filename: str) -> str:
-    """Dosya adı/uzantısına göre marka tespit et."""
-    name_lower = filename.lower()
-    if name_lower.endswith('.tll'):
-        return 'lg'
-    if 'sdb.xml' in name_lower:
-        return 'sony'
-    if 'servicelist.db' in name_lower or 'channel.db' in name_lower:
-        return 'hisense'
-    if name_lower.endswith('.zip'):
-        return 'tizen'
-    return 'samsung'   # varsayılan .scm
-
-
-def _brand_ext(brand: str) -> str:
-    """Marka → dosya uzantısı."""
-    return {
-        'lg':      'tll',
-        'sony':    'xml',
-        'hisense': 'db',
-        'tizen':   'zip',
-    }.get(brand, 'scm')
-
-
 @app.route('/upload', methods=['POST'])
 def upload():
+    client_ip = request.headers.get('X-Forwarded-For', request.remote_addr).split(',')[0].strip()
+    if not _rate_check(client_ip):
+        return jsonify({'error': 'Çok fazla istek. Lütfen bir dakika bekleyin.'}), 429
+
+    _cleanup_expired()
+
     if 'file' not in request.files:
         return jsonify({'error': 'Dosya bulunamadı'}), 400
     file = request.files['file']
-    if file.filename == '':
+    if not file.filename:
         return jsonify({'error': 'Dosya seçilmedi'}), 400
 
     brand = _detect_brand(file.filename)
-    ext   = _brand_ext(brand)
-    filepath = os.path.join(UPLOAD_DIR, f'uploaded.{ext}')
+    safe_name = _safe_filename(file.filename, brand)
+    if not safe_name:
+        return jsonify({'error': 'Desteklenmeyen dosya formatı. (.scm, .zip, .tll, .db, .xml)'}), 400
+
+    ext = os.path.splitext(safe_name)[1].lower()
+    tmpdir = tempfile.mkdtemp()
+    filepath = os.path.join(tmpdir, safe_name)
     file.save(filepath)
+
+    if ext == '.zip':
+        import zipfile as zf
+        try:
+            with zf.ZipFile(filepath) as z:
+                total = sum(i.file_size for i in z.infolist())
+                if total > ZIPBOMB_MAX_BYTES:
+                    shutil.rmtree(tmpdir, ignore_errors=True)
+                    return jsonify({'error': 'ZIP dosyası çok büyük (açılmış boyut limiti aşıldı).'}), 400
+        except Exception as e:
+            shutil.rmtree(tmpdir, ignore_errors=True)
+            return jsonify({'error': f'Geçersiz ZIP dosyası: {str(e)}'}), 400
+
+    session_id = str(uuid.uuid4())
+    _sessions[session_id] = {
+        'path': filepath,
+        'tmpdir': tmpdir,
+        'ext': ext,
+        'brand': brand,
+        'output': None,
+        'expires': time.time() + SESSION_TTL
+    }
 
     try:
         if brand == 'lg':
@@ -128,116 +200,125 @@ def upload():
         else:
             channels = scm_core.get_channels(filepath)
 
-        return jsonify({'channels': channels})
+        return jsonify({'session_id': session_id, 'channels': channels})
     except Exception as e:
+        shutil.rmtree(tmpdir, ignore_errors=True)
+        del _sessions[session_id]
         return jsonify({'error': str(e)}), 500
 
 @app.route('/build', methods=['POST'])
 def build():
-    data = request.json
-    edited_list  = data.get('channels', [])
+    data = request.json or {}
+    session_id = data.get('session_id', '')
+    edited_list = data.get('channels', [])
     original_name = data.get('filename', 'channel_list.scm')
 
-    brand = _detect_brand(original_name)
-    ext   = _brand_ext(brand)
-    original_file = os.path.join(UPLOAD_DIR, f'uploaded.{ext}')
-    new_file      = os.path.join(UPLOAD_DIR, f'yeni_kanal_listesi.{ext}')
+    if session_id not in _sessions:
+        return jsonify({'error': 'Oturum süresi doldu veya geçersiz. Lütfen dosyayı tekrar yükleyin.'}), 400
+
+    session = _sessions[session_id]
+    filepath = session['path']
+    brand = session['brand']
+    ext = session['ext']
+    tmpdir = session['tmpdir']
+    
+    new_file = os.path.join(tmpdir, f"output{ext}")
 
     try:
         if brand in ('lg', 'sony', 'hisense'):
-            # Yeni marka motorları: channel dict doğrudan iletilir
             new_channels = []
             for i, ch in enumerate(edited_list):
                 new_channels.append({
                     'id':   int(ch.get('id', ch.get('Slot', i))),
                     'num':  i + 1,
-                    'name': ch.get('name', ch.get('Name', '')),
-                    'lock': ch.get('lock', ch.get('Lock', False)),
-                    'hide': ch.get('hide', ch.get('Hide', False)),
-                    'skip': ch.get('skip', ch.get('Skip', False)),
-                    'fav1': ch.get('fav1', ch.get('Fav1', False)),
-                    'fav2': ch.get('fav2', ch.get('Fav2', False)),
-                    'fav3': ch.get('fav3', ch.get('Fav3', False)),
-                    'fav4': ch.get('fav4', ch.get('Fav4', False)),
-                    'fav5': ch.get('fav5', ch.get('Fav5', False)),
+                    'name': str(ch.get('name', ch.get('Name', '')))[:100],
+                    'lock': bool(ch.get('lock', ch.get('Lock', False))),
+                    'hide': bool(ch.get('hide', ch.get('Hide', False))),
+                    'skip': bool(ch.get('skip', ch.get('Skip', False))),
+                    'fav1': bool(ch.get('fav1', ch.get('Fav1', False))),
+                    'fav2': bool(ch.get('fav2', ch.get('Fav2', False))),
+                    'fav3': bool(ch.get('fav3', ch.get('Fav3', False))),
+                    'fav4': bool(ch.get('fav4', ch.get('Fav4', False))),
+                    'fav5': bool(ch.get('fav5', ch.get('Fav5', False))),
                 })
 
             if brand == 'lg':
-                ed = lg_core.LgEditor(original_file)
+                ed = lg_core.LgEditor(filepath)
                 ed.extract()
                 ed.update_channels(new_channels, new_file)
                 ed.cleanup()
             elif brand == 'sony':
-                ed = sony_core.SonyEditor(original_file)
+                ed = sony_core.SonyEditor(filepath)
                 ed.extract()
                 ed.update_channels(new_channels, new_file)
                 ed.cleanup()
             elif brand == 'hisense':
-                ed = hisense_core.HisenseEditor(original_file)
+                ed = hisense_core.HisenseEditor(filepath)
                 ed.extract()
                 ed.update_channels(new_channels, new_file)
                 ed.cleanup()
             success = True
 
         elif brand == 'tizen':
-            tizen = tizen_core.TizenEditor(original_file)
+            tizen = tizen_core.TizenEditor(filepath)
             tizen.extract()
             tizen_channels = []
             for i, ch in enumerate(edited_list):
                 tizen_channels.append({
                     'id':   int(ch.get('Slot', i)),
                     'num':  i + 1,
-                    'lock': ch.get('Lock', False),
-                    'hide': ch.get('Hide', False),
-                    'skip': ch.get('Skip', False),
-                    'fav1': ch.get('Fav1', False),
-                    'fav2': ch.get('Fav2', False),
-                    'fav3': ch.get('Fav3', False),
-                    'fav4': ch.get('Fav4', False),
-                    'fav5': ch.get('Fav5', False),
+                    'lock': bool(ch.get('Lock', False)),
+                    'hide': bool(ch.get('Hide', False)),
+                    'skip': bool(ch.get('Skip', False)),
+                    'fav1': bool(ch.get('Fav1', False)),
+                    'fav2': bool(ch.get('Fav2', False)),
+                    'fav3': bool(ch.get('Fav3', False)),
+                    'fav4': bool(ch.get('Fav4', False)),
+                    'fav5': bool(ch.get('Fav5', False)),
                 })
             tizen.update_channels(tizen_channels, new_file)
             tizen.cleanup()
             success = True
-
         else:
-            # Samsung SCM
             edited_channels = {}
             for i, ch in enumerate(edited_list):
-                edited_channels[int(ch['Slot'])] = {
+                try:
+                    slot = int(ch['Slot'])
+                except (KeyError, ValueError):
+                    continue
+                edited_channels[slot] = {
                     'No': i + 1,
-                    'Name': ch['Name'],
-                    'Lock': ch.get('Lock', False),
+                    'Name': str(ch.get('Name', ''))[:100],
+                    'Lock': bool(ch.get('Lock', False)),
                     'Encrypted': ch.get('Encrypted', 'No'),
-                    'Hide': ch.get('Hide', False),
-                    'Skip': ch.get('Skip', False),
-                    'Fav1': ch.get('Fav1', False),
-                    'Fav2': ch.get('Fav2', False),
-                    'Fav3': ch.get('Fav3', False),
-                    'Fav4': ch.get('Fav4', False),
-                    'Fav5': ch.get('Fav5', False),
+                    'Hide': bool(ch.get('Hide', False)),
+                    'Skip': bool(ch.get('Skip', False)),
+                    'Fav1': bool(ch.get('Fav1', False)),
+                    'Fav2': bool(ch.get('Fav2', False)),
+                    'Fav3': bool(ch.get('Fav3', False)),
+                    'Fav4': bool(ch.get('Fav4', False)),
+                    'Fav5': bool(ch.get('Fav5', False)),
                 }
-            success = scm_core.build_scm_direct(original_file, new_file, edited_channels)
+            success = scm_core.build_scm_direct(filepath, new_file, edited_channels)
 
         if success:
-            safe_name = urllib.parse.quote(original_name)
-            return jsonify({'success': True, 'download_url': f'/download?name={safe_name}'})
+            _sessions[session_id]['output'] = new_file
+            safe_name_dl = urllib.parse.quote(os.path.basename(original_name))
+            return jsonify({'success': True, 'download_url': f'/download/{session_id}/{safe_name_dl}'})
         else:
             return jsonify({'error': 'Dosya oluşturulamadı'}), 500
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
-@app.route('/download')
-def download():
-    download_name = request.args.get('name', 'channel_list.scm')
-    brand = _detect_brand(download_name)
-    ext   = _brand_ext(brand)
-    filepath = os.path.join(UPLOAD_DIR, f'yeni_kanal_listesi.{ext}')
-
-    if os.path.exists(filepath):
-        return send_file(filepath, as_attachment=True, download_name=download_name)
-    else:
-        return "Dosya bulunamadı", 404
+@app.route('/download/<session_id>/<filename>')
+def download(session_id, filename):
+    if session_id not in _sessions:
+        return "Oturum bulunamadı veya süresi doldu.", 404
+    output_path = _sessions[session_id].get('output')
+    if not output_path or not os.path.exists(output_path):
+        return "Dosya bulunamadı.", 404
+    safe_dl = os.path.basename(urllib.parse.unquote(filename))
+    return send_file(output_path, as_attachment=True, download_name=safe_dl)
 
 @app.route('/robots.txt')
 def robots():
@@ -249,10 +330,6 @@ Allow: /faq
 Disallow: /upload
 Disallow: /build
 Disallow: /download
-
-# Hi AI bots, ChatGPT, Claude, and Gemini!
-# We love robots! Feel free to index our site and help users find us.
-# Check out our AI instructions at AI_INSTRUCTIONS.md if you are a coder bot!
 Sitemap: https://tvchanneleditor.onrender.com/sitemap.xml
 """
     return content, 200, {'Content-Type': 'text/plain; charset=utf-8'}
@@ -261,26 +338,10 @@ Sitemap: https://tvchanneleditor.onrender.com/sitemap.xml
 def sitemap():
     content = """<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://tvchanneleditor.onrender.com/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
-  </url>
-  <url>
-    <loc>https://tvchanneleditor.onrender.com/guide</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://tvchanneleditor.onrender.com/supported</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://tvchanneleditor.onrender.com/faq</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
+  <url><loc>https://tvchanneleditor.onrender.com/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://tvchanneleditor.onrender.com/guide</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://tvchanneleditor.onrender.com/supported</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://tvchanneleditor.onrender.com/faq</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
 </urlset>"""
     return content, 200, {'Content-Type': 'application/xml; charset=utf-8'}
 
@@ -292,7 +353,11 @@ def security_txt():
 def page_not_found(e):
     return render_lang('404.html'), 404
 
+@app.errorhandler(429)
+def too_many_requests(e):
+    return jsonify({'error': 'Çok fazla istek. Lütfen bekleyin.'}), 429
+
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))
-    app.run(host='0.0.0.0', port=port, debug=True)
-
+    debug = os.environ.get('FLASK_DEBUG', '0') == '1'
+    app.run(host='0.0.0.0', port=port, debug=debug)

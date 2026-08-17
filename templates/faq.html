@@ -7,71 +7,148 @@
     .content-container {
         max-width: 900px;
         margin: 40px auto;
-        padding: 20px;
-        background: rgba(255, 255, 255, 0.05);
+        padding: 28px 32px;
+        background: var(--card-bg);
         border-radius: 12px;
-        border: 1px solid rgba(255, 255, 255, 0.1);
+        border: 1px solid var(--border-color);
     }
-    
     .section-title {
-        font-size: 24px;
-        font-weight: 600;
-        margin-bottom: 20px;
-        color: #fff;
-        border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+        font-size: 22px;
+        font-weight: 700;
+        margin-bottom: 24px;
+        color: var(--text-primary);
+        border-bottom: 2px solid var(--border-color);
         padding-bottom: 10px;
     }
-
     .faq-item {
-        margin-bottom: 20px;
-        background: rgba(0, 0, 0, 0.3);
-        border-radius: 8px;
-        padding: 20px;
-        border: 1px solid rgba(255, 255, 255, 0.05);
+        margin-bottom: 12px;
+        border: 1px solid var(--border-color);
+        border-radius: 10px;
+        overflow: hidden;
     }
-
     .faq-q {
-        font-size: 18px;
-        font-weight: 600;
-        color: #4a90e2;
-        margin-bottom: 10px;
-    }
-
-    .faq-a {
         font-size: 15px;
-        color: #ccc;
-        line-height: 1.6;
+        font-weight: 600;
+        color: var(--text-primary);
+        padding: 16px 20px;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 12px;
+        transition: background 0.2s;
+        user-select: none;
+    }
+    .faq-q:hover { background: rgba(59,130,246,0.06); }
+    .faq-q::after {
+        content: '﹢';
+        font-size: 20px;
+        color: var(--accent);
+        transition: transform 0.2s;
+        flex-shrink: 0;
+    }
+    .faq-item.open .faq-q::after { content: '−'; }
+    .faq-a {
+        font-size: 14px;
+        color: var(--text-secondary);
+        line-height: 1.75;
+        padding: 0 20px;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.35s ease, padding 0.2s;
+    }
+    .faq-item.open .faq-a {
+        max-height: 600px;
+        padding: 0 20px 16px;
+    }
+    .faq-a code {
+        background: var(--bg-color);
+        padding: 2px 6px;
+        border-radius: 4px;
+        font-family: monospace;
+        font-size: 13px;
+        color: #93c5fd;
+        border: 1px solid var(--border-color);
     }
 </style>
 {% endblock %}
 
 {% block content %}
 <div class="content-container">
-    <h2 class="section-title">❓ Sıkça Sorulan Sorular (SSS)</h2>
-    
+    <h2 class="section-title">❓ Sıkça Sorulan Sorular</h2>
+
     <div class="faq-item">
-        <div class="faq-q">SCM Dosyası Nedir?</div>
-        <div class="faq-a">SCM (Samsung Channel Map), Samsung televizyonların uydu frekanslarını ve kanal sıralarını sakladığı şifrelenmiş (checksum) bir veri dosyasıdır. Televizyonunuzdan USB belleğe aktarılarak elde edilir.</div>
+        <div class="faq-q" onclick="toggleFaq(this)">SCM Dosyası Nedir?</div>
+        <div class="faq-a">
+            <strong>SCM (Samsung Channel Map)</strong>, Samsung televizyonların kanal sıralamasını, favori listelerini ve frekans verilerini sakladığı özel bir arşiv dosyasıdır. İçinde <code>map-SateD</code> (kanal listesi) ve <code>TransponderDataBase.dat</code> (frekans veritabanı) gibi ikili veri dosyaları bulunur. Eski modeller SCM, yeni Tizen modeller ZIP formatı kullanır.
+        </div>
     </div>
 
     <div class="faq-item">
-        <div class="faq-q">TV'den SCM dosyasını nasıl alırım?</div>
-        <div class="faq-a">Televizyonunuzda menüye girin: <strong>Yayın > Kanal Ayarları > Kanal Listesini Aktar > USB'ye Aktar</strong>. Bu işlem USB belleğinize bir .scm dosyası kaydedecektir.</div>
+        <div class="faq-q" onclick="toggleFaq(this)">TV'den kanal listesini nasıl USB'ye aktarırım?</div>
+        <div class="faq-a">
+            Samsung için: <strong>Menü → Yayın → Kanal Ayarları → Kanal Listesini Aktar → USB'ye Aktar</strong>.<br>
+            LG için: <strong>Ayarlar → Kanal → USB'ye Kopyala</strong>.<br>
+            Sony için: <strong>Ayarlar → Kanal Ayarı → Kanal Listesi Aktarımı → USB'ye Aktar</strong>.<br>
+            Hisense için: <strong>Menü → Kanal → Kanal Listesi Dışa Aktar</strong>.
+        </div>
     </div>
 
     <div class="faq-item">
-        <div class="faq-q">Düzenlediğim listeyi TV'ye nasıl yüklerim?</div>
-        <div class="faq-a">Bu siteden indirdiğiniz yeni SCM dosyasını USB belleğinize kopyalayın. Ardından TV menüsünden <strong>Yayın > Kanal Ayarları > Kanal Listesini Aktar > USB'den Al</strong> seçeneğini kullanarak yükleyebilirsiniz.</div>
+        <div class="faq-q" onclick="toggleFaq(this)">Düzenlediğim listeyi TV'ye nasıl yüklerim?</div>
+        <div class="faq-a">
+            İndirilen dosyayı USB belleğe kopyala (<strong>orijinal dosya adını koru!</strong>). TV menüsünden <strong>USB'den Al</strong> ya da <strong>İçe Aktar</strong> seçeneğini kullan.
+            Samsung'da TV genellikle yalnızca aynı adlı dosyayı kabul eder; bu yüzden yeni dosyayı eski adıyla kaydet.
+        </div>
     </div>
 
     <div class="faq-item">
-        <div class="faq-q">Sihirli Değnek kanalları nasıl eşleştiriyor?</div>
-        <div class="faq-a">Frekanslar değişebildiği için Sihirli Değnek algoritması eşleştirmeyi <strong>Kanal Adı</strong> üzerinden yapar. Orijinal dosyanızdaki "TRT1 HD" adlı kanalın tüm şifreli PIDs ve frekans verilerini koruyarak sadece sıralamasını günceller.</div>
+        <div class="faq-q" onclick="toggleFaq(this)">Hangi TV markaları destekleniyor?</div>
+        <div class="faq-a">
+            Şu an <strong>Samsung</strong> (.scm ve .zip), <strong>LG</strong> (.tll), <strong>Sony BRAVIA</strong> (sdb.xml) ve <strong>Hisense</strong> (servicelist.db) tam olarak desteklenmektedir.
+            Panasonic beta aşamasındadır; Philips, Toshiba ve Grundig yakında eklenecektir.
+        </div>
     </div>
 
     <div class="faq-item">
-        <div class="faq-q">Başka TV markaları destekleniyor mu?</div>
-        <div class="faq-a">Şu an için altyapımız yalnızca <strong>Samsung</strong> televizyonların kullandığı Checksum algoritmasını kırmak üzerine tasarlanmıştır. Gelecekte diğer markalar eklenebilir.</div>
+        <div class="faq-q" onclick="toggleFaq(this)">Sihirli Değnek kanalları nasıl eşleştiriyor?</div>
+        <div class="faq-a">
+            Sihirli Değnek, kanal adı üzerinden eşleştirme yapar (büyük/küçük harfe duyarsız). Şablondaki kanal listenizde "TRT1 HD" varsa, yüklenen dosyadaki "trt1 hd" kanalını bulup öne taşır. Frekans ve PID verilerine dokunmaz.
+        </div>
+    </div>
+
+    <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Verilerim güvende mi? Dosyalarım sunucuda saklanıyor mu?</div>
+        <div class="faq-a">
+            Yüklenen kanal listesi dosyaları sunucumuzda yalnızca işlem süresi kadar geçici tutulur ve işlem biter bitmez silinir. Hiçbir kanal adı, frekans veya kişisel veri loglanmaz, saklanmaz ya da üçüncü taraflarla paylaşılmaz. Tüm işleme sunucu tarafında yapılır ve yalnızca çıktı dosyası sana gönderilir.
+        </div>
+    </div>
+
+    <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Frekans uyarısı (⚠️ Eski Frekans) ne anlama geliyor?</div>
+        <div class="faq-a">
+            Sistem kanalının kaydedildiği frekansı, <strong>FrekansListesi.com.tr</strong>'deki güncel Türksat frekans veritabanıyla karşılaştırır. Kanal eski veya farklı bir frekansta taranmışsa sarı uyarı gösterilir. Bu sadece bilgilendirmedir; kanal çalışmaya devam eder ama TV'den yeni bir ağ araması (Network Scan) yaparak kanalı güncel frekansına taşımanız önerilir.
+        </div>
+    </div>
+
+    <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Yeni şifresiz kanalları neden listede göremiyorum?</div>
+        <div class="faq-a">
+            Bu site yalnızca TV'nin mevcut kanal listesini düzenler; yeni kanal <em>ekleyemez</em>. Yeni bir kanalı görmek için TV'den önce <strong>ağ araması (Ağ Güncelleme / Network Scan)</strong> yapılması, ardından yeni SCM/ZIP dosyasının çekilmesi gerekir.
+        </div>
+    </div>
+
+    <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">2 MB'tan büyük dosya yükleyemiyorum, ne yapmalıyım?</div>
+        <div class="faq-a">
+            Güvenlik nedeniyle 2 MB'lık yükleme limiti uygulanmaktadır. Ama tipik kanal listesi dosyaları bunun çok altında olur; yüzlerce kanaldan oluşan bir SCM dosyası nadiren 300-400 KB'ı geçer. Çok büyük bir dosya yüklüyorsanız, muhtemelen yanlış dosya seçilmiştir.
+        </div>
     </div>
 </div>
+
+<script>
+function toggleFaq(el) {
+    el.parentElement.classList.toggle('open');
+}
+</script>
 {% endblock %}

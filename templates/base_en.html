@@ -28,8 +28,10 @@
                 
                 <a href="/faq" class="nav-link">❓ FAQ</a>
             </nav>
-            <div style="position: absolute; top: 20px; right: 20px;">
-                <select id="lang-selector" aria-label="Language Selection" style="background: rgba(255,255,255,0.1); color: white; border: 1px solid rgba(255,255,255,0.3); padding: 5px; border-radius: 5px; cursor: pointer;">
+            <div style="position: absolute; top: 20px; right: 20px; display:flex; gap:8px; align-items:center;">
+                <button id="colorblind-toggle" aria-label="Colorblind Mode" title="Colorblind Mode" style="background: rgba(255,255,255,0.1); color: inherit; border: 1px solid rgba(255,255,255,0.3); padding: 5px 10px; border-radius: 5px; cursor: pointer; font-size:16px; line-height:1; transition: background 0.2s;">👁️</button>
+                <button id="theme-toggle" aria-label="Toggle Theme" title="Dark/Light Mode" style="background: rgba(255,255,255,0.1); color: inherit; border: 1px solid rgba(255,255,255,0.3); padding: 5px 10px; border-radius: 5px; cursor: pointer; font-size:16px; line-height:1; transition: background 0.2s;">🌙</button>
+                <select id="lang-selector" aria-label="Language Selection" style="background: rgba(255,255,255,0.1); color: inherit; border: 1px solid rgba(255,255,255,0.3); padding: 5px; border-radius: 5px; cursor: pointer;">
                     <option value="tr">🇹🇷 Turkish</option>
                     <option value="en">🇬🇧 English</option>
                 </select>
@@ -81,26 +83,74 @@
     </style>
     
     <script>
+        // ---- Theme Toggle ----
+        const themeToggle = document.getElementById('theme-toggle');
+        const html = document.documentElement;
+
+        function applyTheme(theme) {
+            if (theme === 'light') {
+                html.setAttribute('data-theme', 'light');
+                themeToggle.textContent = '☀️';
+                themeToggle.title = 'Light Mode';
+            } else {
+                html.setAttribute('data-theme', 'dark');
+                themeToggle.textContent = '🌙';
+                themeToggle.title = 'Dark Mode';
+            }
+        }
+
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+            applyTheme(savedTheme);
+        } else if (window.matchMedia('(prefers-color-scheme: light)').matches) {
+            applyTheme('light');
+        } else {
+            applyTheme('dark');
+        }
+
+        themeToggle.addEventListener('click', () => {
+            const current = html.getAttribute('data-theme');
+            const next = current === 'light' ? 'dark' : 'light';
+            applyTheme(next);
+            localStorage.setItem('theme', next);
+        });
+
+        // ---- Colorblind Toggle ----
+        const cbToggle = document.getElementById('colorblind-toggle');
+        
+        function applyColorblind(isCb) {
+            if (isCb) {
+                html.setAttribute('data-colorblind', 'true');
+                cbToggle.style.background = 'rgba(59, 130, 246, 0.5)';
+            } else {
+                html.removeAttribute('data-colorblind');
+                cbToggle.style.background = 'rgba(255,255,255,0.1)';
+            }
+        }
+
+        const savedCb = localStorage.getItem('colorblind') === 'true';
+        applyColorblind(savedCb);
+
+        cbToggle.addEventListener('click', () => {
+            const current = html.getAttribute('data-colorblind') === 'true';
+            applyColorblind(!current);
+            localStorage.setItem('colorblind', !current);
+        });
+
+        // ---- Lang Selector ----
         document.getElementById('lang-selector').addEventListener('change', function(e) {
             document.cookie = "lang=" + e.target.value + "; path=/; max-age=" + (60*60*24*365);
             window.location.reload();
         });
-        
-        // Select correct language on load
         var cookies = document.cookie.split(';');
         var langCookie = null;
         for(var i=0; i<cookies.length; i++) {
             var c = cookies[i].trim();
-            if(c.startsWith("lang=")) {
-                langCookie = c.substring(5);
-                break;
-            }
+            if(c.startsWith("lang=")) { langCookie = c.substring(5); break; }
         }
-        
         if (langCookie) {
             document.getElementById('lang-selector').value = langCookie;
         } else {
-            // If no cookie, set according to browser language
             var browserLang = navigator.language || navigator.userLanguage;
             if (browserLang && browserLang.toLowerCase().startsWith('en')) {
                 document.getElementById('lang-selector').value = 'en';

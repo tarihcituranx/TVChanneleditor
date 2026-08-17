@@ -7,38 +7,104 @@
     .content-container {
         max-width: 900px;
         margin: 40px auto;
-        padding: 20px;
-        background: rgba(255, 255, 255, 0.05);
+        padding: 28px 32px;
+        background: var(--card-bg);
         border-radius: 12px;
-        border: 1px solid rgba(255, 255, 255, 0.1);
+        border: 1px solid var(--border-color);
     }
-    
     .section-title {
-        font-size: 24px;
-        font-weight: 600;
-        margin-bottom: 20px;
-        color: #fff;
-        border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+        font-size: 22px;
+        font-weight: 700;
+        margin-bottom: 24px;
+        color: var(--text-primary);
+        border-bottom: 2px solid var(--border-color);
         padding-bottom: 10px;
     }
-
-    .step-box {
-        margin-bottom: 25px;
-        padding-left: 20px;
-        border-left: 3px solid #4a90e2;
+    .brand-tabs {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-bottom: 28px;
     }
-
-    .step-title {
-        font-size: 18px;
+    .brand-tab {
+        padding: 7px 16px;
+        border-radius: 20px;
+        font-size: 13px;
         font-weight: 600;
-        color: #fff;
-        margin-bottom: 8px;
+        cursor: pointer;
+        border: 1px solid var(--border-color);
+        background: var(--bg-color);
+        color: var(--text-secondary);
+        transition: all 0.2s;
     }
-
+    .brand-tab.active {
+        background: var(--accent);
+        color: white;
+        border-color: var(--accent);
+    }
+    .brand-guide { display: none; }
+    .brand-guide.active { display: block; }
+    .step-box {
+        margin-bottom: 22px;
+        padding: 16px 20px;
+        border-left: 3px solid var(--accent);
+        background: rgba(29,78,216,0.06);
+        border-radius: 0 8px 8px 0;
+    }
+    .step-title {
+        font-size: 16px;
+        font-weight: 700;
+        color: var(--text-primary);
+        margin-bottom: 6px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+    .step-num {
+        background: var(--accent);
+        color: white;
+        width: 24px; height: 24px;
+        border-radius: 50%;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 12px;
+        font-weight: 800;
+        flex-shrink: 0;
+    }
     .step-desc {
-        font-size: 15px;
-        color: #bbb;
-        line-height: 1.5;
+        font-size: 14px;
+        color: var(--text-secondary);
+        line-height: 1.7;
+    }
+    .step-desc code {
+        background: var(--bg-color);
+        padding: 2px 6px;
+        border-radius: 4px;
+        font-family: monospace;
+        font-size: 13px;
+        color: #93c5fd;
+        border: 1px solid var(--border-color);
+    }
+    .tip-box {
+        background: rgba(34,197,94,0.08);
+        border: 1px solid rgba(34,197,94,0.25);
+        border-radius: 8px;
+        padding: 12px 16px;
+        font-size: 13px;
+        color: #4ade80;
+        margin-top: 20px;
+        line-height: 1.6;
+    }
+    .warn-box {
+        background: rgba(251,191,36,0.08);
+        border: 1px solid rgba(251,191,36,0.25);
+        border-radius: 8px;
+        padding: 12px 16px;
+        font-size: 13px;
+        color: #fbbf24;
+        margin-top: 12px;
+        line-height: 1.6;
     }
 </style>
 {% endblock %}
@@ -46,40 +112,125 @@
 {% block content %}
 <div class="content-container">
     <h2 class="section-title">📖 Kullanım Kılavuzu</h2>
-    
-    <div class="step-box">
-        <div class="step-title">1. Dosyayı USB'ye Aktarma</div>
-        <div class="step-desc">
-            TV'nizin kumandasından Menü tuşuna basın. <strong>Yayın > Kanal Ayarları > Kanal Listesini Aktar</strong> adımlarını izleyin. Çıkan ekranda PIN kodunuzu (genelde 0000) girerek "USB'ye Aktar"ı seçin.
+
+    <div class="brand-tabs">
+        <button class="brand-tab active" onclick="showGuide('samsung')">📺 Samsung</button>
+        <button class="brand-tab" onclick="showGuide('lg')">LG</button>
+        <button class="brand-tab" onclick="showGuide('sony')">Sony BRAVIA</button>
+        <button class="brand-tab" onclick="showGuide('hisense')">Hisense</button>
+    </div>
+
+    <!-- SAMSUNG -->
+    <div class="brand-guide active" id="guide-samsung">
+        <div class="step-box">
+            <div class="step-title"><span class="step-num">1</span> Kanal Listesini USB'ye Aktar</div>
+            <div class="step-desc">
+                TV'nin kumandasından <strong>Menü → Yayın → Kanal Ayarları → Kanal Listesini Aktar</strong> adımlarını izleyin.
+                PIN kodunuzu girin (genelde <code>0000</code>) ve <strong>USB'ye Aktar</strong> seçeneğini belirleyin.<br><br>
+                <strong>Eski model (E/F/H):</strong> <code>.scm</code> dosyası oluşur.<br>
+                <strong>Yeni model (J/K/M/Q/R/T - Tizen):</strong> <code>.zip</code> dosyası oluşur.
+            </div>
+        </div>
+        <div class="step-box">
+            <div class="step-title"><span class="step-num">2</span> Dosyayı Siteye Yükle</div>
+            <div class="step-desc">
+                USB'yi bilgisayara takın. Ana sayfadaki yükleme alanına <code>.scm</code> veya <code>.zip</code> dosyasını sürükleyip bırakın ya da "Dosya Seç" butonuna tıklayın.
+            </div>
+        </div>
+        <div class="step-box">
+            <div class="step-title"><span class="step-num">3</span> Kanalları Düzenle</div>
+            <div class="step-desc">
+                Kanalları <strong>sürükle-bırak</strong> ile yeniden sırala. <strong>🪄 Sihirli Değnek</strong> ile hazır şablonları uygula ya da <strong>🛠️ Şablon Oluşturucu</strong> ile kendin oluştur. 🔒 kilit, ⭐ favori bayraklarını her kanal satırında değiştirebilirsin.
+            </div>
+        </div>
+        <div class="step-box">
+            <div class="step-title"><span class="step-num">4</span> Kaydet ve TV'ye Yükle</div>
+            <div class="step-desc">
+                <strong>Kaydet ve İndir</strong> butonuna bas. İnen dosyayı USB'ye at (orijinal dosyanın <em>aynı adını</em> kullan!). TV menüsünden <strong>USB'den Al</strong> ile yükle.
+            </div>
+        </div>
+        <div class="tip-box">💡 <strong>İpucu:</strong> TV yalnızca aynı isimli SCM dosyasını tanır. Yeni dosyayı USB'ye atarken eskisinin üzerine yaz veya eskisini <code>.bak</code> uzantısıyla yedekle.</div>
+        <div class="warn-box">⚠️ <strong>Uyarı:</strong> Kanal düzenleme işlemi mevcut kanalların frekans ve şifreli PID verilerini değiştirmez, yalnızca sıralamayı ve bayrakları günceller.</div>
+    </div>
+
+    <!-- LG -->
+    <div class="brand-guide" id="guide-lg">
+        <div class="step-box">
+            <div class="step-title"><span class="step-num">1</span> Kanal Listesini USB'ye Aktar</div>
+            <div class="step-desc">
+                LG TV'de <strong>Ayarlar → Kanal → Kanal Düzenleme → Kanalları USB'ye Kopyala</strong> seçeneğini kullanın.
+                USB'de <code>GlobalClone00001.TLL</code> veya <code>LG_DTV_*.tll</code> gibi bir dosya oluşacaktır.
+            </div>
+        </div>
+        <div class="step-box">
+            <div class="step-title"><span class="step-num">2</span> .TLL Dosyasını Yükle</div>
+            <div class="step-desc">
+                Bu web sitesine <code>.tll</code> uzantılı dosyayı yükleyin. Sistem GlobalClone XML formatını otomatik algılayacaktır.
+            </div>
+        </div>
+        <div class="step-box">
+            <div class="step-title"><span class="step-num">3</span> Düzenle ve İndir</div>
+            <div class="step-desc">
+                Kanalları sürükle-bırak ile sırala. <strong>Kaydet ve İndir</strong> butonuyla güncel TLL dosyasını indir ve USB'ye at. TV menüsünden <strong>USB'den Kanalları Yükle</strong> seçeneği ile tamamla.
+            </div>
+        </div>
+        <div class="tip-box">💡 LG webOS 5 cihazlarda bazen kanal listesi içe aktarma kısıtlamaları uygulanır. Ekranı siyah görürseniz TV'yi yeniden başlatmayı deneyin.</div>
+    </div>
+
+    <!-- SONY -->
+    <div class="brand-guide" id="guide-sony">
+        <div class="step-box">
+            <div class="step-title"><span class="step-num">1</span> sdb.xml Dosyasını Al</div>
+            <div class="step-desc">
+                Sony BRAVIA'da <strong>Ayarlar → Kanal Ayarı → Kanal Listesi Aktarımı → USB'ye Aktar</strong> adımlarını izleyin.
+                USB'de <code>sdb.xml</code> veya alt klasörlerde <code>*.xml</code> dosyaları oluşacaktır.
+            </div>
+        </div>
+        <div class="step-box">
+            <div class="step-title"><span class="step-num">2</span> sdb.xml Dosyasını Yükle</div>
+            <div class="step-desc">
+                Ana sayfaya <code>sdb.xml</code> dosyasını yükleyin. Sistem dosyayı Sony formatında otomatik algılar ve kanalları listeler.
+            </div>
+        </div>
+        <div class="step-box">
+            <div class="step-title"><span class="step-num">3</span> Düzenle ve TV'ye Yükle</div>
+            <div class="step-desc">
+                Kanalları düzenle, <strong>Kaydet ve İndir</strong> ile <code>sdb.xml</code> dosyasını indir. USB'ye kopyalayıp TV'den <strong>USB'den Al</strong> ile yükle.
+            </div>
         </div>
     </div>
 
-    <div class="step-box">
-        <div class="step-title">2. SCM Dosyasını Yükleme</div>
-        <div class="step-desc">
-            USB belleği bilgisayarınıza takın. Bu web sitesinin ana sayfasındaki alana USB içindeki <code>.scm</code> uzantılı dosyayı sürükleyip bırakın veya seçin.
+    <!-- HISENSE -->
+    <div class="brand-guide" id="guide-hisense">
+        <div class="step-box">
+            <div class="step-title"><span class="step-num">1</span> servicelist.db Dosyasını Al</div>
+            <div class="step-desc">
+                Hisense TV'de <strong>Menü → Kanal → Kanal Listesi Dışa Aktar</strong> seçeneği ile veritabanı dosyasını USB'ye aktarın.
+                Dosya adı genellikle <code>servicelist.db</code> (2017+) veya <code>channel.db</code> (2015-2016) şeklindedir.
+            </div>
         </div>
-    </div>
-
-    <div class="step-box">
-        <div class="step-title">3. Kanalları Düzenleme</div>
-        <div class="step-desc">
-            Dosya yüklendikten sonra kanalları farenizle sürükleyip bırakarak (Drag & Drop) manuel sıralayabilirsiniz. Dilerseniz <strong>🪄 Sihirli Değnek</strong> butonunu kullanarak hazır şablonlardan birini (Genel, Spor, Haber vb.) tek tıkla uygulayabilirsiniz.
+        <div class="step-box">
+            <div class="step-title"><span class="step-num">2</span> Veritabanını Yükle</div>
+            <div class="step-desc">
+                Ana sayfaya <code>servicelist.db</code> dosyasını sürükleyin. Sistem SQLite veritabanını okuyarak tüm kanalları listeler.
+            </div>
         </div>
-    </div>
-
-    <div class="step-box">
-        <div class="step-title">4. Şablon Oluşturma</div>
-        <div class="step-desc">
-            <strong>🛠️ Şablon Oluşturucu</strong> butonu ile kendi özel dizilim şablonunuzu oluşturup tarayıcınıza kaydedebilirsiniz. Böylece bir sonraki dosya yüklemenizde kendi şablonunuzu tek tıkla uygulayabilirsiniz.
+        <div class="step-box">
+            <div class="step-title"><span class="step-num">3</span> Düzenle ve Yükle</div>
+            <div class="step-desc">
+                İstediğin değişiklikleri yaptıktan sonra <strong>Kaydet ve İndir</strong> butonuyla güncellenmiş veritabanı dosyasını indir. USB'ye kopyalayıp TV'den içe aktarma menüsünü kullan.
+            </div>
         </div>
-    </div>
-
-    <div class="step-box">
-        <div class="step-title">5. Kaydet ve TV'ye Yükle</div>
-        <div class="step-desc">
-            Düzenleme işlemi bitince <strong>Kaydet ve İndir</strong> butonuna basarak yeni .scm dosyasını bilgisayarınıza indirin. Bu dosyayı USB'ye geri atıp, TV'nizin menüsünden <strong>USB'den Al</strong> seçeneği ile kurulumu tamamlayın.
-        </div>
+        <div class="warn-box">⚠️ Kanal adı değişikliği Hisense'de sınırlıdır; bazı modellerde yalnızca sıralama ve kilit değişiklikleri uygulanabilir.</div>
     </div>
 </div>
+
+<script>
+function showGuide(brand) {
+    document.querySelectorAll('.brand-guide').forEach(g => g.classList.remove('active'));
+    document.querySelectorAll('.brand-tab').forEach(t => t.classList.remove('active'));
+    document.getElementById('guide-' + brand).classList.add('active');
+    event.currentTarget.classList.add('active');
+}
+</script>
 {% endblock %}
