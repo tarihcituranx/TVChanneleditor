@@ -17,14 +17,32 @@ Bu proje, Samsung Smart TV'lerin USB belleğe dışa aktardığı `.scm` uzantı
 ### Gereksinimler
 - Python 3.x
 
-### Çalıştırma
-Projeyi bilgisayarınıza indirdikten sonra terminalden şu komutları çalıştırmanız yeterlidir:
-```bash
-pip install -r requirements.txt
-python3 app.py
-```
+### 🚀 Geliştirme (Lokalde Çalıştırma)
 
-Ardından tarayıcınızda `http://localhost:5000` adresine giderek SCM dosyanızı sürükleyip bırakabilirsiniz. Arka planda güvenilir, modern ve hızlı **Flask** web sunucusu çalışmaktadır.
+1. Depoyu klonlayın:
+   ```bash
+   git clone https://github.com/tarihcituranx/TVChanneleditor.git
+   cd TVChanneleditor
+   ```
+2. Gerekli kütüphaneleri yükleyin:
+   ```bash
+   pip install -r requirements.txt
+   ```
+3. Flask sunucusunu başlatın:
+   ```bash
+   python3 app.py
+   ```
+4. Tarayıcınızda `http://127.0.0.1:5000` adresine gidin.
+
+## 🙏 Referanslar ve Teşekkürler
+
+Bu proje geliştirilirken açık kaynak topluluğunun ve çeşitli platformların sunduğu değerli verilerden faydalanılmıştır:
+* **SamyGO & ChanSort Topluluğu:** Samsung .SCM dosya yapısının (TransponderDataBase, map-SateD vb.) ve checksum algoritmasının tersine mühendislikle çözülmesindeki büyük katkıları için teşekkürler.
+* **[FrekansListesi.com.tr](https://frekanslistesi.com.tr/):** Projemizdeki otomatik frekans doğrulama (Kör/Geçersiz frekansları tespit etme) özelliği için güncel Türksat 4A frekans veritabanı referans alınmıştır. Doğru ve tarafsız yayıncılıkları için teşekkür ederiz.
+
+## 📄 Lisans
+
+Bu proje açık kaynaklıdır ve MIT Lisansı ile sunulmaktadır. Ticari amaçlarla satılamaz. "Samsung" ve logoları Samsung Electronics Co., Ltd. şirketine aittir.
 
 ## Yasal Uyarı
 "Samsung" ve Samsung logosu, Samsung Electronics Co., Ltd.'nin tescilli ticari markalarıdır. Bu uygulama tamamen bağımsız, kâr amacı gütmeyen, açık kaynaklı bir topluluk aracıdır ve Samsung ile herhangi bir resmi bağı veya sponsorluğu bulunmamaktadır.
