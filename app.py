@@ -3,6 +3,7 @@ import json
 import urllib.parse
 from flask import Flask, request, jsonify, send_file, render_template
 import scm_core
+import tizen_core
 
 app = Flask(__name__)
 app.config['MAX_CONTENT_LENGTH'] = 2 * 1024 * 1024  # 2 MB upload limit for DOS protection
@@ -67,11 +68,20 @@ def upload():
     if file.filename == '':
         return jsonify({'error': 'Dosya seçilmedi'}), 400
     
-    filepath = os.path.join(UPLOAD_DIR, 'uploaded.scm')
+    is_zip = file.filename.lower().endswith('.zip')
+    ext = 'zip' if is_zip else 'scm'
+    filepath = os.path.join(UPLOAD_DIR, f'uploaded.{ext}')
     file.save(filepath)
     
     try:
-        channels = scm_core.get_channels(filepath)
+        if is_zip:
+            tizen = tizen_core.TizenEditor(filepath)
+            tizen.extract()
+            channels = tizen.get_channels()
+            tizen.cleanup()
+        else:
+            channels = scm_core.get_channels(filepath)
+            
         return jsonify({'channels': channels})
     except Exception as e:
         return jsonify({'error': str(e)}), 500
@@ -89,6 +99,8 @@ def build():
             'Name': ch['Name'],
             'Lock': ch.get('Lock', False),
             'Encrypted': ch.get('Encrypted', 'No'),
+            'Hide': ch.get('Hide', False),
+            'Skip': ch.get('Skip', False),
             'Fav1': ch.get('Fav1', False),
             'Fav2': ch.get('Fav2', False),
             'Fav3': ch.get('Fav3', False),
@@ -96,21 +108,51 @@ def build():
             'Fav5': ch.get('Fav5', False)
         }
         
-    original_scm = os.path.join(UPLOAD_DIR, 'uploaded.scm')
-    new_scm = os.path.join(UPLOAD_DIR, 'yeni_kanal_listesi.scm')
+    is_zip = original_name.lower().endswith('.zip')
+    ext = 'zip' if is_zip else 'scm'
+    original_file = os.path.join(UPLOAD_DIR, f'uploaded.{ext}')
+    new_file = os.path.join(UPLOAD_DIR, f'yeni_kanal_listesi.{ext}')
     
-    success = scm_core.build_scm_direct(original_scm, new_scm, edited_channels)
-    
-    if success:
-        safe_name = urllib.parse.quote(original_name)
-        return jsonify({'success': True, 'download_url': f'/download?name={safe_name}'})
-    else:
-        return jsonify({'error': 'SCM dosyası oluşturulamadı'}), 500
+    try:
+        if is_zip:
+            tizen = tizen_core.TizenEditor(original_file)
+            tizen.extract()
+            
+            tizen_channels = []
+            for slot, ch in edited_channels.items():
+                tizen_channels.append({
+                    'id': slot,
+                    'num': ch['No'],
+                    'lock': ch['Lock'],
+                    'hide': ch.get('Hide', False),
+                    'skip': ch.get('Skip', False),
+                    'fav1': ch['Fav1'],
+                    'fav2': ch['Fav2'],
+                    'fav3': ch['Fav3'],
+                    'fav4': ch['Fav4'],
+                    'fav5': ch['Fav5'],
+                })
+            
+            tizen.update_channels(tizen_channels, new_file)
+            tizen.cleanup()
+            success = True
+        else:
+            success = scm_core.build_scm_direct(original_file, new_file, edited_channels)
+            
+        if success:
+            safe_name = urllib.parse.quote(original_name)
+            return jsonify({'success': True, 'download_url': f'/download?name={safe_name}'})
+        else:
+            return jsonify({'error': 'Dosya oluşturulamadı'}), 500
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
 
 @app.route('/download')
 def download():
     download_name = request.args.get('name', 'channel_list.scm')
-    filepath = os.path.join(UPLOAD_DIR, 'yeni_kanal_listesi.scm')
+    is_zip = download_name.lower().endswith('.zip')
+    ext = 'zip' if is_zip else 'scm'
+    filepath = os.path.join(UPLOAD_DIR, f'yeni_kanal_listesi.{ext}')
     
     if os.path.exists(filepath):
         return send_file(filepath, as_attachment=True, download_name=download_name)
