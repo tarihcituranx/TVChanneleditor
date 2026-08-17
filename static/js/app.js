@@ -162,26 +162,16 @@ document.addEventListener('DOMContentLoaded', () => {
         renderChannels(e.target.value);
     });
 
-    // --- NEW FEATURES ---
-
     // 1. Magic Wand & Custom Templates
-    let TEMPLATES = {
-        general: [
-            "TRT1 HD", "KANAL D HD", "SHOW HD", "ATV HD", "STAR TV", "NOW HD", "NOW", "TV8 HD", "TV8",
-            "TRT HABER HD", "NTV", "HABERTURK HD", "HABERTÜRK HD", "SZC", "HALK TV HD", "TELE 1 HD", "KRT TV HD",
-            "A SPOR", "A SPOR HD", "TRT SPOR HD", "TRT SPOR YILDIZ", "HT SPOR HD", "TV8 5", "TIVIBU SPOR HD", "TİVİBU SPOR HD", "beIN SPORTS HABER", "FB TV",
-            "TLC HD", "DMAX HD", "TRT BELGESEL HD",
-            "TRT COCUK HD", "TRT ÇOCUK HD", "CARTOON NETWORK HD", "minikaCOCUK", "minika ÇOCUK", "minikaGO"
-        ],
-        news: [
-            "TRT1 HD", "KANAL D HD", "SHOW HD", "ATV HD", "STAR TV", "NOW HD", "NOW", "TV8 HD", "TV8",
-            "TRT HABER HD", "NTV", "HABERTURK HD", "HABERTÜRK HD", "SZC", "HALK TV HD", "TELE 1 HD", "KRT TV HD", "FLASH HABER HD"
-        ],
-        sports: [
-            "TRT1 HD", "KANAL D HD", "SHOW HD", "ATV HD", "STAR TV", "NOW HD", "NOW", "TV8 HD", "TV8",
-            "A SPOR", "A SPOR HD", "TRT SPOR HD", "TRT SPOR YILDIZ", "HT SPOR HD", "TV8 5", "TIVIBU SPOR HD", "TİVİBU SPOR HD", "beIN SPORTS HABER", "FB TV"
-        ]
-    };
+    let TEMPLATES = {};
+
+    // Asenkron olarak harici JSON dosyasından hazır şablonları yükle
+    fetch('static/data/templates.json')
+        .then(res => res.json())
+        .then(data => {
+            TEMPLATES = data;
+        })
+        .catch(err => console.error("Şablonlar yüklenirken hata oluştu:", err));
 
     const magicBtn = document.getElementById('magic-wand-btn');
     const modal = document.getElementById('magic-modal');
