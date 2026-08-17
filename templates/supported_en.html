@@ -1,0 +1,102 @@
+{% extends &quot;base.html&quot; %}
+
+{% block title %}Supported Brands and Satellites - TV Channel Editor{% endblock %}
+
+{% block head %}
+<style>
+    .content-container {
+        max-width: 900px;
+        margin: 40px auto;
+        padding: 20px;
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 12px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .section-title {
+        font-size: 24px;
+        font-weight: 600;
+        margin-bottom: 20px;
+        color: #fff;
+        border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+        padding-bottom: 10px;
+    }
+
+    .grid-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+        margin-bottom: 40px;
+    }
+
+    .card {
+        background: rgba(0, 0, 0, 0.3);
+        border-radius: 12px;
+        padding: 30px;
+        text-align: center;
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        transition: transform 0.2s, border-color 0.2s;
+    }
+
+    .card:hover {
+        transform: translateY(-5px);
+        border-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .card-img {
+        max-width: 150px;
+        height: 60px;
+        object-fit: contain;
+        margin-bottom: 15px;
+    }
+
+    .card-title {
+        font-size: 18px;
+        font-weight: 600;
+        color: #fff;
+        margin-bottom: 10px;
+    }
+
+    .card-desc {
+        font-size: 14px;
+        color: #aaa;
+        line-height: 1.5;
+    }
+</style>{% endblock %}
+
+{% block content %}
+<div class="content-container">
+    <h2 class="section-title">📺 Supported TV Brands</h2>
+    <div class="grid-container">
+        <div class="card">
+            <img src="/static/img/samsung_logo.png" alt="Samsung" class="card-img">
+            <div class="card-title">Samsung Smart TV</div>
+            <div class="card-desc">
+                All Tizen/Orsay-based TVs using the F-Series, E-Series, H-Series, and SCM formats (e.g., UE40F6400, etc.).
+            </div>
+        </div>
+    </div>
+
+    <h2 class="section-title">🛰️ Supported Satellites</h2>
+    <div class="grid-container">
+        <div class="card">
+            <img src="/static/img/turksat_logo.png" alt="Türksat" class="card-img" style="filter: brightness(0) invert(1);">
+            <div class="card-title">Türksat 4A / 5B</div>
+            <div class="card-desc">
+                Fully compatible with national Turkish channels, news, and sports packages. Magic Wand templates are optimized for Türksat frequencies.
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-title" style="font-size: 24px; margin-top: 15px;">🌍 Hotbird 13E</div>
+            <div class="card-desc">
+                European and international broadcasts are supported. The SCM file successfully processes all satellite transponder data.
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-title" style="font-size: 24px; margin-top: 15px;">⭐ Astra 19.2E</div>
+            <div class="card-desc">
+                Frequencies for German and other European channels are flawlessly transmitted via SCM.
+            </div>
+        </div>
+    </div>
+</div>{% endblock %}

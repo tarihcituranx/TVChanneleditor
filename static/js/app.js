@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function handleFile(file) {
         if (!file.name.endsWith('.scm')) {
-            alert('Lütfen geçerli bir .scm dosyası yükleyin.');
+            alert('Please upload a valid .scm file.');
             return;
         }
         
@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const formData = new FormData();
         formData.append('file', file);
 
-        browseBtn.textContent = 'Yükleniyor...';
+        browseBtn.textContent = 'Uploading...';
 
         fetch('/upload', {
             method: 'POST',
@@ -66,7 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
         .then(data => {
             if (data.error) {
                 alert(data.error);
-                browseBtn.textContent = 'Dosya Seç';
+                browseBtn.textContent = 'Choose File';
                 return;
             }
             channels = data.channels;
@@ -76,8 +76,8 @@ document.addEventListener('DOMContentLoaded', () => {
         })
         .catch(err => {
             console.error(err);
-            alert('Yükleme sırasında hata oluştu.');
-            browseBtn.textContent = 'Dosya Seç';
+            alert('An error occurred during upload.');
+            browseBtn.textContent = 'Choose File';
         });
     }
 
@@ -293,7 +293,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     delSelectedBtn.addEventListener('click', () => {
-        if (!confirm(`${selectedIndices.size} adet kanalı silmek istediğinize emin misiniz?`)) return;
+        if (!confirm(`${selectedIndices.size} channels will be deleted. Are you sure?`)) return;
         
         // Remove from highest index to lowest to avoid shifting issues
         let indices = Array.from(selectedIndices).sort((a, b) => b - a);
@@ -309,7 +309,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     saveTemplateBtn.addEventListener('click', () => {
         if (channels.length === 0) {
-            alert('Lütfen önce bir SCM dosyası yükleyin.');
+            alert('Please upload an SCM file first.');
             return;
         }
         builderCart = [];
@@ -348,16 +348,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
     saveBuilderBtn.addEventListener('click', () => {
         if (builderCart.length === 0) {
-            alert('Sepetiniz boş! Lütfen soldan sağa kanal ekleyin.');
+            alert('Your cart is empty! Please add channels from left to right.');
             return;
         }
-        const tName = prompt('Bu mükemmel şablona ne isim vermek istersiniz?');
+        const tName = prompt('What name would you like to give to this perfect template?');
         if (!tName) return;
 
         const customList = builderCart.map(c => c.Name);
         localStorage.setItem('scm_custom_' + tName, JSON.stringify(customList));
         builderModal.classList.add('hidden');
-        alert('Şablon başarıyla tarayıcınıza kaydedildi! Sihirli Değnek menüsünden tek tıkla çağırabilirsiniz.');
+        alert('Template saved successfully! You can call it with one click from the Magic Wand menu.');
     });
 
     applyBtn.addEventListener('click', () => {
@@ -378,33 +378,33 @@ document.addEventListener('DOMContentLoaded', () => {
         channels = [...newOrder, ...remaining];
         renderChannels(searchInput.value);
         modal.classList.add('hidden');
-        alert('Seçtiğiniz şablon başarıyla uygulandı! ✨');
+        alert('The selected template has been applied successfully! ✨');
     });
 
     // 2. Delete Encrypted
     document.getElementById('del-encrypted-btn').addEventListener('click', () => {
-        if (!confirm('Tüm şifreli kanallar kalıcı olarak silinecek. Emin misiniz?')) return;
+        if (!confirm('All encrypted channels will be permanently deleted. Are you sure?')) return;
         const initialCount = channels.length;
         channels = channels.filter(c => c.Encrypted === 'No');
         const deleted = initialCount - channels.length;
         renderChannels(searchInput.value);
-        alert(`${deleted} adet şifreli kanal silindi!`);
+        alert(`${deleted} encrypted channels deleted!`);
     });
 
     // 3. Delete Radios
     document.getElementById('del-radio-btn').addEventListener('click', () => {
-        if (!confirm('Tüm radyo kanalları kalıcı olarak silinecek. Emin misiniz?')) return;
+        if (!confirm('All radio channels will be permanently deleted. Are you sure?')) return;
         const initialCount = channels.length;
         channels = channels.filter(c => c.Type !== 'Radio');
         const deleted = initialCount - channels.length;
         renderChannels(searchInput.value);
-        alert(`${deleted} adet radyo kanalı silindi!`);
+        alert(`${deleted} radio channels deleted!`);
     });
 
     // --- END NEW FEATURES ---
 
     saveBtn.addEventListener('click', () => {
-        saveBtn.textContent = 'Kaydediliyor...';
+        saveBtn.textContent = 'Saving...';
         
         fetch('/build', {
             method: 'POST',
@@ -415,16 +415,16 @@ document.addEventListener('DOMContentLoaded', () => {
         .then(data => {
             if (data.success) {
                 window.location.href = data.download_url;
-                saveBtn.textContent = 'Kaydet ve İndir';
+                saveBtn.textContent = 'Save and Download';
             } else {
-                alert('Oluşturma hatası: ' + data.error);
-                saveBtn.textContent = 'Kaydet ve İndir';
+                alert('Generation error: ' + data.error);
+                saveBtn.textContent = 'Save and Download';
             }
         })
         .catch(err => {
             console.error(err);
-            alert('Bir hata oluştu.');
-            saveBtn.textContent = 'Kaydet ve İndir';
+            alert('An error occurred.');
+            saveBtn.textContent = 'Save and Download';
         });
     });
 });

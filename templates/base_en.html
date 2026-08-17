@@ -15,18 +15,21 @@
                 <img src="/static/img/samsung_logo.png" alt="Samsung Logo" style="height: 40px; margin-bottom: 1rem;">
             </a>
             <h1>Channel Editor</h1>
-            <p>Smart TV Kanal Listenizi Sürükle-Bırak ile Düzenleyin</p>
+            <p>Organize Your Smart TV Channel List with Drag-and-Drop</p>
             
             <nav style="margin-top: 15px; display:flex; justify-content:center; gap: 15px; flex-wrap:wrap;">
-                <a href="/" class="nav-link">🏠 Ana Sayfa</a>
-                <a href="/guide" class="nav-link">📖 Kullanım Kılavuzu</a>
-                <a href="/supported" class="nav-link">📺 Desteklenen TV/Uydular</a>
-                <a href="/faq" class="nav-link">❓ SSS</a>
+                <a href="/" class="nav-link">🏠 Home</a>
+                
+                <a href="/guide" class="nav-link">📖 User Guide</a>
+                
+                <a href="/supported" class="nav-link">📺 Supported TVs/Satellites</a>
+                
+                <a href="/faq" class="nav-link">❓ FAQ</a>
             </nav>
             <!-- Gelecekte eklenecek dil seçeneği altyapısı -->
             <div style="position: absolute; top: 10px; right: 20px;">
                 <select id="lang-selector" style="background: rgba(255,255,255,0.1); color: white; border: none; padding: 5px; border-radius: 5px;">
-                    <option value="tr">🇹🇷 Türkçe</option>
+                    <option value="tr">🇹🇷 Turkish</option>
                     <option value="en">🇬🇧 English</option>
                 </select>
             </div>
@@ -38,13 +41,18 @@
 
         <footer style="text-align: center; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1);">
             <p style="font-size: 0.8rem; color: #9ca3af; margin-bottom: 5px;">
-                <strong>Açık Kaynak Referansları:</strong> 
-                İlk ilham kaynağımız <a href="https://github.com/iltekin/scm-editor" target="_blank" style="color:#4a90e2; text-decoration:none;">İltekin</a>'e, 
-                SCM algoritması için <a href="https://github.com/PredatH0r/ChanSort" target="_blank" style="color:#4a90e2; text-decoration:none;">ChanSort (SamyGO)</a> topluluğuna ve 
-                otomatik doğrulama veritabanı için <a href="https://frekanslistesi.com.tr/" target="_blank" style="color:#4a90e2; text-decoration:none;">FrekansListesi.com.tr</a>'ye teşekkürler.
+                <strong>Open Source References:</strong>
+                 
+                Thanks to <a href="https://github.com/iltekin/scm-editor" target="_blank" style="color:#4a90e2; text-decoration:none;">İltekin</a>
+                for the initial inspiration, 
+                the <a href="https://github.com/PredatH0r/ChanSort" target="_blank" style="color:#4a90e2; text-decoration:none;">ChanSort (SamyGO)</a>
+                community for the SCM algorithm, and 
+                <a href="https://frekanslistesi.com.tr/" target="_blank" style="color:#4a90e2; text-decoration:none;">FrekansListesi.com.</a>
+                tr for the automatic verification database.
             </p>
             <p style="font-size: 0.8rem; color: #9ca3af; opacity: 0.6;">
-                <strong>Yasal Uyarı:</strong> "Samsung" logosu Samsung Electronics Co., Ltd.'ye aittir. Bu bağımsız bir açık kaynak projesidir.
+                <strong>Legal Notice:</strong>
+                The &quot;Samsung&quot; logo is the property of Samsung Electronics Co., Ltd. This is an independent open-source project.
             </p>
         </footer>
     </div>
@@ -84,7 +92,7 @@
         if (langCookie) {
             document.getElementById('lang-selector').value = langCookie;
         } else {
-            // Eğer cookie yoksa tarayıcı diline göre seçimi ayarla
+            // If no cookie, set according to browser language
             var browserLang = navigator.language || navigator.userLanguage;
             if (browserLang && browserLang.toLowerCase().startsWith('en')) {
                 document.getElementById('lang-selector').value = 'en';

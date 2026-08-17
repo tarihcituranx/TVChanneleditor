@@ -1,0 +1,86 @@
+{% extends &quot;base.html&quot; %}
+
+{% block title %}User Guide - TV Channel Editor{% endblock %}
+
+{% block head %}
+<style>
+    .content-container {
+        max-width: 900px;
+        margin: 40px auto;
+        padding: 20px;
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 12px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .section-title {
+        font-size: 24px;
+        font-weight: 600;
+        margin-bottom: 20px;
+        color: #fff;
+        border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+        padding-bottom: 10px;
+    }
+
+    .step-box {
+        margin-bottom: 25px;
+        padding-left: 20px;
+        border-left: 3px solid #4a90e2;
+    }
+
+    .step-title {
+        font-size: 18px;
+        font-weight: 600;
+        color: #fff;
+        margin-bottom: 8px;
+    }
+
+    .step-desc {
+        font-size: 15px;
+        color: #bbb;
+        line-height: 1.5;
+    }
+</style>{% endblock %}
+
+{% block content %}
+<div class="content-container">
+    <h2 class="section-title">📖 User Guide</h2>
+    
+    <div class="step-box">
+        <div class="step-title">1. Transferring the File to a USB Drive</div>
+        <div class="step-desc">
+            Press the Menu button on your TV remote. Follow the steps: <strong>Broadcast &gt; Channel Settings &gt; Transfer Channel List</strong>. On the screen that appears, enter your PIN code (usually 0000) and select &quot;Transfer to USB.&quot;
+        </div>
+    </div>
+
+    <div class="step-box">
+        <div class="step-title">2. Loading the SCM File</div>
+        <div class="step-desc">
+            Plug the USB drive into your computer. Drag and drop or select the file with the <code>.scm</code> file from the USB drive into the field on this website’s homepage.
+        </div>
+    </div>
+
+    <div class="step-box">
+        <div class="step-title">3. Organizing Channels</div>
+        <div class="step-desc">
+            Once the file is uploaded, you can manually reorder the channels by dragging and dropping them with your mouse. If you prefer, you can use the 🪄<strong> Magic Wand</strong> button to apply one of the pre-made templates (General, Sports, News, etc.) with a single click.
+        </div>
+    </div>
+
+    <div class="step-box">
+        <div class="step-title">4. Creating a Template</div>
+        <div class="step-desc">
+            <strong>🛠️</strong>
+            Use the
+            <strong>Template Creator</strong>
+            button to create your own custom layout template and save it to your browser. This way, you can apply your own template with a single click the next time you upload a file.
+        </div>
+    </div>
+
+    <div class="step-box">
+        <div class="step-title">5. Save and Upload to TV</div>
+        <div class="step-desc">
+            Once you’ve finished editing, click the <strong>Save and Download</strong> button to download the new .scm file to your computer. Transfer this file back to a USB drive, then complete the installation by selecting the <strong>“Load from USB”</strong> option in your TV’s menu.
+        </div>
+    </div>
+</div>{% endblock %}

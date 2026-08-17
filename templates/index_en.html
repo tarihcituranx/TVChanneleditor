@@ -1,0 +1,106 @@
+{% extends &quot;base.html&quot; %}
+
+{% block content %}
+<div id="upload-section" class="card drop-zone">
+    <input type="file" id="file-input" accept=".scm" hidden>
+    <div class="upload-content">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+        <h2>Drop your .scm file here</h2>
+        <p>or select it from your computer</p>
+        <button id="browse-btn" class="btn primary">Select File</button>
+    </div>
+</div>
+
+<div id="editor-section" class="hidden">
+    <div class="toolbar">
+        <div class="search-box">
+            <input type="text" id="search-input" placeholder="Kanal ara...">
+        </div>
+        <div class="actions">
+            <button id="magic-wand-btn" class="btn magic" title="Önceden ayarlanmış listeleri uygular">🪄 Magic Wand</button>
+            <button id="save-template-btn" class="btn primary-outline" style="background:transparent; color:var(--accent); border:1px solid var(--accent);">🛠️ Template Builder</button>
+            <button id="delete-selected-btn" class="btn danger" style="display:none;">Delete Selected (<span id="sel-count">0</span>)</button>
+            <button id="del-encrypted-btn" class="btn danger-outline">Delete Encrypted</button>
+            <button id="del-radio-btn" class="btn danger-outline">Delete Radios</button>
+            <button id="save-btn" class="btn primary">Save and Download</button>
+        </div>
+    </div>
+
+    <div class="list-header">
+        <div class="col-drag"></div>
+        <div class="col-check"><input type="checkbox" id="select-all" title="Tümünü Seç"></div>
+        <div class="col-no">No</div>
+        <div class="col-name">Channel Name</div>
+        <div class="col-type">Genre</div>
+        <div class="col-freq">Frequency</div>
+        <div class="col-action"></div>
+    </div>
+
+    <ul id="channel-list"></ul>
+</div>
+
+<!-- Template Builder Modal (Split Screen) -->
+<div id="builder-modal" class="modal hidden">
+    <div class="modal-content builder-content">
+        <h2>🛠️ Custom Template Builder</h2>
+        <p>Drag the channels you want from the list on the left to the list on the right to build your own perfect template.</p>
+        
+        <div class="split-screen">
+            <div class="pane">
+                <h4 style="color:var(--text-secondary); margin-bottom:0.5rem;">All Channels</h4>
+                <ul id="builder-source-list" class="builder-ul"></ul>
+            </div>
+            <div class="pane">
+                <h4 style="color:var(--accent); margin-bottom:0.5rem;">My Template (Cart)</h4>
+                <ul id="builder-target-list" class="builder-ul target-ul"></ul>
+            </div>
+        </div>
+        
+        <div class="modal-actions" style="margin-top:1.5rem;">
+            <button id="close-builder-btn" class="btn danger-outline">Cancel</button>
+            <button id="save-builder-btn" class="btn primary">Save Template</button>
+        </div>
+    </div>
+</div>
+
+<!-- Magic Wand Modal -->
+<div id="magic-modal" class="modal hidden">
+    <div class="modal-content">
+        <h2>🪄 Magic Wand: Template Selection</h2>
+        <p>Select the arrangement template that will be automatically applied to your list:</p>
+        
+        <div class="template-cards" id="template-cards-container">
+            <!-- Hazır Şablonlar -->
+            <div class="template-card selected" data-template="general">
+                <h3>🏆 General (Full Package) List</h3>
+                <p>A balanced mix of national, news, sports, documentary, and children’s channels.</p>
+                <div class="preview">1. TRT1 HD | 2. KANAL D HD ... 8. TRT NEWS ... 15. A SPORTS ... 23. TLC HD</div>
+            </div>
+            <div class="template-card" data-template="news">
+                <h3>📰 News-Focused</h3>
+                <p>All news broadcasts begin immediately after the national channels. (No sports or children’s channels)</p>
+                <div class="preview">1. TRT1 HD | 2. KANAL D HD ... 8. TRT NEWS ... 11. SZC ... 14. KRT</div>
+            </div>
+            <div class="template-card" data-template="sports">
+                <h3>⚽ Sports-Focused</h3>
+                <p>Immediately following the national channels, only sports channels are listed.</p>
+                <div class="preview">1. TRT1 HD | 2. KANAL D HD ... 8. A SPOR | 9. TRT SPOR HD ... 15. FB TV</div>
+            </div>
+        </div>
+
+        <!-- Kullanıcı Şablonları Buraya Eklenecek -->
+        <div id="custom-templates-container" style="display:none; margin-bottom:1.5rem;">
+            <h3 style="font-size: 1rem; color: var(--text-secondary); margin-bottom: 0.5rem; text-transform:uppercase; letter-spacing:0.05em;">Your Own Templates</h3>
+            <div class="template-cards" id="custom-cards-container" style="margin-top:0;">
+            </div>
+        </div>
+        
+        <div class="modal-actions">
+            <button id="close-modal-btn" class="btn danger-outline">Cancel</button>
+            <button id="apply-template-btn" class="btn magic">Apply Selected Template</button>
+        </div>
+    </div>
+</div>{% endblock %}
+
+{% block scripts %}
+<script src="/static/js/app.js"></script>{% endblock %}

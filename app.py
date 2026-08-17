@@ -9,21 +9,35 @@ app = Flask(__name__)
 UPLOAD_DIR = 'uploads'
 os.makedirs(UPLOAD_DIR, exist_ok=True)
 
+def render_lang(template_name):
+    lang = request.cookies.get('lang')
+    if not lang:
+        # Tarayıcı dilini kontrol et (Accept-Language)
+        best_match = request.accept_languages.best_match(['tr', 'en'])
+        lang = best_match if best_match else 'tr'
+
+    if lang == 'en':
+        name, ext = os.path.splitext(template_name)
+        en_template = f"{name}_en{ext}"
+        if os.path.exists(os.path.join('templates', en_template)):
+            return render_template(en_template)
+    return render_template(template_name)
+
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return render_lang('index.html')
 
 @app.route('/supported')
 def supported():
-    return render_template('supported.html')
+    return render_lang('supported.html')
 
 @app.route('/guide')
 def guide():
-    return render_template('guide.html')
+    return render_lang('guide.html')
 
 @app.route('/faq')
 def faq():
-    return render_template('faq.html')
+    return render_lang('faq.html')
 
 @app.route('/upload', methods=['POST'])
 def upload():

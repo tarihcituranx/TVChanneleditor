@@ -1,0 +1,75 @@
+{% extends &quot;base.html&quot; %}
+
+{% block title %}Frequently Asked Questions - TV Channel Editor{% endblock %}
+
+{% block head %}
+<style>
+    .content-container {
+        max-width: 900px;
+        margin: 40px auto;
+        padding: 20px;
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 12px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .section-title {
+        font-size: 24px;
+        font-weight: 600;
+        margin-bottom: 20px;
+        color: #fff;
+        border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+        padding-bottom: 10px;
+    }
+
+    .faq-item {
+        margin-bottom: 20px;
+        background: rgba(0, 0, 0, 0.3);
+        border-radius: 8px;
+        padding: 20px;
+        border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .faq-q {
+        font-size: 18px;
+        font-weight: 600;
+        color: #4a90e2;
+        margin-bottom: 10px;
+    }
+
+    .faq-a {
+        font-size: 15px;
+        color: #ccc;
+        line-height: 1.6;
+    }
+</style>{% endblock %}
+
+{% block content %}
+<div class="content-container">
+    <h2 class="section-title">❓ Frequently Asked Questions (FAQ)</h2>
+    
+    <div class="faq-item">
+        <div class="faq-q">What Is an SCM File?</div>
+        <div class="faq-a">SCM (Samsung Channel Map) is an encrypted (checksum) data file that stores the satellite frequencies and channel lists for Samsung TVs. It is obtained by transferring it from your TV to a USB drive.</div>
+    </div>
+
+    <div class="faq-item">
+        <div class="faq-q">How do I get the SCM file from my TV?</div>
+        <div class="faq-a">Go to the menu on your TV: <strong>Broadcast &gt; Channel Settings &gt; Transfer Channel List &gt; Transfer to USB</strong>. This process will save an .scm file to your USB drive.</div>
+    </div>
+
+    <div class="faq-item">
+        <div class="faq-q">How do I load the edited list onto the TV?</div>
+        <div class="faq-a">Copy the new SCM file you downloaded from this site to your USB flash drive. Then, you can upload it by selecting <strong>Broadcast &gt; Channel Settings &gt; Transfer Channel List &gt; Import from USB</strong> in the TV menu.</div>
+    </div>
+
+    <div class="faq-item">
+        <div class="faq-q">How does Magic Wand match channels?</div>
+        <div class="faq-a">Since frequencies can change, the Magic Wand algorithm performs the match based on <strong>the Channel Name</strong>. It updates only the order of the channel named &quot;TRT1 HD&quot; in your original file while preserving all encrypted PIDs and frequency data.</div>
+    </div>
+
+    <div class="faq-item">
+        <div class="faq-q">Are other TV brands supported?</div>
+        <div class="faq-a">Currently, our system is designed specifically to crack the Checksum algorithm used by <strong>Samsung</strong> TVs. Other brands may be added in the future.</div>
+    </div>
+</div>{% endblock %}
