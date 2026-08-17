@@ -4,8 +4,8 @@
     --border-color: #2a2e36;
     --text-primary: #e5e7eb;
     --text-secondary: #9ca3af;
-    --accent: #3b82f6;
-    --accent-hover: #2563eb;
+    --accent: #1d4ed8;
+    --accent-hover: #1e40af;
     --danger: #ef4444;
 }
 
@@ -16,7 +16,7 @@
 }
 
 body {
-    font-family: 'Inter', -apple-system, sans-serif;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     background-color: var(--bg-color);
     color: var(--text-primary);
     line-height: 1.5;

@@ -16,6 +16,17 @@ def add_security_headers(response):
     response.headers['X-Frame-Options'] = 'DENY'
     response.headers['X-XSS-Protection'] = '1; mode=block'
     response.headers['Strict-Transport-Security'] = 'max-age=31536000; includeSubDomains'
+    
+    # Modern Security Headers (CSP, Referrer-Policy, Permissions-Policy, COOP)
+    response.headers['Content-Security-Policy'] = "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self';"
+    response.headers['Referrer-Policy'] = 'strict-origin-when-cross-origin'
+    response.headers['Permissions-Policy'] = 'geolocation=(), microphone=(), camera=()'
+    response.headers['Cross-Origin-Opener-Policy'] = 'same-origin'
+    
+    # Try to hide server info (Werkzeug adds 'Server', Render adds 'x-render-origin-server' at proxy)
+    if 'Server' in response.headers:
+        del response.headers['Server']
+        
     return response
 
 def render_lang(template_name):

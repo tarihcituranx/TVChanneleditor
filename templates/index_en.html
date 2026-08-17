@@ -1,4 +1,9 @@
-{% extends &quot;base.html&quot; %}
+{% extends "base_en.html" %}
+
+{% block head %}
+<link rel="preload" href="/static/data/templates.json" as="fetch" crossorigin="anonymous">
+<link rel="preload" href="/static/data/frekanslar.json" as="fetch" crossorigin="anonymous">
+{% endblock %}
 
 {% block content %}
 <div id="upload-section" class="card drop-zone">
@@ -6,7 +11,7 @@
     <div class="upload-content">
         <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
         <h2>Drop your .scm file here</h2>
-        <p>or select it from your computer</p>
+        <p>or select from your computer</p>
         <button id="browse-btn" class="btn primary">Select File</button>
     </div>
 </div>
@@ -14,10 +19,10 @@
 <div id="editor-section" class="hidden">
     <div class="toolbar">
         <div class="search-box">
-            <input type="text" id="search-input" placeholder="Kanal ara...">
+            <input type="text" id="search-input" placeholder="Search channel...">
         </div>
         <div class="actions">
-            <button id="magic-wand-btn" class="btn magic" title="Önceden ayarlanmış listeleri uygular">🪄 Magic Wand</button>
+            <button id="magic-wand-btn" class="btn magic" title="Applies preset lists">🪄 Magic Wand</button>
             <button id="save-template-btn" class="btn primary-outline" style="background:transparent; color:var(--accent); border:1px solid var(--accent);">🛠️ Template Builder</button>
             <button id="delete-selected-btn" class="btn danger" style="display:none;">Delete Selected (<span id="sel-count">0</span>)</button>
             <button id="del-encrypted-btn" class="btn danger-outline">Delete Encrypted</button>
@@ -32,7 +37,7 @@
         <div class="col-no">No</div>
         <div class="col-flags">Flags</div>
         <div class="col-name">Channel Name</div>
-        <div class="col-type">Genre</div>
+        <div class="col-type">Type</div>
         <div class="col-freq">Frequency</div>
         <div class="col-action"></div>
     </div>
@@ -44,7 +49,7 @@
 <div id="builder-modal" class="modal hidden">
     <div class="modal-content builder-content">
         <h2>🛠️ Custom Template Builder</h2>
-        <p>Drag the channels you want from the list on the left to the list on the right to build your own perfect template.</p>
+        <p>Drag the channels you want from the list on the left to the list on the right to build your perfect template.</p>
         
         <div class="split-screen">
             <div class="pane">
@@ -68,30 +73,30 @@
 <div id="magic-modal" class="modal hidden">
     <div class="modal-content">
         <h2>🪄 Magic Wand: Template Selection</h2>
-        <p>Select the arrangement template that will be automatically applied to your list:</p>
+        <p>Select the layout template to be automatically applied to your list:</p>
         
         <div class="template-cards" id="template-cards-container">
-            <!-- Hazır Şablonlar -->
+            <!-- Preset Templates -->
             <div class="template-card selected" data-template="general">
                 <h3>🏆 General (Full Package) List</h3>
-                <p>A balanced mix of national, news, sports, documentary, and children’s channels.</p>
-                <div class="preview">1. TRT1 HD | 2. KANAL D HD ... 8. TRT NEWS ... 15. A SPORTS ... 23. TLC HD</div>
+                <p>Balanced mix of National, News, Sports, Documentary and Kids channels.</p>
+                <div class="preview">1. TRT1 HD | 2. KANAL D HD ... 8. TRT HABER ... 15. A SPOR ... 23. TLC HD</div>
             </div>
             <div class="template-card" data-template="news">
-                <h3>📰 News-Focused</h3>
-                <p>All news broadcasts begin immediately after the national channels. (No sports or children’s channels)</p>
-                <div class="preview">1. TRT1 HD | 2. KANAL D HD ... 8. TRT NEWS ... 11. SZC ... 14. KRT</div>
+                <h3>📰 News Focused</h3>
+                <p>All news bulletins start right after national channels. (No sports or kids)</p>
+                <div class="preview">1. TRT1 HD | 2. KANAL D HD ... 8. TRT HABER ... 11. SZC ... 14. KRT</div>
             </div>
             <div class="template-card" data-template="sports">
-                <h3>⚽ Sports-Focused</h3>
-                <p>Immediately following the national channels, only sports channels are listed.</p>
+                <h3>⚽ Sports Focused</h3>
+                <p>Only sports channels are listed right after national channels.</p>
                 <div class="preview">1. TRT1 HD | 2. KANAL D HD ... 8. A SPOR | 9. TRT SPOR HD ... 15. FB TV</div>
             </div>
         </div>
 
-        <!-- Kullanıcı Şablonları Buraya Eklenecek -->
+        <!-- Custom Templates Will Be Added Here -->
         <div id="custom-templates-container" style="display:none; margin-bottom:1.5rem;">
-            <h3 style="font-size: 1rem; color: var(--text-secondary); margin-bottom: 0.5rem; text-transform:uppercase; letter-spacing:0.05em;">Your Own Templates</h3>
+            <h3 style="font-size: 1rem; color: var(--text-secondary); margin-bottom: 0.5rem; text-transform:uppercase; letter-spacing:0.05em;">Your Templates</h3>
             <div class="template-cards" id="custom-cards-container" style="margin-top:0;">
             </div>
         </div>
@@ -101,7 +106,9 @@
             <button id="apply-template-btn" class="btn magic">Apply Selected Template</button>
         </div>
     </div>
-</div>{% endblock %}
+</div>
+{% endblock %}
 
 {% block scripts %}
-<script src="/static/js/app.js"></script>{% endblock %}
+<script src="/static/js/app.js"></script>
+{% endblock %}
