@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let channels = [];
     let currentFileName = "channel_list.scm";
+    let currentSessionId = "";
     let frekansData = {};
 
     // Güncel frekansları yükle
@@ -46,8 +47,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     function handleFile(file) {
-        if (!file.name.endsWith('.scm')) {
-            alert('Please upload a valid .scm file.');
+        const nameLower = file.name.toLowerCase();
+        if (!nameLower.endsWith('.scm') && !nameLower.endsWith('.zip') && !nameLower.endsWith('.tll') && !nameLower.endsWith('.xml') && !nameLower.endsWith('.db')) {
+            alert('Lütfen desteklenen bir dosya formatı yükleyin (.scm, .zip, .tll, sdb.xml, servicelist.db).');
             return;
         }
         
@@ -70,6 +72,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
             channels = data.channels;
+            currentSessionId = data.session_id;
             renderChannels();
             dropZone.classList.add('hidden');
             editorSection.classList.remove('hidden');
@@ -430,7 +433,7 @@ document.addEventListener('DOMContentLoaded', () => {
         fetch('/build', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ channels: channels, filename: currentFileName })
+            body: JSON.stringify({ session_id: currentSessionId, channels: channels, filename: currentFileName })
         })
         .then(res => res.json())
         .then(data => {
