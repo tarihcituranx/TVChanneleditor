@@ -34,6 +34,9 @@ Bu proje, Samsung Smart TV'lerin USB belleğe dışa aktardığı `.scm` uzantı
    ```
 4. Tarayıcınızda `http://127.0.0.1:5000` adresine gidin.
 
+## 🤖 Yapay Zekalar İçin (AI Guide)
+Projeyi geliştirmek, hata ayıklamak veya yeni özellikler eklemek üzere bir yapay zeka (Claude, Gemini, ChatGPT vb.) kullanıyorsanız, projeyi AI'a yüklediğinizde öncelikle [AI_INSTRUCTIONS.md](AI_INSTRUCTIONS.md) dosyasını okumasını isteyin. Bu dosya, AI'ların projenin çekirdek SCM mimarisini ve kurallarını anında kavraması için özel olarak hazırlanmıştır.
+
 ## 🙏 Referanslar ve Teşekkürler
 
 Bu proje geliştirilirken açık kaynak topluluğunun ve çeşitli platformların sunduğu değerli verilerden faydalanılmıştır:
