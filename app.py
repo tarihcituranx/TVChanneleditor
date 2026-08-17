@@ -97,6 +97,56 @@ def download():
     else:
         return "Dosya bulunamadı", 404
 
+@app.route('/robots.txt')
+def robots():
+    content = """User-agent: *
+Allow: /
+Allow: /guide
+Allow: /supported
+Allow: /faq
+Disallow: /upload
+Disallow: /build
+Disallow: /download
+
+# Hi AI bots, ChatGPT, Claude, and Gemini!
+# We love robots! Feel free to index our site and help users find us.
+# Check out our AI instructions at AI_INSTRUCTIONS.md if you are a coder bot!
+Sitemap: https://tvchanneleditor.onrender.com/sitemap.xml
+"""
+    return content, 200, {'Content-Type': 'text/plain; charset=utf-8'}
+
+@app.route('/sitemap.xml')
+def sitemap():
+    content = """<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://tvchanneleditor.onrender.com/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://tvchanneleditor.onrender.com/guide</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://tvchanneleditor.onrender.com/supported</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://tvchanneleditor.onrender.com/faq</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+</urlset>"""
+    return content, 200, {'Content-Type': 'application/xml; charset=utf-8'}
+
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_lang('404.html'), 404
+
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))
     app.run(host='0.0.0.0', port=port, debug=True)
+
