@@ -4,6 +4,10 @@ Bu proje, Samsung Smart TV'lerin USB belleğe dışa aktardığı `.scm` uzantı
 
 ![Ekran Görüntüsü](static/img/samsung_logo.png)
 
+## 🌐 Canlı Kullanım (Live Demo)
+Hiçbir kod kurmakla uğraşmadan aracı **doğrudan tarayıcınız üzerinden** saniyeler içinde kullanmak için canlı sitemizi ziyaret edin:
+👉 **[tvchanneleditor.onrender.com](https://tvchanneleditor.onrender.com)**
+
 ## Özellikler
 
 - **🪄 Sihirli Değnek:** Önceden hazırlanan veya sizin kaydettiğiniz şablonları saniyeler içinde uygular.
