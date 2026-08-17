@@ -120,18 +120,18 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             
             li.innerHTML = `
-                <div class="col-drag">⋮⋮</div>
-                <div class="col-check"><input type="checkbox" class="row-checkbox" data-idx="${li.dataset.index}"></div>
-                <div class="col-no">${index + 1}</div>
+                <div class="col-drag" role="button" tabindex="0" aria-label="Kanalı taşı: ${escapeHTML(ch.Name)}">⋮⋮</div>
+                <div class="col-check"><input type="checkbox" class="row-checkbox" data-idx="${li.dataset.index}" aria-label="${escapeHTML(ch.Name)} kanalını seç"></div>
+                <div class="col-no" aria-hidden="true">${index + 1}</div>
                 <div class="col-flags">
-                    <span class="flag-icon lock-icon ${ch.Lock ? 'active' : ''}" title="Çocuk Kilidi" onclick="toggleFlag(${li.dataset.index}, 'Lock')">🔒</span>
-                    <span class="flag-icon fav-icon ${ch.Fav1 ? 'active' : ''}" title="Favori" onclick="toggleFlag(${li.dataset.index}, 'Fav1')">⭐</span>
+                    <span class="flag-icon lock-icon ${ch.Lock ? 'active' : ''}" role="button" tabindex="0" aria-pressed="${ch.Lock ? 'true' : 'false'}" aria-label="${escapeHTML(ch.Name)} için Çocuk Kilidi" title="Çocuk Kilidi" onclick="toggleFlag(${li.dataset.index}, 'Lock')" onkeydown="if(event.key==='Enter') toggleFlag(${li.dataset.index}, 'Lock')">🔒</span>
+                    <span class="flag-icon fav-icon ${ch.Fav1 ? 'active' : ''}" role="button" tabindex="0" aria-pressed="${ch.Fav1 ? 'true' : 'false'}" aria-label="${escapeHTML(ch.Name)} için Favori 1" title="Favori" onclick="toggleFlag(${li.dataset.index}, 'Fav1')" onkeydown="if(event.key==='Enter') toggleFlag(${li.dataset.index}, 'Fav1')">⭐</span>
                 </div>
                 <div class="col-name">${escapeHTML(ch.Name)}</div>
                 <div class="col-type">${ch.Type}</div>
-                <div class="col-freq" style="${freqColor}">${ch.Freq} ${ch.Pol} ${ch.Sym}${freqWarning}</div>
+                <div class="col-freq" style="${freqColor}" aria-label="Frekans: ${ch.Freq} ${ch.Pol} ${ch.Sym}">${ch.Freq} ${ch.Pol} ${ch.Sym}${freqWarning}</div>
                 <div class="col-action">
-                    <button class="delete-btn" onclick="deleteChannel(${li.dataset.index})">✕</button>
+                    <button class="delete-btn" onclick="deleteChannel(${li.dataset.index})" aria-label="${escapeHTML(ch.Name)} kanalını sil">✕</button>
                 </div>
             `;
             
