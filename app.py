@@ -1,4 +1,7 @@
 import os
+import werkzeug.serving
+werkzeug.serving.WSGIRequestHandler.server_version = "MyServer"
+werkzeug.serving.WSGIRequestHandler.sys_version = ""
 import json
 import urllib.parse
 from flask import Flask, request, jsonify, send_file, render_template
