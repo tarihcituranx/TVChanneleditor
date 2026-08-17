@@ -37,6 +37,7 @@ Bu proje, Samsung Smart TV'lerin USB belleğe dışa aktardığı `.scm` uzantı
 ## 🙏 Referanslar ve Teşekkürler
 
 Bu proje geliştirilirken açık kaynak topluluğunun ve çeşitli platformların sunduğu değerli verilerden faydalanılmıştır:
+* **[İltekin / scm-editor](https://github.com/iltekin/scm-editor):** Projenin temelindeki ilk ilham kaynağı ve SCM manipülasyonunun çekirdek mantığı için @iltekin'e sonsuz teşekkürler.
 * **SamyGO & ChanSort Topluluğu:** Samsung .SCM dosya yapısının (TransponderDataBase, map-SateD vb.) ve checksum algoritmasının tersine mühendislikle çözülmesindeki büyük katkıları için teşekkürler.
 * **[FrekansListesi.com.tr](https://frekanslistesi.com.tr/):** Projemizdeki otomatik frekans doğrulama (Kör/Geçersiz frekansları tespit etme) özelliği için güncel Türksat 4A frekans veritabanı referans alınmıştır. Doğru ve tarafsız yayıncılıkları için teşekkür ederiz.
 
