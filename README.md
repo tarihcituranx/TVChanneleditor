@@ -18,12 +18,13 @@ Bu proje, Samsung Smart TV'lerin USB belleğe dışa aktardığı `.scm` uzantı
 - Python 3.x
 
 ### Çalıştırma
-Projeyi bilgisayarınıza indirdikten sonra terminalden şu komutu çalıştırmanız yeterlidir:
+Projeyi bilgisayarınıza indirdikten sonra terminalden şu komutları çalıştırmanız yeterlidir:
 ```bash
+pip install -r requirements.txt
 python3 app.py
 ```
 
-Ardından tarayıcınızda `http://localhost:5000` adresine giderek SCM dosyanızı sürükleyip bırakabilirsiniz. Hiçbir harici bağımlılık veya `pip install` gerektirmez (Tamamen Python standart kütüphanesi kullanılmıştır).
+Ardından tarayıcınızda `http://localhost:5000` adresine giderek SCM dosyanızı sürükleyip bırakabilirsiniz. Arka planda güvenilir, modern ve hızlı **Flask** web sunucusu çalışmaktadır.
 
 ## Yasal Uyarı
 "Samsung" ve Samsung logosu, Samsung Electronics Co., Ltd.'nin tescilli ticari markalarıdır. Bu uygulama tamamen bağımsız, kâr amacı gütmeyen, açık kaynaklı bir topluluk aracıdır ve Samsung ile herhangi bir resmi bağı veya sponsorluğu bulunmamaktadır.

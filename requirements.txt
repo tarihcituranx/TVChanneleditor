@@ -1,3 +1,2 @@
-# Bu proje sadece Python standart kütüphanelerini kullandığı için
-# harici bir pip paketi (Flask, Django vb.) gerektirmez.
-# Render.com build aşamasında hata vermemesi için bu dosya boş bırakılmıştır.
+Flask==3.0.0
+gunicorn==21.2.0
