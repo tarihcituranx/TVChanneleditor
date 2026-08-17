@@ -13,6 +13,10 @@ os.makedirs(UPLOAD_DIR, exist_ok=True)
 def index():
     return render_template('index.html')
 
+@app.route('/supported')
+def supported():
+    return render_template('supported.html')
+
 @app.route('/upload', methods=['POST'])
 def upload():
     if 'file' not in request.files:
