@@ -9,6 +9,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let channels = [];
     let currentFileName = "channel_list.scm";
+    let frekansData = {};
+
+    // Güncel frekansları yükle
+    fetch('/static/data/frekanslar.json')
+        .then(res => res.json())
+        .then(data => {
+            frekansData = data;
+        })
+        .catch(err => console.log('Frekans datası bulunamadı', err));
 
     // Drag & Drop Upload
     dropZone.addEventListener('dragover', (e) => {
@@ -85,13 +94,26 @@ document.addEventListener('DOMContentLoaded', () => {
             li.draggable = true;
             li.dataset.index = channels.indexOf(ch);
             
+            let freqWarning = '';
+            let freqColor = '';
+            const chNameUp = ch.Name.toUpperCase();
+            if (frekansData[chNameUp]) {
+                const updatedFreq = frekansData[chNameUp];
+                if (parseInt(ch.Freq) !== parseInt(updatedFreq)) {
+                    freqWarning = ` <span title="Doğru Frekans: ${updatedFreq}" style="color:red; font-size:12px;">⚠️ Eski Frekans (${updatedFreq} olmalı)</span>`;
+                    freqColor = 'color: #ff4d4d;';
+                } else {
+                    freqWarning = ` <span title="Frekans Güncel" style="color:#00ff00; font-size:12px;">✅</span>`;
+                }
+            }
+            
             li.innerHTML = `
                 <div class="col-drag">⋮⋮</div>
                 <div class="col-check"><input type="checkbox" class="row-checkbox" data-idx="${li.dataset.index}"></div>
                 <div class="col-no">${index + 1}</div>
                 <div class="col-name">${ch.Name}</div>
                 <div class="col-type">${ch.Type}</div>
-                <div class="col-freq">${ch.Freq} ${ch.Pol} ${ch.Sym}</div>
+                <div class="col-freq" style="${freqColor}">${ch.Freq} ${ch.Pol} ${ch.Sym}${freqWarning}</div>
                 <div class="col-action">
                     <button class="delete-btn" onclick="deleteChannel(${li.dataset.index})">✕</button>
                 </div>
