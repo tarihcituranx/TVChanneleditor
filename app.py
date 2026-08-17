@@ -1,24 +1,14 @@
-import http.server
-import socketserver
-import json
 import os
+import json
 import urllib.parse
-import cgi
+from flask import Flask, request, jsonify, send_file, render_template
 import scm_core
 
-PORT = int(os.environ.get('PORT', 5000))
+app = Flask(__name__)
+
 UPLOAD_DIR = 'uploads'
 os.makedirs(UPLOAD_DIR, exist_ok=True)
 
-class SCMHandler(http.server.SimpleHTTPRequestHandler):
-    def do_GET(self):
-        if self.path == '/':
-            self.send_response(200)
-            self.send_header('Content-type', 'text/html; charset=utf-8')
-            self.end_headers()
-            with open('templates/index.html', 'rb') as f:
-                self.wfile.write(f.read())
-        elif self.path.startswith('/static/'):
 @app.route('/')
 def index():
     return render_template('index.html')
