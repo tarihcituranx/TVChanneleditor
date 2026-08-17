@@ -23,6 +23,7 @@ def add_security_headers(response):
     response.headers['Referrer-Policy'] = 'strict-origin-when-cross-origin'
     response.headers['Permissions-Policy'] = 'geolocation=(), microphone=(), camera=()'
     response.headers['Cross-Origin-Opener-Policy'] = 'same-origin'
+    response.headers['Cross-Origin-Resource-Policy'] = 'same-origin'
     
     # Try to hide server info (Werkzeug adds 'Server', Render adds 'x-render-origin-server' at proxy)
     if 'Server' in response.headers:
@@ -203,6 +204,10 @@ def sitemap():
   </url>
 </urlset>"""
     return content, 200, {'Content-Type': 'application/xml; charset=utf-8'}
+
+@app.route('/.well-known/security.txt')
+def security_txt():
+    return send_file(os.path.join(app.root_path, 'static', 'security.txt'), mimetype='text/plain')
 
 @app.errorhandler(404)
 def page_not_found(e):
