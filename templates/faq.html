@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+
+{% block title %}Sıkça Sorulan Sorular - TV Channel Editor{% endblock %}
+
+{% block head %}
+<style>
+    .content-container {
+        max-width: 900px;
+        margin: 40px auto;
+        padding: 20px;
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 12px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .section-title {
+        font-size: 24px;
+        font-weight: 600;
+        margin-bottom: 20px;
+        color: #fff;
+        border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+        padding-bottom: 10px;
+    }
+
+    .faq-item {
+        margin-bottom: 20px;
+        background: rgba(0, 0, 0, 0.3);
+        border-radius: 8px;
+        padding: 20px;
+        border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .faq-q {
+        font-size: 18px;
+        font-weight: 600;
+        color: #4a90e2;
+        margin-bottom: 10px;
+    }
+
+    .faq-a {
+        font-size: 15px;
+        color: #ccc;
+        line-height: 1.6;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="content-container">
+    <h2 class="section-title">❓ Sıkça Sorulan Sorular (SSS)</h2>
+    
+    <div class="faq-item">
+        <div class="faq-q">SCM Dosyası Nedir?</div>
+        <div class="faq-a">SCM (Samsung Channel Map), Samsung televizyonların uydu frekanslarını ve kanal sıralarını sakladığı şifrelenmiş (checksum) bir veri dosyasıdır. Televizyonunuzdan USB belleğe aktarılarak elde edilir.</div>
+    </div>
+
+    <div class="faq-item">
+        <div class="faq-q">TV'den SCM dosyasını nasıl alırım?</div>
+        <div class="faq-a">Televizyonunuzda menüye girin: <strong>Yayın > Kanal Ayarları > Kanal Listesini Aktar > USB'ye Aktar</strong>. Bu işlem USB belleğinize bir .scm dosyası kaydedecektir.</div>
+    </div>
+
+    <div class="faq-item">
+        <div class="faq-q">Düzenlediğim listeyi TV'ye nasıl yüklerim?</div>
+        <div class="faq-a">Bu siteden indirdiğiniz yeni SCM dosyasını USB belleğinize kopyalayın. Ardından TV menüsünden <strong>Yayın > Kanal Ayarları > Kanal Listesini Aktar > USB'den Al</strong> seçeneğini kullanarak yükleyebilirsiniz.</div>
+    </div>
+
+    <div class="faq-item">
+        <div class="faq-q">Sihirli Değnek kanalları nasıl eşleştiriyor?</div>
+        <div class="faq-a">Frekanslar değişebildiği için Sihirli Değnek algoritması eşleştirmeyi <strong>Kanal Adı</strong> üzerinden yapar. Orijinal dosyanızdaki "TRT1 HD" adlı kanalın tüm şifreli PIDs ve frekans verilerini koruyarak sadece sıralamasını günceller.</div>
+    </div>
+
+    <div class="faq-item">
+        <div class="faq-q">Başka TV markaları destekleniyor mu?</div>
+        <div class="faq-a">Şu an için altyapımız yalnızca <strong>Samsung</strong> televizyonların kullandığı Checksum algoritmasını kırmak üzerine tasarlanmıştır. Gelecekte diğer markalar eklenebilir.</div>
+    </div>
+</div>
+{% endblock %}

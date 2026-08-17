@@ -17,6 +17,14 @@ def index():
 def supported():
     return render_template('supported.html')
 
+@app.route('/guide')
+def guide():
+    return render_template('guide.html')
+
+@app.route('/faq')
+def faq():
+    return render_template('faq.html')
+
 @app.route('/upload', methods=['POST'])
 def upload():
     if 'file' not in request.files:

@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+
+{% block title %}Kullanım Kılavuzu - TV Channel Editor{% endblock %}
+
+{% block head %}
+<style>
+    .content-container {
+        max-width: 900px;
+        margin: 40px auto;
+        padding: 20px;
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 12px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .section-title {
+        font-size: 24px;
+        font-weight: 600;
+        margin-bottom: 20px;
+        color: #fff;
+        border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+        padding-bottom: 10px;
+    }
+
+    .step-box {
+        margin-bottom: 25px;
+        padding-left: 20px;
+        border-left: 3px solid #4a90e2;
+    }
+
+    .step-title {
+        font-size: 18px;
+        font-weight: 600;
+        color: #fff;
+        margin-bottom: 8px;
+    }
+
+    .step-desc {
+        font-size: 15px;
+        color: #bbb;
+        line-height: 1.5;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="content-container">
+    <h2 class="section-title">📖 Kullanım Kılavuzu</h2>
+    
+    <div class="step-box">
+        <div class="step-title">1. Dosyayı USB'ye Aktarma</div>
+        <div class="step-desc">
+            TV'nizin kumandasından Menü tuşuna basın. <strong>Yayın > Kanal Ayarları > Kanal Listesini Aktar</strong> adımlarını izleyin. Çıkan ekranda PIN kodunuzu (genelde 0000) girerek "USB'ye Aktar"ı seçin.
+        </div>
+    </div>
+
+    <div class="step-box">
+        <div class="step-title">2. SCM Dosyasını Yükleme</div>
+        <div class="step-desc">
+            USB belleği bilgisayarınıza takın. Bu web sitesinin ana sayfasındaki alana USB içindeki <code>.scm</code> uzantılı dosyayı sürükleyip bırakın veya seçin.
+        </div>
+    </div>
+
+    <div class="step-box">
+        <div class="step-title">3. Kanalları Düzenleme</div>
+        <div class="step-desc">
+            Dosya yüklendikten sonra kanalları farenizle sürükleyip bırakarak (Drag & Drop) manuel sıralayabilirsiniz. Dilerseniz <strong>🪄 Sihirli Değnek</strong> butonunu kullanarak hazır şablonlardan birini (Genel, Spor, Haber vb.) tek tıkla uygulayabilirsiniz.
+        </div>
+    </div>
+
+    <div class="step-box">
+        <div class="step-title">4. Şablon Oluşturma</div>
+        <div class="step-desc">
+            <strong>🛠️ Şablon Oluşturucu</strong> butonu ile kendi özel dizilim şablonunuzu oluşturup tarayıcınıza kaydedebilirsiniz. Böylece bir sonraki dosya yüklemenizde kendi şablonunuzu tek tıkla uygulayabilirsiniz.
+        </div>
+    </div>
+
+    <div class="step-box">
+        <div class="step-title">5. Kaydet ve TV'ye Yükle</div>
+        <div class="step-desc">
+            Düzenleme işlemi bitince <strong>Kaydet ve İndir</strong> butonuna basarak yeni .scm dosyasını bilgisayarınıza indirin. Bu dosyayı USB'ye geri atıp, TV'nizin menüsünden <strong>USB'den Al</strong> seçeneği ile kurulumu tamamlayın.
+        </div>
+    </div>
+</div>
+{% endblock %}
