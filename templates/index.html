@@ -154,23 +154,39 @@
             
             <div style="border-top:1px dashed var(--border-color); margin: 4px 0;"></div>
             
-            <div style="display:flex; justify-content:space-between; padding:4px 8px; border-radius:6px;" title="Service ID: Yayıncının o kanala atadığı benzersiz servis kimliği.">
-                <span style="color:var(--text-muted); font-size:0.85rem; cursor:help; border-bottom:1px dotted var(--text-muted);">SID (Service ID)</span>
-                <strong id="info-sid" style="font-family:monospace; font-size:0.85rem;"></strong>
+            <div style="display:flex; justify-content:space-between; padding:4px 8px; border-radius:6px;" title="Modülasyon Sistemi: Yayının DVB-S (SD) veya DVB-S2 (HD) gibi standardını belirtir.">
+                <span style="color:var(--text-muted); font-size:0.85rem; cursor:help; border-bottom:1px dotted var(--text-muted);">Modülasyon Sistemi</span>
+                <strong id="info-mod" style="font-family:monospace; font-size:0.85rem;"></strong>
+            </div>
+            <div style="display:flex; justify-content:space-between; padding:4px 8px; border-radius:6px;" title="Roll-Off Faktörü: Sinyal bant genişliğinin ne kadar keskin bir şekilde filtrelendiğini gösterir.">
+                <span style="color:var(--text-muted); font-size:0.85rem; cursor:help; border-bottom:1px dotted var(--text-muted);">Roll-Off</span>
+                <strong id="info-rolloff" style="font-family:monospace; font-size:0.85rem;"></strong>
+            </div>
+            <div style="display:flex; justify-content:space-between; padding:4px 8px; border-radius:6px;" title="Network ID: Bulunduğunuz uydu şebekesinin (Ağ) kimliğidir.">
+                <span style="color:var(--text-muted); font-size:0.85rem; cursor:help; border-bottom:1px dotted var(--text-muted);">NID (Network ID)</span>
+                <strong id="info-nid" style="font-family:monospace; font-size:0.85rem;"></strong>
             </div>
             <div style="display:flex; justify-content:space-between; padding:4px 8px; border-radius:6px;" title="Transport Stream ID: Kanalın bulunduğu veri paketinin (frekansın) kimlik numarası.">
                 <span style="color:var(--text-muted); font-size:0.85rem; cursor:help; border-bottom:1px dotted var(--text-muted);">TSID (Transport Stream ID)</span>
                 <strong id="info-tsid" style="font-family:monospace; font-size:0.85rem;"></strong>
             </div>
-            <div style="display:flex; justify-content:space-between; padding:4px 8px; border-radius:6px;" title="Original Network ID: Orijinal uydu ağının (örn. Türksat) küresel kimlik kodu.">
+            <div style="display:flex; justify-content:space-between; padding:4px 8px; border-radius:6px;" title="Original Network ID: Orijinal uydu ağının küresel kimlik kodu.">
                 <span style="color:var(--text-muted); font-size:0.85rem; cursor:help; border-bottom:1px dotted var(--text-muted);">ONID (Original Network ID)</span>
                 <strong id="info-onid" style="font-family:monospace; font-size:0.85rem;"></strong>
+            </div>
+            <div style="display:flex; justify-content:space-between; padding:4px 8px; border-radius:6px;" title="Service ID: Yayıncının o kanala atadığı benzersiz servis kimliği.">
+                <span style="color:var(--text-muted); font-size:0.85rem; cursor:help; border-bottom:1px dotted var(--text-muted);">SID (Service ID)</span>
+                <strong id="info-sid" style="font-family:monospace; font-size:0.85rem;"></strong>
             </div>
             <div style="display:flex; justify-content:space-between; padding:4px 8px; border-radius:6px;" title="Video Packet ID: Kanalın sadece görüntü (video) verilerini taşıyan şifre kodu.">
                 <span style="color:var(--text-muted); font-size:0.85rem; cursor:help; border-bottom:1px dotted var(--text-muted);">Video PID</span>
                 <strong id="info-vidpid" style="font-family:monospace; font-size:0.85rem;"></strong>
             </div>
-            <div style="display:flex; justify-content:space-between; padding:4px 8px; border-radius:6px;" title="Program Clock Reference: Ses ve görüntünün senkronize (eşzamanlı) çalışmasını sağlayan referans saati kodu.">
+            <div style="display:flex; justify-content:space-between; padding:4px 8px; border-radius:6px;" title="Audio Packet ID: Kanalın sadece ses verilerini taşıyan şifre kodu.">
+                <span style="color:var(--text-muted); font-size:0.85rem; cursor:help; border-bottom:1px dotted var(--text-muted);">Audio PID</span>
+                <strong id="info-audpid" style="font-family:monospace; font-size:0.85rem;"></strong>
+            </div>
+            <div style="display:flex; justify-content:space-between; padding:4px 8px; border-radius:6px;" title="Program Clock Reference: Ses ve görüntünün senkronize çalışmasını sağlayan saat kodu.">
                 <span style="color:var(--text-muted); font-size:0.85rem; cursor:help; border-bottom:1px dotted var(--text-muted);">PCR PID</span>
                 <strong id="info-pcrpid" style="font-family:monospace; font-size:0.85rem;"></strong>
             </div>
