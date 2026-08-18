@@ -19,10 +19,10 @@
             <p style="margin-top:0;">Smart TV Kanal Listenizi Sürükle-Bırak ile Düzenleyin</p>
             
             <nav style="margin-top: 15px; display:flex; justify-content:center; gap: 15px; flex-wrap:wrap;">
-                <a href="/" class="nav-link">🏠 Ana Sayfa</a>
-                <a href="/guide" class="nav-link">📖 Kullanım Kılavuzu</a>
-                <a href="/supported" class="nav-link">📺 Desteklenen TV/Uydular</a>
-                <a href="/faq" class="nav-link">❓ SSS</a>
+                <a href="/" class="nav-link {% if request.path == '/' %}active{% endif %}">🏠 Ana Sayfa</a>
+                <a href="/guide" class="nav-link {% if request.path == '/guide' %}active{% endif %}">📖 Kullanım Kılavuzu</a>
+                <a href="/supported" class="nav-link {% if request.path == '/supported' %}active{% endif %}">📺 Desteklenen TV/Uydular</a>
+                <a href="/faq" class="nav-link {% if request.path == '/faq' %}active{% endif %}">❓ SSS</a>
             </nav>
             <div style="position: absolute; top: 20px; right: 20px; display:flex; gap:8px; align-items:center;">
                 <button id="colorblind-toggle" aria-label="Renk Körlüğü Modu" title="Renk Körlüğü Modu" style="background: rgba(255,255,255,0.1); color: inherit; border: 1px solid rgba(255,255,255,0.3); padding: 5px 10px; border-radius: 5px; cursor: pointer; font-size:16px; line-height:1; transition: background 0.2s;">👁️</button>
