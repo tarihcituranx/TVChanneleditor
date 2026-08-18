@@ -149,7 +149,7 @@ body {
 }
 
 .nav-logo { display: flex; align-items: center; flex-shrink: 0; text-decoration: none; }
-.nav-logo img { height: 36px; width: auto; object-fit: contain; filter: var(--logo-filter); }
+.nav-logo img { height: 52px; width: auto; object-fit: contain; filter: var(--logo-filter); }
 
 .nav-links { display: flex; align-items: center; gap: 0.25rem; flex: 1; margin: 0 1rem; }
 .nav-actions { display: flex; align-items: center; gap: 0.5rem; flex-shrink: 0; }
