@@ -8,7 +8,9 @@ import tempfile
 import shutil
 import urllib.parse
 from collections import defaultdict
-from flask import Flask, request, jsonify, send_file, render_template
+from flask import Flask, Response
+from flask_limiter import Limiter
+from flask_limiter.util import get_remote_address, request, jsonify, send_file, render_template
 
 import scm_core
 import tizen_core
@@ -17,6 +19,13 @@ import sony_core
 import hisense_core
 
 app = Flask(__name__)
+
+limiter = Limiter(
+    get_remote_address,
+    app=app,
+    default_limits=["200 per day", "50 per hour"],
+    storage_uri="memory://"
+)
 app.config['MAX_CONTENT_LENGTH'] = 2 * 1024 * 1024  # 2 MB upload limit
 
 # Session-based upload storage: session_id -> {'path': str, 'expires': float}
@@ -117,9 +126,8 @@ def _safe_filename(filename, brand):
 def add_security_headers(response):
     response.headers['X-Content-Type-Options'] = 'nosniff'
     response.headers['X-Frame-Options'] = 'DENY'
-    response.headers['X-XSS-Protection'] = '1; mode=block'
-    response.headers['Strict-Transport-Security'] = 'max-age=31536000; includeSubDomains'
-    response.headers['Content-Security-Policy'] = "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data:; font-src 'self' data: https://fonts.gstatic.com; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self';"
+        response.headers['Strict-Transport-Security'] = 'max-age=31536000; includeSubDomains'
+    response.headers['Content-Security-Policy'] = "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data:; font-src 'self' data: https://fonts.gstatic.com; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none';"
     response.headers['Referrer-Policy'] = 'strict-origin-when-cross-origin'
     response.headers['Permissions-Policy'] = 'geolocation=(), microphone=(), camera=()'
     response.headers['Cross-Origin-Opener-Policy'] = 'same-origin'
@@ -164,6 +172,7 @@ def privacy():
 def glossary():
     return render_lang('glossary.html')
 
+@limiter.limit("10 per minute")
 @app.route('/upload', methods=['POST'])
 def upload():
     client_ip = request.headers.get('X-Forwarded-For', request.remote_addr).split(',')[0].strip()
@@ -240,6 +249,7 @@ def upload():
         del _sessions[session_id]
         return jsonify({'error': str(e)}), 500
 
+@limiter.limit("20 per minute")
 @app.route('/build', methods=['POST'])
 def build():
     data = request.json or {}
@@ -421,6 +431,11 @@ def page_not_found(e):
 @app.errorhandler(429)
 def too_many_requests(e):
     return jsonify({'error': 'Çok fazla istek. Lütfen bekleyin.'}), 429
+
+
+@app.route('/security')
+def security_page():
+    return render_template('security.html')
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))
