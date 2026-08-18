@@ -30,32 +30,36 @@
 
 <div id="editor-section" class="hidden">
     <div id="brand-badge" class="brand-badge hidden"></div>
-    <div class="toolbar">
-        <div class="search-box">
-            <input type="text" id="search-input" placeholder="Kanal ara...">
+    <div class="toolbar" style="display:flex; flex-direction:column; gap:15px; align-items:stretch;">
+        <div style="display: flex; justify-content: space-between; width: 100%; align-items: center; flex-wrap: wrap; gap: 15px;">
+            <div class="search-box" style="flex: 1; min-width: 250px;">
+                <input type="text" id="search-input" placeholder="Kanal ara...">
+            </div>
+            <div class="actions" style="display: flex; gap: 10px; flex-wrap: wrap; justify-content: flex-end;">
+                <button class="btn primary-outline" id="magic-wand-btn" style="background:transparent; color:var(--accent); border:1px solid var(--accent);">
+                    <svg class="icon" width="16" height="16"><use href="#icon-wand"/></svg> Sihirli Değnek
+                </button>
+                <button id="save-template-btn" class="btn primary-outline" style="background:transparent; color:var(--accent); border:1px solid var(--accent);">🛠️ Şablon Oluşturucu</button>
+                <button id="export-share-btn" class="btn magic" style="background: #e85d00; color: white;">📱 Cihaza Aktar</button>
+                <button class="btn primary" id="save-btn">
+                    <svg class="icon" width="16" height="16"><use href="#icon-save"/></svg> Kaydet ve İndir
+                </button>
+            </div>
         </div>
-                <div class="actions" style="display: flex; gap: 10px; flex-wrap: wrap; justify-content: flex-end; flex: 1;">
-            <button class="btn secondary" id="delete-selected-btn" style="display:none;">
-                <svg class="icon" width="16" height="16"><use href="#icon-trash"/></svg>
-                Seçilileri Sil (<span id="sel-count">0</span>)
+        
+        <div class="actions secondary-actions" style="display: flex; gap: 10px; flex-wrap: wrap; padding-top: 15px; border-top: 1px dashed var(--border-color); width: 100%; align-items: center;">
+            <span style="color: var(--text-secondary); font-size: 0.85rem; font-weight:600; text-transform:uppercase; letter-spacing:0.05em; margin-right:10px;">Toplu İşlemler:</span>
+            <button class="btn danger-outline btn-sm" id="del-encrypted-btn">
+                <svg class="icon" width="14" height="14"><use href="#icon-lock"/></svg> Şifrelileri Sil
             </button>
-            <button id="lock-selected-btn" class="btn magic" style="display:none;"><svg class="icon" width="16" height="16"><use href="#icon-lock"/></svg> Seçilileri Kilitle</button>
-            <button id="fav-selected-btn" class="btn magic" style="display:none;">⭐ Seçilileri Favorile</button>
-            <button class="btn danger-outline" id="del-encrypted-btn">
-                <svg class="icon" width="16" height="16"><use href="#icon-lock"/></svg> Şifrelileri Sil
+            <button class="btn danger-outline btn-sm" id="del-radio-btn">
+                <svg class="icon" width="14" height="14"><use href="#icon-trash"/></svg> Radyoları Sil
             </button>
-            <button class="btn danger-outline" id="del-radio-btn">
-                <svg class="icon" width="16" height="16"><use href="#icon-trash"/></svg> Radyoları Sil
+            <button class="btn secondary btn-sm" id="delete-selected-btn" style="display:none;">
+                <svg class="icon" width="14" height="14"><use href="#icon-trash"/></svg> Seçilileri Sil (<span id="sel-count">0</span>)
             </button>
-            
-            <button class="btn primary-outline" id="magic-wand-btn" style="background:transparent; color:var(--accent); border:1px solid var(--accent);">
-                <svg class="icon" width="16" height="16"><use href="#icon-wand"/></svg> Sihirli Değnek
-            </button>
-            <button id="save-template-btn" class="btn primary-outline" style="background:transparent; color:var(--accent); border:1px solid var(--accent);">🛠️ Şablon Oluşturucu</button>
-            <button id="export-share-btn" class="btn magic" style="background: #e85d00; color: white;">📱 Cihaza Aktar</button>
-            <button class="btn primary" id="save-btn">
-                <svg class="icon" width="16" height="16"><use href="#icon-save"/></svg> Kaydet ve İndir
-            </button>
+            <button id="lock-selected-btn" class="btn secondary btn-sm" style="display:none;"><svg class="icon" width="14" height="14"><use href="#icon-lock"/></svg> Seçilileri Kilitle</button>
+            <button id="fav-selected-btn" class="btn secondary btn-sm" style="display:none;">⭐ Seçilileri Favorile</button>
         </div>
     </div>
 

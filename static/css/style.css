@@ -683,3 +683,20 @@ footer a {
 [data-theme="dark"] .info-row {
     background: rgba(255, 255, 255, 0.03);
 }
+
+.btn.secondary {
+    background: var(--bg-color);
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+}
+.btn.secondary:hover {
+    background: rgba(0,0,0,0.05);
+}
+[data-theme="dark"] .btn.secondary:hover {
+    background: rgba(255,255,255,0.05);
+}
+.btn-sm {
+    padding: 0.35rem 0.8rem;
+    font-size: 0.8rem;
+    border-radius: 15px;
+}
