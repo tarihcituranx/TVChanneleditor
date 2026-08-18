@@ -213,7 +213,12 @@ STARTUP_TIME = datetime.utcnow().isoformat() + "Z"
 
 @app.route('/health')
 def health_check():
-    return jsonify({"status": "healthy", "timestamp": datetime.utcnow().isoformat() + "Z"})
+    return jsonify({
+        "status": "alive_and_breathing",
+        "pulse": "normal",
+        "message": "Nefes alıyorum patron, sunucu turp gibi!",
+        "timestamp": datetime.utcnow().isoformat() + "Z"
+    })
 
 @app.route('/api/version')
 def api_version():
