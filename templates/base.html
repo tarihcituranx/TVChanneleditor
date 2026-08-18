@@ -35,82 +35,58 @@
     <div id="toast-container" style="position:fixed; top:20px; right:20px; z-index:9999; display:flex; flex-direction:column; gap:10px;"></div>
 
     <div class="app-container">
-        <header>
-            <a href="/" style="display:inline-block;">
-                <img src="/static/img/logo.png" alt="TV Channel Editor" style="height: 160px; width: auto; max-width: 500px; margin-bottom: 0.5rem; object-fit: contain; filter: var(--logo-filter);">
-            </a>
-            <p style="margin-top:0;">Smart TV Kanal Listenizi Sürükle-Bırak ile Düzenleyin</p>
-            
-            <nav style="margin-top: 15px; display:flex; justify-content:center; gap: 15px; flex-wrap:wrap;">
-                <a href="/" class="nav-link {% if request.path == '/' %}active{% endif %}">🏠 Ana Sayfa</a>
-                <a href="/guide" class="nav-link {% if request.path == '/guide' %}active{% endif %}">📖 Kullanım Kılavuzu</a>
-                <a href="/supported" class="nav-link {% if request.path == '/supported' %}active{% endif %}">📺 Desteklenen TV/Uydular</a>
-                <a href="/faq" class="nav-link {% if request.path == '/faq' %}active{% endif %}">❓ SSS</a>
-            </nav>
-            <div style="position: absolute; top: 20px; right: 20px; display:flex; gap:8px; align-items:center;">
-                <button id="colorblind-toggle" aria-label="Renk Körlüğü Modu" title="Renk Körlüğü Modu" style="background: rgba(255,255,255,0.1); color: inherit; border: 1px solid rgba(255,255,255,0.3); padding: 5px 10px; border-radius: 5px; cursor: pointer; font-size:16px; line-height:1; transition: background 0.2s;">👁️</button>
-                <button id="theme-toggle" aria-label="Tema Değiştir" title="Karanlık/Aydınlık Tema" style="background: rgba(255,255,255,0.1); color: inherit; border: 1px solid rgba(255,255,255,0.3); padding: 5px 10px; border-radius: 5px; cursor: pointer; font-size:16px; line-height:1; transition: background 0.2s;">🌙</button>
-                <select id="lang-selector" aria-label="Dil Seçimi" style="background: rgba(255,255,255,0.1); color: inherit; border: 1px solid rgba(255,255,255,0.3); padding: 5px; border-radius: 5px; cursor: pointer;">
-                    <option value="tr">🇹🇷 Türkçe</option>
-                    <option value="en">🇬🇧 English</option>
-                </select>
-            </div>
-        </header>
+        <header><nav style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; margin-bottom: 2rem;">
+    <div style="display:flex; align-items:center; gap: 20px;">
+        <a href="/" style="display:inline-block;">
+            <img src="/static/img/logo.png" alt="TV Channel Editor" style="height: 50px; width: auto; object-fit: contain; filter: var(--logo-filter);">
+        </a>
+        <div style="display:flex; gap: 15px; margin-left: 20px;">
+            <a href="/" class="nav-link {% if request.path == '/' %}active{% endif %}">Editor</a>
+            <a href="/guide" class="nav-link {% if request.path == '/guide' %}active{% endif %}">Rehber</a>
+            <a href="/supported" class="nav-link {% if request.path == '/supported' %}active{% endif %}">Destek</a>
+            <a href="/faq" class="nav-link {% if request.path == '/faq' %}active{% endif %}">FAQ</a>
+        </div>
+    </div>
+    <div style="display:flex; gap: 10px; align-items:center;">
+        <button id="theme-toggle" style="background:none; border:none; font-size:1.2rem; cursor:pointer; color:var(--text-primary);" aria-label="Tema Değiştir">
+            <svg class="icon" width="20" height="20"><use href="#icon-wand"/></svg>
+        </button>
+        <a href="/en" style="text-decoration:none; color:var(--text-primary); font-weight:bold; font-size:1rem;">EN</a>
+    </div>
+</nav></header>
         
         <main>
             {% block content %}{% endblock %}
         </main>
 
-        <footer style="text-align: center; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--border-color);">
-            <p style="font-size: 0.9rem; color: var(--text-primary); margin-bottom: 8px; line-height: 1.6; opacity: 0.95;">
-                <strong>Açık Kaynak Referansları:</strong> 
-                İlk ilham kaynağımız <a href="https://github.com/iltekin/scm-editor" target="_blank" style="color:var(--accent); text-decoration:underline; font-weight: 600;">İltekin</a>'e, 
-                SCM algoritması için <a href="https://github.com/PredatH0r/ChanSort" target="_blank" style="color:var(--accent); text-decoration:underline; font-weight: 600;">ChanSort (SamyGO)</a> topluluğuna ve 
-                otomatik doğrulama veritabanı için <a href="https://uydu.turksat.com.tr/" target="_blank" style="color:var(--accent); text-decoration:underline; font-weight: 600;">Türksat A.Ş.</a>'ye teşekkürler.
-            </p>
-            <p style="font-size: 0.85rem; color: var(--text-primary); margin-bottom: 0.5rem; opacity: 0.95;">
-                <strong>Yasal Uyarı & Sorumluluk Reddi (AS-IS):</strong> Samsung, LG, Sony, Hisense logoları ile kanallara ait logolar ilgili şirketlerin ve yayıncı kuruluşların tescilli markalarıdır. Bu araç, hiçbir üretici veya yayıncı ile bağlantısı olmayan açık kaynaklı bir yazılımdır.
-            </p>
-            <p style="font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 1.5rem; max-width: 800px; margin-left: auto; margin-right: auto; line-height: 1.5;">
-                Açık Kaynak Kod Hukuku (MIT Lisansı / CRA Uyumluluğu) gereğince: Bu yazılım <strong>"OLDUĞU GİBİ" (AS IS)</strong>, hiçbir ticari veya performans garantisi verilmeksizin sunulmaktadır. Geliştiriciler; veri kayıpları, cihaz ayarlarının bozulması veya kullanım hatalarından doğabilecek doğrudan ya da dolaylı zararlardan hukuken sorumlu tutulamaz. Yazılımı kullananlar tüm riskleri kabul etmiş sayılır.
-            </p>
-            
-            <div style="margin-top: 1.5rem; display: flex; justify-content: center; align-items: center; gap: 15px;">
-                <a href="https://github.com/tarihcituranx/TVChanneleditor" target="_blank" style="color: var(--text-primary); text-decoration: none; display: flex; align-items: center; gap: 8px; font-weight: 600; transition: opacity 0.2s;" onmouseover="this.style.opacity='0.8'" onmouseout="this.style.opacity='1'">
-                    <svg height="24" viewBox="0 0 16 16" width="24" fill="currentColor">
-                        <path d="M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z"></path>
-                      <symbol id="icon-book" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"></path></symbol>
-      <symbol id="icon-info" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></symbol>
-    </svg>
-                    Projeye GitHub'da Yıldız Ver
-                </a>
-                <span style="color: var(--border-color);">|</span>
-                <a href="/privacy" style="color: var(--accent); text-decoration: none; font-weight: 600; font-size: 0.9rem; transition: opacity 0.2s;" onmouseover="this.style.opacity='0.8'" onmouseout="this.style.opacity='1'">
-                    🛡️ Gizlilik Politikası (KVKK)
-                </a>
-            </div>
-            <p style="font-size: 0.8rem; color: var(--text-secondary); margin-top: 15px;">
-                &copy; 2026 yılında Türkiye'de sevgiyle tasarlandı ve kodlandı.
-            </p>
-        </footer>
+        <footer style="margin-top: 60px; padding-top: 40px; border-top: 1px solid var(--border-color); color: var(--text-secondary);">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; max-width: 1000px; margin: 0 auto;">
+        <div>
+            <h4 style="color: var(--text-primary); margin-bottom: 15px; font-size: 1.1rem;">TV Channel Editor</h4>
+            <p style="font-size: 0.9rem; line-height: 1.6;">Samsung, Sony & Hisense kanal listelerinizi tarayıcınızda saniyeler içinde güvenle düzenleyin.</p>
+        </div>
+        <div>
+            <h4 style="color: var(--text-primary); margin-bottom: 15px; font-size: 1.1rem;">Kaynaklar</h4>
+            <ul style="list-style: none; padding: 0; font-size: 0.9rem; line-height: 2;">
+                <li><a href="https://github.com/tarihcituranx/TVChanneleditor" style="color: var(--text-secondary); text-decoration: none;">GitHub Repository</a></li>
+                <li><a href="https://github.com/PredatH0r/ChanSort" style="color: var(--text-secondary); text-decoration: none;">ChanSort (Masaüstü)</a></li>
+                <li><a href="https://uydu.turksat.com.tr" style="color: var(--text-secondary); text-decoration: none;">Türksat Frekansları</a></li>
+            </ul>
+        </div>
+        <div>
+            <h4 style="color: var(--text-primary); margin-bottom: 15px; font-size: 1.1rem;">Yasal & Güvenlik</h4>
+            <ul style="list-style: none; padding: 0; font-size: 0.9rem; line-height: 2;">
+                <li><span style="color: var(--text-secondary);">%100 İstemci Tarafı İşlem</span></li>
+                <li><span style="color: var(--text-secondary);">Verileriniz Sunucuda Saklanmaz</span></li>
+                <li><span style="color: var(--text-secondary);">Açık Kaynak Kodlu</span></li>
+            </ul>
+        </div>
     </div>
-    
-    <style>
-        .nav-link {
-            color: #4a90e2; 
-            text-decoration: none; 
-            font-size: 14px; 
-            font-weight: 500;
-            padding: 5px 10px;
-            border-radius: 5px;
-            transition: background 0.2s;
-        }
-        .nav-link:hover {
-            background: rgba(74, 144, 226, 0.1);
-        }
-    </style>
-    
-    <script>
+    <div style="text-align: center; margin-top: 40px; padding-top: 20px; border-top: 1px solid rgba(150,150,150,0.1); font-size: 0.85rem;">
+        &copy; 2026 TV Channel Editor · Made with ❤️ in Türkiye 🇹🇷
+    </div>
+</footer>
+
         // ---- Theme Toggle ----
         const themeToggle = document.getElementById('theme-toggle');
         const html = document.documentElement;

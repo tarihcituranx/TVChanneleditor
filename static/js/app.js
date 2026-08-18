@@ -236,6 +236,7 @@ document.addEventListener('DOMContentLoaded', () => {
         filtered.forEach((ch, index) => {
             const li = document.createElement('li');
             li.draggable = true;
+            li.style.display = 'flex'; li.style.padding = '12px 15px'; li.style.borderBottom = '1px solid var(--border-color)'; li.style.background = 'var(--card-bg)';
             li.dataset.index = channels.indexOf(ch);
             
             let freqWarning = '';
@@ -264,32 +265,29 @@ document.addEventListener('DOMContentLoaded', () => {
             let tooltipText = `Frekans: ${ch.Freq} MHz\nPolarizasyon: ${polLabel}\nSembol Oranı: ${ch.Sym}`;
 
             li.innerHTML = `
-                <div class="col-drag" role="button" tabindex="0" aria-label="Kanalı taşı: ${escapeHTML(ch.Name)}">
+                <div class="drag-handle" role="button" tabindex="0" aria-label="Taşı" style="cursor:grab; color:var(--text-secondary); padding:10px; margin-left:-10px;">
                     <svg class="icon" width="18" height="18"><use href="#icon-grip"/></svg>
                 </div>
-                <div class="col-check"><input type="checkbox" class="row-checkbox" data-idx="${li.dataset.index}" aria-label="${escapeHTML(ch.Name)} kanalını seç"></div>
-                <div class="col-no" aria-hidden="true">${index + 1}</div>
-                <div class="col-flags">
-                    <span class="flag-icon lock-icon ${ch.Lock ? 'active' : ''}" role="button" tabindex="0" aria-pressed="${ch.Lock ? 'true' : 'false'}" aria-label="${escapeHTML(ch.Name)} için Çocuk Kilidi" title="Çocuk Kilidi" onclick="toggleFlag(${li.dataset.index}, 'Lock')" onkeydown="if(event.key==='Enter') toggleFlag(${li.dataset.index}, 'Lock')">
-                        <svg class="icon" width="16" height="16"><use href="${ch.Lock ? '#icon-lock' : '#icon-unlock'}"/></svg>
-                    </span>
-                    <span class="flag-icon fav-icon ${ch.Fav1 ? 'active' : ''}" role="button" tabindex="0" aria-pressed="${ch.Fav1 ? 'true' : 'false'}" aria-label="${escapeHTML(ch.Name)} için Favori 1" title="Favori" onclick="toggleFlag(${li.dataset.index}, 'Fav1')" onkeydown="if(event.key==='Enter') toggleFlag(${li.dataset.index}, 'Fav1')">⭐</span>
+                <div class="col-check" style="margin-right:15px;"><input type="checkbox" class="row-checkbox" data-idx="${li.dataset.index}"></div>
+                <div style="flex:1; display:flex; flex-direction:column; justify-content:center; gap:4px; min-width:0;">
+                    <div style="display:flex; align-items:center; gap:10px;">
+                        <span style="font-size:0.85rem; color:var(--text-secondary); font-weight:bold; min-width:25px;">${ch.No}</span>
+                        ${ch.Fav1 ? '<span style="color:var(--warning); font-size:14px;">⭐</span>' : ''}
+                        <div class="col-name" contenteditable="true" spellcheck="false" onblur="updateChannelName(${li.dataset.index}, this.innerText)" style="font-weight:600; font-size:1.05rem; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${escapeHTML(ch.Name)}</div>
+                    </div>
+                    <div style="display:flex; align-items:center; flex-wrap:wrap; gap:8px; font-size:0.8rem; color:var(--text-secondary);">
+                        <span style="background:var(--bg-color); padding:2px 6px; border-radius:4px; border:1px solid var(--border-color);">${ch.Type === 'HD' ? 'Genel TV &middot; HD' : (ch.Type === 'SD' ? 'Genel TV' : ch.Type)}</span>
+                        <span>${ch.Freq} MHz &middot; ${ch.Pol} &middot; ${ch.Sym}</span>
+                        ${ch.Encrypted === 'Yes' ? '<span style="color:var(--danger); display:flex; align-items:center; gap:3px;"><svg class="icon" width="12" height="12"><use href="#icon-lock"/></svg> Şifreli</span>' : ''}
+                        ${freqWarning}
+                    </div>
                 </div>
-                <div style="display:flex; align-items:center; flex:1; gap:12px; overflow:hidden;">
-                    ${avatarHtml}
-                    <div class="col-name" contenteditable="true" spellcheck="false" data-mobile-info="${ch.Type} · ${ch.Freq} ${ch.Pol} ${ch.Sym}" onblur="updateChannelName(${li.dataset.index}, this.innerText)" title="Yeniden adlandırmak için tıklayın" style="flex:1;">${escapeHTML(ch.Name)}</div>
-                </div>
-                <div class="col-type">${ch.Type}</div>
-                <div class="col-freq" aria-label="Frekans: ${ch.Freq} ${ch.Pol} ${ch.Sym}" title="${tooltipText}" style="cursor:help;">
-                    <div style="border-bottom: 1px dotted rgba(156,163,175,0.5); display:inline-block;">${ch.Freq} ${ch.Pol} ${ch.Sym}</div>
-                    ${freqWarning}
-                </div>
-                <div class="col-action" style="display:flex; gap:5px;">
-                    <button class="btn info-btn" style="padding:4px 8px; background:rgba(var(--accent-rgb), 0.1); color:var(--accent); border:1px solid rgba(var(--accent-rgb), 0.2);" onclick="showChannelInfo(${li.dataset.index})" aria-label="${escapeHTML(ch.Name)} detayları">
-                        <svg class="icon" width="14" height="14"><use href="#icon-info"/></svg>
+                <div style="display:flex; align-items:center; gap:5px; margin-left:auto;">
+                    <button class="btn" style="background:transparent; border:none; color:var(--text-secondary); padding:8px; cursor:pointer;" onclick="toggleFlag(${li.dataset.index}, 'Lock')" title="Kilitle">
+                        <svg class="icon" width="16" height="16" style="color:${ch.Lock ? 'var(--danger)' : 'inherit'};"><use href="${ch.Lock ? '#icon-lock' : '#icon-unlock'}"/></svg>
                     </button>
-                    <button class="delete-btn" onclick="deleteChannel(${li.dataset.index})" aria-label="${escapeHTML(ch.Name)} kanalını sil">
-                        <svg class="icon" width="16" height="16"><use href="#icon-x"/></svg>
+                    <button class="btn" style="background:transparent; border:none; color:var(--text-secondary); padding:8px; cursor:pointer;" onclick="showChannelInfo(${li.dataset.index})" title="Detaylar">
+                        <svg class="icon" width="16" height="16"><use href="#icon-info"/></svg>
                     </button>
                 </div>
             `;
@@ -682,11 +680,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Modal elements
-    const infoModal = document.getElementById('info-modal');
-    const closeInfoBtn = document.getElementById('close-info-btn');
+    const infoModal = document.getElementById('side-panel');
+    const closeInfoBtn = document.getElementById('close-side-panel');
 
     closeInfoBtn.addEventListener('click', () => {
-        infoModal.classList.add('hidden');
+        infoModal.style.display = 'none';
     });
 
     window.showChannelInfo = function(idx) {
@@ -737,7 +735,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('info-audpid').textContent = advAudioPid;
         document.getElementById('info-pcrpid').textContent = ch.PcrPID !== undefined ? ch.PcrPID : '-';
 
-        infoModal.classList.remove('hidden');
+        infoModal.style.display = 'flex';
     };
 
     // A11y: Esc key to close all modals
