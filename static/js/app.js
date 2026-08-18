@@ -397,7 +397,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     delSelectedBtn.addEventListener('click', () => {
-        if (!confirm(`${selectedIndices.size} channels will be deleted. Are you sure?`)) return;
+        if (!confirm(`${selectedIndices.size} adet kanal silinecek. Emin misiniz?`)) return;
         
         // Remove from highest index to lowest to avoid shifting issues
         let indices = Array.from(selectedIndices).sort((a, b) => b - a);
@@ -455,7 +455,7 @@ document.addEventListener('DOMContentLoaded', () => {
             alert('Your cart is empty! Please add channels from left to right.');
             return;
         }
-        const tName = prompt('What name would you like to give to this perfect template?');
+        const tName = prompt('Bu mükemmel şablona ne isim vermek istersiniz?');
         if (!tName) return;
 
         const customList = builderCart.map(c => c.Name);
@@ -482,27 +482,27 @@ document.addEventListener('DOMContentLoaded', () => {
         channels = [...newOrder, ...remaining];
         renderChannels(searchInput.value);
         modal.classList.add('hidden');
-        alert('The selected template has been applied successfully! ✨');
+        alert('Seçilen şablon başarıyla uygulandı! ✨');
     });
 
     // 2. Delete Encrypted
     document.getElementById('del-encrypted-btn').addEventListener('click', () => {
-        if (!confirm('All encrypted channels will be permanently deleted. Are you sure?')) return;
+        if (!confirm('Tüm şifreli kanallar kalıcı olarak silinecek. Emin misiniz?')) return;
         const initialCount = channels.length;
         channels = channels.filter(c => c.Encrypted === 'No');
         const deleted = initialCount - channels.length;
         renderChannels(searchInput.value);
-        alert(`${deleted} encrypted channels deleted!`);
+        alert(`${deleted} adet şifreli kanal silindi!`);
     });
 
     // 3. Delete Radios
     document.getElementById('del-radio-btn').addEventListener('click', () => {
-        if (!confirm('All radio channels will be permanently deleted. Are you sure?')) return;
+        if (!confirm('Tüm radyo kanalları kalıcı olarak silinecek. Emin misiniz?')) return;
         const initialCount = channels.length;
         channels = channels.filter(c => c.Type !== 'Radio');
         const deleted = initialCount - channels.length;
         renderChannels(searchInput.value);
-        alert(`${deleted} radio channels deleted!`);
+        alert(`${deleted} adet radyo kanalı silindi!`);
     });
 
     // --- END NEW FEATURES ---
