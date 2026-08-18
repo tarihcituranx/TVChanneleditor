@@ -286,7 +286,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
                 <div class="col-action" style="display:flex; gap:5px;">
                     <button class="btn info-btn" style="padding:4px 8px; background:rgba(var(--accent-rgb), 0.1); color:var(--accent); border:1px solid rgba(var(--accent-rgb), 0.2);" onclick="showChannelInfo(${li.dataset.index})" aria-label="${escapeHTML(ch.Name)} detayları">
-                        ℹ️
+                        <svg class="icon" width="14" height="14"><use href="#icon-info"/></svg>
                     </button>
                     <button class="delete-btn" onclick="deleteChannel(${li.dataset.index})" aria-label="${escapeHTML(ch.Name)} kanalını sil">
                         <svg class="icon" width="16" height="16"><use href="#icon-x"/></svg>
