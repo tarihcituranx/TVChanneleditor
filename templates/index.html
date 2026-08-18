@@ -34,16 +34,28 @@
         <div class="search-box">
             <input type="text" id="search-input" placeholder="Kanal ara...">
         </div>
-        <div class="actions">
-            <button id="magic-wand-btn" class="btn magic" title="Önceden ayarlanmış listeleri uygular">🪄 Sihirli Değnek</button>
-            <button id="save-template-btn" class="btn primary-outline" style="background:transparent; color:var(--accent); border:1px solid var(--accent);">🛠️ Şablon Oluşturucu</button>
-            <button id="lock-selected-btn" class="btn magic" style="display:none;">🔒 Seçilileri Kilitle</button>
+                <div class="actions" style="display: flex; gap: 10px; margin-bottom: 15px; flex-wrap: wrap;">
+            <button class="btn secondary" id="delete-selected-btn" style="display:none;">
+                <svg class="icon" width="16" height="16"><use href="#icon-trash"/></svg>
+                Seçilileri Sil (<span id="sel-count">0</span>)
+            </button>
+            <button id="lock-selected-btn" class="btn magic" style="display:none;"><svg class="icon" width="16" height="16"><use href="#icon-lock"/></svg> Seçilileri Kilitle</button>
             <button id="fav-selected-btn" class="btn magic" style="display:none;">⭐ Seçilileri Favorile</button>
-            <button id="delete-selected-btn" class="btn danger" style="display:none;">Seçilileri Sil (<span id="sel-count">0</span>)</button>
-            <button id="del-encrypted-btn" class="btn danger-outline">Şifrelileri Sil</button>
-            <button id="del-radio-btn" class="btn danger-outline">Radyoları Sil</button>
+            <button class="btn danger-outline" id="del-encrypted-btn">
+                <svg class="icon" width="16" height="16"><use href="#icon-lock"/></svg> Şifrelileri Sil
+            </button>
+            <button class="btn danger-outline" id="del-radio-btn">
+                <svg class="icon" width="16" height="16"><use href="#icon-trash"/></svg> Radyoları Sil
+            </button>
+            <div style="flex:1;"></div>
+            <button class="btn primary-outline" id="magic-wand-btn" style="background:transparent; color:var(--accent); border:1px solid var(--accent);">
+                <svg class="icon" width="16" height="16"><use href="#icon-wand"/></svg> Sihirli Değnek
+            </button>
+            <button id="save-template-btn" class="btn primary-outline" style="background:transparent; color:var(--accent); border:1px solid var(--accent);">🛠️ Şablon Oluşturucu</button>
             <button id="export-share-btn" class="btn magic" style="background: #e85d00; color: white;">📱 Cihaza Aktar</button>
-            <button id="save-btn" class="btn primary">Kaydet ve İndir</button>
+            <button class="btn primary" id="save-btn">
+                <svg class="icon" width="16" height="16"><use href="#icon-save"/></svg> Kaydet ve İndir
+            </button>
         </div>
     </div>
 

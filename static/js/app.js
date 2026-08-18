@@ -135,7 +135,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function handleFile(file) {
         const nameLower = file.name.toLowerCase();
         if (!nameLower.endsWith('.scm') && !nameLower.endsWith('.zip') && !nameLower.endsWith('.tll') && !nameLower.endsWith('.xml') && !nameLower.endsWith('.db')) {
-            alert('Lütfen desteklenen bir dosya formatı yükleyin (.scm, .zip, .tll, sdb.xml, servicelist.db).');
+            toast('Lütfen desteklenen bir dosya formatı yükleyin (.scm, .zip, .tll, sdb.xml, servicelist.db).', 'danger');
             return;
         }
         
@@ -153,7 +153,7 @@ document.addEventListener('DOMContentLoaded', () => {
         .then(res => res.json())
         .then(data => {
             if (data.error) {
-                alert(data.error);
+                toast(data.error, 'danger');
                 browseBtn.textContent = 'Choose File';
                 return;
             }
@@ -166,7 +166,7 @@ document.addEventListener('DOMContentLoaded', () => {
         })
         .catch(err => {
             console.error(err);
-            alert('An error occurred during upload.');
+            toast('An error occurred during upload.', 'danger');
             browseBtn.textContent = 'Choose File';
         });
     }
@@ -251,16 +251,20 @@ document.addEventListener('DOMContentLoaded', () => {
             let tooltipText = `Frekans: ${ch.Freq} MHz\nPolarizasyon: ${polLabel}\nSembol Oranı: ${ch.Sym}`;
 
             li.innerHTML = `
-                <div class="col-drag" role="button" tabindex="0" aria-label="Kanalı taşı: ${escapeHTML(ch.Name)}">⋮⋮</div>
+                <div class="col-drag" role="button" tabindex="0" aria-label="Kanalı taşı: ${escapeHTML(ch.Name)}">
+                    <svg class="icon" width="18" height="18"><use href="#icon-grip"/></svg>
+                </div>
                 <div class="col-check"><input type="checkbox" class="row-checkbox" data-idx="${li.dataset.index}" aria-label="${escapeHTML(ch.Name)} kanalını seç"></div>
                 <div class="col-no" aria-hidden="true">${index + 1}</div>
                 <div class="col-flags">
-                    <span class="flag-icon lock-icon ${ch.Lock ? 'active' : ''}" role="button" tabindex="0" aria-pressed="${ch.Lock ? 'true' : 'false'}" aria-label="${escapeHTML(ch.Name)} için Çocuk Kilidi" title="Çocuk Kilidi" onclick="toggleFlag(${li.dataset.index}, 'Lock')" onkeydown="if(event.key==='Enter') toggleFlag(${li.dataset.index}, 'Lock')">🔒</span>
+                    <span class="flag-icon lock-icon ${ch.Lock ? 'active' : ''}" role="button" tabindex="0" aria-pressed="${ch.Lock ? 'true' : 'false'}" aria-label="${escapeHTML(ch.Name)} için Çocuk Kilidi" title="Çocuk Kilidi" onclick="toggleFlag(${li.dataset.index}, 'Lock')" onkeydown="if(event.key==='Enter') toggleFlag(${li.dataset.index}, 'Lock')">
+                        <svg class="icon" width="16" height="16"><use href="${ch.Lock ? '#icon-lock' : '#icon-unlock'}"/></svg>
+                    </span>
                     <span class="flag-icon fav-icon ${ch.Fav1 ? 'active' : ''}" role="button" tabindex="0" aria-pressed="${ch.Fav1 ? 'true' : 'false'}" aria-label="${escapeHTML(ch.Name)} için Favori 1" title="Favori" onclick="toggleFlag(${li.dataset.index}, 'Fav1')" onkeydown="if(event.key==='Enter') toggleFlag(${li.dataset.index}, 'Fav1')">⭐</span>
                 </div>
                 <div style="display:flex; align-items:center; flex:1; gap:12px; overflow:hidden;">
                     ${avatarHtml}
-                    <div class="col-name" contenteditable="true" spellcheck="false" onblur="updateChannelName(${li.dataset.index}, this.innerText)" title="Yeniden adlandırmak için tıklayın" style="flex:1;">${escapeHTML(ch.Name)}</div>
+                    <div class="col-name" contenteditable="true" spellcheck="false" data-mobile-info="${ch.Type} · ${ch.Freq} ${ch.Pol} ${ch.Sym}" onblur="updateChannelName(${li.dataset.index}, this.innerText)" title="Yeniden adlandırmak için tıklayın" style="flex:1;">${escapeHTML(ch.Name)}</div>
                 </div>
                 <div class="col-type">${ch.Type}</div>
                 <div class="col-freq" aria-label="Frekans: ${ch.Freq} ${ch.Pol} ${ch.Sym}" title="${tooltipText}" style="cursor:help;">
@@ -268,8 +272,12 @@ document.addEventListener('DOMContentLoaded', () => {
                     ${freqWarning}
                 </div>
                 <div class="col-action" style="display:flex; gap:5px;">
-                    <button class="btn info-btn" style="padding:4px 8px; font-size:14px; background:rgba(59, 130, 246, 0.1); color:var(--accent); border:1px solid rgba(59, 130, 246, 0.2);" onclick="showChannelInfo(${li.dataset.index})" aria-label="${escapeHTML(ch.Name)} detayları">ℹ️</button>
-                    <button class="delete-btn" onclick="deleteChannel(${li.dataset.index})" aria-label="${escapeHTML(ch.Name)} kanalını sil">✕</button>
+                    <button class="btn info-btn" style="padding:4px 8px; background:rgba(59, 130, 246, 0.1); color:var(--accent); border:1px solid rgba(59, 130, 246, 0.2);" onclick="showChannelInfo(${li.dataset.index})" aria-label="${escapeHTML(ch.Name)} detayları">
+                        ℹ️
+                    </button>
+                    <button class="delete-btn" onclick="deleteChannel(${li.dataset.index})" aria-label="${escapeHTML(ch.Name)} kanalını sil">
+                        <svg class="icon" width="16" height="16"><use href="#icon-x"/></svg>
+                    </button>
                 </div>
             `;
             
@@ -285,51 +293,39 @@ document.addEventListener('DOMContentLoaded', () => {
                 updateSelectedCount();
             });
 
-            // Drag and Drop ordering
-            li.addEventListener('dragstart', handleDragStart);
-            li.addEventListener('dragover', handleDragOver);
-            li.addEventListener('drop', handleDrop);
-            li.addEventListener('dragend', handleDragEnd);
-
             channelList.appendChild(li);
         });
         
         saveDraftToLocal();
     }
 
-    let dragSrcEl = null;
-
-    function handleDragStart(e) {
-        dragSrcEl = this;
-        e.dataTransfer.effectAllowed = 'move';
-        e.dataTransfer.setData('text/html', this.innerHTML);
-        this.classList.add('dragging');
-    }
-
-    function handleDragOver(e) {
-        if (e.preventDefault) { e.preventDefault(); }
-        e.dataTransfer.dropEffect = 'move';
-        return false;
-    }
-
-    function handleDrop(e) {
-        if (e.stopPropagation) { e.stopPropagation(); }
-        if (dragSrcEl !== this) {
-            const srcIndex = parseInt(dragSrcEl.dataset.index);
-            const tgtIndex = parseInt(this.dataset.index);
-            
-            // Reorder array
-            const item = channels.splice(srcIndex, 1)[0];
-            channels.splice(tgtIndex, 0, item);
-            
+    // Initialize SortableJS
+    new Sortable(channelList, {
+        handle: '.col-drag', // handle's class
+        animation: 150,
+        ghostClass: 'sortable-ghost',
+        dragClass: 'sortable-drag',
+        onEnd: function (evt) {
+            if (evt.oldIndex === evt.newIndex) return;
+            const item = channels.splice(evt.oldIndex, 1)[0];
+            channels.splice(evt.newIndex, 0, item);
             renderChannels(searchInput.value);
+            saveDraftToLocal();
         }
-        return false;
-    }
+    });
 
-    function handleDragEnd(e) {
-        this.classList.remove('dragging');
-    }
+    // Custom Toast Notification System
+    window.toast = function(message, type = 'success') {
+        const el = document.createElement('div');
+        el.className = `toast toast-${type}`;
+        el.textContent = message;
+        document.getElementById('toast-container').appendChild(el);
+        requestAnimationFrame(() => el.classList.add('show'));
+        setTimeout(() => {
+            el.classList.remove('show');
+            el.addEventListener('transitionend', () => el.remove());
+        }, 3200);
+    };
 
     window.deleteChannel = function(index) {
         channels.splice(index, 1);
@@ -510,7 +506,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     saveTemplateBtn.addEventListener('click', () => {
         if (channels.length === 0) {
-            alert('Please upload an SCM file first.');
+            toast('Please upload an SCM file first.', 'danger');
             return;
         }
         builderCart = [];
@@ -549,7 +545,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     saveBuilderBtn.addEventListener('click', () => {
         if (builderCart.length === 0) {
-            alert('Your cart is empty! Please add channels from left to right.');
+            toast('Your cart is empty! Please add channels from left to right.', 'danger');
             return;
         }
         const tName = prompt('Bu mükemmel şablona ne isim vermek istersiniz?');
@@ -558,7 +554,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const customList = builderCart.map(c => c.Name);
         localStorage.setItem('scm_custom_' + tName, JSON.stringify(customList));
         builderModal.classList.add('hidden');
-        alert('Template saved successfully! You can call it with one click from the Magic Wand menu.');
+        toast('Şablon başarıyla kaydedildi! ✨ Sihirli değnek menüsünden kullanabilirsiniz.', 'success');
     });
 
     applyBtn.addEventListener('click', () => {
@@ -579,7 +575,7 @@ document.addEventListener('DOMContentLoaded', () => {
         channels = [...newOrder, ...remaining];
         renderChannels(searchInput.value);
         modal.classList.add('hidden');
-        alert('Seçilen şablon başarıyla uygulandı! ✨');
+        toast('Seçilen şablon başarıyla uygulandı! ✨', 'success');
     });
 
     // 2. Delete Encrypted
@@ -619,13 +615,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 saveBtn.textContent = 'Save and Download';
                 localStorage.removeItem('channel_draft');
             } else {
-                alert('Generation error: ' + data.error);
+                toast('Generation error: ' + data.error, 'danger');
                 saveBtn.textContent = 'Save and Download';
             }
         })
         .catch(err => {
             console.error(err);
-            alert('An error occurred.');
+            toast('An error occurred.', 'danger');
             saveBtn.textContent = 'Save and Download';
         });
     });
@@ -648,11 +644,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (data.success) {
                     prompt('Aşağıdaki kodu diğer cihazda "Kod ile İçe Aktar" bölümüne girin. (10 dakika geçerlidir)', data.code);
                 } else {
-                    alert('Hata: ' + data.error);
+                    toast('Hata: ' + data.error, 'danger');
                 }
             }).catch(() => {
                 exportShareBtn.textContent = '📱 Cihaza Aktar';
-                alert('Bağlantı hatası.');
+                toast('Bağlantı hatası.', 'danger');
             });
         });
     }
@@ -673,13 +669,13 @@ document.addEventListener('DOMContentLoaded', () => {
                     editorSection.classList.remove('hidden');
                     renderChannels();
                     saveDraftToLocal();
-                    alert('Taslak başarıyla aktarıldı! ✨ Kaldığınız yerden devam edebilirsiniz.');
+                    toast('Taslak başarıyla aktarıldı! ✨ Kaldığınız yerden devam edebilirsiniz.', 'success');
                 } else {
-                    alert('Hata: ' + data.error);
+                    toast('Hata: ' + data.error, 'danger');
                 }
             }).catch(() => {
                 importShareBtn.textContent = '📱 Kod ile İçe Aktar';
-                alert('Bağlantı hatası.');
+                toast('Bağlantı hatası.', 'danger');
             });
         });
         });
@@ -714,7 +710,7 @@ document.addEventListener('DOMContentLoaded', () => {
         let typeHtml = ch.Type === 'HD' ? `<span class="badge" style="background:var(--accent); color:white; padding:4px 8px; border-radius:4px; font-size:12px;">TV HD</span>` : ch.Type;
         document.getElementById('info-type').innerHTML = typeHtml;
         
-        document.getElementById('info-enc').innerHTML = ch.Encrypted === 'Yes' ? '🔒 Evet' : '🔓 Hayır';
+        document.getElementById('info-enc').innerHTML = ch.Encrypted === 'Yes' ? '<svg class="icon" width="14" height="14"><use href="#icon-lock"/></svg> Evet' : '<svg class="icon" width="14" height="14"><use href="#icon-unlock"/></svg> Hayır';
         
         // Advanced Tech details
         
