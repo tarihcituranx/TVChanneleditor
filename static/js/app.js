@@ -367,6 +367,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     const delSelectedBtn = document.getElementById('delete-selected-btn');
+    const lockSelectedBtn = document.getElementById('lock-selected-btn');
+    const favSelectedBtn = document.getElementById('fav-selected-btn');
     const selectAllCheckbox = document.getElementById('select-all');
     const selCountSpan = document.getElementById('sel-count');
 
@@ -383,7 +385,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function updateSelectedCount() {
         selCountSpan.textContent = selectedIndices.size;
-        delSelectedBtn.style.display = selectedIndices.size > 0 ? 'inline-block' : 'none';
+        const displayStyle = selectedIndices.size > 0 ? 'inline-block' : 'none';
+        delSelectedBtn.style.display = displayStyle;
+        if(lockSelectedBtn) lockSelectedBtn.style.display = displayStyle;
+        if(favSelectedBtn) favSelectedBtn.style.display = displayStyle;
     }
 
     selectAllCheckbox.addEventListener('change', (e) => {
@@ -410,6 +415,28 @@ document.addEventListener('DOMContentLoaded', () => {
         renderChannels(searchInput.value);
         updateSelectedCount();
     });
+
+    if (lockSelectedBtn) {
+        lockSelectedBtn.addEventListener('click', () => {
+            let anyUnlocked = Array.from(selectedIndices).some(idx => !channels[idx].Lock);
+            let targetState = anyUnlocked ? true : false;
+            selectedIndices.forEach(idx => {
+                channels[idx].Lock = targetState;
+            });
+            renderChannels(searchInput.value);
+        });
+    }
+
+    if (favSelectedBtn) {
+        favSelectedBtn.addEventListener('click', () => {
+            let anyUnfaved = Array.from(selectedIndices).some(idx => !channels[idx].Fav1);
+            let targetState = anyUnfaved ? true : false;
+            selectedIndices.forEach(idx => {
+                channels[idx].Fav1 = targetState;
+            });
+            renderChannels(searchInput.value);
+        });
+    }
 
     saveTemplateBtn.addEventListener('click', () => {
         if (channels.length === 0) {
