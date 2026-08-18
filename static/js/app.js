@@ -260,7 +260,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     <div style="border-bottom: 1px dotted rgba(156,163,175,0.5); display:inline-block;">${ch.Freq} ${ch.Pol} ${ch.Sym}</div>
                     ${freqWarning}
                 </div>
-                <div class="col-action">
+                <div class="col-action" style="display:flex; gap:5px;">
+                    <button class="btn info-btn" style="padding:4px 8px; font-size:14px; background:rgba(59, 130, 246, 0.1); color:var(--accent); border:1px solid rgba(59, 130, 246, 0.2);" onclick="showChannelInfo(${li.dataset.index})" aria-label="${escapeHTML(ch.Name)} detayları">ℹ️</button>
                     <button class="delete-btn" onclick="deleteChannel(${li.dataset.index})" aria-label="${escapeHTML(ch.Name)} kanalını sil">✕</button>
                 </div>
             `;
@@ -674,6 +675,41 @@ document.addEventListener('DOMContentLoaded', () => {
                 alert('Bağlantı hatası.');
             });
         });
+        });
     }
+
+    // Modal elements
+    const infoModal = document.getElementById('info-modal');
+    const closeInfoBtn = document.getElementById('close-info-btn');
+
+    closeInfoBtn.addEventListener('click', () => {
+        infoModal.classList.add('hidden');
+    });
+
+    window.showChannelInfo = function(idx) {
+        const ch = channels[idx];
+        if (!ch) return;
+
+        // Generate Avatar again
+        let cleanName = ch.Name.replace(/[^a-zA-Z0-9ğüşıöçĞÜŞİÖÇ]/g, '').trim();
+        let letters = cleanName.substring(0, 2).toUpperCase() || 'TV';
+        let hash = 0;
+        for (let i = 0; i < ch.Name.length; i++) hash = ch.Name.charCodeAt(i) + ((hash << 5) - hash);
+        let hue = Math.abs(hash % 360);
+
+        document.getElementById('info-avatar').innerHTML = `<div class="channel-avatar" style="background: hsl(${hue}, 65%, 45%); width:40px; height:40px; font-size:16px;">${letters}</div>`;
+        document.getElementById('info-name').textContent = ch.Name;
+        document.getElementById('info-no').textContent = ch.No;
+        document.getElementById('info-freq').innerHTML = `<span class="font-monospace">${ch.Freq} MHz</span>`;
+        document.getElementById('info-pol').textContent = ch.Pol === 'V' ? 'Dikey (V)' : ch.Pol === 'H' ? 'Yatay (H)' : ch.Pol;
+        document.getElementById('info-sym').innerHTML = `<span class="font-monospace">${ch.Sym} ksps</span>`;
+        
+        let typeHtml = ch.Type === 'HD' ? `<span class="badge" style="background:var(--accent); color:white; padding:4px 8px; border-radius:4px; font-size:12px;">TV HD</span>` : ch.Type;
+        document.getElementById('info-type').innerHTML = typeHtml;
+        
+        document.getElementById('info-enc').innerHTML = ch.Encrypted === 'Yes' ? '🔒 Evet' : '🔓 Hayır';
+
+        infoModal.classList.remove('hidden');
+    };
 
 });
