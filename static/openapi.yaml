@@ -37,13 +37,12 @@ components:
   schemas:
     ErrorResponse:
       type: object
+      required:
+        - error
       properties:
         error:
           type: string
-          example: invalid_file
-        message:
-          type: string
-          example: "The uploaded file format is not supported."
+          example: "Dosya bulunamadı"
 
     Channel:
       type: object
@@ -99,15 +98,25 @@ components:
     UploadResponse:
       type: object
       required:
+        - success
         - brand
+        - format
         - session_id
         - channels
       properties:
+        success:
+          type: boolean
+          example: true
         brand:
           type: string
           description: Detected TV brand.
           enum: [samsung, lg, sony, hisense, unknown]
           example: samsung
+        format:
+          type: string
+          description: Detected internal file format.
+          enum: [scm, zip, tll, sdb.xml, servicelist.db]
+          example: scm
         session_id:
           type: string
           description: Temporary session identifier returned after successful parsing. Pass this exact value to /download.
