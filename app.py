@@ -208,6 +208,16 @@ def openapi_txt():
     with open('static/openapi.yaml', 'r') as f:
         return Response(f.read(), mimetype='text/plain')
 
+@app.route('/api/version')
+def api_version():
+    import os
+    commit = os.environ.get('RENDER_GIT_COMMIT', 'local')
+    return jsonify({
+        "status": "online",
+        "version": "1.0.0",
+        "commit": commit
+    })
+
 @app.route('/glossary')
 def glossary():
     return render_lang('glossary.html')
