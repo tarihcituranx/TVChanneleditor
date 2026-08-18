@@ -482,6 +482,10 @@ Allow: /faq
 Disallow: /upload
 Disallow: /build
 Disallow: /download
+Disallow: /health
+Disallow: /api/version
+Disallow: /api/docs
+Allow: /api/openapi.txt
 Sitemap: https://tvchanneleditor.onrender.com/sitemap.xml
 """
     return content, 200, {'Content-Type': 'text/plain; charset=utf-8'}
