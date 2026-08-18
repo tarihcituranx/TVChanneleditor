@@ -295,10 +295,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     ${freqWarning}
                 </div>
                 <div class="col-action" style="margin-left:auto; display:flex; gap:4px; justify-content:flex-end;">
-                    <button class="icon-btn" title="Kilitle/Aç" onclick="toggleFlag(${li.dataset.index}, 'Lock')" style="border:none; background:transparent; color:${ch.Lock ? 'var(--danger)' : 'var(--text-secondary)'}; padding:4px;">
+                    <button class="icon-btn" aria-label="Kilitle veya Aç" title="Kilitle/Aç" onclick="toggleFlag(${li.dataset.index}, 'Lock')" style="border:none; background:transparent; color:${ch.Lock ? 'var(--danger)' : 'var(--text-secondary)'}; padding:4px;">
                         <svg class="icon" width="16" height="16"><use href="${ch.Lock ? '#icon-lock' : '#icon-unlock'}"/></svg>
                     </button>
-                    <button class="icon-btn info-btn" title="Detaylar" onclick="showChannelInfo(${li.dataset.index})" style="border:none; background:transparent; padding:4px;">
+                    <button class="icon-btn info-btn" aria-label="Kanal Detayları" title="Detaylar" onclick="showChannelInfo(${li.dataset.index})" style="border:none; background:transparent; padding:4px;">
                         <svg class="icon" width="16" height="16"><use href="#icon-info"/></svg>
                     </button>
                 </div>

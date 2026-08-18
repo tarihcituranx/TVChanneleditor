@@ -610,8 +610,44 @@ a:hover { opacity: 0.8; text-decoration: underline; }
     background: var(--card-bg);
 }
 
+/* Accessibility Focus */
+*:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+}
+
 @media (max-width: 600px) {
     .builder-content { width: 100%; }
     .split-screen { flex-direction: column; height: auto; }
     .pane { min-height: 180px; }
+    
+    /* Channel List Card View for Mobile */
+    .channel-list li {
+        flex-wrap: wrap !important;
+        padding: 12px 10px !important;
+        position: relative;
+    }
+    .col-drag, .col-check, .col-no { align-self: flex-start; }
+    .col-name { 
+        flex: 1 1 100% !important; 
+        order: 10; 
+        margin-top: 8px; 
+        font-size: 1.05rem !important; 
+        white-space: normal !important; 
+    }
+    .col-freq, .col-type { 
+        order: 11; 
+        margin-top: 6px;
+        flex: 0 0 auto !important;
+        margin-right: 10px;
+    }
+    .col-flags { 
+        order: 12; 
+        margin-top: 6px; 
+    }
+    .col-action { 
+        position: absolute; 
+        right: 10px; 
+        top: 10px; 
+    }
 }
