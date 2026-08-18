@@ -18,7 +18,7 @@ Kök eleman: <SdbRoot>
   <CheckSum>
 """
 
-import xml.etree.ElementTree as ET
+from defusedxml import ElementTree as ET
 import struct
 import os
 

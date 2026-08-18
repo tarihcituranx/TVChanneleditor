@@ -197,7 +197,7 @@ def upload():
     filepath = os.path.join(tmpdir, safe_name)
     file.save(filepath)
 
-    if ext == '.zip':
+    if ext in ['.zip', '.scm']:
         import zipfile as zf
         try:
             with zf.ZipFile(filepath) as z:
@@ -205,9 +205,14 @@ def upload():
                 if total > ZIPBOMB_MAX_BYTES:
                     shutil.rmtree(tmpdir, ignore_errors=True)
                     return jsonify({'error': 'ZIP dosyası çok büyük (açılmış boyut limiti aşıldı).'}), 400
+                # Ayrıca Path Traversal kontrolü (Sadece önlem, extract eden core sınıfları da yapıyor)
+                for info in z.infolist():
+                    if info.filename.startswith('/') or '..' in info.filename:
+                        shutil.rmtree(tmpdir, ignore_errors=True)
+                        return jsonify({'error': 'Güvenlik ihlali: Dosya içinde tehlikeli dizin yolları tespit edildi.'}), 400
         except Exception as e:
             shutil.rmtree(tmpdir, ignore_errors=True)
-            return jsonify({'error': f'Geçersiz ZIP dosyası: {str(e)}'}), 400
+            return jsonify({'error': f'Geçersiz arşiv dosyası: {str(e)}'}), 400
 
     session_id = str(uuid.uuid4())
     _sessions[session_id] = {

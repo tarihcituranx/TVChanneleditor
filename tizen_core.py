@@ -14,7 +14,11 @@ class TizenEditor:
 
     def extract(self):
         with zipfile.ZipFile(self.zip_path, 'r') as zip_ref:
-            zip_ref.extractall(self.temp_dir)
+            for info in zip_ref.infolist():
+                # Path traversal korumasi
+                if info.filename.startswith('/') or '..' in info.filename:
+                    continue
+                zip_ref.extract(info, self.temp_dir)
         
         # Detect database files
         for f in os.listdir(self.temp_dir):
