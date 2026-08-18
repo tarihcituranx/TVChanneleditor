@@ -258,3 +258,34 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+
+  /api/version:
+    get:
+      tags:
+        - System
+      operationId: getApiVersion
+      summary: Get current API version and deployment status
+      description: Returns the semantic version, latest git commit hash, and the exact timestamp when the server was deployed/booted. Useful for cache-busting and deployment verification.
+      responses:
+        '200':
+          description: Version info
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: online
+                  version:
+                    type: string
+                    example: 1.0.0
+                  commit:
+                    type: string
+                    description: The active Git commit hash running on the server.
+                    example: 97401a523...
+                  deployed_at:
+                    type: string
+                    format: date-time
+                    description: Timestamp of when the server application booted.
+                    example: 2026-08-18T19:00:51.123456Z
