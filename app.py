@@ -200,12 +200,7 @@ def robots():
 
 @app.route('/.well-known/security.txt')
 def security_txt():
-    content = (
-        "Contact: mailto:security@tvchanneleditor.onrender.com\n"
-        "Preferred-Languages: en, tr\n"
-        "Canonical: https://tvchanneleditor.onrender.com/.well-known/security.txt\n"
-    )
-    return Response(content, mimetype="text/plain")
+    return app.send_static_file('security.txt')
 
 @app.route('/glossary')
 def glossary():
