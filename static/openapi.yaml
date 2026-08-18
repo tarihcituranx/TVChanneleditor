@@ -134,6 +134,18 @@ components:
           minItems: 1
           items:
             $ref: '#/components/schemas/Channel'
+      example:
+        session_id: sess_01J8ABC123XYZ
+        channels:
+          - No: 1
+            Name: "TRT 1 HD"
+            Type: "TV"
+            Freq: "11958"
+            Pol: "V"
+            Sym: "27500"
+            Fav: "Yes"
+            Lock: "No"
+            Encrypted: "No"
 
 # Explicitly make auth optional
 security:
