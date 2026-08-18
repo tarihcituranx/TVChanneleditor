@@ -51,13 +51,13 @@
             </a>
             <div class="nav-links">
                 <a href="/en" class="nav-link {% if request.path == '/en' %}active{% endif %}">Editor</a>
-                <a href="/guide" class="nav-link {% if request.path == '/guide' %}active{% endif %}">📖 Guide</a>
-                <a href="/supported" class="nav-link {% if request.path == '/supported' %}active{% endif %}">📺 Supported TVs</a>
-                <a href="/faq" class="nav-link {% if request.path == '/faq' %}active{% endif %}">❓ FAQ</a>
+                <a href="/guide" class="nav-link {% if request.path == '/guide' %}active{% endif %}">Guide</a>
+                <a href="/supported" class="nav-link {% if request.path == '/supported' %}active{% endif %}">Supported TVs</a>
+                <a href="/faq" class="nav-link {% if request.path == '/faq' %}active{% endif %}">FAQ</a>
             </div>
             <div class="nav-actions">
-                <button id="colorblind-toggle" class="icon-btn" aria-label="Colorblind Mode" title="Colorblind Mode">👁️</button>
-                <button id="theme-toggle" class="icon-btn" aria-label="Toggle Theme" title="Dark/Light Theme">🌙</button>
+                <button id="colorblind-toggle" class="icon-btn" aria-label="Colorblind Mode" title="Colorblind Mode">Colors</button>
+                <button id="theme-toggle" class="icon-btn" aria-label="Toggle Theme" title="Dark/Light Theme">Theme</button>
                 <select id="lang-selector" class="lang-select" aria-label="Language">
                     <option value="tr">🇹🇷 TR</option>
                     <option value="en">🇬🇧 EN</option>
@@ -75,12 +75,12 @@
             <div class="footer-grid">
                 <div class="footer-col">
                     <h4>TV Channel Editor</h4>
-                    <p>Edit your Samsung, Sony & Hisense channel lists safely in your browser within seconds.</p>
+                    <p>Channel editing runs in your browser. Some file-processing operations use temporary server memory.</p>
                 </div>
                 <div class="footer-col">
                     <h4>Open Source References</h4>
                     <ul>
-                        <li><a href="https://github.com/tarihcituranx/TVChanneleditor" target="_blank">⭐ GitHub Repository</a></li>
+                        <li><a href="https://github.com/tarihcituranx/TVChanneleditor" target="_blank">GitHub Repository</a></li>
                         <li><a href="https://github.com/iltekin/scm-editor" target="_blank">İltekin (inspiration)</a></li>
                         <li><a href="https://github.com/PredatH0r/ChanSort" target="_blank">ChanSort / SamyGO</a></li>
                         <li><a href="https://uydu.turksat.com.tr" target="_blank">Türksat A.Ş.</a></li>
@@ -90,8 +90,8 @@
                     <h4>Legal & Privacy</h4>
                     <ul>
                         <li><a href="/privacy">🛡️ Privacy Policy (KVKK)</a></li>
-                        <li><span style="color:var(--text-secondary); font-size:0.8rem;">Processed safely on temporary server RAM.</span></li>
-                        <li><span style="color:var(--text-secondary); font-size:0.8rem;">Auto-deleted after processing.</span></li>
+                        <li><span style="color:var(--text-secondary); font-size:0.8rem;">Temporary data is automatically deleted after processing.</span></li>
+                        <li><span style="color:var(--text-secondary); font-size:0.8rem;"></span></li>
                     </ul>
                 </div>
             </div>
@@ -115,7 +115,7 @@
 
         function applyTheme(theme) {
             html.setAttribute('data-theme', theme);
-            themeToggle.textContent = theme === 'light' ? '☀️' : '🌙';
+            themeToggle.textContent = theme === 'light' ? '☀️' : '';
             themeToggle.title = theme === 'light' ? 'Light Mode' : 'Dark Mode';
         }
 
