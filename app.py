@@ -425,22 +425,6 @@ def sitemap():
 </urlset>"""
     return content, 200, {'Content-Type': 'application/xml; charset=utf-8'}
 
-@app.route('/.well-known/security.txt')
-def security_txt():
-    return send_file(os.path.join(app.root_path, 'static', 'security.txt'), mimetype='text/plain')
-
-@app.errorhandler(404)
-def page_not_found(e):
-    return render_lang('404.html'), 404
-
-@app.errorhandler(429)
-def too_many_requests(e):
-    return jsonify({'error': 'Çok fazla istek. Lütfen bekleyin.'}), 429
-
-
-@app.route('/security')
-def security_page():
-    return render_template('security.html')
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))
