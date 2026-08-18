@@ -285,9 +285,12 @@ document.addEventListener('DOMContentLoaded', () => {
                     ${ch.Lock === true ? '<span title="Çocuk Kilidi" style="color:var(--danger); display:flex; align-items:center;"><svg class="icon" width="14" height="14"><use href="#icon-lock"/></svg></span>' : ''}
                     ${freqWarning}
                 </div>
-                <div class="col-action" style="margin-left:auto;">
-                    <button class="icon-btn info-btn" title="Detaylar" onclick="showChannelInfo(${li.dataset.index})">
-                        <svg class="icon" width="14" height="14"><use href="#icon-info"/></svg>
+                <div class="col-action" style="margin-left:auto; display:flex; gap:4px; justify-content:flex-end;">
+                    <button class="icon-btn" title="Kilitle/Aç" onclick="toggleFlag(${li.dataset.index}, 'Lock')" style="border:none; background:transparent; color:${ch.Lock ? 'var(--danger)' : 'var(--text-secondary)'}; padding:4px;">
+                        <svg class="icon" width="16" height="16"><use href="${ch.Lock ? '#icon-lock' : '#icon-unlock'}"/></svg>
+                    </button>
+                    <button class="icon-btn info-btn" title="Detaylar" onclick="showChannelInfo(${li.dataset.index})" style="border:none; background:transparent; padding:4px;">
+                        <svg class="icon" width="16" height="16"><use href="#icon-info"/></svg>
                     </button>
                 </div>
             `;
