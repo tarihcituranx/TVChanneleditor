@@ -37,11 +37,30 @@ class _Schema2017:
             Name=?, ShortName=?, ParentalLock=?, Visible=?, Selectable=?
         WHERE Pid=?
     """
+    def get_update_service_params(self, upd, ci, pid):
+        return (
+            upd.get('name', ci.get('name', '')),
+            ci.get('_short', ''),
+            1 if upd.get('lock', False) else 0,
+            0 if upd.get('hide', False) else 1,
+            0 if upd.get('skip', False) else 1,
+            pid
+        )
+        
     update_channel_item  = """
         UPDATE favoriteitem SET
             ChannelNum=?, Selectable=?, Visible=?
         WHERE FavoriteId=? AND ServiceId=?
     """
+    def get_update_item_params(self, upd, list_pid, pid):
+        return (
+            upd.get('num', -1),
+            0 if upd.get('skip', False) else 1,
+            0 if upd.get('hide', False) else 1,
+            list_pid,
+            pid
+        )
+
     delete_fav_items     = "DELETE FROM favoriteitem WHERE FavoriteId IN (SELECT Pid FROM favoritelist WHERE Name LIKE 'FAV%')"
     insert_fav_item      = "INSERT INTO favoriteitem (FavoriteId, ServiceId, ChannelNum) VALUES (?, ?, ?)"
 
@@ -61,18 +80,30 @@ class _Schema2021:
     """
     update_service       = """
         UPDATE service SET
-
-            Name=?, ShortName=?, ParentalLock=?, Visible=?, Selectable=?,
-            Fav1=?, Fav2=?, Fav3=?, Fav4=?
+            Name=?, Service11=?, Visible=?, Selectable=?
         WHERE Pid=?
     """
+    def get_update_service_params(self, upd, ci, pid):
+        return (
+            upd.get('name', ci.get('name', '')),
+            1 if upd.get('lock', False) else 0,
+            0 if upd.get('hide', False) else 1,
+            0 if upd.get('skip', False) else 1,
+            pid
+        )
     update_channel_item  = """
-        UPDATE servicelistitem SET
-            No=?, Deleted=?, Protected=?, Selectable=?, Visible=?
+        UPDATE ServiceItem SET
+            ChannelNumber=?
         WHERE ServiceListId=? AND ServiceId=?
     """
-    delete_fav_items     = "DELETE FROM servicelistitem WHERE ServiceListId IN (SELECT Pid FROM servicelist WHERE Name LIKE 'FAV%')"
-    insert_fav_item      = "INSERT INTO servicelistitem (ServiceListId, ServiceId, No) VALUES (?, ?, ?)"
+    def get_update_item_params(self, upd, list_pid, pid):
+        return (
+            upd.get('num', -1),
+            list_pid,
+            pid
+        )
+    delete_fav_items     = "DELETE FROM ServiceItem WHERE ServiceListId IN (SELECT Pid FROM servicelist WHERE Name LIKE 'FAV%')"
+    insert_fav_item      = "INSERT INTO ServiceItem (ServiceListId, ServiceId, ChannelNumber) VALUES (?, ?, ?)"
 
 
 # --------------------------------------------------------------------------- #
@@ -417,18 +448,8 @@ class HisenseEditor:
             # 1) Service tablosunu güncelle (isim, skip, lock, hide, fav)
             for pid, ci in self._channels_by_id.items():
                 upd = update_map.get(pid, ci)
-                cur.execute(schema.update_service, (
-                    upd.get('name',  ci.get('name', '')),
-                    ci.get('_short', ''),
-                    1 if upd.get('lock', False) else 0,
-                    0 if upd.get('hide', False) else 1,
-                    0 if upd.get('skip', False) else 1,
-                    1 if upd.get('fav1', False) else 0,
-                    1 if upd.get('fav2', False) else 0,
-                    1 if upd.get('fav3', False) else 0,
-                    1 if upd.get('fav4', False) else 0,
-                    pid,
-                ))
+                params = schema.get_update_service_params(upd, ci, pid)
+                cur.execute(schema.update_service, params)
 
             # 2) Fiziksel kanal listesini güncelle (program numaraları)
             for ch in self._channels:
@@ -446,27 +467,13 @@ class HisenseEditor:
                 if list_pid is None:
                     continue
 
-                cur.execute(schema.update_channel_item, (
-                    upd.get('num', -1),
-                    1 if upd.get('deleted', False) else 0,
-                    1 if upd.get('lock', False) else 0,
-                    0 if upd.get('skip', False) else -1,
-                    0 if upd.get('hide', False) else -1,
-                    list_pid,
-                    pid,
-                ))
+                item_params = schema.get_update_item_params(upd, list_pid, pid)
+                cur.execute(schema.update_channel_item, item_params)
 
                 # $all listesini de güncelle
                 if self._pid_all:
-                    cur.execute(schema.update_channel_item, (
-                        upd.get('num', -1),
-                        1 if upd.get('deleted', False) else 0,
-                        1 if upd.get('lock', False) else 0,
-                        0 if upd.get('skip', False) else -1,
-                        0 if upd.get('hide', False) else -1,
-                        self._pid_all,
-                        pid,
-                    ))
+                    item_all_params = schema.get_update_item_params(upd, self._pid_all, pid)
+                    cur.execute(schema.update_channel_item, item_all_params)
 
             # 3) FAV listelerini güncelle (sil + tekrar ekle)
             cur.execute(schema.delete_fav_items)
