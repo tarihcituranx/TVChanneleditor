@@ -194,10 +194,6 @@ def faq():
 def privacy():
     return render_lang('privacy.html')
 
-@app.route('/robots.txt')
-def robots():
-    return Response("User-agent: *\nDisallow:", mimetype="text/plain")
-
 @app.route('/.well-known/security.txt')
 def security_txt():
     return app.send_static_file('security.txt')
