@@ -198,6 +198,16 @@ def privacy():
 def security_txt():
     return app.send_static_file('security.txt')
 
+@app.route('/api/docs')
+def api_docs():
+    return render_template('swagger.html')
+
+@app.route('/api/openapi.txt')
+def openapi_txt():
+    # Yapay zekaların YAML MIME tipine takılmadan saf metin olarak okuyabilmesi için
+    with open('static/openapi.yaml', 'r') as f:
+        return Response(f.read(), mimetype='text/plain')
+
 @app.route('/glossary')
 def glossary():
     return render_lang('glossary.html')
