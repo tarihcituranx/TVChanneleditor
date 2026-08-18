@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+
+{% block title %}Terimler Sözlüğü - TV Channel Editor{% endblock %}
+
+{% block content %}
+<div class="card border-0 shadow-sm" style="max-width: 800px; margin: 0 auto; text-align: left; padding: 30px;">
+    <h1 style="color: var(--text-primary); margin-bottom: 20px;">📖 Uydu ve TV Terimleri Sözlüğü</h1>
+    <p style="color: var(--text-secondary); line-height: 1.6; margin-bottom: 30px;">
+        Televizyon kanal ayarlarında veya detay sayfamızda gördüğünüz teknik terimlerin ve kısaltmaların (İngilizce ve Türkçe) ne anlama geldiğini aşağıdan öğrenebilirsiniz.
+    </p>
+
+    <div class="glossary-list" style="display: flex; flex-direction: column; gap: 20px;">
+        <div class="glossary-item" style="background: rgba(0,0,0,0.02); padding: 15px; border-radius: 8px; border-left: 4px solid var(--primary);">
+            <h3 style="margin-top: 0; margin-bottom: 10px; color: var(--accent);">SID (Service ID)</h3>
+            <p style="margin: 0; color: var(--text-secondary); line-height: 1.5;">
+                <strong>Türkçesi:</strong> Servis Kimliği / Kanal Numarası<br>
+                <strong>Açıklama:</strong> Bir frekans (paket) içerisinde yayın yapan her kanala atanan benzersiz kimlik numarasıdır. Televizyonunuz kanalları ismine göre değil, bu SID numarasına göre birbirinden ayırır.
+            </p>
+        </div>
+
+        <div class="glossary-item" style="background: rgba(0,0,0,0.02); padding: 15px; border-radius: 8px; border-left: 4px solid var(--primary);">
+            <h3 style="margin-top: 0; margin-bottom: 10px; color: var(--accent);">TSID (Transport Stream ID)</h3>
+            <p style="margin: 0; color: var(--text-secondary); line-height: 1.5;">
+                <strong>Türkçesi:</strong> Taşıma Akışı Kimliği<br>
+                <strong>Açıklama:</strong> Aynı uydu üzerinde bulunan yüzlerce frekans paketinin (taşıyıcının) her birine verilen özel koddur. Orijinal Network ID (ONID) ile birlikte çalışır.
+            </p>
+        </div>
+
+        <div class="glossary-item" style="background: rgba(0,0,0,0.02); padding: 15px; border-radius: 8px; border-left: 4px solid var(--primary);">
+            <h3 style="margin-top: 0; margin-bottom: 10px; color: var(--accent);">ONID (Original Network ID)</h3>
+            <p style="margin: 0; color: var(--text-secondary); line-height: 1.5;">
+                <strong>Türkçesi:</strong> Orijinal Ağ Kimliği<br>
+                <strong>Açıklama:</strong> Yayıncı ağının (Örneğin Türksat, Astra, Hotbird) dünya çapında tescillenmiş benzersiz kodudur. Bu sayede cihazınız hangi uydu şebekesinde gezindiğini anlar.
+            </p>
+        </div>
+
+        <div class="glossary-item" style="background: rgba(0,0,0,0.02); padding: 15px; border-radius: 8px; border-left: 4px solid var(--primary);">
+            <h3 style="margin-top: 0; margin-bottom: 10px; color: var(--accent);">Video PID / Audio PID</h3>
+            <p style="margin: 0; color: var(--text-secondary); line-height: 1.5;">
+                <strong>Türkçesi:</strong> Görüntü ve Ses Paket Kimliği (Packet Identifier)<br>
+                <strong>Açıklama:</strong> Bir kanalın verisi uzaydan gelirken parça parça paketler halindedir. Video PID sadece görüntü parçalarının, Audio PID ise sadece ses parçalarının kimliğidir. Televizyon bu parçaları ayıklayarak birleştirir.
+            </p>
+        </div>
+
+        <div class="glossary-item" style="background: rgba(0,0,0,0.02); padding: 15px; border-radius: 8px; border-left: 4px solid var(--primary);">
+            <h3 style="margin-top: 0; margin-bottom: 10px; color: var(--accent);">PCR PID (Program Clock Reference)</h3>
+            <p style="margin: 0; color: var(--text-secondary); line-height: 1.5;">
+                <strong>Türkçesi:</strong> Program Saat Referansı<br>
+                <strong>Açıklama:</strong> Uzaydan gelen ses (Audio) ve görüntü (Video) paketlerinin saniyesi saniyesine senkronize biçimde birleşmesini (dudak hareketleri ile sesin aynı anda çıkmasını) sağlayan referans saati kodudur.
+            </p>
+        </div>
+
+        <div class="glossary-item" style="background: rgba(0,0,0,0.02); padding: 15px; border-radius: 8px; border-left: 4px solid var(--primary);">
+            <h3 style="margin-top: 0; margin-bottom: 10px; color: var(--accent);">FEC (Forward Error Correction)</h3>
+            <p style="margin: 0; color: var(--text-secondary); line-height: 1.5;">
+                <strong>Türkçesi:</strong> İleri Hata Düzeltme Oranı<br>
+                <strong>Açıklama:</strong> Kötü hava koşullarında veya sinyal zayıflığında, kaybolan verilerin uydu alıcısı tarafından tahmin edilerek (matematiksel olarak) düzeltilme oranıdır. Genellikle 3/4, 5/6 gibi oranlarla ifade edilir.
+            </p>
+        </div>
+
+        <div class="glossary-item" style="background: rgba(0,0,0,0.02); padding: 15px; border-radius: 8px; border-left: 4px solid var(--primary);">
+            <h3 style="margin-top: 0; margin-bottom: 10px; color: var(--accent);">Symbol Rate (Sembol Oranı)</h3>
+            <p style="margin: 0; color: var(--text-secondary); line-height: 1.5;">
+                <strong>Türkçesi:</strong> Veri İletim Hızı<br>
+                <strong>Açıklama:</strong> Saniyede uydudan alıcıya aktarılan dijital veri (sembol) miktarıdır. Türksat uydusunda genellikle 27500 (ksps) veya 30000 (ksps) olarak kullanılır.
+            </p>
+        </div>
+    </div>
+
+    <div style="margin-top: 30px; text-align: center;">
+        <a href="/" class="btn primary">Ana Sayfaya Dön</a>
+    </div>
+</div>
+{% endblock %}

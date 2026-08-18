@@ -160,6 +160,10 @@ def faq():
 def privacy():
     return render_lang('privacy.html')
 
+@app.route('/glossary')
+def glossary():
+    return render_lang('glossary.html')
+
 @app.route('/upload', methods=['POST'])
 def upload():
     client_ip = request.headers.get('X-Forwarded-For', request.remote_addr).split(',')[0].strip()

@@ -1,0 +1,67 @@
+{% extends "base_en.html" %}
+
+{% block title %}Glossary - TV Channel Editor{% endblock %}
+
+{% block content %}
+<div class="card border-0 shadow-sm" style="max-width: 800px; margin: 0 auto; text-align: left; padding: 30px;">
+    <h1 style="color: var(--text-primary); margin-bottom: 20px;">📖 Satellite & TV Terms Glossary</h1>
+    <p style="color: var(--text-secondary); line-height: 1.6; margin-bottom: 30px;">
+        Learn the meanings of technical terms and abbreviations (English and their functions) you see in TV channel settings or our detail page below.
+    </p>
+
+    <div class="glossary-list" style="display: flex; flex-direction: column; gap: 20px;">
+        <div class="glossary-item" style="background: rgba(0,0,0,0.02); padding: 15px; border-radius: 8px; border-left: 4px solid var(--primary);">
+            <h3 style="margin-top: 0; margin-bottom: 10px; color: var(--accent);">SID (Service ID)</h3>
+            <p style="margin: 0; color: var(--text-secondary); line-height: 1.5;">
+                <strong>Explanation:</strong> A unique identification number assigned to each channel broadcasting within a frequency (multiplex). Your television distinguishes channels from each other based on this SID number, not by their names.
+            </p>
+        </div>
+
+        <div class="glossary-item" style="background: rgba(0,0,0,0.02); padding: 15px; border-radius: 8px; border-left: 4px solid var(--primary);">
+            <h3 style="margin-top: 0; margin-bottom: 10px; color: var(--accent);">TSID (Transport Stream ID)</h3>
+            <p style="margin: 0; color: var(--text-secondary); line-height: 1.5;">
+                <strong>Explanation:</strong> A specific code given to each of the hundreds of frequency packets (carriers) located on the same satellite. It works in conjunction with the Original Network ID (ONID).
+            </p>
+        </div>
+
+        <div class="glossary-item" style="background: rgba(0,0,0,0.02); padding: 15px; border-radius: 8px; border-left: 4px solid var(--primary);">
+            <h3 style="margin-top: 0; margin-bottom: 10px; color: var(--accent);">ONID (Original Network ID)</h3>
+            <p style="margin: 0; color: var(--text-secondary); line-height: 1.5;">
+                <strong>Explanation:</strong> The globally registered unique code of the broadcasting network (e.g., Astra, Hotbird). This allows your device to understand which satellite network it is navigating.
+            </p>
+        </div>
+
+        <div class="glossary-item" style="background: rgba(0,0,0,0.02); padding: 15px; border-radius: 8px; border-left: 4px solid var(--primary);">
+            <h3 style="margin-top: 0; margin-bottom: 10px; color: var(--accent);">Video PID / Audio PID</h3>
+            <p style="margin: 0; color: var(--text-secondary); line-height: 1.5;">
+                <strong>Explanation:</strong> A channel's data comes from space in fragmented packets. The Video PID is the identity of only the image (video) fragments, and the Audio PID is the identity of only the sound fragments. The TV extracts and combines these pieces.
+            </p>
+        </div>
+
+        <div class="glossary-item" style="background: rgba(0,0,0,0.02); padding: 15px; border-radius: 8px; border-left: 4px solid var(--primary);">
+            <h3 style="margin-top: 0; margin-bottom: 10px; color: var(--accent);">PCR PID (Program Clock Reference)</h3>
+            <p style="margin: 0; color: var(--text-secondary); line-height: 1.5;">
+                <strong>Explanation:</strong> The reference clock code that ensures the audio and video packets coming from the satellite merge synchronously (e.g., matching lip movements with the sound) down to the exact second.
+            </p>
+        </div>
+
+        <div class="glossary-item" style="background: rgba(0,0,0,0.02); padding: 15px; border-radius: 8px; border-left: 4px solid var(--primary);">
+            <h3 style="margin-top: 0; margin-bottom: 10px; color: var(--accent);">FEC (Forward Error Correction)</h3>
+            <p style="margin: 0; color: var(--text-secondary); line-height: 1.5;">
+                <strong>Explanation:</strong> The mathematical rate at which lost data is guessed and corrected by the satellite receiver during bad weather conditions or weak signals. It is usually expressed as ratios like 3/4 or 5/6.
+            </p>
+        </div>
+
+        <div class="glossary-item" style="background: rgba(0,0,0,0.02); padding: 15px; border-radius: 8px; border-left: 4px solid var(--primary);">
+            <h3 style="margin-top: 0; margin-bottom: 10px; color: var(--accent);">Symbol Rate</h3>
+            <p style="margin: 0; color: var(--text-secondary); line-height: 1.5;">
+                <strong>Explanation:</strong> The amount of digital data (symbols) transmitted from the satellite to the receiver per second. It is generally used as 27500 (ksps) or 30000 (ksps) for popular satellites.
+            </p>
+        </div>
+    </div>
+
+    <div style="margin-top: 30px; text-align: center;">
+        <a href="/" class="btn primary">Back to Home</a>
+    </div>
+</div>
+{% endblock %}
