@@ -100,6 +100,39 @@ AI asistanı ile geliştirme yapıyorsanız [AI_INSTRUCTIONS.md](AI_INSTRUCTIONS
 
 ---
 
+## 🔌 Geliştirici API & AI Ajanı Kullanımı (Developer API)
+
+Bu proje yalnızca bir web sitesi değil, aynı zamanda yapay zeka ajanlarının (AI Agents) ve geliştiricilerin doğrudan kodla kullanabileceği bir **REST API** olarak tasarlanmıştır. Projeyi kendi sunucunuza kurduktan sonra veya `tvchanneleditor.onrender.com` üzerinden aşağıdaki API uç noktalarını kullanarak dosyaları otomatize edebilirsiniz:
+
+### 1. Kanal Listesini Oku (Upload)
+```bash
+curl -X POST -F "file=@channel_list.scm" https://tvchanneleditor.onrender.com/upload
+```
+**Yanıt (JSON):**
+Kanal listesi bozulmadan okunur ve JSON olarak döner.
+```json
+{
+  "brand": "samsung",
+  "session_id": "uuid-v4-session-id",
+  "channels": [
+    { "No": 1, "Name": "TRT 1", "Freq": "11958", "Pol": "V" }
+  ]
+}
+```
+
+### 2. Değiştirilmiş Listeyi İndir (Download)
+Düzenlediğiniz veya AI ajanının sıraladığı yeni JSON listesini aynı `session_id` ile sunucuya yollayın ve orijinal dosya uzantısında yeni kanal listenizi ikili (binary) olarak geri alın.
+```bash
+curl -X POST https://tvchanneleditor.onrender.com/download \
+     -H "Content-Type: application/json" \
+     -d '{"session_id": "uuid-v4-session-id", "channels": [{"No": 1, "Name": "TRT 1", "Freq": "11958", "Pol": "V"}]}' \
+     --output new_channel_list.scm
+```
+
+> **Not:** Ücretsiz sunucudaki (Render) API erişimi saatlik **50 istek** ile sınırlandırılmıştır. Yoğun AI/Bot kullanımı için projeyi kendi bilgisayarınızda veya sunucunuzda çalıştırmanız tavsiye edilir.
+
+---
+
 ## 🙏 Teşekkürler
 
 - **[İltekin/scm-editor](https://github.com/iltekin/scm-editor)** — İlk ilham kaynağı
