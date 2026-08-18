@@ -11,6 +11,8 @@ window.toast = function(message, type = 'success') {
     };
 
 document.addEventListener('DOMContentLoaded', () => {
+    console.log('%c Crafted by @tarihcituranx 🚀 ', 'background: #0d1117; color: #58a6ff; font-size: 14px; padding: 6px 12px; border-radius: 4px; font-family: monospace; border: 1px solid #30363d;');
+    
     const dropZone = document.getElementById('upload-section');
     const fileInput = document.getElementById('file-input');
     const browseBtn = document.getElementById('browse-btn');
