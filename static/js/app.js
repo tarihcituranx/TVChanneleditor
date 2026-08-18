@@ -272,7 +272,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     ${freqWarning}
                 </div>
                 <div class="col-action" style="display:flex; gap:5px;">
-                    <button class="btn info-btn" style="padding:4px 8px; background:rgba(59, 130, 246, 0.1); color:var(--accent); border:1px solid rgba(59, 130, 246, 0.2);" onclick="showChannelInfo(${li.dataset.index})" aria-label="${escapeHTML(ch.Name)} detayları">
+                    <button class="btn info-btn" style="padding:4px 8px; background:rgba(var(--accent-rgb), 0.1); color:var(--accent); border:1px solid rgba(var(--accent-rgb), 0.2);" onclick="showChannelInfo(${li.dataset.index})" aria-label="${escapeHTML(ch.Name)} detayları">
                         ℹ️
                     </button>
                     <button class="delete-btn" onclick="deleteChannel(${li.dataset.index})" aria-label="${escapeHTML(ch.Name)} kanalını sil">
@@ -677,7 +677,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 importShareBtn.textContent = '📱 Kod ile İçe Aktar';
                 toast('Bağlantı hatası.', 'danger');
             });
-        });
         });
     }
 
