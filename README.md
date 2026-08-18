@@ -129,7 +129,17 @@ curl -X POST https://tvchanneleditor.onrender.com/download \
      --output new_channel_list.scm
 ```
 
-> **Not:** Ücretsiz sunucudaki (Render) API erişimi saatlik **50 istek** ile sınırlandırılmıştır. Yoğun AI/Bot kullanımı için projeyi kendi bilgisayarınızda veya sunucunuzda çalıştırmanız tavsiye edilir.
+### 3. Rate Limit & API Key (Bypass)
+Sistem varsayılan olarak IP başına **50 istek/saat** kotasıyla çalışır (DDoS koruması). Yapay zeka servislerinin (örneğin OpenAI sunucularının) aynı IP üzerinden yüzlerce istek atıp banlanmasını engellemek için, API isteklerinize bir şifre ekleyebilirsiniz:
+```bash
+curl -H "X-API-Key: YOUR_SECRET_KEY" -F "file=@list.scm" ...
+```
+Bunun çalışması için sunucunun (veya bilgisayarınızın) çevre değişkenlerine (Environment Variables) yetkili şifreleri eklemeniz gerekir:
+```bash
+export VALID_API_KEYS="secret-key-1,secret-key-2"
+```
+
+> **Not:** Ücretsiz sunucudaki (Render) genel web erişimi saatlik **50 istek** ile sınırlandırılmıştır. Yoğun AI/Bot kullanımı için kendi API şifrenizi tanımlayabilir veya projeyi kendi sunucunuzda çalıştırabilirsiniz.
 
 ---
 
