@@ -8,9 +8,9 @@ import tempfile
 import shutil
 import urllib.parse
 from collections import defaultdict
-from flask import Flask, Response
+from flask import Flask, Response, request, jsonify, send_file, render_template
 from flask_limiter import Limiter
-from flask_limiter.util import get_remote_address, request, jsonify, send_file, render_template
+from flask_limiter.util import get_remote_address
 
 import scm_core
 import tizen_core
