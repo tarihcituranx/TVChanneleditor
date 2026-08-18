@@ -120,6 +120,10 @@ components:
           description: Detected TV brand.
           enum: [samsung, lg, sony, hisense, unknown]
           example: samsung
+        original_filename:
+          type: string
+          description: The name of the original uploaded file, useful for identifying the TV model.
+          example: lg_xxLA691S.tll
         format:
           type: string
           description: Detected internal file format.
@@ -241,14 +245,14 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
 
-  /download:
+  /build:
     post:
       tags:
         - Channel Lists
-      operationId: downloadChannelList
-      summary: Repack and download a modified channel list
+      operationId: buildChannelList
+      summary: Repack modified channel list
       description: |
-        Rebuild the channel-list file associated with a session. The returned file preserves the original TV/brand format. The order of the channels array determines the resulting channel order.
+        Rebuild the channel-list file associated with a session. The returned JSON contains a `download_url` to fetch the binary file.
       requestBody:
         required: true
         content:
@@ -257,12 +261,17 @@ paths:
               $ref: '#/components/schemas/DownloadRequest'
       responses:
         '200':
-          description: Rebuilt binary channel-list file.
+          description: Rebuild successful.
           content:
-            application/octet-stream:
+            application/json:
               schema:
-                type: string
-                format: binary
+                type: object
+                properties:
+                  message:
+                    type: string
+                  download_url:
+                    type: string
+                    example: "/download/sess_123/channels.scm"
         '400':
           description: Invalid request or expired session_id.
           content:
@@ -271,6 +280,38 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
         '429':
           description: Rate limit exceeded.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /download/{session_id}/{filename}:
+    get:
+      tags:
+        - Channel Lists
+      operationId: downloadBinaryFile
+      summary: Download the rebuilt binary file
+      parameters:
+        - name: session_id
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: filename
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Rebuilt binary channel-list file.
+          content:
+            application/octet-stream:
+              schema:
+                type: string
+                format: binary
+        '404':
+          description: File not found or expired.
           content:
             application/json:
               schema:

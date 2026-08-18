@@ -312,7 +312,12 @@ def upload():
         else:
             channels = scm_core.get_channels(filepath)
 
-        return jsonify({'session_id': session_id, 'channels': channels, 'brand': brand})
+        return jsonify({
+            'session_id': session_id, 
+            'channels': channels, 
+            'brand': brand,
+            'original_filename': file.filename
+        })
     except Exception as e:
         shutil.rmtree(tmpdir, ignore_errors=True)
         del _sessions[session_id]
