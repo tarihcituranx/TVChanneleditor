@@ -231,6 +231,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }
             
+            // Generate Avatar Logo
+            let cleanName = ch.Name.replace(/[^a-zA-Z0-9ğüşıöçĞÜŞİÖÇ]/g, '').trim();
+            let letters = cleanName.substring(0, 2).toUpperCase() || 'TV';
+            let hash = 0;
+            for (let i = 0; i < ch.Name.length; i++) hash = ch.Name.charCodeAt(i) + ((hash << 5) - hash);
+            let hue = Math.abs(hash % 360);
+            const avatarHtml = `<div class="channel-avatar" style="background: hsl(${hue}, 65%, 45%);" title="${escapeHTML(ch.Name)}">${letters}</div>`;
+
+            // Format Polarization tooltip
+            let polLabel = ch.Pol === 'V' ? 'Dikey (V)' : ch.Pol === 'H' ? 'Yatay (H)' : ch.Pol;
+            let tooltipText = `Frekans: ${ch.Freq} MHz\nPolarizasyon: ${polLabel}\nSembol Oranı: ${ch.Sym}`;
+
             li.innerHTML = `
                 <div class="col-drag" role="button" tabindex="0" aria-label="Kanalı taşı: ${escapeHTML(ch.Name)}">⋮⋮</div>
                 <div class="col-check"><input type="checkbox" class="row-checkbox" data-idx="${li.dataset.index}" aria-label="${escapeHTML(ch.Name)} kanalını seç"></div>
@@ -239,10 +251,13 @@ document.addEventListener('DOMContentLoaded', () => {
                     <span class="flag-icon lock-icon ${ch.Lock ? 'active' : ''}" role="button" tabindex="0" aria-pressed="${ch.Lock ? 'true' : 'false'}" aria-label="${escapeHTML(ch.Name)} için Çocuk Kilidi" title="Çocuk Kilidi" onclick="toggleFlag(${li.dataset.index}, 'Lock')" onkeydown="if(event.key==='Enter') toggleFlag(${li.dataset.index}, 'Lock')">🔒</span>
                     <span class="flag-icon fav-icon ${ch.Fav1 ? 'active' : ''}" role="button" tabindex="0" aria-pressed="${ch.Fav1 ? 'true' : 'false'}" aria-label="${escapeHTML(ch.Name)} için Favori 1" title="Favori" onclick="toggleFlag(${li.dataset.index}, 'Fav1')" onkeydown="if(event.key==='Enter') toggleFlag(${li.dataset.index}, 'Fav1')">⭐</span>
                 </div>
-                <div class="col-name" contenteditable="true" spellcheck="false" onblur="updateChannelName(${li.dataset.index}, this.innerText)" title="Yeniden adlandırmak için tıklayın">${escapeHTML(ch.Name)}</div>
+                <div style="display:flex; align-items:center; flex:1; gap:12px; overflow:hidden;">
+                    ${avatarHtml}
+                    <div class="col-name" contenteditable="true" spellcheck="false" onblur="updateChannelName(${li.dataset.index}, this.innerText)" title="Yeniden adlandırmak için tıklayın" style="flex:1;">${escapeHTML(ch.Name)}</div>
+                </div>
                 <div class="col-type">${ch.Type}</div>
-                <div class="col-freq" aria-label="Frekans: ${ch.Freq} ${ch.Pol} ${ch.Sym}">
-                    <div>${ch.Freq} ${ch.Pol} ${ch.Sym}</div>
+                <div class="col-freq" aria-label="Frekans: ${ch.Freq} ${ch.Pol} ${ch.Sym}" title="${tooltipText}" style="cursor:help;">
+                    <div style="border-bottom: 1px dotted rgba(156,163,175,0.5); display:inline-block;">${ch.Freq} ${ch.Pol} ${ch.Sym}</div>
                     ${freqWarning}
                 </div>
                 <div class="col-action">
