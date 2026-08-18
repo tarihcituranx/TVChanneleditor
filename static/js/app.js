@@ -174,6 +174,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 browseBtn.classList.remove('tv-scanning');
                 return;
             }
+            if (!data.channels || data.channels.length === 0) {
+                toast('Geçersiz veya boş kanal listesi! Lütfen doğru formatta bir dosya yükleyin.', 'danger');
+                browseBtn.classList.remove('tv-scanning');
+                return;
+            }
             channels = data.channels.map((ch, i) => normalizeChannel(ch, i));
             currentSessionId = data.session_id;
             showBrandBadge(data.brand, channels.length);
