@@ -32,9 +32,19 @@ components:
       name: X-API-Key
       description: |
         Optional API key to bypass the standard 50 requests/hour IP rate limit.
-        If you don't have a key, simply omit this header.
+        Without a key, the endpoint works normally up to the rate limit.
 
   schemas:
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+          example: invalid_file
+        message:
+          type: string
+          example: "The uploaded file format is not supported."
+
     Channel:
       type: object
       description: A single TV or radio channel.
@@ -44,7 +54,11 @@ components:
       properties:
         No:
           type: integer
-          description: Channel list position (Logical Channel Number).
+          description: |
+            Current position/Logical Channel Number.
+            Note: The array order is authoritative for channel ordering during download.
+            This 'No' field is informational and may be recalculated during export.
+          minimum: 1
           example: 1
         Name:
           type: string
@@ -92,6 +106,7 @@ components:
         brand:
           type: string
           description: Detected TV brand.
+          enum: [samsung, lg, sony, hisense, unknown]
           example: samsung
         session_id:
           type: string
@@ -120,7 +135,7 @@ components:
           items:
             $ref: '#/components/schemas/Channel'
 
-# Note: Security is optional, so it is declared per-operation or at root with an empty requirement option
+# Explicitly make auth optional
 security:
   - {}
   - ApiKeyAuth: []
@@ -134,6 +149,12 @@ paths:
       summary: Upload and parse a TV channel list
       description: |
         Upload a supported TV channel list file. The server detects the TV brand, parses the channels, and creates a temporary editing session.
+        
+        Supported formats by brand:
+        - Samsung: .scm, .zip
+        - LG: .tll
+        - Sony: sdb.xml
+        - Hisense: servicelist.db
       requestBody:
         required: true
         content:
@@ -154,12 +175,42 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UploadResponse'
+              examples:
+                samsung_upload:
+                  summary: Successful Samsung Parse
+                  value:
+                    success: true
+                    brand: samsung
+                    format: scm
+                    session_id: sess_01J8ABC123XYZ
+                    channels:
+                      - No: 1
+                        Name: "TRT 1 HD"
+                        Type: "TV"
+                        Freq: "11958"
+                        Pol: "V"
+                        Sym: "27500"
+                        Fav: "Yes"
+                        Lock: "No"
+                        Encrypted: "No"
         '400':
           description: Invalid, unsupported, or malformed channel list file.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
         '413':
           description: Uploaded file is too large (Max 2MB).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
         '429':
           description: Rate limit exceeded (50 per hour). Use X-API-Key to bypass.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
 
   /download:
     post:
@@ -185,5 +236,13 @@ paths:
                 format: binary
         '400':
           description: Invalid request or expired session_id.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
         '429':
           description: Rate limit exceeded.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
