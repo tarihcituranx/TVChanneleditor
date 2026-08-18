@@ -22,42 +22,46 @@ import os
 class _Schema2017:
     """Hisense 2017 DB şeması (favoritelist / favoriteitem tabloları)."""
     channel_list_table   = 'favoritelist'
-    dvb_service_table    = 'DVBService'
+    dvb_service_table    = 'dvbservice'
     short_name_field     = 's.ShortName'
-    parental_lock_field  = 'digs.ParentalLock'
+    parental_lock_field  = 's.ParentalLock'
+    enc_field            = 's.Encrypted'
+    media_type_field     = 's.MediaType'
     select_channels      = """
-        SELECT fi.FavoriteId, fi.ServiceId, fi.Number, fi.Selectable, fi.Visible,
-               fi.Deleted, fi.Protected, fi.LCN
+        SELECT fi.FavoriteId, fi.ServiceId, fi.ChannelNum as Number, fi.Selectable, fi.Visible,
+               fi.isDeleted as Deleted, fi.Protected, 0 as LCN
         FROM favoriteitem fi
     """
     update_service       = """
         UPDATE service SET
-            Name=?, ShortName=?, ParentalLock=?, Visible=?, Selectable=?,
-            Fav1=?, Fav2=?, Fav3=?, Fav4=?
+            Name=?, ShortName=?, ParentalLock=?, Visible=?, Selectable=?
         WHERE Pid=?
     """
     update_channel_item  = """
         UPDATE favoriteitem SET
-            Number=?, Deleted=?, Protected=?, Selectable=?, Visible=?
+            ChannelNum=?, Selectable=?, Visible=?
         WHERE FavoriteId=? AND ServiceId=?
     """
     delete_fav_items     = "DELETE FROM favoriteitem WHERE FavoriteId IN (SELECT Pid FROM favoritelist WHERE Name LIKE 'FAV%')"
-    insert_fav_item      = "INSERT INTO favoriteitem (FavoriteId, ServiceId, Number) VALUES (?, ?, ?)"
+    insert_fav_item      = "INSERT INTO favoriteitem (FavoriteId, ServiceId, ChannelNum) VALUES (?, ?, ?)"
 
 
 class _Schema2021:
-    """Hisense 2021 DB şeması (servicelist / servicelistitem tabloları)."""
+    """Hisense 2021 DB şeması (servicelist / serviceitem tabloları)."""
     channel_list_table   = 'servicelist'
-    dvb_service_table    = 'DvbService'
-    short_name_field     = 'digs.ShortName'
-    parental_lock_field  = 'digs.Service11'
+    dvb_service_table    = 'DigitalService'
+    short_name_field     = '"" as ShortName'
+    parental_lock_field  = 's.Service11'
+    enc_field            = 's.Encrypted'
+    media_type_field     = 's.MediaType'
     select_channels      = """
-        SELECT sli.ServiceListId, sli.ServiceId, sli.No, sli.Selectable, sli.Visible,
-               sli.Deleted, sli.Protected, sli.LCN
-        FROM servicelistitem sli
+        SELECT sli.ServiceListId, sli.ServiceId, sli.ChannelNumber as Number, 1 as Selectable, 1 as Visible,
+               0 as Deleted, 0 as Protected, 0 as LCN
+        FROM ServiceItem sli
     """
     update_service       = """
         UPDATE service SET
+
             Name=?, ShortName=?, ParentalLock=?, Visible=?, Selectable=?,
             Fav1=?, Fav2=?, Fav3=?, Fav4=?
         WHERE Pid=?
@@ -243,18 +247,20 @@ class HisenseEditor:
         short_name_field  = self._schema.short_name_field
         parental_lock_field = self._schema.parental_lock_field
         dvb_table         = self._schema.dvb_service_table
+        enc_field         = self._schema.enc_field
+        media_type_field  = self._schema.media_type_field
 
         try:
             cur.execute(f"""
-                SELECT s.Pid, s.type,
+                SELECT s.Pid, s.Type as svc_type,
                        anls.Frequency,
                        digs.TunerId, digs.Sid,
                        s.Name,
                        {short_name_field},
-                       digs.Encrypted,
+                       {enc_field} as Encrypted,
                        s.Visible, s.Selectable,
-                       {parental_lock_field},
-                       digs.MediaType
+                       {parental_lock_field} as ParentalLock,
+                       {media_type_field} as MediaType
                 FROM service s
                 LEFT OUTER JOIN AnalogService anls ON anls.ServiceId = s.Pid
                 LEFT OUTER JOIN {dvb_table} digs   ON digs.ServiceId = s.Pid
