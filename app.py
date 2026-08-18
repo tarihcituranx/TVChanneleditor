@@ -216,7 +216,8 @@ def health_check():
     return jsonify({
         "status": "alive_and_breathing",
         "pulse": "normal",
-        "message": "Still breathing boss! The server is healthy as a horse.",
+        "message_en": "Still breathing boss! The server is healthy as a horse.",
+        "message_tr": "Nefes alıyorum patron, sunucu turp gibi!",
         "timestamp": datetime.utcnow().isoformat() + "Z"
     })
 
