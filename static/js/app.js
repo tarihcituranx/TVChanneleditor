@@ -12,6 +12,43 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentSessionId = "";
     let frekansData = {};
 
+    /**
+     * LG/Sony/Hisense küçük harfli alanları (id, num, name, type, freq...)
+     * Samsung/Tizen büyük harfli alanlara (Slot, No, Name, Type, Freq...) normalize et.
+     * Samsung/Tizen zaten doğru formatta gelir, sadece eksik alanlar doldurulur.
+     */
+    function normalizeChannel(ch, index) {
+        // Zaten büyük harfli (Samsung/Tizen) ise, eksikleri tamamla ve dön
+        if ('Name' in ch) {
+            if (!('Slot' in ch)) ch.Slot = ch.Slot ?? index;
+            if (!('Freq' in ch)) ch.Freq = '';
+            if (!('Pol'  in ch)) ch.Pol  = '';
+            if (!('Sym'  in ch)) ch.Sym  = '';
+            return ch;
+        }
+        // Küçük harfli (LG/Sony/Hisense) → büyük harfle eşle
+        return {
+            Slot:      ch.id      ?? index,
+            No:        ch.num     ?? index + 1,
+            Name:      ch.name    ?? '',
+            Type:      ch.type    ?? '',
+            Freq:      ch.freq    ?? '',
+            Pol:       ch.pol     ?? '',
+            Sym:       ch.sym     ?? '',
+            Lock:      ch.lock    ?? false,
+            Hide:      ch.hide    ?? false,
+            Skip:      ch.skip    ?? false,
+            Encrypted: ch.encrypted ?? 'No',
+            Fav1:      ch.fav1   ?? false,
+            Fav2:      ch.fav2   ?? false,
+            Fav3:      ch.fav3   ?? false,
+            Fav4:      ch.fav4   ?? false,
+            Fav5:      ch.fav5   ?? false,
+            // build sırasında backend küçük harfli alanları okuyabilsin diye orijinali sakla
+            _brand_fields: ch,
+        };
+    }
+
     // Güncel frekansları yükle
     fetch('/static/data/frekanslar.json')
         .then(res => res.json())
@@ -71,7 +108,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 browseBtn.textContent = 'Choose File';
                 return;
             }
-            channels = data.channels;
+            channels = data.channels.map((ch, i) => normalizeChannel(ch, i));
             currentSessionId = data.session_id;
             renderChannels();
             dropZone.classList.add('hidden');
@@ -212,7 +249,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let TEMPLATES = {};
 
     // Asenkron olarak harici JSON dosyasından hazır şablonları yükle
-    fetch('static/data/templates.json')
+    fetch('/static/data/templates.json')
         .then(res => res.json())
         .then(data => {
             TEMPLATES = data;
@@ -351,7 +388,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         channels.forEach((ch, idx) => {
             const li = document.createElement('li');
-            li.textContent = `${ch.No}. ${ch.Name} (${ch.Type})`;
+            li.textContent = `${idx + 1}. ${ch.Name} (${ch.Type})`;
             li.onclick = () => {
                 builderCart.push(ch);
                 renderBuilderLists();
