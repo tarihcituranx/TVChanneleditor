@@ -818,5 +818,30 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
     });
+});
 
+/* =========================================================================
+ * 🎮 HUMAN EASTER EGGS
+ * ========================================================================= */
+console.log("%c📺 TV Channel Editor'a Hoş Geldin!", "color: #3b82f6; font-size: 20px; font-weight: bold; text-shadow: 1px 1px 2px #000;");
+console.log("%cKodları kurcalamayı sevdiğini biliyorduk. Meraklı geliştiricilere selam olsun! 👋 - Turan KAYA", "color: #10b981; font-size: 14px;");
+
+// Konami Code (Yukarı, Yukarı, Aşağı, Aşağı, Sol, Sağ, Sol, Sağ, B, A)
+const konamiCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
+let konamiIndex = 0;
+document.addEventListener('keydown', (e) => {
+    if (e.key === konamiCode[konamiIndex] || e.key.toLowerCase() === konamiCode[konamiIndex]) {
+        konamiIndex++;
+        if (konamiIndex === konamiCode.length) {
+            alert('🎮 HİLE KODU AKTİF: Turan Kaya saygılar sunar! Ekran 3 saniyeliğine baş aşağı dönüyor...');
+            document.body.style.transition = "transform 1s ease-in-out";
+            document.body.style.transform = "rotate(180deg)";
+            setTimeout(() => {
+                document.body.style.transform = "none";
+            }, 3000);
+            konamiIndex = 0;
+        }
+    } else {
+        konamiIndex = 0;
+    }
 });
