@@ -498,6 +498,26 @@ def sitemap():
     return content, 200, {'Content-Type': 'application/xml; charset=utf-8'}
 
 
+# Error Handlers
+@app.errorhandler(404)
+def not_found_error(error):
+    return jsonify({
+        "error": "404 Not Found",
+        "message": "Bu sayfa veya rotanın varlığından haberdar değiliz. Kaybolmuş olabilirsin!",
+        "message_en": "Are you lost? This endpoint doesn't exist.",
+        "status": "lost"
+    }), 404
+
+@app.errorhandler(500)
+def internal_error(error):
+    return jsonify({
+        "error": "500 Internal Server Error",
+        "pulse": "flatline",
+        "message": "Medic! Sunucuyu kaybettik! Turan'ın acil loglara bakması lazım.",
+        "message_en": "Medic! We lost the server! Turan needs to check the logs.",
+        "status": "dead"
+    }), 500
+
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))
     debug = os.environ.get('FLASK_DEBUG', '0') == '1'
