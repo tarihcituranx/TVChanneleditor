@@ -84,6 +84,11 @@ document.addEventListener('DOMContentLoaded', () => {
             Fav3:      ch.fav3   ?? false,
             Fav4:      ch.fav4   ?? false,
             Fav5:      ch.fav5   ?? false,
+            SID:       ch.sid    ?? undefined,
+            TSID:      ch.tsid   ?? undefined,
+            ONID:      ch.onid   ?? undefined,
+            VidPID:    ch.vidpid ?? undefined,
+            PcrPID:    ch.pcrpid ?? undefined,
             // build sırasında backend küçük harfli alanları okuyabilsin diye orijinali sakla
             _brand_fields: ch,
         };

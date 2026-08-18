@@ -132,7 +132,12 @@ class TizenEditor:
                 'fav2': fav_flags[1],
                 'fav3': fav_flags[2],
                 'fav4': fav_flags[3],
-                'fav5': fav_flags[4]
+                'fav5': fav_flags[4],
+                'sid': srv_id,
+                'tsid': r['tsid'],
+                'onid': r['onid'],
+                'vidpid': r['vidPid'],
+                'pcrpid': r['vidPid']
             }
             channels.append(ch)
             

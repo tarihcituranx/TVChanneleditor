@@ -356,6 +356,8 @@ class HisenseEditor:
                     'encrypted': bool(enc),
                     '_short':   short_name or '',
                     '_list':    '',
+                    'vidpid':   0,
+                    'pcrpid':   0
                 }
                 self._channels_by_id[pid] = ch
 
