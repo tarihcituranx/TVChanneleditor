@@ -265,29 +265,29 @@ document.addEventListener('DOMContentLoaded', () => {
             let tooltipText = `Frekans: ${ch.Freq} MHz\nPolarizasyon: ${polLabel}\nSembol Oranı: ${ch.Sym}`;
 
             li.innerHTML = `
-                <div class="drag-handle" role="button" tabindex="0" aria-label="Taşı" style="cursor:grab; color:var(--text-secondary); padding:10px; margin-left:-10px;">
+                <div class="col-drag drag-handle" role="button" tabindex="0" aria-label="Taşı" title="Sürükle" style="cursor:grab; color:var(--text-secondary); margin-left:-5px;">
                     <svg class="icon" width="18" height="18"><use href="#icon-grip"/></svg>
                 </div>
-                <div class="col-check" style="margin-right:15px;"><input type="checkbox" class="row-checkbox" data-idx="${li.dataset.index}"></div>
-                <div style="flex:1; display:flex; flex-direction:column; justify-content:center; gap:4px; min-width:0;">
-                    <div style="display:flex; align-items:center; gap:10px;">
-                        <span style="font-size:0.85rem; color:var(--text-secondary); font-weight:bold; min-width:25px;">${ch.No}</span>
-                        ${ch.Fav1 ? '<span style="color:var(--warning); font-size:14px;">⭐</span>' : ''}
-                        <div class="col-name" contenteditable="true" spellcheck="false" onblur="updateChannelName(${li.dataset.index}, this.innerText)" style="font-weight:600; font-size:1.05rem; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${escapeHTML(ch.Name)}</div>
-                    </div>
-                    <div style="display:flex; align-items:center; flex-wrap:wrap; gap:8px; font-size:0.8rem; color:var(--text-secondary);">
-                        <span style="background:var(--bg-color); padding:2px 6px; border-radius:4px; border:1px solid var(--border-color);">${ch.Type === 'HD' ? 'Genel TV &middot; HD' : (ch.Type === 'SD' ? 'Genel TV' : ch.Type)}</span>
-                        <span>${ch.Freq} MHz &middot; ${ch.Pol} &middot; ${ch.Sym}</span>
-                        ${ch.Encrypted === 'Yes' ? '<span style="color:var(--danger); display:flex; align-items:center; gap:3px;"><svg class="icon" width="12" height="12"><use href="#icon-lock"/></svg> Şifreli</span>' : ''}
-                        ${freqWarning}
-                    </div>
+                <div class="col-check" style="margin-right:10px;">
+                    <input type="checkbox" class="row-checkbox" data-idx="${li.dataset.index}">
                 </div>
-                <div style="display:flex; align-items:center; gap:5px; margin-left:auto;">
-                    <button class="btn" style="background:transparent; border:none; color:var(--text-secondary); padding:8px; cursor:pointer;" onclick="toggleFlag(${li.dataset.index}, 'Lock')" title="Kilitle">
-                        <svg class="icon" width="16" height="16" style="color:${ch.Lock ? 'var(--danger)' : 'inherit'};"><use href="${ch.Lock ? '#icon-lock' : '#icon-unlock'}"/></svg>
-                    </button>
-                    <button class="btn" style="background:transparent; border:none; color:var(--text-secondary); padding:8px; cursor:pointer;" onclick="showChannelInfo(${li.dataset.index})" title="Detaylar">
-                        <svg class="icon" width="16" height="16"><use href="#icon-info"/></svg>
+                <div class="col-no" style="font-weight:bold;">${ch.No}</div>
+                <div class="col-name" contenteditable="true" spellcheck="false" onblur="updateChannelName(${li.dataset.index}, this.innerText)" title="${escapeHTML(ch.Name)}">${escapeHTML(ch.Name)}</div>
+                <div class="col-type">
+                    <span style="background:var(--bg-color); padding:2px 6px; border-radius:4px; border:1px solid var(--border-color);">${ch.Type === 'HD' ? 'TV &middot; HD' : (ch.Type === 'SD' ? 'TV' : ch.Type)}</span>
+                </div>
+                <div class="col-freq" title="${tooltipText}">
+                    ${ch.Freq} <span style="font-size:0.7rem; opacity:0.6;">${ch.Pol}/${ch.Sym}</span>
+                </div>
+                <div class="col-flags">
+                    ${ch.Fav1 ? '<span title="Favori" style="color:var(--warning); font-size:14px;">⭐</span>' : ''}
+                    ${ch.Encrypted === 'Yes' ? '<span title="Şifreli" style="color:var(--danger); display:flex; align-items:center;"><svg class="icon" width="14" height="14"><use href="#icon-lock"/></svg></span>' : ''}
+                    ${ch.Lock === true ? '<span title="Çocuk Kilidi" style="color:var(--danger); display:flex; align-items:center;"><svg class="icon" width="14" height="14"><use href="#icon-lock"/></svg></span>' : ''}
+                    ${freqWarning}
+                </div>
+                <div class="col-action" style="margin-left:auto;">
+                    <button class="icon-btn info-btn" title="Detaylar" onclick="showChannelInfo(${li.dataset.index})">
+                        <svg class="icon" width="14" height="14"><use href="#icon-info"/></svg>
                     </button>
                 </div>
             `;
