@@ -102,7 +102,11 @@ AI asistanı ile geliştirme yapıyorsanız [AI_INSTRUCTIONS.md](AI_INSTRUCTIONS
 
 ## 🔌 Geliştirici API & AI Ajanı Kullanımı (Developer API)
 
-Bu proje yalnızca bir web sitesi değil, aynı zamanda yapay zeka ajanlarının (AI Agents) ve geliştiricilerin doğrudan kodla kullanabileceği bir **REST API** olarak tasarlanmıştır. Projeyi kendi sunucunuza kurduktan sonra veya `tvchanneleditor.onrender.com` üzerinden aşağıdaki API uç noktalarını kullanarak dosyaları otomatize edebilirsiniz:
+Bu proje yalnızca bir web sitesi değil, aynı zamanda yapay zeka ajanlarının (AI Agents) ve geliştiricilerin doğrudan kodla kullanabileceği bir **REST API** olarak tasarlanmıştır.
+
+> 🤖 **AI Ajanları İçin OpenAPI Şeması:** Sistemin makine tarafından okunabilir güncel Swagger/OpenAPI şemasına [tvchanneleditor.onrender.com/static/openapi.yaml](https://tvchanneleditor.onrender.com/static/openapi.yaml) adresinden ulaşabilirsiniz. Yapay zeka asistanınıza bu linki vermeniz, tüm yetenekleri kavraması için yeterlidir.
+
+Projeyi kendi sunucunuza kurduktan sonra veya `tvchanneleditor.onrender.com` üzerinden aşağıdaki API uç noktalarını kullanarak dosyaları otomatize edebilirsiniz:
 
 ### 1. Kanal Listesini Oku (Upload)
 ```bash
