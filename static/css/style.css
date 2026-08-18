@@ -337,9 +337,7 @@ input[type="checkbox"] { width: 15px; height: 15px; cursor: pointer; accent-colo
     display: flex;
     padding: 0.6rem 1rem;
     background-color: var(--bg-subtle);
-    border: 1px solid var(--border-color);
-    border-top-left-radius: var(--radius-md);
-    border-top-right-radius: var(--radius-md);
+    border-bottom: 1px solid var(--border-color);
     font-weight: 700;
     color: var(--text-muted);
     font-size: 0.72rem;
@@ -600,11 +598,16 @@ a:hover { opacity: 0.8; text-decoration: underline; }
     .page-header h1 { font-size: 1.4rem; }
 }
 
+.table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    background: var(--card-bg);
+}
+
 @media (max-width: 600px) {
-    #channel-list li { flex-wrap: wrap; padding: 0.6rem 0.75rem; }
-    .col-type, .col-freq { display: none; }
-    .col-name { flex: 1 1 100%; margin-bottom: 4px; }
-    .col-name::after { content: attr(data-mobile-info); display: block; font-size: 0.7rem; color: var(--text-muted); margin-top: 2px; font-weight: 400; }
     .builder-content { width: 100%; }
     .split-screen { flex-direction: column; height: auto; }
     .pane { min-height: 180px; }
