@@ -6,144 +6,105 @@
 {% endblock %}
 
 {% block content %}
-<div id="upload-section" style="margin-top:20px;">
-    <div id="drop-zone" style="border: 2px dashed var(--accent); border-radius: 16px; padding: 60px 20px; text-align: center; background: rgba(var(--accent-rgb), 0.03); cursor: pointer; transition: all 0.2s ease;">
-        <svg class="icon" width="48" height="48" style="color:var(--accent); margin-bottom:15px;"><use href="#icon-save"/></svg>
-        <h3 style="margin:0 0 10px 0; font-size:1.5rem; color:var(--text-primary);">Kanal listenizi buraya bırakın</h3>
-        <p style="margin:0 0 20px 0; color:var(--text-secondary);">.scm &middot; .zip &middot; sdb.xml &middot; servicelist.db</p>
+
+<!-- Upload Section -->
+<div id="upload-section" style="padding: 2rem 0;">
+    <div id="drop-zone" class="drop-zone" onclick="document.getElementById('file-input').click()">
+        <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+        <h3>Kanal listenizi buraya bırakın</h3>
+        <p>.scm &middot; .zip &middot; sdb.xml &middot; servicelist.db</p>
         <input type="file" id="file-input" accept=".scm,.zip,.tll,.xml,.db" style="display:none;">
-        <button class="btn primary" onclick="document.getElementById('file-input').click()" style="padding:10px 30px; font-size:1.1rem; border-radius:30px;">Dosya Seç</button>
+        <button class="btn primary" style="margin-top:0.5rem; padding:0.65rem 2rem; border-radius:100px; font-size:1rem;" onclick="event.stopPropagation(); document.getElementById('file-input').click()">Dosya Seç</button>
+        <p style="font-size:0.8rem; color:var(--text-muted); display:flex; align-items:center; gap:5px; margin-top:0.25rem;">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            Güvenli İşlem: Dosyalarınız yalnızca düzenleme anında işlenir, saklanmaz.
+        </p>
     </div>
-    <div style="text-align:center; margin-top:20px; color:var(--text-secondary); font-size:0.9rem;">
-        <span style="display:inline-flex; align-items:center; gap:5px;"><svg class="icon" width="16" height="16"><use href="#icon-lock"/></svg> <strong>Güvenli İşlem:</strong> Dosyalarınız yalnızca düzenleme anında işlenir ve saklanmaz.</span>
-    </div>
-</div>
 </div>
 
-<div id="editor-section" class="hidden" style="display:flex; flex-direction:row; gap:20px; align-items:flex-start;">
+<!-- Editor Section -->
+<div id="editor-section" class="hidden" style="display:flex; flex-direction:row; gap:1.25rem; align-items:flex-start;">
     <div style="flex:1; min-width:0; display:flex; flex-direction:column;">
-    <div id="brand-badge" class="brand-badge hidden"></div>
-    <div class="toolbar" style="display:flex; flex-direction:column; gap:15px; align-items:stretch;">
-        <div style="display: flex; justify-content: space-between; width: 100%; align-items: center; flex-wrap: wrap; gap: 15px;">
-            <div class="search-box" style="flex: 1; min-width: 250px;">
-                <input type="text" id="search-input" placeholder="Kanal ara...">
-            </div>
-            <div class="actions" style="display: flex; gap: 10px; flex-wrap: wrap; justify-content: flex-end;">
-                <button class="btn primary-outline" id="magic-wand-btn" style="background:transparent; color:var(--accent); border:1px solid var(--accent);">
-                    <svg class="icon" width="16" height="16"><use href="#icon-wand"/></svg> Sihirli Değnek
-                </button>
-                <button id="save-template-btn" class="btn primary-outline" style="background:transparent; color:var(--accent); border:1px solid var(--accent);">🛠️ Şablon Oluşturucu</button>
-                <button id="export-share-btn" class="btn magic" style="background: #e85d00; color: white;">📱 Cihaza Aktar</button>
-                <button class="btn primary" id="save-btn">
-                    <svg class="icon" width="16" height="16"><use href="#icon-save"/></svg> Kaydet ve İndir
-                </button>
-            </div>
-        </div>
-        
-        <div class="actions secondary-actions" style="display: flex; gap: 10px; flex-wrap: wrap; padding-top: 15px; border-top: 1px dashed var(--border-color); width: 100%; align-items: center;">
-            <span style="color: var(--text-secondary); font-size: 0.85rem; font-weight:600; text-transform:uppercase; letter-spacing:0.05em; margin-right:10px;">Toplu İşlemler:</span>
-            <button class="btn danger-outline btn-sm" id="del-encrypted-btn">
-                <svg class="icon" width="14" height="14"><use href="#icon-lock"/></svg> Şifrelileri Sil
-            </button>
-            <button class="btn danger-outline btn-sm" id="del-radio-btn">
-                <svg class="icon" width="14" height="14"><use href="#icon-trash"/></svg> Radyoları Sil
-            </button>
-            <button class="btn secondary btn-sm" id="delete-selected-btn" style="display:none;">
-                <svg class="icon" width="14" height="14"><use href="#icon-trash"/></svg> Seçilileri Sil (<span id="sel-count">0</span>)
-            </button>
-            <button id="lock-selected-btn" class="btn secondary btn-sm" style="display:none;"><svg class="icon" width="14" height="14"><use href="#icon-lock"/></svg> Seçilileri Kilitle</button>
-            <button id="fav-selected-btn" class="btn secondary btn-sm" style="display:none;">⭐ Seçilileri Favorile</button>
-        </div>
-    </div>
 
-    
+        <!-- Brand Badge -->
+        <div id="brand-badge" class="brand-badge hidden"></div>
 
-    <div style="display:flex; justify-content:space-between; padding: 10px 15px; border-bottom:1px solid var(--border-color); background:rgba(0,0,0,0.02); border-radius:8px 8px 0 0;"><div style="display:flex; align-items:center; gap:10px;"><input type="checkbox" id="select-all" title="Tümünü Seç"> <span style="font-weight:600; font-size:0.9rem;">Kanal Listesi</span></div></div>
-        <div class="col-check"><input type="checkbox" id="select-all" title="Tümünü Seç"></div>
-        <div class="col-no">No</div>
-        <div class="col-flags">Ekstra</div>
-        <div class="col-name">Kanal Adı</div>
-        <div class="col-type">Tür</div>
-        <div class="col-freq">Frekans</div>
-        <div class="col-action"></div>
-    </div>
-
-    <ul id="channel-list"></ul>
-</div>
-
-<!-- Template Builder Modal (Split Screen) -->
-<div id="builder-modal" class="modal hidden">
-    <div class="modal-content builder-content">
-        <h2>🛠️ Özel Şablon Oluşturucu</h2>
-        <p>Soldaki listeden istediğiniz kanalları sağdaki listeye sürükleyerek kendi kusursuz şablonunuzu inşa edin.</p>
-        
-        <div class="split-screen">
-            <div class="pane">
-                <h4 style="color:var(--text-secondary); margin-bottom:0.5rem;">Tüm Kanallar</h4>
-                <ul id="builder-source-list" class="builder-ul"></ul>
-            </div>
-            <div class="pane">
-                <h4 style="color:var(--accent); margin-bottom:0.5rem;">Benim Şablonum (Sepet)</h4>
-                <ul id="builder-target-list" class="builder-ul target-ul"></ul>
-            </div>
-        </div>
-        
-        <div class="modal-actions" style="margin-top:1.5rem;">
-            <button id="close-builder-btn" class="btn danger-outline">İptal</button>
-            <button id="save-builder-btn" class="btn primary">Şablonu Kaydet</button>
-        </div>
-    </div>
-</div>
-
-<!-- Share Modal -->
-<div id="share-modal" class="modal hidden">
-    <div class="modal-content" style="max-width: 400px; text-align: center;">
-        <h2 id="share-title">📱 Kod ile Aktarım</h2>
-        <p id="share-desc" style="color:var(--text-secondary); margin-bottom:1.5rem;"></p>
-        
-        <div id="share-code-box" style="display:none; font-size: 3rem; font-family: monospace; font-weight: bold; letter-spacing: 5px; color: var(--accent); padding: 20px; background: rgba(59,130,246,0.1); border-radius: 12px; margin-bottom: 1rem;">
-            ----
-        </div>
-        
-        <div id="import-input-box" style="display:none; margin-bottom: 1.5rem;">
-            <input type="text" id="import-code-input" placeholder="4 Haneli Kodu Girin" maxlength="4" style="font-size: 2rem; text-align: center; letter-spacing: 5px; text-transform: uppercase; width: 100%; max-width: 200px;">
-        </div>
-        
-        <p id="share-status" style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1.5rem;"></p>
-        
-        <div class="modal-actions" style="justify-content: center;">
-            <button id="close-share-btn" class="btn danger-outline">Kapat</button>
-            <button id="submit-import-btn" class="btn primary" style="display:none;">İndir ve Uygula</button>
-        </div>
-    </div>
-</div>
-
-<!-- Right Side Panel -->
-    </div> <!-- End of main column -->
-    
-    <div id="side-panel" style="width: 320px; flex-shrink: 0; background: var(--card-bg); border-radius: 12px; border: 1px solid var(--border-color); display: none; flex-direction: column; position: sticky; top: 20px; height: calc(100vh - 40px); overflow-y: auto;">
-        <div style="padding: 20px; border-bottom: 1px solid var(--border-color); display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; background: var(--card-bg); z-index: 10;">
-            <h3 style="margin: 0; font-size: 1.1rem;">Kanal Bilgileri</h3>
-            <button id="close-side-panel" style="background:none; border:none; color:var(--text-secondary); cursor:pointer; font-size:1.5rem;">✕</button>
-        </div>
-        <div style="padding: 20px; display: flex; flex-direction: column; gap: 15px;">
-            <div style="display:flex; align-items:center; gap:15px; margin-bottom: 10px;">
-                <div id="info-avatar"></div>
-                <div>
-                    <h2 id="info-name" style="margin:0; font-size:1.3rem;">Kanal Adı</h2>
-                    <span id="info-no" style="color:var(--text-secondary); font-size:0.9rem;">No: 1</span>
+        <!-- Toolbar -->
+        <div class="toolbar">
+            <div class="toolbar-main">
+                <div class="search-box">
+                    <input type="text" id="search-input" placeholder="Kanal ara...">
+                </div>
+                <div class="actions">
+                    <button class="btn primary-outline" id="magic-wand-btn">
+                        <svg class="icon" width="15" height="15"><use href="#icon-wand"/></svg> Sihirli Değnek
+                    </button>
+                    <button id="save-template-btn" class="btn primary-outline">🛠️ Şablon Oluşturucu</button>
+                    <button id="export-share-btn" class="btn magic">📱 Cihaza Aktar</button>
+                    <button class="btn primary" id="save-btn">
+                        <svg class="icon" width="15" height="15"><use href="#icon-save"/></svg> Kaydet &amp; İndir
+                    </button>
                 </div>
             </div>
-            
-            <div class="info-row" style="display:flex; justify-content:space-between; padding-bottom:8px; border-bottom:1px solid var(--border-color);"><span style="color:var(--text-secondary);">Tür</span><strong id="info-type"></strong></div>
-            <div class="info-row" style="display:flex; justify-content:space-between; padding-bottom:8px; border-bottom:1px solid var(--border-color);"><span style="color:var(--text-secondary);">Frekans</span><strong id="info-freq"></strong></div>
-            <div class="info-row" style="display:flex; justify-content:space-between; padding-bottom:8px; border-bottom:1px solid var(--border-color);"><span style="color:var(--text-secondary);">Polarizasyon</span><strong id="info-pol"></strong></div>
-            <div class="info-row" style="display:flex; justify-content:space-between; padding-bottom:8px; border-bottom:1px solid var(--border-color);"><span style="color:var(--text-secondary);">Sembol Oranı</span><strong id="info-sym"></strong></div>
-            <div class="info-row" style="display:flex; justify-content:space-between; padding-bottom:8px; border-bottom:1px solid var(--border-color);"><span style="color:var(--text-secondary);">Şifreleme</span><strong id="info-enc"></strong></div>
-            
-            <details style="margin-top:10px;">
-                <summary style="cursor:pointer; color:var(--accent); font-weight:600; font-size:0.95rem;">Gelişmiş Teknik Detaylar</summary>
-                <div style="margin-top:15px; display:flex; flex-direction:column; gap:8px; font-size:0.9rem;">
+
+            <!-- Bulk Actions -->
+            <div class="toolbar-bulk">
+                <span class="toolbar-bulk-label">Toplu İşlemler:</span>
+                <button class="btn danger-outline btn-sm" id="del-encrypted-btn">
+                    <svg class="icon" width="13" height="13"><use href="#icon-lock"/></svg> Şifrelileri Sil
+                </button>
+                <button class="btn danger-outline btn-sm" id="del-radio-btn">
+                    <svg class="icon" width="13" height="13"><use href="#icon-trash"/></svg> Radyoları Sil
+                </button>
+                <button class="btn secondary btn-sm" id="delete-selected-btn" style="display:none;">
+                    <svg class="icon" width="13" height="13"><use href="#icon-trash"/></svg> Seçilileri Sil (<span id="sel-count">0</span>)
+                </button>
+                <button id="lock-selected-btn" class="btn secondary btn-sm" style="display:none;">
+                    <svg class="icon" width="13" height="13"><use href="#icon-lock"/></svg> Seçilileri Kilitle
+                </button>
+                <button id="fav-selected-btn" class="btn secondary btn-sm" style="display:none;">⭐ Seçilileri Favorile</button>
+            </div>
+        </div>
+
+        <!-- Channel List Header -->
+        <div class="list-header">
+            <div class="col-drag"></div>
+            <div class="col-check"><input type="checkbox" id="select-all" title="Tümünü Seç"></div>
+            <div class="col-no">No</div>
+            <div class="col-flags">Ekstra</div>
+            <div class="col-name">Kanal Adı</div>
+            <div class="col-type">Tür</div>
+            <div class="col-freq">Frekans</div>
+            <div class="col-action"></div>
+        </div>
+
+        <ul id="channel-list"></ul>
+    </div>
+
+    <!-- Right Side Panel -->
+    <div id="side-panel" style="width:300px; flex-shrink:0; background:var(--card-bg); border-radius:var(--radius-lg); border:1px solid var(--border-color); display:none; flex-direction:column; position:sticky; top:76px; max-height:calc(100vh - 100px); overflow-y:auto;">
+        <div style="padding:1rem 1.25rem; border-bottom:1px solid var(--border-color); display:flex; justify-content:space-between; align-items:center; position:sticky; top:0; background:var(--card-bg); z-index:10;">
+            <h3 style="margin:0; font-size:1rem; font-weight:700;">Kanal Bilgileri</h3>
+            <button id="close-side-panel" style="background:none; border:none; color:var(--text-muted); cursor:pointer; font-size:1.2rem; line-height:1; padding:2px;">✕</button>
+        </div>
+        <div style="padding:1.25rem; display:flex; flex-direction:column; gap:0.75rem;">
+            <div style="display:flex; align-items:center; gap:12px; margin-bottom:0.5rem;">
+                <div id="info-avatar"></div>
+                <div>
+                    <h2 id="info-name" style="margin:0; font-size:1.1rem; font-weight:700;">Kanal Adı</h2>
+                    <span id="info-no" style="color:var(--text-secondary); font-size:0.85rem;"></span>
+                </div>
+            </div>
+
+            <div class="info-row"><span>Tür</span><strong id="info-type"></strong></div>
+            <div class="info-row"><span>Frekans</span><strong id="info-freq"></strong></div>
+            <div class="info-row"><span>Polarizasyon</span><strong id="info-pol"></strong></div>
+            <div class="info-row"><span>Sembol Oranı</span><strong id="info-sym"></strong></div>
+            <div class="info-row"><span>Şifreleme</span><strong id="info-enc"></strong></div>
+
+            <details style="margin-top:0.5rem;">
+                <summary style="cursor:pointer; color:var(--accent); font-weight:600; font-size:0.875rem; user-select:none;">Gelişmiş Teknik Detaylar</summary>
+                <div style="margin-top:0.75rem; display:flex; flex-direction:column; gap:0.5rem; font-size:0.85rem;">
                     <div style="display:flex; justify-content:space-between;"><span style="color:var(--text-secondary);">Modülasyon</span><strong id="info-mod"></strong></div>
                     <div style="display:flex; justify-content:space-between;"><span style="color:var(--text-secondary);">Roll-Off</span><strong id="info-rolloff"></strong></div>
                     <div style="display:flex; justify-content:space-between;"><span style="color:var(--text-secondary);">Network ID</span><strong id="info-nid"></strong></div>
@@ -155,17 +116,54 @@
             </details>
         </div>
     </div>
-</div> <!-- End of the outer flex container we started above -->
+</div>
 
+<!-- Template Builder Modal -->
+<div id="builder-modal" class="modal hidden">
+    <div class="modal-content builder-content">
+        <h2>🛠️ Özel Şablon Oluşturucu</h2>
+        <p>Soldaki listeden istediğiniz kanalları sağdaki listeye sürükleyerek kendi şablonunuzu oluşturun.</p>
+        <div class="split-screen">
+            <div class="pane">
+                <h4>Tüm Kanallar</h4>
+                <ul id="builder-source-list" class="builder-ul"></ul>
+            </div>
+            <div class="pane">
+                <h4 style="color:var(--accent);">Benim Şablonum</h4>
+                <ul id="builder-target-list" class="builder-ul target-ul"></ul>
+            </div>
+        </div>
+        <div class="modal-actions">
+            <button id="close-builder-btn" class="btn danger-outline">İptal</button>
+            <button id="save-builder-btn" class="btn primary">Şablonu Kaydet</button>
+        </div>
+    </div>
+</div>
+
+<!-- Share Modal -->
+<div id="share-modal" class="modal hidden">
+    <div class="modal-content" style="max-width:400px; text-align:center;">
+        <h2 id="share-title">📱 Kod ile Aktarım</h2>
+        <p id="share-desc" style="color:var(--text-secondary); margin-bottom:1.5rem;"></p>
+        <div id="share-code-box" style="display:none; font-size:3rem; font-family:monospace; font-weight:bold; letter-spacing:5px; color:var(--accent); padding:1.25rem; background:var(--accent-dim); border-radius:var(--radius-lg); margin-bottom:1rem;">----</div>
+        <div id="import-input-box" style="display:none; margin-bottom:1.5rem;">
+            <input type="text" id="import-code-input" placeholder="4 Haneli Kodu Girin" maxlength="4" style="font-size:2rem; text-align:center; letter-spacing:5px; text-transform:uppercase; width:100%; max-width:200px;">
+        </div>
+        <p id="share-status" style="font-size:0.9rem; color:var(--text-muted); margin-bottom:1.5rem;"></p>
+        <div class="modal-actions" style="justify-content:center;">
+            <button id="close-share-btn" class="btn danger-outline">Kapat</button>
+            <button id="submit-import-btn" class="btn primary" style="display:none;">İndir ve Uygula</button>
+        </div>
+    </div>
+</div>
 
 <!-- Magic Wand Modal -->
 <div id="magic-modal" class="modal hidden">
     <div class="modal-content">
         <h2>🪄 Sihirli Değnek: Şablon Seçimi</h2>
-        <p>Listenize otomatik olarak uygulanacak dizilim şablonunu seçin:</p>
-        
+        <p>Listeye otomatik olarak uygulanacak dizilim şablonunu seçin:</p>
+
         <div class="template-cards" id="template-cards-container">
-            <!-- Hazır Şablonlar -->
             <div class="template-card selected" data-template="general">
                 <h3>🏆 Genel (Tam Paket) Liste</h3>
                 <p>Ulusal, Haber, Spor, Belgesel ve Çocuk kanallarının dengeli karışımı.</p>
@@ -183,19 +181,18 @@
             </div>
         </div>
 
-        <!-- Kullanıcı Şablonları Buraya Eklenecek -->
         <div id="custom-templates-container" style="display:none; margin-bottom:1.5rem;">
-            <h3 style="font-size: 1rem; color: var(--text-secondary); margin-bottom: 0.5rem; text-transform:uppercase; letter-spacing:0.05em;">Kendi Şablonlarınız</h3>
-            <div class="template-cards" id="custom-cards-container" style="margin-top:0;">
-            </div>
+            <h3 style="font-size:0.78rem; color:var(--text-muted); margin-bottom:0.5rem; text-transform:uppercase; letter-spacing:0.08em;">Kendi Şablonlarınız</h3>
+            <div class="template-cards" id="custom-cards-container" style="margin-top:0;"></div>
         </div>
-        
+
         <div class="modal-actions">
             <button id="close-modal-btn" class="btn danger-outline">İptal</button>
-            <button id="apply-template-btn" class="btn magic">Seçili Şablonu Uygula</button>
+            <button id="apply-template-btn" class="btn primary">Seçili Şablonu Uygula</button>
         </div>
     </div>
 </div>
+
 {% endblock %}
 
 {% block scripts %}
