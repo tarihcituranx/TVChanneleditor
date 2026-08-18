@@ -156,6 +156,10 @@ def guide():
 def faq():
     return render_lang('faq.html')
 
+@app.route('/privacy')
+def privacy():
+    return render_lang('privacy.html')
+
 @app.route('/upload', methods=['POST'])
 def upload():
     client_ip = request.headers.get('X-Forwarded-For', request.remote_addr).split(',')[0].strip()

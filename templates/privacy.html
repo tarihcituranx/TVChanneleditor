@@ -1,0 +1,97 @@
+{% extends "base.html" %}
+
+{% block title %}Gizlilik Politikası (KVKK / GDPR) - TV Channel Editor{% endblock %}
+
+{% block head %}
+<style>
+    .content-container {
+        max-width: 800px;
+        margin: 40px auto;
+        padding: 40px;
+        background: var(--card-bg);
+        border-radius: 12px;
+        border: 1px solid var(--border-color);
+        color: var(--text-primary);
+        line-height: 1.7;
+    }
+    .page-title {
+        font-size: 24px;
+        font-weight: 700;
+        margin-bottom: 30px;
+        border-bottom: 2px solid var(--border-color);
+        padding-bottom: 15px;
+    }
+    .policy-section {
+        margin-bottom: 30px;
+    }
+    .policy-title {
+        font-size: 18px;
+        font-weight: 600;
+        color: var(--accent);
+        margin-bottom: 10px;
+    }
+    .policy-text {
+        font-size: 15px;
+        opacity: 0.95;
+    }
+    .highlight-box {
+        background: rgba(34,197,94,0.08);
+        border-left: 4px solid #22c55e;
+        padding: 15px 20px;
+        margin-bottom: 20px;
+        border-radius: 0 8px 8px 0;
+        font-size: 14.5px;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="content-container">
+    <h1 class="page-title">🛡️ Gizlilik Politikası (KVKK ve GDPR Aydınlatma Metni)</h1>
+    
+    <div class="highlight-box">
+        <strong>Özetle:</strong> "Privacy-First" (Önce Gizlilik) prensibiyle çalışıyoruz. Bize adınızı, e-postanızı veya kişisel bilgilerinizi vermezsiniz. Sisteme yüklediğiniz televizyon kanal dosyaları sadece işlem görebilmesi için sunucunun geçici (RAM/Temp) belleğinde tutulur ve <strong>en geç 1 saat içinde kalıcı olarak silinir.</strong> Hiçbir verinizi satmıyoruz, izlemiyoruz ve saklamıyoruz.
+    </div>
+
+    <div class="policy-section">
+        <h2 class="policy-title">1. Hangi Verileri Topluyoruz?</h2>
+        <div class="policy-text">
+            Kayıt olma, üyelik veya giriş yapma sistemi yoktur. Bu nedenle İsim, Soyisim, E-posta, Telefon veya benzeri hiçbir doğrudan tanımlanabilir kişisel veri toplamıyoruz.<br><br>
+            Sadece sisteme bilerek yüklediğiniz <strong>Televizyon Kanal Listesi (.scm, .zip)</strong> dosyalarınızı düzenleme işlemi süresince teknik zorunluluk olarak alıyoruz.
+        </div>
+    </div>
+
+    <div class="policy-section">
+        <h2 class="policy-title">2. Yüklenen Dosyaların Saklanma Süresi ve İmhası</h2>
+        <div class="policy-text">
+            Sisteme yüklediğiniz kanal dosyaları, indirme linki oluşturulabilmesi için geçici bir klasörde barındırılır. 
+            <ul style="margin-top: 10px; padding-left: 20px;">
+                <li><strong>Düzenlenen Dosyalar:</strong> İndirme işlemi başarıyla tamamlandığında veya sayfa yüklendikten tam <strong>60 dakika (1 Saat)</strong> sonra sistemimiz tarafından otomatik olarak kalıcı olarak imha edilir.</li>
+                <li><strong>Cihazlar Arası Aktarım (Kod ile):</strong> "Cihaza Aktar" butonunu kullandığınızda oluşturulan taslak belleği <strong>10 dakika</strong> sonra kendi kendini imha eder.</li>
+            </ul>
+            Hiçbir kanal listeniz kendi sunucularımızda arşivlenmez, yedeklenmez ve depolanmaz.
+        </div>
+    </div>
+
+    <div class="policy-section">
+        <h2 class="policy-title">3. Çerezler (Cookies) ve Tarayıcı Belleği (Local Storage)</h2>
+        <div class="policy-text">
+            Sitemizde reklam (Ads), davranışsal analiz (Analytics) veya kullanıcı takibi (Tracking) çerezleri <strong>kesinlikle kullanılmamaktadır.</strong> Sadece siz kanallarınızı düzenlerken olası internet ve elektrik kesintilerine karşı emeğinizin kaybolmaması için, veriler sunucuya gönderilmeden <strong>sadece kendi bilgisayarınızın tarayıcısına (Local Storage)</strong> otomatik taslak olarak kaydedilir. Dosyanızı başarıyla indirdiğinizde bu taslak tarayıcınızdan otomatik silinir.
+        </div>
+    </div>
+
+    <div class="policy-section">
+        <h2 class="policy-title">4. Veri Paylaşımı ve Üçüncü Taraflar</h2>
+        <div class="policy-text">
+            Sistemimiz hiçbir televizyon üreticisi (Samsung, LG, Sony vb.) veya pazarlama şirketiyle bağlantılı değildir. Yüklediğiniz veriler veya kullanım istatistikleriniz 3. şahıslara satılamaz, paylaşılamaz ve pazarlama amacıyla kullanılamaz.
+        </div>
+    </div>
+
+    <div class="policy-section">
+        <h2 class="policy-title">5. KVKK (Türkiye) ve GDPR (Avrupa Birliği) Haklarınız</h2>
+        <div class="policy-text">
+            Sistemimiz <em>"Privacy by Design" (Tasarım Aşamasında Gizlilik)</em> ilkelerine tam uyumludur. Kişisel veri (IP logları dahil) kalıcı olarak tutulmadığı için, sildirme veya unutulma hakkınızı kullanmanızı gerektirecek bir veri tabanımız bulunmamaktadır; sistem sizi ziyaretiniz bittiği an tamamen "unutur".
+        </div>
+    </div>
+</div>
+{% endblock %}

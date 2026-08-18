@@ -1,0 +1,97 @@
+{% extends "base.html" %}
+
+{% block title %}Privacy Policy (KVKK / GDPR) - TV Channel Editor{% endblock %}
+
+{% block head %}
+<style>
+    .content-container {
+        max-width: 800px;
+        margin: 40px auto;
+        padding: 40px;
+        background: var(--card-bg);
+        border-radius: 12px;
+        border: 1px solid var(--border-color);
+        color: var(--text-primary);
+        line-height: 1.7;
+    }
+    .page-title {
+        font-size: 24px;
+        font-weight: 700;
+        margin-bottom: 30px;
+        border-bottom: 2px solid var(--border-color);
+        padding-bottom: 15px;
+    }
+    .policy-section {
+        margin-bottom: 30px;
+    }
+    .policy-title {
+        font-size: 18px;
+        font-weight: 600;
+        color: var(--accent);
+        margin-bottom: 10px;
+    }
+    .policy-text {
+        font-size: 15px;
+        opacity: 0.95;
+    }
+    .highlight-box {
+        background: rgba(34,197,94,0.08);
+        border-left: 4px solid #22c55e;
+        padding: 15px 20px;
+        margin-bottom: 20px;
+        border-radius: 0 8px 8px 0;
+        font-size: 14.5px;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="content-container">
+    <h1 class="page-title">🛡️ Privacy Policy (GDPR / KVKK)</h1>
+    
+    <div class="highlight-box">
+        <strong>In short:</strong> We operate on a "Privacy-First" principle. You do not provide your name, email, or any personal information. The TV channel files you upload are only temporarily held in the server's memory to process your edits and are <strong>permanently deleted within 1 hour.</strong> We do not sell, track, or store your data.
+    </div>
+
+    <div class="policy-section">
+        <h2 class="policy-title">1. What Data Do We Collect?</h2>
+        <div class="policy-text">
+            There is no registration, membership, or login system. Therefore, we do not collect any directly identifiable personal data such as Name, Email, or Phone number.<br><br>
+            We only process the <strong>Television Channel List (.scm, .zip)</strong> files you upload out of technical necessity to perform the editing operations you request.
+        </div>
+    </div>
+
+    <div class="policy-section">
+        <h2 class="policy-title">2. File Retention and Deletion</h2>
+        <div class="policy-text">
+            The channel files you upload are hosted in a temporary folder so a download link can be generated.
+            <ul style="margin-top: 10px; padding-left: 20px;">
+                <li><strong>Edited Files:</strong> Are permanently and automatically destroyed by our system as soon as the download is successful or exactly <strong>60 minutes (1 Hour)</strong> after page load.</li>
+                <li><strong>Cross-Device Drafts:</strong> Temporary drafts created via the "Export to Device" code automatically self-destruct after <strong>10 minutes</strong>.</li>
+            </ul>
+            None of your channel lists are archived, backed up, or stored on our servers.
+        </div>
+    </div>
+
+    <div class="policy-section">
+        <h2 class="policy-title">3. Cookies and Local Storage</h2>
+        <div class="policy-text">
+            We <strong>strictly do not use</strong> advertising (Ads), behavioral (Analytics), or user tracking (Tracking) cookies on our site. To prevent your hard work from being lost in case of internet or power outages while editing, your data is saved automatically as a draft <strong>only inside your computer's browser (Local Storage)</strong> without being sent to the server. Once you successfully download your file, this draft is automatically deleted from your browser.
+        </div>
+    </div>
+
+    <div class="policy-section">
+        <h2 class="policy-title">4. Data Sharing and Third Parties</h2>
+        <div class="policy-text">
+            Our system is not affiliated with any television manufacturer (Samsung, LG, Sony, etc.) or marketing company. The data you upload or your usage statistics cannot be sold, shared, or used for marketing purposes by third parties.
+        </div>
+    </div>
+
+    <div class="policy-section">
+        <h2 class="policy-title">5. Your GDPR and KVKK Rights</h2>
+        <div class="policy-text">
+            Our system fully complies with <em>"Privacy by Design"</em> principles. Because we do not persistently store personal data (including IP logs), there is no database for you to exercise a "right to be forgotten" or deletion request; the system inherently "forgets" you the moment your session ends.
+        </div>
+    </div>
+</div>
+{% endblock %}
