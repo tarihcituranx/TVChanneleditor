@@ -23,7 +23,7 @@
     --danger: #dc2626;
     --header-bg: rgba(255,255,255,0.85);
     --nav-link-color: #2563eb;
-    --logo-filter: none;
+    --logo-filter: invert(1) hue-rotate(180deg);
 }
 
 @media (prefers-color-scheme: light) {
@@ -38,7 +38,7 @@
         --danger: #dc2626;
         --header-bg: rgba(255,255,255,0.85);
         --nav-link-color: #2563eb;
-        --logo-filter: none;
+        --logo-filter: invert(1) hue-rotate(180deg);
     }
 }
 
@@ -307,7 +307,7 @@ li.dragging {
 
 /* Enhancing readability */
 header p {
-    color: #d1d5db;
+    color: var(--text-secondary);
     font-size: 1.1rem;
     margin-top: 0.5rem;
 }
