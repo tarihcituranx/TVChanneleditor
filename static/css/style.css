@@ -307,8 +307,8 @@ li.dragging {
     background-color: var(--bg-color);
 }
 
-.col-drag { width: 40px; color: var(--text-secondary); cursor: grab; }
-.col-no { width: 60px; font-variant-numeric: tabular-nums; }
+.col-drag { flex: 0 0 40px; width: 40px; color: var(--text-secondary); cursor: grab; }
+.col-no { flex: 0 0 60px; width: 60px; font-variant-numeric: tabular-nums; }
 .col-name { 
     font-weight: 500; 
     padding: 4px 8px;
@@ -344,10 +344,10 @@ li.dragging {
     background-color: var(--bg-color);
     outline: 1px solid var(--accent);
 }
-.col-type { width: 80px; color: var(--text-secondary); }
-.col-freq { width: 140px; font-variant-numeric: tabular-nums; color: var(--text-secondary); }
-.col-action { width: 40px; text-align: right; }
-.col-flags { width: 70px; display: flex; gap: 5px; justify-content: center; }
+.col-type { flex: 0 0 80px; width: 80px; color: var(--text-secondary); }
+.col-freq { flex: 0 0 140px; width: 140px; font-variant-numeric: tabular-nums; color: var(--text-secondary); }
+.col-action { flex: 0 0 70px; width: 70px; text-align: right; }
+.col-flags { flex: 0 0 70px; width: 70px; display: flex; gap: 5px; justify-content: center; }
 
 .flag-icon {
     cursor: pointer;
