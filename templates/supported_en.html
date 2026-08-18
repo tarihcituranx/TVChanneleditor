@@ -1,6 +1,6 @@
 {% extends "base_en.html" %}
 
-{% block title %}Supported Brands & Satellites - TV Channel Editor{% endblock %}
+{% block title %}Supported Brands and Satellites - TV Channel Editor{% endblock %}
 
 {% block head %}
 <style>
@@ -12,6 +12,7 @@
         border-radius: 12px;
         border: 1px solid rgba(255, 255, 255, 0.1);
     }
+    
     .section-title {
         font-size: 24px;
         font-weight: 600;
@@ -20,12 +21,14 @@
         border-bottom: 2px solid rgba(255, 255, 255, 0.1);
         padding-bottom: 10px;
     }
+
     .grid-container {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
         gap: 20px;
         margin-bottom: 40px;
     }
+
     .card {
         background: rgba(0, 0, 0, 0.3);
         border-radius: 12px;
@@ -37,25 +40,75 @@
         flex-direction: column;
         align-items: center;
     }
-    .card:hover { transform: translateY(-5px); border-color: rgba(255,255,255,0.2); }
-    .card-img { max-width: 150px; height: 60px; object-fit: contain; margin-bottom: 15px; }
-    .card-img.light-logo { filter: brightness(0) invert(1); }
-    .card-title { font-size: 16px; font-weight: 600; color: var(--text-primary); margin-bottom: 8px; }
-    .card-desc { font-size: 13px; color: var(--text-primary); opacity: 0.95; line-height: 1.6; }
-    .badge { display: inline-block; font-size: 11px; font-weight: 600; padding: 3px 8px; border-radius: 20px; margin-bottom: 10px; letter-spacing: 0.5px; }
+
+    .card:hover {
+        transform: translateY(-5px);
+        border-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .card-img {
+        max-width: 150px;
+        height: 60px;
+        object-fit: contain;
+        margin-bottom: 15px;
+    }
+
+    .card-img.light-logo {
+        filter: brightness(0) invert(1);
+    }
+
+    .card-title {
+        font-size: 16px;
+        font-weight: 600;
+        color: var(--text-primary);
+        margin-bottom: 8px;
+    }
+
+    .card-desc {
+        font-size: 13px;
+        color: var(--text-primary);
+        opacity: 0.95;
+        line-height: 1.6;
+    }
+
+    .badge {
+        display: inline-block;
+        font-size: 11px;
+        font-weight: 600;
+        padding: 3px 8px;
+        border-radius: 20px;
+        margin-bottom: 10px;
+        letter-spacing: 0.5px;
+    }
+
     .badge-green { background: rgba(34,197,94,0.15); color: #4ade80; border: 1px solid rgba(74,222,128,0.3); }
     .badge-blue  { background: rgba(59,130,246,0.15); color: #60a5fa; border: 1px solid rgba(96,165,250,0.3); }
     .badge-gray  { background: rgba(156,163,175,0.15); color: #9ca3af; border: 1px solid rgba(156,163,175,0.3); }
-    .format-tag { font-family: monospace; font-size: 12px; background: rgba(255,255,255,0.08); padding: 2px 7px; border-radius: 4px; color: #93c5fd; margin: 2px; display: inline-block; }
-    .formats { margin-top: 8px; display: flex; flex-wrap: wrap; justify-content: center; gap: 4px; }
-</style>
-{% endblock %}
+
+    .format-tag {
+        font-family: monospace;
+        font-size: 12px;
+        background: rgba(255,255,255,0.08);
+        padding: 2px 7px;
+        border-radius: 4px;
+        color: #93c5fd;
+        margin: 2px;
+        display: inline-block;
+    }
+    .formats {
+        margin-top: 8px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 4px;
+    }
+</style>{% endblock %}
 
 {% block content %}
 <div class="content-container">
     <h2 class="section-title">📺 Supported TV Brands</h2>
     <p style="color:#9ca3af; font-size:14px; margin-bottom:24px; margin-top:-10px;">
-        All processing happens <strong style="color:#e5e7eb">in your browser</strong>; we never store your files on our servers.
+        All operations <strong style="color:#e5e7eb">are performed in the browser</strong>; we do not store any data on our server.
     </p>
     <div class="grid-container">
         <div class="card">
@@ -63,19 +116,18 @@
             <span class="badge badge-green">✅ Full Support</span>
             <div class="card-title">Samsung Smart TV</div>
             <div class="card-desc">
-                Supports both legacy (E, F, H Series) and modern Tizen OS (J, K, M, Q, R, T Series) devices.
+                All devices from the older generation (E, F, H) and the newer Tizen generation (J, K, M, Q, R, T) series are supported. Sorting and renaming are fully compatible.
             </div>
             <div class="formats">
-                <span class="format-tag">.scm</span>
-                <span class="format-tag">.zip (SQLite)</span>
+                <span class="format-tag">.scm.zip (SQLite)</span>
             </div>
         </div>
         <div class="card">
             <img src="/static/img/lg_logo.svg" alt="LG" class="card-img">
-            <span class="badge badge-green">✅ Full Support</span>
+            <span class="badge badge-gray">❌ Not Supported</span>
             <div class="card-title">LG Smart TV</div>
             <div class="card-desc">
-                WebOS 5+ and older GlobalClone format devices are supported. Channel name, lock, and favorites editing available.
+                LG <b>.tll</b> files are in binary format. There is currently no support for editing these files online. Please use the <a href="https://github.com/PredatH0r/ChanSort/releases" target="_blank" style="color:var(--accent);">ChanSort</a> desktop application.
             </div>
             <div class="formats">
                 <span class="format-tag">.tll</span>
@@ -86,7 +138,7 @@
             <span class="badge badge-green">✅ Full Support</span>
             <div class="card-title">Sony BRAVIA</div>
             <div class="card-desc">
-                Sony BRAVIA's XML-based channel list format can be read and written. Includes 2024+ models.
+                Sony BRAVIA’s XML-based channel list format is readable and writable. Includes new 2024+ models. Channel name and reordering are supported.
             </div>
             <div class="formats">
                 <span class="format-tag">sdb.xml</span>
@@ -97,11 +149,10 @@
             <span class="badge badge-green">✅ Full Support</span>
             <div class="card-title">Hisense Smart TV</div>
             <div class="card-desc">
-                SQLite-based service list format (2017+) is supported. Channel ordering and hiding are available.
+                The SQLite-based service list format for the 2017 and 2021 generations is supported. Channel sorting, renaming, and hiding are supported.
             </div>
             <div class="formats">
                 <span class="format-tag">servicelist.db</span>
-                <span class="format-tag">channel.db</span>
             </div>
         </div>
         <div class="card">
@@ -109,11 +160,10 @@
             <span class="badge badge-blue">🔄 Beta</span>
             <div class="card-title">Panasonic VIERA</div>
             <div class="card-desc">
-                SVL format support is in development. Read-only may work on some model families.
+                SVL format support is currently under development. Reading may be successful on some model families.
             </div>
             <div class="formats">
-                <span class="format-tag">svl.db</span>
-                <span class="format-tag">svl.bin</span>
+                <span class="format-tag">svl.db svl.bin</span>
             </div>
         </div>
         <div class="card">
@@ -121,41 +171,39 @@
             <span class="badge badge-gray">Coming Soon</span>
             <div class="card-title">Philips, Toshiba...</div>
             <div class="card-desc">
-                Support for Philips, Toshiba, Grundig and other brands is actively under development.
+                Support for Philips, Toshiba, Grundig, and other brands is currently under active development.
             </div>
             <div class="formats">
-                <span class="format-tag">*.db</span>
-                <span class="format-tag">*.xml</span>
+                <span class="format-tag">*.db*.xml</span>
             </div>
         </div>
     </div>
 
     <h2 class="section-title">🛰️ Supported Satellites</h2>
     <p style="color:#9ca3af; font-size:14px; margin-bottom:24px; margin-top:-10px;">
-        All frequency and transponder data is processed identically regardless of satellite format.
+        All frequency and transponder data is processed in the same way, regardless of the satellite format.
     </p>
     <div class="grid-container">
         <div class="card">
             <img src="/static/img/turksat_logo.png" alt="Türksat" class="card-img light-logo">
             <div class="card-title">Türksat 4A / 5B</div>
             <div class="card-desc">
-                Fully compatible with national Turkish channels, news and sports packages. Magic Wand templates are optimized for Türksat frequencies. <b>Automatic frequency validation</b> is active for this satellite.
+                Fully compatible with national Turkish channels, news, and sports packages. Magic Wand templates are optimized for Türksat frequencies. <b>Automatic frequency verification</b> is enabled for this satellite.
             </div>
         </div>
         <div class="card">
             <img src="/static/img/hotbird_logo.svg" alt="Hotbird" class="card-img">
             <div class="card-title">Hotbird 13E</div>
             <div class="card-desc">
-                European and international Eutelsat broadcasts are fully supported. All satellite transponder data is processed successfully.
+                European and international broadcasts (Eutelsat) are supported. All satellite transponder data is processed successfully.
             </div>
         </div>
         <div class="card">
             <img src="/static/img/astra_logo.svg" alt="Astra" class="card-img">
             <div class="card-title">Astra 19.2E</div>
             <div class="card-desc">
-                German and European channels on SES Astra are read and written with full fidelity.
+                SES Astra frequencies, which host German and European channels, are read and written with full compatibility.
             </div>
         </div>
     </div>
-</div>
-{% endblock %}
+</div>{% endblock %}

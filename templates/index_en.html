@@ -2,23 +2,26 @@
 
 {% block head %}
 <link rel="preload" href="/static/data/templates.json" as="fetch" crossorigin="anonymous">
-<link rel="preload" href="/static/data/frekanslar.json" as="fetch" crossorigin="anonymous">
-{% endblock %}
+<link rel="preload" href="/static/data/frekanslar.json" as="fetch" crossorigin="anonymous">{% endblock %}
 
 {% block content %}
 <div id="upload-section" class="card drop-zone">
     <input type="file" id="file-input" accept=".scm,.zip,.tll,.xml,.db" hidden>
     <div class="upload-content">
         <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
-        <h2>Drop your .scm, .zip, .tll, sdb.xml or servicelist.db here</h2>
-        <p>Select your Samsung, LG, Sony or Hisense channel list file</p>
+        <h2>Upload a .scm, .zip, sdb.xml, or servicelist.db file</h2>
+        <p>Select your Samsung, Sony, or Hisense channel list file</p>
         <button id="browse-btn" class="btn primary">Select File</button>
         <p style="margin-top: 1rem; font-size: 0.85rem; color: var(--text-muted); max-width: 500px; margin-left: auto; margin-right: auto; line-height: 1.4;">
-            <strong style="color: var(--accent);">Note (LG TV Users):</strong> LG <b>.tll</b> files are in a proprietary encrypted binary format. To edit your LG files, please use the open-source <a href="https://github.com/PredatH0r/ChanSort/releases" target="_blank" style="color: var(--primary);">ChanSort</a> desktop application. Direct porting to Python is planned for the future.
+            <strong style="color: var(--accent);">Note (LG TV Users):</strong>
+            LG <b>.tll</b>
+            files are in a proprietary format encrypted in machine code (binary). You must use the open-source <a href="https://github.com/PredatH0r/ChanSort/releases" target="_blank" style="color: var(--primary);">ChanSort</a>
+            desktop application to edit your LG files. A direct port for Python is planned for the future.
         </p>
-
+        
         <div style="margin-top: 1.5rem; padding: 10px 15px; background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.2); border-radius: 8px; font-size: 0.85rem; color: var(--text-secondary); max-width: 600px; margin-left: auto; margin-right: auto; text-align: left;">
-            <strong style="color: var(--danger);">⚠️ Disclaimer:</strong> This tool is not affiliated with any TV manufacturer. Please keep a safe backup of your original channel list file before editing. We are not responsible for any potential data loss.
+            <strong style="color: var(--danger);">⚠️ Disclaimer:</strong>
+            This tool is not affiliated with any TV manufacturer. Please save a backup of your original channel list file in a safe place before making any edits. Our system is not responsible for any potential data loss.
         </div>
         
         <div style="margin-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1rem;">
@@ -32,36 +35,49 @@
     <div id="brand-badge" class="brand-badge hidden"></div>
     <div class="toolbar">
         <div class="search-box">
-            <input type="text" id="search-input" placeholder="Search channels...">
+            <input type="text" id="search-input" placeholder="Kanal ara...">
         </div>
-        <div class="actions">
-            <button id="magic-wand-btn" class="btn magic" title="Applies preset lists">🪄 Magic Wand</button>
+                <div class="actions" style="display: flex; gap: 10px; margin-bottom: 15px; flex-wrap: wrap;">
+            <button class="btn secondary" id="delete-selected-btn" style="display:none;">
+                <svg class="icon" width="16" height="16"><use href="#icon-trash"/></svg>
+                Delete Selections (<span id="sel-count">0</span>
+                )
+            </button>
+            <button id="lock-selected-btn" class="btn magic" style="display:none;"><svg class="icon" width="16" height="16"><use href="#icon-lock"/></svg> Lock Selections</button>
+            <button id="fav-selected-btn" class="btn magic" style="display:none;">⭐ Mark Selected as Favorites</button>
+            <button class="btn danger-outline" id="del-encrypted-btn">
+                <svg class="icon" width="16" height="16"><use href="#icon-lock"/></svg> Delete Encrypted Items
+            </button>
+            <button class="btn danger-outline" id="del-radio-btn">
+                <svg class="icon" width="16" height="16"><use href="#icon-trash"/></svg> Delete Radios
+            </button>
+            <div style="flex:1;"></div>
+            <button class="btn primary-outline" id="magic-wand-btn" style="background:transparent; color:var(--accent); border:1px solid var(--accent);">
+                <svg class="icon" width="16" height="16"><use href="#icon-wand"/></svg> Magic Wand
+            </button>
             <button id="save-template-btn" class="btn primary-outline" style="background:transparent; color:var(--accent); border:1px solid var(--accent);">🛠️ Template Builder</button>
-            <button id="lock-selected-btn" class="btn magic" style="display:none;">🔒 Lock Selected</button>
-            <button id="fav-selected-btn" class="btn magic" style="display:none;">⭐ Fav Selected</button>
-            <button id="delete-selected-btn" class="btn danger" style="display:none;">Delete Selected (<span id="sel-count">0</span>)</button>
-            <button id="del-encrypted-btn" class="btn danger-outline">Delete Encrypted</button>
-            <button id="del-radio-btn" class="btn danger-outline">Delete Radios</button>
-            <button id="export-share-btn" class="btn magic" style="background: #e85d00; color: white;">📱 Export to Device</button>
-            <button id="save-btn" class="btn primary">Save and Download</button>
+            <button id="export-share-btn" class="btn magic" style="background: #e85d00; color: white;">📱 Transfer to Device</button>
+            <button class="btn primary" id="save-btn">
+                <svg class="icon" width="16" height="16"><use href="#icon-save"/></svg> Save and Download
+            </button>
         </div>
     </div>
 
     <div style="font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 15px; display: flex; flex-wrap: wrap; gap: 20px; align-items: center; padding: 10px 15px; background: rgba(0,0,0,0.1); border-radius: 6px; border: 1px solid var(--border-color);">
         <span><strong style="color: var(--text-primary);">Icons:</strong></span>
-        <span><span style="opacity: 0.5;">⋮⋮</span> Drag (Move)</span>
-        <span>🔒 Parental Lock</span>
-        <span>⭐ Favorite Channel</span>
+        
+        <span><span style="opacity: 0.5;">⋮⋮</span> Drag (Move) 🔒 Child Lock ⭐ Favorite Channel</span>
+        
         <span><span style="color: var(--danger); font-weight: bold;">✕</span> Delete</span>
     </div>
 
     <div class="list-header">
         <div class="col-drag"></div>
-        <div class="col-check"><input type="checkbox" id="select-all" title="Select All"></div>
+        <div class="col-check"><input type="checkbox" id="select-all" title="Tümünü Seç"></div>
         <div class="col-no">No</div>
-        <div class="col-flags">Flags</div>
+        <div class="col-flags">Extra</div>
         <div class="col-name">Channel Name</div>
-        <div class="col-type">Type</div>
+        <div class="col-type">Genre</div>
         <div class="col-freq">Frequency</div>
         <div class="col-action"></div>
     </div>
@@ -73,7 +89,7 @@
 <div id="builder-modal" class="modal hidden">
     <div class="modal-content builder-content">
         <h2>🛠️ Custom Template Builder</h2>
-        <p>Drag the channels you want from the list on the left to the list on the right to build your perfect template.</p>
+        <p>Drag the channels you want from the list on the left to the list on the right to build your own perfect template.</p>
         
         <div class="split-screen">
             <div class="pane">
@@ -93,34 +109,139 @@
     </div>
 </div>
 
+<!-- Share Modal -->
+<div id="share-modal" class="modal hidden">
+    <div class="modal-content" style="max-width: 400px; text-align: center;">
+        <h2 id="share-title">📱 Import via Code</h2>
+        <p id="share-desc" style="color:var(--text-secondary); margin-bottom:1.5rem;"></p>
+        
+        <div id="share-code-box" style="display:none; font-size: 3rem; font-family: monospace; font-weight: bold; letter-spacing: 5px; color: var(--accent); padding: 20px; background: rgba(59,130,246,0.1); border-radius: 12px; margin-bottom: 1rem;">
+            ----
+        </div>
+        
+        <div id="import-input-box" style="display:none; margin-bottom: 1.5rem;">
+            <input type="text" id="import-code-input" placeholder="4 Haneli Kodu Girin" maxlength="4" style="font-size: 2rem; text-align: center; letter-spacing: 5px; text-transform: uppercase; width: 100%; max-width: 200px;">
+        </div>
+        
+        <p id="share-status" style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1.5rem;"></p>
+        
+        <div class="modal-actions" style="justify-content: center;">
+            <button id="close-share-btn" class="btn danger-outline">Close</button>
+            <button id="submit-import-btn" class="btn primary" style="display:none;">Download and Apply</button>
+        </div>
+    </div>
+</div>
+
+<!-- Channel Info Modal -->
+<div id="info-modal" class="modal hidden">
+    <div class="modal-content" style="max-width: 450px;">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem; padding-bottom:1rem; border-bottom:1px solid var(--border-color);">
+            <div style="display:flex; align-items:center; gap:10px;">
+                <div id="info-avatar"></div>
+                <h2 id="info-name" style="margin:0; font-size:1.2rem;">Channel Name</h2>
+            </div>
+            <button id="close-info-btn" style="background:none; border:none; color:var(--text-secondary); cursor:pointer; font-size:1.5rem;">✕</button>
+        </div>
+        <div id="info-body" style="display:flex; flex-direction:column; gap:12px;">
+            <div style="display:flex; justify-content:space-between; padding:8px; background:rgba(0,0,0,0.02); border-radius:6px;">
+                <span style="color:var(--text-secondary);">Channel Number</span>
+                <strong id="info-no"></strong>
+            </div>
+            <div style="display:flex; justify-content:space-between; padding:8px; background:rgba(0,0,0,0.02); border-radius:6px;">
+                <span style="color:var(--text-secondary);">Frequency</span>
+                <strong id="info-freq"></strong>
+            </div>
+            <div style="display:flex; justify-content:space-between; padding:8px; background:rgba(0,0,0,0.02); border-radius:6px;">
+                <span style="color:var(--text-secondary);">Polarization</span>
+                <strong id="info-pol"></strong>
+            </div>
+            <div style="display:flex; justify-content:space-between; padding:8px; background:rgba(0,0,0,0.02); border-radius:6px;">
+                <span style="color:var(--text-secondary);">Symbol Rate</span>
+                <strong id="info-sym"></strong>
+            </div>
+            <div style="display:flex; justify-content:space-between; padding:8px; background:rgba(0,0,0,0.02); border-radius:6px;">
+                <span style="color:var(--text-secondary);">Broadcast Type</span>
+                <strong id="info-type"></strong>
+            </div>
+            <div style="display:flex; justify-content:space-between; padding:8px; background:rgba(0,0,0,0.02); border-radius:6px;">
+                <span style="color:var(--text-secondary);">Encrypted Channel</span>
+                <strong id="info-enc"></strong>
+            </div>
+            
+            <div style="border-top:1px dashed var(--border-color); margin: 4px 0;"></div>
+            
+            <div style="display:flex; justify-content:space-between; padding:4px 8px; border-radius:6px;" title="Modülasyon Sistemi: Yayının DVB-S (SD) veya DVB-S2 (HD) gibi standardını belirtir.">
+                <span style="color:var(--text-muted); font-size:0.85rem; cursor:help; border-bottom:1px dotted var(--text-muted);">Modulation System</span>
+                <strong id="info-mod" style="font-family:monospace; font-size:0.85rem;"></strong>
+            </div>
+            <div style="display:flex; justify-content:space-between; padding:4px 8px; border-radius:6px;" title="Roll-Off Faktörü: Sinyal bant genişliğinin ne kadar keskin bir şekilde filtrelendiğini gösterir.">
+                <span style="color:var(--text-muted); font-size:0.85rem; cursor:help; border-bottom:1px dotted var(--text-muted);">Roll-Off</span>
+                <strong id="info-rolloff" style="font-family:monospace; font-size:0.85rem;"></strong>
+            </div>
+            <div style="display:flex; justify-content:space-between; padding:4px 8px; border-radius:6px;" title="Network ID: Bulunduğunuz uydu şebekesinin (Ağ) kimliğidir.">
+                <span style="color:var(--text-muted); font-size:0.85rem; cursor:help; border-bottom:1px dotted var(--text-muted);">NID (Network ID)</span>
+                <strong id="info-nid" style="font-family:monospace; font-size:0.85rem;"></strong>
+            </div>
+            <div style="display:flex; justify-content:space-between; padding:4px 8px; border-radius:6px;" title="Transport Stream ID: Kanalın bulunduğu veri paketinin (frekansın) kimlik numarası.">
+                <span style="color:var(--text-muted); font-size:0.85rem; cursor:help; border-bottom:1px dotted var(--text-muted);">TSID (Transport Stream ID)</span>
+                <strong id="info-tsid" style="font-family:monospace; font-size:0.85rem;"></strong>
+            </div>
+            <div style="display:flex; justify-content:space-between; padding:4px 8px; border-radius:6px;" title="Original Network ID: Orijinal uydu ağının küresel kimlik kodu.">
+                <span style="color:var(--text-muted); font-size:0.85rem; cursor:help; border-bottom:1px dotted var(--text-muted);">ONID (Original Network ID)</span>
+                <strong id="info-onid" style="font-family:monospace; font-size:0.85rem;"></strong>
+            </div>
+            <div style="display:flex; justify-content:space-between; padding:4px 8px; border-radius:6px;" title="Service ID: Yayıncının o kanala atadığı benzersiz servis kimliği.">
+                <span style="color:var(--text-muted); font-size:0.85rem; cursor:help; border-bottom:1px dotted var(--text-muted);">SID (Service ID)</span>
+                <strong id="info-sid" style="font-family:monospace; font-size:0.85rem;"></strong>
+            </div>
+            <div style="display:flex; justify-content:space-between; padding:4px 8px; border-radius:6px;" title="Video Packet ID: Kanalın sadece görüntü (video) verilerini taşıyan şifre kodu.">
+                <span style="color:var(--text-muted); font-size:0.85rem; cursor:help; border-bottom:1px dotted var(--text-muted);">Video PID</span>
+                <strong id="info-vidpid" style="font-family:monospace; font-size:0.85rem;"></strong>
+            </div>
+            <div style="display:flex; justify-content:space-between; padding:4px 8px; border-radius:6px;" title="Audio Packet ID: Kanalın sadece ses verilerini taşıyan şifre kodu.">
+                <span style="color:var(--text-muted); font-size:0.85rem; cursor:help; border-bottom:1px dotted var(--text-muted);">Audio PID</span>
+                <strong id="info-audpid" style="font-family:monospace; font-size:0.85rem;"></strong>
+            </div>
+            <div style="display:flex; justify-content:space-between; padding:4px 8px; border-radius:6px;" title="Program Clock Reference: Ses ve görüntünün senkronize çalışmasını sağlayan saat kodu.">
+                <span style="color:var(--text-muted); font-size:0.85rem; cursor:help; border-bottom:1px dotted var(--text-muted);">PCR PID</span>
+                <strong id="info-pcrpid" style="font-family:monospace; font-size:0.85rem;"></strong>
+            </div>
+        </div>
+        
+        <div style="text-align: center; margin-top: 15px;">
+            <a href="/glossary" class="btn primary-outline" style="font-size: 0.8rem; padding: 4px 10px; border-radius: 20px;"><svg class="icon" width="14" height="14" style="vertical-align:-2px; margin-right:4px;"><use href="#icon-book"/></svg>Glossary</a>
+        </div>
+    </div>
+</div>
+
 <!-- Magic Wand Modal -->
 <div id="magic-modal" class="modal hidden">
     <div class="modal-content">
         <h2>🪄 Magic Wand: Template Selection</h2>
-        <p>Select the layout template to be automatically applied to your list:</p>
+        <p>Select the sequence template to be automatically applied to your list:</p>
         
         <div class="template-cards" id="template-cards-container">
-            <!-- Preset Templates -->
+            <!-- Hazır Şablonlar -->
             <div class="template-card selected" data-template="general">
                 <h3>🏆 General (Full Package) List</h3>
-                <p>Balanced mix of National, News, Sports, Documentary and Kids channels.</p>
-                <div class="preview">1. TRT1 HD | 2. KANAL D HD ... 8. TRT HABER ... 15. A SPOR ... 23. TLC HD</div>
+                <p>A balanced mix of national, news, sports, documentary, and children’s channels.</p>
+                <div class="preview">1. TRT1 HD | 2. KANAL D HD ... 8. TRT NEWS ... 15. A SPORTS ... 23. TLC HD</div>
             </div>
             <div class="template-card" data-template="news">
-                <h3>📰 News Focused</h3>
-                <p>All news bulletins start right after national channels. (No sports or kids)</p>
-                <div class="preview">1. TRT1 HD | 2. KANAL D HD ... 8. TRT HABER ... 11. SZC ... 14. KRT</div>
+                <h3>📰 News-Focused</h3>
+                <p>All news broadcasts begin immediately after the national channels. (No sports or children’s channels)</p>
+                <div class="preview">1. TRT1 HD | 2. KANAL D HD ... 8. TRT NEWS ... 11. SZC ... 14. KRT</div>
             </div>
             <div class="template-card" data-template="sports">
-                <h3>⚽ Sports Focused</h3>
-                <p>Only sports channels are listed right after national channels.</p>
+                <h3>⚽ Sports-Focused</h3>
+                <p>Immediately following the national channels, only sports channels are listed.</p>
                 <div class="preview">1. TRT1 HD | 2. KANAL D HD ... 8. A SPOR | 9. TRT SPOR HD ... 15. FB TV</div>
             </div>
         </div>
 
-        <!-- Custom Templates Will Be Added Here -->
+        <!-- Kullanıcı Şablonları Buraya Eklenecek -->
         <div id="custom-templates-container" style="display:none; margin-bottom:1.5rem;">
-            <h3 style="font-size: 1rem; color: var(--text-secondary); margin-bottom: 0.5rem; text-transform:uppercase; letter-spacing:0.05em;">Your Templates</h3>
+            <h3 style="font-size: 1rem; color: var(--text-secondary); margin-bottom: 0.5rem; text-transform:uppercase; letter-spacing:0.05em;">Your Own Templates</h3>
             <div class="template-cards" id="custom-cards-container" style="margin-top:0;">
             </div>
         </div>
@@ -130,9 +251,7 @@
             <button id="apply-template-btn" class="btn magic">Apply Selected Template</button>
         </div>
     </div>
-</div>
-{% endblock %}
+</div>{% endblock %}
 
 {% block scripts %}
-<script src="/static/js/app.js"></script>
-{% endblock %}
+<script src="/static/js/app.js"></script>{% endblock %}

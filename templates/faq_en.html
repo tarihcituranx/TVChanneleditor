@@ -1,4 +1,4 @@
-{% extends &quot;base.html&quot; %}
+{% extends "base_en.html" %}
 
 {% block title %}Frequently Asked Questions - TV Channel Editor{% endblock %}
 
@@ -7,36 +7,47 @@
     .content-container {
         max-width: 900px;
         margin: 40px auto;
-        padding: 20px;
-        background: rgba(255, 255, 255, 0.05);
+        padding: 28px 32px;
+        background: var(--card-bg);
         border-radius: 12px;
-        border: 1px solid rgba(255, 255, 255, 0.1);
+        border: 1px solid var(--border-color);
     }
-    
     .section-title {
-        font-size: 24px;
-        font-weight: 600;
-        margin-bottom: 20px;
-        color: #fff;
-        border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+        font-size: 22px;
+        font-weight: 700;
+        margin-bottom: 24px;
+        color: var(--text-primary);
+        border-bottom: 2px solid var(--border-color);
         padding-bottom: 10px;
     }
-
     .faq-item {
-        margin-bottom: 20px;
-        background: rgba(0, 0, 0, 0.3);
-        border-radius: 8px;
-        padding: 20px;
-        border: 1px solid rgba(255, 255, 255, 0.05);
+        margin-bottom: 12px;
+        border: 1px solid var(--border-color);
+        border-radius: 10px;
+        overflow: hidden;
     }
-
     .faq-q {
-        font-size: 18px;
+        font-size: 15px;
         font-weight: 600;
-        color: #4a90e2;
-        margin-bottom: 10px;
+        color: var(--text-primary);
+        padding: 16px 20px;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 12px;
+        transition: background 0.2s;
+        user-select: none;
     }
-
+    .faq-q:hover { background: rgba(59,130,246,0.06); }
+    .faq-q::after {
+        content: &#x27;﹢&#x27;;
+        font-size: 20px;
+        color: var(--accent);
+        transition: transform 0.2s;
+        flex-shrink: 0;
+    }
+    .faq-item.open .faq-q::after { content: &#x27;−&#x27;; }
     .faq-a {
         font-size: 14px;
         color: var(--text-primary);
@@ -47,34 +58,153 @@
         overflow: hidden;
         transition: max-height 0.35s ease, padding 0.2s;
     }
+    .faq-item.open .faq-a {
+        max-height: 600px;
+        padding: 0 20px 16px;
+    }
+    .faq-a code {
+        background: var(--bg-color);
+        padding: 2px 6px;
+        border-radius: 4px;
+        font-family: monospace;
+        font-size: 13px;
+        color: #93c5fd;
+        border: 1px solid var(--border-color);
+    }
 </style>{% endblock %}
 
 {% block content %}
 <div class="content-container">
-    <h2 class="section-title">❓ Frequently Asked Questions (FAQ)</h2>
-    
+    <h2 class="section-title">❓ Frequently Asked Questions</h2>
+
     <div class="faq-item">
-        <div class="faq-q">What Is an SCM File?</div>
-        <div class="faq-a">SCM (Samsung Channel Map) is an encrypted (checksum) data file that stores the satellite frequencies and channel lists for Samsung TVs. It is obtained by transferring it from your TV to a USB drive.</div>
+        <div class="faq-q" onclick="toggleFaq(this)">What Is an SCM File?</div>
+        <div class="faq-a">
+            <strong>SCM (Samsung Channel Map)</strong>
+            is a special archive file that stores channel listings, favorite lists, and frequency data for Samsung TVs. It contains <code>map-SateD</code> (channel list) and <code>TransponderDataBase.dat</code> (frequency database). Older models use the SCM format, while newer Tizen models use the ZIP format.
+        </div>
     </div>
 
     <div class="faq-item">
-        <div class="faq-q">How do I get the SCM file from my TV?</div>
-        <div class="faq-a">Go to the menu on your TV: <strong>Broadcast &gt; Channel Settings &gt; Transfer Channel List &gt; Transfer to USB</strong>. This process will save an .scm file to your USB drive.</div>
+        <div class="faq-q" onclick="toggleFaq(this)">How do I transfer the channel list from the TV to a USB drive?</div>
+        <div class="faq-a">
+            For Samsung: <strong>Menu → Broadcast → Channel Settings → Transfer Channel List → Transfer to USB</strong>.<br>
+            For LG: <strong>Settings → Channel → Copy to USB</strong>.<br>
+            For Sony: <strong>Settings → Channel Settings → Channel List Transfer → Transfer to USB</strong>.<br>
+            For Hisense: <strong>Menu → Channel → Export Channel List</strong>.
+        </div>
     </div>
 
     <div class="faq-item">
-        <div class="faq-q">How do I load the edited list onto the TV?</div>
-        <div class="faq-a">Copy the new SCM file you downloaded from this site to your USB flash drive. Then, you can upload it by selecting <strong>Broadcast &gt; Channel Settings &gt; Transfer Channel List &gt; Import from USB</strong> in the TV menu.</div>
+        <div class="faq-q" onclick="toggleFaq(this)">How do I load the edited list onto the TV?</div>
+        <div class="faq-a">
+            Copy the downloaded file to a USB drive (<strong>keep the original file name!</strong>
+            ). Use the <strong>“Import from USB”</strong>
+            or <strong>“Import”</strong>
+            option in the TV menu.
+            On Samsung TVs, the TV usually only accepts files with the exact same name; therefore, save the new file with the same name as the old one.
+        </div>
     </div>
 
     <div class="faq-item">
-        <div class="faq-q">How does Magic Wand match channels?</div>
-        <div class="faq-a">Since frequencies can change, the Magic Wand algorithm performs the match based on <strong>the Channel Name</strong>. It updates only the order of the channel named &quot;TRT1 HD&quot; in your original file while preserving all encrypted PIDs and frequency data.</div>
+        <div class="faq-q" onclick="toggleFaq(this)">Which TV brands are supported?</div>
+        <div class="faq-a">
+            Currently, <strong>Samsung</strong> (.scm and .zip), <strong>LG</strong> (.tll), <strong>Sony BRAVIA</strong> (sdb.xml), and <strong>Hisense</strong> (servicelist.db) are fully supported.
+            Panasonic is in the beta phase; Philips, Toshiba, and Grundig will be added soon.
+        </div>
     </div>
 
     <div class="faq-item">
-        <div class="faq-q">Are other TV brands supported?</div>
-        <div class="faq-a">Currently, our system is designed specifically to crack the Checksum algorithm used by <strong>Samsung</strong> TVs. Other brands may be added in the future.</div>
+        <div class="faq-q" onclick="toggleFaq(this)">How does Magic Wand match channels?</div>
+        <div class="faq-a">
+            Magic Wand matches channels based on the channel name (case-insensitive). If your channel list in the template includes “TRT1 HD,” it will find the “trt1 hd” channel in the uploaded file and move it to the top. It does not alter the frequency or PID data.
+        </div>
     </div>
-</div>{% endblock %}
+
+    <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Is my data secure? Are my files stored on the server?</div>
+        <div class="faq-a">
+            Uploaded channel list files are stored temporarily on our server only for the duration of the processing and are deleted as soon as the process is complete. No channel names, frequencies, or personal data are logged, stored, or shared with third parties. All processing is done on the server, and only the output file is sent to you.
+        </div>
+    </div>
+
+    <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">What does the frequency warning (⚠️ Old Frequency) mean?</div>
+        <div class="faq-a">
+            The system compares the frequency at which the channel was recorded with the current Türksat frequency database on <strong>the official Türksat website</strong>. If the channel was scanned at an old or different frequency, a yellow warning is displayed. This is for informational purposes only; the channel will continue to work, but it is recommended that you move the channel to its current frequency by performing a new network scan on your TV.
+        </div>
+    </div>
+
+    <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Why can’t I see the new unencrypted channels in the list?</div>
+        <div class="faq-a">
+            This site only manages the TV’s current channel list; <em>it cannot add</em> new channels. To view a new channel, you must first perform <strong>a Network Scan</strong> on the TV, then download the new SCM/ZIP file.
+        </div>
+    </div>
+
+    <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">I can’t upload a file larger than 2 MB—what should I do?</div>
+        <div class="faq-a">
+            A 2 MB upload limit is in place for security reasons. However, typical channel list files are well below this limit; an SCM file containing hundreds of channels rarely exceeds 300–400 KB. If you’re uploading a very large file, you’ve likely selected the wrong file.
+        </div>
+    </div>
+    <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">What is a TLL file on an LG TV, and how do I obtain one?</div>
+        <div class="faq-a">
+            <strong>TLL (TLL Channel List)</strong>
+            is the GlobalClone backup format for LG TVs. Insert a USB flash drive into the TV and export the file via the <strong>Settings → General → About → Channel Backup Configuration (CLONE)</strong>
+            menu. On some models, the path is different: You can check the file created after <strong>selecting Menu → Support → Update → Update via USB</strong>
+            . The file is usually named <code>xx########.tll</code> .
+        </div>
+    </div>
+
+    <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Where is the sdb.xml file located on a Sony BRAVIA?</div>
+        <div class="faq-a">
+            For Sony BRAVIA, insert a USB flash drive and follow these steps: <strong>Settings → Channel Settings → Channel List Transfer → Copy to USB</strong>. After the process, a file named <code>sdb.xml</code> . On some Android TV models, use the path <strong>Settings → Device Preferences → Channels → Back Up Channel List</strong>.
+        </div>
+    </div>
+
+    <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">How do you retrieve the servicelist.db or channel.db file on a Hisense TV?</div>
+        <div class="faq-a">
+            For Hisense, insert a USB flash drive and go to <strong>Menu → Channel → Export Channel List</strong>. On the USB drive, <code>servicelist.db</code> or <code>channel.db</code> . The file name may vary depending on the model and firmware version; both formats can be opened with this editor.
+        </div>
+    </div>
+
+    <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Should I use a ZIP file or an SCM file on a Samsung Tizen TV?</div>
+        <div class="faq-a">
+            <strong>Older Samsung models</strong>
+            (E, F, H Series, 2012–2014): <code>.scm</code>
+            use files with the .SCM extension.<br>
+            
+            <strong>Newer Samsung Tizen models</strong>
+            (J, K, M, Q, R, T Series, 2015 and later): <code>.zip</code>
+            use files with the .SCM extension that contain an SQLite database.<br>
+            This editor automatically detects both formats; it selects the correct format by examining the ZIP contents, not by the file extension.
+        </div>
+    </div>
+
+    <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">How do I know which file to load?</div>
+        <div class="faq-a">
+            Check the file extension based on your TV brand:<br>
+            
+            • <strong>Samsung (older models)</strong>
+            : <code>.scm</code><br>
+            • <strong>Samsung (Tizen/new)</strong>: <code>.zip</code><br>
+            • <strong>LG</strong>: <code>.tll</code><br>
+            • <strong>Sony BRAVIA</strong>: <code>sdb.xml</code><br>
+            • <strong>Hisense</strong>: <code>servicelist.db</code> or <code>channel.db</code>
+            After uploading<br>
+            the file, the editor automatically displays which brand it has detected.
+        </div>
+    </div>
+</div>
+
+<script>
+function toggleFaq(el) {
+    el.parentElement.classList.toggle(&#x27;open&#x27;);
+}
+</script>{% endblock %}
