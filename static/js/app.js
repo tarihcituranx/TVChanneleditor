@@ -776,5 +776,47 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
     });
+    // Keyboard support for moving selected channels (Alt + ArrowUp/ArrowDown)
+    document.addEventListener('keydown', (e) => {
+        const editorSection = document.getElementById('editor-section');
+        if (!editorSection || editorSection.classList.contains('hidden')) return;
+        if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+
+        if (e.altKey && (e.key === 'ArrowUp' || e.key === 'ArrowDown')) {
+            e.preventDefault();
+            const selected = document.querySelectorAll('.channel-select:checked');
+            if (selected.length === 0) return;
+            
+            let indices = Array.from(selected).map(cb => parseInt(cb.dataset.index)).sort((a, b) => a - b);
+            
+            if (e.key === 'ArrowUp') {
+                if (indices[0] > 0) {
+                    for (let i of indices) {
+                        let temp = currentChannels[i-1];
+                        currentChannels[i-1] = currentChannels[i];
+                        currentChannels[i] = temp;
+                    }
+                    renderChannels(document.getElementById('search-input').value);
+                    indices.forEach(i => {
+                        const cb = document.querySelector(`.channel-select[data-index="${i-1}"]`);
+                        if (cb) cb.checked = true;
+                    });
+                }
+            } else if (e.key === 'ArrowDown') {
+                if (indices[indices.length-1] < currentChannels.length - 1) {
+                    for (let i of [...indices].reverse()) {
+                        let temp = currentChannels[i+1];
+                        currentChannels[i+1] = currentChannels[i];
+                        currentChannels[i] = temp;
+                    }
+                    renderChannels(document.getElementById('search-input').value);
+                    indices.forEach(i => {
+                        const cb = document.querySelector(`.channel-select[data-index="${i+1}"]`);
+                        if (cb) cb.checked = true;
+                    });
+                }
+            }
+        }
+    });
 
 });

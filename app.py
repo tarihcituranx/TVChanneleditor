@@ -194,6 +194,19 @@ def faq():
 def privacy():
     return render_lang('privacy.html')
 
+@app.route('/robots.txt')
+def robots():
+    return Response("User-agent: *\nDisallow:", mimetype="text/plain")
+
+@app.route('/.well-known/security.txt')
+def security_txt():
+    content = (
+        "Contact: mailto:security@tvchanneleditor.onrender.com\n"
+        "Preferred-Languages: en, tr\n"
+        "Canonical: https://tvchanneleditor.onrender.com/.well-known/security.txt\n"
+    )
+    return Response(content, mimetype="text/plain")
+
 @app.route('/glossary')
 def glossary():
     return render_lang('glossary.html')
