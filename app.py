@@ -57,8 +57,8 @@ def _cleanup_expired():
             pass
         del _sessions[sid]
 
-def _detect_brand(filename: str) -> str:
-    """Dosya adı/uzantısına göre marka tespit et."""
+def _detect_brand(filename: str, file_obj=None) -> str:
+    """Dosya adı/uzantısına ve ZIP içeriğine göre marka tespit et."""
     name_lower = filename.lower()
     if name_lower.endswith('.tll'):
         return 'lg'
@@ -66,8 +66,27 @@ def _detect_brand(filename: str) -> str:
         return 'sony'
     if 'servicelist.db' in name_lower or 'channel.db' in name_lower:
         return 'hisense'
-    if name_lower.endswith('.zip'):
-        return 'tizen'
+    if name_lower.endswith('.scm'):
+        return 'samsung'
+    if name_lower.endswith('.zip') and file_obj is not None:
+        # ZIP içini okuyarak Tizen mi Samsung mı ayırt et
+        import zipfile as _zf
+        try:
+            file_obj.seek(0)
+            with _zf.ZipFile(file_obj) as z:
+                names = [n.lower() for n in z.namelist()]
+                # Tizen: içinde SQLite .db dosyası olur
+                has_db  = any(n.endswith('.db') for n in names)
+                # Samsung SCM: map-SateD binary bloğu olur
+                has_scm = any('map-sated' in n for n in names)
+                file_obj.seek(0)
+                if has_scm:
+                    return 'samsung'
+                if has_db:
+                    return 'tizen'
+        except Exception:
+            pass
+        return 'tizen'   # varsayılan: zip → tizen
     return 'samsung'   # varsayılan .scm
 
 def _brand_ext(brand: str) -> str:
@@ -144,7 +163,7 @@ def upload():
     if not file.filename:
         return jsonify({'error': 'Dosya seçilmedi'}), 400
 
-    brand = _detect_brand(file.filename)
+    brand = _detect_brand(file.filename, file.stream)
     safe_name = _safe_filename(file.filename, brand)
     if not safe_name:
         return jsonify({'error': 'Desteklenmeyen dosya formatı. (.scm, .zip, .tll, .db, .xml)'}), 400
