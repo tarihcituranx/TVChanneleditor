@@ -104,7 +104,7 @@ AI asistanı ile geliştirme yapıyorsanız [AI_INSTRUCTIONS.md](AI_INSTRUCTIONS
 
 - **[İltekin/scm-editor](https://github.com/iltekin/scm-editor)** — İlk ilham kaynağı
 - **[PredatH0r/ChanSort](https://github.com/PredatH0r/ChanSort)** — SCM + çoklu marka formatları için tersine mühendislik referansı
-- **[FrekansListesi.com.tr](https://frekanslistesi.com.tr/)** — Türksat frekans doğrulama veritabanı
+- **[Türksat Uydu](https://uydu.turksat.com.tr/)** — Türksat frekans doğrulama veritabanı
 
 ---
 
