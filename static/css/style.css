@@ -677,3 +677,14 @@ footer a {
     border: 1px solid rgba(0,0,0,0.1) !important;
     color: var(--text-primary) !important;
 }
+
+.info-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px;
+    background: rgba(0, 0, 0, 0.02);
+    border-radius: 6px;
+}
+[data-theme="dark"] .info-row {
+    background: rgba(255, 255, 255, 0.03);
+}
