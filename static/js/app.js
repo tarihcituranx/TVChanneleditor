@@ -228,10 +228,12 @@ document.addEventListener('DOMContentLoaded', () => {
             let freqWarning = '';
             const chNameUp = ch.Name.toUpperCase();
             if (frekansData[chNameUp]) {
-                const updatedFreq = frekansData[chNameUp];
-                if (parseInt(ch.Freq) !== parseInt(updatedFreq)) {
+                let updatedFreq = frekansData[chNameUp];
+                if (typeof updatedFreq === 'object') updatedFreq = updatedFreq.freq; // Handle advanced JSON format
+                
+                if (updatedFreq && parseInt(ch.Freq) !== parseInt(updatedFreq)) {
                     freqWarning = `<div style="font-size:10px; margin-top:4px; padding:2px 6px; background:var(--danger); color:white; border-radius:12px; display:inline-block; font-weight:600; line-height:1.2; opacity:0.9;" title="Doğru Frekans: ${updatedFreq}">⚠️ ${updatedFreq} olmalı</div>`;
-                } else {
+                } else if (updatedFreq) {
                     freqWarning = `<div style="font-size:10px; margin-top:4px; padding:2px 6px; background:rgba(34,197,94,0.2); color:#22c55e; border-radius:12px; display:inline-block; font-weight:600; line-height:1.2; border:1px solid rgba(34,197,94,0.3);" title="Frekans Güncel">✅ Güncel</div>`;
                 }
             }
@@ -715,14 +717,28 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('info-enc').innerHTML = ch.Encrypted === 'Yes' ? '🔒 Evet' : '🔓 Hayır';
         
         // Advanced Tech details
-        document.getElementById('info-mod').textContent = ch.Type === 'HD' ? 'DVB-S2' : (ch.Type === 'SD' ? 'DVB-S' : '-');
-        document.getElementById('info-rolloff').textContent = '-';
+        
+        let advMod = ch.Type === 'HD' ? 'DVB-S2' : (ch.Type === 'SD' ? 'DVB-S' : '-');
+        let advRollOff = '-';
+        let advAudioPid = '-';
+        
+        // Eğer frekansData içinde bu kanal varsa ve gelişmiş nesne yapısındaysa (objeyse) gelişmiş verileri oradan al
+        const chNameUp = ch.Name.toUpperCase();
+        if (frekansData[chNameUp] && typeof frekansData[chNameUp] === 'object') {
+            const extraData = frekansData[chNameUp];
+            if (extraData.mod) advMod = extraData.mod;
+            if (extraData.rolloff) advRollOff = extraData.rolloff;
+            if (extraData.apid) advAudioPid = extraData.apid;
+        }
+
+        document.getElementById('info-mod').textContent = advMod;
+        document.getElementById('info-rolloff').textContent = advRollOff;
         document.getElementById('info-nid').textContent = ch.ONID !== undefined ? ch.ONID : '-'; // NID is usually same as ONID
         document.getElementById('info-tsid').textContent = ch.TSID !== undefined ? ch.TSID : '-';
         document.getElementById('info-onid').textContent = ch.ONID !== undefined ? ch.ONID : '-';
         document.getElementById('info-sid').textContent = ch.SID !== undefined ? ch.SID : '-';
         document.getElementById('info-vidpid').textContent = ch.VidPID !== undefined ? ch.VidPID : '-';
-        document.getElementById('info-audpid').textContent = '-';
+        document.getElementById('info-audpid').textContent = advAudioPid;
         document.getElementById('info-pcrpid').textContent = ch.PcrPID !== undefined ? ch.PcrPID : '-';
 
         infoModal.classList.remove('hidden');
