@@ -34,7 +34,7 @@
         <div class="search-box">
             <input type="text" id="search-input" placeholder="Kanal ara...">
         </div>
-                <div class="actions" style="display: flex; gap: 10px; margin-bottom: 15px; flex-wrap: wrap;">
+                <div class="actions" style="display: flex; gap: 10px; flex-wrap: wrap; justify-content: flex-end; flex: 1;">
             <button class="btn secondary" id="delete-selected-btn" style="display:none;">
                 <svg class="icon" width="16" height="16"><use href="#icon-trash"/></svg>
                 Seçilileri Sil (<span id="sel-count">0</span>)
@@ -47,7 +47,7 @@
             <button class="btn danger-outline" id="del-radio-btn">
                 <svg class="icon" width="16" height="16"><use href="#icon-trash"/></svg> Radyoları Sil
             </button>
-            <div style="flex:1;"></div>
+            
             <button class="btn primary-outline" id="magic-wand-btn" style="background:transparent; color:var(--accent); border:1px solid var(--accent);">
                 <svg class="icon" width="16" height="16"><use href="#icon-wand"/></svg> Sihirli Değnek
             </button>
