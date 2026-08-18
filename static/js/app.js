@@ -605,4 +605,59 @@ document.addEventListener('DOMContentLoaded', () => {
             saveBtn.textContent = 'Save and Download';
         });
     });
+
+    // 4. Share Draft (Cross-Device)
+    const exportShareBtn = document.getElementById('export-share-btn');
+    const importShareBtn = document.getElementById('import-share-btn');
+
+    if (exportShareBtn) {
+        exportShareBtn.addEventListener('click', () => {
+            exportShareBtn.textContent = '⏳';
+            fetch('/api/share', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ draft: channels })
+            })
+            .then(res => res.json())
+            .then(data => {
+                exportShareBtn.textContent = '📱 Cihaza Aktar';
+                if (data.success) {
+                    prompt('Aşağıdaki kodu diğer cihazda "Kod ile İçe Aktar" bölümüne girin. (10 dakika geçerlidir)', data.code);
+                } else {
+                    alert('Hata: ' + data.error);
+                }
+            }).catch(() => {
+                exportShareBtn.textContent = '📱 Cihaza Aktar';
+                alert('Bağlantı hatası.');
+            });
+        });
+    }
+
+    if (importShareBtn) {
+        importShareBtn.addEventListener('click', () => {
+            const code = prompt('Diğer ekranda gördüğünüz 6 haneli kodu girin:');
+            if (!code) return;
+            
+            importShareBtn.textContent = '⏳ Yükleniyor...';
+            fetch(`/api/share?code=${code}`)
+            .then(res => res.json())
+            .then(data => {
+                importShareBtn.textContent = '📱 Kod ile İçe Aktar';
+                if (data.success) {
+                    channels = data.draft;
+                    dropZone.classList.add('hidden');
+                    editorSection.classList.remove('hidden');
+                    renderChannels();
+                    saveDraftToLocal();
+                    alert('Taslak başarıyla aktarıldı! ✨ Kaldığınız yerden devam edebilirsiniz.');
+                } else {
+                    alert('Hata: ' + data.error);
+                }
+            }).catch(() => {
+                importShareBtn.textContent = '📱 Kod ile İçe Aktar';
+                alert('Bağlantı hatası.');
+            });
+        });
+    }
+
 });

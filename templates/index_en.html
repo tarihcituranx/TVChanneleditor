@@ -20,6 +20,11 @@
         <div style="margin-top: 1.5rem; padding: 10px 15px; background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.2); border-radius: 8px; font-size: 0.85rem; color: var(--text-secondary); max-width: 600px; margin-left: auto; margin-right: auto; text-align: left;">
             <strong style="color: var(--danger);">⚠️ Disclaimer:</strong> This tool is not affiliated with any TV manufacturer. Please keep a safe backup of your original channel list file before editing. We are not responsible for any potential data loss.
         </div>
+        
+        <div style="margin-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1rem;">
+            <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 0.5rem;">Or import a draft from another device:</p>
+            <button id="import-share-btn" class="btn primary-outline" style="background:transparent; color:var(--accent); border:1px solid var(--accent);">📱 Import via Code</button>
+        </div>
     </div>
 </div>
 
@@ -27,7 +32,7 @@
     <div id="brand-badge" class="brand-badge hidden"></div>
     <div class="toolbar">
         <div class="search-box">
-            <input type="text" id="search-input" placeholder="Search channel...">
+            <input type="text" id="search-input" placeholder="Search channels...">
         </div>
         <div class="actions">
             <button id="magic-wand-btn" class="btn magic" title="Applies preset lists">🪄 Magic Wand</button>
@@ -37,6 +42,7 @@
             <button id="delete-selected-btn" class="btn danger" style="display:none;">Delete Selected (<span id="sel-count">0</span>)</button>
             <button id="del-encrypted-btn" class="btn danger-outline">Delete Encrypted</button>
             <button id="del-radio-btn" class="btn danger-outline">Delete Radios</button>
+            <button id="export-share-btn" class="btn magic" style="background: #e85d00; color: white;">📱 Export to Device</button>
             <button id="save-btn" class="btn primary">Save and Download</button>
         </div>
     </div>

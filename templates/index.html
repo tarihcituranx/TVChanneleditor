@@ -20,6 +20,11 @@
         <div style="margin-top: 1.5rem; padding: 10px 15px; background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.2); border-radius: 8px; font-size: 0.85rem; color: var(--text-secondary); max-width: 600px; margin-left: auto; margin-right: auto; text-align: left;">
             <strong style="color: var(--danger);">⚠️ Sorumluluk Reddi:</strong> Bu araç herhangi bir TV üreticisine bağlı değildir. Lütfen düzenleme yapmadan önce orijinal kanal listesi dosyanızın yedeğini güvenli bir yerde saklayınız. Olası veri kayıplarından sistemimiz sorumlu değildir.
         </div>
+        
+        <div style="margin-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1rem;">
+            <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 0.5rem;">Veya başka bir cihazdan taslak aktarın:</p>
+            <button id="import-share-btn" class="btn primary-outline" style="background:transparent; color:var(--accent); border:1px solid var(--accent);">📱 Kod ile İçe Aktar</button>
+        </div>
     </div>
 </div>
 
@@ -37,6 +42,7 @@
             <button id="delete-selected-btn" class="btn danger" style="display:none;">Seçilileri Sil (<span id="sel-count">0</span>)</button>
             <button id="del-encrypted-btn" class="btn danger-outline">Şifrelileri Sil</button>
             <button id="del-radio-btn" class="btn danger-outline">Radyoları Sil</button>
+            <button id="export-share-btn" class="btn magic" style="background: #e85d00; color: white;">📱 Cihaza Aktar</button>
             <button id="save-btn" class="btn primary">Kaydet ve İndir</button>
         </div>
     </div>

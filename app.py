@@ -23,6 +23,9 @@ app.config['MAX_CONTENT_LENGTH'] = 2 * 1024 * 1024  # 2 MB upload limit
 _sessions = {}
 SESSION_TTL = 3600  # 1 hour
 
+_shares = {}
+SHARE_TTL = 600 # 10 minutes
+
 # Simple in-memory rate limiter: ip -> [(timestamp), ...]
 _rate_limit = defaultdict(list)
 RATE_LIMIT_MAX = 10   # max requests
@@ -56,6 +59,10 @@ def _cleanup_expired():
         except Exception:
             pass
         del _sessions[sid]
+        
+    expired_shares = [code for code, s in _shares.items() if s['expires'] < now]
+    for code in expired_shares:
+        del _shares[code]
 
 def _detect_brand(filename: str, file_obj=None) -> str:
     """Dosya adı/uzantısına ve ZIP içeriğine göre marka tespit et."""
@@ -328,6 +335,37 @@ def build():
             return jsonify({'error': 'Dosya oluşturulamadı'}), 500
     except Exception as e:
         return jsonify({'error': str(e)}), 500
+
+import random
+import string
+
+@app.route('/api/share', methods=['POST', 'GET'])
+def share_draft():
+    _cleanup_expired()
+    
+    if request.method == 'POST':
+        # Create a new share code
+        data = request.json
+        if not data or 'draft' not in data:
+            return jsonify({'success': False, 'error': 'Geçersiz veri'}), 400
+            
+        # Generate 6 digit random code
+        code = ''.join(random.choices(string.ascii_uppercase + string.digits, k=6))
+        
+        _shares[code] = {
+            'draft': data['draft'],
+            'expires': time.time() + SHARE_TTL
+        }
+        
+        return jsonify({'success': True, 'code': code})
+        
+    else:
+        # GET request to retrieve draft
+        code = request.args.get('code', '').upper()
+        if not code or code not in _shares:
+            return jsonify({'success': False, 'error': 'Kod geçersiz veya süresi dolmuş.'}), 404
+            
+        return jsonify({'success': True, 'draft': _shares[code]['draft']})
 
 @app.route('/download/<session_id>/<filename>')
 def download(session_id, filename):
