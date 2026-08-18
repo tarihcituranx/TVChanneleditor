@@ -144,6 +144,48 @@
             Güvenlik nedeniyle 2 MB'lık yükleme limiti uygulanmaktadır. Ama tipik kanal listesi dosyaları bunun çok altında olur; yüzlerce kanaldan oluşan bir SCM dosyası nadiren 300-400 KB'ı geçer. Çok büyük bir dosya yüklüyorsanız, muhtemelen yanlış dosya seçilmiştir.
         </div>
     </div>
+    <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">LG TV'de TLL dosyası nedir ve nasıl alınır?</div>
+        <div class="faq-a">
+            <strong>TLL (TLL Channel List)</strong>, LG televizyonların GlobalClone yedek formatıdır. USB belleği TV'ye takıp <strong>Ayarlar → Genel → Hakkında → Kanal Yedek Yapılandırma (CLONE)</strong> menüsünden dışa aktarılır. Bazı modellerde yol farklıdır: <strong>Menü → Destek → Güncelleme → USB'den Güncelle</strong> sonrası oluşan dosyaya bakabilirsiniz. Dosya genellikle <code>xx########.tll</code> formatında adlandırılır.
+        </div>
+    </div>
+
+    <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Sony BRAVIA'da sdb.xml dosyası nerede bulunur?</div>
+        <div class="faq-a">
+            Sony BRAVIA için USB belleği takıp <strong>Ayarlar → Kanal Ayarı → Kanal Listesi Aktarımı → USB'ye Kopyala</strong> adımlarını izleyin. İşlem sonrası USB'de <code>sdb.xml</code> adında bir dosya oluşur. Bazı Android TV modellerde ise <strong>Ayarlar → Cihaz Tercihleri → Kanal → Kanal Listesi Yedekle</strong> yolu kullanılır.
+        </div>
+    </div>
+
+    <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Hisense TV'de servicelist.db veya channel.db nasıl alınır?</div>
+        <div class="faq-a">
+            Hisense için USB belleği takıp <strong>Menü → Kanal → Kanal Listesi Dışa Aktar</strong> seçeneğine gidin. USB'de <code>servicelist.db</code> veya <code>channel.db</code> adında bir SQLite veritabanı dosyası oluşur. Model ve firmware sürümüne göre dosya adı farklılık gösterebilir; her iki format da bu editörle açılabilir.
+        </div>
+    </div>
+
+    <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Samsung Tizen TV'de ZIP dosyası mı yoksa SCM dosyası mı kullanılır?</div>
+        <div class="faq-a">
+            <strong>Eski Samsung modelleri</strong> (E, F, H Serisi, 2012–2014): <code>.scm</code> uzantılı dosya kullanır.<br>
+            <strong>Yeni Samsung Tizen modelleri</strong> (J, K, M, Q, R, T Serisi, 2015 ve sonrası): <code>.zip</code> uzantılı, içinde SQLite veritabanı barındıran dosya kullanır.<br>
+            Bu editör her iki formatı da otomatik olarak tespit eder; uzantısına bakarak değil, ZIP içeriğini inceleyerek doğru formatı seçer.
+        </div>
+    </div>
+
+    <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Hangi dosyayı yükleyeceğimi nasıl anlarım?</div>
+        <div class="faq-a">
+            TV markanıza göre dosya uzantısına bakın:<br>
+            • <strong>Samsung (eski)</strong>: <code>.scm</code><br>
+            • <strong>Samsung (Tizen/yeni)</strong>: <code>.zip</code><br>
+            • <strong>LG</strong>: <code>.tll</code><br>
+            • <strong>Sony BRAVIA</strong>: <code>sdb.xml</code><br>
+            • <strong>Hisense</strong>: <code>servicelist.db</code> veya <code>channel.db</code><br>
+            Dosyayı yükledikten sonra editör hangi markayı tespit ettiğini otomatik olarak gösterir.
+        </div>
+    </div>
 </div>
 
 <script>
