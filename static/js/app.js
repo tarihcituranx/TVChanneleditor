@@ -221,15 +221,13 @@ document.addEventListener('DOMContentLoaded', () => {
             li.dataset.index = channels.indexOf(ch);
             
             let freqWarning = '';
-            let freqColor = '';
             const chNameUp = ch.Name.toUpperCase();
             if (frekansData[chNameUp]) {
                 const updatedFreq = frekansData[chNameUp];
                 if (parseInt(ch.Freq) !== parseInt(updatedFreq)) {
-                    freqWarning = ` <span title="Doğru Frekans: ${updatedFreq}" style="color:red; font-size:12px;">⚠️ Eski Frekans (${updatedFreq} olmalı)</span>`;
-                    freqColor = 'color: #ff4d4d;';
+                    freqWarning = `<div style="font-size:10px; margin-top:4px; padding:2px 6px; background:var(--danger); color:white; border-radius:12px; display:inline-block; font-weight:600; line-height:1.2; opacity:0.9;" title="Doğru Frekans: ${updatedFreq}">⚠️ ${updatedFreq} olmalı</div>`;
                 } else {
-                    freqWarning = ` <span title="Frekans Güncel" style="color:#00ff00; font-size:12px;">✅</span>`;
+                    freqWarning = `<div style="font-size:10px; margin-top:4px; padding:2px 6px; background:rgba(34,197,94,0.2); color:#22c55e; border-radius:12px; display:inline-block; font-weight:600; line-height:1.2; border:1px solid rgba(34,197,94,0.3);" title="Frekans Güncel">✅ Güncel</div>`;
                 }
             }
             
@@ -243,7 +241,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
                 <div class="col-name" contenteditable="true" spellcheck="false" onblur="updateChannelName(${li.dataset.index}, this.innerText)" title="Yeniden adlandırmak için tıklayın">${escapeHTML(ch.Name)}</div>
                 <div class="col-type">${ch.Type}</div>
-                <div class="col-freq" style="${freqColor}" aria-label="Frekans: ${ch.Freq} ${ch.Pol} ${ch.Sym}">${ch.Freq} ${ch.Pol} ${ch.Sym}${freqWarning}</div>
+                <div class="col-freq" aria-label="Frekans: ${ch.Freq} ${ch.Pol} ${ch.Sym}">
+                    <div>${ch.Freq} ${ch.Pol} ${ch.Sym}</div>
+                    ${freqWarning}
+                </div>
                 <div class="col-action">
                     <button class="delete-btn" onclick="deleteChannel(${li.dataset.index})" aria-label="${escapeHTML(ch.Name)} kanalını sil">✕</button>
                 </div>
