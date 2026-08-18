@@ -188,6 +188,16 @@ def get_channels(scm_path):
         tp_index = struct.unpack('<H', rec[18:20])[0]
         freq_info = tp_dict.get(tp_index, {'freq': '???', 'sym': '???', 'pol': '?'})
         
+        # Advanced Technical Parameters
+        try:
+            vid_pid = struct.unpack('<H', rec[2:4])[0]
+            pcr_pid = struct.unpack('<H', rec[4:6])[0]
+            sid = struct.unpack('<H', rec[16:18])[0]
+            tsid = struct.unpack('<H', rec[24:26])[0]
+            onid = struct.unpack('<H', rec[28:30])[0]
+        except:
+            vid_pid, pcr_pid, sid, tsid, onid = 0, 0, 0, 0, 0
+        
         channels.append({
             'Slot': i // 168, 
             'No': channelNo, 
@@ -202,7 +212,12 @@ def get_channels(scm_path):
             'Fav2': fav2,
             'Fav3': fav3,
             'Fav4': fav4,
-            'Fav5': fav5
+            'Fav5': fav5,
+            'VidPID': vid_pid,
+            'PcrPID': pcr_pid,
+            'SID': sid,
+            'TSID': tsid,
+            'ONID': onid
         })
     channels.sort(key=lambda x: x['No'])
     return channels

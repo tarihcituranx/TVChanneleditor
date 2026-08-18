@@ -708,6 +708,13 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('info-type').innerHTML = typeHtml;
         
         document.getElementById('info-enc').innerHTML = ch.Encrypted === 'Yes' ? '🔒 Evet' : '🔓 Hayır';
+        
+        // Advanced Tech details
+        document.getElementById('info-sid').textContent = ch.SID !== undefined ? ch.SID : '-';
+        document.getElementById('info-tsid').textContent = ch.TSID !== undefined ? ch.TSID : '-';
+        document.getElementById('info-onid').textContent = ch.ONID !== undefined ? ch.ONID : '-';
+        document.getElementById('info-vidpid').textContent = ch.VidPID !== undefined ? ch.VidPID : '-';
+        document.getElementById('info-pcrpid').textContent = ch.PcrPID !== undefined ? ch.PcrPID : '-';
 
         infoModal.classList.remove('hidden');
     };
