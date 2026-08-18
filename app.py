@@ -20,6 +20,12 @@ import hisense_core
 
 app = Flask(__name__)
 
+@app.after_request
+def remove_server_header(response):
+    response.headers.pop('Server', None)
+    response.headers.pop('x-render-origin-server', None)
+    return response
+
 limiter = Limiter(
     get_remote_address,
     app=app,
