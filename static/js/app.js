@@ -197,7 +197,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     <span class="flag-icon lock-icon ${ch.Lock ? 'active' : ''}" role="button" tabindex="0" aria-pressed="${ch.Lock ? 'true' : 'false'}" aria-label="${escapeHTML(ch.Name)} için Çocuk Kilidi" title="Çocuk Kilidi" onclick="toggleFlag(${li.dataset.index}, 'Lock')" onkeydown="if(event.key==='Enter') toggleFlag(${li.dataset.index}, 'Lock')">🔒</span>
                     <span class="flag-icon fav-icon ${ch.Fav1 ? 'active' : ''}" role="button" tabindex="0" aria-pressed="${ch.Fav1 ? 'true' : 'false'}" aria-label="${escapeHTML(ch.Name)} için Favori 1" title="Favori" onclick="toggleFlag(${li.dataset.index}, 'Fav1')" onkeydown="if(event.key==='Enter') toggleFlag(${li.dataset.index}, 'Fav1')">⭐</span>
                 </div>
-                <div class="col-name">${escapeHTML(ch.Name)}</div>
+                <div class="col-name" contenteditable="true" spellcheck="false" onblur="updateChannelName(${li.dataset.index}, this.innerText)" title="Yeniden adlandırmak için tıklayın">${escapeHTML(ch.Name)}</div>
                 <div class="col-type">${ch.Type}</div>
                 <div class="col-freq" style="${freqColor}" aria-label="Frekans: ${ch.Freq} ${ch.Pol} ${ch.Sym}">${ch.Freq} ${ch.Pol} ${ch.Sym}${freqWarning}</div>
                 <div class="col-action">
@@ -269,6 +269,19 @@ document.addEventListener('DOMContentLoaded', () => {
     window.toggleFlag = function(index, flagName) {
         channels[index][flagName] = !channels[index][flagName];
         renderChannels(searchInput.value);
+    }
+
+    window.updateChannelName = function(index, newName) {
+        const trimmed = newName.trim();
+        if (trimmed && channels[index].Name !== trimmed) {
+            channels[index].Name = trimmed;
+            // Render is not strictly necessary as DOM is already updated,
+            // but doing it ensures consistency.
+            renderChannels(searchInput.value);
+        } else if (!trimmed) {
+            // Restore original name if user empties the text
+            renderChannels(searchInput.value);
+        }
     }
 
     searchInput.addEventListener('input', (e) => {

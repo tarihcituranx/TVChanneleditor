@@ -273,7 +273,24 @@ li.dragging {
 
 .col-drag { width: 40px; color: var(--text-secondary); cursor: grab; }
 .col-no { width: 60px; font-variant-numeric: tabular-nums; }
-.col-name { flex: 1; font-weight: 500; }
+.col-name { 
+    flex: 1; 
+    font-weight: 500; 
+    padding: 4px 8px;
+    border-radius: 4px;
+    transition: background-color 0.2s, outline 0.2s;
+    cursor: text;
+}
+.col-name[contenteditable="true"]:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+[data-theme="light"] .col-name[contenteditable="true"]:hover {
+    background-color: rgba(0, 0, 0, 0.03);
+}
+.col-name[contenteditable="true"]:focus {
+    background-color: var(--bg-color);
+    outline: 1px solid var(--accent);
+}
 .col-type { width: 80px; color: var(--text-secondary); }
 .col-freq { width: 140px; font-variant-numeric: tabular-nums; color: var(--text-secondary); }
 .col-action { width: 40px; text-align: right; }
