@@ -64,7 +64,7 @@
 }
 
 body {
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     background-color: var(--bg-color);
     color: var(--text-primary);
     line-height: 1.5;
@@ -621,4 +621,47 @@ footer a {
         flex: 1 1 100%;
         justify-content: space-between;
     }
+}
+
+/* Retro TV Scanning Animation */
+.tv-scanning {
+    position: relative;
+    overflow: hidden;
+    color: transparent !important;
+}
+.tv-scanning::before {
+    content: "Sinyal Aranıyor...";
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-primary);
+    background: repeating-linear-gradient(
+        0deg,
+        rgba(0, 0, 0, 0.15),
+        rgba(0, 0, 0, 0.15) 1px,
+        transparent 1px,
+        transparent 2px
+    );
+    animation: tv-flicker 0.15s infinite alternate;
+    z-index: 2;
+}
+.tv-scanning::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(rgba(255,255,255,0), rgba(255,255,255,0.2) 50%, rgba(255,255,255,0));
+    background-size: 100% 200%;
+    animation: tv-scanline 1.5s linear infinite;
+    z-index: 3;
+}
+
+@keyframes tv-scanline {
+    0% { background-position: 0 -100%; }
+    100% { background-position: 0 200%; }
+}
+@keyframes tv-flicker {
+    0% { opacity: 0.9; }
+    100% { opacity: 1; }
 }

@@ -144,7 +144,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const formData = new FormData();
         formData.append('file', file);
 
-        browseBtn.textContent = 'Uploading...';
+        browseBtn.classList.add('tv-scanning');
 
         fetch('/upload', {
             method: 'POST',
@@ -154,7 +154,7 @@ document.addEventListener('DOMContentLoaded', () => {
         .then(data => {
             if (data.error) {
                 toast(data.error, 'danger');
-                browseBtn.textContent = 'Choose File';
+                browseBtn.classList.remove('tv-scanning');
                 return;
             }
             channels = data.channels.map((ch, i) => normalizeChannel(ch, i));
@@ -167,7 +167,7 @@ document.addEventListener('DOMContentLoaded', () => {
         .catch(err => {
             console.error(err);
             toast('An error occurred during upload.', 'danger');
-            browseBtn.textContent = 'Choose File';
+            browseBtn.classList.remove('tv-scanning');
         });
     }
 
@@ -739,5 +739,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
         infoModal.classList.remove('hidden');
     };
+
+    // A11y: Esc key to close all modals
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            document.querySelectorAll('.modal').forEach(modal => {
+                if (!modal.classList.contains('hidden')) {
+                    modal.classList.add('hidden');
+                }
+            });
+            // Also close template builder modal if exists
+            if (templateModal && !templateModal.classList.contains('hidden')) {
+                templateModal.classList.add('hidden');
+            }
+        }
+    });
 
 });
