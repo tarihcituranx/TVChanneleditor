@@ -208,6 +208,9 @@ def openapi_txt():
     with open('static/openapi.yaml', 'r') as f:
         return Response(f.read(), mimetype='text/plain')
 
+from datetime import datetime
+STARTUP_TIME = datetime.utcnow().isoformat() + "Z"
+
 @app.route('/api/version')
 def api_version():
     import os
@@ -215,7 +218,8 @@ def api_version():
     return jsonify({
         "status": "online",
         "version": "1.0.0",
-        "commit": commit
+        "commit": commit,
+        "deployed_at": STARTUP_TIME
     })
 
 @app.route('/glossary')
