@@ -1,66 +1,189 @@
-openapi: 3.0.0
+openapi: 3.0.3
+
 info:
   title: TV Channel Editor API
-  description: An API to parse, edit, and re-pack Smart TV channel lists (Samsung, LG, Sony, Hisense, etc.)
   version: 1.0.0
+  summary: Smart TV channel list parsing and repacking API
+  description: |
+    Parse, inspect, modify, and repack Smart TV channel list files.
+
+    Supported brands include Samsung, LG, Sony, and Hisense.
+    The API uses a session-based workflow:
+
+    1. Upload a supported channel-list file to `/upload`
+    2. Read the returned `session_id`, `brand`, and `channels` array
+    3. Modify the channel objects (e.g. change order, rename, set Fav/Lock)
+    4. Send the `session_id` and modified `channels` array to `/download`
+    5. Receive the rebuilt binary channel-list file
+
 servers:
   - url: https://tvchanneleditor.onrender.com
     description: Production Server
+
+tags:
+  - name: Channel Lists
+    description: Upload, parse, modify, and download channel lists
+
 components:
   securitySchemes:
     ApiKeyAuth:
       type: apiKey
       in: header
       name: X-API-Key
+      description: |
+        Optional API key to bypass the standard 50 requests/hour IP rate limit.
+        If you don't have a key, simply omit this header.
+
+  schemas:
+    Channel:
+      type: object
+      description: A single TV or radio channel.
+      required:
+        - No
+        - Name
+      properties:
+        No:
+          type: integer
+          description: Channel list position (Logical Channel Number).
+          example: 1
+        Name:
+          type: string
+          description: Display name of the channel.
+          example: TRT 1 HD
+        Type:
+          type: string
+          description: Channel type (e.g., TV, Radio, Data).
+          example: TV
+        Freq:
+          type: string
+          description: Satellite/transponder frequency in MHz.
+          example: "11958"
+        Pol:
+          type: string
+          description: Satellite polarization (V or H).
+          example: "V"
+        Sym:
+          type: string
+          description: Symbol rate.
+          example: "27500"
+        Fav:
+          type: string
+          description: Whether the channel is marked as a favorite.
+          enum: [ "Yes", "No" ]
+          example: "No"
+        Lock:
+          type: string
+          description: Whether the channel is locked with PIN.
+          enum: [ "Yes", "No" ]
+          example: "No"
+        Encrypted:
+          type: string
+          description: Whether the channel is encrypted (Pay TV).
+          enum: [ "Yes", "No" ]
+          example: "No"
+
+    UploadResponse:
+      type: object
+      required:
+        - brand
+        - session_id
+        - channels
+      properties:
+        brand:
+          type: string
+          description: Detected TV brand.
+          example: samsung
+        session_id:
+          type: string
+          description: Temporary session identifier returned after successful parsing. Pass this exact value to /download.
+          example: sess_01J8ABC123XYZ
+        channels:
+          type: array
+          description: Parsed channels in their current order.
+          items:
+            $ref: '#/components/schemas/Channel'
+
+    DownloadRequest:
+      type: object
+      required:
+        - session_id
+        - channels
+      properties:
+        session_id:
+          type: string
+          description: Session ID returned by /upload.
+          example: sess_01J8ABC123XYZ
+        channels:
+          type: array
+          description: Modified channel list. The array order determines the resulting channel order.
+          minItems: 1
+          items:
+            $ref: '#/components/schemas/Channel'
+
+# Note: Security is optional, so it is declared per-operation or at root with an empty requirement option
 security:
+  - {}
   - ApiKeyAuth: []
+
 paths:
   /upload:
     post:
-      summary: Upload and parse a TV channel list file
-      description: Upload a .scm, .tll, .zip, sdb.xml or servicelist.db file to extract its channels.
+      tags:
+        - Channel Lists
+      operationId: uploadChannelList
+      summary: Upload and parse a TV channel list
+      description: |
+        Upload a supported TV channel list file. The server detects the TV brand, parses the channels, and creates a temporary editing session.
       requestBody:
         required: true
         content:
           multipart/form-data:
             schema:
               type: object
+              required:
+                - file
               properties:
                 file:
                   type: string
                   format: binary
+                  description: TV channel list file (.scm, .zip, .tll, .xml, .db)
       responses:
         '200':
-          description: Successfully parsed the channel list
+          description: Channel list successfully parsed.
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  brand:
-                    type: string
-                  session_id:
-                    type: string
-                  channels:
-                    type: array
-                    items:
-                      type: object
+                $ref: '#/components/schemas/UploadResponse'
+        '400':
+          description: Invalid, unsupported, or malformed channel list file.
+        '413':
+          description: Uploaded file is too large (Max 2MB).
+        '429':
+          description: Rate limit exceeded (50 per hour). Use X-API-Key to bypass.
+
   /download:
     post:
-      summary: Pack modified channels and download the new file
+      tags:
+        - Channel Lists
+      operationId: downloadChannelList
+      summary: Repack and download a modified channel list
+      description: |
+        Rebuild the channel-list file associated with a session. The returned file preserves the original TV/brand format. The order of the channels array determines the resulting channel order.
       requestBody:
         required: true
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                session_id:
-                  type: string
-                channels:
-                  type: array
-                  items:
-                    type: object
+              $ref: '#/components/schemas/DownloadRequest'
       responses:
         '200':
-          description: A binary TV channel list file
+          description: Rebuilt binary channel-list file.
+          content:
+            application/octet-stream:
+              schema:
+                type: string
+                format: binary
+        '400':
+          description: Invalid request or expired session_id.
+        '429':
+          description: Rate limit exceeded.
