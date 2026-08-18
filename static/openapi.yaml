@@ -1,0 +1,66 @@
+openapi: 3.0.0
+info:
+  title: TV Channel Editor API
+  description: An API to parse, edit, and re-pack Smart TV channel lists (Samsung, LG, Sony, Hisense, etc.)
+  version: 1.0.0
+servers:
+  - url: https://tvchanneleditor.onrender.com
+    description: Production Server
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-Key
+security:
+  - ApiKeyAuth: []
+paths:
+  /upload:
+    post:
+      summary: Upload and parse a TV channel list file
+      description: Upload a .scm, .tll, .zip, sdb.xml or servicelist.db file to extract its channels.
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+      responses:
+        '200':
+          description: Successfully parsed the channel list
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  brand:
+                    type: string
+                  session_id:
+                    type: string
+                  channels:
+                    type: array
+                    items:
+                      type: object
+  /download:
+    post:
+      summary: Pack modified channels and download the new file
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                session_id:
+                  type: string
+                channels:
+                  type: array
+                  items:
+                    type: object
+      responses:
+        '200':
+          description: A binary TV channel list file
