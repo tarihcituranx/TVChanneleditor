@@ -110,6 +110,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             channels = data.channels.map((ch, i) => normalizeChannel(ch, i));
             currentSessionId = data.session_id;
+            showBrandBadge(data.brand, channels.length);
             renderChannels();
             dropZone.classList.add('hidden');
             editorSection.classList.remove('hidden');
@@ -132,6 +133,35 @@ document.addEventListener('DOMContentLoaded', () => {
             }[tag] || tag)
         );
     }
+
+    const BRAND_INFO = {
+        samsung: { emoji: '🔵', label: 'Samsung TV',  color: '#1428a0' },
+        tizen:   { emoji: '🔵', label: 'Samsung Tizen TV', color: '#1428a0' },
+        lg:      { emoji: '🔴', label: 'LG TV',       color: '#a50034' },
+        sony:    { emoji: '⚫', label: 'Sony TV',     color: '#1a1a1a' },
+        hisense: { emoji: '🟠', label: 'Hisense TV',  color: '#e85d00' },
+    };
+
+    function showBrandBadge(brand, count) {
+        const badgeEl = document.getElementById('brand-badge');
+        if (!badgeEl) return;
+        const info = BRAND_INFO[brand] || { emoji: '📺', label: brand, color: '#555' };
+        badgeEl.innerHTML = `
+            <span class="brand-badge-icon">${info.emoji}</span>
+            <span class="brand-badge-text">
+                <strong>${info.label}</strong> formatı tespit edildi
+                &nbsp;·&nbsp; <span class="brand-badge-count">${count} kanal</span>
+            </span>
+        `;
+        badgeEl.style.borderLeftColor = info.color;
+        badgeEl.classList.remove('hidden', 'badge-fadeout');
+        // 6 saniye sonra fade-out
+        clearTimeout(badgeEl._timer);
+        badgeEl._timer = setTimeout(() => {
+            badgeEl.classList.add('badge-fadeout');
+        }, 6000);
+    }
+
 
     function renderChannels(filter = '') {
         channelList.innerHTML = '';

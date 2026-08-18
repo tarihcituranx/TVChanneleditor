@@ -172,6 +172,35 @@ header p {
     gap: 0.5rem;
 }
 
+/* ── Brand Detection Badge ─────────────────────────────────── */
+@keyframes badgeSlideIn {
+    from { opacity: 0; transform: translateY(-8px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+.brand-badge {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.6rem 1rem;
+    margin-bottom: 1rem;
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-left: 4px solid #555;
+    border-radius: 8px;
+    font-size: 0.875rem;
+    animation: badgeSlideIn 0.3s ease;
+    transition: opacity 0.6s ease;
+}
+.brand-badge.badge-fadeout {
+    opacity: 0;
+    pointer-events: none;
+}
+.brand-badge-icon { font-size: 1.2rem; line-height: 1; }
+.brand-badge-text { color: var(--text-secondary); }
+.brand-badge-text strong { color: var(--text-primary); }
+.brand-badge-count { opacity: 0.7; font-variant-numeric: tabular-nums; }
+
 .toolbar {
     display: flex;
     justify-content: space-between;
