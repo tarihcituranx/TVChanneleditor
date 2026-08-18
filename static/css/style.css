@@ -708,3 +708,5 @@ footer a {
 }
 
 .invert-in-light { filter: var(--logo-invert-light); }
+
+.theme-invert { filter: var(--logo-filter); }
