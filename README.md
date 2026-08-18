@@ -102,11 +102,11 @@ AI asistanı ile geliştirme yapıyorsanız [AI_INSTRUCTIONS.md](AI_INSTRUCTIONS
 
 ## 🔌 Geliştirici API & AI Ajanı Kullanımı (Developer API)
 
-Bu proje yalnızca bir web sitesi değil, aynı zamanda yapay zeka ajanlarının (AI Agents) ve geliştiricilerin doğrudan kodla kullanabileceği bir **REST API** olarak tasarlanmıştır.
+Bu proje yalnızca bir web sitesi değil, aynı zamanda yapay zeka ajanlarının (AI Agents) ve geliştiricilerin doğrudan kodla kullanabileceği tam teşekküllü bir **REST API** olarak tasarlanmıştır.
 
-> 🤖 **AI Ajanları İçin OpenAPI Şeması:** Sistemin makine tarafından okunabilir güncel Swagger/OpenAPI şemasına [tvchanneleditor.onrender.com/static/openapi.yaml](https://tvchanneleditor.onrender.com/static/openapi.yaml) adresinden ulaşabilirsiniz. Yapay zeka asistanınıza bu linki vermeniz, tüm yetenekleri kavraması için yeterlidir.
-
-Projeyi kendi sunucunuza kurduktan sonra veya `tvchanneleditor.onrender.com` üzerinden aşağıdaki API uç noktalarını kullanarak dosyaları otomatize edebilirsiniz:
+> 🧑‍💻 **Geliştiriciler İçin:** Etkileşimli Swagger UI dökümantasyonunu [tvchanneleditor.onrender.com/api/docs](https://tvchanneleditor.onrender.com/api/docs) adresinden inceleyebilirsiniz.
+> 
+> 🤖 **AI Ajanları İçin (ChatGPT, Claude, vb.):** Sistemin makine tarafından okunabilir Saf Metin (Plain-Text) OpenAPI şemasını yapay zekaya şu link üzerinden verebilirsiniz: [tvchanneleditor.onrender.com/api/openapi.txt](https://tvchanneleditor.onrender.com/api/openapi.txt)
 
 ### 1. Kanal Listesini Oku (Upload)
 ```bash
@@ -143,7 +143,19 @@ Bunun çalışması için sunucunun (veya bilgisayarınızın) çevre değişken
 export VALID_API_KEYS="secret-key-1,secret-key-2"
 ```
 
-> **Not:** Ücretsiz sunucudaki (Render) genel web erişimi saatlik **50 istek** ile sınırlandırılmıştır. Yoğun AI/Bot kullanımı için kendi API şifrenizi tanımlayabilir veya projeyi kendi sunucunuzda çalıştırabilirsiniz.
+### 4. Sürüm ve Deploy Doğrulaması (Version Check)
+Render sunucusunun güncel Github Commit'ini yayına alıp almadığını veya önbellekte kalıp kalmadığını saniyesinde test etmek için:
+```bash
+curl -sS https://tvchanneleditor.onrender.com/api/version
+```
+```json
+{
+  "status": "online",
+  "version": "1.0.0",
+  "commit": "97401a5...",
+  "deployed_at": "2026-08-18T19:00:51.123Z"
+}
+```
 
 ---
 
