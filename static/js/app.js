@@ -137,7 +137,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    browseBtn.addEventListener('click', () => fileInput.click());
+    if (browseBtn) {
+        browseBtn.addEventListener('click', () => fileInput.click());
+    }
     
     fileInput.addEventListener('change', (e) => {
         if (e.target.files.length) {
