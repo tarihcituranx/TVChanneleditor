@@ -2,6 +2,8 @@ import os
 import werkzeug.serving
 
 werkzeug.serving.WSGIRequestHandler.sys_version = ""
+werkzeug.serving.WSGIRequestHandler.server_version = "TVEditor"
+
 import uuid
 import time
 import tempfile
@@ -21,9 +23,13 @@ import hisense_core
 app = Flask(__name__)
 
 @app.after_request
-def remove_server_header(response):
+def apply_security_headers(response):
     response.headers.pop('Server', None)
     response.headers.pop('x-render-origin-server', None)
+    response.headers['X-Frame-Options'] = 'DENY'
+    response.headers['X-Content-Type-Options'] = 'nosniff'
+    response.headers['Strict-Transport-Security'] = 'max-age=31536000; includeSubDomains'
+    response.headers['Referrer-Policy'] = 'strict-origin-when-cross-origin'
     return response
 
 limiter = Limiter(
