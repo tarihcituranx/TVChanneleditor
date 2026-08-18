@@ -1,6 +1,6 @@
 import os
 import werkzeug.serving
-werkzeug.serving.WSGIRequestHandler.server_version = "MyServer"
+
 werkzeug.serving.WSGIRequestHandler.sys_version = ""
 import uuid
 import time
