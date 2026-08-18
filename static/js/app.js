@@ -11,6 +11,46 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentFileName = "channel_list.scm";
     let currentSessionId = "";
     let frekansData = {};
+    let isRestoringDraft = false;
+
+    function saveDraftToLocal() {
+        if (isRestoringDraft || channels.length === 0) return;
+        const draft = {
+            channels: channels,
+            currentFileName: currentFileName,
+            currentSessionId: currentSessionId,
+            timestamp: new Date().getTime()
+        };
+        localStorage.setItem('channel_draft', JSON.stringify(draft));
+    }
+
+    function checkDraftOnLoad() {
+        const draftStr = localStorage.getItem('channel_draft');
+        if (draftStr) {
+            try {
+                const draft = JSON.parse(draftStr);
+                if (draft.channels && draft.channels.length > 0) {
+                    if (confirm('Kaydedilmemiş bir kanal düzenleme taslağınız var. Kaldığınız yerden devam etmek ister misiniz?')) {
+                        isRestoringDraft = true;
+                        channels = draft.channels;
+                        currentFileName = draft.currentFileName;
+                        currentSessionId = draft.currentSessionId;
+                        
+                        // Dosya yükleme ekranını gizle, editörü göster
+                        dropZone.classList.add('hidden');
+                        editorSection.classList.remove('hidden');
+                        
+                        renderChannels();
+                        isRestoringDraft = false;
+                    } else {
+                        localStorage.removeItem('channel_draft');
+                    }
+                }
+            } catch (e) {
+                console.error("Draft restore error", e);
+            }
+        }
+    }
 
     /**
      * LG/Sony/Hisense küçük harfli alanları (id, num, name, type, freq...)
@@ -54,8 +94,12 @@ document.addEventListener('DOMContentLoaded', () => {
         .then(res => res.json())
         .then(data => {
             frekansData = data;
+            checkDraftOnLoad();
         })
-        .catch(err => console.log('Frekans datası bulunamadı', err));
+        .catch(err => {
+            console.log('Frekans datası bulunamadı', err);
+            checkDraftOnLoad();
+        });
 
     // Drag & Drop Upload
     dropZone.addEventListener('dragover', (e) => {
@@ -225,6 +269,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
             channelList.appendChild(li);
         });
+        
+        saveDraftToLocal();
     }
 
     let dragSrcEl = null;
@@ -547,6 +593,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (data.success) {
                 window.location.href = data.download_url;
                 saveBtn.textContent = 'Save and Download';
+                localStorage.removeItem('channel_draft');
             } else {
                 alert('Generation error: ' + data.error);
                 saveBtn.textContent = 'Save and Download';
