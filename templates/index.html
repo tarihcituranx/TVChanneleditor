@@ -37,7 +37,7 @@
                 </div>
                 <div class="actions">
                     <button class="btn primary-outline" id="magic-wand-btn">
-                        <svg class="icon" width="15" height="15"><use href="#icon-wand"/></svg> Sihirli Değnek
+                        <svg class="icon" width="15" height="15"><use href="#icon-wand"/></svg> Akıllı Sıralama
                     </button>
                     <button id="save-template-btn" class="btn primary-outline">🛠️ Şablon Oluşturucu</button>
                     <button id="export-share-btn" class="btn magic">📱 Cihaza Aktar</button>
@@ -48,21 +48,16 @@
             </div>
 
             <!-- Bulk Actions -->
-            <div class="toolbar-bulk">
-                <span class="toolbar-bulk-label">Toplu İşlemler:</span>
-                <button class="btn danger-outline btn-sm" id="del-encrypted-btn">
-                    <svg class="icon" width="13" height="13"><use href="#icon-lock"/></svg> Şifrelileri Sil
-                </button>
-                <button class="btn danger-outline btn-sm" id="del-radio-btn">
-                    <svg class="icon" width="13" height="13"><use href="#icon-trash"/></svg> Radyoları Sil
-                </button>
-                <button class="btn secondary btn-sm" id="delete-selected-btn" style="display:none;">
-                    <svg class="icon" width="13" height="13"><use href="#icon-trash"/></svg> Seçilileri Sil (<span id="sel-count">0</span>)
-                </button>
-                <button id="lock-selected-btn" class="btn secondary btn-sm" style="display:none;">
-                    <svg class="icon" width="13" height="13"><use href="#icon-lock"/></svg> Seçilileri Kilitle
-                </button>
-                <button id="fav-selected-btn" class="btn secondary btn-sm" style="display:none;">⭐ Seçilileri Favorile</button>
+            <div class="toolbar-bulk" style="display: flex; align-items: center; gap: 10px;">
+                <span class="toolbar-bulk-label" style="font-weight: 500; font-size: 0.9rem; color: var(--text-secondary);">Toplu İşlemler:</span>
+                <select id="bulk-actions-select" class="btn secondary" style="padding: 0.5rem; border-radius: var(--radius-sm); font-size: 0.85rem; cursor: pointer; outline: none;">
+                    <option value="">Seçim Yapın...</option>
+                    <option value="del_encrypted">🔒 Şifrelileri Sil</option>
+                    <option value="del_radio">📻 Radyoları Sil</option>
+                    <option value="del_selected" id="opt-del-selected" disabled>🗑️ Seçilileri Sil (0)</option>
+                    <option value="lock_selected" id="opt-lock-selected" disabled>🔒 Seçilileri Kilitle</option>
+                    <option value="fav_selected" id="opt-fav-selected" disabled>⭐ Seçilileri Favorile</option>
+                </select>
             </div>
         </div>
 

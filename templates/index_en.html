@@ -38,7 +38,7 @@
             </div>
             <div class="actions" style="display: flex; gap: 10px; flex-wrap: wrap; justify-content: flex-end;">
                 <button class="btn primary-outline" id="magic-wand-btn" style="background:transparent; color:var(--accent); border:1px solid var(--accent);">
-                    <svg class="icon" width="16" height="16"><use href="#icon-wand"/></svg> Magic Wand
+                    <svg class="icon" width="16" height="16"><use href="#icon-wand"/></svg> Smart Sorting
                 </button>
                 <button id="save-template-btn" class="btn primary-outline" style="background:transparent; color:var(--accent); border:1px solid var(--accent);">🛠️ Template Builder</button>
                 <button id="export-share-btn" class="btn magic" style="background: #e85d00; color: white;">📱 Send to Device</button>
@@ -50,17 +50,14 @@
         
         <div class="actions secondary-actions" style="display: flex; gap: 10px; flex-wrap: wrap; padding-top: 15px; border-top: 1px dashed var(--border-color); width: 100%; align-items: center;">
             <span style="color: var(--text-secondary); font-size: 0.85rem; font-weight:600; text-transform:uppercase; letter-spacing:0.05em; margin-right:10px;">Bulk Actions:</span>
-            <button class="btn danger-outline btn-sm" id="del-encrypted-btn">
-                <svg class="icon" width="14" height="14"><use href="#icon-lock"/></svg> Delete Encrypted
-            </button>
-            <button class="btn danger-outline btn-sm" id="del-radio-btn">
-                <svg class="icon" width="14" height="14"><use href="#icon-trash"/></svg> Delete Radios
-            </button>
-            <button class="btn secondary btn-sm" id="delete-selected-btn" style="display:none;">
-                <svg class="icon" width="14" height="14"><use href="#icon-trash"/></svg> Delete Selected (<span id="sel-count">0</span>)
-            </button>
-            <button id="lock-selected-btn" class="btn secondary btn-sm" style="display:none;"><svg class="icon" width="14" height="14"><use href="#icon-lock"/></svg> Lock Selected</button>
-            <button id="fav-selected-btn" class="btn secondary btn-sm" style="display:none;">⭐ Favorite Selected</button>
+            <select id="bulk-actions-select" class="btn secondary" style="padding: 0.5rem; border-radius: var(--radius-sm); font-size: 0.85rem; cursor: pointer; outline: none; background: transparent; border: 1px solid var(--border-color); color: var(--text-primary);">
+                <option value="">Select Action...</option>
+                <option value="del_encrypted">🔒 Delete Encrypted</option>
+                <option value="del_radio">📻 Delete Radios</option>
+                <option value="del_selected" id="opt-del-selected" disabled>🗑️ Delete Selected (0)</option>
+                <option value="lock_selected" id="opt-lock-selected" disabled>🔒 Lock Selected</option>
+                <option value="fav_selected" id="opt-fav-selected" disabled>⭐ Favorite Selected</option>
+            </select>
         </div>
     </div>
 

@@ -432,11 +432,7 @@ document.addEventListener('DOMContentLoaded', () => {
         modal.classList.add('hidden');
     });
 
-    const delSelectedBtn = document.getElementById('delete-selected-btn');
-    const lockSelectedBtn = document.getElementById('lock-selected-btn');
-    const favSelectedBtn = document.getElementById('fav-selected-btn');
     const selectAllCheckbox = document.getElementById('select-all');
-    const selCountSpan = document.getElementById('sel-count');
 
     // Builder elements
     const builderModal = document.getElementById('builder-modal');
@@ -448,12 +444,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Checkbox state tracking
 
+    function isEnglish() {
+        return window.location.pathname.includes('/en') || document.documentElement.lang === 'en';
+    }
+
     function updateSelectedCount() {
-        selCountSpan.textContent = selectedIndices.size;
-        const displayStyle = selectedIndices.size > 0 ? 'inline-block' : 'none';
-        delSelectedBtn.style.display = displayStyle;
-        if(lockSelectedBtn) lockSelectedBtn.style.display = displayStyle;
-        if(favSelectedBtn) favSelectedBtn.style.display = displayStyle;
+        const count = selectedIndices.size;
+        const optDel = document.getElementById('opt-del-selected');
+        const optLock = document.getElementById('opt-lock-selected');
+        const optFav = document.getElementById('opt-fav-selected');
+        
+        if (optDel) {
+            optDel.textContent = isEnglish() ? `🗑️ Delete Selected (${count})` : `🗑️ Seçilileri Sil (${count})`;
+            optDel.disabled = count === 0;
+        }
+        if (optLock) optLock.disabled = count === 0;
+        if (optFav) optFav.disabled = count === 0;
     }
 
     selectAllCheckbox.addEventListener('change', (e) => {
@@ -466,42 +472,7 @@ document.addEventListener('DOMContentLoaded', () => {
         updateSelectedCount();
     });
 
-    delSelectedBtn.addEventListener('click', () => {
-        if (!confirm(`${selectedIndices.size} adet kanal silinecek. Emin misiniz?`)) return;
-        
-        // Remove from highest index to lowest to avoid shifting issues
-        let indices = Array.from(selectedIndices).sort((a, b) => b - a);
-        indices.forEach(idx => {
-            channels.splice(idx, 1);
-        });
-        
-        selectedIndices.clear();
-        selectAllCheckbox.checked = false;
-        renderChannels(searchInput.value);
-        updateSelectedCount();
-    });
 
-    if (lockSelectedBtn) {
-        lockSelectedBtn.addEventListener('click', () => {
-            let anyUnlocked = Array.from(selectedIndices).some(idx => !channels[idx].Lock);
-            let targetState = anyUnlocked ? true : false;
-            selectedIndices.forEach(idx => {
-                channels[idx].Lock = targetState;
-            });
-            renderChannels(searchInput.value);
-        });
-    }
-
-    if (favSelectedBtn) {
-        favSelectedBtn.addEventListener('click', () => {
-            let anyUnfaved = Array.from(selectedIndices).some(idx => !channels[idx].Fav1);
-            let targetState = anyUnfaved ? true : false;
-            selectedIndices.forEach(idx => {
-                channels[idx].Fav1 = targetState;
-            });
-            renderChannels(searchInput.value);
-        });
-    }
 
     saveTemplateBtn.addEventListener('click', () => {
         if (channels.length === 0) {
@@ -577,25 +548,66 @@ document.addEventListener('DOMContentLoaded', () => {
         toast('Seçilen şablon başarıyla uygulandı! ✨', 'success');
     });
 
-    // 2. Delete Encrypted
-    document.getElementById('del-encrypted-btn').addEventListener('click', () => {
-        if (!confirm('Tüm şifreli kanallar kalıcı olarak silinecek. Emin misiniz?')) return;
-        const initialCount = channels.length;
-        channels = channels.filter(c => c.Encrypted === 'No');
-        const deleted = initialCount - channels.length;
-        renderChannels(searchInput.value);
-        alert(`${deleted} adet şifreli kanal silindi!`);
-    });
-
-    // 3. Delete Radios
-    document.getElementById('del-radio-btn').addEventListener('click', () => {
-        if (!confirm('Tüm radyo kanalları kalıcı olarak silinecek. Emin misiniz?')) return;
-        const initialCount = channels.length;
-        channels = channels.filter(c => c.Type !== 'Radio');
-        const deleted = initialCount - channels.length;
-        renderChannels(searchInput.value);
-        alert(`${deleted} adet radyo kanalı silindi!`);
-    });
+    // --- BULK ACTIONS ---
+    const bulkActionsSelect = document.getElementById('bulk-actions-select');
+    if (bulkActionsSelect) {
+        bulkActionsSelect.addEventListener('change', (e) => {
+            const action = e.target.value;
+            if (!action) return;
+            
+            e.target.value = ''; // Reset select
+            
+            const msgConfirmDeleteSelected = isEnglish() ? `${selectedIndices.size} channels will be deleted. Are you sure?` : `${selectedIndices.size} adet kanal silinecek. Emin misiniz?`;
+            const msgConfirmDeleteEncrypted = isEnglish() ? `All encrypted channels will be permanently deleted. Are you sure?` : `Tüm şifreli kanallar kalıcı olarak silinecek. Emin misiniz?`;
+            const msgConfirmDeleteRadio = isEnglish() ? `All radio channels will be permanently deleted. Are you sure?` : `Tüm radyo kanalları kalıcı olarak silinecek. Emin misiniz?`;
+            const msgDeletedEncrypted = isEnglish() ? ` encrypted channels deleted!` : ` adet şifreli kanal silindi!`;
+            const msgDeletedRadio = isEnglish() ? ` radio channels deleted!` : ` adet radyo kanalı silindi!`;
+            
+            if (action === 'del_selected') {
+                if (!confirm(msgConfirmDeleteSelected)) return;
+                let indices = Array.from(selectedIndices).sort((a, b) => b - a);
+                indices.forEach(idx => {
+                    channels.splice(idx, 1);
+                });
+                selectedIndices.clear();
+                selectAllCheckbox.checked = false;
+                renderChannels(searchInput.value);
+            } else if (action === 'lock_selected') {
+                let anyUnlocked = Array.from(selectedIndices).some(idx => !channels[idx].Lock);
+                let targetState = anyUnlocked ? true : false;
+                selectedIndices.forEach(idx => {
+                    channels[idx].Lock = targetState;
+                });
+                selectedIndices.clear();
+                selectAllCheckbox.checked = false;
+                renderChannels(searchInput.value);
+            } else if (action === 'fav_selected') {
+                let anyUnfaved = Array.from(selectedIndices).some(idx => !channels[idx].Fav1);
+                let targetState = anyUnfaved ? true : false;
+                selectedIndices.forEach(idx => {
+                    channels[idx].Fav1 = targetState;
+                });
+                selectedIndices.clear();
+                selectAllCheckbox.checked = false;
+                renderChannels(searchInput.value);
+            } else if (action === 'del_encrypted') {
+                if (!confirm(msgConfirmDeleteEncrypted)) return;
+                const initialCount = channels.length;
+                channels = channels.filter(c => c.Encrypted === 'No');
+                const deleted = initialCount - channels.length;
+                renderChannels(searchInput.value);
+                alert(`${deleted}${msgDeletedEncrypted}`);
+            } else if (action === 'del_radio') {
+                if (!confirm(msgConfirmDeleteRadio)) return;
+                const initialCount = channels.length;
+                channels = channels.filter(c => c.Type !== 'Radio');
+                const deleted = initialCount - channels.length;
+                renderChannels(searchInput.value);
+                alert(`${deleted}${msgDeletedRadio}`);
+            }
+            updateSelectedCount();
+        });
+    }
 
     // --- END NEW FEATURES ---
 

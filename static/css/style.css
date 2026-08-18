@@ -235,11 +235,11 @@ body {
 /* ── Drop Zone ─────────────────────────────────────────────── */
 .drop-zone {
     border: 2px dashed var(--border-color);
-    border-radius: var(--radius-lg);
-    padding: 3.5rem 2rem;
+    border-radius: var(--radius-xl);
+    padding: 6rem 2rem;
     text-align: center;
     cursor: pointer;
-    transition: border-color 0.2s, background-color 0.2s, transform 0.1s;
+    transition: border-color 0.2s, background-color 0.2s, transform 0.1s, box-shadow 0.2s;
     background: var(--card-bg);
 }
 
