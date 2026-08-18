@@ -11,6 +11,8 @@
     --header-bg: transparent;
     --nav-link-color: #60a5fa;
     --logo-filter: none;
+    --logo-invert-light: invert(1);
+    
 }
 
 [data-theme="light"] {
@@ -26,6 +28,8 @@
     --header-bg: rgba(255,255,255,0.85);
     --nav-link-color: #1d4ed8;
     --logo-filter: invert(1) hue-rotate(180deg);
+    --logo-invert-light: none;
+    
 }
 
 @media (prefers-color-scheme: light) {
@@ -42,6 +46,8 @@
         --header-bg: rgba(255,255,255,0.85);
         --nav-link-color: #1d4ed8;
         --logo-filter: invert(1) hue-rotate(180deg);
+    --logo-invert-light: none;
+    
     }
 }
 
@@ -700,3 +706,5 @@ footer a {
     font-size: 0.8rem;
     border-radius: 15px;
 }
+
+.invert-in-light { filter: var(--logo-invert-light); }
