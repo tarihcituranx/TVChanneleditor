@@ -1,3 +1,15 @@
+window.toast = function(message, type = 'success') {
+        const el = document.createElement('div');
+        el.className = `toast toast-${type}`;
+        el.textContent = message;
+        document.getElementById('toast-container').appendChild(el);
+        requestAnimationFrame(() => el.classList.add('show'));
+        setTimeout(() => {
+            el.classList.remove('show');
+            el.addEventListener('transitionend', () => el.remove());
+        }, 3200);
+    };
+
 document.addEventListener('DOMContentLoaded', () => {
     const dropZone = document.getElementById('upload-section');
     const fileInput = document.getElementById('file-input');
@@ -7,6 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const saveBtn = document.getElementById('save-btn');
     const searchInput = document.getElementById('search-input');
 
+    let selectedIndices = new Set();
     let channels = [];
     let currentFileName = "channel_list.scm";
     let currentSessionId = "";
@@ -315,18 +328,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Custom Toast Notification System
-    window.toast = function(message, type = 'success') {
-        const el = document.createElement('div');
-        el.className = `toast toast-${type}`;
-        el.textContent = message;
-        document.getElementById('toast-container').appendChild(el);
-        requestAnimationFrame(() => el.classList.add('show'));
-        setTimeout(() => {
-            el.classList.remove('show');
-            el.addEventListener('transitionend', () => el.remove());
-        }, 3200);
-    };
-
+    
     window.deleteChannel = function(index) {
         channels.splice(index, 1);
         renderChannels(searchInput.value);
@@ -447,7 +449,6 @@ document.addEventListener('DOMContentLoaded', () => {
     let builderCart = [];
 
     // Checkbox state tracking
-    let selectedIndices = new Set();
 
     function updateSelectedCount() {
         selCountSpan.textContent = selectedIndices.size;
