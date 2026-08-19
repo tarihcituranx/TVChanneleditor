@@ -5,9 +5,22 @@
 {% endblock %}
 
 {% block content %}
+<!-- Welcome Section -->
+<div id="welcome-section" style="max-width: 800px; margin: 0 auto; text-align: center; padding: 2rem 1rem;">
+    <img src="/static/img/welcome_hero.jpg" alt="Welcome to TV Channel Editor" style="width: 100%; max-width: 600px; height: auto; border-radius: var(--radius-lg); box-shadow: var(--shadow-md); margin-bottom: 2rem;">
+    <h2 style="font-size: 2rem; margin-bottom: 1rem; color: var(--text-primary); font-weight: 800; letter-spacing: -0.03em;">TV Channel Editor'a Hoş Geldin! 👋</h2>
+    <p style="color: var(--text-secondary); font-size: 1.1rem; line-height: 1.6; margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto;">
+        Televizyonunun karmaşık kanal menüsünde saatlerce kumandayla boğuşmaya son! 
+        USB belleğinle televizyonundan aldığın <b>kanal listesi dosyasını</b> buraya yükle; 
+        sürükle-bırak yöntemiyle veya yapay zeka destekli <b>"Sihirli Değnek"</b> 🪄 ile saniyeler içinde düzenle.
+        <br><br>
+        <span style="font-size: 0.95rem; color: var(--accent);">%100 Güvenli: Her şey tarayıcında çalışır, dosyaların hiçbir sunucuya yüklenmez!</span>
+    </p>
+    <button id="welcome-start-btn" class="btn primary" style="padding: 1rem 3rem; font-size: 1.25rem; border-radius: 100px; font-weight: 600; box-shadow: var(--shadow-sm);">Hemen Başla</button>
+</div>
 
 <!-- Upload Section -->
-<div id="upload-section" style="padding: 2rem 0;">
+<div id="upload-section" style="padding: 2rem 0; display: none;">
     <div id="drop-zone" class="drop-zone" onclick="document.getElementById('file-input').click()">
         <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
         <h3>Kanal listenizi buraya bırakın</h3>
@@ -189,32 +202,23 @@
     </div>
 </div>
 
-<!-- Welcome Modal -->
-<div id="welcome-modal" class="modal-overlay" style="display: none;">
-    <div class="modal" style="max-width: 600px; padding: 0;">
-        <img src="/static/img/welcome_hero.jpg" alt="Welcome to TV Channel Editor" style="width: 100%; height: auto; border-radius: var(--radius-lg) var(--radius-lg) 0 0; display: block;">
-        <div style="padding: 2rem;">
-            <h2 style="font-size: 1.5rem; margin-bottom: 0.5rem; color: var(--text-primary);">TV Channel Editor'a Hoş Geldin! 👋</h2>
-            <p style="color: var(--text-secondary); line-height: 1.6; margin-bottom: 1.5rem;">
-                Televizyonunun karmaşık kanal menüsünde saatlerce kumandayla boğuşmaya son! 
-                USB belleğinle televizyonundan aldığın <b>kanal listesi dosyasını (.scm, .zip, .xml)</b> buraya yükle; 
-                sürükle-bırak yöntemiyle veya yapay zeka destekli <b>"Sihirli Değnek"</b> 🪄 ile saniyeler içinde kanallarını düzenle. 
-                <br><br>
-                <em>Üstelik her şey tamamen tarayıcında çalışır, dosyaların hiçbir sunucuya yüklenmez!</em>
-            </p>
-            <button id="welcome-start-btn" class="btn primary" style="width: 100%; padding: 0.8rem; font-size: 1.1rem; border-radius: 100px;">Harika, Başlayalım!</button>
-        </div>
-    </div>
-</div>
-
 <script>
     document.addEventListener('DOMContentLoaded', () => {
-        if (!localStorage.getItem('welcomed_v2')) {
-            document.getElementById('welcome-modal').style.display = 'flex';
+        const welcomeSection = document.getElementById('welcome-section');
+        const uploadSection = document.getElementById('upload-section');
+        const startBtn = document.getElementById('welcome-start-btn');
+        
+        if (localStorage.getItem('welcomed_v2')) {
+            welcomeSection.style.display = 'none';
+            uploadSection.style.display = 'block';
+        } else {
+            uploadSection.style.display = 'none';
         }
-        document.getElementById('welcome-start-btn').addEventListener('click', () => {
+        
+        startBtn?.addEventListener('click', () => {
             localStorage.setItem('welcomed_v2', 'true');
-            document.getElementById('welcome-modal').style.display = 'none';
+            welcomeSection.style.display = 'none';
+            uploadSection.style.display = 'block';
         });
     });
 </script>

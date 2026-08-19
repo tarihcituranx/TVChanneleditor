@@ -4,7 +4,22 @@
 <link rel="preload" href="/static/data/frekanslar.json" as="fetch" crossorigin="anonymous">{% endblock %}
 
 {% block content %}
-<div id="upload-section" class="card drop-zone">
+<!-- Welcome Section -->
+<div id="welcome-section" style="max-width: 800px; margin: 0 auto; text-align: center; padding: 2rem 1rem;">
+    <img src="/static/img/welcome_hero.jpg" alt="Welcome to TV Channel Editor" style="width: 100%; max-width: 600px; height: auto; border-radius: var(--radius-lg); box-shadow: var(--shadow-md); margin-bottom: 2rem;">
+    <h2 style="font-size: 2rem; margin-bottom: 1rem; color: var(--text-primary); font-weight: 800; letter-spacing: -0.03em;">Welcome to TV Channel Editor! 👋</h2>
+    <p style="color: var(--text-secondary); font-size: 1.1rem; line-height: 1.6; margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto;">
+        No more struggling with your TV's remote control for hours! 
+        Just export your <b>channel list file</b> to a USB drive and upload it here. 
+        Easily organize your channels with drag-and-drop or use the AI-powered <b>"Magic Wand"</b> 🪄 to sort them in seconds.
+        <br><br>
+        <span style="font-size: 0.95rem; color: var(--accent);">100% Secure: Everything runs in your browser, your files are never uploaded to any server!</span>
+    </p>
+    <button id="welcome-start-btn" class="btn primary" style="padding: 1rem 3rem; font-size: 1.25rem; border-radius: 100px; font-weight: 600; box-shadow: var(--shadow-sm);">Get Started</button>
+</div>
+
+<!-- Upload Section -->
+<div id="upload-section" class="card drop-zone" style="display: none;">
     <input type="file" id="file-input" accept=".scm,.zip,.tll,.xml,.db" hidden>
     <div class="upload-content">
         <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
@@ -252,23 +267,7 @@
     </div>
 </div>
 
-<!-- Welcome Modal -->
-<div id="welcome-modal" class="modal-overlay" style="display: none;">
-    <div class="modal" style="max-width: 600px; padding: 0;">
-        <img src="/static/img/welcome_hero.jpg" alt="Welcome to TV Channel Editor" style="width: 100%; height: auto; border-radius: var(--radius-lg) var(--radius-lg) 0 0; display: block;">
-        <div style="padding: 2rem;">
-            <h2 style="font-size: 1.5rem; margin-bottom: 0.5rem; color: var(--text-primary);">Welcome to TV Channel Editor! 👋</h2>
-            <p style="color: var(--text-secondary); line-height: 1.6; margin-bottom: 1.5rem;">
-                No more struggling with your TV's remote control for hours! 
-                Just export your <b>channel list file (.scm, .zip, .xml)</b> to a USB drive and upload it here. 
-                Easily organize your channels with drag-and-drop or use the AI-powered <b>"Magic Wand"</b> 🪄 to sort them in seconds. 
-                <br><br>
-                <em>Best of all, everything runs entirely in your browser—your files are never uploaded to any server!</em>
-            </p>
-            <button id="welcome-start-btn" class="btn primary" style="width: 100%; padding: 0.8rem; font-size: 1.1rem; border-radius: 100px;">Awesome, Let's Start!</button>
-        </div>
-    </div>
-</div>
+
 
 <script>
     document.addEventListener('DOMContentLoaded', () => {
@@ -284,4 +283,24 @@
 {% endblock %}
 
 {% block scripts %}
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const welcomeSection = document.getElementById('welcome-section');
+        const uploadSection = document.getElementById('upload-section');
+        const startBtn = document.getElementById('welcome-start-btn');
+        
+        if (localStorage.getItem('welcomed_v2')) {
+            if(welcomeSection) welcomeSection.style.display = 'none';
+            if(uploadSection) uploadSection.style.display = 'flex';
+        } else {
+            if(uploadSection) uploadSection.style.display = 'none';
+        }
+        
+        startBtn?.addEventListener('click', () => {
+            localStorage.setItem('welcomed_v2', 'true');
+            if(welcomeSection) welcomeSection.style.display = 'none';
+            if(uploadSection) uploadSection.style.display = 'flex';
+        });
+    });
+</script>
 <script src="/static/js/app.js"></script>{% endblock %}
