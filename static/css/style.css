@@ -652,3 +652,13 @@ a:hover { opacity: 0.8; text-decoration: underline; }
         top: 10px; 
     }
 }
+
+/* Colorblind Mode (Protanopia/Deuteranopia safe colors) */
+body.colorblind-mode {
+    --primary: #005ab5;
+    --primary-hover: #003f80;
+    --accent: #dc3220;
+    --accent-hover: #b02315;
+    --success: #ffc20a;
+    --danger: #d35400;
+}

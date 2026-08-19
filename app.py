@@ -10,7 +10,7 @@ import tempfile
 import shutil
 import urllib.parse
 from collections import defaultdict
-from flask import Flask, Response, request, jsonify, send_file, render_template
+from flask import Flask, Response, request, jsonify, send_file, render_template, redirect
 from flask_limiter import Limiter
 from flask_limiter.util import get_remote_address
 
@@ -548,7 +548,16 @@ def proxy_umami_script():
     except Exception as e:
         return Response("console.error('Analytics script proxy failed');", mimetype='application/javascript', status=200)
 
+
+@app.route('/redirect')
+def external_redirect():
+    url = request.args.get('url', '')
+    if not url:
+        return redirect('/')
+    return render_template('redirect.html', url=url)
+
 @app.route('/api/send', methods=['POST'])
+
 def proxy_umami_send():
     if not UMAMI_SERVER_URL:
         return jsonify({"error": "Umami URL not configured"}), 500

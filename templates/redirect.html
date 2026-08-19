@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="tr" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dış Bağlantı Uyarısı - TV Channel Editor</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: var(--bg-default);
+            font-family: 'Inter', system-ui, sans-serif;
+        }
+        .redirect-box {
+            background: var(--card-bg);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-lg);
+            padding: 3rem;
+            max-width: 500px;
+            text-align: center;
+            box-shadow: var(--shadow-lg);
+        }
+        .redirect-box h1 {
+            color: var(--text-default);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        .redirect-box p {
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+        .url-box {
+            background: var(--bg-subtle);
+            padding: 1rem;
+            border-radius: var(--radius-md);
+            color: var(--accent);
+            word-break: break-all;
+            margin-bottom: 2rem;
+            font-family: monospace;
+            font-size: 0.9rem;
+        }
+        .buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="redirect-box">
+        <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="var(--danger)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom: 1.5rem;"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        <h1>Dış Bağlantıya Yönlendiriliyorsunuz</h1>
+        <p>TV Channel Editor sitesinden ayrılıyorsunuz. Gideceğiniz sitenin içeriğinden veya güvenliğinden sorumlu değiliz.</p>
+        <div class="url-box" id="target-url">{{ url }}</div>
+        <div class="buttons">
+            <button onclick="window.history.back()" class="btn" style="background:var(--bg-subtle); color:var(--text-default);">Geri Dön</button>
+            <a href="{{ url }}" class="btn danger" style="text-decoration: none;">Yine de Git</a>
+        </div>
+    </div>
+</body>
+</html>

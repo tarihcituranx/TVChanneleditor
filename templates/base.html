@@ -31,19 +31,6 @@
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📺</text></svg>">
     
     <!-- External Link Warning Modal -->
-    <div id="external-modal" class="modal-overlay" style="display: none; align-items: center; justify-content: center; z-index: 10000; padding: 1rem;">
-        <div class="modal" style="max-width: 500px; padding: 0; text-align: center; border-radius: var(--radius-lg); overflow: hidden; animation: scaleIn 0.3s ease;">
-            <img src="/static/img/external_warning.jpg" alt="Yabancı Diyarlar" style="width: 100%; height: auto; display: block; border-bottom: 1px solid var(--border-color);">
-            <div style="padding: 2rem;">
-                <h3 style="font-size: 1.5rem; margin-bottom: 0.75rem; color: var(--text-primary);">Yabancı Diyarlara Gidiyorsunuz! 🚀</h3>
-                <p style="color: var(--text-secondary); margin-bottom: 1.5rem; line-height: 1.5; font-size: 0.95rem;">
-                    Şu anda güvenli bölgemizden ayrılıp farklı bir gezegene doğru yola çıkıyorsunuz. 
-                    Gittiğiniz sitenin içeriği bize ait değildir. Devam etmek istiyor musunuz?
-                </p>
-                <div style="display: flex; gap: 1rem; justify-content: center;">
-                    <button id="external-cancel-btn" class="btn secondary" style="flex: 1;">Vazgeç</button>
-                    <a id="external-continue-btn" href="#" target="_blank" class="btn primary" style="flex: 1; text-decoration: none;">Anladım, Git</a>
-                </div>
             </div>
         </div>
     </div>
@@ -292,11 +279,11 @@
         }
     </script>
     <!-- Share Modal -->
-    <div id="share-modal" class="modal-overlay" style="display: none;">
+    <div id="social-share-modal" class="modal-overlay" style="display: none;">
         <div class="modal">
             <div class="modal-header">
                 <h3>📤 Bu Siteyi Paylaş</h3>
-                <button class="modal-close" onclick="document.getElementById('share-modal').style.display='none'">&times;</button>
+                <button class="modal-close" onclick="document.getElementById('social-share-modal').style.display='none'">&times;</button>
             </div>
             <div class="modal-body" style="text-align: center;">
                 <p style="margin-bottom: 15px; color: var(--text-secondary);">Tarayıcınızın kamerasıyla veya QR okuyucuyla kodu okutun.</p>
@@ -314,7 +301,7 @@
     <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.2/Sortable.min.js"></script>
     <script>
         document.getElementById('share-site-btn')?.addEventListener('click', () => {
-            document.getElementById('share-modal').style.display = 'flex';
+            document.getElementById('social-share-modal').style.display = 'flex';
             
             const currentUrl = window.location.href;
             
