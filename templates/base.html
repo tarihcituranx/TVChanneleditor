@@ -300,47 +300,74 @@
     <script src="https://cdn.jsdelivr.net/npm/qr-code-styling@1.6.0-rc.1/lib/qr-code-styling.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.2/Sortable.min.js"></script>
     <script>
-        document.getElementById('share-site-btn')?.addEventListener('click', () => {
+                document.getElementById('share-site-btn')?.addEventListener('click', async () => {
             const currentUrl = window.location.href;
+            
+            // Generate QR Code with pure white background and black dots for perfect contrast
+            const qrCode = new QRCodeStyling({
+                width: 250,
+                height: 250,
+                type: "png",
+                data: currentUrl,
+                dotsOptions: {
+                    color: "#000000",
+                    type: "rounded"
+                },
+                backgroundOptions: {
+                    color: "#ffffff",
+                },
+                cornersSquareOptions: {
+                    type: "extra-rounded",
+                    color: "#3b82f6"
+                }
+            });
+
             if (navigator.share) {
-                navigator.share({ title: 'TV Channel Editor', text: 'Ücretsiz Smart TV kanal düzenleme sitesi:', url: currentUrl }).catch(console.error);
-                return;
+                try {
+                    const blob = await qrCode.getRawData("png");
+                    if (blob) {
+                        const file = new File([blob], "tvchanneleditor-qr.png", { type: "image/png" });
+                        if (navigator.canShare && navigator.canShare({ files: [file] })) {
+                            await navigator.share({
+                                title: 'TV Channel Editor',
+                                text: 'Ücretsiz Smart TV kanal düzenleme sitesi:',
+                                url: currentUrl,
+                                files: [file]
+                            });
+                            return;
+                        }
+                    }
+                    await navigator.share({
+                        title: 'TV Channel Editor',
+                        text: 'Ücretsiz Smart TV kanal düzenleme sitesi:',
+                        url: currentUrl
+                    });
+                    return;
+                } catch (e) {
+                    console.error("Share error:", e);
+                    return;
+                }
             }
+            
+            // Fallback for Desktop
             document.getElementById('social-share-modal').style.display = 'flex';
-            
-            const currentUrl = window.location.href;
-            
-            // Set social links
             document.getElementById('share-wa').href = `https://wa.me/?text=${encodeURIComponent('Baksana, ücretsiz Smart TV kanal düzenleme sitesi buldum: ' + currentUrl)}`;
             document.getElementById('share-x').href = `https://twitter.com/intent/tweet?text=${encodeURIComponent('Ücretsiz Smart TV kanal düzenleme sitesi: ' + currentUrl)}`;
             
-            // Generate QR Code only once
             const qrContainer = document.getElementById('qr-code-container');
             if (qrContainer.innerHTML === '') {
-                const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-                const qrCode = new QRCodeStyling({
-                    width: 250,
-                    height: 250,
-                    type: "svg",
-                    data: currentUrl,
-                    
-                    dotsOptions: {
-                        color: isDark ? "#ffffff" : "#000000",
-                        type: "rounded"
-                    },
-                    backgroundOptions: {
-                        color: "transparent",
-                    },
-                    imageOptions: {
-                        crossOrigin: "anonymous",
-                        margin: 5
-                    },
-                    cornersSquareOptions: {
-                        type: "extra-rounded",
-                        color: "#3b82f6"
-                    }
-                });
+                qrCode.update({ type: "svg" });
                 qrCode.append(qrContainer);
+                
+                // Add a small border/shadow around the QR for aesthetics
+                setTimeout(() => {
+                    const svgElement = qrContainer.querySelector("svg");
+                    if (svgElement) {
+                        svgElement.style.borderRadius = "12px";
+                        svgElement.style.border = "4px solid #ffffff";
+                        svgElement.style.boxShadow = "0 4px 12px rgba(0,0,0,0.15)";
+                    }
+                }, 100);
             }
         });
     
