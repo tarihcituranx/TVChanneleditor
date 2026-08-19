@@ -189,6 +189,36 @@
     </div>
 </div>
 
+<!-- Welcome Modal -->
+<div id="welcome-modal" class="modal-overlay" style="display: none;">
+    <div class="modal" style="max-width: 600px; padding: 0;">
+        <img src="/static/img/welcome_hero.jpg" alt="Welcome to TV Channel Editor" style="width: 100%; height: auto; border-radius: var(--radius-lg) var(--radius-lg) 0 0; display: block;">
+        <div style="padding: 2rem;">
+            <h2 style="font-size: 1.5rem; margin-bottom: 0.5rem; color: var(--text-primary);">TV Channel Editor'a Hoş Geldin! 👋</h2>
+            <p style="color: var(--text-secondary); line-height: 1.6; margin-bottom: 1.5rem;">
+                Televizyonunun karmaşık kanal menüsünde saatlerce kumandayla boğuşmaya son! 
+                USB belleğinle televizyonundan aldığın <b>kanal listesi dosyasını (.scm, .zip, .xml)</b> buraya yükle; 
+                sürükle-bırak yöntemiyle veya yapay zeka destekli <b>"Sihirli Değnek"</b> 🪄 ile saniyeler içinde kanallarını düzenle. 
+                <br><br>
+                <em>Üstelik her şey tamamen tarayıcında çalışır, dosyaların hiçbir sunucuya yüklenmez!</em>
+            </p>
+            <button id="welcome-start-btn" class="btn primary" style="width: 100%; padding: 0.8rem; font-size: 1.1rem; border-radius: 100px;">Harika, Başlayalım!</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        if (!localStorage.getItem('welcomed_v2')) {
+            document.getElementById('welcome-modal').style.display = 'flex';
+        }
+        document.getElementById('welcome-start-btn').addEventListener('click', () => {
+            localStorage.setItem('welcomed_v2', 'true');
+            document.getElementById('welcome-modal').style.display = 'none';
+        });
+    });
+</script>
+
 {% endblock %}
 
 {% block scripts %}
