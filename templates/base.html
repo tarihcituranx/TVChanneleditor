@@ -63,6 +63,7 @@
                 <a href="/faq" class="nav-link {% if request.path == '/faq' %}active{% endif %}">FAQ</a>
             </div>
             <div class="nav-actions">
+                <button id="share-site-btn" class="icon-btn" aria-label="Siteyi Paylaş" title="Siteyi Paylaş">📤</button>
                 <button id="colorblind-toggle" class="icon-btn" aria-label="Renk Körlüğü Modu" title="Renk Körlüğü Modu">Renkler</button>
                 <button id="theme-toggle" class="icon-btn" aria-label="Tema Değiştir" title="Karanlık/Aydınlık Tema">Tema</button>
                 <select id="lang-selector" class="lang-select" aria-label="Dil Seçimi">
@@ -242,7 +243,67 @@
             langSel.value = 'tr';
         }
     </script>
+    <!-- Share Modal -->
+    <div id="share-modal" class="modal-overlay" style="display: none;">
+        <div class="modal">
+            <div class="modal-header">
+                <h3>📤 Bu Siteyi Paylaş</h3>
+                <button class="modal-close" onclick="document.getElementById('share-modal').style.display='none'">&times;</button>
+            </div>
+            <div class="modal-body" style="text-align: center;">
+                <p style="margin-bottom: 15px; color: var(--text-secondary);">Tarayıcınızın kamerasıyla veya QR okuyucuyla kodu okutun.</p>
+                <div id="qr-code-container" style="display: flex; justify-content: center; align-items: center; margin-bottom: 20px;"></div>
+                <div style="display: flex; gap: 10px; justify-content: center;">
+                    <button class="btn primary-outline" onclick="navigator.clipboard.writeText(window.location.href); toast('Bağlantı kopyalandı! 📋', 'success');">🔗 Kopyala</button>
+                    <a href="#" id="share-wa" target="_blank" class="btn" style="background: #25D366; color: white; border: none;">WhatsApp</a>
+                    <a href="#" id="share-x" target="_blank" class="btn" style="background: #000; color: white; border: none;">X (Twitter)</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/qr-code-styling@1.6.0-rc.1/lib/qr-code-styling.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.2/Sortable.min.js"></script>
+    <script>
+        document.getElementById('share-site-btn')?.addEventListener('click', () => {
+            document.getElementById('share-modal').style.display = 'flex';
+            
+            const currentUrl = window.location.href;
+            
+            // Set social links
+            document.getElementById('share-wa').href = `https://wa.me/?text=${encodeURIComponent('Baksana, ücretsiz Smart TV kanal düzenleme sitesi buldum: ' + currentUrl)}`;
+            document.getElementById('share-x').href = `https://twitter.com/intent/tweet?text=${encodeURIComponent('Ücretsiz Smart TV kanal düzenleme sitesi: ' + currentUrl)}`;
+            
+            // Generate QR Code only once
+            const qrContainer = document.getElementById('qr-code-container');
+            if (qrContainer.innerHTML === '') {
+                const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+                const qrCode = new QRCodeStyling({
+                    width: 250,
+                    height: 250,
+                    type: "svg",
+                    data: currentUrl,
+                    image: "/static/img/logo.png",
+                    dotsOptions: {
+                        color: isDark ? "#ffffff" : "#111827",
+                        type: "rounded"
+                    },
+                    backgroundOptions: {
+                        color: "transparent",
+                    },
+                    imageOptions: {
+                        crossOrigin: "anonymous",
+                        margin: 5
+                    },
+                    cornersSquareOptions: {
+                        type: "extra-rounded",
+                        color: "var(--accent)"
+                    }
+                });
+                qrCode.append(qrContainer);
+            }
+        });
+    </script>
     {% block scripts %}{% endblock %}
 </body>
 </html>
