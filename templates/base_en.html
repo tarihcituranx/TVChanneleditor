@@ -264,6 +264,11 @@
     <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.2/Sortable.min.js"></script>
     <script>
         document.getElementById('share-site-btn')?.addEventListener('click', () => {
+            const currentUrl = window.location.href;
+            if (navigator.share) {
+                navigator.share({ title: 'TV Channel Editor', text: 'Free Smart TV channel editor:', url: currentUrl }).catch(console.error);
+                return;
+            }
             document.getElementById('social-share-modal').style.display = 'flex';
             
             const currentUrl = window.location.href;
@@ -281,9 +286,9 @@
                     height: 250,
                     type: "svg",
                     data: currentUrl,
-                    image: "/static/img/logo.png",
+                    
                     dotsOptions: {
-                        color: isDark ? "#ffffff" : "#111827",
+                        color: isDark ? "#ffffff" : "#000000",
                         type: "rounded"
                     },
                     backgroundOptions: {

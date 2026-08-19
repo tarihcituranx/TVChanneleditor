@@ -594,6 +594,10 @@ a:hover { opacity: 0.8; text-decoration: underline; }
 
 /* ── Responsive ────────────────────────────────────────────── */
 @media (max-width: 768px) {
+    .modal-content { padding: 1.25rem; width: 95vw; border-radius: var(--radius-lg); }
+    .builder-content { width: 95vw; }
+    .split-screen { flex-direction: column; height: auto; }
+    .channel-list-container { min-height: 250px; }
     .app-container { padding: 0 1rem 2rem; }
     .nav-inner { flex-direction: column; height: auto; gap: 0.75rem; padding-bottom: 1rem; justify-content: center; }
     .nav-links { margin: 0; flex-wrap: wrap; justify-content: center; }
