@@ -271,7 +271,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Format Polarization tooltip
             let polLabel = ch.Pol === 'V' ? 'Dikey (V)' : ch.Pol === 'H' ? 'Yatay (H)' : ch.Pol;
-            let tooltipText = `Frekans: ${ch.Freq} MHz\nPolarizasyon: ${polLabel}\nSembol Oranı: ${ch.Sym}`;
+            let tooltipText = `Frekans: ${escapeHTML(String(ch.Freq))} MHz\nPolarizasyon: ${escapeHTML(String(polLabel))}\nSembol Oranı: ${escapeHTML(String(ch.Sym))}`;
 
             li.innerHTML = `
                 <div class="col-drag drag-handle" role="button" tabindex="0" aria-label="Taşı" title="Sürükle" style="cursor:grab; color:var(--text-secondary); margin-left:-5px;">
@@ -286,7 +286,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     <span style="background:var(--bg-color); padding:2px 6px; border-radius:4px; border:1px solid var(--border-color);">${ch.Type === 'HD' ? 'TV &middot; HD' : (ch.Type === 'SD' ? 'TV' : ch.Type)}</span>
                 </div>
                 <div class="col-freq" title="${tooltipText}">
-                    ${ch.Freq} <span style="font-size:0.7rem; opacity:0.6;">${ch.Pol}/${ch.Sym}</span>
+                    ${escapeHTML(String(ch.Freq))} <span style="font-size:0.7rem; opacity:0.6;">${ch.Pol}/${escapeHTML(String(ch.Sym))}</span>
                 </div>
                 <div class="col-flags">
                     ${ch.Fav1 ? '<span title="Favori" style="color:var(--warning); font-size:14px;">⭐</span>' : ''}
@@ -727,7 +727,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('info-no').textContent = ch.No;
         document.getElementById('info-freq').innerHTML = `<span class="font-monospace">${ch.Freq} MHz</span>`;
         document.getElementById('info-pol').textContent = ch.Pol === 'V' ? 'Dikey (V)' : ch.Pol === 'H' ? 'Yatay (H)' : ch.Pol;
-        document.getElementById('info-sym').innerHTML = `<span class="font-monospace">${ch.Sym} ksps</span>`;
+        document.getElementById('info-sym').innerHTML = `<span class="font-monospace">${escapeHTML(String(ch.Sym))} ksps</span>`;
         
         let typeHtml = ch.Type === 'HD' ? `<span class="badge" style="background:var(--accent); color:white; padding:4px 8px; border-radius:4px; font-size:12px;">TV HD</span>` : ch.Type;
         document.getElementById('info-type').innerHTML = typeHtml;
