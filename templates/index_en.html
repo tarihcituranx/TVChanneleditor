@@ -4,6 +4,12 @@
 <link rel="preload" href="/static/data/frekanslar.json" as="fetch" crossorigin="anonymous">{% endblock %}
 
 {% block content %}
+
+<script>
+    if (localStorage.getItem('welcomed_v2')) {
+        document.write('<style>#welcome-section { display: none !important; } #upload-section { display: block !important; }</style>');
+    }
+</script>
 <!-- Welcome Section -->
 <div id="welcome-section" style="max-width: 800px; margin: 0 auto; text-align: center; padding: 2rem 1rem;">
     <img src="/static/img/welcome_hero.jpg" alt="Welcome to TV Channel Editor" style="width: 100%; max-width: 600px; height: auto; border-radius: var(--radius-lg); box-shadow: var(--shadow-md); margin-bottom: 2rem;">
