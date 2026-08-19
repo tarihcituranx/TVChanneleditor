@@ -528,6 +528,41 @@ def internal_error(error):
         "status": "dead"
     }), 500
 
+
+# ---- UMAMI ANALYTICS PROXY (ADBLOCK BYPASS) ----
+import requests
+import os
+from flask import request, Response, jsonify
+
+# Gizlilik: Sunucu adresi veya IP ifşa edilmez, Render Environment Variable'dan çekilir
+UMAMI_SERVER_URL = os.environ.get("UMAMI_SERVER_URL", "")
+
+@app.route('/stats.js')
+def proxy_umami_script():
+    if not UMAMI_SERVER_URL:
+        return Response("console.error('Umami URL not configured');", mimetype='application/javascript', status=200)
+    try:
+        resp = requests.get(f"{UMAMI_SERVER_URL}/script.js", timeout=5)
+        script_content = resp.text.replace('"/api/send"', '"/api/send"') 
+        return Response(script_content, mimetype='application/javascript')
+    except Exception as e:
+        return Response("console.error('Analytics script proxy failed');", mimetype='application/javascript', status=200)
+
+@app.route('/api/send', methods=['POST'])
+def proxy_umami_send():
+    if not UMAMI_SERVER_URL:
+        return jsonify({"error": "Umami URL not configured"}), 500
+    try:
+        headers = {
+            'User-Agent': request.headers.get('User-Agent', ''),
+            'Content-Type': 'application/json',
+            'X-Forwarded-For': request.headers.get('X-Forwarded-For', request.remote_addr)
+        }
+        resp = requests.post(f"{UMAMI_SERVER_URL}/api/send", json=request.json, headers=headers, timeout=5)
+        return jsonify(resp.json()), resp.status_code
+    except Exception as e:
+        return jsonify({"error": "Proxy failed"}), 500
+
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))
     debug = os.environ.get('FLASK_DEBUG', '0') == '1'
