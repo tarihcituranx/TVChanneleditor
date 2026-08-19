@@ -36,11 +36,13 @@ TV'nizin USB'ye aktardığı kanal listesi dosyasını tarayıcıda **sürükle-
 
 - **🪄 Sihirli Değnek** — Genel / Haber / Spor şablonlarını tek tıkla uygula
 - **🛠️ Şablon Oluşturucu** — Kendi ideal listenizi oluşturup kaydedin
+- **📱 Kod ile Cihaza Aktarım** — 4 Haneli kod ile kanal listesini TV yanındaki cep telefonundan bilgisayara kolayca aktarın
 - **🔍 Otomatik Frekans Doğrulama** — Eski/yanlış frekansları otomatik tespit eder (Türksat)
 - **⭐ Favori & Kilit** — Favori 1-5 ve çocuk kilidi düzenleme
 - **🗑️ Toplu İşlemler** — Şifreli kanalları, radyoları veya seçilileri toplu sil
-- **🌙 Karanlık/Aydınlık Tema** — Sistem teması veya manuel seçim
-- **🌐 İki Dil** — Türkçe / English
+- **🌙 Karanlık/Aydınlık Tema & 👁️ Renk Körlüğü Modu** — Herkes için erişilebilir arayüz
+- **🌐 İki Dil (TR/EN)** — Türkçe / English desteği
+- **📊 Tam Gizlilik (Çerezsiz Analitik)** — Çerez veya kişisel veri kullanmayan yerleşik istatistik
 - **📱 Tam Responsive** — Masaüstü, tablet ve mobil uyumlu
 
 ---
