@@ -18,7 +18,12 @@
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📺</text></svg>">
     <script>
       (function() {
-        var t = localStorage.getItem('theme') || (matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+        var state = localStorage.getItem('theme-state') || 'auto';
+        var t = state;
+        if (state === 'auto') {
+            var h = new Date().getHours();
+            t = (h >= 19 || h < 7) ? 'dark' : 'light';
+        }
         document.documentElement.setAttribute('data-theme', t);
         var cb = localStorage.getItem('colorblind') === 'true';
         if (cb) document.documentElement.setAttribute('data-colorblind', 'true');
@@ -166,25 +171,33 @@
         const themeToggle = document.getElementById('theme-toggle');
         const html = document.documentElement;
 
-        function applyTheme(theme) {
-            html.setAttribute('data-theme', theme);
-            themeToggle.textContent = theme === 'light' ? '☀️' : '🌙';
-            themeToggle.title = theme === 'light' ? 'Aydınlık Mod' : 'Karanlık Mod';
+        function getAutoTheme() {
+            const hour = new Date().getHours();
+            return (hour >= 19 || hour < 7) ? 'dark' : 'light';
         }
 
-        const savedTheme = localStorage.getItem('theme');
-        if (savedTheme) {
-            applyTheme(savedTheme);
-        } else if (window.matchMedia('(prefers-color-scheme: light)').matches) {
-            applyTheme('light');
-        } else {
-            applyTheme('dark');
+        function applyThemeState(state) {
+            if (state === 'auto') {
+                html.setAttribute('data-theme', getAutoTheme());
+                themeToggle.textContent = '⏱️';
+                themeToggle.title = 'Otomatik Tema (Gündüz/Gece)';
+            } else {
+                html.setAttribute('data-theme', state);
+                themeToggle.textContent = state === 'light' ? '☀️' : '🌙';
+                themeToggle.title = state === 'light' ? 'Aydınlık Mod' : 'Karanlık Mod';
+            }
         }
+
+        let currentState = localStorage.getItem('theme-state') || 'auto';
+        applyThemeState(currentState);
 
         themeToggle.addEventListener('click', () => {
-            const next = html.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
-            applyTheme(next);
-            localStorage.setItem('theme', next);
+            if (currentState === 'auto') currentState = 'light';
+            else if (currentState === 'light') currentState = 'dark';
+            else currentState = 'auto';
+            
+            applyThemeState(currentState);
+            localStorage.setItem('theme-state', currentState);
         });
 
         // ---- Colorblind Toggle ----
