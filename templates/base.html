@@ -332,12 +332,13 @@
             if (navigator.share) {
                 try {
                     const blob = await qrCode.getRawData("png");
+                    const shareText = 'Televizyon kanal listesini bilgisayarda saniyeler içinde kolayca düzenleyebileceğin harika ve ücretsiz bir araç buldum. Kesin denemelisin:';
                     if (blob) {
                         const file = new File([blob], "tvchanneleditor-qr.png", { type: "image/png" });
                         if (navigator.canShare && navigator.canShare({ files: [file] })) {
                             await navigator.share({
                                 title: 'TV Channel Editor',
-                                text: 'Ücretsiz Smart TV kanal düzenleme sitesi:',
+                                text: shareText,
                                 url: currentUrl,
                                 files: [file]
                             });
@@ -346,7 +347,7 @@
                     }
                     await navigator.share({
                         title: 'TV Channel Editor',
-                        text: 'Ücretsiz Smart TV kanal düzenleme sitesi:',
+                        text: shareText,
                         url: currentUrl
                     });
                     return;

@@ -295,12 +295,13 @@
             if (navigator.share) {
                 try {
                     const blob = await qrCode.getRawData("png");
+                    const shareText = 'I found a great free tool to easily edit TV channel lists on your computer using a USB drive. Works right in the browser:';
                     if (blob) {
                         const file = new File([blob], "tvchanneleditor-qr.png", { type: "image/png" });
                         if (navigator.canShare && navigator.canShare({ files: [file] })) {
                             await navigator.share({
                                 title: 'TV Channel Editor',
-                                text: 'Free Smart TV channel editor:',
+                                text: shareText,
                                 url: currentUrl,
                                 files: [file]
                             });
@@ -309,7 +310,7 @@
                     }
                     await navigator.share({
                         title: 'TV Channel Editor',
-                        text: 'Free Smart TV channel editor:',
+                        text: shareText,
                         url: currentUrl
                     });
                     return;
