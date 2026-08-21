@@ -1,6 +1,6 @@
 {% extends "base_fa.html" %}
 
-{% block title %}User Guide - TV Channel Editor{% endblock %}
+{% block title %}راهنمای کاربر - ویرایشگر کانال تلویزیون{% endblock %}
 
 {% block head %}
 <style>
@@ -111,102 +111,105 @@
 
 {% block content %}
 <div class="content-container">
-    <h2 class="section-title">User Guide</h2>
+    <h2 class="section-title">راهنمای کاربر</h2>
 
     <div class="brand-tabs" role="tablist" aria-label="TV Brands">
-        <button class="brand-tab active" onclick="showGuide(\'samsung\')" role="tab" aria-selected="true" aria-controls="guide-samsung" id="tab-samsung">Samsung</button>
+        <button class="brand-tab active" onclick="showGuide(\'samsung\')" role="tab" aria-selected="true" aria-controls="guide-samsung" id="tab-samsung">سامسونگ</button>
         <button class="brand-tab" onclick="showGuide(\'lg\')" role="tab" aria-selected="false" aria-controls="guide-lg" id="tab-lg">LG</button>
-        <button class="brand-tab" onclick="showGuide(\'sony\')" role="tab" aria-selected="false" aria-controls="guide-sony" id="tab-sony">Sony BRAVIA</button>
-        <button class="brand-tab" onclick="showGuide(\'hisense\')" role="tab" aria-selected="false" aria-controls="guide-hisense" id="tab-hisense">Hisense</button>
+        <button class="brand-tab" onclick="showGuide(\'sony\')" role="tab" aria-selected="false" aria-controls="guide-sony" id="tab-sony">سونی براویا</button>
+        <button class="brand-tab" onclick="showGuide(\'hisense\')" role="tab" aria-selected="false" aria-controls="guide-hisense" id="tab-hisense">هایسنس</button>
     </div>
 
     <!-- SAMSUNG -->
     <div class="brand-guide active" id="guide-samsung" role="tabpanel" aria-labelledby="tab-samsung">
         <div class="step-box">
-            <div class="step-title"><span class="step-num">1</span> Transfer the Channel List to a USB Drive</div>
+            <div class="step-title"><span class="step-num">۱.</span> فهرست کانال‌ها را به یک درایو USB منتقل کنید</div>
             <div class="step-desc">
-                Using the TV remote, follow these steps: <strong>Menu → Broadcast → Channel Settings → Transfer Channel List</strong>.
-                Enter your PIN (usually <code>0000</code>
-                ) and select the "<strong>Transfer to USB"</strong>
-                option.<br><br>
+                با استفاده از کنترل تلویزیون، این مراحل را دنبال کنید: <strong>منو → پخش → تنظیمات کانال → انتقال فهرست کانال‌ها</strong>.
+                کد PIN خود را وارد کنید (معمولاً <code>0000</code>
+                ) و گزینه «<strong>انتقال به USB»</strong>
+                را انتخاب کنید.<br><br>
                 
-                <strong>Older models (E/F/H):</strong>
+                <strong>مدل‌های قدیمی‌تر (E/F/H):</strong>
                 <code>.scm</code>
-                A file is created.<br>
+                یک فایل ایجاد می‌شود.<br>
                 
-                <strong>New model (J/K/M/Q/R/T - Tizen):</strong>
-                <code>.zip</code> a file is created.
+                <strong>مدل جدید (J/K/M/Q/R/T - تایزن):</strong>
+                <code>.zip</code> یک فایل ایجاد می‌شود.
             </div>
         </div>
         <div class="step-box">
-            <div class="step-title"><span class="step-num">2</span> Upload the File to the Website</div>
+            <div class="step-title"><span class="step-num">۲.</span> فایل را در وب‌سایت بارگذاری کنید</div>
             <div class="step-desc">
-                Plug the USB drive into your computer. Drag the file to the upload area on the homepage <code>.scm</code> or <code>.zip</code> drag and drop the file into the upload area on the homepage, or click the "Select File" button.
+                درایو USB را به کامپیوتر خود وصل کنید. فایل را به ناحیه آپلود در صفحه اصلی بکشید. <code>.scm</code> یا <code>.zip</code> فایل را به داخل ناحیهٔ بارگذاری در صفحهٔ اصلی بکشید و رها کنید، یا روی دکمهٔ «انتخاب فایل» کلیک کنید.
             </div>
         </div>
         <div class="step-box">
-            <div class="step-title"><span class="step-num">3.</span> Organize Channels</div>
+            <div class="step-title"><span class="step-num">۳.</span> سازماندهی کانال‌ها</div>
             <div class="step-desc">
-                Reorder channels using <strong>drag-and-drop</strong>. <strong>🪄</strong> Apply ready-made templates with <strong>Magic Wand</strong> or <strong>🛠️</strong> create your own with <strong>the Template Creator</strong>. You can change the 🔒 lock and favorite flags on each channel row.
+                کانال‌ها را با <strong>کشیدن و رها کردن</strong> مرتب کنید. 🪄 با <strong>Smart Templates</strong> از قالب‌های آماده استفاده کنید یا <strong>🛠️</strong> با <strong>Template Creator</strong> قالب دلخواه خود را بسازید. می‌توانید نشانگر قفل 🔒 و نشانگر مورد علاقه را در هر ردیف کانال تغییر دهید.
             </div>
         </div>
         <div class="step-box">
-            <div class="step-title"><span class="step-num">4</span> Save and Upload to TV</div>
+            <div class="step-title"><span class="step-num">۴.</span> ذخیره و بارگذاری روی تلویزیون</div>
             <div class="step-desc">
-                Click the
-                <strong>Save and Download</strong>
-                button. Copy the downloaded file to a USB drive (use <em>the same name</em>
-                as the original file!). Load it via the TV menu using <strong>“Load from USB</strong>
-                .”
+                روی دکمه
+                <strong>«ذخیره و</strong>
+                دانلود» کلیک کنید. فایل دانلود شده را به یک درایو USB کپی کنید (از<em> همان نام</em>
+                فایل اصلی استفاده کنید!). آن را از طریق منوی تلویزیون با <strong>استفاده</strong>
+                از <strong>گزینه «بارگذاری از</strong>
+                USB» اجرا کنید.
             </div>
         </div>
-        <div class="tip-box">💡 <strong>Tip:</strong> The TV only recognizes SCM files with the exact same name. When copying the new file to the USB drive, either overwrite the old one or back up the old one <code>.bak</code> with its extension.</div>
-        <div class="warn-box">⚠️ <strong>Warning:</strong> The channel editing process does not change the frequencies or encrypted PID data of existing channels; it only updates the order and flags.</div>
+        <div class="tip-box">💡 <strong>نکته:</strong> تلویزیون فقط فایل‌های SCM را با نام دقیقاً یکسان تشخیص می‌دهد. هنگام کپی کردن فایل جدید روی درایو USB، یا فایل قدیمی را بازنویسی کنید یا از آن نسخه پشتیبان تهیه کنید. <code>.bak</code> با پسوند آن.</div>
+        <div class="warn-box">⚠️ <strong>هشدار:</strong> فرآیند ویرایش کانال، فرکانس‌ها یا داده‌های رمزگذاری‌شده PID کانال‌های موجود را تغییر نمی‌دهد؛ این فرآیند فقط ترتیب و نشان‌ها را به‌روزرسانی می‌کند.</div>
     </div>
 
     <!-- LG -->
     <div class="brand-guide" id="guide-lg" role="tabpanel" aria-labelledby="tab-lg">
         <div class="step-box">
-            <div class="step-title"><span class="step-num">1</span> Transfer the Channel List to USB</div>
+            <div class="step-title"><span class="step-num">۱.</span> لیست کانال‌ها را به USB منتقل کنید</div>
             <div class="step-desc">
-                On your LG TV, go to <strong>Settings → Channels → Channel Management → Copy Channels to USB</strong>.
-                On the USB drive <code>GlobalClone00001.TLL</code> or <code>LG_DTV_*.tll</code> a file like this will be created.
+                در تلویزیون ال‌جی خود به <strong>مسیر</strong> <strong>تنظیمات → کانال‌ها → مدیریت کانال‌ها → کپی کانال‌ها روی USB</strong> بروید.
+                روی درایو USB <code>GlobalClone00001.TLL</code> یا <code>LG_DTV_*.tll</code> فایلی مانند این ایجاد خواهد شد.
             </div>
         </div>
         <div class="step-box">
-            <div class="step-title"><span class="step-num">2</span>. Load the .TLL File</div>
+            <div class="step-title"><span class="step-num">۲</span>. بارگذاری فایل .TLL</div>
             <div class="step-desc">
-                Upload a file with the <code>.tll</code> . The system will automatically recognize the GlobalClone XML format.
+                یک فایل با فرمت <code>.tll</code> . سیستم به‌طور خودکار فرمت XML GlobalClone را تشخیص می‌دهد.
             </div>
         </div>
         <div class="step-box">
-            <div class="step-title"><span class="step-num">3.</span> Edit and Download</div>
+            <div class="step-title"><span class="step-num">۳.</span> ویرایش و دانلود</div>
             <div class="step-desc">
-                Sort the channels using drag-and-drop. Click the "<strong>Save and Download"</strong> button to download the updated TLL file and transfer it to a USB drive. Complete the process by selecting "<strong>Load Channels from USB"</strong> from the TV menu.
+                کانال‌ها را با کشیدن و رها کردن مرتب کنید. برای دانلود فایل TLL به‌روزرسانی‌شده و انتقال آن به یک درایو USB، روی دکمه «<strong>ذخیره و دانلود»</strong>
+                کلیک کنید. این فرآیند را با انتخاب «<strong>بارگذاری کانال‌ها از USB»</strong>
+                از منوی تلویزیون تکمیل کنید.
             </div>
         </div>
-        <div class="tip-box">💡 On LG webOS 5 devices, channel list import restrictions may sometimes apply. If you see a black screen, try restarting the TV.</div>
+        <div class="tip-box">💡 در دستگاه‌های LG webOS 5، ممکن است محدودیت‌هایی برای وارد کردن لیست کانال‌ها اعمال شود. اگر صفحه نمایش سیاه شد، تلویزیون را مجدداً راه‌اندازی کنید.</div>
     </div>
 
     <!-- SONY -->
     <div class="brand-guide" id="guide-sony" role="tabpanel" aria-labelledby="tab-sony">
         <div class="step-box">
-            <div class="step-title"><span class="step-num">1.</span> Get the sdb.xml File</div>
+            <div class="step-title"><span class="step-num">۱.</span> فایل sdb.xml را دریافت کنید</div>
             <div class="step-desc">
-                On a Sony BRAVIA, follow these steps: <strong>Settings → Channel Setup → Channel List Import → Import to USB</strong>.
-                On the USB drive <code>sdb.xml</code> or in subfolders <code>*.xml</code> files will be created.
+                در تلویزیون سونی براویا، این مراحل را دنبال کنید: <strong>تنظیمات → راه‌اندازی کانال → وارد کردن لیست کانال‌ها → وارد کردن به USB</strong>.
+                روی درایو USB <code>sdb.xml</code> یا در زیرپوشه‌ها <code>*.xml</code> فایل‌ها ایجاد خواهند شد.
             </div>
         </div>
         <div class="step-box">
-            <div class="step-title"><span class="step-num">2.</span> Load the sdb.xml File</div>
+            <div class="step-title"><span class="step-num">۲.</span> بارگذاری فایل sdb.xml</div>
             <div class="step-desc">
-                Go to the home screen <code>sdb.xml</code> . The system automatically recognizes the file in the Sony format and lists the channels.
+                به صفحه اصلی بروید <code>sdb.xml</code> . سیستم به طور خودکار فایل را با فرمت سونی تشخیص داده و کانال‌ها را فهرست می‌کند.
             </div>
         </div>
         <div class="step-box">
-            <div class="step-title"><span class="step-num">3</span> Edit and Upload to TV</div>
+            <div class="step-title"><span class="step-num">۳.</span> ویرایش و بارگذاری روی تلویزیون</div>
             <div class="step-desc">
-                Edit the channels, then click <strong>Save and Download</strong> to <code>sdb.xml</code> download the file. Copy it to a USB drive and load it onto the TV using "<strong>Import from USB</strong>."
+                کانال‌ها را ویرایش کنید، سپس روی <strong>«ذخیره و دانلود</strong> به» کلیک کنید <code>sdb.xml</code> فایل را دانلود کنید. آن را روی یک درایو USB کپی کرده و با استفاده از گزینه «<strong>Import from USB</strong>» (وارد کردن از <strong>USB</strong>) آن را روی تلویزیون بارگذاری کنید.
             </div>
         </div>
     </div>
@@ -214,43 +217,44 @@
     <!-- HISENSE -->
     <div class="brand-guide" id="guide-hisense" role="tabpanel" aria-labelledby="tab-hisense">
         <div class="step-box">
-            <div class="step-title"><span class="step-num">1.</span> Get the servicelist.db File</div>
+            <div class="step-title"><span class="step-num">۱.</span> فایل servicelist.db را دریافت کنید</div>
             <div class="step-desc">
-                On your Hisense TV, go to <strong>Menu → Channel → Export Channel List</strong> to transfer the database file to a USB drive.
-                The file name is usually <code>servicelist.db</code> (2017+) or <code>channel.db</code> (2015–2016).
+                در تلویزیون Hisense خود، به <strong>منو → کانال → صادر کردن لیست کانال‌ها</strong> بروید تا فایل پایگاه داده را به یک درایو USB منتقل کنید.
+                نام فایل معمولاً <code>servicelist.db</code> (۲۰۱۷+) یا <code>channel.db</code> (۲۰۱۵–۲۰۱۶).
             </div>
         </div>
         <div class="step-box">
-            <div class="step-title"><span class="step-num">2.</span> Install the Database</div>
+            <div class="step-title"><span class="step-num">۲.</span> نصب پایگاه داده</div>
             <div class="step-desc">
-                Drag the <code>servicelist.db</code> . The system reads the SQLite database and lists all channels.
+                کشیدن <code>servicelist.db</code> . سیستم پایگاه داده SQLite را می‌خواند و تمام کانال‌ها را فهرست می‌کند.
             </div>
         </div>
         <div class="step-box">
-            <div class="step-title"><span class="step-num">3</span> Edit and Upload</div>
+            <div class="step-title"><span class="step-num">۳.</span> ویرایش و بارگذاری</div>
             <div class="step-desc">
-                After making the desired changes, click the "<strong>Save and Download"</strong> button to download the updated database file. Copy it to a USB drive and use the TV’s import menu to import it.
+                پس از اعمال تغییرات دلخواه، روی دکمه «<strong>ذخیره و دانلود»</strong>
+                کلیک کنید تا فایل پایگاه داده به‌روزرسانی‌شده را دانلود کنید. آن را روی یک درایو USB کپی کرده و از منوی وارد کردن تلویزیون برای وارد کردن آن استفاده کنید.
             </div>
         </div>
-        <div class="warn-box">⚠️ Channel name changes are limited on Hisense models; on some models, only sorting and lock changes can be applied.</div>
+        <div class="warn-box">⚠️ تغییرات نام کانال در مدل‌های Hisense محدود است؛ در برخی مدل‌ها، فقط مرتب‌سازی و تغییرات قفل قابل اعمال هستند.</div>
     </div>
 </div>
 
 <script>
 function showGuide(brand) {
-        document.querySelectorAll('.brand-tab').forEach(btn => {
-            btn.classList.remove('active');
-            btn.setAttribute('aria-selected', 'false');
+        document.querySelectorAll(&#x27;.brand-tab&#x27;).forEach(btn =&gt; {
+            btn.classList.remove(&#x27;active&#x27;);
+            btn.setAttribute(&#x27;aria-selected&#x27;, &#x27;false&#x27;);
         });
-        document.querySelectorAll('.brand-guide').forEach(g => {
-            g.classList.remove('active');
+        document.querySelectorAll(&#x27;.brand-guide&#x27;).forEach(g =&gt; {
+            g.classList.remove(&#x27;active&#x27;);
         });
         
         const activeBtn = document.querySelector(`.brand-tab[onclick*="${brand}"]`);
         if (activeBtn) {
-            activeBtn.classList.add('active');
-            activeBtn.setAttribute('aria-selected', 'true');
+            activeBtn.classList.add(&#x27;active&#x27;);
+            activeBtn.setAttribute(&#x27;aria-selected&#x27;, &#x27;true&#x27;);
         }
-        document.getElementById('guide-' + brand).classList.add('active');
+        document.getElementById(&#x27;guide-&#x27; + brand).classList.add(&#x27;active&#x27;);
     }
 </script>{% endblock %}

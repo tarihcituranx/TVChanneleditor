@@ -89,7 +89,7 @@
     <div class="faq-item">
         <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">¿Qué marcas de televisores son compatibles?</button>
         <div class="faq-a">
-            Actualmente, son totalmente compatibles <strong>Samsung</strong> (.scm y .zip), <strong>LG</strong> (.tll), <strong>Sony BRAVIA</strong> (sdb.xml) y <strong>Hisense</strong> (servicelist.db).
+            Actualmente, son totalmente compatibles <strong>Samsung</strong> (.scm y .zip), <strong>LG</strong> (.tll), <strong>Sony BRAVIA</strong> (sdb.xml) e <strong>Hisense</strong> (servicelist.db).
             Panasonic se encuentra en fase beta; Philips, Toshiba y Grundig se añadirán próximamente.
         </div>
     </div>
@@ -110,14 +110,14 @@
     </div>
 
     <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">¿Cómo empareja Magic Wand los canales?</button>
+        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">¿Cómo empareja Smart Templates los canales?</button>
         <div class="faq-a">
-            Magic Wand empareja los canales por nombre (sin distinguir entre mayúsculas y minúsculas). Si tienes «TRT1 HD» en tu plantilla, busca «trt1 hd» en el archivo subido y lo coloca en la posición correcta. No modifica los datos de frecuencia ni de PID.
+            Las plantillas inteligentes asocian los canales por su nombre (sin distinguir entre mayúsculas y minúsculas). Si tienes «TRT1 HD» en tu plantilla, encuentra «trt1 hd» en el archivo subido y lo coloca en la posición correcta. No modifica los datos de frecuencia ni de PID.
         </div>
     </div>
 
     <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">¿Cómo vuelvo a subir la lista editada al televisor?</button>
+        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">¿Cómo vuelvo a cargar la lista editada en el televisor?</button>
         <div class="faq-a">
             Copia el archivo descargado en una memoria USB (<strong>¡mantén el nombre de archivo original!</strong>
             ). Utiliza la opción <strong>«Importar desde USB»</strong>
@@ -128,7 +128,7 @@
     <div class="faq-item">
         <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">¿Por qué no veo los nuevos canales en abierto en la lista?</button>
         <div class="faq-a">
-            Esta página web solo edita la lista de canales existente del televisor; <em>no</em> puede añadir nuevos canales. Para ver un nuevo canal, primero debes realizar una <strong>búsqueda de canales (sintonización automática)</strong> en el televisor y, a continuación, exportar el nuevo archivo.
+            Esta página web solo edita la lista de canales existente del televisor; <em>no</em> puede añadir nuevos canales. Para ver un nuevo canal, primero debes realizar un <strong>escaneo de la red (sintonización automática)</strong> en el televisor y, a continuación, exportar el nuevo archivo.
         </div>
     </div>
     
@@ -140,7 +140,7 @@
     </div>
 
     <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">¿Están a salvo mis datos? ¿Se almacenan mis archivos en el servidor?</button>
+        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">¿Están seguros mis datos? ¿Se almacenan mis archivos en el servidor?</button>
         <div class="faq-a">
             Los archivos de listas de canales subidos se conservan en nuestro servidor solo de forma temporal durante el procesamiento y se eliminan inmediatamente después de que finalice el proceso. No se registran, almacenan ni comparten con terceros nombres de canales, frecuencias ni datos personales. Todo el procesamiento se realiza en el servidor y solo se te envía el archivo de salida.
         </div>
@@ -154,7 +154,7 @@
     <div class="faq-item">
         <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">¿Cómo exporto la lista de canales de un televisor Samsung a un dispositivo USB?</button>
         <div class="faq-a">
-            Para Samsung: Sigue estos pasos<strong>: Menú → Emisión → Ajustes de canales → Transferir lista de canales → Exportar a USB</strong>. El televisor normalmente solo acepta archivos con el mismo nombre exacto, así que no cambies el nombre del archivo al editarlo y restaurarlo.
+            Para Samsung: Sigue estos pasos<strong>: Menú → Emisión → Ajustes de canales → Transferir lista de canales → Exportar a USB</strong>. El televisor suele aceptar únicamente archivos con el mismo nombre exacto, así que no cambies el nombre del archivo al editarlo y restaurarlo.
         </div>
     </div>
 
@@ -170,7 +170,7 @@
         <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">¿Los televisores Samsung Tizen utilizan archivos ZIP o SCM?</button>
         <div class="faq-a">
             <strong>Los modelos antiguos de Samsung</strong>
-            (series E, F y H, de 2012 a 2014) utilizan <code>.scm</code>
+            (series E, F y H, 2012-2014) utilizan <code>.scm</code>
             archivos ZIP.<br>
             
             <strong>Los modelos más recientes de televisores Samsung Tizen</strong>
@@ -224,8 +224,8 @@
 <script>
 function toggleFaq(btn) {
         let parent = btn.parentElement;
-        let isExpanded = btn.getAttribute('aria-expanded') === 'true';
-        btn.setAttribute('aria-expanded', !isExpanded);
-        parent.classList.toggle('open');
+        let isExpanded = btn.getAttribute(&#x27;aria-expanded&#x27;) === &#x27;true&#x27;;
+        btn.setAttribute(&#x27;aria-expanded&#x27;, !isExpanded);
+        parent.classList.toggle(&#x27;open&#x27;);
     }
 </script>{% endblock %}

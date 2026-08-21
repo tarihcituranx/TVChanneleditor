@@ -170,7 +170,16 @@ document.addEventListener('DOMContentLoaded', () => {
         .then(res => res.json())
         .then(data => {
             if (data.error) {
-                toast(data.error, 'danger');
+                let msg = data.error;
+                if (isEnglish()) {
+                    if (data.code === 'INVALID_EXTENSION') msg = 'Unsupported file format.';
+                    if (data.code === 'INVALID_MAGIC_BYTES') msg = 'Fake or corrupted file detected.';
+                    if (data.code === 'TOO_MANY_CHANNELS') msg = 'Too many channels.';
+                    if (data.code === 'INVALID_DATA') msg = 'Invalid data.';
+                    if (data.code === 'SESSION_EXPIRED') msg = 'Session expired.';
+                }
+                toast(msg, 'danger');
+
                 browseBtn.classList.remove('tv-scanning');
                 return;
             }
@@ -665,11 +674,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (data.success) {
                     prompt('Aşağıdaki kodu diğer cihazda "Kod ile İçe Aktar" bölümüne girin. (10 dakika geçerlidir)', data.code);
                 } else {
-                    toast('Hata: ' + data.error, 'danger');
+                    let errMsg = data.error; if(isEnglish()) { if(data.code === 'INVALID_DATA') errMsg = 'Invalid data.'; if(data.code === 'SESSION_EXPIRED') errMsg = 'Session expired.'; } toast((isEnglish() ? 'Error: ' : 'Hata: ') + errMsg, 'danger');
                 }
             }).catch(() => {
                 exportShareBtn.textContent = '📱 Cihaza Aktar';
-                toast('Bağlantı hatası.', 'danger');
+                toast(isEnglish() ? 'Connection error.' : 'Bağlantı hatası.', 'danger');
             });
         });
     }
@@ -692,11 +701,11 @@ document.addEventListener('DOMContentLoaded', () => {
                     saveDraftToLocal();
                     toast(isEnglish() ? 'Draft imported successfully! ✨ You can continue editing.' : 'Taslak başarıyla aktarıldı! ✨ Kaldığınız yerden devam edebilirsiniz.', 'success');
                 } else {
-                    toast('Hata: ' + data.error, 'danger');
+                    let errMsg = data.error; if(isEnglish()) { if(data.code === 'INVALID_DATA') errMsg = 'Invalid data.'; if(data.code === 'SESSION_EXPIRED') errMsg = 'Session expired.'; } toast((isEnglish() ? 'Error: ' : 'Hata: ') + errMsg, 'danger');
                 }
             }).catch(() => {
                 importShareBtn.textContent = '📱 Kod ile İçe Aktar';
-                toast('Bağlantı hatası.', 'danger');
+                toast(isEnglish() ? 'Connection error.' : 'Bağlantı hatası.', 'danger');
             });
         });
     }
