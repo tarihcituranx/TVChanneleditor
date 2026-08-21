@@ -243,12 +243,11 @@
             if (t.startsWith('lang=')) langCookie = t.substring(5);
         });
 
+        const currentLang = document.documentElement.lang || 'tr';
         if (langCookie) {
             langSel.value = langCookie;
-        } else if ((navigator.language || navigator.userLanguage || '').toLowerCase().startsWith('en')) {
-            langSel.value = 'en';
         } else {
-            langSel.value = 'tr';
+            langSel.value = currentLang;
         }
     </script>
     <!-- Share Modal -->
