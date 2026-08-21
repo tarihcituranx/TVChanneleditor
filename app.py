@@ -240,7 +240,7 @@ def upload():
     _cleanup_expired()
 
     if 'file' not in request.files:
-        return jsonify({'error': 'Dosya bulunamadı'}), 400
+        return jsonify({'error': 'Dosya bulunamadı', 'code': 'FILE_NOT_FOUND'}), 400
     file = request.files['file']
     if not file.filename:
         return jsonify({'error': 'Dosya seçilmedi'}), 400
@@ -418,7 +418,7 @@ def build():
             safe_name_dl = urllib.parse.quote(os.path.basename(original_name))
             return jsonify({'success': True, 'download_url': f'/download/{session_id}/{safe_name_dl}'})
         else:
-            return jsonify({'error': 'Dosya oluşturulamadı'}), 500
+            return jsonify({'error': 'Dosya oluşturulamadı', 'code': 'FILE_BUILD_ERROR'}), 500
     except Exception as e:
         return jsonify({'error': 'Dosya işlenirken beklenmeyen bir hata oluştu.'}), 500
 
@@ -434,7 +434,7 @@ def share_draft():
         # Create a new share code
         data = request.json
         if not data or 'draft' not in data:
-            return jsonify({'success': False, 'error': 'Geçersiz veri'}), 400
+            return jsonify({'success': False, 'error': 'Geçersiz veri', 'code': 'INVALID_DATA'}), 400
             
         # Generate 6 digit random code
         code = ''.join(random.choices(string.ascii_uppercase + string.digits, k=6))
@@ -450,7 +450,7 @@ def share_draft():
         # GET request to retrieve draft
         code = request.args.get('code', '').upper()
         if not code or code not in _shares:
-            return jsonify({'success': False, 'error': 'Kod geçersiz veya süresi dolmuş.'}), 404
+            return jsonify({'success': False, 'error': 'Kod geçersiz veya süresi dolmuş.', 'code': 'INVALID_CODE'}), 404
             
         return jsonify({'success': True, 'draft': _shares[code]['draft']})
 

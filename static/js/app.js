@@ -110,7 +110,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Güncel frekansları yükle
-    fetch('/static/data/frekanslar.json')
+    fetch('/static/data/turkiye_turksat_frekanslar.json')
         .then(res => res.json())
         .then(data => {
             frekansData = data;
@@ -370,7 +370,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let TEMPLATES = {};
 
     // Asenkron olarak harici JSON dosyasından hazır şablonları yükle
-    fetch('/static/data/templates.json')
+    fetch('/static/data/turkiye_turksat_templates.json')
         .then(res => res.json())
         .then(data => {
             TEMPLATES = data;
