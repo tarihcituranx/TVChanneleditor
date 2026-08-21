@@ -1,63 +1,63 @@
-**Last Updated:** August 21, 2026
+**Son Yenilənmə:** 21 Avqust 2026
 
-# 📺 TV Channel Editor
+# 📺 TV Kanal Redaktoru
 
-> **Multi-brand TV channel list editor** — A single platform for Samsung, LG, Sony, Hisense, and more.
+> **Çoxmarkalı TV kanal siyahısı redaktoru** — Samsung, LG, Sony, Hisense və daha çoxu üçün tək bir platforma.
 
-[![Live Demo](https://img.shields.io/badge/🌐_Canlı_Demo-tvchanneleditor.onrender.com-blue)](https://tvchanneleditor.onrender.com)
-[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+[![Canlı Demo](https://img.shields.io/badge/🌐_Canlı_Demo-tvchanneleditor.onrender.com-blue)](https://tvchanneleditor.onrender.com)
+[![Lisenziya: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENCE)
 [![Python 3.9+](https://img.shields.io/badge/Python-3.9+-blue)](https://python.org)
 
 ---
 
-## 🎯 What Does It Do?
+## 🎯 Bu nə edir?
 
-You can visually edit the channel list file transferred by your TV to a USB drive using **drag-and-drop** in your browser and then reload it onto your TV. **Data is only temporarily stored (in RAM/Temp) during the process; it is not saved permanently.**
+TV-nizin USB sürücüsünə ötürdüyü kanal siyahısı faylını brauzerinizdə **çəkmə-buraxma** (drag-and-drop) ilə vizual redaktə edib sonra TV-yə yenidən yükləyə bilərsiniz. **Məlumat yalnız emal zamanı müvəqqəti (RAM/Temp) saxlanılır; daimi olaraq yadda saxlanılmır.**
 
 ---
 
-## 📺 Supported TV Brands
+## 📺 Dəstəklənən TV Markaları
 
-| Brand | Format | Status |
+| Marka | Format | Status |
 |-------|--------|-------|
-| **Samsung** (E/F/H Series) | `.scm` | ✅ Full Support |
-| **Samsung** (J/K/M/Q/R/T - Tizen) | `.zip` (SQLite) | ✅ Full Support |
-| **LG** (webOS 5+) | `.tll` (XML) | ✅ Full Support |
-| **Sony BRAVIA** | `sdb.xml` | ✅ Full Support |
-| **Hisense** (2017+) | `servicelist.db` | ✅ Full Support |
+| **Samsung** (E/F/H seriyaları) | `.scm` | ✅ Tam dəstək |
+| **Samsung** (J/K/M/Q/R/T – Tizen) | `.zip` (SQLite) | ✅ Tam dəstək |
+| **LG** (webOS 5+) | `.tll` (XML) | ✅ Tam Dəstək |
+| **Sony BRAVIA** | `sdb.xml` | ✅ Tam Dəstək |
+| **Hisense** (2017+) | `servicelist.db` | ✅ Tam Dəstək |
 | **Panasonic VIERA** | `svl.db / svl.bin` | 🔄 Beta |
-| Philips, Toshiba, Grundig... | `*.db / *.xml` | 🔜 Coming Soon |
+| Philips, Toshiba, Grundig... | `*.db / *.xml` | 🔜 Tezliklə |
 
-## 🛰️ Supported Satellites
+## 🛰️ Dəstəklənən Peyklər
 
-**Türksat 4A/5B** · **Hotbird 13E** · **Astra 19.2E** · and all other DVB-S satellites
-
----
-
-## ✨ Features
-
-- **🪄 Magic Wand** — Apply General / News / Sports templates with a single click
-- **🛠️ Template Creator** — Create and save your own ideal list
-- **📱 Transfer to Device via Code** — Easily transfer the channel list from your smartphone next to the TV to your computer using an 8-character code
-- **🔍 Automatic Frequency Verification** — Automatically detects old or incorrect frequencies (Türksat)
-- **⭐ Favorites & Lock** — Manage Favorites 1–5 and the child lock
-- **🗑️ Bulk Actions** — Delete encrypted channels, radio stations, or selected items in bulk
-- **🌙 Dark/Light Theme & 👁️ Color Blind Mode** — An accessible interface for everyone
-- **🌐 11 Language Options** — Supports Turkish and English
-- **📊 Full Privacy (Cookie-Free Analytics)** — Built-in statistics that do not use cookies or personal data
-- **📱 Fully Responsive** — Compatible with desktop, tablet, and mobile
+**Türksat 4A/5B** · **Hotbird 13E** · **Astra 19.2E** · və digər bütün DVB-S peykləri
 
 ---
 
-## 🚀 Live Demo
+## ✨ Xüsusiyyətlər
 
-Use it directly in your browser without any setup:
+- **🪄 Sehrli Çubuq** — Ümumi / Xəbərlər / İdman şablonlarını tək kliklə tətbiq edin
+- **🛠️ Şablon Yaradıcısı** — Öz ideal siyahınızı yaradın və yadda saxlayın
+- **📱 Kod vasitəsilə Cihaza Köçürmə** — Televizorun yanındakı mobil telefonunuzdan 8 simvoldan ibarət kodla kanal siyahısını kompüterinizə asanlıqla köçürün
+- **🔍 Avtomatik Tezlik Təsdiqi** — Köhnə və ya səhv tezlikləri avtomatik aşkar edir (Türksat)
+- **⭐ Sevimlilər & Kilid** — Sevimlilər 1–5 və uşaq kilidini idarə edin
+- **🗑️ Kütləvi Əməliyyatlar** — Şifrələnmiş kanalları, radio stansiyalarını və ya seçilmiş elementləri kütləvi şəkildə silin
+- **🌙 Qaranlıq/Açıq Tema & 👁️ Rəng Korluğu Rejimi** — Hər kəs üçün əlçatan interfeys
+- **🌐 11 Dilli Seçimlər** — Türk / İngilis dili dəstəyi
+- **📊 Tam Məxfilik (Cookie-siz Analitika)** — Kukilardan və şəxsi məlumatlardan istifadə etməyən daxili statistika
+- **📱 Tam Uyğunluq** — Masaüstü, planşet və mobil cihazlarla uyğun
+
+---
+
+## 🚀 Canlı Demo
+
+Quraşdırma olmadan brauzerinizdə birbaşa istifadə edin:
 
 👉 **[tvchanneleditor.onrender.com](https://tvchanneleditor.onrender.com)**
 
 ---
 
-## 💻 Local Installation
+## 💻 Yerli Quraşdırma
 
 ```bash
 git clone https://github.com/tarihcituranx/TVChanneleditor.git
@@ -66,56 +66,56 @@ pip install -r requirements.txt
 python3 app.py
 ```
 
-Go to `http://127.0.0.1:5000` in your browser.
+Brauzerinizdə `http://127.0.0.1:5000` ünvanına keçin.
 
 ---
 
-## 🏗️ Project Structure
+## 🏗️ Layihənin Strukturı
 
 ```
-├── app.py # Flask main application & security headers
-├── scm_core.py # Samsung SCM (binary) engine
-├── tizen_core.py # Samsung Tizen SQLite engine
-├── lg_core.py # LG GlobalClone XML engine
-├── sony_core.py # Sony sdb.xml engine
-├── hisense_core.py     # Hisense SQLite engine
-├── templates/ # Jinja2 HTML templates (11 languages)
+├── app.py # Flask əsas tətbiqi və təhlükəsizlik başlıqları
+├── scm_core.py # Samsung SCM (ikili) mühərriki
+├── tizen_core.py # Samsung Tizen SQLite mühərriki
+├── lg_core.py # LG GlobalClone XML mühərriki
+├── sony_core.py # Sony sdb.xml mühərriki
+├── hisense_core.py     # Hisense SQLite mühərriki
+├── templates/ # Jinja2 HTML şablonları (11 dil)
 ├── static/
-│   ├── css/style.css   # Dark/Light theme + all styles
-│   ├── js/app.js # Frontend (drag-and-drop, channel rendering, templates)
+│   ├── css/style.css   # Tünd/Açıq tema + bütün stillər
+│   ├── js/app.js # Frontend (çəkmə-buraxma, kanal renderləşdirmə, şablonlar)
 │   └── data/ # frequencies.json, templates.json
 ```
 
 ---
 
-## 🔐 Security
+## 🔐 Təhlükəsizlik
 
-- All security headers are enabled (CSP, HSTS, CORP, COOP, Referrer-Policy...)
-- File size limit: 2MB
-- Uploaded files are deleted after processing
-- No channel data is logged on the server
-- Security contact: `tarihcituranx@proton.me`
-
----
-
-## 🤖 AI Guide
-
-If you’re developing with the AI assistant, read the [AI_INSTRUCTIONS.md](AI_INSTRUCTIONS.md) file.
+- Bütün təhlükəsizlik başlıqları aktivləşdirilib (CSP, HSTS, CORP, COOP, Referrer-Policy...)
+- Fayl ölçüsü limiti: 2MB
+- Yüklənmiş fayllar emaldan sonra silinir
+- Serverdə heç bir kanal məlumatı qeydə alınmır
+- Təhlükəsizlik üzrə əlaqə: `tarihcituranx@proton.me`
 
 ---
 
-## 🔌 Using the Developer API & AI Agents
+## 🤖 AI Bələdçisi
 
-This project is not just a website; it’s also designed as a full-featured **REST API** that AI agents and developers can use directly via code.
+Əgər AI köməkçisi ilə işləyirsinizsə, zəhmət olmasa [AI_INSTRUCTIONS.md](AI_INSTRUCTIONS.md) faylını oxuyun.
 
-> 🧑‍💻 **For Developers:** You can view the interactive Swagger UI documentation at [tvchanneleditor.onrender.com/api/docs](https://tvchanneleditor.onrender.com/api/docs).
+---
+
+## 🔌 Tərtibatçı API-dən və AI Agentlərindən İstifadə
+
+Bu layihə yalnız vebsayt deyil; o, həmçinin AI agentləri və tərtibatçıların kod vasitəsilə birbaşa istifadə edə biləcəyi tam funksional **REST API** kimi hazırlanıb.
+
+> 🧑‍💻 **İnkişaf etdiricilər üçün:** İnteraktiv Swagger UI sənədlərini [tvchanneleditor.onrender.com/api/docs](https://tvchanneleditor.onrender.com/api/docs) ünvanında görə bilərsiniz.
 > 
-> 🤖 **For AI Agents (ChatGPT, Claude, etc.):** You can provide the system’s machine-readable Plain-Text OpenAPI schema to the AI via this link: [tvchanneleditor.onrender.com/api/openapi.txt](https://tvchanneleditor.onrender.com/api/openapi.txt)
+> 🤖 **AI agentləri üçün (ChatGPT, Claude və s.):** Sistemin maşın oxunan Plain-Text OpenAPI sxemini bu link vasitəsilə AI-yə təqdim edə bilərsiniz: [tvchanneleditor.onrender.com/api/openapi.txt](https://tvchanneleditor.onrender.com/api/openapi.txt)
 
 
 
-### Version and Deployment Verification (Version Check)
-To instantly test whether the render server has deployed the latest GitHub commit or is still running from the cache:
+### Versiya və Yerləşdirmə Təsdiqi (Versiya yoxlaması)
+Render serverinin ən son GitHub komitini yerləşdirib-yerləşdirmədiyini və ya hələ də keşlənib-keşlənmədiyini bir neçə saniyə ərzində yoxlamaq üçün:
 ```bash
 curl -sS https://tvchanneleditor.onrender.com/api/version
 ```
@@ -130,16 +130,16 @@ curl -sS https://tvchanneleditor.onrender.com/api/version
 
 ---
 
-## 🙏 Thanks
+## 🙏 Təşəkkürlər
 
-- **[İltekin/scm-editor](https://github.com/iltekin/scm-editor)** — Initial source of inspiration
-- **[PredatH0r/ChanSort](https://github.com/PredatH0r/ChanSort)** — Reverse engineering reference for SCM + multi-brand formats
-- **[Türksat Satellite](https://uydu.turksat.com.tr/)** — Türksat frequency verification database
+- **[İltekin/scm-editor](https://github.com/iltekin/scm-editor)** — İlkin ilham mənbəyi
+- **[PredatH0r/ChanSort](https://github.com/PredatH0r/ChanSort)** — SCM və çoxmarkalı formatlar üçün tərs mühəndislik istinadı
+- **[Türksat Satellite](https://uydu.turksat.com.tr/)** — Türksat tezlik təsdiqləmə verilənlər bazası
 
 ---
 
-## 📄 License
+## 📄 Lisenziya
 
-Released as open source under the MIT License.
+MIT lisenziyası altında açıq mənbə kimi yayımlanıb.
 
-> “Samsung,” “LG,” “Sony,” “Hisense,” “Panasonic,” and their logos are registered trademarks of their respective companies. This is an independent, open-source community tool.
+> "Samsung", "LG", "Sony", "Hisense", "Panasonic" və onların loqotipləri müvafiq şirkətlərin qeydiyyatdan keçmiş ticarət nişanlarıdır. Bu, müstəqil, açıq mənbə icması üçün bir alətdir.

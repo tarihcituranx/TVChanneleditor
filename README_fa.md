@@ -1,63 +1,63 @@
-**Last Updated:** August 21, 2026
+**آخرین به‌روزرسانی:** ۲۱ اوت ۲۰۲۶
 
-# 📺 TV Channel Editor
+# 📺 ویرایشگر کانال تلویزیون
 
-> **Multi-brand TV channel list editor** — A single platform for Samsung, LG, Sony, Hisense, and more.
+> **ویرایشگر لیست کانال تلویزیون چندبرند** — یک پلتفرم واحد برای سامسونگ، ال‌جی، سونی، هایسنس و غیره.
 
-[![Live Demo](https://img.shields.io/badge/🌐_Canlı_Demo-tvchanneleditor.onrender.com-blue)](https://tvchanneleditor.onrender.com)
-[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
-[![Python 3.9+](https://img.shields.io/badge/Python-3.9+-blue)](https://python.org)
-
----
-
-## 🎯 What Does It Do?
-
-You can visually edit the channel list file transferred by your TV to a USB drive using **drag-and-drop** in your browser and then reload it onto your TV. **Data is only temporarily stored (in RAM/Temp) during the process; it is not saved permanently.**
+[![دموی زنده](https://img.shields.io/badge/🌐_Live_Demo-tvchanneleditor.onrender.com-blue)](https://tvchanneleditor.onrender.com)
+[![مجوز: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENCE)
+[![پایتون ۳.۹+](https://img.shields.io/badge/Python-3.9+-blue)](https://python.org)
 
 ---
 
-## 📺 Supported TV Brands
+## 🎯 این چه کاری انجام می‌دهد؟
 
-| Brand | Format | Status |
+شما می‌توانید فایل لیست کانال‌ها را که توسط تلویزیون شما به یک درایو USB منتقل شده است، با استفاده از **کشیدن و رها کردن** در مرورگر خود ویرایش بصری کرده و آن را دوباره روی تلویزیون بارگذاری کنید. **داده‌ها فقط به طور موقت (در رم/موقت) در طول فرآیند ذخیره می‌شوند؛ این داده‌ها به طور دائم ذخیره نمی‌شوند.**
+
+---
+
+## 📺 برندهای تلویزیون پشتیبانی‌شده
+
+| برند | فرمت | وضعیت |
 |-------|--------|-------|
-| **Samsung** (E/F/H Series) | `.scm` | ✅ Full Support |
-| **Samsung** (J/K/M/Q/R/T - Tizen) | `.zip` (SQLite) | ✅ Full Support |
-| **LG** (webOS 5+) | `.tll` (XML) | ✅ Full Support |
-| **Sony BRAVIA** | `sdb.xml` | ✅ Full Support |
-| **Hisense** (2017+) | `servicelist.db` | ✅ Full Support |
-| **Panasonic VIERA** | `svl.db / svl.bin` | 🔄 Beta |
-| Philips, Toshiba, Grundig... | `*.db / *.xml` | 🔜 Coming Soon |
+| **سامسونگ** (سری E/F/H) | `.scm` | ✅ پشتیبانی کامل |
+| **سامسونگ** (J/K/M/Q/R/T – تایزن) | `.zip` (SQLite) | ✅ پشتیبانی کامل |
+| **LG** (webOS 5+) | `.tll` (XML) | ✅ پشتیبانی کامل |
+| **Sony BRAVIA** | `sdb.xml` | ✅ پشتیبانی کامل |
+| **Hisense** (۲۰۱۷+) | `servicelist.db` | ✅ پشتیبانی کامل |
+| **Panasonic VIERA** | `svl.db / svl.bin` | 🔄 بتا |
+| فیلیپس، توشیبا، گروندیگ... | `*.db / *.xml` | 🔜 به‌زودی |
 
-## 🛰️ Supported Satellites
+## 🛰️ ماهواره‌های پشتیبانی‌شده
 
-**Türksat 4A/5B** · **Hotbird 13E** · **Astra 19.2E** · and all other DVB-S satellites
-
----
-
-## ✨ Features
-
-- **🪄 Magic Wand** — Apply General / News / Sports templates with a single click
-- **🛠️ Template Creator** — Create and save your own ideal list
-- **📱 Transfer to Device via Code** — Easily transfer the channel list from your smartphone next to the TV to your computer using an 8-character code
-- **🔍 Automatic Frequency Verification** — Automatically detects old or incorrect frequencies (Türksat)
-- **⭐ Favorites & Lock** — Manage Favorites 1–5 and the child lock
-- **🗑️ Bulk Actions** — Delete encrypted channels, radio stations, or selected items in bulk
-- **🌙 Dark/Light Theme & 👁️ Color Blind Mode** — An accessible interface for everyone
-- **🌐 11 Language Options** — Supports Turkish and English
-- **📊 Full Privacy (Cookie-Free Analytics)** — Built-in statistics that do not use cookies or personal data
-- **📱 Fully Responsive** — Compatible with desktop, tablet, and mobile
+**تورک‌ست ۴A/۵B** · **هات‌برد ۱۳E** · **آسترا ۱۹.۲E** · و سایر ماهواره‌های DVB-S
 
 ---
 
-## 🚀 Live Demo
+## ✨ ویژگی‌ها
 
-Use it directly in your browser without any setup:
+- **🪄 عصای جادویی** — با یک کلیک، قالب‌های عمومی / اخبار / ورزش را اعمال کنید
+- **🛠️ سازنده قالب** — لیست ایده‌آل خود را ایجاد و ذخیره کنید
+- **📱 انتقال به دستگاه از طریق کد** — به راحتی لیست کانال‌ها را از تلفن همراه خود که در کنار تلویزیون قرار دارد، با استفاده از یک کد ۸ کاراکتری به رایانه خود منتقل کنید
+- **🔍 تأیید خودکار فرکانس** — فرکانس‌های قدیمی یا نادرست را به طور خودکار تشخیص می‌دهد (تورک‌ست)
+- **⭐ موارد دلخواه و قفل** — مدیریت موارد دلخواه ۱ تا ۵ و قفل کودک
+- **🗑️ عملیات دسته‌ای** — حذف دسته‌ای کانال‌های رمزگذاری‌شده، ایستگاه‌های رادیویی یا موارد منتخب
+- **🌙 تم تاریک/روشن و حالت 👁️ رنگ‌آبی** — رابط کاربری در دسترس برای همه
+- **🌐 ۱۱ گزینه زبان** — پشتیبانی از زبان‌های ترکی / انگلیسی
+- **📊 حریم خصوصی کامل (تحلیل بدون کوکی)** — آمار داخلی که از کوکی‌ها یا داده‌های شخصی استفاده نمی‌کند
+- **📱 کاملاً واکنش‌گرا** — سازگار با دسکتاپ، تبلت و موبایل
+
+---
+
+## 🚀 نسخه نمایشی زنده
+
+آن را مستقیماً در مرورگر خود بدون نیاز به نصب استفاده کنید:
 
 👉 **[tvchanneleditor.onrender.com](https://tvchanneleditor.onrender.com)**
 
 ---
 
-## 💻 Local Installation
+## 💻 نصب محلی
 
 ```bash
 git clone https://github.com/tarihcituranx/TVChanneleditor.git
@@ -66,56 +66,72 @@ pip install -r requirements.txt
 python3 app.py
 ```
 
-Go to `http://127.0.0.1:5000` in your browser.
+به `http://127.0.0.1:5000` در مرورگر خود بروید.
 
 ---
 
-## 🏗️ Project Structure
+## 🏗️ ساختار پروژه
 
 ```
-├── app.py # Flask main application & security headers
-├── scm_core.py # Samsung SCM (binary) engine
-├── tizen_core.py # Samsung Tizen SQLite engine
-├── lg_core.py # LG GlobalClone XML engine
-├── sony_core.py # Sony sdb.xml engine
-├── hisense_core.py     # Hisense SQLite engine
-├── templates/ # Jinja2 HTML templates (11 languages)
+├── app.py # برنامه اصلی Flask و هدرهای امنیتی
+├── tizen_core.py # موتور SQLite سامسونگ تایزن
+├── lg_core.py # موتور LG
+├── scm_core.py # موتور SCM سامسونگ (بینیری)
+├── requirements.txt # فایل نیازمندی‌ها
+├── README.md # راهنمای پروژه
+├── TVChanneleditor # پوشه خروجی
+├── TVChanneleditor.py # فایل اصلی برنامه
+├── TVChanneleditor-master # شاخه مستر
+├── TVChanneleditor-master.py # فایل اصلی برنامه
+├── TVChanneleditor-master.py # فایل اصلی برنامه
+├── TVChanneleditor-master.py # فایل اصلی برنامه
+├── TVChanneleditor-master.py # فایل اصلی برنامه
+├── TVChanneleditor-master.py # فایل اصلی برنامه
+├── TVChanneleditor-master.py # فایل اصلی برنامه
+├── TVChanneleditor-master.py # فایل اصلی برنامه
+├
+├── scm_core.py # موتور SCM سامسونگ (بای‌نری)
+├── tizen_core.py # موتور SQLite تایزن سامسونگ
+├── lg_core.py # موتور XML GlobalClone ال‌جی
+├── sony_core.py # موتور sdb.xml سونی
+├── hisense_core.py     # موتور SQLite هایسنس
+├── templates/ # قالب‌های HTML جینجا۲ (۱۱ زبان)
 ├── static/
-│   ├── css/style.css   # Dark/Light theme + all styles
-│   ├── js/app.js # Frontend (drag-and-drop, channel rendering, templates)
+│   ├── css/style.css   # تم تیره/روشن + تمام استایل‌ها
+│   ├── js/app.js # فرانت‌اند (کشیدن و رها کردن، رندر کانال، قالب‌ها)
 │   └── data/ # frequencies.json, templates.json
 ```
 
 ---
 
-## 🔐 Security
+## 🔐 امنیت
 
-- All security headers are enabled (CSP, HSTS, CORP, COOP, Referrer-Policy...)
-- File size limit: 2MB
-- Uploaded files are deleted after processing
-- No channel data is logged on the server
-- Security contact: `tarihcituranx@proton.me`
-
----
-
-## 🤖 AI Guide
-
-If you’re developing with the AI assistant, read the [AI_INSTRUCTIONS.md](AI_INSTRUCTIONS.md) file.
+- تمام هدرهای امنیتی فعال هستند (CSP, HSTS, CORP, COOP, Referrer-Policy...)
+- محدودیت اندازه فایل: ۲ مگابایت
+- فایل‌های آپلود شده پس از پردازش حذف می‌شوند
+- هیچ داده‌ای از کانال‌ها روی سرور ثبت نمی‌شود
+- تماس امنیتی: `tarihcituranx@proton.me`
 
 ---
 
-## 🔌 Using the Developer API & AI Agents
+## 🤖 راهنمای هوش مصنوعی
 
-This project is not just a website; it’s also designed as a full-featured **REST API** that AI agents and developers can use directly via code.
+اگر با دستیار هوش مصنوعی در حال توسعه هستید، لطفاً فایل [AI_INSTRUCTIONS.md](AI_INSTRUCTIONS.md) را بخوانید.
 
-> 🧑‍💻 **For Developers:** You can view the interactive Swagger UI documentation at [tvchanneleditor.onrender.com/api/docs](https://tvchanneleditor.onrender.com/api/docs).
+---
+
+## 🔌 استفاده از API توسعه‌دهنده و ربات‌های هوش مصنوعی
+
+این پروژه فقط یک وب‌سایت نیست؛ بلکه به عنوان یک **API REST** کاملاً جامع نیز طراحی شده است که ربات‌های هوش مصنوعی و توسعه‌دهندگان می‌توانند مستقیماً از طریق کد از آن استفاده کنند.
+
+> 🧑‍💻 **برای توسعه‌دهندگان:** می‌توانید مستندات تعاملی Swagger UI را در [tvchanneleditor.onrender.com/api/docs](https://tvchanneleditor.onrender.com/api/docs) مشاهده کنید.
 > 
-> 🤖 **For AI Agents (ChatGPT, Claude, etc.):** You can provide the system’s machine-readable Plain-Text OpenAPI schema to the AI via this link: [tvchanneleditor.onrender.com/api/openapi.txt](https://tvchanneleditor.onrender.com/api/openapi.txt)
+> 🤖 **برای ربات‌های هوش مصنوعی (چت‌جی‌پی‌تی، کلود و غیره):** شما می‌توانید طرحواره OpenAPI متن-ساده قابل خواندن توسط ماشین این سیستم را از طریق لینک زیر در اختیار هوش مصنوعی قرار دهید: [tvchanneleditor.onrender.com/api/openapi.txt](https://tvchanneleditor.onrender.com/api/openapi.txt)
 
 
 
-### Version and Deployment Verification (Version Check)
-To instantly test whether the render server has deployed the latest GitHub commit or is still running from the cache:
+### تأیید نسخه و استقرار (بررسی نسخه)
+برای آزمایش فوری اینکه آیا آخرین commit گیت‌هاب (GitHub) سرور رندر مستقر شده است یا هنوز در حافظه پنهان (cached) قرار دارد:
 ```bash
 curl -sS https://tvchanneleditor.onrender.com/api/version
 ```
@@ -130,16 +146,16 @@ curl -sS https://tvchanneleditor.onrender.com/api/version
 
 ---
 
-## 🙏 Thanks
+## 🙏 تشکر
 
-- **[İltekin/scm-editor](https://github.com/iltekin/scm-editor)** — Initial source of inspiration
-- **[PredatH0r/ChanSort](https://github.com/PredatH0r/ChanSort)** — Reverse engineering reference for SCM + multi-brand formats
-- **[Türksat Satellite](https://uydu.turksat.com.tr/)** — Türksat frequency verification database
+- **[İltekin/scm-editor](https://github.com/iltekin/scm-editor)** — منبع الهام اولیه
+- **[PredatH0r/ChanSort](https://github.com/PredatH0r/ChanSort)** — مرجع مهندسی معکوس برای SCM و فرمت‌های چند برند
+- **[ماهواره Türksat](https://uydu.turksat.com.tr/)** — پایگاه داده تأیید فرکانس Türksat
 
 ---
 
-## 📄 License
+## 📄 مجوز
 
-Released as open source under the MIT License.
+به‌عنوان نرم‌افزار متن‌باز تحت مجوز MIT منتشر شده است.
 
-> “Samsung,” “LG,” “Sony,” “Hisense,” “Panasonic,” and their logos are registered trademarks of their respective companies. This is an independent, open-source community tool.
+> «سامسونگ»، «ال‌جی»، «سونی»، «هایسنس»، «پاناسونیک» و لوگوهای آن‌ها علائم تجاری ثبت‌شده شرکت‌های مربوطه هستند. این یک ابزار مستقل و متن‌باز جامعه است.
