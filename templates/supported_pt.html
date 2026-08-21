@@ -1,6 +1,8 @@
-{% extends "base_pt.html" %}
+Marcas e satélites{% extends "base_pt.html" %}
 
-{% block title %}Marcas e satélites suportados - Editor de canais de televisão{% endblock %}
+{% block title %}
+
+suportados - TV Channel Editor{% endblock %}
 
 {% block head %}
 <style>
@@ -82,10 +84,10 @@
     }
 
     .badge-green { background: rgba(34,197,94,0.15); color: #16a34a; border: 1px solid rgba(34,197,94,0.3); }
-[data-theme="dark"] .badge-green { color: #4ade80; }
+[data-theme=&quot;dark&quot;] .badge-green { color: #4ade80; }
     .badge-blue { background: rgba(var(--accent-rgb), 0.15); color: var(--accent); border: 1px solid rgba(var(--accent-rgb), 0.3); }
     .badge-gray { background: rgba(156,163,175,0.15); color: #4b5563; border: 1px solid rgba(156,163,175,0.3); }
-[data-theme="dark"] .badge-gray { color: #9ca3af; }
+[data-theme=&quot;dark&quot;] .badge-gray { color: #9ca3af; }
 
     .format-tag {
         font-family: monospace;
@@ -104,21 +106,22 @@
         justify-content: center;
         gap: 4px;
     }
-</style>{% endblock %}
+</style>
+{% endblock %}
 
 {% block content %}
 <div class="content-container">
-    <h2 class="section-title">Marcas de televisores suportadas</h2>
+    <h2 class="section-title">Marcas de TV suportadas</h2>
     <p style="color:var(--text-secondary); font-size:14px; margin-bottom:24px; margin-top:-10px;">
-        O seu ficheiro é processado temporariamente no servidor durante a edição; não é arquivado de forma permanente e é automaticamente eliminado após o processamento.
+        O seu ficheiro é processado temporariamente no servidor durante o processo de edição; não é arquivado de forma permanente e é automaticamente eliminado após a conclusão do processo.
     </p>
     <div class="grid-container">
         <div class="card">
-            <img src="/static/img/samsung_logo.webp" alt="Samsung" class="card-img invert-in-light">
+            <img src="/static/img/samsung_logo.webp" alt="Samsung" class="card-img theme-invert">
             <span class="badge badge-green">✅ Suporte completo</span>
             <div class="card-title">Samsung Smart TV</div>
             <div class="card-desc">
-                São suportados todos os dispositivos da geração mais antiga (E, F, H) e da geração mais recente Tizen (J, K, M, Q, R, T). A ordenação e a renomeação são totalmente compatíveis.
+                Oferece compatibilidade geral com as gerações e formatos indicados (séries E/F/H e Tizen). A reordenação e a alteração de nomes são suportadas.
             </div>
             <div class="formats">
                 <span class="format-tag">.scm.zip (SQLite)</span>
@@ -126,21 +129,21 @@
         </div>
         <div class="card">
             <img src="/static/img/lg_logo.svg" alt="LG" class="card-img">
-            <span class="badge badge-green">✅ Suporte parcial</span>
+            <span class="badge badge-green">✅ Suporte Parcial</span>
             <div class="card-title">LG Smart TV</div>
             <div class="card-desc">
-                O nosso sistema suporta os ficheiros <b>.tll</b> (GlobalClone) da nova geração da LG, <b>baseados em XML</b>. Os ficheiros <b>.tll binários</b> mais antigos não são suportados; para esses ficheiros, utilize a aplicação de secretária ChanSort.
+                O nosso sistema suporta os ficheiros <b>.tll</b> (GlobalClone) de nova geração da LG, <b>baseados em XML</b>. Os ficheiros <b>.tll binários</b> de modelos antigos não são suportados; para esses ficheiros, pode utilizar a aplicação ChanSort para computador.
             </div>
             <div class="formats">
                 <span class="format-tag">.tll (XML)</span>
             </div>
         </div>
         <div class="card">
-            <img src="/static/img/sony_logo.svg" alt="Sony" class="card-img invert-in-light">
-            <span class="badge badge-green">✅ Suporte total</span>
+            <img src="/static/img/sony_logo.svg" alt="Sony" class="card-img theme-invert">
+            <span class="badge badge-green">✅ Suporte completo</span>
             <div class="card-title">Sony BRAVIA</div>
             <div class="card-desc">
-                O formato da lista de canais da Sony BRAVIA, baseado em XML, é legível e editável. Inclui os novos modelos a partir de 2024. O nome dos canais e a reordenação são suportados.
+                O formato da lista de canais da Sony BRAVIA, baseado em XML, pode ser lido e gravado. (Pode ser necessária uma verificação manual para os novos modelos 2024+).
             </div>
             <div class="formats">
                 <span class="format-tag">sdb.xml</span>
@@ -151,7 +154,7 @@
             <span class="badge badge-green">✅ Suporte total</span>
             <div class="card-title">Hisense Smart TV</div>
             <div class="card-desc">
-                O formato da lista de serviços baseado em SQLite para as gerações de 2017 e 2021 é suportado. A ordenação, renomeação e ocultação de canais são suportadas.
+                O formato da lista de serviços baseado em SQLite das gerações de 2017 e 2021 é lido. É suportada a ordenação de canais, a alteração de nomes e a ocultação.
             </div>
             <div class="formats">
                 <span class="format-tag">servicelist.db</span>
@@ -159,10 +162,10 @@
         </div>
         <div class="card">
             <img src="/static/img/panasonic_logo.svg" alt="Panasonic" class="card-img">
-            <span class="badge badge-blue">🔄 Beta</span>
+            <span class="badge badge-gray">🔜 Planeado</span>
             <div class="card-title">Panasonic VIERA</div>
             <div class="card-desc">
-                O suporte ao formato SVL está atualmente em desenvolvimento. A leitura poderá ser bem-sucedida em algumas famílias de modelos.
+                O suporte ao formato SVL está em fase de desenvolvimento. A leitura poderá ser bem-sucedida em algumas famílias de modelos.
             </div>
             <div class="formats">
                 <span class="format-tag">svl.db svl.bin</span>
@@ -173,7 +176,7 @@
             <span class="badge badge-gray">Em breve</span>
             <div class="card-title">Philips, Toshiba...</div>
             <div class="card-desc">
-                O suporte para as marcas Philips, Toshiba, Grundig e outras está atualmente em fase de desenvolvimento ativo.
+                O suporte para a Philips, a Toshiba, a Grundig e outras marcas está em fase de desenvolvimento ativo.
             </div>
             <div class="formats">
                 <span class="format-tag">*.db*.xml</span>
@@ -183,14 +186,14 @@
 
     <h2 class="section-title">🛰️ Satélites suportados</h2>
     <p style="color:var(--text-secondary); font-size:14px; margin-bottom:24px; margin-top:-10px;">
-        O seu ficheiro é processado temporariamente no servidor durante a edição; não é arquivado de forma permanente e é automaticamente eliminado após o processamento.
+        O seu ficheiro é processado temporariamente no servidor durante o processo de edição; não é arquivado de forma permanente e é automaticamente eliminado após a conclusão do processo.
     </p>
     <div class="grid-container">
         <div class="card">
-            <img src="/static/img/turksat_logo.png" alt="Türksat" class="card-img invert-in-light">
+            <img src="/static/img/turksat_logo.png" alt="Türksat" class="card-img theme-invert">
             <div class="card-title">Türksat 4A / 5B</div>
             <div class="card-desc">
-                Totalmente compatível com canais nacionais turcos, notícias e pacotes desportivos. Os modelos do Smart Templates estão otimizados para as frequências do Türksat. <b>A verificação automática de frequências</b> está ativada para este satélite.
+                Totalmente compatível com canais nacionais da Turquia, pacotes de notícias e desporto. Os modelos «Modelos Inteligentes» foram otimizados de acordo com as frequências da Türksat. <b>A verificação automática de frequências</b> está ativa para este satélite.
             </div>
         </div>
         <div class="card">
@@ -208,4 +211,5 @@
             </div>
         </div>
     </div>
-</div>{% endblock %}
+</div>
+{% endblock %}

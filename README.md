@@ -18,6 +18,14 @@
 
 TV'nizin USB belleğe aktardığı kanal listesi dosyasını tarayıcınızda **sürükle-bırak** yöntemiyle görsel olarak düzenlemenizi sağlayan, açık kaynaklı bir araçtır. Kurulum gerektirmez, doğrudan tarayıcı veya REST API üzerinden çalışır.
 
+## 👤 Kimler Kullanabilir?
+
+- Samsung TV kanal listesini bilgisayardan düzenlemek isteyenler
+- LG GlobalClone XML `.tll` dosyalarını düzenlemek isteyenler
+- Sony `sdb.xml` ve Hisense `servicelist.db` listeleriyle çalışanlar
+- Kanal listesini programatik olarak değiştirmek isteyen geliştiriciler
+- AI agent ile kanal listesi otomasyonu yapmak isteyenler
+
 ## 📺 Desteklenen Formatlar (Uyumluluk Matrisi)
 
 | Format | Okuma | Düzenleme | Yeniden oluşturma | Not |
@@ -30,6 +38,16 @@ TV'nizin USB belleğe aktardığı kanal listesi dosyasını tarayıcınızda **
 | **Panasonic `svl.*`** | 🔜 | 🔜 | 🔜 | Planlandı / Geliştirme aşamasında |
 
 > **⚠️ Önemli LG Uyumluluk Notu:** LG'nin eski nesil **Binary .tll** dosyaları desteklenmemektedir. Sadece yeni nesil XML tabanlı (GlobalClone) `.tll` dosyaları işlenebilir. Eski dosyalar için masaüstü *ChanSort* uygulamasını kullanmanız gerekir.
+
+
+## ⚠️ Önemli Kısıtlamalar
+
+Kullanmadan önce lütfen aşağıdaki teknik sınırları göz önünde bulundurun:
+- **LG Binary TLL:** Eski nesil ikili `.tll` dosyaları desteklenmez.
+- **Panasonic SVL:** Destek geliştirme aşamasındadır (Planlandı).
+- **Frekans Doğrulama:** Yalnızca Türksat uydu verileri için aktiftir.
+- **Dosya Boyutu Sınırı:** Yüklenen dosyalar maksimum **2 MB** olabilir.
+- **Geçici Oturum:** Dosyalar kalıcı olarak saklanmaz, oturum bitiminde otomatik silinir.
 
 ## 🚀 Hızlı Başlangıç
 
@@ -76,7 +94,7 @@ GET /download/{session_id}/{filename}
 ## 🔐 Gizlilik ve Güvenlik
 
 - **2 MB** dosya boyutu sınırı vardır.
-- **Dosyalar sunucuda kalıcı saklanmaz.** Yüklenen dosyalar düzenleme oturumu boyunca geçici bellekte tutulur ve oturum süresi dolduğunda (yaklaşık 1 saat) otomatik olarak tamamen silinir.
+- **Dosyalar sunucuda kalıcı saklanmaz.** Yüklenen dosyalar düzenleme oturumu boyunca geçici sunucu depolamasında işlenir, kalıcı olarak arşivlenmez ve oturum süresi dolduğunda (yaklaşık 1 saat) otomatik olarak tamamen silinir.
 - Herhangi bir hesap, üyelik veya veritabanı loglaması yoktur.
 - API üzerinde XML ayrıştırma işlemleri (Billion Laughs saldırılarına karşı) `defusedxml` ile korunmaktadır.
 

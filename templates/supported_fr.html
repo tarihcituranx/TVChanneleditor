@@ -1,6 +1,8 @@
-{% extends "base_fr.html" %}
+Marques et satellites{% extends "base_fr.html" %}
 
-{% block title %}Marques et satellites pris en charge - Éditeur de chaînes de télévision{% endblock %}
+{% block title %}
+
+pris en charge - TV Channel Editor{% endblock %}
 
 {% block head %}
 <style>
@@ -82,10 +84,10 @@
     }
 
     .badge-green { background: rgba(34,197,94,0.15); color: #16a34a; border: 1px solid rgba(34,197,94,0.3); }
-[data-theme="dark"] .badge-green { color: #4ade80; }
+[data-theme=&quot;dark&quot;] .badge-green { color: #4ade80; }
     .badge-blue { background: rgba(var(--accent-rgb), 0.15); color: var(--accent); border: 1px solid rgba(var(--accent-rgb), 0.3); }
     .badge-gray { background: rgba(156,163,175,0.15); color: #4b5563; border: 1px solid rgba(156,163,175,0.3); }
-[data-theme="dark"] .badge-gray { color: #9ca3af; }
+[data-theme=&quot;dark&quot;] .badge-gray { color: #9ca3af; }
 
     .format-tag {
         font-family: monospace;
@@ -104,21 +106,22 @@
         justify-content: center;
         gap: 4px;
     }
-</style>{% endblock %}
+</style>
+{% endblock %}
 
 {% block content %}
 <div class="content-container">
     <h2 class="section-title">Marques de téléviseurs prises en charge</h2>
     <p style="color:var(--text-secondary); font-size:14px; margin-bottom:24px; margin-top:-10px;">
-        Votre fichier est traité temporairement sur le serveur pendant l'édition ; il n'est pas archivé de manière définitive et est automatiquement supprimé une fois le traitement terminé.
+        Votre fichier est traité temporairement sur le serveur pendant le processus d&#x27;édition ; il n&#x27;est pas archivé de manière permanente et est automatiquement supprimé une fois l&#x27;opération terminée.
     </p>
     <div class="grid-container">
         <div class="card">
-            <img src="/static/img/samsung_logo.webp" alt="Samsung" class="card-img invert-in-light">
+            <img src="/static/img/samsung_logo.webp" alt="Samsung" class="card-img theme-invert">
             <span class="badge badge-green">✅ Prise en charge complète</span>
-            <div class="card-title">Smart TV Samsung</div>
+            <div class="card-title">Samsung Smart TV</div>
             <div class="card-desc">
-                Tous les appareils de l'ancienne génération (E, F, H) et de la nouvelle génération Tizen (J, K, M, Q, R, T) sont pris en charge. Le tri et le renommage sont entièrement compatibles.
+                Assure une compatibilité générale avec les générations et formats indiqués (séries E/F/H et Tizen). Le tri et le changement de nom sont pris en charge.
             </div>
             <div class="formats">
                 <span class="format-tag">.scm.zip (SQLite)</span>
@@ -127,20 +130,20 @@
         <div class="card">
             <img src="/static/img/lg_logo.svg" alt="LG" class="card-img">
             <span class="badge badge-green">✅ Prise en charge partielle</span>
-            <div class="card-title">Smart TV LG</div>
+            <div class="card-title">LG Smart TV</div>
             <div class="card-desc">
-                Notre système prend en charge les fichiers <b>.tll</b> (GlobalClone) de nouvelle génération <b>basés sur XML</b> de LG. Les anciens fichiers <b>binaires .tll</b> ne sont pas pris en charge ; pour ces fichiers, veuillez utiliser l'application de bureau ChanSort.
+                Notre système prend en charge les fichiers <b>.tll</b> (GlobalClone) de nouvelle génération <b>basés sur XML</b> de LG. Les anciens fichiers <b>.tll binaires</b> ne sont pas pris en charge ; pour ces fichiers, vous pouvez utiliser l&#x27;application de bureau ChanSort.
             </div>
             <div class="formats">
                 <span class="format-tag">.tll (XML)</span>
             </div>
         </div>
         <div class="card">
-            <img src="/static/img/sony_logo.svg" alt="Sony" class="card-img invert-in-light">
+            <img src="/static/img/sony_logo.svg" alt="Sony" class="card-img theme-invert">
             <span class="badge badge-green">✅ Prise en charge complète</span>
             <div class="card-title">Sony BRAVIA</div>
             <div class="card-desc">
-                Le format de liste de chaînes basé sur XML de Sony BRAVIA est lisible et modifiable. Comprend les nouveaux modèles 2024 et plus récents. Le nom des chaînes et leur réorganisation sont pris en charge.
+                Le format de liste de chaînes basé sur XML de Sony BRAVIA est lisible et modifiable. (Une vérification manuelle peut être nécessaire pour les nouveaux modèles 2024 et suivants).
             </div>
             <div class="formats">
                 <span class="format-tag">sdb.xml</span>
@@ -149,9 +152,9 @@
         <div class="card">
             <img src="/static/img/hisense_logo.svg" alt="Hisense" class="card-img">
             <span class="badge badge-green">✅ Prise en charge complète</span>
-            <div class="card-title">Smart TV Hisense</div>
+            <div class="card-title">Hisense Smart TV</div>
             <div class="card-desc">
-                Le format de liste de services basé sur SQLite pour les générations 2017 et 2021 est pris en charge. Le tri, le renommage et la masquage des chaînes sont pris en charge.
+                Le format de liste de services basé sur SQLite des générations 2017 et 2021 est pris en charge en lecture. Le tri des chaînes, le changement de nom et le masquage sont pris en charge.
             </div>
             <div class="formats">
                 <span class="format-tag">servicelist.db</span>
@@ -159,10 +162,10 @@
         </div>
         <div class="card">
             <img src="/static/img/panasonic_logo.svg" alt="Panasonic" class="card-img">
-            <span class="badge badge-blue">🔄 Bêta</span>
+            <span class="badge badge-gray">🔜 Prévu</span>
             <div class="card-title">Panasonic VIERA</div>
             <div class="card-desc">
-                La prise en charge du format SVL est actuellement en cours de développement. La lecture peut fonctionner sur certaines familles de modèles.
+                La prise en charge du format SVL est en cours de développement. La lecture peut fonctionner sur certaines gammes de modèles.
             </div>
             <div class="formats">
                 <span class="format-tag">svl.db svl.bin</span>
@@ -170,10 +173,10 @@
         </div>
         <div class="card">
             <div style="font-size:40px; margin-bottom:12px;">🔜</div>
-            <span class="badge badge-gray">Bientôt disponible</span>
-            <div class="card-title">Philips, Toshiba…</div>
+            <span class="badge badge-gray">Prochainement</span>
+            <div class="card-title">Philips, Toshiba...</div>
             <div class="card-desc">
-                La prise en charge des marques Philips, Toshiba, Grundig et autres est actuellement en cours de développement.
+                La prise en charge des marques Philips, Toshiba, Grundig et autres est en cours de développement.
             </div>
             <div class="formats">
                 <span class="format-tag">*.db*.xml</span>
@@ -183,29 +186,30 @@
 
     <h2 class="section-title">🛰️ Satellites pris en charge</h2>
     <p style="color:var(--text-secondary); font-size:14px; margin-bottom:24px; margin-top:-10px;">
-        Votre fichier est traité temporairement sur le serveur pendant l'édition ; il n'est pas archivé de manière définitive et est automatiquement supprimé une fois le traitement terminé.
+        Votre fichier est traité temporairement sur le serveur pendant le processus d’édition ; il n’est pas archivé de manière permanente et est automatiquement supprimé une fois l’opération terminée.
     </p>
     <div class="grid-container">
         <div class="card">
-            <img src="/static/img/turksat_logo.png" alt="Türksat" class="card-img invert-in-light">
+            <img src="/static/img/turksat_logo.png" alt="Türksat" class="card-img theme-invert">
             <div class="card-title">Türksat 4A / 5B</div>
             <div class="card-desc">
-                Entièrement compatible avec les chaînes nationales turques, les journaux télévisés et les bouquets sportifs. Les modèles Smart Templates sont optimisés pour les fréquences Türksat. <b>La vérification automatique des fréquences</b> est activée pour ce satellite.
+                Entièrement compatible avec les chaînes nationales turques, les bouquets d&#x27;actualités et de sport. Les modèles « Smart Templates » sont optimisés en fonction des fréquences Türksat. <b>La vérification automatique des fréquences</b> est active pour ce satellite.
             </div>
         </div>
         <div class="card">
             <img src="/static/img/hotbird_logo.svg" alt="Hotbird" class="card-img">
             <div class="card-title">Hotbird 13E</div>
             <div class="card-desc">
-                Les diffusions européennes et internationales (Eutelsat) sont prises en charge. Toutes les données relatives aux transpondeurs du satellite sont traitées avec succès.
+                Les diffusions européennes et internationales (Eutelsat) sont prises en charge. Toutes les données des transpondeurs du satellite sont traitées avec succès.
             </div>
         </div>
         <div class="card">
             <img src="/static/img/astra_logo.svg" alt="Astra" class="card-img">
             <div class="card-title">Astra 19,2E</div>
             <div class="card-desc">
-                Les fréquences SES Astra, qui diffusent des chaînes allemandes et européennes, sont lues et enregistrées avec une compatibilité totale.
+                Les fréquences de SES Astra, qui hébergent les chaînes allemandes et européennes, sont lues et écrites de manière entièrement compatible.
             </div>
         </div>
     </div>
-</div>{% endblock %}
+</div>
+{% endblock %}

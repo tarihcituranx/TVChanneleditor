@@ -1,6 +1,8 @@
 {% extends "base_ru.html" %}
 
-{% block title %}Поддерживаемые бренды и спутники — Редактор телеканалов{% endblock %}
+{% block title %}
+
+Поддерживаемые бренды и спутники — TV Channel Editor{% endblock %}
 
 {% block head %}
 <style>
@@ -82,10 +84,10 @@
     }
 
     .badge-green { background: rgba(34,197,94,0.15); color: #16a34a; border: 1px solid rgba(34,197,94,0.3); }
-[data-theme="dark"] .badge-green { color: #4ade80; }
+[data-theme=&quot;dark&quot;] .badge-green { color: #4ade80; }
     .badge-blue { background: rgba(var(--accent-rgb), 0.15); color: var(--accent); border: 1px solid rgba(var(--accent-rgb), 0.3); }
     .badge-gray { background: rgba(156,163,175,0.15); color: #4b5563; border: 1px solid rgba(156,163,175,0.3); }
-[data-theme="dark"] .badge-gray { color: #9ca3af; }
+[data-theme=&quot;dark&quot;] .badge-gray { color: #9ca3af; }
 
     .format-tag {
         font-family: monospace;
@@ -104,21 +106,22 @@
         justify-content: center;
         gap: 4px;
     }
-</style>{% endblock %}
+</style>
+{% endblock %}
 
 {% block content %}
 <div class="content-container">
     <h2 class="section-title">Поддерживаемые бренды телевизоров</h2>
     <p style="color:var(--text-secondary); font-size:14px; margin-bottom:24px; margin-top:-10px;">
-        Во время редактирования ваш файл временно обрабатывается на сервере; он не архивируется на постоянной основе и автоматически удаляется после обработки.
+        Ваш файл временно обрабатывается на сервере во время редактирования; он не архивируется на постоянной основе и автоматически удаляется после завершения обработки.
     </p>
     <div class="grid-container">
         <div class="card">
-            <img src="/static/img/samsung_logo.webp" alt="Samsung" class="card-img invert-in-light">
+            <img src="/static/img/samsung_logo.webp" alt="Samsung" class="card-img theme-invert">
             <span class="badge badge-green">✅ Полная поддержка</span>
             <div class="card-title">Samsung Smart TV</div>
             <div class="card-desc">
-                Поддерживаются все устройства как старого поколения (серии E, F, H), так и нового поколения на базе Tizen (серии J, K, M, Q, R, T). Функции сортировки и переименования полностью совместимы.
+                Обеспечивает общую совместимость с указанными поколениями и форматами (серии E/F/H и Tizen). Поддерживается сортировка и переименование.
             </div>
             <div class="formats">
                 <span class="format-tag">.scm.zip (SQLite)</span>
@@ -129,18 +132,18 @@
             <span class="badge badge-green">✅ Частичная поддержка</span>
             <div class="card-title">LG Smart TV</div>
             <div class="card-desc">
-                Наша система поддерживает файлы <b>.tll</b> (GlobalClone) нового поколения от LG, <b>основанные на XML</b>. Старые <b>двоичные</b> файлы <b>.tll</b> не поддерживаются; для работы с ними, пожалуйста, используйте настольное приложение ChanSort.
+                Наша система поддерживает файлы <b>.tll</b> (GlobalClone) нового поколения от LG <b>на основе XML</b>. <b>Двоичные (binary)</b> файлы <b>.tll</b> старых моделей не поддерживаются; для работы с этими файлами можно использовать настольное приложение ChanSort.
             </div>
             <div class="formats">
                 <span class="format-tag">.tll (XML)</span>
             </div>
         </div>
         <div class="card">
-            <img src="/static/img/sony_logo.svg" alt="Sony" class="card-img invert-in-light">
+            <img src="/static/img/sony_logo.svg" alt="Sony" class="card-img theme-invert">
             <span class="badge badge-green">✅ Полная поддержка</span>
             <div class="card-title">Sony BRAVIA</div>
             <div class="card-desc">
-                Формат списка каналов Sony BRAVIA на основе XML доступен для чтения и записи. Включает новые модели 2024 года и более поздние. Поддерживаются названия каналов и изменение их порядка.
+                Формат списка каналов Sony BRAVIA на основе XML поддерживает чтение и запись. (Для новых моделей 2024+ может потребоваться ручная проверка).
             </div>
             <div class="formats">
                 <span class="format-tag">sdb.xml</span>
@@ -151,7 +154,7 @@
             <span class="badge badge-green">✅ Полная поддержка</span>
             <div class="card-title">Hisense Smart TV</div>
             <div class="card-desc">
-                Поддерживается формат списка сервисов на основе SQLite для поколений 2017 и 2021 годов. Поддерживаются сортировка, переименование и скрытие каналов.
+                Формат списка сервисов на основе SQLite для моделей поколений 2017 и 2021 годов поддерживается для чтения. Поддерживаются сортировка каналов, переименование и скрытие.
             </div>
             <div class="formats">
                 <span class="format-tag">servicelist.db</span>
@@ -159,10 +162,10 @@
         </div>
         <div class="card">
             <img src="/static/img/panasonic_logo.svg" alt="Panasonic" class="card-img">
-            <span class="badge badge-blue">🔄 Бета</span>
+            <span class="badge badge-gray">🔜 В планах</span>
             <div class="card-title">Panasonic VIERA</div>
             <div class="card-desc">
-                Поддержка формата SVL в настоящее время находится в стадии разработки. Чтение может проходить успешно на некоторых семействах моделей.
+                Поддержка формата SVL находится в стадии разработки. В некоторых семействах моделей чтение может пройти успешно.
             </div>
             <div class="formats">
                 <span class="format-tag">svl.db svl.bin</span>
@@ -173,7 +176,7 @@
             <span class="badge badge-gray">Скоро</span>
             <div class="card-title">Philips, Toshiba...</div>
             <div class="card-desc">
-                В настоящее время ведётся активная разработка поддержки Philips, Toshiba, Grundig и других брендов.
+                Поддержка брендов Philips, Toshiba, Grundig и других находится в процессе активной разработки.
             </div>
             <div class="formats">
                 <span class="format-tag">*.db*.xml</span>
@@ -183,29 +186,30 @@
 
     <h2 class="section-title">🛰️ Поддерживаемые спутники</h2>
     <p style="color:var(--text-secondary); font-size:14px; margin-bottom:24px; margin-top:-10px;">
-        Во время редактирования ваш файл временно обрабатывается на сервере; он не архивируется на постоянной основе и автоматически удаляется после обработки.
+        Ваш файл временно обрабатывается на сервере во время редактирования; он не архивируется на постоянной основе и автоматически удаляется после завершения процесса.
     </p>
     <div class="grid-container">
         <div class="card">
-            <img src="/static/img/turksat_logo.png" alt="Türksat" class="card-img invert-in-light">
+            <img src="/static/img/turksat_logo.png" alt="Türksat" class="card-img theme-invert">
             <div class="card-title">Türksat 4A / 5B</div>
             <div class="card-desc">
-                Полная совместимость с национальными турецкими каналами, новостными и спортивными пакетами. Шаблоны Smart Templates оптимизированы для частот Türksat. Для этого спутника включена <b>автоматическая проверка частот</b>.
+                Полная совместимость с национальными турецкими каналами, пакетами новостей и спортивных передач. Шаблоны «Akıllı Şablonlar» оптимизированы под частоты Türksat. Для этого спутника активна <b>функция автоматической проверки частоты</b>.
             </div>
         </div>
         <div class="card">
             <img src="/static/img/hotbird_logo.svg" alt="Hotbird" class="card-img">
             <div class="card-title">Hotbird 13E</div>
             <div class="card-desc">
-                Поддерживаются европейские и международные трансляции (Eutelsat). Все данные о транспондерах спутника обрабатываются успешно.
+                Поддерживаются европейские и международные трансляции (Eutelsat). Все данные транспондеров спутника успешно обрабатываются.
             </div>
         </div>
         <div class="card">
             <img src="/static/img/astra_logo.svg" alt="Astra" class="card-img">
-            <div class="card-title">Astra 19,2E</div>
+            <div class="card-title">Astra 19.2E</div>
             <div class="card-desc">
                 Частоты SES Astra, на которых вещают немецкие и европейские каналы, считываются и записываются с полной совместимостью.
             </div>
         </div>
     </div>
-</div>{% endblock %}
+</div>
+{% endblock %}

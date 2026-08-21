@@ -1,6 +1,8 @@
-{% extends "base_it.html" %}
+Marche e satelliti{% extends "base_it.html" %}
 
-{% block title %}Marchi e canali satellite supportati - Editor canali TV{% endblock %}
+{% block title %}
+
+supportati - TV Channel Editor{% endblock %}
 
 {% block head %}
 <style>
@@ -82,10 +84,10 @@
     }
 
     .badge-green { background: rgba(34,197,94,0.15); color: #16a34a; border: 1px solid rgba(34,197,94,0.3); }
-[data-theme="dark"] .badge-green { color: #4ade80; }
+[data-theme=&quot;dark&quot;] .badge-green { color: #4ade80; }
     .badge-blue { background: rgba(var(--accent-rgb), 0.15); color: var(--accent); border: 1px solid rgba(var(--accent-rgb), 0.3); }
     .badge-gray { background: rgba(156,163,175,0.15); color: #4b5563; border: 1px solid rgba(156,163,175,0.3); }
-[data-theme="dark"] .badge-gray { color: #9ca3af; }
+[data-theme=&quot;dark&quot;] .badge-gray { color: #9ca3af; }
 
     .format-tag {
         font-family: monospace;
@@ -104,21 +106,22 @@
         justify-content: center;
         gap: 4px;
     }
-</style>{% endblock %}
+</style>
+{% endblock %}
 
 {% block content %}
 <div class="content-container">
     <h2 class="section-title">Marche TV supportate</h2>
     <p style="color:var(--text-secondary); font-size:14px; margin-bottom:24px; margin-top:-10px;">
-        Durante la modifica, il file viene elaborato temporaneamente sul server; non viene archiviato in modo permanente e viene eliminato automaticamente al termine dell'elaborazione.
+        Il file viene elaborato temporaneamente sul server durante il processo di modifica; non viene archiviato in modo permanente e viene automaticamente cancellato al termine dell&#x27;operazione.
     </p>
     <div class="grid-container">
         <div class="card">
-            <img src="/static/img/samsung_logo.webp" alt="Samsung" class="card-img invert-in-light">
+            <img src="/static/img/samsung_logo.webp" alt="Samsung" class="card-img theme-invert">
             <span class="badge badge-green">✅ Supporto completo</span>
             <div class="card-title">Samsung Smart TV</div>
             <div class="card-desc">
-                Sono supportati tutti i dispositivi della generazione precedente (E, F, H) e della nuova generazione Tizen (J, K, M, Q, R, T). L’ordinamento e la ridenominazione sono pienamente compatibili.
+                Garantisce la compatibilità generale con le generazioni e i formati indicati (serie E/F/H e Tizen). Sono supportate le operazioni di ordinamento e rinominazione.
             </div>
             <div class="formats">
                 <span class="format-tag">.scm.zip (SQLite)</span>
@@ -127,20 +130,20 @@
         <div class="card">
             <img src="/static/img/lg_logo.svg" alt="LG" class="card-img">
             <span class="badge badge-green">✅ Supporto parziale</span>
-            <div class="card-title">Smart TV LG</div>
+            <div class="card-title">LG Smart TV</div>
             <div class="card-desc">
-                Il nostro sistema supporta i file <b>.tll</b> (GlobalClone) di nuova generazione <b>basati su XML</b> di LG. I vecchi file <b>binari .tll</b> non sono supportati; per quei file, si prega di utilizzare l’applicazione desktop ChanSort.
+                Il nostro sistema supporta i file <b>.tll</b> (GlobalClone) di nuova generazione <b>basati su XML</b> di LG. I file <b>.tll binari</b> dei modelli precedenti non sono supportati; per questi file è possibile utilizzare l’applicazione desktop ChanSort.
             </div>
             <div class="formats">
                 <span class="format-tag">.tll (XML)</span>
             </div>
         </div>
         <div class="card">
-            <img src="/static/img/sony_logo.svg" alt="Sony" class="card-img invert-in-light">
+            <img src="/static/img/sony_logo.svg" alt="Sony" class="card-img theme-invert">
             <span class="badge badge-green">✅ Supporto completo</span>
             <div class="card-title">Sony BRAVIA</div>
             <div class="card-desc">
-                Il formato dell'elenco dei canali basato su XML di Sony BRAVIA è leggibile e modificabile. Include i nuovi modelli dal 2024 in poi. Sono supportati il nome dei canali e la riorganizzazione.
+                È possibile leggere e scrivere il formato dell&#x27;elenco dei canali basato su XML di Sony BRAVIA. (Per i nuovi modelli 2024+ potrebbe essere necessaria una verifica manuale).
             </div>
             <div class="formats">
                 <span class="format-tag">sdb.xml</span>
@@ -149,9 +152,9 @@
         <div class="card">
             <img src="/static/img/hisense_logo.svg" alt="Hisense" class="card-img">
             <span class="badge badge-green">✅ Supporto completo</span>
-            <div class="card-title">Smart TV Hisense</div>
+            <div class="card-title">Hisense Smart TV</div>
             <div class="card-desc">
-                È supportato il formato dell’elenco dei servizi basato su SQLite per le generazioni del 2017 e del 2021. Sono supportati l’ordinamento, la ridenominazione e l’occultamento dei canali.
+                È possibile leggere il formato dell&#x27;elenco dei servizi basato su SQLite delle generazioni 2017 e 2021. Sono supportate l&#x27;ordinamento dei canali, la rinominazione e l&#x27;occultamento.
             </div>
             <div class="formats">
                 <span class="format-tag">servicelist.db</span>
@@ -159,10 +162,10 @@
         </div>
         <div class="card">
             <img src="/static/img/panasonic_logo.svg" alt="Panasonic" class="card-img">
-            <span class="badge badge-blue">🔄 Beta</span>
+            <span class="badge badge-gray">🔜 In programma</span>
             <div class="card-title">Panasonic VIERA</div>
             <div class="card-desc">
-                Il supporto del formato SVL è attualmente in fase di sviluppo. La lettura potrebbe funzionare su alcune famiglie di modelli.
+                Il supporto per il formato SVL è in fase di sviluppo. La lettura potrebbe riuscire su alcune famiglie di modelli.
             </div>
             <div class="formats">
                 <span class="format-tag">svl.db svl.bin</span>
@@ -173,7 +176,7 @@
             <span class="badge badge-gray">Prossimamente</span>
             <div class="card-title">Philips, Toshiba...</div>
             <div class="card-desc">
-                Il supporto per Philips, Toshiba, Grundig e altre marche è attualmente in fase di sviluppo attivo.
+                Il supporto per Philips, Toshiba, Grundig e altre marche è attualmente in fase di sviluppo.
             </div>
             <div class="formats">
                 <span class="format-tag">*.db*.xml</span>
@@ -183,29 +186,30 @@
 
     <h2 class="section-title">🛰️ Satelliti supportati</h2>
     <p style="color:var(--text-secondary); font-size:14px; margin-bottom:24px; margin-top:-10px;">
-        Durante la modifica, il file viene elaborato temporaneamente sul server; non viene archiviato in modo permanente e viene eliminato automaticamente al termine dell'elaborazione.
+        Il file viene elaborato temporaneamente sul server durante il processo di modifica; non viene archiviato in modo permanente e viene automaticamente eliminato al termine dell&#x27;operazione.
     </p>
     <div class="grid-container">
         <div class="card">
-            <img src="/static/img/turksat_logo.png" alt="Türksat" class="card-img invert-in-light">
+            <img src="/static/img/turksat_logo.png" alt="Türksat" class="card-img theme-invert">
             <div class="card-title">Türksat 4A / 5B</div>
             <div class="card-desc">
-                Pienamente compatibile con i canali nazionali turchi, i notiziari e i pacchetti sportivi. I modelli Smart Templates sono ottimizzati per le frequenze Türksat. Per questo satellite è abilitata <b>la verifica automatica delle frequenze</b>.
+                Pienamente compatibile con i canali nazionali turchi e con i pacchetti di notizie e sport. I modelli &quot;Modelli intelligenti&quot; sono ottimizzati in base alle frequenze di Türksat. <b>La verifica automatica delle frequenze</b> è attiva per questo satellite.
             </div>
         </div>
         <div class="card">
             <img src="/static/img/hotbird_logo.svg" alt="Hotbird" class="card-img">
             <div class="card-title">Hotbird 13E</div>
             <div class="card-desc">
-                Sono supportate le trasmissioni europee e internazionali (Eutelsat). Tutti i dati relativi ai transponder satellitari vengono elaborati correttamente.
+                Sono supportate le trasmissioni europee e internazionali (Eutelsat). Tutti i dati dei transponder satellitari vengono elaborati correttamente.
             </div>
         </div>
         <div class="card">
             <img src="/static/img/astra_logo.svg" alt="Astra" class="card-img">
             <div class="card-title">Astra 19,2E</div>
             <div class="card-desc">
-                Le frequenze SES Astra, che ospitano canali tedeschi ed europei, vengono lette e scritte con piena compatibilità.
+                Le frequenze di SES Astra, che ospitano canali tedeschi ed europei, vengono lette e scritte in modo pienamente compatibile.
             </div>
         </div>
     </div>
-</div>{% endblock %}
+</div>
+{% endblock %}

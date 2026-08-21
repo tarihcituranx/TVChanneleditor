@@ -4,9 +4,9 @@
 
 # 📺 TV-Kanal-Editor
 
-> **Editor für TV-Kanallisten verschiedener Marken** — Bearbeiten Sie Ihre TV-Kanallisten für Samsung, LG, Sony und Hisense über Ihren Browser.
+> **Editor für TV-Kanallisten verschiedener Marken** — Bearbeiten Sie Ihre TV-Kanallisten von Samsung, LG, Sony und Hisense direkt im Browser.
 
-[![Live-Demo](https://img.shields.io/badge/🌐_Live_Demo-tvchanneleditor.onrender.com-blue)](https://tvchanneleditor.onrender.com)
+[![Live-Demo](https://img.shields.io/badge/🌐_Canlı_Demo-tvchanneleditor.onrender.com-blue)](https://tvchanneleditor.onrender.com)
 [![API-Dokumentation](https://img.shields.io/badge/API-Swagger_UI-orange)](https://tvchanneleditor.onrender.com/api/docs)
 [![CI](https://github.com/tarihcituranx/TVChanneleditor/actions/workflows/test.yml/badge.svg)](https://github.com/tarihcituranx/TVChanneleditor/actions)
 [![Lizenz: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
@@ -16,7 +16,15 @@
 
 ## ✨ Wozu dient es?
 
-Ein Open-Source-Tool, mit dem Sie die von Ihrem Fernseher auf einen USB-Stick kopierte Kanallisten-Datei per **Drag & Drop** in Ihrem Browser visuell bearbeiten können. Es erfordert keine Installation und läuft direkt im Browser oder über die REST-API.
+Ein Open-Source-Tool, mit dem Sie die von Ihrem Fernseher auf einen USB-Stick kopierte Kanallisten-Datei in Ihrem Browser per **Drag-and-Drop** visuell bearbeiten können. Es erfordert keine Installation und läuft direkt im Browser oder über die REST-API.
+
+## 👤 Wer kann es nutzen?
+
+- Alle, die die Samsung-TV-Kanalliste vom Computer aus bearbeiten möchten
+- Alle, die LG GlobalClone-XML-`.tll`-Dateien bearbeiten möchten
+- Alle, die mit Sony-`.sdb.xml`- und Hisense-`servicelist.db`-Listen arbeiten
+- Entwickler, die die Senderliste programmgesteuert ändern möchten
+- Nutzer, die die Senderliste mit einem KI-Agenten automatisieren möchten
 
 ## 📺 Unterstützte Formate (Kompatibilitätsmatrix)
 
@@ -31,13 +39,23 @@ Ein Open-Source-Tool, mit dem Sie die von Ihrem Fernseher auf einen USB-Stick ko
 
 > **⚠️ Wichtiger Hinweis zur LG-Kompatibilität:** Die **binären .tll**-Dateien der älteren Generation von LG werden nicht unterstützt. Es können nur die XML-basierten (GlobalClone) `.tll`-Dateien der neuen Generation verarbeitet werden. Für ältere Dateien müssen Sie die Desktop-Anwendung *ChanSort* verwenden.
 
+
+## ⚠️ Wichtige Einschränkungen
+
+Bitte beachten Sie vor der Nutzung die folgenden technischen Einschränkungen:
+- **LG Binary TLL:** Binäre `.tll`-Dateien der alten Generation werden nicht unterstützt.
+- **Panasonic SVL:** Die Unterstützung befindet sich in der Entwicklungsphase (geplant).
+- **Frequenzüberprüfung:** Nur für Türksat-Satellitendaten aktiv.
+- **Dateigrößenbeschränkung:** Hochgeladene Dateien dürfen maximal **2 MB** groß sein.
+- **Temporäre Sitzung:** Dateien werden nicht dauerhaft gespeichert, sondern nach Beendigung der Sitzung automatisch gelöscht.
+
 ## 🚀 Schnellstart
 
 1. **Vom Fernseher auf USB übertragen:** Übertragen Sie die Senderliste über das TV-Menü (Sendung > Experteneinstellungen) auf einen im FAT32-Format formatierten USB-Stick.
 2. **Hochladen:** Ziehen Sie die Datei vom USB-Stick per Drag & Drop auf die Website.
-3. **Bearbeiten:** Sortieren Sie per Drag & Drop, löschen Sie Unnötiges oder nutzen Sie 💡 die intelligenten Vorlagen.
-4. **Herunterladen:** Laden Sie die bearbeitete Datei wieder auf Ihren Computer herunter.
-5. **Auf den Fernseher laden:** Stecken Sie den USB-Stick wieder in den Fernseher und importieren Sie die neue Liste.
+3. **Bearbeiten:** Ordnen Sie die Einträge per Drag & Drop an, löschen Sie überflüssige Einträge oder nutzen Sie 💡 die intelligenten Vorlagen.
+4. **Herunterladen:** Laden Sie die bearbeitete Datei zurück auf Ihren Computer herunter.
+5. **Auf den Fernseher übertragen:** Stecken Sie den USB-Stick erneut in den Fernseher und importieren Sie die neue Liste.
 
 ## 🛰️ Satelliten- und Frequenzunterstützung
 
@@ -62,7 +80,7 @@ POST /build
 Content-Type: application/json
 {
   "session_id": "uuid-...",
-  "channels": [ ... sortierte Liste ... ]
+  "channels": [ ... geordnete Liste ... ]
 }
 ```
 *(Als Antwort wird der Link `/download/...` zurückgegeben, über den die Datei heruntergeladen werden kann)*
@@ -71,19 +89,19 @@ Content-Type: application/json
 ```http
 GET /download/{session_id}/{filename}
 ```
-*(Die bearbeitete Binär- bzw. Archivdatei wird heruntergeladen)*
+*(Die bearbeitete Binär-/Archivdatei wird heruntergeladen)*
 
 ## 🔐 Datenschutz und Sicherheit
 
 - Es gilt eine Dateigrößenbeschränkung von **2 MB**.
-- **Dateien werden nicht dauerhaft auf dem Server gespeichert.** Hochgeladene Dateien werden während der Bearbeitungssitzung im temporären Speicher gehalten und nach Ablauf der Sitzungsdauer (ca. 1 Stunde) automatisch vollständig gelöscht.
+- **Dateien werden nicht dauerhaft auf dem Server gespeichert.** Hochgeladene Dateien werden während der Bearbeitungssitzung im temporären Serverspeicher verarbeitet, nicht dauerhaft archiviert und nach Ablauf der Sitzungsdauer (ca. 1 Stunde) automatisch vollständig gelöscht.
 - Es erfolgt keine Protokollierung von Konten, Mitgliedschaften oder Datenbankzugriffen.
 - XML-Parsing-Vorgänge über die API (zum Schutz vor „Billion Laughs“-Angriffen) werden durch `defusedxml` geschützt.
 
 ## 🧪 Testsystem (CI)
 
-Das Projekt verfügt über eine **Round-Trip-**Testarchitektur.
-- Anhand von realistischen Testdateien (Fixtures) wird geprüft, dass fehlerhafter oder geänderter Motor-Code die ursprünglichen Strukturen der TV-Datenbank nicht beeinträchtigt.
+Das Projekt verfügt über eine **Round-Trip (Hin- und Rückweg)**-Testarchitektur.
+- Mithilfe von realistischen Testdateien (Fixtures) wird geprüft, dass fehlerhafter oder geänderter Engine-Code die ursprünglichen Strukturen der TV-Datenbank nicht beeinträchtigt.
 - Bei jedem `Push` und jeder `PR` wird `tests/test_roundtrip.py` automatisch über GitHub Actions ausgeführt.
 
 ## 🌍 Sprachunterstützung
@@ -102,14 +120,14 @@ Die Benutzeroberfläche und die Bedienungsanleitungen sind in **11 Sprachen** ve
 ├── templates/ # Jinja2-HTML-Oberflächen (11 Sprachen)
 ├── static/ # CSS, JS, OpenAPI-YAML-Schemas
 └── tests/
-    ├── test_roundtrip.py  # Round-Trip-Tests für alle Engines
-    └── fixtures/ # Echte TV-Datenbank-Beispiele für die Tests
+    ├── test_roundtrip.py  # Roundtrip-Tests für alle Engines
+    └── fixtures/ # Echte TV-Datenbankbeispiele für Tests
 ```
 
 ## 🙏 Vielen Dank
 
 - **[İltekin/scm-editor](https://github.com/iltekin/scm-editor)** — Erste Inspirationsquelle
-- **[PredatH0r/ChanSort](https://github.com/PredatH0r/ChanSort)** — Reverse-Engineering-Referenz für Formate verschiedener Marken
+- **[PredatH0r/ChanSort](https://github.com/PredatH0r/ChanSort)** — Referenz für das Reverse Engineering von Formaten verschiedener Marken
 - **[Türksat-Satellit](https://uydu.turksat.com.tr/)** — Türksat-Frequenzdatenbank
 
 ## 📄 Lizenz

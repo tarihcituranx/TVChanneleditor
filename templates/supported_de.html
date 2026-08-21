@@ -1,6 +1,8 @@
 {% extends "base_de.html" %}
 
-{% block title %}Unterstützte Sender und Satelliten – TV-Sender-Editor{% endblock %}
+{% block title %}
+
+Unterstützte Marken und Satelliten – TV Channel Editor{% endblock %}
 
 {% block head %}
 <style>
@@ -82,10 +84,10 @@
     }
 
     .badge-green { background: rgba(34,197,94,0.15); color: #16a34a; border: 1px solid rgba(34,197,94,0.3); }
-[data-theme="dark"] .badge-green { color: #4ade80; }
+[data-theme=&quot;dark&quot;] .badge-green { color: #4ade80; }
     .badge-blue { background: rgba(var(--accent-rgb), 0.15); color: var(--accent); border: 1px solid rgba(var(--accent-rgb), 0.3); }
     .badge-gray { background: rgba(156,163,175,0.15); color: #4b5563; border: 1px solid rgba(156,163,175,0.3); }
-[data-theme="dark"] .badge-gray { color: #9ca3af; }
+[data-theme=&quot;dark&quot;] .badge-gray { color: #9ca3af; }
 
     .format-tag {
         font-family: monospace;
@@ -104,21 +106,22 @@
         justify-content: center;
         gap: 4px;
     }
-</style>{% endblock %}
+</style>
+{% endblock %}
 
 {% block content %}
 <div class="content-container">
     <h2 class="section-title">Unterstützte TV-Marken</h2>
     <p style="color:var(--text-secondary); font-size:14px; margin-bottom:24px; margin-top:-10px;">
-        Ihre Datei wird während der Bearbeitung vorübergehend auf dem Server verarbeitet; sie wird nicht dauerhaft gespeichert und nach der Verarbeitung automatisch gelöscht.
+        Ihre Datei wird während des Bearbeitungsvorgangs vorübergehend auf dem Server verarbeitet; sie wird nicht dauerhaft archiviert und nach Abschluss des Vorgangs automatisch gelöscht.
     </p>
     <div class="grid-container">
         <div class="card">
-            <img src="/static/img/samsung_logo.webp" alt="Samsung" class="card-img invert-in-light">
-            <span class="badge badge-green">✅ Volle Unterstützung</span>
+            <img src="/static/img/samsung_logo.webp" alt="Samsung" class="card-img theme-invert">
+            <span class="badge badge-green">✅ Vollständige Unterstützung</span>
             <div class="card-title">Samsung Smart TV</div>
             <div class="card-desc">
-                Alle Geräte der älteren Generation (E, F, H) sowie der neueren Tizen-Generation (J, K, M, Q, R, T) werden unterstützt. Sortieren und Umbenennen sind vollständig kompatibel.
+                Bietet allgemeine Kompatibilität mit den angegebenen Generationen und Formaten (E/F/H- und Tizen-Serien). Sortieren und Umbenennen werden unterstützt.
             </div>
             <div class="formats">
                 <span class="format-tag">.scm.zip (SQLite)</span>
@@ -129,18 +132,18 @@
             <span class="badge badge-green">✅ Teilweise Unterstützung</span>
             <div class="card-title">LG Smart TV</div>
             <div class="card-desc">
-                Unser System unterstützt die <b>XML-basierten .tll-Date</b>ien (GlobalClone) der neuen Generation von LG. Ältere <b>binäre .tll-Dateien</b> werden nicht unterstützt; für diese Dateien verwenden Sie bitte die ChanSort-Desktop-Anwendung.
+                Unser System unterstützt die <b>XML-basierten .tll</b>-Dateien (GlobalClone) der neuen Generation von LG. Ältere <b>binäre .tll</b>-Dateien werden nicht unterstützt; für diese Dateien können Sie die Desktop-Anwendung ChanSort verwenden.
             </div>
             <div class="formats">
                 <span class="format-tag">.tll (XML)</span>
             </div>
         </div>
         <div class="card">
-            <img src="/static/img/sony_logo.svg" alt="Sony" class="card-img invert-in-light">
+            <img src="/static/img/sony_logo.svg" alt="Sony" class="card-img theme-invert">
             <span class="badge badge-green">✅ Vollständige Unterstützung</span>
             <div class="card-title">Sony BRAVIA</div>
             <div class="card-desc">
-                Das XML-basierte Format der Senderliste von Sony BRAVIA kann gelesen und geschrieben werden. Umfasst auch die neuen Modelle ab 2024. Sendernamen und die Neuanordnung der Sender werden unterstützt.
+                Das XML-basierte Kanallistenformat von Sony BRAVIA kann gelesen und geschrieben werden. (Bei neuen Modellen ab 2024 ist möglicherweise eine manuelle Überprüfung erforderlich.)
             </div>
             <div class="formats">
                 <span class="format-tag">sdb.xml</span>
@@ -151,7 +154,7 @@
             <span class="badge badge-green">✅ Vollständige Unterstützung</span>
             <div class="card-title">Hisense Smart TV</div>
             <div class="card-desc">
-                Das SQLite-basierte Format der Serviceliste für die Modellgenerationen 2017 und 2021 wird unterstützt. Das Sortieren, Umbenennen und Ausblenden von Kanälen wird unterstützt.
+                Das SQLite-basierte Servicelistenformat der Generationen 2017 und 2021 kann gelesen werden. Das Sortieren, Umbenennen und Ausblenden von Kanälen wird unterstützt.
             </div>
             <div class="formats">
                 <span class="format-tag">servicelist.db</span>
@@ -159,10 +162,10 @@
         </div>
         <div class="card">
             <img src="/static/img/panasonic_logo.svg" alt="Panasonic" class="card-img">
-            <span class="badge badge-blue">🔄 Beta</span>
+            <span class="badge badge-gray">🔜 Geplant</span>
             <div class="card-title">Panasonic VIERA</div>
             <div class="card-desc">
-                Die Unterstützung des SVL-Formats befindet sich derzeit in der Entwicklung. Das Einlesen funktioniert möglicherweise bei einigen Modellfamilien.
+                Die Unterstützung des SVL-Formats befindet sich in der Entwicklungsphase. Bei einigen Modellreihen kann das Einlesen möglicherweise erfolgreich sein.
             </div>
             <div class="formats">
                 <span class="format-tag">svl.db svl.bin</span>
@@ -173,7 +176,7 @@
             <span class="badge badge-gray">In Kürze</span>
             <div class="card-title">Philips, Toshiba...</div>
             <div class="card-desc">
-                Die Unterstützung für Philips, Toshiba, Grundig und andere Marken wird derzeit aktiv entwickelt.
+                Die Unterstützung für Philips, Toshiba, Grundig und andere Marken befindet sich derzeit in der aktiven Entwicklungsphase.
             </div>
             <div class="formats">
                 <span class="format-tag">*.db*.xml</span>
@@ -183,14 +186,14 @@
 
     <h2 class="section-title">🛰️ Unterstützte Satelliten</h2>
     <p style="color:var(--text-secondary); font-size:14px; margin-bottom:24px; margin-top:-10px;">
-        Ihre Datei wird während der Bearbeitung vorübergehend auf dem Server verarbeitet; sie wird nicht dauerhaft gespeichert und nach der Verarbeitung automatisch gelöscht.
+        Ihre Datei wird während des Bearbeitungsvorgangs vorübergehend auf dem Server verarbeitet; sie wird nicht dauerhaft archiviert und nach Abschluss des Vorgangs automatisch gelöscht.
     </p>
     <div class="grid-container">
         <div class="card">
-            <img src="/static/img/turksat_logo.png" alt="Türksat" class="card-img invert-in-light">
+            <img src="/static/img/turksat_logo.png" alt="Türksat" class="card-img theme-invert">
             <div class="card-title">Türksat 4A / 5B</div>
             <div class="card-desc">
-                Vollständig kompatibel mit türkischen Landeskanälen, Nachrichten- und Sportpaketen. Die „Smart Templates“-Vorlagen sind für Türksat-Frequenzen optimiert. <b>Die automatische Frequenzüberprüfung</b> ist für diesen Satelliten aktiviert.
+                Vollständig kompatibel mit nationalen türkischen Kanälen sowie Nachrichten- und Sportpaketen. Die „Smart Templates“-Vorlagen sind für die Türksat-Frequenzen optimiert. <b>Die automatische Frequenzüberprüfung</b> ist für diesen Satelliten aktiviert.
             </div>
         </div>
         <div class="card">
@@ -202,10 +205,11 @@
         </div>
         <div class="card">
             <img src="/static/img/astra_logo.svg" alt="Astra" class="card-img">
-            <div class="card-title">Astra 19,2E</div>
+            <div class="card-title">Astra 19,2°E</div>
             <div class="card-desc">
-                Die SES-Astra-Frequenzen, über die deutsche und europäische Sender ausgestrahlt werden, werden mit vollständiger Kompatibilität gelesen und geschrieben.
+                Die Frequenzen von SES Astra, die deutsche und europäische Sender übertragen, werden vollständig kompatibel gelesen und geschrieben.
             </div>
         </div>
     </div>
-</div>{% endblock %}
+</div>
+{% endblock %}

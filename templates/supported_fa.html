@@ -1,8 +1,10 @@
-{% extends "base_fa.html" %}
+برندها و ماهواره‌های{% extends "base_fa.html" %}
 
-{% block title %}برندها و ماهواره‌های پشتیبانی‌شده - ویرایشگر کانال تلویزیون{% endblock %}
+{% block title %}
 
-{% block head %}
+پشتیبانی‌شده - ویرایشگر{% endblock %}
+
+کانال تلویزیون
 <style>
     .content-container {
         max-width: 960px;
@@ -82,10 +84,10 @@
     }
 
     .badge-green { background: rgba(34,197,94,0.15); color: #16a34a; border: 1px solid rgba(34,197,94,0.3); }
-[data-theme="dark"] .badge-green { color: #4ade80; }
+[data-theme=&quot;dark&quot;] .badge-green { color: #4ade80; }
     .badge-blue { background: rgba(var(--accent-rgb), 0.15); color: var(--accent); border: 1px solid rgba(var(--accent-rgb), 0.3); }
     .badge-gray { background: rgba(156,163,175,0.15); color: #4b5563; border: 1px solid rgba(156,163,175,0.3); }
-[data-theme="dark"] .badge-gray { color: #9ca3af; }
+[data-theme=&quot;dark&quot;] .badge-gray { color: #9ca3af; }
 
     .format-tag {
         font-family: monospace;
@@ -104,21 +106,22 @@
         justify-content: center;
         gap: 4px;
     }
-</style>{% endblock %}
+</style>
+{% endblock %}
 
 {% block content %}
 <div class="content-container">
-    <h2 class="section-title">برندهای تلویزیون پشتیبانی‌شده</h2>
+    <h2 class="section-title">برندهای تلویزیونی پشتیبانی‌شده</h2>
     <p style="color:var(--text-secondary); font-size:14px; margin-bottom:24px; margin-top:-10px;">
-        فایل شما هنگام ویرایش به‌طور موقت روی سرور پردازش می‌شود؛ این فایل به‌طور دائم بایگانی نمی‌شود و پس از پردازش به‌طور خودکار حذف می‌شود.
+        فایل شما به‌طور موقت در حین ویرایش روی سرور پردازش می‌شود؛ به‌طور دائم بایگانی نمی‌شود و پس از اتمام عملیات به‌طور خودکار حذف می‌گردد.
     </p>
     <div class="grid-container">
         <div class="card">
-            <img src="/static/img/samsung_logo.webp" alt="Samsung" class="card-img invert-in-light">
+            <img src="/static/img/samsung_logo.webp" alt="Samsung" class="card-img theme-invert">
             <span class="badge badge-green">✅ پشتیبانی کامل</span>
             <div class="card-title">تلویزیون هوشمند سامسونگ</div>
             <div class="card-desc">
-                تمام دستگاه‌های نسل قدیمی‌تر (E, F, H) و سری نسل جدیدتر تایزن (J, K, M, Q, R, T) پشتیبانی می‌شوند. مرتب‌سازی و تغییر نام کاملاً سازگار هستند.
+                سازگاری کلی با نسل‌ها و فرمت‌های مشخص‌شده (سری‌های E/F/H و Tizen) را فراهم می‌کند. مرتب‌سازی و تغییر نام پشتیبانی می‌شود.
             </div>
             <div class="formats">
                 <span class="format-tag">.scm.zip (SQLite)</span>
@@ -129,18 +132,18 @@
             <span class="badge badge-green">✅ پشتیبانی جزئی</span>
             <div class="card-title">تلویزیون هوشمند ال‌جی</div>
             <div class="card-desc">
-                سیستم ما از فایل‌های جدید LG <b>مبتنی</b> <b>بر</b> <b>XML با</b> پسوند <b>.tll</b> (GlobalClone) پشتیبانی می‌کند. فایل‌های <b>باینری</b> قدیمی‌تر <b>.tll</b> پشتیبانی نمی‌شوند؛ برای این فایل‌ها، لطفاً از برنامه دسکتاپ ChanSort استفاده کنید.
+                سیستم ما از فایل‌های <b>XML مبتنی بر</b> نسل جدید <b>.tll</b> (GlobalClone) شرکت LG پشتیبانی می‌کند. فایل‌های <b>باینری .tll</b> مدل‌های قدیمی پشتیبانی نمی‌شوند؛ برای این فایل‌ها می‌توانید از برنامه دسکتاپ ChanSort استفاده کنید.
             </div>
             <div class="formats">
                 <span class="format-tag">.tll (XML)</span>
             </div>
         </div>
         <div class="card">
-            <img src="/static/img/sony_logo.svg" alt="Sony" class="card-img invert-in-light">
+            <img src="/static/img/sony_logo.svg" alt="Sony" class="card-img theme-invert">
             <span class="badge badge-green">✅ پشتیبانی کامل</span>
             <div class="card-title">سونی براویا</div>
             <div class="card-desc">
-                فرمت لیست کانال مبتنی بر XML تلویزیون‌های سونی براویا قابل خواندن و نوشتن است. شامل مدل‌های جدید 2024+. نام کانال و مرتب‌سازی مجدد آن پشتیبانی می‌شود.
+                فرمت فهرست کانال مبتنی بر XML تلویزیون‌های سونی براویا قابل خواندن و نوشتن است. (ممکن است برای مدل‌های جدید 2024+ نیاز به تأیید دستی باشد).
             </div>
             <div class="formats">
                 <span class="format-tag">sdb.xml</span>
@@ -151,7 +154,7 @@
             <span class="badge badge-green">✅ پشتیبانی کامل</span>
             <div class="card-title">تلویزیون هوشمند هایسنس</div>
             <div class="card-desc">
-                قالب فهرست سرویس مبتنی بر SQLite برای نسل‌های ۲۰۱۷ و ۲۰۲۱ پشتیبانی می‌شود. مرتب‌سازی، تغییر نام و مخفی کردن کانال‌ها پشتیبانی می‌شوند.
+                فرمت فهرست سرویس مبتنی بر SQLite نسل‌های ۲۰۱۷ و ۲۰۲۱ قابل خواندن است. مرتب‌سازی کانال، تغییر نام و مخفی‌سازی پشتیبانی می‌شود.
             </div>
             <div class="formats">
                 <span class="format-tag">servicelist.db</span>
@@ -159,10 +162,10 @@
         </div>
         <div class="card">
             <img src="/static/img/panasonic_logo.svg" alt="Panasonic" class="card-img">
-            <span class="badge badge-blue">🔄 بتا</span>
+            <span class="badge badge-gray">🔜 برنامه‌ریزی‌شده</span>
             <div class="card-title">پاناسونیک ویرا</div>
             <div class="card-desc">
-                پشتیبانی از فرمت SVL در حال حاضر در دست توسعه است. ممکن است خواندن در برخی خانواده‌های مدل‌ها با موفقیت انجام شود.
+                پشتیبانی از فرمت SVL در مرحله توسعه است. در برخی خانواده‌های مدل‌ها، خواندن ممکن است با موفقیت انجام شود.
             </div>
             <div class="formats">
                 <span class="format-tag">svl.db svl.bin</span>
@@ -173,7 +176,7 @@
             <span class="badge badge-gray">به‌زودی</span>
             <div class="card-title">فیلیپس، توشیبا...</div>
             <div class="card-desc">
-                پشتیبانی برای فیلیپس، توشیبا، گروندیگ و سایر برندها در حال توسعه فعال است.
+                پشتیبانی برای فیلیپس، توشیبا، گراندینگ و سایر برندها در مرحله توسعه فعال قرار دارد.
             </div>
             <div class="formats">
                 <span class="format-tag">*.db*.xml</span>
@@ -183,14 +186,14 @@
 
     <h2 class="section-title">🛰️ ماهواره‌های پشتیبانی‌شده</h2>
     <p style="color:var(--text-secondary); font-size:14px; margin-bottom:24px; margin-top:-10px;">
-        فایل شما هنگام ویرایش به‌طور موقت روی سرور پردازش می‌شود؛ این فایل به‌طور دائم بایگانی نمی‌شود و پس از پردازش به‌طور خودکار حذف می‌شود.
+        فایل شما به‌طور موقت در حین ویرایش روی سرور پردازش می‌شود؛ به‌طور دائم بایگانی نمی‌شود و پس از اتمام عملیات به‌طور خودکار حذف می‌گردد.
     </p>
     <div class="grid-container">
         <div class="card">
-            <img src="/static/img/turksat_logo.png" alt="Türksat" class="card-img invert-in-light">
-            <div class="card-title">تورک‌ست ۴A / ۵B</div>
+            <img src="/static/img/turksat_logo.png" alt="Türksat" class="card-img theme-invert">
+            <div class="card-title">تُرک‌سات 4A / 5B</div>
             <div class="card-desc">
-                کاملاً با کانال‌های ملی ترکیه‌ای، اخبار و بسته‌های ورزشی سازگار است. قالب‌های Smart Templates برای فرکانس‌های Türksat بهینه‌سازی شده‌اند. <b>تأیید خودکار فرکانس</b> برای این ماهواره فعال شده است.
+                کاملاً سازگار با شبکه‌های ملی ترکیه، بسته‌های خبری و ورزشی. قالب‌های هوشمند بر اساس فرکانس‌های Türksat بهینه‌سازی شده‌اند. <b>تأیید خودکار فرکانس</b> برای این ماهواره فعال است.
             </div>
         </div>
         <div class="card">
@@ -202,10 +205,11 @@
         </div>
         <div class="card">
             <img src="/static/img/astra_logo.svg" alt="Astra" class="card-img">
-            <div class="card-title">آسترا ۱۹.۲E</div>
+            <div class="card-title">آسترا ۱۹.۲E فرکانس‌های SES آسترا که میزبان کانال‌های آلمانی و اروپایی هستند، به طور کامل خوانده و نوشته می‌شوند.</div>
             <div class="card-desc">
-                فرکانس‌های SES Astra که میزبان کانال‌های آلمانی و اروپایی هستند، با سازگاری کامل خوانده و نوشته می‌شوند.
+                فرکانس‌های SES Astra که میزبان کانال‌های آلمانی و اروپایی هستند، به‌طور کامل خوانده و نوشته می‌شوند.
             </div>
         </div>
     </div>
-</div>{% endblock %}
+</div>
+{% endblock %}

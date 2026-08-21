@@ -1,6 +1,8 @@
 {% extends "base_en.html" %}
 
-{% block title %}Supported Brands and Satellites - TV Channel Editor{% endblock %}
+{% block title %}
+
+Desteklenen Markalar ve Uydular - TV Channel Editor{% endblock %}
 
 {% block head %}
 <style>
@@ -82,10 +84,10 @@
     }
 
     .badge-green { background: rgba(34,197,94,0.15); color: #16a34a; border: 1px solid rgba(34,197,94,0.3); }
-[data-theme="dark"] .badge-green { color: #4ade80; }
+[data-theme=&quot;dark&quot;] .badge-green { color: #4ade80; }
     .badge-blue { background: rgba(var(--accent-rgb), 0.15); color: var(--accent); border: 1px solid rgba(var(--accent-rgb), 0.3); }
     .badge-gray { background: rgba(156,163,175,0.15); color: #4b5563; border: 1px solid rgba(156,163,175,0.3); }
-[data-theme="dark"] .badge-gray { color: #9ca3af; }
+[data-theme=&quot;dark&quot;] .badge-gray { color: #9ca3af; }
 
     .format-tag {
         font-family: monospace;
@@ -104,44 +106,44 @@
         justify-content: center;
         gap: 4px;
     }
-</style>{% endblock %}
+</style>
+{% endblock %}
 
 {% block content %}
 <div class="content-container">
-    <h2 class="section-title">Supported TV Brands</h2>
+    <h2 class="section-title">Desteklenen TV Markaları</h2>
     <p style="color:var(--text-secondary); font-size:14px; margin-bottom:24px; margin-top:-10px;">
-        Your file is temporarily processed on the server during editing; it is not permanently archived and is automatically deleted after processing.
+        Dosyanız düzenleme işlemi sırasında geçici olarak sunucuda işlenir; kalıcı olarak arşivlenmez ve işlem tamamlandıktan sonra otomatik olarak silinir.
     </p>
     <div class="grid-container">
         <div class="card">
-            <img src="/static/img/samsung_logo.webp" alt="Samsung" class="card-img invert-in-light">
-            <span class="badge badge-green">✅ Full Support</span>
+            <img src="/static/img/samsung_logo.webp" alt="Samsung" class="card-img theme-invert">
+            <span class="badge badge-green">✅ Tam Destek</span>
             <div class="card-title">Samsung Smart TV</div>
             <div class="card-desc">
-                All devices from the older generation (E, F, H) and the newer Tizen generation (J, K, M, Q, R, T) series are supported. Sorting and renaming are fully compatible.
+                Belirtilen nesil ve formatlarla (E/F/H ve Tizen serileri) genel uyumluluk sağlar. Sıralama ve isim değiştirme desteklenir.
             </div>
             <div class="formats">
-                <span class="format-tag">.scm</span>
-                <span class="format-tag">.zip (SQLite)</span>
+                <span class="format-tag">.scm.zip (SQLite)</span>
             </div>
         </div>
         <div class="card">
             <img src="/static/img/lg_logo.svg" alt="LG" class="card-img">
-            <span class="badge badge-green">✅ Partial Support</span>
+            <span class="badge badge-green">✅ Kısmi Destek</span>
             <div class="card-title">LG Smart TV</div>
             <div class="card-desc">
-                Our system supports LG's new generation <b>XML-based .tll</b> (GlobalClone) files. Older <b>binary .tll</b> files are not supported; for those files, please use the ChanSort desktop application.
+                Sistemimiz LG&#x27;nin yeni nesil <b>XML tabanlı .tll</b> (GlobalClone) dosyalarını destekler. Eski model <b>ikili (binary) .tll</b> dosyaları desteklenmez; bu dosyalar için masaüstü ChanSort uygulamasını kullanabilirsiniz.
             </div>
             <div class="formats">
                 <span class="format-tag">.tll (XML)</span>
             </div>
         </div>
         <div class="card">
-            <img src="/static/img/sony_logo.svg" alt="Sony" class="card-img invert-in-light">
-            <span class="badge badge-green">✅ Full Support</span>
+            <img src="/static/img/sony_logo.svg" alt="Sony" class="card-img theme-invert">
+            <span class="badge badge-green">✅ Tam Destek</span>
             <div class="card-title">Sony BRAVIA</div>
             <div class="card-desc">
-                Sony BRAVIA’s XML-based channel list format is readable and writable. Includes new 2024+ models. Channel name and reordering are supported.
+                Sony BRAVIA&#x27;nın XML tabanlı kanal listesi formatı okunup yazılabilir. (Yeni 2024+ modeller için manuel doğrulama gerekebilir).
             </div>
             <div class="formats">
                 <span class="format-tag">sdb.xml</span>
@@ -149,10 +151,10 @@
         </div>
         <div class="card">
             <img src="/static/img/hisense_logo.svg" alt="Hisense" class="card-img">
-            <span class="badge badge-green">✅ Full Support</span>
+            <span class="badge badge-green">✅ Tam Destek</span>
             <div class="card-title">Hisense Smart TV</div>
             <div class="card-desc">
-                The SQLite-based service list format for the 2017 and 2021 generations is supported. Channel sorting, renaming, and hiding are supported.
+                2017 ve 2021 jenerasyonu SQLite tabanlı servis listesi formatı okunur. Kanal sıralama, isim değiştirme ve gizleme desteklenir.
             </div>
             <div class="formats">
                 <span class="format-tag">servicelist.db</span>
@@ -160,10 +162,10 @@
         </div>
         <div class="card">
             <img src="/static/img/panasonic_logo.svg" alt="Panasonic" class="card-img">
-            <span class="badge badge-blue">🔄 Beta</span>
+            <span class="badge badge-gray">🔜 Planlandı</span>
             <div class="card-title">Panasonic VIERA</div>
             <div class="card-desc">
-                SVL format support is currently under development. Reading may be successful on some model families.
+                SVL formatı desteği geliştirme aşamasındadır. Bazı model ailelerinde okuma başarılı olabilir.
             </div>
             <div class="formats">
                 <span class="format-tag">svl.db svl.bin</span>
@@ -171,10 +173,10 @@
         </div>
         <div class="card">
             <div style="font-size:40px; margin-bottom:12px;">🔜</div>
-            <span class="badge badge-gray">Coming Soon</span>
+            <span class="badge badge-gray">Yakında</span>
             <div class="card-title">Philips, Toshiba...</div>
             <div class="card-desc">
-                Support for Philips, Toshiba, Grundig, and other brands is currently under active development.
+                Philips, Toshiba, Grundig ve diğer markalar için destek aktif geliştirme sürecindedir.
             </div>
             <div class="formats">
                 <span class="format-tag">*.db*.xml</span>
@@ -182,31 +184,32 @@
         </div>
     </div>
 
-    <h2 class="section-title">🛰️ Supported Satellites</h2>
+    <h2 class="section-title">🛰️ Desteklenen Uydular</h2>
     <p style="color:var(--text-secondary); font-size:14px; margin-bottom:24px; margin-top:-10px;">
-        Your file is temporarily processed on the server during editing; it is not permanently archived and is automatically deleted after processing.
+        Dosyanız düzenleme işlemi sırasında geçici olarak sunucuda işlenir; kalıcı olarak arşivlenmez ve işlem tamamlandıktan sonra otomatik olarak silinir.
     </p>
     <div class="grid-container">
         <div class="card">
-            <img src="/static/img/turksat_logo.png" alt="Türksat" class="card-img invert-in-light">
+            <img src="/static/img/turksat_logo.png" alt="Türksat" class="card-img theme-invert">
             <div class="card-title">Türksat 4A / 5B</div>
             <div class="card-desc">
-                Fully compatible with national Turkish channels, news, and sports packages. Smart Templates templates are optimized for Türksat frequencies. <b>Automatic frequency verification</b> is enabled for this satellite.
+                Ulusal Türkiye kanalları, haber ve spor paketleri için tam uyumlu. Akıllı Şablonlar şablonları Türksat frekanslarına göre optimize edilmiştir. <b>Otomatik frekans doğrulama</b> bu uydu için aktiftir.
             </div>
         </div>
         <div class="card">
             <img src="/static/img/hotbird_logo.svg" alt="Hotbird" class="card-img">
             <div class="card-title">Hotbird 13E</div>
             <div class="card-desc">
-                European and international broadcasts (Eutelsat) are supported. All satellite transponder data is processed successfully.
+                Avrupa ve uluslararası yayınlar (Eutelsat) desteklenmektedir. Tüm uydu transponder verileri başarıyla işlenir.
             </div>
         </div>
         <div class="card">
             <img src="/static/img/astra_logo.svg" alt="Astra" class="card-img">
             <div class="card-title">Astra 19.2E</div>
             <div class="card-desc">
-                SES Astra frequencies, which host German and European channels, are read and written with full compatibility.
+                Alman ve Avrupa kanallarına ev sahipliği yapan SES Astra frekansları tam uyumlu şekilde okunur ve yazılır.
             </div>
         </div>
     </div>
-</div>{% endblock %}
+</div>
+{% endblock %}
