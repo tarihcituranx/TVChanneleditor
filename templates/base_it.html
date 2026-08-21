@@ -319,7 +319,7 @@
                     const shareText = `Easily edit your Samsung, LG, Sony, and Hisense TV channel lists for free directly in your mobile or PC browser!
 🤖 API for Developers & AI: ${baseUrl}/api/docs
 
-(According to the Republic of Türkiye Ministry of Trade regulations: #Ad #Sponsored)`;
+(Ai sensi delle norme del Ministero del Commercio della Repubblica di Turchia: #Pubblicità #Sponsorizzato)`;
                     if (blob) {
                         const file = new File([blob], "tvchanneleditor-qr.png", { type: "image/png" });
                         if (navigator.canShare && navigator.canShare({ files: [file] })) {
@@ -352,14 +352,14 @@
 🔗 For Users: ${baseUrl}/
 🤖 API for Developers & AI: ${baseUrl}/api/docs
 
-(According to the Republic of Türkiye Ministry of Trade regulations: #Ad #Sponsored)`;
+(Ai sensi delle norme del Ministero del Commercio della Repubblica di Turchia: #Pubblicità #Sponsorizzato)`;
             
-            const shareTextLong = `📱💻 A fantastic free Smart TV channel editor for Mobile & PC! Supports Samsung, LG, Sony, and Hisense.
+            const shareTextLong = `📱💻 Un fantastico editor gratuito di canali per Smart TV, disponibile per dispositivi mobili e PC! Compatibile con Samsung, LG, Sony e Hisense.
 
-🔗 Try it now: ${baseUrl}/
-🤖 Developer / AI API: ${baseUrl}/api/docs
+🔗 Provalo subito: ${baseUrl}/
+🤖 Sviluppatore / API di intelligenza artificiale: ${baseUrl}/api/docs
 
-(According to the Republic of Türkiye Ministry of Trade regulations: #Ad #Sponsored)`;
+(Ai sensi delle norme del Ministero del Commercio della Repubblica di Turchia: #Pubblicità #Sponsorizzato)`;
 
             document.getElementById('share-wa').href = `https://wa.me/?text=${encodeURIComponent(shareText)}`;
             document.getElementById('share-x').href = `https://x.com/intent/post?text=${encodeURIComponent(shareTextLong)}`;
