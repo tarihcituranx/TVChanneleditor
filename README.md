@@ -171,6 +171,6 @@ curl -sS https://tvchanneleditor.onrender.com/api/version
 
 ## 📄 Lisans
 
-MIT Lisansı — Ticari amaçla satılamaz.
+MIT Lisansı ile açık kaynak olarak sunulmuştur.
 
 > "Samsung", "LG", "Sony", "Hisense", "Panasonic" ve logoları ilgili şirketlerin tescilli ticari markalarıdır. Bu bağımsız, açık kaynaklı bir topluluk aracıdır.

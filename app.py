@@ -221,13 +221,9 @@ def health_check():
 
 @app.route('/api/version')
 def api_version():
-    import os
-    commit = os.environ.get('RENDER_GIT_COMMIT', 'local')
     return jsonify({
         "status": "online",
-        "version": "1.0.0",
-        "commit": commit,
-        "deployed_at": STARTUP_TIME
+        "version": "1.0.0"
     })
 
 @app.route('/glossary')
@@ -429,6 +425,7 @@ def build():
 import random
 import string
 
+@limiter.limit("20 per minute")
 @app.route('/api/share', methods=['POST', 'GET'])
 def share_draft():
     _cleanup_expired()
