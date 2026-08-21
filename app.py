@@ -155,7 +155,7 @@ def add_security_headers(response):
         del response.headers['x-render-origin-server']
     return response
 
-def render_lang(template_name):
+def render_lang(template_name, **kwargs):
     lang = request.cookies.get('lang')
     if not lang:
         best_match = request.accept_languages.best_match(['tr', 'en'])
@@ -164,8 +164,8 @@ def render_lang(template_name):
         name, ext = os.path.splitext(template_name)
         en_template = f"{name}_en{ext}"
         if os.path.exists(os.path.join('templates', en_template)):
-            return render_template(en_template)
-    return render_template(template_name)
+            return render_template(en_template, **kwargs)
+    return render_template(template_name, **kwargs)
 
 @app.route('/')
 def index():
@@ -549,7 +549,7 @@ def external_redirect():
     url = request.args.get('url', '')
     if not url:
         return redirect('/')
-    return render_template('redirect.html', url=url)
+    return render_lang('redirect.html', url=url)
 
 @app.route('/api/send', methods=['POST'])
 
