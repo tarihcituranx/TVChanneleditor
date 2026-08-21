@@ -1,3 +1,5 @@
+**Son Güncelleme:** 2026-08-21
+
 # 📺 TV Channel Editor
 
 > **Multi-brand TV kanal listesi düzenleyici** — Samsung, LG, Sony, Hisense ve daha fazlası için tek platform.
