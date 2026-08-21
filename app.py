@@ -11,7 +11,8 @@ import tempfile
 import shutil
 import urllib.parse
 from collections import defaultdict
-from flask import Flask, Response, request, jsonify, send_file, render_template, redirect
+from flask import Flask, abort, Response, request, jsonify, send_file, render_template, redirect
+SUPPORTED_LANGS = ["tr", "en", "de", "ru", "es", "it", "fr", "ar", "fa", "az", "pt"]
 from flask_limiter import Limiter
 from flask_limiter.util import get_remote_address
 
