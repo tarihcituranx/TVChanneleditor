@@ -189,6 +189,11 @@ def faq():
     return render_lang('faq.html')
 
 @app.route('/privacy')
+@app.route("/security")
+@limiter.exempt
+def security():
+    return render_lang("security")
+
 def privacy():
     return render_lang('privacy.html')
 
@@ -237,7 +242,7 @@ def glossary():
 @limiter.limit("10 per minute")
 @app.route('/upload', methods=['POST'])
 def upload():
-    client_ip = request.headers.get('X-Forwarded-For', request.remote_addr).split(',')[0].strip()
+    client_ip = get_client_ip()
     if not _rate_check(client_ip):
         return jsonify({'error': 'Çok fazla istek. Lütfen bir dakika bekleyin.'}), 429
 
@@ -274,7 +279,7 @@ def upload():
                         return jsonify({'error': 'Güvenlik ihlali: Dosya içinde tehlikeli dizin yolları tespit edildi.'}), 400
         except Exception as e:
             shutil.rmtree(tmpdir, ignore_errors=True)
-            return jsonify({'error': f'Geçersiz arşiv dosyası: {str(e)}'}), 400
+            return jsonify({'error': 'Geçersiz veya bozuk arşiv dosyası formatı.'}), 400
 
     session_id = str(uuid.uuid4())
     _sessions[session_id] = {
@@ -319,7 +324,7 @@ def upload():
     except Exception as e:
         shutil.rmtree(tmpdir, ignore_errors=True)
         del _sessions[session_id]
-        return jsonify({'error': str(e)}), 500
+        return jsonify({'error': 'Dosya işlenirken beklenmeyen bir hata oluştu.'}), 500
 
 @limiter.limit("20 per minute")
 @app.route('/build', methods=['POST'])
@@ -424,7 +429,7 @@ def build():
         else:
             return jsonify({'error': 'Dosya oluşturulamadı'}), 500
     except Exception as e:
-        return jsonify({'error': str(e)}), 500
+        return jsonify({'error': 'Dosya işlenirken beklenmeyen bir hata oluştu.'}), 500
 
 import random
 import string
@@ -563,7 +568,7 @@ def proxy_umami_send():
         headers = {
             'User-Agent': request.headers.get('User-Agent', ''),
             'Content-Type': 'application/json',
-            'X-Forwarded-For': request.headers.get('X-Forwarded-For', request.remote_addr)
+            'X-Forwarded-For': get_client_ip()
         }
         resp = requests.post(f"{UMAMI_SERVER_URL}/api/send", json=request.json, headers=headers, timeout=5)
         return jsonify(resp.json()), resp.status_code

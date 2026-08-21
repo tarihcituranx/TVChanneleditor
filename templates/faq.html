@@ -29,6 +29,11 @@
     .faq-q {
         font-size: 15px;
         font-weight: 600;
+        width: 100%;
+        border: none;
+        background: transparent;
+        text-align: left;
+        font-family: inherit;
         color: var(--text-primary);
         padding: 16px 20px;
         cursor: pointer;
@@ -59,7 +64,7 @@
         transition: max-height 0.35s ease, padding 0.2s;
     }
     .faq-item.open .faq-a {
-        max-height: 600px;
+        max-height: 2000px;
         padding: 0 20px 16px;
     }
     .faq-a code {
@@ -83,7 +88,7 @@
     </h3>
 
     <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">Hangi TV markaları destekleniyor?</div>
+        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">Hangi TV markaları destekleniyor?</button>
         <div class="faq-a">
             Şu an <strong>Samsung</strong> (.scm ve .zip), <strong>LG</strong> (.tll), <strong>Sony BRAVIA</strong> (sdb.xml) ve <strong>Hisense</strong> (servicelist.db) tam olarak desteklenmektedir.
             Panasonic beta aşamasındadır; Philips, Toshiba ve Grundig yakında eklenecektir.
@@ -91,7 +96,7 @@
     </div>
 
     <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">Hangi dosyayı yükleyeceğimi nasıl anlarım?</div>
+        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">Hangi dosyayı yükleyeceğimi nasıl anlarım?</button>
         <div class="faq-a">
             TV markanıza göre dosya uzantısına bakın:<br>
             • <strong>Samsung (eski)</strong>: <code>.scm</code><br>
@@ -104,35 +109,35 @@
     </div>
 
     <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">Sihirli Değnek kanalları nasıl eşleştiriyor?</div>
+        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">Sihirli Değnek kanalları nasıl eşleştiriyor?</button>
         <div class="faq-a">
             Sihirli Değnek, kanal adı üzerinden eşleştirme yapar (büyük/küçük harfe duyarsız). Şablondaki kanal listenizde "TRT1 HD" varsa, yüklenen dosyadaki "trt1 hd" kanalını bulup öne taşır. Frekans ve PID verilerine dokunmaz.
         </div>
     </div>
 
     <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">Düzenlediğim listeyi TV'ye nasıl yüklerim?</div>
+        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">Düzenlediğim listeyi TV'ye nasıl yüklerim?</button>
         <div class="faq-a">
             İndirilen dosyayı USB belleğe kopyala (<strong>orijinal dosya adını koru!</strong>). TV menüsünden <strong>USB'den Al</strong> ya da <strong>İçe Aktar</strong> seçeneğini kullan.
         </div>
     </div>
 
     <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">Yeni şifresiz kanalları neden listede göremiyorum?</div>
+        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">Yeni şifresiz kanalları neden listede göremiyorum?</button>
         <div class="faq-a">
             Bu site yalnızca TV'nin mevcut kanal listesini düzenler; yeni kanal <em>ekleyemez</em>. Yeni bir kanalı görmek için TV'den önce <strong>ağ araması (Ağ Güncelleme / Network Scan)</strong> yapılması, ardından yeni SCM/ZIP dosyasının çekilmesi gerekir.
         </div>
     </div>
     
     <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">Frekans uyarısı (⚠️ Eski Frekans) ne anlama geliyor?</div>
+        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">Frekans uyarısı (⚠️ Eski Frekans) ne anlama geliyor?</button>
         <div class="faq-a">
             Sistem kanalının kaydedildiği frekansı, <strong>Türksat Resmi Sitesi</strong>'deki güncel Türksat frekans veritabanıyla karşılaştırır. Kanal eski veya farklı bir frekansta taranmışsa sarı uyarı gösterilir. Bu sadece bilgilendirmedir; kanal çalışmaya devam eder ama TV'den yeni bir ağ araması (Network Scan) yaparak kanalı güncel frekansına taşımanız önerilir.
         </div>
     </div>
 
     <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">Verilerim güvende mi? Dosyalarım sunucuda saklanıyor mu?</div>
+        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">Verilerim güvende mi? Dosyalarım sunucuda saklanıyor mu?</button>
         <div class="faq-a">
             Yüklenen kanal listesi dosyaları sunucumuzda yalnızca işlem süresi kadar geçici tutulur ve işlem biter bitmez silinir. Hiçbir kanal adı, frekans veya kişisel veri loglanmaz, saklanmaz ya da üçüncü taraflarla paylaşılmaz. Tüm işleme sunucu tarafında yapılır ve yalnızca çıktı dosyası sana gönderilir.
         </div>
@@ -143,21 +148,21 @@
     </h3>
 
     <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">Samsung TV'den kanal listesini nasıl USB'ye aktarırım?</div>
+        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">Samsung TV'den kanal listesini nasıl USB'ye aktarırım?</button>
         <div class="faq-a">
             Samsung için: <strong>Menü → Yayın → Kanal Ayarları → Kanal Listesini Aktar → USB'ye Aktar</strong> adımlarını takip edin. TV genellikle yalnızca aynı adlı dosyayı kabul eder; bu yüzden bilgisayarda düzenleyip geri yüklerken adını değiştirmeyin.
         </div>
     </div>
 
     <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">SCM Dosyası Nedir?</div>
+        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">SCM Dosyası Nedir?</button>
         <div class="faq-a">
             <strong>SCM (Samsung Channel Map)</strong>, Samsung televizyonların kanal sıralamasını, favori listelerini ve frekans verilerini sakladığı özel bir arşiv dosyasıdır. İçinde <code>map-SateD</code> (kanal listesi) ve <code>TransponderDataBase.dat</code> (frekans veritabanı) gibi ikili veri dosyaları bulunur.
         </div>
     </div>
 
     <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">Samsung Tizen TV'de ZIP dosyası mı yoksa SCM dosyası mı kullanılır?</div>
+        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">Samsung Tizen TV'de ZIP dosyası mı yoksa SCM dosyası mı kullanılır?</button>
         <div class="faq-a">
             <strong>Eski Samsung modelleri</strong> (E, F, H Serisi, 2012–2014): <code>.scm</code> uzantılı dosya kullanır.<br>
             <strong>Yeni Samsung Tizen modelleri</strong> (J, K, M, Q, R, T Serisi, 2015 ve sonrası): <code>.zip</code> uzantılı, içinde SQLite veritabanı barındıran dosya kullanır.<br>
@@ -170,7 +175,7 @@
     </h3>
 
     <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">LG TV'de TLL dosyası nedir ve nasıl alınır?</div>
+        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">LG TV'de TLL dosyası nedir ve nasıl alınır?</button>
         <div class="faq-a">
             <strong>TLL (TLL Channel List)</strong>, LG televizyonların GlobalClone yedek formatıdır. USB belleği TV'ye takıp <strong>Ayarlar → Genel → Hakkında → Kanal Yedek Yapılandırma (CLONE)</strong> menüsünden dışa aktarılır. Bazı modellerde yol farklıdır: <strong>Menü → Destek → Güncelleme → USB'den Güncelle</strong> sonrası oluşan dosyaya bakabilirsiniz. Dosya genellikle <code>xx########.tll</code> formatında adlandırılır.
         </div>
@@ -181,7 +186,7 @@
     </h3>
 
     <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">Sony BRAVIA'da sdb.xml dosyası nerede bulunur?</div>
+        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">Sony BRAVIA'da sdb.xml dosyası nerede bulunur?</button>
         <div class="faq-a">
             Sony BRAVIA için USB belleği takıp <strong>Ayarlar → Kanal Ayarı → Kanal Listesi Aktarımı → USB'ye Kopyala</strong> adımlarını izleyin. İşlem sonrası USB'de <code>sdb.xml</code> adında bir dosya oluşur. Bazı Android TV modellerde ise <strong>Ayarlar → Cihaz Tercihleri → Kanal → Kanal Listesi Yedekle</strong> yolu kullanılır.
         </div>
@@ -192,7 +197,7 @@
     </h3>
 
     <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">Hisense TV'de servicelist.db veya channel.db nasıl alınır?</div>
+        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">Hisense TV'de servicelist.db veya channel.db nasıl alınır?</button>
         <div class="faq-a">
             Hisense için USB belleği takıp <strong>Menü → Kanal → Kanal Listesi Dışa Aktar</strong> seçeneğine gidin. USB'de <code>servicelist.db</code> veya <code>channel.db</code> adında bir SQLite veritabanı dosyası oluşur. Model ve firmware sürümüne göre dosya adı farklılık gösterebilir; her iki format da bu editörle açılabilir.
         </div>
@@ -201,8 +206,11 @@
 </div>
 
 <script>
-function toggleFaq(el) {
-    el.parentElement.classList.toggle('open');
-}
+function toggleFaq(btn) {
+        let parent = btn.parentElement;
+        let isExpanded = btn.getAttribute('aria-expanded') === 'true';
+        btn.setAttribute('aria-expanded', !isExpanded);
+        parent.classList.toggle('open');
+    }
 </script>
 {% endblock %}

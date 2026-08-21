@@ -29,6 +29,11 @@
     .faq-q {
         font-size: 15px;
         font-weight: 600;
+        width: 100%;
+        border: none;
+        background: transparent;
+        text-align: left;
+        font-family: inherit;
         color: var(--text-primary);
         padding: 16px 20px;
         cursor: pointer;
@@ -59,7 +64,7 @@
         transition: max-height 0.35s ease, padding 0.2s;
     }
     .faq-item.open .faq-a {
-        max-height: 600px;
+        max-height: 2000px;
         padding: 0 20px 16px;
     }
     .faq-a code {
@@ -82,7 +87,7 @@
     </h3>
 
     <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">Which TV brands are supported?</div>
+        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">Which TV brands are supported?</button>
         <div class="faq-a">
             Currently, <strong>Samsung</strong> (.scm and .zip), <strong>LG</strong> (.tll), <strong>Sony BRAVIA</strong> (sdb.xml), and <strong>Hisense</strong> (servicelist.db) are fully supported.
             Panasonic is in beta; Philips, Toshiba, and Grundig will be added soon.
@@ -90,7 +95,7 @@
     </div>
 
     <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">How do I know which file to upload?</div>
+        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">How do I know which file to upload?</button>
         <div class="faq-a">
             Check the file extension based on your TV brand:<br>
             • <strong>Samsung (old)</strong>: <code>.scm</code><br>
@@ -103,35 +108,35 @@
     </div>
 
     <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">How does Magic Wand match channels?</div>
+        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">How does Magic Wand match channels?</button>
         <div class="faq-a">
             Magic Wand matches channels by name (case-insensitive). If you have "TRT1 HD" in your template, it finds "trt1 hd" in the uploaded file and moves it to the correct position. It does not touch frequency and PID data.
         </div>
     </div>
 
     <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">How do I upload the edited list back to the TV?</div>
+        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">How do I upload the edited list back to the TV?</button>
         <div class="faq-a">
             Copy the downloaded file to a USB flash drive (<strong>keep the original filename!</strong>). Use the <strong>Import from USB</strong> option from the TV menu.
         </div>
     </div>
 
     <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">Why can't I see new free channels in the list?</div>
+        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">Why can't I see new free channels in the list?</button>
         <div class="faq-a">
             This site only edits the TV's existing channel list; it <em>cannot</em> add new channels. To see a new channel, you must first do a <strong>Network Scan (Auto Tuning)</strong> on the TV, then export the new file.
         </div>
     </div>
     
     <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">What does the Frequency warning (⚠️ Old Frequency) mean?</div>
+        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">What does the Frequency warning (⚠️ Old Frequency) mean?</button>
         <div class="faq-a">
             The system compares the channel's saved frequency with the current Turksat frequency database. If the channel was scanned on an old or different frequency, a yellow warning is shown. This is just for your information; the channel will continue to work, but it is recommended to move the channel to its current frequency by doing a new Network Scan on the TV.
         </div>
     </div>
 
     <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">Is my data safe? Are my files stored on the server?</div>
+        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">Is my data safe? Are my files stored on the server?</button>
         <div class="faq-a">
             Uploaded channel list files are kept on our server only temporarily during processing and are deleted immediately after the process is finished. No channel names, frequencies, or personal data are logged, stored, or shared with third parties. All processing is done on the server side and only the output file is sent to you.
         </div>
@@ -142,21 +147,21 @@
     </h3>
 
     <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">How do I export the channel list from a Samsung TV to USB?</div>
+        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">How do I export the channel list from a Samsung TV to USB?</button>
         <div class="faq-a">
             For Samsung: Follow the steps <strong>Menu → Broadcasting → Channel Settings → Transfer Channel List → Export to USB</strong>. The TV usually only accepts files with the exact same name, so do not rename the file when editing and restoring.
         </div>
     </div>
 
     <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">What is an SCM File?</div>
+        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">What is an SCM File?</button>
         <div class="faq-a">
             <strong>SCM (Samsung Channel Map)</strong> is a special archive file where Samsung TVs store channel order, favorite lists, and frequency data. It contains binary data files such as <code>map-SateD</code> (channel list) and <code>TransponderDataBase.dat</code> (frequency database).
         </div>
     </div>
 
     <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">Does Samsung Tizen TV use ZIP or SCM files?</div>
+        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">Does Samsung Tizen TV use ZIP or SCM files?</button>
         <div class="faq-a">
             <strong>Older Samsung models</strong> (E, F, H Series, 2012–2014) use <code>.scm</code> files.<br>
             <strong>Newer Samsung Tizen models</strong> (J, K, M, Q, R, T Series, 2015 and later) use <code>.zip</code> files containing an SQLite database.<br>
@@ -169,7 +174,7 @@
     </h3>
 
     <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">What is a TLL file on LG TV and how to export it?</div>
+        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">What is a TLL file on LG TV and how to export it?</button>
         <div class="faq-a">
             <strong>TLL (TLL Channel List)</strong> is LG's GlobalClone backup format. Insert a USB drive and export from <strong>Settings → General → About → Channel Backup Configuration (CLONE)</strong>. On some models: <strong>Menu → Support → Update → Update from USB</strong>. The file is usually named <code>xx########.tll</code>.
         </div>
@@ -180,7 +185,7 @@
     </h3>
 
     <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">Where is the sdb.xml file on Sony BRAVIA?</div>
+        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">Where is the sdb.xml file on Sony BRAVIA?</button>
         <div class="faq-a">
             For Sony BRAVIA, insert a USB drive and go to <strong>Settings → Channel Setup → Channel List Transfer → Export to USB</strong>. A file named <code>sdb.xml</code> will be created. For Android TV models, use <strong>Settings → Device Preferences → Channel → Channel List Transfer</strong>.
         </div>
@@ -191,7 +196,7 @@
     </h3>
 
     <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">How to get servicelist.db or channel.db on Hisense TV?</div>
+        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">How to get servicelist.db or channel.db on Hisense TV?</button>
         <div class="faq-a">
             Go to <strong>Menu → Channel → Channel List Export</strong>. A file named <code>servicelist.db</code> or <code>channel.db</code> will be created. The filename varies by model and firmware, but both SQLite formats are supported.
         </div>
@@ -200,8 +205,11 @@
 </div>
 
 <script>
-function toggleFaq(el) {
-    el.parentElement.classList.toggle(&#x27;open&#x27;);
-}
+function toggleFaq(btn) {
+        let parent = btn.parentElement;
+        let isExpanded = btn.getAttribute('aria-expanded') === 'true';
+        btn.setAttribute('aria-expanded', !isExpanded);
+        parent.classList.toggle('open');
+    }
 </script>
 {% endblock %}

@@ -114,15 +114,15 @@
 <div class="content-container">
     <h2 class="section-title">Kullanım Kılavuzu</h2>
 
-    <div class="brand-tabs">
-        <button class="brand-tab active" onclick="showGuide('samsung')">Samsung</button>
-        <button class="brand-tab" onclick="showGuide('lg')">LG</button>
-        <button class="brand-tab" onclick="showGuide('sony')">Sony BRAVIA</button>
-        <button class="brand-tab" onclick="showGuide('hisense')">Hisense</button>
+    <div class="brand-tabs" role="tablist" aria-label="TV Brands">
+        <button class="brand-tab active" onclick="showGuide(\'samsung\')" role="tab" aria-selected="true" aria-controls="guide-samsung" id="tab-samsung">Samsung</button>
+        <button class="brand-tab" onclick="showGuide(\'lg\')" role="tab" aria-selected="false" aria-controls="guide-lg" id="tab-lg">LG</button>
+        <button class="brand-tab" onclick="showGuide(\'sony\')" role="tab" aria-selected="false" aria-controls="guide-sony" id="tab-sony">Sony BRAVIA</button>
+        <button class="brand-tab" onclick="showGuide(\'hisense\')" role="tab" aria-selected="false" aria-controls="guide-hisense" id="tab-hisense">Hisense</button>
     </div>
 
     <!-- SAMSUNG -->
-    <div class="brand-guide active" id="guide-samsung">
+    <div class="brand-guide active" id="guide-samsung" role="tabpanel" aria-labelledby="tab-samsung">
         <div class="step-box">
             <div class="step-title"><span class="step-num">1</span> Kanal Listesini USB'ye Aktar</div>
             <div class="step-desc">
@@ -155,7 +155,7 @@
     </div>
 
     <!-- LG -->
-    <div class="brand-guide" id="guide-lg">
+    <div class="brand-guide" id="guide-lg" role="tabpanel" aria-labelledby="tab-lg">
         <div class="step-box">
             <div class="step-title"><span class="step-num">1</span> Kanal Listesini USB'ye Aktar</div>
             <div class="step-desc">
@@ -179,7 +179,7 @@
     </div>
 
     <!-- SONY -->
-    <div class="brand-guide" id="guide-sony">
+    <div class="brand-guide" id="guide-sony" role="tabpanel" aria-labelledby="tab-sony">
         <div class="step-box">
             <div class="step-title"><span class="step-num">1</span> sdb.xml Dosyasını Al</div>
             <div class="step-desc">
@@ -202,7 +202,7 @@
     </div>
 
     <!-- HISENSE -->
-    <div class="brand-guide" id="guide-hisense">
+    <div class="brand-guide" id="guide-hisense" role="tabpanel" aria-labelledby="tab-hisense">
         <div class="step-box">
             <div class="step-title"><span class="step-num">1</span> servicelist.db Dosyasını Al</div>
             <div class="step-desc">
@@ -228,10 +228,20 @@
 
 <script>
 function showGuide(brand) {
-    document.querySelectorAll('.brand-guide').forEach(g => g.classList.remove('active'));
-    document.querySelectorAll('.brand-tab').forEach(t => t.classList.remove('active'));
-    document.getElementById('guide-' + brand).classList.add('active');
-    event.currentTarget.classList.add('active');
-}
+        document.querySelectorAll('.brand-tab').forEach(btn => {
+            btn.classList.remove('active');
+            btn.setAttribute('aria-selected', 'false');
+        });
+        document.querySelectorAll('.brand-guide').forEach(g => {
+            g.classList.remove('active');
+        });
+        
+        const activeBtn = document.querySelector(`.brand-tab[onclick*="${brand}"]`);
+        if (activeBtn) {
+            activeBtn.classList.add('active');
+            activeBtn.setAttribute('aria-selected', 'true');
+        }
+        document.getElementById('guide-' + brand).classList.add('active');
+    }
 </script>
 {% endblock %}

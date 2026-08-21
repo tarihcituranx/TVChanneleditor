@@ -60,8 +60,13 @@
                 <button class="btn primary-outline" id="magic-wand-btn" style="background:transparent; color:var(--accent); border:1px solid var(--accent);">
                     <svg class="icon" width="16" height="16"><use href="#icon-wand"/></svg> Magic Wand
                 </button>
-                <button id="save-template-btn" class="btn primary-outline" style="background:transparent; color:var(--accent); border:1px solid var(--accent);">🛠️ Template Builder</button>
-                <button id="export-share-btn" class="btn magic" style="background: #e85d00; color: white;">📱 Send to Device</button>
+                <div class="dropdown">
+                    <button class="btn secondary">⋮ More Actions</button>
+                    <div class="dropdown-content">
+                        <button id="save-template-btn">📝 Template Builder</button>
+                        <button id="export-share-btn">📲 Share via Code</button>
+                    </div>
+                </div>
                 <button class="btn primary" id="save-btn">
                     <svg class="icon" width="16" height="16"><use href="#icon-save"/></svg> Save & Download
                 </button>
