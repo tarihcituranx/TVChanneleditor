@@ -158,9 +158,9 @@ def add_security_headers(response):
 def render_lang(template_name, **kwargs):
     lang = request.cookies.get('lang')
     if not lang:
-        best_match = request.accept_languages.best_match(['tr', 'en', 'de', 'ru', 'es', 'it', 'fr', 'ar', 'fa', 'az'])
+        best_match = request.accept_languages.best_match(['tr', 'en', 'de', 'ru', 'es', 'it', 'fr', 'ar', 'fa', 'az', 'pt'])
         lang = best_match if best_match else 'tr'
-    if lang in ['en', 'de', 'ru', 'es', 'it', 'fr', 'ar', 'fa', 'az']:
+    if lang in ['en', 'de', 'ru', 'es', 'it', 'fr', 'ar', 'fa', 'az', 'pt']:
         name, ext = os.path.splitext(template_name)
         loc_template = f"{name}_{lang}{ext}"
         if os.path.exists(os.path.join('templates', loc_template)):
