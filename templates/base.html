@@ -30,10 +30,7 @@
     <meta name="twitter:image" content="https://tvchanneleditor.onrender.com/static/img/welcome_hero.jpg">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📺</text></svg>">
     
-    <!-- External Link Warning Modal -->
-            </div>
-        </div>
-    </div>
+    <!-- External Link Warning Modal removed -->
 
 <script>
       (function() {
@@ -379,23 +376,11 @@
                 if (link.href.includes('twitter.com/intent') || link.href.includes('wa.me')) return;
                 
                 e.preventDefault();
-                const modal = document.getElementById('external-modal');
-                const continueBtn = document.getElementById('external-continue-btn');
-                const cancelBtn = document.getElementById('external-cancel-btn');
-                
-                if(modal && continueBtn) {
-                    continueBtn.href = link.href;
-                    modal.style.display = 'flex';
-                    
-                    cancelBtn.onclick = function() {
-                        modal.style.display = 'none';
-                    };
-                    continueBtn.onclick = function() {
-                        modal.style.display = 'none';
-                    };
-                    modal.onclick = function(event) {
-                        if (event.target === modal) modal.style.display = 'none';
-                    }
+                const redirectUrl = '/redirect?url=' + encodeURIComponent(link.href);
+                if (link.target === '_blank') {
+                    window.open(redirectUrl, '_blank');
+                } else {
+                    window.location.href = redirectUrl;
                 }
             }
         });
