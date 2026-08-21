@@ -344,7 +344,7 @@
                     const shareText = `Mobil ve bilgisayardan Samsung, LG, Sony, Hisense TV kanal listelerinizi (SCM, TLL, SDB.XML) tarayıcı üzerinden ücretsiz düzenleyin!
 🤖 Geliştiriciler & Yapay Zeka (API): ${baseUrl}/api/docs
 
-(Ticaret Bakanlığı yönergeleri gereği: #Reklam #İşbirliği)`;
+(T.C. Ticaret Bakanlığı yönergeleri gereği: #Reklam #İşbirliği)`;
                     if (blob) {
                         const file = new File([blob], "tvchanneleditor-qr.png", { type: "image/png" });
                         if (navigator.canShare && navigator.canShare({ files: [file] })) {
@@ -377,14 +377,14 @@
 🔗 Kullanıcılar İçin: ${baseUrl}/
 🤖 Geliştiriciler & Yapay Zeka (API): ${baseUrl}/api/docs
 
-(Ticaret Bakanlığı yönergeleri gereği: #Reklam #İşbirliği)`;
+(T.C. Ticaret Bakanlığı yönergeleri gereği: #Reklam #İşbirliği)`;
             
             const shareTextLong = `📱💻 Mobil & PC uyumlu harika bir ücretsiz Smart TV kanal düzenleme aracı! Samsung, LG, Sony, Hisense destekliyor.
 
 🔗 Hemen Düzenle: ${baseUrl}/
 🤖 Geliştirici / AI API: ${baseUrl}/api/docs
 
-#Reklam #İşbirliği #TVChannelEditor`;
+(T.C. Ticaret Bakanlığı yönergeleri gereği: #Reklam #İşbirliği)`;
 
             document.getElementById('share-wa').href = `https://wa.me/?text=${encodeURIComponent(shareText)}`;
             document.getElementById('share-x').href = `https://x.com/intent/post?text=${encodeURIComponent(shareTextLong)}`;
