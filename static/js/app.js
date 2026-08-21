@@ -11,6 +11,40 @@ window.toast = function(message, type = 'success') {
     };
 
 document.addEventListener('DOMContentLoaded', () => {
+    document.addEventListener('keydown', (e) => {
+        if (e.ctrlKey && e.key === 'z') {
+            if (e.shiftKey) {
+                // Redo
+                if (redoStack.length > 0) {
+                    undoStack.push(lastSavedState);
+                    lastSavedState = redoStack.pop();
+                    channels = JSON.parse(lastSavedState);
+                    renderChannels(searchInput ? searchInput.value : '');
+                    updateHistoryUI();
+                }
+            } else {
+                // Undo
+                if (undoStack.length > 0) {
+                    redoStack.push(lastSavedState);
+                    lastSavedState = undoStack.pop();
+                    channels = JSON.parse(lastSavedState);
+                    renderChannels(searchInput ? searchInput.value : '');
+                    updateHistoryUI();
+                }
+            }
+        }
+        if (e.ctrlKey && e.key === 'y') {
+            // Redo
+            if (redoStack.length > 0) {
+                undoStack.push(lastSavedState);
+                lastSavedState = redoStack.pop();
+                channels = JSON.parse(lastSavedState);
+                renderChannels(searchInput ? searchInput.value : '');
+            }
+        }
+    });
+
+
     console.log('%c Crafted by @tarihcituranx 🚀 ', 'background: #0d1117; color: #58a6ff; font-size: 14px; padding: 6px 12px; border-radius: 4px; font-family: monospace; border: 1px solid #30363d;');
     
     const dropZone = document.getElementById('upload-section');
@@ -19,17 +53,95 @@ document.addEventListener('DOMContentLoaded', () => {
     const editorSection = document.getElementById('editor-section');
     const channelList = document.getElementById('channel-list');
     const saveBtn = document.getElementById('save-btn');
+    
     const searchInput = document.getElementById('search-input');
+    const undoBtn = document.getElementById('undo-btn');
+    const redoBtn = document.getElementById('redo-btn');
 
+
+    
+    
+    if (undoBtn) {
+        undoBtn.addEventListener('click', () => {
+            if (undoStack.length > 0) {
+                redoStack.push(lastSavedState);
+                lastSavedState = undoStack.pop();
+                channels = JSON.parse(lastSavedState);
+                renderChannels(searchInput ? searchInput.value : '');
+                updateHistoryUI();
+            }
+        });
+    }
+    if (redoBtn) {
+        redoBtn.addEventListener('click', () => {
+            if (redoStack.length > 0) {
+                undoStack.push(lastSavedState);
+                lastSavedState = redoStack.pop();
+                channels = JSON.parse(lastSavedState);
+                renderChannels(searchInput ? searchInput.value : '');
+                updateHistoryUI();
+            }
+        });
+    }
+    
     let selectedIndices = new Set();
+
     let channels = [];
     let currentFileName = "channel_list.scm";
     let currentSessionId = "";
     let frekansData = {};
     let isRestoringDraft = false;
+    
+    // History & Dirty state
+    let isDirty = false;
+    let undoStack = [];
+    let redoStack = [];
+    
+    window.addEventListener('beforeunload', (e) => {
+        if (isDirty) {
+            e.preventDefault();
+            e.returnValue = '';
+        }
+    });
+    
+    function pushHistory() {
+        undoStack.push(JSON.stringify(channels));
+        if (undoStack.length > 50) undoStack.shift();
+        redoStack = []; // Clear redo stack on new action
+        isDirty = true;
+    }
 
+
+    
+    
+    function updateHistoryUI() {
+        if(undoBtn) {
+            undoBtn.style.opacity = undoStack.length > 0 ? '1' : '0.5';
+            undoBtn.style.pointerEvents = undoStack.length > 0 ? 'auto' : 'none';
+        }
+        if(redoBtn) {
+            redoBtn.style.opacity = redoStack.length > 0 ? '1' : '0.5';
+            redoBtn.style.pointerEvents = redoStack.length > 0 ? 'auto' : 'none';
+        }
+    }
+
+    let lastSavedState = "";
     function saveDraftToLocal() {
         if (isRestoringDraft || channels.length === 0) return;
+        
+        const currentState = JSON.stringify(channels);
+        if (currentState !== lastSavedState) {
+            // Push the *previous* state to history
+            if (lastSavedState !== "") {
+                undoStack.push(lastSavedState);
+                if (undoStack.length > 50) undoStack.shift();
+                redoStack = [];
+            }
+            lastSavedState = currentState;
+            isDirty = true;
+            updateHistoryUI();
+        }
+        
         const draft = {
             channels: channels,
             currentFileName: currentFileName,
@@ -40,6 +152,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function checkDraftOnLoad() {
+
         const draftStr = localStorage.getItem('channel_draft');
         if (draftStr) {
             try {
@@ -59,6 +172,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         isRestoringDraft = false;
                     } else {
                         localStorage.removeItem('channel_draft');
+                isDirty = false;
                     }
                 }
             } catch (e) {
@@ -644,6 +758,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 window.location.href = data.download_url;
                 saveBtn.textContent = 'Save and Download';
                 localStorage.removeItem('channel_draft');
+                isDirty = false;
             } else {
                 toast('Generation error: ' + data.error, 'danger');
                 saveBtn.textContent = 'Save and Download';
