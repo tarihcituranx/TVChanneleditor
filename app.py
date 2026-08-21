@@ -1,3 +1,4 @@
+from werkzeug.middleware.proxy_fix import ProxyFix
 import os
 import werkzeug.serving
 
@@ -21,7 +22,6 @@ import sony_core
 import hisense_core
 
 app = Flask(__name__)
-app.wsgi_app = ProxyFix(app.wsgi_app, x_for=1, x_proto=1, x_host=1, x_prefix=1)
 app.wsgi_app = ProxyFix(app.wsgi_app, x_for=1, x_proto=1, x_host=1, x_prefix=1)
 app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 2592000  # 30 days static cache for better Lighthouse scores
 
