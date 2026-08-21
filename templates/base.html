@@ -340,7 +340,11 @@
             if (navigator.share) {
                 try {
                     const blob = await qrCode.getRawData("png");
-                    const shareText = 'Mobil ve bilgisayardan Samsung, LG, Sony, Hisense TV kanal listelerinizi (SCM, TLL, SDB.XML) tarayıcı üzerinden ücretsiz düzenleyin! Geliştiriciler ve Yapay Zekalar için API desteği de mevcut. Kesin denemelisin:';
+                    const baseUrl = window.location.origin;
+                    const shareText = `Mobil ve bilgisayardan Samsung, LG, Sony, Hisense TV kanal listelerinizi (SCM, TLL, SDB.XML) tarayıcı üzerinden ücretsiz düzenleyin!
+🤖 Geliştiriciler & Yapay Zeka (API): ${baseUrl}/api/docs
+
+(Ticaret Bakanlığı yönergeleri gereği: #Reklam #İşbirliği)`;
                     if (blob) {
                         const file = new File([blob], "tvchanneleditor-qr.png", { type: "image/png" });
                         if (navigator.canShare && navigator.canShare({ files: [file] })) {
@@ -367,13 +371,26 @@
             
             // Fallback for Desktop
             document.getElementById('social-share-modal').style.display = 'flex';
-            const shareText = 'Mobil ve bilgisayardan Samsung, LG, Sony, Hisense TV kanal listelerinizi (SCM, TLL, SDB.XML) tarayıcı üzerinden ücretsiz düzenleyin! Geliştiriciler ve Yapay Zekalar için API desteği de mevcut. Kesin denemelisin:';
-            const shareTextLong = '📱💻 Mobil & PC uyumlu harika bir ücretsiz Smart TV kanal düzenleme aracı! Samsung, LG, Sony, Hisense destekliyor. Üstelik geliştiriciler ve yapay zeka araçları için API desteği bile var! 📺✨';
-            document.getElementById('share-wa').href = `https://wa.me/?text=${encodeURIComponent(shareText + ' ' + currentUrl)}`;
-            document.getElementById('share-x').href = `https://x.com/intent/post?text=${encodeURIComponent(shareTextLong + ' ' + currentUrl)}`;
-            document.getElementById('share-n').href = `https://nsosyal.com/share?text=${encodeURIComponent(shareTextLong + ' ' + currentUrl)}`;
-            document.getElementById('share-tg').href = `https://t.me/share/url?url=${encodeURIComponent(currentUrl)}&text=${encodeURIComponent(shareText)}`;
-            document.getElementById('share-bsky').href = `https://bsky.app/intent/compose?text=${encodeURIComponent(shareTextLong + ' ' + currentUrl)}`;
+            const baseUrl = window.location.origin;
+            const shareText = `Mobil ve bilgisayardan Samsung, LG, Sony, Hisense TV kanal listelerinizi (SCM, TLL, SDB.XML) tarayıcı üzerinden ücretsiz düzenleyin!
+
+🔗 Kullanıcılar İçin: ${baseUrl}/
+🤖 Geliştiriciler & Yapay Zeka (API): ${baseUrl}/api/docs
+
+(Ticaret Bakanlığı yönergeleri gereği: #Reklam #İşbirliği)`;
+            
+            const shareTextLong = `📱💻 Mobil & PC uyumlu harika bir ücretsiz Smart TV kanal düzenleme aracı! Samsung, LG, Sony, Hisense destekliyor.
+
+🔗 Hemen Düzenle: ${baseUrl}/
+🤖 Geliştirici / AI API: ${baseUrl}/api/docs
+
+#Reklam #İşbirliği #TVChannelEditor`;
+
+            document.getElementById('share-wa').href = `https://wa.me/?text=${encodeURIComponent(shareText)}`;
+            document.getElementById('share-x').href = `https://x.com/intent/post?text=${encodeURIComponent(shareTextLong)}`;
+            document.getElementById('share-n').href = `https://nsosyal.com/share?text=${encodeURIComponent(shareTextLong)}`;
+            document.getElementById('share-tg').href = `https://t.me/share/url?url=${encodeURIComponent(baseUrl)}&text=${encodeURIComponent(shareText)}`;
+            document.getElementById('share-bsky').href = `https://bsky.app/intent/compose?text=${encodeURIComponent(shareTextLong)}`;
             
             const qrContainer = document.getElementById('qr-code-container');
             if (qrContainer.innerHTML === '') {

@@ -303,7 +303,11 @@
             if (navigator.share) {
                 try {
                     const blob = await qrCode.getRawData("png");
-                    const shareText = 'Easily edit your Samsung, LG, Sony, and Hisense TV channel lists for free directly in your mobile or PC browser! It even features an API for developers and AI agents. You have to check this out:';
+                    const baseUrl = window.location.origin;
+                    const shareText = `Easily edit your Samsung, LG, Sony, and Hisense TV channel lists for free directly in your mobile or PC browser!
+🤖 API for Developers & AI: ${baseUrl}/api/docs
+
+#Ad #Sponsored`;
                     if (blob) {
                         const file = new File([blob], "tvchanneleditor-qr.png", { type: "image/png" });
                         if (navigator.canShare && navigator.canShare({ files: [file] })) {
@@ -330,13 +334,26 @@
             
             // Fallback for Desktop
             document.getElementById('social-share-modal').style.display = 'flex';
-            const shareText = 'Easily edit your Samsung, LG, Sony, and Hisense TV channel lists for free directly in your mobile or PC browser! It even features an API for developers and AI agents. You have to check this out:';
-            const shareTextLong = '📱💻 A fantastic free Smart TV channel editor for Mobile & PC! Supports Samsung, LG, Sony, and Hisense. It even features an API for developers and AI agents! 📺✨';
-            document.getElementById('share-wa').href = `https://wa.me/?text=${encodeURIComponent(shareText + ' ' + currentUrl)}`;
-            document.getElementById('share-x').href = `https://x.com/intent/post?text=${encodeURIComponent(shareTextLong + ' ' + currentUrl)}`;
-            document.getElementById('share-n').href = `https://nsosyal.com/share?text=${encodeURIComponent(shareTextLong + ' ' + currentUrl)}`;
-            document.getElementById('share-tg').href = `https://t.me/share/url?url=${encodeURIComponent(currentUrl)}&text=${encodeURIComponent(shareText)}`;
-            document.getElementById('share-bsky').href = `https://bsky.app/intent/compose?text=${encodeURIComponent(shareTextLong + ' ' + currentUrl)}`;
+            const baseUrl = window.location.origin;
+            const shareText = `Easily edit your Samsung, LG, Sony, and Hisense TV channel lists for free directly in your mobile or PC browser!
+
+🔗 For Users: ${baseUrl}/en
+🤖 API for Developers & AI: ${baseUrl}/api/docs
+
+#Ad #Sponsored`;
+            
+            const shareTextLong = `📱💻 A fantastic free Smart TV channel editor for Mobile & PC! Supports Samsung, LG, Sony, and Hisense.
+
+🔗 Try it now: ${baseUrl}/en
+🤖 Developer / AI API: ${baseUrl}/api/docs
+
+#Ad #Sponsored #TVChannelEditor`;
+
+            document.getElementById('share-wa').href = `https://wa.me/?text=${encodeURIComponent(shareText)}`;
+            document.getElementById('share-x').href = `https://x.com/intent/post?text=${encodeURIComponent(shareTextLong)}`;
+            document.getElementById('share-n').href = `https://nsosyal.com/share?text=${encodeURIComponent(shareTextLong)}`;
+            document.getElementById('share-tg').href = `https://t.me/share/url?url=${encodeURIComponent(baseUrl + '/en')}&text=${encodeURIComponent(shareText)}`;
+            document.getElementById('share-bsky').href = `https://bsky.app/intent/compose?text=${encodeURIComponent(shareTextLong)}`;
             
             const qrContainer = document.getElementById('qr-code-container');
             if (qrContainer.innerHTML === '') {
