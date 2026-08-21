@@ -113,11 +113,8 @@ Bu proje yalnızca bir web sitesi değil, aynı zamanda yapay zeka ajanlarının
 > 🤖 **AI Ajanları İçin (ChatGPT, Claude, vb.):** Sistemin makine tarafından okunabilir Saf Metin (Plain-Text) OpenAPI şemasını yapay zekaya şu link üzerinden verebilirsiniz: [tvchanneleditor.onrender.com/api/openapi.txt](https://tvchanneleditor.onrender.com/api/openapi.txt)
 
 
-Bunun çalışması için sunucunun (veya bilgisayarınızın) çevre değişkenlerine (Environment Variables) yetkili şifreleri eklemeniz gerekir:
-```bash
-```
 
-### 4. Sürüm ve Deploy Doğrulaması (Version Check)
+### Sürüm ve Deploy Doğrulaması (Version Check)
 Render sunucusunun güncel Github Commit'ini yayına alıp almadığını veya önbellekte kalıp kalmadığını saniyesinde test etmek için:
 ```bash
 curl -sS https://tvchanneleditor.onrender.com/api/version

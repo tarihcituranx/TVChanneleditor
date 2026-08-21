@@ -113,11 +113,8 @@ python3 app.py
 > 🤖 **Для AI-агентов (ChatGPT, Claude и т. д.):** Вы можете предоставить системе машиночитаемую схему OpenAPI в виде простого текста (Plain-Text) для искусственного интеллекта по следующей ссылке: [tvchanneleditor.onrender.com/api/openapi.txt](https://tvchanneleditor.onrender.com/api/openapi.txt)
 
 
-Чтобы это работало, вам необходимо добавить авторизационные ключи в переменные среды (Environment Variables) сервера (или вашего компьютера):
-```bash
-```
 
-### 4. Проверка версии и развертывания (Version Check)
+### Проверка версии и развертывания (Version Check)
 Чтобы за считанные секунды проверить, был ли опубликован последний коммит сервера рендеринга на GitHub или он остался в кэше:
 ```bash
 curl -sS https://tvchanneleditor.onrender.com/api/version

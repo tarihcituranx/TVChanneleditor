@@ -113,11 +113,8 @@ Dieses Projekt ist nicht nur eine Website, sondern wurde auch als vollwertige **
 > 🤖 **Für KI-Agenten (ChatGPT, Claude usw.):** Sie können das maschinenlesbare OpenAPI-Schema im Klartext (Plain-Text) über diesen Link an die KI übergeben: [tvchanneleditor.onrender.com/api/openapi.txt](https://tvchanneleditor.onrender.com/api/openapi.txt)
 
 
-Damit dies funktioniert, müssen Sie die berechtigten Schlüssel zu den Umgebungsvariablen (Environment Variables) des Servers (oder Ihres Computers) hinzufügen:
-```bash
-```
 
-### 4. Versions- und Deployment-Überprüfung (Version Check)
+### Versions- und Deployment-Überprüfung (Version Check)
 Um in Sekundenschnelle zu testen, ob der Render-Server den aktuellen GitHub-Commit veröffentlicht hat oder ob er noch im Cache verbleibt:
 ```bash
 curl -sS https://tvchanneleditor.onrender.com/api/version

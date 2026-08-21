@@ -113,11 +113,8 @@ This project is not just a website; it’s also designed as a full-featured **RE
 > 🤖 **For AI Agents (ChatGPT, Claude, etc.):** You can provide the system’s machine-readable Plain-Text OpenAPI schema to the AI via this link: [tvchanneleditor.onrender.com/api/openapi.txt](https://tvchanneleditor.onrender.com/api/openapi.txt)
 
 
-For this to work, you must add the authorized API keys to your server’s (or computer’s) environment variables:
-```bash
-```
 
-### 4. Version and Deployment Verification (Version Check)
+### Version and Deployment Verification (Version Check)
 To instantly test whether the render server has deployed the latest GitHub commit or is still running from the cache:
 ```bash
 curl -sS https://tvchanneleditor.onrender.com/api/version

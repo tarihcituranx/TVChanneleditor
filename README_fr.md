@@ -113,11 +113,8 @@ Ce projet n’est pas seulement un site web, mais aussi une **API REST** à part
 > 🤖 **Pour les agents IA (ChatGPT, Claude, etc.) :** Vous pouvez fournir à l’IA le schéma OpenAPI au format texte brut (plain-text) lisible par machine via ce lien : [tvchanneleditor.onrender.com/api/openapi.txt](https://tvchanneleditor.onrender.com/api/openapi.txt)
 
 
-Pour que cela fonctionne, vous devez ajouter les clés d’accès autorisées aux variables d’environnement du serveur (ou de votre ordinateur) :
-```bash
-```
 
-### 4. Vérification de la version et du déploiement (Version Check)
+### Vérification de la version et du déploiement (Version Check)
 Pour vérifier en une seconde si le dernier commit GitHub du serveur de rendu a bien été mis en production ou s’il est encore en cache :
 ```bash
 curl -sS https://tvchanneleditor.onrender.com/api/version
