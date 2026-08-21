@@ -1,6 +1,6 @@
 {% extends "base_ar.html" %}
 
-{% block title %}دليل المستخدم - محرر القنوات التلفزيونية{% endblock %}
+{% block title %}User Guide - TV Channel Editor{% endblock %}
 
 {% block head %}
 <style>
@@ -111,107 +111,102 @@
 
 {% block content %}
 <div class="content-container">
-    <h2 class="section-title">دليل المستخدم</h2>
+    <h2 class="section-title">User Guide</h2>
 
     <div class="brand-tabs" role="tablist" aria-label="TV Brands">
-        <button class="brand-tab active" onclick="showGuide(\'samsung\')" role="tab" aria-selected="true" aria-controls="guide-samsung" id="tab-samsung">سامسونج</button>
-        <button class="brand-tab" onclick="showGuide(\'lg\')" role="tab" aria-selected="false" aria-controls="guide-lg" id="tab-lg">إل جي</button>
-        <button class="brand-tab" onclick="showGuide(\'sony\')" role="tab" aria-selected="false" aria-controls="guide-sony" id="tab-sony">سوني برافيا</button>
-        <button class="brand-tab" onclick="showGuide(\'hisense\')" role="tab" aria-selected="false" aria-controls="guide-hisense" id="tab-hisense">هيسنس</button>
+        <button class="brand-tab active" onclick="showGuide(\'samsung\')" role="tab" aria-selected="true" aria-controls="guide-samsung" id="tab-samsung">Samsung</button>
+        <button class="brand-tab" onclick="showGuide(\'lg\')" role="tab" aria-selected="false" aria-controls="guide-lg" id="tab-lg">LG</button>
+        <button class="brand-tab" onclick="showGuide(\'sony\')" role="tab" aria-selected="false" aria-controls="guide-sony" id="tab-sony">Sony BRAVIA</button>
+        <button class="brand-tab" onclick="showGuide(\'hisense\')" role="tab" aria-selected="false" aria-controls="guide-hisense" id="tab-hisense">Hisense</button>
     </div>
 
     <!-- SAMSUNG -->
     <div class="brand-guide active" id="guide-samsung" role="tabpanel" aria-labelledby="tab-samsung">
         <div class="step-box">
-            <div class="step-title"><span class="step-num">1</span> نقل قائمة القنوات إلى محرك أقراص USB</div>
+            <div class="step-title"><span class="step-num">1</span> Transfer the Channel List to a USB Drive</div>
             <div class="step-desc">
-                باستخدام جهاز التحكم عن بُعد الخاص بالتلفزيون، اتبع الخطوات التالية: <strong>القائمة → البث → إعدادات القنوات → نقل قائمة القنوات</strong>.
-                أدخل رقم التعريف الشخصي (PIN) (عادةً <code>0000</code>
-                ) واختر خيار "<strong>نقل إلى USB"</strong>
-                .<br><br>
+                Using the TV remote, follow these steps: <strong>Menu → Broadcast → Channel Settings → Transfer Channel List</strong>.
+                Enter your PIN (usually <code>0000</code>
+                ) and select the "<strong>Transfer to USB"</strong>
+                option.<br><br>
                 
-                <strong>الطرز القديمة (E/F/H):</strong>
+                <strong>Older models (E/F/H):</strong>
                 <code>.scm</code>
-                يتم إنشاء ملف.<br>
+                A file is created.<br>
                 
-                <strong>الطرازات الجديدة (J/K/M/Q/R/T - Tizen):</strong>
-                <code>.zip</code> يتم إنشاء ملف.
+                <strong>New model (J/K/M/Q/R/T - Tizen):</strong>
+                <code>.zip</code> a file is created.
             </div>
         </div>
         <div class="step-box">
-            <div class="step-title"><span class="step-num">2</span> تحميل الملف إلى الموقع الإلكتروني</div>
+            <div class="step-title"><span class="step-num">2</span> Upload the File to the Website</div>
             <div class="step-desc">
-                قم بتوصيل محرك أقراص USB بجهاز الكمبيوتر الخاص بك. اسحب الملف إلى منطقة التحميل على الصفحة الرئيسية <code>.scm</code> أو <code>.zip</code> اسحب الملف وأفلته في منطقة التحميل على الصفحة الرئيسية، أو انقر على زر "تحديد ملف".
+                Plug the USB drive into your computer. Drag the file to the upload area on the homepage <code>.scm</code> or <code>.zip</code> drag and drop the file into the upload area on the homepage, or click the "Select File" button.
             </div>
         </div>
         <div class="step-box">
-            <div class="step-title"><span class="step-num">3.</span> تنظيم القنوات</div>
+            <div class="step-title"><span class="step-num">3.</span> Organize Channels</div>
             <div class="step-desc">
-                أعد ترتيب القنوات باستخدام <strong>السحب والإفلات</strong>. 🪄 قم بتطبيق القوالب الجاهزة باستخدام <strong>Magic Wand</strong> أو <strong>🛠️</strong> قم بإنشاء قوالبك الخاصة باستخدام <strong>Template Creator</strong>. يمكنك تغيير علامات القفل 🔒 والإضافة إلى المفضلة في كل صف من صفوف القنوات.
+                Reorder channels using <strong>drag-and-drop</strong>. <strong>🪄</strong> Apply ready-made templates with <strong>Magic Wand</strong> or <strong>🛠️</strong> create your own with <strong>the Template Creator</strong>. You can change the 🔒 lock and favorite flags on each channel row.
             </div>
         </div>
         <div class="step-box">
-            <div class="step-title"><span class="step-num">4.</span> الحفظ والتحميل على التلفزيون</div>
+            <div class="step-title"><span class="step-num">4</span> Save and Upload to TV</div>
             <div class="step-desc">
-                انقر على زر
-                <strong>«حفظ وتنزيل»</strong>
-                
-                . انسخ الملف الذي تم تنزيله إلى محرك أقراص USB (استخدم <em>نفس اسم</em>
-                
-                الملف الأصلي!). قم بتحميله عبر قائمة التلفزيون باستخدام <strong>خيار</strong>
-                <strong>«تحميل من USB</strong>
-                ».
+                Click the
+                <strong>Save and Download</strong>
+                button. Copy the downloaded file to a USB drive (use <em>the same name</em>
+                as the original file!). Load it via the TV menu using <strong>“Load from USB</strong>
+                .”
             </div>
         </div>
-        <div class="tip-box">💡 <strong>نصيحة:</strong> لا يتعرف التلفزيون إلا على ملفات SCM التي تحمل الاسم نفسه بالضبط. عند نسخ الملف الجديد إلى محرك USB، قم إما بالكتابة فوق الملف القديم أو بعمل نسخة احتياطية منه <code>.bak</code> مع امتداده.</div>
-        <div class="warn-box">⚠️ <strong>تحذير:</strong> لا تؤدي عملية تحرير القنوات إلى تغيير الترددات أو بيانات PID المشفرة للقنوات الموجودة؛ بل تقتصر على تحديث الترتيب والعلامات.</div>
+        <div class="tip-box">💡 <strong>Tip:</strong> The TV only recognizes SCM files with the exact same name. When copying the new file to the USB drive, either overwrite the old one or back up the old one <code>.bak</code> with its extension.</div>
+        <div class="warn-box">⚠️ <strong>Warning:</strong> The channel editing process does not change the frequencies or encrypted PID data of existing channels; it only updates the order and flags.</div>
     </div>
 
     <!-- LG -->
     <div class="brand-guide" id="guide-lg" role="tabpanel" aria-labelledby="tab-lg">
         <div class="step-box">
-            <div class="step-title"><span class="step-num">1</span> انقل قائمة القنوات إلى USB</div>
+            <div class="step-title"><span class="step-num">1</span> Transfer the Channel List to USB</div>
             <div class="step-desc">
-                على تلفزيون LG الخاص بك، انتقل إلى <strong>الإعدادات → القنوات → إدارة القنوات → نسخ القنوات إلى USB</strong>.
-                على محرك USB <code>GlobalClone00001.TLL</code> أو <code>LG_DTV_*.tll</code> سيتم إنشاء ملف مثل هذا.
+                On your LG TV, go to <strong>Settings → Channels → Channel Management → Copy Channels to USB</strong>.
+                On the USB drive <code>GlobalClone00001.TLL</code> or <code>LG_DTV_*.tll</code> a file like this will be created.
             </div>
         </div>
         <div class="step-box">
-            <div class="step-title"><span class="step-num">2</span>. تحميل ملف .TLL</div>
+            <div class="step-title"><span class="step-num">2</span>. Load the .TLL File</div>
             <div class="step-desc">
-                قم بتحميل ملف بصيغة <code>.tll</code> . سيتعرف النظام تلقائيًا على تنسيق XML الخاص بـ GlobalClone.
+                Upload a file with the <code>.tll</code> . The system will automatically recognize the GlobalClone XML format.
             </div>
         </div>
         <div class="step-box">
-            <div class="step-title"><span class="step-num">3.</span> التعديل والتنزيل</div>
+            <div class="step-title"><span class="step-num">3.</span> Edit and Download</div>
             <div class="step-desc">
-                قم بفرز القنوات باستخدام السحب والإفلات. انقر على زر "<strong>حفظ وتنزيل"</strong>
-                لتنزيل ملف TLL المحدث ونقله إلى محرك أقراص USB. أكمل العملية عن طريق تحديد "<strong>تحميل القنوات من USB"</strong>
-                من قائمة التلفزيون.
+                Sort the channels using drag-and-drop. Click the "<strong>Save and Download"</strong> button to download the updated TLL file and transfer it to a USB drive. Complete the process by selecting "<strong>Load Channels from USB"</strong> from the TV menu.
             </div>
         </div>
-        <div class="tip-box">💡 في أجهزة LG webOS 5، قد تُطبق أحيانًا قيود على استيراد قائمة القنوات. إذا ظهرت شاشة سوداء، فحاول إعادة تشغيل التلفزيون.</div>
+        <div class="tip-box">💡 On LG webOS 5 devices, channel list import restrictions may sometimes apply. If you see a black screen, try restarting the TV.</div>
     </div>
 
     <!-- SONY -->
     <div class="brand-guide" id="guide-sony" role="tabpanel" aria-labelledby="tab-sony">
         <div class="step-box">
-            <div class="step-title"><span class="step-num">1.</span> الحصول على ملف sdb.xml</div>
+            <div class="step-title"><span class="step-num">1.</span> Get the sdb.xml File</div>
             <div class="step-desc">
-                على تلفزيون Sony BRAVIA، اتبع الخطوات التالية: <strong>الإعدادات → إعداد القنوات → استيراد قائمة القنوات → استيراد إلى USB</strong>.
-                على محرك أقراص USB <code>sdb.xml</code> أو في المجلدات الفرعية <code>*.xml</code> سيتم إنشاء الملفات.
+                On a Sony BRAVIA, follow these steps: <strong>Settings → Channel Setup → Channel List Import → Import to USB</strong>.
+                On the USB drive <code>sdb.xml</code> or in subfolders <code>*.xml</code> files will be created.
             </div>
         </div>
         <div class="step-box">
-            <div class="step-title"><span class="step-num">2.</span> قم بتحميل ملف sdb.xml</div>
+            <div class="step-title"><span class="step-num">2.</span> Load the sdb.xml File</div>
             <div class="step-desc">
-                انتقل إلى الشاشة الرئيسية <code>sdb.xml</code> . يتعرف النظام تلقائيًا على الملف بتنسيق سوني ويعرض قائمة القنوات.
+                Go to the home screen <code>sdb.xml</code> . The system automatically recognizes the file in the Sony format and lists the channels.
             </div>
         </div>
         <div class="step-box">
-            <div class="step-title"><span class="step-num">3.</span> قم بالتحرير والتحميل على التلفزيون</div>
+            <div class="step-title"><span class="step-num">3</span> Edit and Upload to TV</div>
             <div class="step-desc">
-                قم بتحرير القنوات، ثم انقر على <strong>«حفظ» و«تنزيل»</strong> <code>sdb.xml</code> لتنزيل الملف. انسخه إلى محرك أقراص USB وقم بتحميله على التلفزيون باستخدام خيار <strong>«استيراد من USB</strong>».
+                Edit the channels, then click <strong>Save and Download</strong> to <code>sdb.xml</code> download the file. Copy it to a USB drive and load it onto the TV using "<strong>Import from USB</strong>."
             </div>
         </div>
     </div>
@@ -219,26 +214,25 @@
     <!-- HISENSE -->
     <div class="brand-guide" id="guide-hisense" role="tabpanel" aria-labelledby="tab-hisense">
         <div class="step-box">
-            <div class="step-title"><span class="step-num">1.</span> الحصول على ملف servicelist.db</div>
+            <div class="step-title"><span class="step-num">1.</span> Get the servicelist.db File</div>
             <div class="step-desc">
-                على تلفزيون Hisense الخاص بك، انتقل إلى <strong>«القائمة» → «القنوات» → «تصدير قائمة القنوات»</strong> لنقل ملف قاعدة البيانات إلى محرك أقراص USB.
-                عادةً ما يكون اسم الملف <code>servicelist.db</code> (2017+) أو <code>channel.db</code> (2015–2016).
+                On your Hisense TV, go to <strong>Menu → Channel → Export Channel List</strong> to transfer the database file to a USB drive.
+                The file name is usually <code>servicelist.db</code> (2017+) or <code>channel.db</code> (2015–2016).
             </div>
         </div>
         <div class="step-box">
-            <div class="step-title"><span class="step-num">2.</span> تثبيت قاعدة البيانات</div>
+            <div class="step-title"><span class="step-num">2.</span> Install the Database</div>
             <div class="step-desc">
-                اسحب ملف <code>servicelist.db</code> . يقوم النظام بقراءة قاعدة بيانات SQLite وعرض قائمة بجميع القنوات.
+                Drag the <code>servicelist.db</code> . The system reads the SQLite database and lists all channels.
             </div>
         </div>
         <div class="step-box">
-            <div class="step-title"><span class="step-num">3.</span> التعديل والتحميل</div>
+            <div class="step-title"><span class="step-num">3</span> Edit and Upload</div>
             <div class="step-desc">
-                بعد إجراء التغييرات المطلوبة، انقر على زر "<strong>حفظ وتنزيل"</strong>
-                لتنزيل ملف قاعدة البيانات المحدث. انسخه إلى محرك أقراص USB واستخدم قائمة الاستيراد في التلفزيون لاستيراده.
+                After making the desired changes, click the "<strong>Save and Download"</strong> button to download the updated database file. Copy it to a USB drive and use the TV’s import menu to import it.
             </div>
         </div>
-        <div class="warn-box">⚠️ تغييرات أسماء القنوات محدودة في طرازات Hisense؛ وفي بعض الطرازات، لا يمكن تطبيق سوى تغييرات الترتيب والقفل.</div>
+        <div class="warn-box">⚠️ Channel name changes are limited on Hisense models; on some models, only sorting and lock changes can be applied.</div>
     </div>
 </div>
 

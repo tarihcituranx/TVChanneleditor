@@ -1,6 +1,6 @@
 {% extends "base_ar.html" %}
 
-{% block title %}العلامات التجارية والقنوات الفضائية المدعومة - محرر القنوات التلفزيونية{% endblock %}
+{% block title %}Supported Brands and Satellites - TV Channel Editor{% endblock %}
 
 {% block head %}
 <style>
@@ -108,28 +108,29 @@
 
 {% block content %}
 <div class="content-container">
-    <h2 class="section-title">العلامات التجارية المدعومة للتلفزيونات</h2>
+    <h2 class="section-title">Supported TV Brands</h2>
     <p style="color:var(--text-secondary); font-size:14px; margin-bottom:24px; margin-top:-10px;">
-        <strong style="color:var(--text-primary)">تتم معالجة</strong> جميع العمليات <strong style="color:var(--text-primary)">بأمان على ذاكرة الوصول العشوائي (RAM) المؤقتة للخادم</strong>؛ ويتم حذفها تلقائيًا بعد المعالجة.
+        All operations <strong style="color:var(--text-primary)">are processed safely on temporary server RAM</strong>; auto-deleted after processing.
     </p>
     <div class="grid-container">
         <div class="card">
             <img src="/static/img/samsung_logo.webp" alt="Samsung" class="card-img invert-in-light">
-            <span class="badge badge-green">✅ دعم كامل</span>
-            <div class="card-title">تلفزيونات سامسونج الذكية</div>
+            <span class="badge badge-green">✅ Full Support</span>
+            <div class="card-title">Samsung Smart TV</div>
             <div class="card-desc">
-                يتم دعم جميع الأجهزة من الجيل الأقدم (E، F، H) وسلسلة الجيل الأحدث Tizen (J، K، M، Q، R، T). وظائف الفرز وإعادة التسمية متوافقة تمامًا.
+                All devices from the older generation (E, F, H) and the newer Tizen generation (J, K, M, Q, R, T) series are supported. Sorting and renaming are fully compatible.
             </div>
             <div class="formats">
-                <span class="format-tag">.scm.zip (SQLite)</span>
+                <span class="format-tag">.scm</span>
+                <span class="format-tag">.zip (SQLite)</span>
             </div>
         </div>
         <div class="card">
             <img src="/static/img/lg_logo.svg" alt="LG" class="card-img">
-            <span class="badge badge-green">✅ دعم جزئي</span>
-            <div class="card-title">تلفزيون LG الذكي</div>
+            <span class="badge badge-green">✅ Partial Support</span>
+            <div class="card-title">LG Smart TV</div>
             <div class="card-desc">
-                يدعم نظامنا ملفات <b>.tll</b> (GlobalClone) <b>المستندة إلى XML</b> من الجيل الجديد لـ LG. لا يتم دعم ملفات <b>.tll الثنائية</b> القديمة؛ بالنسبة لتلك الملفات، يرجى استخدام تطبيق ChanSort المكتبي.
+                Our system supports LG's new generation <b>XML-based .tll</b> (GlobalClone) files. Older <b>binary .tll</b> files are not supported; for those files, please use the ChanSort desktop application.
             </div>
             <div class="formats">
                 <span class="format-tag">.tll (XML)</span>
@@ -137,10 +138,10 @@
         </div>
         <div class="card">
             <img src="/static/img/sony_logo.svg" alt="Sony" class="card-img invert-in-light">
-            <span class="badge badge-green">✅ دعم كامل</span>
+            <span class="badge badge-green">✅ Full Support</span>
             <div class="card-title">Sony BRAVIA</div>
             <div class="card-desc">
-                تنسيق قائمة القنوات المستند إلى XML الخاص بـ سوني برافيا قابل للقراءة والكتابة. يشمل الطرز الجديدة لعام 2024 وما بعده. يدعم اسم القناة وإعادة ترتيبها.
+                Sony BRAVIA’s XML-based channel list format is readable and writable. Includes new 2024+ models. Channel name and reordering are supported.
             </div>
             <div class="formats">
                 <span class="format-tag">sdb.xml</span>
@@ -148,10 +149,10 @@
         </div>
         <div class="card">
             <img src="/static/img/hisense_logo.svg" alt="Hisense" class="card-img">
-            <span class="badge badge-green">✅ دعم كامل</span>
-            <div class="card-title">تلفزيون Hisense الذكي</div>
+            <span class="badge badge-green">✅ Full Support</span>
+            <div class="card-title">Hisense Smart TV</div>
             <div class="card-desc">
-                يتم دعم تنسيق قائمة الخدمات المستند إلى SQLite للجيلين 2017 و2021. يتم دعم فرز القنوات وإعادة تسميتها وإخفائها.
+                The SQLite-based service list format for the 2017 and 2021 generations is supported. Channel sorting, renaming, and hiding are supported.
             </div>
             <div class="formats">
                 <span class="format-tag">servicelist.db</span>
@@ -159,10 +160,10 @@
         </div>
         <div class="card">
             <img src="/static/img/panasonic_logo.svg" alt="Panasonic" class="card-img">
-            <span class="badge badge-blue">🔄 بيتا</span>
-            <div class="card-title">باناسونيك VIERA</div>
+            <span class="badge badge-blue">🔄 Beta</span>
+            <div class="card-title">Panasonic VIERA</div>
             <div class="card-desc">
-                دعم تنسيق SVL قيد التطوير حاليًا. قد تنجح عملية القراءة في بعض عائلات الطرازات.
+                SVL format support is currently under development. Reading may be successful on some model families.
             </div>
             <div class="formats">
                 <span class="format-tag">svl.db svl.bin</span>
@@ -170,10 +171,10 @@
         </div>
         <div class="card">
             <div style="font-size:40px; margin-bottom:12px;">🔜</div>
-            <span class="badge badge-gray">قريبًا</span>
-            <div class="card-title">فيليبس، توشيبا...</div>
+            <span class="badge badge-gray">Coming Soon</span>
+            <div class="card-title">Philips, Toshiba...</div>
             <div class="card-desc">
-                يجري حاليًا تطوير دعم فيليبس، وتوشيبا، وغرونديغ، والعلامات التجارية الأخرى بشكل نشط.
+                Support for Philips, Toshiba, Grundig, and other brands is currently under active development.
             </div>
             <div class="formats">
                 <span class="format-tag">*.db*.xml</span>
@@ -181,30 +182,30 @@
         </div>
     </div>
 
-    <h2 class="section-title">🛰️ الأقمار الصناعية المدعومة</h2>
+    <h2 class="section-title">🛰️ Supported Satellites</h2>
     <p style="color:var(--text-secondary); font-size:14px; margin-bottom:24px; margin-top:-10px;">
-        تتم معالجة جميع بيانات الترددات والمستجيبات بنفس الطريقة، بغض النظر عن تنسيق القمر الصناعي.
+        All frequency and transponder data is processed in the same way, regardless of the satellite format.
     </p>
     <div class="grid-container">
         <div class="card">
             <img src="/static/img/turksat_logo.png" alt="Türksat" class="card-img invert-in-light">
             <div class="card-title">Türksat 4A / 5B</div>
             <div class="card-desc">
-                متوافق تمامًا مع القنوات التركية الوطنية وحزم الأخبار والرياضة. تم تحسين قوالب Magic Wand لتتوافق مع ترددات Türksat. تم تمكين <b>التحقق التلقائي من التردد</b> لهذا القمر الصناعي.
+                Fully compatible with national Turkish channels, news, and sports packages. Magic Wand templates are optimized for Türksat frequencies. <b>Automatic frequency verification</b> is enabled for this satellite.
             </div>
         </div>
         <div class="card">
             <img src="/static/img/hotbird_logo.svg" alt="Hotbird" class="card-img">
             <div class="card-title">Hotbird 13E</div>
             <div class="card-desc">
-                يتم دعم البث الأوروبي والدولي (Eutelsat). تتم معالجة جميع بيانات أجهزة الإرسال والاستقبال الخاصة بالأقمار الصناعية بنجاح.
+                European and international broadcasts (Eutelsat) are supported. All satellite transponder data is processed successfully.
             </div>
         </div>
         <div class="card">
             <img src="/static/img/astra_logo.svg" alt="Astra" class="card-img">
             <div class="card-title">Astra 19.2E</div>
             <div class="card-desc">
-                يتم قراءة وكتابة ترددات SES Astra، التي تستضيف القنوات الألمانية والأوروبية، بتوافق تام.
+                SES Astra frequencies, which host German and European channels, are read and written with full compatibility.
             </div>
         </div>
     </div>

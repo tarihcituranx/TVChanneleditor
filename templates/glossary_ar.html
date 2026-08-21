@@ -1,127 +1,127 @@
 {% extends "base_ar.html" %}
 
-{% block title %}مسرد المصطلحات - محرر القنوات التلفزيونية{% endblock %}
+{% block title %}Glossary - TV Channel Editor{% endblock %}
 
 {% block content %}
 <div class="card border-0 shadow-sm" style="max-width: 800px; margin: 0 auto; text-align: left; padding: 30px;">
-    <h1 style="color: var(--text-primary); margin-bottom: 20px;">مسرد مصطلحات الأقمار الصناعية والتلفزيون</h1>
+    <h1 style="color: var(--text-primary); margin-bottom: 20px;">Satellite and TV Glossary</h1>
     <p style="color: var(--text-secondary); line-height: 1.6; margin-bottom: 30px;">
-        يمكنك العثور أدناه على معاني المصطلحات الفنية والاختصارات (باللغتين الإنجليزية والتركية) التي تراها في إعدادات القنوات التلفزيونية أو على صفحة التفاصيل الخاصة بنا.
+        You can find the meanings of the technical terms and abbreviations (in English and Turkish) that you see in TV channel settings or on our details page below.
     </p>
 
     <div class="glossary-list" style="display: flex; flex-direction: column; gap: 20px;">
         <div class="glossary-item" style="background: var(--bg-subtle); padding: 15px; border-radius: 8px; border-left: 4px solid var(--accent);">
-            <h3 style="margin-top: 0; margin-bottom: 10px; color: var(--accent);">SID (معرف الخدمة)</h3>
+            <h3 style="margin-top: 0; margin-bottom: 10px; color: var(--accent);">SID (Service ID)</h3>
             <p style="margin: 0; color: var(--text-secondary); line-height: 1.5;">
-                <strong>بالتركية:</strong>
-                معرف الخدمة / رقم<br>
-                القناة
-                <strong>الوصف:</strong>
-                رقم تعريف فريد يُخصص لكل قناة تبث ضمن تردد (حزمة). يميز تلفازك بين القنوات بناءً على رقم SID هذا، وليس حسب أسمائها.
-            </p>
-        </div>
-
-        <div class="glossary-item" style="background: var(--bg-subtle); padding: 15px; border-radius: 8px; border-left: 4px solid var(--accent);">
-            <h3 style="margin-top: 0; margin-bottom: 10px; color: var(--accent);">TSID (معرف دفق النقل)</h3>
-            <p style="margin: 0; color: var(--text-secondary); line-height: 1.5;">
-                <strong>التركية:</strong>
-                معرف<br>
-                دفق النقل
-                <strong>الوصف:</strong>
-                رمز فريد يُخصص لكل حزمة من مئات حزم التردد (الموجات الحاملة) على نفس القمر الصناعي. يعمل هذا الرمز بالاقتران مع معرف الشبكة الأصلي (ONID).
-            </p>
-        </div>
-
-        <div class="glossary-item" style="background: var(--bg-subtle); padding: 15px; border-radius: 8px; border-left: 4px solid var(--accent);">
-            <h3 style="margin-top: 0; margin-bottom: 10px; color: var(--accent);">نظام التعديل (Modulation)</h3>
-            <p style="margin: 0; color: var(--text-secondary); line-height: 1.5;">
-                <strong>الترجمة:</strong>
-                معيار البث (DVB-S / DVB-S2)<br>
+                <strong>Turkish:</strong>
+                Service ID / Channel Number<br>
                 
-                <strong>الوصف:</strong>
-                يحدد التنسيق الذي تُبث به القناة من الفضاء. بينما تستخدم البثات الأقدم (الدقة القياسية) عمومًا معيار DVB-S، تستخدم البثات عالية الدقة (HD / 4K) معيار DVB-S2، الذي يوفر ضغطًا أفضل للبيانات.
+                <strong>Description:</strong>
+                A unique identification number assigned to each channel broadcasting within a frequency (packet). Your TV distinguishes between channels based on this SID number, not by their names.
             </p>
         </div>
 
         <div class="glossary-item" style="background: var(--bg-subtle); padding: 15px; border-radius: 8px; border-left: 4px solid var(--accent);">
-            <h3 style="margin-top: 0; margin-bottom: 10px; color: var(--accent);">معامل التناقص</h3>
+            <h3 style="margin-top: 0; margin-bottom: 10px; color: var(--accent);">TSID (Transport Stream ID)</h3>
             <p style="margin: 0; color: var(--text-secondary); line-height: 1.5;">
-                <strong>التركية:</strong>
-                حدة<br>
-                المرشح
-                <strong>الوصف:</strong>
-                يشير إلى مدى حدة تصفية الإشارة لمنعها من التسرب إلى الترددات المجاورة أثناء انتشارها. (تُستخدم قيم مثل 0.20، 0.25، 0.35.) وعادةً ما يتم ضبط هذا الإعداد تلقائيًا للمستخدمين.
-            </p>
-        </div>
-
-        <div class="glossary-item" style="background: var(--bg-subtle); padding: 15px; border-radius: 8px; border-left: 4px solid var(--accent);">
-            <h3 style="margin-top: 0; margin-bottom: 10px; color: var(--accent);">NID (معرف الشبكة)</h3>
-            <p style="margin: 0; color: var(--text-secondary); line-height: 1.5;">
-                <strong>التركية:</strong>
-                معرّف<br>
-                الشبكة
-                <strong>الوصف:</strong>
-                هو معرّف شبكة الأقمار الصناعية التي تتصل بها. ويعمل بالاقتران مع ONID (معرّف الشبكة الأصلي). بالنسبة لأقمار Türksat الصناعية، تكون هذه القيمة عادةً 1070.
-            </p>
-        </div>
-
-        <div class="glossary-item" style="background: var(--bg-subtle); padding: 15px; border-radius: 8px; border-left: 4px solid var(--accent);">
-            <h3 style="margin-top: 0; margin-bottom: 10px; color: var(--accent);">ONID (معرف الشبكة الأصلي)</h3>
-            <p style="margin: 0; color: var(--text-secondary); line-height: 1.5;">
-                <strong>التركية:</strong>
-                معرف<br>
-                الشبكة الأصلي
-                <strong>الوصف:</strong>
-                هذا هو الرمز الفريد المسجل عالميًا لشبكة المذيع (مثل Türksat، Astra، Hotbird). وهذا يسمح لجهازك بتحديد شبكة الأقمار الصناعية التي يتصل بها.
-            </p>
-        </div>
-
-        <div class="glossary-item" style="background: var(--bg-subtle); padding: 15px; border-radius: 8px; border-left: 4px solid var(--accent);">
-            <h3 style="margin-top: 0; margin-bottom: 10px; color: var(--accent);">معرف حزمة الفيديو / معرف حزمة الصوت</h3>
-            <p style="margin: 0; color: var(--text-secondary); line-height: 1.5;">
-                <strong>باللغة التركية:</strong>
-                معرّف حزمة الفيديو والصوت (معرّف الحزمة)<br>
+                <strong>Turkish:</strong>
+                Transport Stream ID<br>
                 
-                <strong>الوصف:</strong>
-                عندما تصل بيانات القناة من الفضاء، تكون على شكل حزم منفصلة. يحدد معرّف حزمة الفيديو (Video PID) حزم الفيديو فقط، بينما يحدد معرّف حزمة الصوت (Audio PID) حزم الصوت فقط. يقوم التلفزيون باستخراج هذه الحزم ودمجها.
+                <strong>Description:</strong>
+                A unique code assigned to each of the hundreds of frequency packets (carriers) on the same satellite. It works in conjunction with the Original Network ID (ONID).
             </p>
         </div>
 
         <div class="glossary-item" style="background: var(--bg-subtle); padding: 15px; border-radius: 8px; border-left: 4px solid var(--accent);">
-            <h3 style="margin-top: 0; margin-bottom: 10px; color: var(--accent);">معرف PCR (مرجع ساعة البرنامج)</h3>
+            <h3 style="margin-top: 0; margin-bottom: 10px; color: var(--accent);">Modulation System (Modulation)</h3>
             <p style="margin: 0; color: var(--text-secondary); line-height: 1.5;">
-                <strong>الترجمة:</strong>
-                مرجع<br>
-                ساعة البرنامج
-                <strong>التفسير:</strong>
-                هذا هو رمز ساعة مرجعي يضمن تزامن حزم الصوت والفيديو المستلمة من الفضاء ثانيةً بثانية (بحيث تحدث حركات الشفاه والصوت في نفس الوقت).
+                <strong>Translation:</strong>
+                Broadcast Standard (DVB-S / DVB-S2)<br>
+                
+                <strong>Description:</strong>
+                Specifies the format in which the channel is transmitted from space. While older (Standard Definition) broadcasts generally use DVB-S, high-definition (HD / 4K) broadcasts use the DVB-S2 standard, which offers better data compression.
             </p>
         </div>
 
         <div class="glossary-item" style="background: var(--bg-subtle); padding: 15px; border-radius: 8px; border-left: 4px solid var(--accent);">
-            <h3 style="margin-top: 0; margin-bottom: 10px; color: var(--accent);">FEC (تصحيح الأخطاء الأمامي)</h3>
+            <h3 style="margin-top: 0; margin-bottom: 10px; color: var(--accent);">Roll-Off Factor</h3>
             <p style="margin: 0; color: var(--text-secondary); line-height: 1.5;">
-                <strong>التركي:</strong>
-                معدل<br>
-                تصحيح الأخطاء الأمامية
-                <strong>الوصف:</strong>
-                المعدل الذي يتم عنده تقدير البيانات المفقودة رياضيًا وتصحيحها بواسطة جهاز استقبال الأقمار الصناعية في ظل ظروف جوية سيئة أو عندما تكون الإشارة ضعيفة. وعادةً ما يُعبَّر عنه بنسب مثل 3/4 أو 5/6.
+                <strong>Turkish:</strong>
+                Filter Sharpness<br>
+                
+                <strong>Description:</strong>
+                Indicates how sharply the signal is filtered to prevent it from spilling into adjacent frequencies as it propagates. (Values such as 0.20, 0.25, 0.35 are used.) This is generally set automatically for users.
             </p>
         </div>
 
         <div class="glossary-item" style="background: var(--bg-subtle); padding: 15px; border-radius: 8px; border-left: 4px solid var(--accent);">
-            <h3 style="margin-top: 0; margin-bottom: 10px; color: var(--accent);">معدل الرموز</h3>
+            <h3 style="margin-top: 0; margin-bottom: 10px; color: var(--accent);">NID (Network ID)</h3>
             <p style="margin: 0; color: var(--text-secondary); line-height: 1.5;">
-                <strong>التركية:</strong>
-                معدل<br>
-                نقل البيانات
-                <strong>التوضيح:</strong>
-                كمية البيانات الرقمية (الرموز) التي يتم نقلها من القمر الصناعي إلى جهاز الاستقبال في الثانية. في القمر الصناعي Türksat، يبلغ هذا المعدل عادةً 27,500 (ksps) أو 30,000 (ksps).
+                <strong>Turkish:</strong>
+                Network ID<br>
+                
+                <strong>Description:</strong>
+                This is the identifier of the satellite network you are connected to. It works in conjunction with the ONID (Original Network ID). For Türksat satellites, this value is typically 1070.
+            </p>
+        </div>
+
+        <div class="glossary-item" style="background: var(--bg-subtle); padding: 15px; border-radius: 8px; border-left: 4px solid var(--accent);">
+            <h3 style="margin-top: 0; margin-bottom: 10px; color: var(--accent);">ONID (Original Network ID)</h3>
+            <p style="margin: 0; color: var(--text-secondary); line-height: 1.5;">
+                <strong>Turkish:</strong>
+                Original Network ID<br>
+                
+                <strong>Description:</strong>
+                This is the globally registered, unique code of the broadcaster’s network (e.g., Türksat, Astra, Hotbird). This allows your device to determine which satellite network it is connected to.
+            </p>
+        </div>
+
+        <div class="glossary-item" style="background: var(--bg-subtle); padding: 15px; border-radius: 8px; border-left: 4px solid var(--accent);">
+            <h3 style="margin-top: 0; margin-bottom: 10px; color: var(--accent);">Video PID / Audio PID</h3>
+            <p style="margin: 0; color: var(--text-secondary); line-height: 1.5;">
+                <strong>Turkish:</strong>
+                Video and Audio Packet Identifier (Packet Identifier)<br>
+                
+                <strong>Description:</strong>
+                When a channel’s data arrives from space, it is in the form of separate packets. The Video PID identifies only the video packets, while the Audio PID identifies only the audio packets. The television extracts these packets and combines them.
+            </p>
+        </div>
+
+        <div class="glossary-item" style="background: var(--bg-subtle); padding: 15px; border-radius: 8px; border-left: 4px solid var(--accent);">
+            <h3 style="margin-top: 0; margin-bottom: 10px; color: var(--accent);">PCR PID (Program Clock Reference)</h3>
+            <p style="margin: 0; color: var(--text-secondary); line-height: 1.5;">
+                <strong>Translation:</strong>
+                Program Clock Reference<br>
+                
+                <strong>Explanation:</strong>
+                This is a reference clock code that ensures the audio and video packets received from space are synchronized second by second (so that lip movements and sound occur simultaneously).
+            </p>
+        </div>
+
+        <div class="glossary-item" style="background: var(--bg-subtle); padding: 15px; border-radius: 8px; border-left: 4px solid var(--accent);">
+            <h3 style="margin-top: 0; margin-bottom: 10px; color: var(--accent);">FEC (Forward Error Correction)</h3>
+            <p style="margin: 0; color: var(--text-secondary); line-height: 1.5;">
+                <strong>Turkish:</strong>
+                Forward Error Correction Rate<br>
+                
+                <strong>Description:</strong>
+                The rate at which lost data is mathematically estimated and corrected by the satellite receiver under poor weather conditions or when the signal is weak. It is typically expressed as ratios such as 3/4 or 5/6.
+            </p>
+        </div>
+
+        <div class="glossary-item" style="background: var(--bg-subtle); padding: 15px; border-radius: 8px; border-left: 4px solid var(--accent);">
+            <h3 style="margin-top: 0; margin-bottom: 10px; color: var(--accent);">Symbol Rate</h3>
+            <p style="margin: 0; color: var(--text-secondary); line-height: 1.5;">
+                <strong>Turkish:</strong>
+                Data Transmission Rate<br>
+                
+                <strong>Explanation:</strong>
+                The amount of digital data (symbols) transmitted from the satellite to the receiver per second. On the Türksat satellite, it is typically 27,500 (ksps) or 30,000 (ksps).
             </p>
         </div>
     </div>
 
     <div style="margin-top: 30px; text-align: center;">
-        <a href="/" class="btn primary">العودة إلى الصفحة الرئيسية</a>
+        <a href="/" class="btn primary">Return to Home Page</a>
     </div>
 </div>{% endblock %}

@@ -1,6 +1,6 @@
 {% extends "base_fr.html" %}
 
-{% block title %}Foire aux questions - Éditeur de chaînes TV{% endblock %}
+{% block title %}Frequently Asked Questions - TV Channel Editor{% endblock %}
 
 {% block head %}
 <style>
@@ -46,13 +46,13 @@
     }
     .faq-q:hover { background: rgba(59,130,246,0.06); }
     .faq-q::after {
-        content: &#x27;﹢&#x27;;
+        content: '﹢';
         font-size: 20px;
         color: var(--accent);
         transition: transform 0.2s;
         flex-shrink: 0;
     }
-    .faq-item.open .faq-q::after { content: &#x27;−&#x27;; }
+    .faq-item.open .faq-q::after { content: '−'; }
     .faq-a {
         font-size: 14px;
         color: var(--text-primary);
@@ -80,142 +80,125 @@
 
 {% block content %}
 <div class="content-container">
-    <h2 class="section-title">Foire aux questions</h2>
+    <h2 class="section-title">Frequently Asked Questions</h2>
 
     <h3 style="margin-top: 30px; margin-bottom: 15px; color: var(--accent); font-size: 18px; display: flex; align-items: center; gap: 8px;">
-        <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M12 16v-4"></path><path d="M12 8h.01"></path></svg> Sujets généraux
+        <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M12 16v-4"></path><path d="M12 8h.01"></path></svg> General Topics
     </h3>
 
     <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">Quelles marques de téléviseurs sont prises en charge ?</button>
+        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">Which TV brands are supported?</button>
         <div class="faq-a">
-            Actuellement, <strong>Samsung</strong> (.scm et .zip), <strong>LG</strong> (.tll), <strong>Sony BRAVIA</strong> (sdb.xml) et <strong>Hisense</strong> (servicelist.db) sont entièrement pris en charge.
-            Panasonic est en version bêta ; Philips, Toshiba et Grundig seront ajoutés prochainement.
+            Currently, <strong>Samsung</strong> (.scm and .zip), <strong>LG</strong> (.tll), <strong>Sony BRAVIA</strong> (sdb.xml), and <strong>Hisense</strong> (servicelist.db) are fully supported.
+            Panasonic is in beta; Philips, Toshiba, and Grundig will be added soon.
         </div>
     </div>
 
     <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">Comment savoir quel fichier télécharger ?</button>
+        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">How do I know which file to upload?</button>
         <div class="faq-a">
-            Vérifiez l&#x27;extension du fichier en fonction de la marque de votre téléviseur :<br>
-            
-            • <strong>Samsung (ancienne génération)</strong>
-            : <code>.scm</code><br>
-            • <strong>Samsung (Tizen/nouvelle génération)</strong> : <code>.zip</code><br>
-            • <strong>LG</strong> : <code>.tll</code><br>
-            • <strong>Sony BRAVIA</strong> : <code>sdb.xml</code><br>
-            • <strong>Hisense</strong> : <code>servicelist.db</code> ou <code>channel.db</code><br>
-            L&#x27;éditeur détectera automatiquement la marque une fois le fichier importé.
+            Check the file extension based on your TV brand:<br>
+            • <strong>Samsung (old)</strong>: <code>.scm</code><br>
+            • <strong>Samsung (Tizen/new)</strong>: <code>.zip</code><br>
+            • <strong>LG</strong>: <code>.tll</code><br>
+            • <strong>Sony BRAVIA</strong>: <code>sdb.xml</code><br>
+            • <strong>Hisense</strong>: <code>servicelist.db</code> or <code>channel.db</code><br>
+            The editor will automatically detect the brand once you upload the file.
         </div>
     </div>
 
     <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">Comment Magic Wand associe-t-il les chaînes ?</button>
+        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">How does Magic Wand match channels?</button>
         <div class="faq-a">
-            Magic Wand fait correspondre les chaînes par leur nom (sans distinction de majuscules/minuscules). Si votre modèle contient « TRT1 HD », il repère « trt1 hd » dans le fichier importé et le place à la bonne position. Il ne modifie pas les données de fréquence ni de PID.
+            Magic Wand matches channels by name (case-insensitive). If you have "TRT1 HD" in your template, it finds "trt1 hd" in the uploaded file and moves it to the correct position. It does not touch frequency and PID data.
         </div>
     </div>
 
     <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">Comment réimporter la liste modifiée sur le téléviseur ?</button>
+        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">How do I upload the edited list back to the TV?</button>
         <div class="faq-a">
-            Copiez le fichier téléchargé sur une clé USB (<strong>conservez le nom de fichier d&#x27;origine !</strong>
-            ). Utilisez l&#x27;option « <strong>Importer depuis une clé USB »</strong>
-            dans le menu du téléviseur.
+            Copy the downloaded file to a USB flash drive (<strong>keep the original filename!</strong>). Use the <strong>Import from USB</strong> option from the TV menu.
         </div>
     </div>
 
     <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">Pourquoi les nouvelles chaînes gratuites n’apparaissent-elles pas dans la liste ?</button>
+        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">Why can't I see new free channels in the list?</button>
         <div class="faq-a">
-            Ce site modifie uniquement la liste des chaînes existantes du téléviseur ; il <em>ne peut pas</em> ajouter de nouvelles chaînes. Pour voir une nouvelle chaîne, vous devez d’abord effectuer un <strong>balayage du réseau (réglage automatique)</strong> sur le téléviseur, puis exporter le nouveau fichier.
+            This site only edits the TV's existing channel list; it <em>cannot</em> add new channels. To see a new channel, you must first do a <strong>Network Scan (Auto Tuning)</strong> on the TV, then export the new file.
         </div>
     </div>
     
     <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">Que signifie l&#x27;avertissement concernant la fréquence (⚠️ Ancienne fréquence) ?</button>
+        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">What does the Frequency warning (⚠️ Old Frequency) mean?</button>
         <div class="faq-a">
-            Le système compare la fréquence enregistrée de la chaîne avec la base de données actuelle des fréquences Turksat. Si la chaîne a été détectée sur une ancienne fréquence ou une fréquence différente, un avertissement jaune s&#x27;affiche. Il s&#x27;agit simplement d’une information à titre indicatif ; la chaîne continuera de fonctionner, mais il est recommandé de la faire passer à sa fréquence actuelle en effectuant un nouveau balayage du réseau sur le téléviseur.
+            The system compares the channel's saved frequency with the current Turksat frequency database. If the channel was scanned on an old or different frequency, a yellow warning is shown. This is just for your information; the channel will continue to work, but it is recommended to move the channel to its current frequency by doing a new Network Scan on the TV.
         </div>
     </div>
 
     <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">Mes données sont-elles en sécurité ? Mes fichiers sont-ils stockés sur le serveur ?</button>
+        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">Is my data safe? Are my files stored on the server?</button>
         <div class="faq-a">
-            Les fichiers de listes de chaînes téléchargés ne sont conservés sur notre serveur que temporairement pendant le traitement et sont supprimés immédiatement une fois le processus terminé. Aucun nom de chaîne, aucune fréquence ni aucune donnée personnelle n’est enregistré, stocké ou partagé avec des tiers. Tout le traitement s’effectue côté serveur et seul le fichier de sortie vous est envoyé.
-        </div>
-    </div>
-
-    <h3 style="margin-top: 40px; margin-bottom: 15px; color: var(--accent); font-size: 18px; display: flex; align-items: center; gap: 8px;">
-        <img src="/static/img/samsung_logo.webp" style="height:20px; object-fit:contain;" class="invert-in-light" alt="Samsung">
-        Smart TV Samsung
-    </h3>
-
-    <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">Comment exporter la liste des chaînes d’un téléviseur Samsung vers une clé USB ?</button>
-        <div class="faq-a">
-            Pour Samsung : suivez les étapes suivantes : <strong>Menu → Diffusion → Paramètres des chaînes → Transférer la liste des chaînes → Exporter vers une clé USB</strong>. Le téléviseur n&#x27;accepte généralement que les fichiers portant exactement le même nom ; ne renommez donc pas le fichier lors de la modification et de la restauration.
-        </div>
-    </div>
-
-    <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">Qu’est-ce qu’un fichier SCM ?</button>
-        <div class="faq-a">
-            <strong>Le SCM (Samsung Channel Map)</strong>
-            est un fichier d’archive spécial dans lequel les téléviseurs Samsung stockent l’ordre des chaînes, les listes de favoris et les données de fréquence. Il contient des fichiers de données binaires tels que <code>map-SateD</code> (liste des chaînes) et <code>TransponderDataBase.dat</code> (base de données de fréquences).
-        </div>
-    </div>
-
-    <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">Les téléviseurs Samsung Tizen utilisent-ils des fichiers ZIP ou SCM ?</button>
-        <div class="faq-a">
-            <strong>Les anciens modèles Samsung</strong>
-            (séries E, F, H, 2012-2014) utilisent des <code>.scm</code>
-            des fichiers.<br>
-            
-            <strong>Les modèles Samsung Tizen plus récents</strong>
-            (séries J, K, M, Q, R, T, à partir de 2015) utilisent <code>.zip</code>
-            des fichiers contenant une base de données SQLite.<br>
-            Cet éditeur détecte automatiquement ces deux formats en analysant le contenu, et pas seulement l&#x27;extension du fichier.
+            Uploaded channel list files are kept on our server only temporarily during processing and are deleted immediately after the process is finished. No channel names, frequencies, or personal data are logged, stored, or shared with third parties. All processing is done on the server side and only the output file is sent to you.
         </div>
     </div>
 
     <h3 style="margin-top: 40px; margin-bottom: 15px; color: var(--accent); font-size: 18px; display: flex; align-items: center; gap: 8px;">
-        <img src="/static/img/lg_logo.svg" style="height:20px; object-fit:contain;" alt="LG">
-        Smart TV LG
+        <img src="/static/img/samsung_logo.webp" style="height:20px; object-fit:contain;" class="invert-in-light" alt="Samsung"> Samsung Smart TV
     </h3>
 
     <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">Qu&#x27;est-ce qu&#x27;un fichier TLL sur un téléviseur LG et comment l&#x27;exporter ?</button>
+        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">How do I export the channel list from a Samsung TV to USB?</button>
         <div class="faq-a">
-            <strong>TLL (TLL Channel List)</strong>
-            est le format de sauvegarde GlobalClone de LG. Insérez une clé USB et effectuez l’exportation depuis <strong>Paramètres → Général → À propos → Configuration de la sauvegarde des chaînes (CLONE)</strong>
-            . Sur certains modèles : <strong>Menu → Assistance → Mise à jour → Mise à jour depuis une clé USB</strong>
-            . Le fichier est généralement nommé <code>xx########.tll</code>.
+            For Samsung: Follow the steps <strong>Menu → Broadcasting → Channel Settings → Transfer Channel List → Export to USB</strong>. The TV usually only accepts files with the exact same name, so do not rename the file when editing and restoring.
+        </div>
+    </div>
+
+    <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">What is an SCM File?</button>
+        <div class="faq-a">
+            <strong>SCM (Samsung Channel Map)</strong> is a special archive file where Samsung TVs store channel order, favorite lists, and frequency data. It contains binary data files such as <code>map-SateD</code> (channel list) and <code>TransponderDataBase.dat</code> (frequency database).
+        </div>
+    </div>
+
+    <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">Does Samsung Tizen TV use ZIP or SCM files?</button>
+        <div class="faq-a">
+            <strong>Older Samsung models</strong> (E, F, H Series, 2012–2014) use <code>.scm</code> files.<br>
+            <strong>Newer Samsung Tizen models</strong> (J, K, M, Q, R, T Series, 2015 and later) use <code>.zip</code> files containing an SQLite database.<br>
+            This editor automatically detects both formats by inspecting the contents, not just the file extension.
         </div>
     </div>
 
     <h3 style="margin-top: 40px; margin-bottom: 15px; color: var(--accent); font-size: 18px; display: flex; align-items: center; gap: 8px;">
-        <img src="/static/img/sony_logo.svg" style="height:20px; object-fit:contain;" class="theme-invert" alt="Sony">
-        Sony BRAVIA
+        <img src="/static/img/lg_logo.svg" style="height:20px; object-fit:contain;" alt="LG"> LG Smart TV
     </h3>
 
     <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">Où se trouve le fichier sdb.xml sur un téléviseur Sony BRAVIA ?</button>
+        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">What is a TLL file on LG TV and how to export it?</button>
         <div class="faq-a">
-            Pour les téléviseurs Sony BRAVIA, insérez une clé USB et accédez à <strong>Paramètres → Configuration des chaînes → Transfert de la liste des chaînes → Exporter vers USB</strong>. Un fichier nommé <code>sdb.xml</code> sera créé. Pour les modèles Android TV, utilisez <strong>Paramètres → Préférences de l&#x27;appareil → Chaînes → Transfert de la liste des chaînes</strong>.
+            <strong>TLL (TLL Channel List)</strong> is LG's GlobalClone backup format. Insert a USB drive and export from <strong>Settings → General → About → Channel Backup Configuration (CLONE)</strong>. On some models: <strong>Menu → Support → Update → Update from USB</strong>. The file is usually named <code>xx########.tll</code>.
         </div>
     </div>
 
     <h3 style="margin-top: 40px; margin-bottom: 15px; color: var(--accent); font-size: 18px; display: flex; align-items: center; gap: 8px;">
-        <img src="/static/img/hisense_logo.svg" style="height:20px; object-fit:contain;" alt="Hisense">
-        Smart TV Hisense
+        <img src="/static/img/sony_logo.svg" style="height:20px; object-fit:contain;" class="theme-invert" alt="Sony"> Sony BRAVIA
     </h3>
 
     <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">Comment obtenir le fichier servicelist.db ou channel.db sur un téléviseur Hisense ?</button>
+        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">Where is the sdb.xml file on Sony BRAVIA?</button>
         <div class="faq-a">
-            Accédez à <strong>Menu → Chaînes → Exportation de la liste des chaînes</strong>. Un fichier nommé <code>servicelist.db</code> ou <code>channel.db</code> sera créé. Le nom du fichier varie selon le modèle et le micrologiciel, mais les deux formats SQLite sont pris en charge.
+            For Sony BRAVIA, insert a USB drive and go to <strong>Settings → Channel Setup → Channel List Transfer → Export to USB</strong>. A file named <code>sdb.xml</code> will be created. For Android TV models, use <strong>Settings → Device Preferences → Channel → Channel List Transfer</strong>.
+        </div>
+    </div>
+
+    <h3 style="margin-top: 40px; margin-bottom: 15px; color: var(--accent); font-size: 18px; display: flex; align-items: center; gap: 8px;">
+        <img src="/static/img/hisense_logo.svg" style="height:20px; object-fit:contain;" alt="Hisense"> Hisense Smart TV
+    </h3>
+
+    <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">How to get servicelist.db or channel.db on Hisense TV?</button>
+        <div class="faq-a">
+            Go to <strong>Menu → Channel → Channel List Export</strong>. A file named <code>servicelist.db</code> or <code>channel.db</code> will be created. The filename varies by model and firmware, but both SQLite formats are supported.
         </div>
     </div>
 
@@ -228,4 +211,5 @@ function toggleFaq(btn) {
         btn.setAttribute('aria-expanded', !isExpanded);
         parent.classList.toggle('open');
     }
-</script>{% endblock %}
+</script>
+{% endblock %}

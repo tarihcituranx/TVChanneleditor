@@ -1,6 +1,6 @@
 # 🌍 TV Channel Editor - Veritabanı ve Şablonlar
 
-Bu klasör, TV Kanal Editörü'nün otomatik frekans doğrulama ve "Sihirli Değnek" şablon sistemlerinin verilerini içerir. Gelecekte sisteme yabancı uydular ve kablo yayıncıları eklenebileceği için veriler **Ülke > Uydu/Platform** hiyerarşisiyle tasarlanmıştır.
+Bu klasör, TV Kanal Editörü'nün otomatik frekans doğrulama ve "Akıllı Şablonlar" şablon sistemlerinin verilerini içerir. Gelecekte sisteme yabancı uydular ve kablo yayıncıları eklenebileceği için veriler **Ülke > Uydu/Platform** hiyerarşisiyle tasarlanmıştır.
 
 ## 📂 Klasör Yapısı
 
@@ -28,7 +28,7 @@ Basit bir "Anahtar-Değer" (Key-Value) haritasıdır:
 * **Güncelleme:** Sadece kanal adını büyük/küçük harf duyarlı olarak yazıp karşısına güncel frekansı (MHz) eklemeniz yeterlidir. Tarayıcı dosyayı anında okur.
 
 ### 2. `templates.json`
-"Sihirli Değnek" özelliğinde ekrana gelen **Hazır Şablonların** listesidir. Kanalların sıralamasını belirler.
+"Akıllı Şablonlar" özelliğinde ekrana gelen **Hazır Şablonların** listesidir. Kanalların sıralamasını belirler.
 
 ```json
 {

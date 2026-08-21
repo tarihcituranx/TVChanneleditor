@@ -1,6 +1,6 @@
 {% extends "base_az.html" %}
 
-{% block title %}Dəstəklənən Markalar və Peyklər - TV Kanal Redaktoru{% endblock %}
+{% block title %}Supported Brands and Satellites - TV Channel Editor{% endblock %}
 
 {% block head %}
 <style>
@@ -108,28 +108,29 @@
 
 {% block content %}
 <div class="content-container">
-    <h2 class="section-title">Dəstəklənən TV Markaları</h2>
+    <h2 class="section-title">Supported TV Brands</h2>
     <p style="color:var(--text-secondary); font-size:14px; margin-bottom:24px; margin-top:-10px;">
-        Bütün əməliyyatlar <strong style="color:var(--text-primary)">müvəqqəti serverin RAM-ində təhlükəsiz şəkildə işlənir</strong>; emaldan sonra avtomatik silinir.
+        All operations <strong style="color:var(--text-primary)">are processed safely on temporary server RAM</strong>; auto-deleted after processing.
     </p>
     <div class="grid-container">
         <div class="card">
             <img src="/static/img/samsung_logo.webp" alt="Samsung" class="card-img invert-in-light">
-            <span class="badge badge-green">✅ Tam dəstək</span>
+            <span class="badge badge-green">✅ Full Support</span>
             <div class="card-title">Samsung Smart TV</div>
             <div class="card-desc">
-                Köhnə nəsil (E, F, H) və yeni Tizen nəsil (J, K, M, Q, R, T) seriyalı bütün cihazlar dəstəklənir. Sortlaşdırma və ad dəyişdirmə tam uyğun gəlir.
+                All devices from the older generation (E, F, H) and the newer Tizen generation (J, K, M, Q, R, T) series are supported. Sorting and renaming are fully compatible.
             </div>
             <div class="formats">
-                <span class="format-tag">.scm.zip (SQLite)</span>
+                <span class="format-tag">.scm</span>
+                <span class="format-tag">.zip (SQLite)</span>
             </div>
         </div>
         <div class="card">
             <img src="/static/img/lg_logo.svg" alt="LG" class="card-img">
-            <span class="badge badge-green">✅ Qismən Dəstək</span>
-            <div class="card-title">LG Ağıllı TV</div>
+            <span class="badge badge-green">✅ Partial Support</span>
+            <div class="card-title">LG Smart TV</div>
             <div class="card-desc">
-                Sistemimiz LG-nin yeni nəsil <b>XML əsaslı .tll</b> (GlobalClone) fayllarını dəstəkləyir. Köhnə <b>ikili .tll</b> faylları dəstəklənmir; bu fayllar üçün zəhmət olmasa ChanSort masaüstü tətbiqindən istifadə edin.
+                Our system supports LG's new generation <b>XML-based .tll</b> (GlobalClone) files. Older <b>binary .tll</b> files are not supported; for those files, please use the ChanSort desktop application.
             </div>
             <div class="formats">
                 <span class="format-tag">.tll (XML)</span>
@@ -137,10 +138,10 @@
         </div>
         <div class="card">
             <img src="/static/img/sony_logo.svg" alt="Sony" class="card-img invert-in-light">
-            <span class="badge badge-green">✅ Tam Dəstək</span>
+            <span class="badge badge-green">✅ Full Support</span>
             <div class="card-title">Sony BRAVIA</div>
             <div class="card-desc">
-                Sony BRAVIA-nın XML əsaslı kanal siyahısı oxunaqlı və yazıla biləndir. Yeni 2024+ modelləri daxildir. Kanal adının dəyişdirilməsi və sıralanması dəstəklənir.
+                Sony BRAVIA’s XML-based channel list format is readable and writable. Includes new 2024+ models. Channel name and reordering are supported.
             </div>
             <div class="formats">
                 <span class="format-tag">sdb.xml</span>
@@ -148,10 +149,10 @@
         </div>
         <div class="card">
             <img src="/static/img/hisense_logo.svg" alt="Hisense" class="card-img">
-            <span class="badge badge-green">✅ Tam Dəstək</span>
-            <div class="card-title">Hisense Ağıllı TV</div>
+            <span class="badge badge-green">✅ Full Support</span>
+            <div class="card-title">Hisense Smart TV</div>
             <div class="card-desc">
-                2017 və 2021 nəsillər üçün SQLite əsaslı xidmət siyahısı formatı dəstəklənir. Kanalın sıralanması, adının dəyişdirilməsi və gizlədilməsi dəstəklənir.
+                The SQLite-based service list format for the 2017 and 2021 generations is supported. Channel sorting, renaming, and hiding are supported.
             </div>
             <div class="formats">
                 <span class="format-tag">servicelist.db</span>
@@ -162,7 +163,7 @@
             <span class="badge badge-blue">🔄 Beta</span>
             <div class="card-title">Panasonic VIERA</div>
             <div class="card-desc">
-                SVL format dəstəyi hazırda inkişaf mərhələsindədir. Bəzi model ailələrində oxuma uğurlu ola bilər.
+                SVL format support is currently under development. Reading may be successful on some model families.
             </div>
             <div class="formats">
                 <span class="format-tag">svl.db svl.bin</span>
@@ -170,10 +171,10 @@
         </div>
         <div class="card">
             <div style="font-size:40px; margin-bottom:12px;">🔜</div>
-            <span class="badge badge-gray">Tezliklə</span>
+            <span class="badge badge-gray">Coming Soon</span>
             <div class="card-title">Philips, Toshiba...</div>
             <div class="card-desc">
-                Philips, Toshiba, Grundig və digər markalar üçün dəstək hazırda fəal inkişaf mərhələsindədir.
+                Support for Philips, Toshiba, Grundig, and other brands is currently under active development.
             </div>
             <div class="formats">
                 <span class="format-tag">*.db*.xml</span>
@@ -181,30 +182,30 @@
         </div>
     </div>
 
-    <h2 class="section-title">🛰️ Dəstəklənən peyklər</h2>
+    <h2 class="section-title">🛰️ Supported Satellites</h2>
     <p style="color:var(--text-secondary); font-size:14px; margin-bottom:24px; margin-top:-10px;">
-        Bütün tezlik və transponder məlumatları peyk formatından asılı olmayaraq eyni şəkildə emal olunur.
+        All frequency and transponder data is processed in the same way, regardless of the satellite format.
     </p>
     <div class="grid-container">
         <div class="card">
             <img src="/static/img/turksat_logo.png" alt="Türksat" class="card-img invert-in-light">
             <div class="card-title">Türksat 4A / 5B</div>
             <div class="card-desc">
-                Tamamilə milli Türkiyə kanalları, xəbər və idman paketləri ilə uyğun gəlir. Magic Wand şablonları Türksat tezlikləri üçün optimallaşdırılıb. Bu peyk üçün <b>avtomatik tezlik yoxlaması</b> aktivləşdirilib.
+                Fully compatible with national Turkish channels, news, and sports packages. Magic Wand templates are optimized for Türksat frequencies. <b>Automatic frequency verification</b> is enabled for this satellite.
             </div>
         </div>
         <div class="card">
             <img src="/static/img/hotbird_logo.svg" alt="Hotbird" class="card-img">
             <div class="card-title">Hotbird 13E</div>
             <div class="card-desc">
-                Avropa və beynəlxalq yayımlar (Eutelsat) dəstəklənir. Bütün peyk transponder məlumatları uğurla emal olunur.
+                European and international broadcasts (Eutelsat) are supported. All satellite transponder data is processed successfully.
             </div>
         </div>
         <div class="card">
             <img src="/static/img/astra_logo.svg" alt="Astra" class="card-img">
             <div class="card-title">Astra 19.2E</div>
             <div class="card-desc">
-                Alman və Avropa kanallarını yayımlayan SES Astra tezlikləri tam uyğunluqla oxunur və yazılır.
+                SES Astra frequencies, which host German and European channels, are read and written with full compatibility.
             </div>
         </div>
     </div>

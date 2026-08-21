@@ -1,6 +1,6 @@
 {% extends "base_pt.html" %}
 
-{% block title %}Marcas e satélites suportados - Editor de canais de TV{% endblock %}
+{% block title %}Supported Brands and Satellites - TV Channel Editor{% endblock %}
 
 {% block head %}
 <style>
@@ -108,28 +108,29 @@
 
 {% block content %}
 <div class="content-container">
-    <h2 class="section-title">Marcas de televisores suportadas</h2>
+    <h2 class="section-title">Supported TV Brands</h2>
     <p style="color:var(--text-secondary); font-size:14px; margin-bottom:24px; margin-top:-10px;">
-        Todas as operações <strong style="color:var(--text-primary)">são processadas de forma segura na memória RAM temporária do servidor</strong>; são eliminadas automaticamente após o processamento.
+        All operations <strong style="color:var(--text-primary)">are processed safely on temporary server RAM</strong>; auto-deleted after processing.
     </p>
     <div class="grid-container">
         <div class="card">
             <img src="/static/img/samsung_logo.webp" alt="Samsung" class="card-img invert-in-light">
-            <span class="badge badge-green">✅ Suporte completo</span>
+            <span class="badge badge-green">✅ Full Support</span>
             <div class="card-title">Samsung Smart TV</div>
             <div class="card-desc">
-                São suportados todos os dispositivos da geração mais antiga (E, F, H) e da geração Tizen mais recente (J, K, M, Q, R, T). A ordenação e a renomeação são totalmente compatíveis.
+                All devices from the older generation (E, F, H) and the newer Tizen generation (J, K, M, Q, R, T) series are supported. Sorting and renaming are fully compatible.
             </div>
             <div class="formats">
-                <span class="format-tag">.scm.zip (SQLite)</span>
+                <span class="format-tag">.scm</span>
+                <span class="format-tag">.zip (SQLite)</span>
             </div>
         </div>
         <div class="card">
             <img src="/static/img/lg_logo.svg" alt="LG" class="card-img">
-            <span class="badge badge-green">✅ Suporte parcial</span>
+            <span class="badge badge-green">✅ Partial Support</span>
             <div class="card-title">LG Smart TV</div>
             <div class="card-desc">
-                O nosso sistema suporta os ficheiros <b>.tll</b> (GlobalClone) da nova geração da LG, <b>baseados em XML</b>. Os ficheiros <b>.tll binários</b> mais antigos não são suportados; para esses ficheiros, utilize a aplicação de secretária ChanSort.
+                Our system supports LG's new generation <b>XML-based .tll</b> (GlobalClone) files. Older <b>binary .tll</b> files are not supported; for those files, please use the ChanSort desktop application.
             </div>
             <div class="formats">
                 <span class="format-tag">.tll (XML)</span>
@@ -137,10 +138,10 @@
         </div>
         <div class="card">
             <img src="/static/img/sony_logo.svg" alt="Sony" class="card-img invert-in-light">
-            <span class="badge badge-green">✅ Suporte total</span>
+            <span class="badge badge-green">✅ Full Support</span>
             <div class="card-title">Sony BRAVIA</div>
             <div class="card-desc">
-                O formato da lista de canais da Sony BRAVIA, baseado em XML, é legível e editável. Inclui os novos modelos a partir de 2024. O nome dos canais e a reordenação são suportados.
+                Sony BRAVIA’s XML-based channel list format is readable and writable. Includes new 2024+ models. Channel name and reordering are supported.
             </div>
             <div class="formats">
                 <span class="format-tag">sdb.xml</span>
@@ -148,10 +149,10 @@
         </div>
         <div class="card">
             <img src="/static/img/hisense_logo.svg" alt="Hisense" class="card-img">
-            <span class="badge badge-green">✅ Suporte total</span>
+            <span class="badge badge-green">✅ Full Support</span>
             <div class="card-title">Hisense Smart TV</div>
             <div class="card-desc">
-                O formato da lista de serviços baseado em SQLite para as gerações de 2017 e 2021 é suportado. São suportadas a ordenação, a renomeação e a ocultação de canais.
+                The SQLite-based service list format for the 2017 and 2021 generations is supported. Channel sorting, renaming, and hiding are supported.
             </div>
             <div class="formats">
                 <span class="format-tag">servicelist.db</span>
@@ -162,7 +163,7 @@
             <span class="badge badge-blue">🔄 Beta</span>
             <div class="card-title">Panasonic VIERA</div>
             <div class="card-desc">
-                O suporte ao formato SVL está atualmente em desenvolvimento. A leitura poderá ser bem-sucedida em algumas famílias de modelos.
+                SVL format support is currently under development. Reading may be successful on some model families.
             </div>
             <div class="formats">
                 <span class="format-tag">svl.db svl.bin</span>
@@ -170,10 +171,10 @@
         </div>
         <div class="card">
             <div style="font-size:40px; margin-bottom:12px;">🔜</div>
-            <span class="badge badge-gray">Em breve</span>
+            <span class="badge badge-gray">Coming Soon</span>
             <div class="card-title">Philips, Toshiba...</div>
             <div class="card-desc">
-                O suporte para a Philips, a Toshiba, a Grundig e outras marcas está atualmente em fase de desenvolvimento ativo.
+                Support for Philips, Toshiba, Grundig, and other brands is currently under active development.
             </div>
             <div class="formats">
                 <span class="format-tag">*.db*.xml</span>
@@ -181,30 +182,30 @@
         </div>
     </div>
 
-    <h2 class="section-title">🛰️ Satélites suportados</h2>
+    <h2 class="section-title">🛰️ Supported Satellites</h2>
     <p style="color:var(--text-secondary); font-size:14px; margin-bottom:24px; margin-top:-10px;">
-        Todos os dados de frequência e transpondedor são processados da mesma forma, independentemente do formato do satélite.
+        All frequency and transponder data is processed in the same way, regardless of the satellite format.
     </p>
     <div class="grid-container">
         <div class="card">
             <img src="/static/img/turksat_logo.png" alt="Türksat" class="card-img invert-in-light">
             <div class="card-title">Türksat 4A / 5B</div>
             <div class="card-desc">
-                Totalmente compatível com canais nacionais turcos, notícias e pacotes desportivos. Os modelos do Magic Wand estão otimizados para as frequências do Türksat. <b>A verificação automática de frequências</b> está ativada para este satélite.
+                Fully compatible with national Turkish channels, news, and sports packages. Magic Wand templates are optimized for Türksat frequencies. <b>Automatic frequency verification</b> is enabled for this satellite.
             </div>
         </div>
         <div class="card">
             <img src="/static/img/hotbird_logo.svg" alt="Hotbird" class="card-img">
             <div class="card-title">Hotbird 13E</div>
             <div class="card-desc">
-                São suportadas transmissões europeias e internacionais (Eutelsat). Todos os dados dos transponders do satélite são processados com sucesso.
+                European and international broadcasts (Eutelsat) are supported. All satellite transponder data is processed successfully.
             </div>
         </div>
         <div class="card">
             <img src="/static/img/astra_logo.svg" alt="Astra" class="card-img">
-            <div class="card-title">Astra 19,2E</div>
+            <div class="card-title">Astra 19.2E</div>
             <div class="card-desc">
-                As frequências da SES Astra, que transmitem canais alemães e europeus, são lidas e gravadas com total compatibilidade.
+                SES Astra frequencies, which host German and European channels, are read and written with full compatibility.
             </div>
         </div>
     </div>

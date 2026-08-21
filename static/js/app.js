@@ -366,7 +366,7 @@ document.addEventListener('DOMContentLoaded', () => {
         renderChannels(e.target.value);
     });
 
-    // 1. Magic Wand & Custom Templates
+    // 1. Smart Templates & Custom Templates
     let TEMPLATES = {};
 
     // Asenkron olarak harici JSON dosyasından hazır şablonları yükle

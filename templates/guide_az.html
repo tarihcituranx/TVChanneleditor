@@ -1,6 +1,6 @@
 {% extends "base_az.html" %}
 
-{% block title %}İstifadəçi Bələdçisi - TV Kanalı Redaktoru{% endblock %}
+{% block title %}User Guide - TV Channel Editor{% endblock %}
 
 {% block head %}
 <style>
@@ -111,7 +111,7 @@
 
 {% block content %}
 <div class="content-container">
-    <h2 class="section-title">İstifadəçi Bələdçisi</h2>
+    <h2 class="section-title">User Guide</h2>
 
     <div class="brand-tabs" role="tablist" aria-label="TV Brands">
         <button class="brand-tab active" onclick="showGuide(\'samsung\')" role="tab" aria-selected="true" aria-controls="guide-samsung" id="tab-samsung">Samsung</button>
@@ -123,91 +123,90 @@
     <!-- SAMSUNG -->
     <div class="brand-guide active" id="guide-samsung" role="tabpanel" aria-labelledby="tab-samsung">
         <div class="step-box">
-            <div class="step-title"><span class="step-num">1.</span> Kanal siyahısını USB sürücüsünə köçürün</div>
+            <div class="step-title"><span class="step-num">1</span> Transfer the Channel List to a USB Drive</div>
             <div class="step-desc">
-                TV pultundan istifadə edərək bu addımları yerinə yetirin: <strong>Menyu → Yayım → Kanal Tənzimləmələri → Kanal Siyahısının Köçürülməsi</strong>.
-                PIN kodunuzu daxil edin (adətən <code>0000</code>
-                ) daxil edin və "<strong>USB-yə köçür"</strong>
-                seçimini seçin.<br><br>
+                Using the TV remote, follow these steps: <strong>Menu → Broadcast → Channel Settings → Transfer Channel List</strong>.
+                Enter your PIN (usually <code>0000</code>
+                ) and select the "<strong>Transfer to USB"</strong>
+                option.<br><br>
                 
-                <strong>Köhnə modellər (E/F/H):</strong>
+                <strong>Older models (E/F/H):</strong>
                 <code>.scm</code>
-                Bir fayl yaradılır.<br>
+                A file is created.<br>
                 
-                <strong>Yeni model (J/K/M/Q/R/T - Tizen):</strong>
-                <code>.zip</code> fayl yaradılır.
+                <strong>New model (J/K/M/Q/R/T - Tizen):</strong>
+                <code>.zip</code> a file is created.
             </div>
         </div>
         <div class="step-box">
-            <div class="step-title"><span class="step-num">2</span> Faylı Vebsayta Yükləyin</div>
+            <div class="step-title"><span class="step-num">2</span> Upload the File to the Website</div>
             <div class="step-desc">
-                USB sürücüsünü kompüterinizə qoşun. Faylı ana səhifədəki yükləmə sahəsinə sürükləyin <code>.scm</code> və ya <code>.zip</code> faylı ana səhifədəki yükləmə sahəsinə sürükləyib buraxın və ya "Faylı Seç" düyməsini vurun.
+                Plug the USB drive into your computer. Drag the file to the upload area on the homepage <code>.scm</code> or <code>.zip</code> drag and drop the file into the upload area on the homepage, or click the "Select File" button.
             </div>
         </div>
         <div class="step-box">
-            <div class="step-title"><span class="step-num">3.</span> Kanalları Təşkil Et</div>
+            <div class="step-title"><span class="step-num">3.</span> Organize Channels</div>
             <div class="step-desc">
-                Kanalları <strong>sürükləmə və buraxma</strong> ilə yenidən sıralayın. <strong>🪄</strong> Hazır şablonları <strong>Magic Wand</strong> ilə tətbiq edin və ya <strong>🛠️ Template Creator</strong> ilə öz şablonunuzu yaradın. Hər kanal sətrindəki 🔒 kilid və sevimli işarələrini dəyişə bilərsiniz.
+                Reorder channels using <strong>drag-and-drop</strong>. <strong>🪄</strong> Apply ready-made templates with <strong>Magic Wand</strong> or <strong>🛠️</strong> create your own with <strong>the Template Creator</strong>. You can change the 🔒 lock and favorite flags on each channel row.
             </div>
         </div>
         <div class="step-box">
-            <div class="step-title"><span class="step-num">4.</span> Yadda Saxla və TV-yə Yüklə</div>
+            <div class="step-title"><span class="step-num">4</span> Save and Upload to TV</div>
             <div class="step-desc">
-                <strong>Yüklə və Yüklə</strong>
-                düyməsini klikləyin. Yüklənmiş faylı USB sürücüsünə kopyalayın (orijinal faylın <em>eyni adından</em>
-                istifadə edin!). TV menyusundan <strong>"USB-dən yüklə</strong>
-                " seçimi ilə onu yükləyin.
+                Click the
+                <strong>Save and Download</strong>
+                button. Copy the downloaded file to a USB drive (use <em>the same name</em>
+                as the original file!). Load it via the TV menu using <strong>“Load from USB</strong>
+                .”
             </div>
         </div>
-        <div class="tip-box">💡 <strong>Məsləhət:</strong> TV yalnız eyni adla olan SCM fayllarını tanıyır. Yeni faylı USB sürücüsünə köçürərkən ya köhnəsini üst-üstə yazın, ya da köhnə faylı ehtiyat nüsxə kimi saxlayın <code>.bak</code> uzantısı ilə.</div>
-        <div class="warn-box">⚠️ <strong>Xəbərdarlıq:</strong> Kanal redaktə prosesi mövcud kanalların tezliklərini və ya şifrələnmiş PID məlumatlarını dəyişdirmir; o, yalnız sıranı və bayraqları yeniləyir.</div>
+        <div class="tip-box">💡 <strong>Tip:</strong> The TV only recognizes SCM files with the exact same name. When copying the new file to the USB drive, either overwrite the old one or back up the old one <code>.bak</code> with its extension.</div>
+        <div class="warn-box">⚠️ <strong>Warning:</strong> The channel editing process does not change the frequencies or encrypted PID data of existing channels; it only updates the order and flags.</div>
     </div>
 
     <!-- LG -->
     <div class="brand-guide" id="guide-lg" role="tabpanel" aria-labelledby="tab-lg">
         <div class="step-box">
-            <div class="step-title"><span class="step-num">1.</span> Kanal siyahısını USB-yə köçürün</div>
+            <div class="step-title"><span class="step-num">1</span> Transfer the Channel List to USB</div>
             <div class="step-desc">
-                LG televizorunuzda <strong>Parametrlər → Kanallar → Kanal idarəetməsi → Kanalları USB-yə köçür</strong> seçin.
-                USB sürücüsündə <code>GlobalClone00001.TLL</code> və ya <code>LG_DTV_*.tll</code> Belə bir fayl yaradılacaq.
+                On your LG TV, go to <strong>Settings → Channels → Channel Management → Copy Channels to USB</strong>.
+                On the USB drive <code>GlobalClone00001.TLL</code> or <code>LG_DTV_*.tll</code> a file like this will be created.
             </div>
         </div>
         <div class="step-box">
-            <div class="step-title"><span class="step-num">2</span>. .TLL faylını yükləyin</div>
+            <div class="step-title"><span class="step-num">2</span>. Load the .TLL File</div>
             <div class="step-desc">
-                Bir fayl yükləyin <code>.tll</code> . Sistem GlobalClone XML formatını avtomatik tanıyacaq.
+                Upload a file with the <code>.tll</code> . The system will automatically recognize the GlobalClone XML format.
             </div>
         </div>
         <div class="step-box">
-            <div class="step-title"><span class="step-num">3.</span> Redaktə et və Yüklə</div>
+            <div class="step-title"><span class="step-num">3.</span> Edit and Download</div>
             <div class="step-desc">
-                Kanalları sürüklə-burax üsulu ilə sıralayın. Yenilənmiş TLL faylını yükləmək və onu USB sürücüsünə köçürmək üçün "<strong>Yadda saxla və Yüklə"</strong>
-                düyməsini basın. Prosesin tamamlanması üçün TV menyusundan "<strong>USB-dən kanalları yüklə"</strong>
-                seçimini seçin.
+                Sort the channels using drag-and-drop. Click the "<strong>Save and Download"</strong> button to download the updated TLL file and transfer it to a USB drive. Complete the process by selecting "<strong>Load Channels from USB"</strong> from the TV menu.
             </div>
         </div>
-        <div class="tip-box">💡 LG webOS 5 cihazlarında kanal siyahısının idxal məhdudiyyətləri bəzən tətbiq oluna bilər. Qara ekran görsəniz, televizoru yenidən başladın.</div>
+        <div class="tip-box">💡 On LG webOS 5 devices, channel list import restrictions may sometimes apply. If you see a black screen, try restarting the TV.</div>
     </div>
 
     <!-- SONY -->
     <div class="brand-guide" id="guide-sony" role="tabpanel" aria-labelledby="tab-sony">
         <div class="step-box">
-            <div class="step-title"><span class="step-num">1.</span> sdb.xml faylını əldə edin</div>
+            <div class="step-title"><span class="step-num">1.</span> Get the sdb.xml File</div>
             <div class="step-desc">
-                Sony BRAVIA-da bu addımları izləyin: <strong>Parametrlər → Kanal Təqdimatı → Kanal Siyahısının İdxalı → USB-yə İdxal et</strong>.
-                USB sürücüsündə <code>sdb.xml</code> və ya alt qovluqlarda <code>*.xml</code> fayllar yaradılacaq.
+                On a Sony BRAVIA, follow these steps: <strong>Settings → Channel Setup → Channel List Import → Import to USB</strong>.
+                On the USB drive <code>sdb.xml</code> or in subfolders <code>*.xml</code> files will be created.
             </div>
         </div>
         <div class="step-box">
-            <div class="step-title"><span class="step-num">2.</span> sdb.xml faylını yükləyin</div>
+            <div class="step-title"><span class="step-num">2.</span> Load the sdb.xml File</div>
             <div class="step-desc">
-                Baş ekrana keçin <code>sdb.xml</code> . Sistem faylı Sony formatında avtomatik tanıyır və kanalları siyahıya alır.
+                Go to the home screen <code>sdb.xml</code> . The system automatically recognizes the file in the Sony format and lists the channels.
             </div>
         </div>
         <div class="step-box">
-            <div class="step-title"><span class="step-num">3.</span> Redaktə edin və TV-yə yükləyin</div>
+            <div class="step-title"><span class="step-num">3</span> Edit and Upload to TV</div>
             <div class="step-desc">
-                Kanaləri redaktə edin, sonra "<strong>Yadda saxla və endir</strong>" düyməsini basın <code>sdb.xml</code> faylı yükləyin. Onu USB sürücüsünə kopyalayın və "<strong>USB-dən idxal et</strong>" funksiyası ilə televizora yükləyin.
+                Edit the channels, then click <strong>Save and Download</strong> to <code>sdb.xml</code> download the file. Copy it to a USB drive and load it onto the TV using "<strong>Import from USB</strong>."
             </div>
         </div>
     </div>
@@ -215,26 +214,25 @@
     <!-- HISENSE -->
     <div class="brand-guide" id="guide-hisense" role="tabpanel" aria-labelledby="tab-hisense">
         <div class="step-box">
-            <div class="step-title"><span class="step-num">1.</span> servicelist.db faylını əldə edin</div>
+            <div class="step-title"><span class="step-num">1.</span> Get the servicelist.db File</div>
             <div class="step-desc">
-                Hisense televizorunuzda <strong>Menu → Channel → Export Channel List</strong> bölməsinə keçin və verilənlər bazası faylını USB sürücüsünə köçürün.
-                Faylın adı adətən <code>servicelist.db</code> (2017+) və ya <code>channel.db</code> (2015–2016).
+                On your Hisense TV, go to <strong>Menu → Channel → Export Channel List</strong> to transfer the database file to a USB drive.
+                The file name is usually <code>servicelist.db</code> (2017+) or <code>channel.db</code> (2015–2016).
             </div>
         </div>
         <div class="step-box">
-            <div class="step-title"><span class="step-num">2.</span> Verilənlər bazasını quraşdırın</div>
+            <div class="step-title"><span class="step-num">2.</span> Install the Database</div>
             <div class="step-desc">
-                Çəkin <code>servicelist.db</code> . Sistem SQLite verilənlər bazasını oxuyur və bütün kanalları siyahıya alır.
+                Drag the <code>servicelist.db</code> . The system reads the SQLite database and lists all channels.
             </div>
         </div>
         <div class="step-box">
-            <div class="step-title"><span class="step-num">3</span> Redaktə et və Yüklə</div>
+            <div class="step-title"><span class="step-num">3</span> Edit and Upload</div>
             <div class="step-desc">
-                Arzu olunan dəyişiklikləri etdikdən sonra "<strong>Yadda saxla və yüklə"</strong>
-                düyməsini basaraq yenilənmiş verilənlər bazası faylını yükləyin. Faylı USB sürücüsünə kopyalayın və TV-nin idxal menyusundan istifadə edərək onu idxal edin.
+                After making the desired changes, click the "<strong>Save and Download"</strong> button to download the updated database file. Copy it to a USB drive and use the TV’s import menu to import it.
             </div>
         </div>
-        <div class="warn-box">⚠️ Hisense modellərində kanal adlarının dəyişdirilməsi məhduddur; bəzi modellərdə yalnız sıralama və kilid dəyişiklikləri tətbiq oluna bilər.</div>
+        <div class="warn-box">⚠️ Channel name changes are limited on Hisense models; on some models, only sorting and lock changes can be applied.</div>
     </div>
 </div>
 
