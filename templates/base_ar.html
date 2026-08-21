@@ -270,6 +270,10 @@
                         <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 22.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.008 5.925H5.033z"></path></svg>
                         Post
                     </a>
+                    <a href="#" id="share-bip" target="_blank" class="btn" style="background: #00b0f0; color: white; border: none; display:flex; align-items:center; gap:6px;">
+                        <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 2C6.48 2 2 6.03 2 11c0 2.85 1.5 5.4 3.86 7.03L5 22l4.21-2.1c.9.27 1.87.42 2.79.42 5.52 0 10-4.03 10-9s-4.48-9-10-9z"/></svg>
+                        BiP
+                    </a>
                     <a href="#" id="share-n" target="_blank" class="btn" style="background: #2b55a0; color: white; border: none; display:flex; align-items:center; gap:6px;">
                         <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M4 22h4V8l8 14h4V2h-4v14L8 2H4v20z"/></svg>
                         Nsosyal
@@ -365,6 +369,14 @@
             document.getElementById('share-x').href = `https://x.com/intent/post?text=${encodeURIComponent(shareTextLong)}`;
             document.getElementById('share-n').href = `https://nsosyal.com/share?text=${encodeURIComponent(shareTextLong)}`;
             document.getElementById('share-tg').href = `https://t.me/share/url?url=${encodeURIComponent(baseUrl)}&text=${encodeURIComponent(shareText)}`;
+            document.getElementById('share-bip').addEventListener('click', (e) => {
+                e.preventDefault();
+                if (navigator.share) {
+                    navigator.share({ title: 'TV Channel Editor', text: shareTextLong, url: baseUrl });
+                } else {
+                    window.location.href = `bip://share?text=${encodeURIComponent(shareTextLong)}`;
+                }
+            });
             document.getElementById('share-bsky').href = `https://bsky.app/intent/compose?text=${encodeURIComponent(shareTextLong)}`;
             
             const qrContainer = document.getElementById('qr-code-container');
