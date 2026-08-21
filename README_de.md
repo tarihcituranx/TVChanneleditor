@@ -16,13 +16,13 @@
 
 ## ✨ Wozu dient es?
 
-Ein Open-Source-Tool, mit dem Sie die von Ihrem Fernseher auf einen USB-Stick kopierte Senderlistendatei per **Drag & Drop** in Ihrem Browser visuell bearbeiten können. Es erfordert keine Installation und läuft direkt im Browser oder über die REST-API.
+Ein Open-Source-Tool, mit dem Sie die von Ihrem Fernseher auf einen USB-Stick kopierte Kanallisten-Datei per **Drag-and-Drop** in Ihrem Browser visuell bearbeiten können. Es erfordert keine Installation und läuft direkt im Browser oder über die REST-API.
 
 ## 👤 Wer kann es nutzen?
 
-- Nutzer, die die Samsung-TV-Kanalliste vom Computer aus bearbeiten möchten
-- Nutzer, die LG GlobalClone-XML-`.tll`-Dateien bearbeiten möchten
-- Nutzer, die mit Sony-`.sdb.xml`- und Hisense-`servicelist.db`-Listen arbeiten
+- Alle, die die Samsung-TV-Kanalliste vom Computer aus bearbeiten möchten
+- Alle, die LG GlobalClone-XML-`.tll`-Dateien bearbeiten möchten
+- Alle, die mit Sony-`.sdb.xml`- und Hisense-`.servicelist.db`-Listen arbeiten
 - Entwickler, die die Senderliste programmgesteuert ändern möchten
 - Nutzer, die die Senderliste mithilfe von KI-Agenten (AI Agent) automatisieren möchten
 
@@ -37,7 +37,7 @@ Ein Open-Source-Tool, mit dem Sie die von Ihrem Fernseher auf einen USB-Stick ko
 | **LG XML `.tll`** | ✅ | ✅ | ✅ | Nur GlobalClone XML (Binärdateien werden nicht unterstützt) |
 | **Panasonic `svl.*`** | 🔜 | 🔜 | 🔜 | Geplant / In Entwicklung |
 
-> **⚠️ Wichtiger Hinweis zur LG-Kompatibilität:** Die **binären .tll**-Dateien der älteren Generation von LG werden nicht unterstützt. Es können nur XML-basierte (GlobalClone) `.tll`-Dateien der neuen Generation verarbeitet werden. Für ältere Dateien müssen Sie die Desktop-Anwendung *ChanSort* verwenden.
+> **⚠️ Wichtiger Hinweis zur LG-Kompatibilität:** LGs **binäre .tll**-Dateien der alten Generation werden nicht unterstützt. Es können nur XML-basierte (GlobalClone) `.tll`-Dateien der neuen Generation verarbeitet werden. Für ältere Dateien müssen Sie die Desktop-Anwendung *ChanSort* verwenden.
 
 
 ## ⚠️ Wichtige Einschränkungen
@@ -45,27 +45,27 @@ Ein Open-Source-Tool, mit dem Sie die von Ihrem Fernseher auf einen USB-Stick ko
 Bitte beachten Sie vor der Nutzung die folgenden technischen Einschränkungen:
 - **LG Binary TLL:** Binäre `.tll`-Dateien der alten Generation werden nicht unterstützt.
 - **Panasonic SVL:** Die Unterstützung befindet sich in der Entwicklungsphase (geplant).
-- **Frequenzüberprüfung:** Nur für Türksat-Satellitendaten aktiv.
+- **Frequenzüberprüfung:** Ist nur für Türksat-Satellitendaten aktiv.
 - **Dateigrößenbeschränkung:** Hochgeladene Dateien dürfen maximal **2 MB** groß sein.
 - **Temporäre Sitzung:** Dateien werden nicht dauerhaft gespeichert, sondern nach Ende der Sitzung automatisch gelöscht.
 
 ## 🚀 Schnellstart
 
-1. **Vom Fernseher auf USB übertragen:** Übertragen Sie die Kanalliste über das TV-Menü (Sendung > Experteneinstellungen) auf einen im FAT32-Format formatierten USB-Stick.
+1. **Vom Fernseher auf USB übertragen:** Übertragen Sie die Senderliste über das TV-Menü (Sendung > Experteneinstellungen) auf einen im FAT32-Format formatierten USB-Stick.
 2. **Hochladen:** Ziehen Sie die Datei vom USB-Stick per Drag & Drop auf die Website.
-3. **Bearbeiten:** Ordnen Sie die Einträge per Drag & Drop an, löschen Sie überflüssige Einträge oder nutzen Sie 💡 die intelligenten Vorlagen.
+3. **Bearbeiten:** Sortieren Sie die Einträge per Drag & Drop, löschen Sie nicht benötigte Einträge oder nutzen Sie 💡 die intelligenten Vorlagen.
 4. **Herunterladen:** Laden Sie die bearbeitete Datei wieder auf Ihren Computer herunter.
-5. **Auf den Fernseher übertragen:** Stecken Sie den USB-Stick erneut in den Fernseher und importieren Sie die neue Liste.
+5. **Auf den Fernseher laden:** Stecken Sie den USB-Stick wieder in den Fernseher und importieren Sie die neue Liste.
 
 ## 🛰️ Satelliten- und Frequenzunterstützung
 
-**DVB-S/S2**-Kanallisten können formatunabhängig problemlos verarbeitet werden. **Die Funktion zur automatischen Frequenzüberprüfung (Erkennung veralteter/falscher Frequenzen) ist derzeit nur für Türksat 4A/5B-Daten aktiv.** Andere Satelliten (Hotbird, Astra usw.) werden für die Sortierung und Bearbeitung vollständig unterstützt.
+**DVB-S/S2**-Kanallisten, die von den unterstützten Engines (Marken) bereitgestellt werden, können verarbeitet werden. **Die Funktion zur automatischen Frequenzüberprüfung (Erkennung veralteter/falscher Frequenzen) ist derzeit nur für Türksat 4A/5B-Daten aktiv.** Andere Satelliten (Hotbird, Astra usw.) werden für die Sortierung und Bearbeitung vollständig unterstützt.
 
 ---
 
 ## 🔌 Wie funktioniert die Entwickler-API (REST)?
 
-Für KI-Agenten und Entwickler gibt es einen einfachen 3-Schritte-Ablauf. Weitere Details finden Sie unter den Links [Swagger UI](https://tvchanneleditor.onrender.com/api/docs) oder [OpenAPI-Schema](https://tvchanneleditor.onrender.com/api/openapi.txt).
+Für KI-Agenten und Entwickler gibt es einen einfachen 3-Schritte-Ablauf. Weitere Details finden Sie unter [Swagger UI](https://tvchanneleditor.onrender.com/api/docs) oder [OpenAPI-Schema](https://tvchanneleditor.onrender.com/api/openapi.txt).
 
 **Schritt 1: Hochladen (Upload)**
 ```http
@@ -80,7 +80,7 @@ POST /build
 Content-Type: application/json
 {
   "session_id": "uuid-...",
-  "channels": [ ... geordnete Liste ... ]
+  "channels": [ ... sortierte Liste ... ]
 }
 ```
 *(Als Antwort wird der Link `/download/...` zurückgegeben, über den die Datei heruntergeladen werden kann)*
@@ -89,7 +89,7 @@ Content-Type: application/json
 ```http
 GET /download/{session_id}/{filename}
 ```
-*(Die bearbeitete Binär-/Archivdatei wird heruntergeladen)*
+*(Die bearbeitete Binär- bzw. Archivdatei wird heruntergeladen)*
 
 ## 🔐 Datenschutz und Sicherheit
 
@@ -127,7 +127,7 @@ Die Benutzeroberfläche und die Bedienungsanleitungen sind in **11 Sprachen** ve
 ## 🙏 Vielen Dank
 
 - **[İltekin/scm-editor](https://github.com/iltekin/scm-editor)** — Erste Inspirationsquelle
-- **[PredatH0r/ChanSort](https://github.com/PredatH0r/ChanSort)** — Referenz für das Reverse Engineering von Formaten verschiedener Hersteller
+- **[PredatH0r/ChanSort](https://github.com/PredatH0r/ChanSort)** — Reverse-Engineering-Referenz für Formate verschiedener Marken
 - **[Türksat-Satellit](https://uydu.turksat.com.tr/)** — Türksat-Frequenzdatenbank
 
 ## 📄 Lizenz

@@ -6,7 +6,7 @@
 
 > **Çoxmarkalı TV kanal siyahısı redaktoru** — Samsung, LG, Sony və Hisense TV kanal siyahılarınızı brauzeriniz vasitəsilə redaktə edin.
 
-[![Canlı nümunə](https://img.shields.io/badge/🌐_Live_Demo-tvchanneleditor.onrender.com-blue)](https://tvchanneleditor.onrender.com)
+[![Canlı Demo](https://img.shields.io/badge/🌐_Canlı_Demo-tvchanneleditor.onrender.com-blue)](https://tvchanneleditor.onrender.com)
 [![API sənədləri](https://img.shields.io/badge/API-Swagger_UI-orange)](https://tvchanneleditor.onrender.com/api/docs)
 [![CI](https://github.com/tarihcituranx/TVChanneleditor/actions/workflows/test.yml/badge.svg)](https://github.com/tarihcituranx/TVChanneleditor/actions)
 [![Lisenziya: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENCE)
@@ -16,25 +16,25 @@
 
 ## ✨ Nə edir?
 
-Bu, brauzerinizdə **çəkmə-buraxma** üsulu ilə televizorunuzun USB yaddaş cihazına köçürdüyü kanal siyahısı faylını vizual şəkildə redaktə etməyə imkan verən açıq mənbəli alətdir. Quraşdırma tələb etmir və birbaşa brauzer və ya REST API vasitəsilə işləyir.
+Bu, brauzerinizdə **çəkmə-buraxma** üsulu ilə televizorunuzun USB yaddaşına köçürdüyü kanal siyahısı faylını vizual şəkildə redaktə etməyə imkan verən açıq mənbə alətidir. Quraşdırma tələb etmir və birbaşa brauzeriniz və ya REST API vasitəsilə işləyir.
 
 ## 👤 Kim İstifadə Edə bilər?
 
 - Kompüterdən Samsung TV kanal siyahısını redaktə etmək istəyənlər
 - LG GlobalClone XML `.tll` fayllarını redaktə etmək istəyənlər
 - Sony `sdb.xml` və Hisense `servicelist.db` siyahıları ilə işləyənlər
-- Kanal siyahısını proqramlaşdırma yolu ilə dəyişdirmək istəyən inkişaf etdiricilər
+- Kanal siyahısını proqram təminatı ilə dəyişdirmək istəyən inkişaf etdiricilər
 - AI agentlərindən istifadə edərək kanal siyahısının idarə edilməsini avtomatlaşdırmaq istəyənlər
 
 ## 📺 Dəstəklənən Formatlar (Uyğunluq Matrisi)
 
-| Format | Oxu | Dəyişmə | Yenidən yaradın | Qeyd |
+| Format | Oxu | Redaktə | Yenidən yaradın | Qeyd |
 |--------|:---:|:---:|:---:|-----|
 | **Samsung `.scm`** | ✅ | ✅ | ✅ | E/F/H Seriyası (Binary) |
 | **Samsung Tizen `.zip`** | ✅ | ✅ | ✅ | J/K/M/Q/R/T Seriyaları (SQLite) |
 | **Sony `sdb.xml`** | ✅ | ✅ | ✅ | BRAVIA Seriyası |
 | **Hisense `servicelist.db`** | ✅ | ✅ | ✅ | 2017 və 2021 modelləri |
-| **LG XML `.tll`** | ✅ | ✅ | ✅ | Yalnız GlobalClone XML (binary dəstəklənmir) |
+| **LG XML `.tll`** | ✅ | ✅ | ✅ | Yalnız GlobalClone XML (Binary dəstəklənmir) |
 | **Panasonic `svl.*`** | 🔜 | 🔜 | 🔜 | Planlaşdırılır / Hazırlanır |
 
 > **⚠️ Vacib LG Uyğunluq Qeyd:** LG-nin köhnə nəsil **Binary .tll** faylları dəstəklənmir. Yalnız yeni nəsil XML-əsaslı (GlobalClone) `.tll` faylları emal edilə bilər. Köhnə fayllar üçün masaüstü *ChanSort* tətbiqindən istifadə etməlisiniz.
@@ -45,21 +45,21 @@ Bu, brauzerinizdə **çəkmə-buraxma** üsulu ilə televizorunuzun USB yaddaş 
 İstifadə etməzdən əvvəl aşağıdakı texniki məhdudiyyətləri nəzərə alın:
 - **LG Binary TLL:** Köhnə nəsil binary `.tll` faylları dəstəklənmir.
 - **Panasonic SVL:** Dəstək hazırlanır (planlaşdırılır).
-- **Yayım tezliyi yoxlaması:** Yalnız Türksat peyk məlumatları üçün aktivdir.
-- **Fayl Ölçüsü Məhdudiyyəti:** Yüklənən fayllar **2 MB**-dən çox olmamalıdır.
-- **Müvəqqəti Sessiya:** Fayllar daimi saxlanmır; sessiyanın sonunda avtomatik silinirlər.
+- **Yayım tezliyinin yoxlanışı:** Yalnız Türksat peyk məlumatları üçün aktivdir.
+- **Fayl Ölçüsü Məhdudiyyəti:** Yüklənən fayllar maksimum **2 MB** ola bilər.
+- **Müvəqqəti Sessiya:** Fayllar daimi saxlanılmır; sessiyanın sonunda avtomatik olaraq silinirlər.
 
 ## 🚀 Sürətli Başlanğıc
 
-1. **TV-dən USB-yə köçürmə:** TV menyusundan (Yayım > Ekspert Tənzimləmələri) kanal siyahısını FAT32 formatlı USB diskinə köçürün.
-2. **Yükləmə:** USB diskindən faylı vebsayta sürükləyib buraxın.
-3. **Düzəliş:** Faylları sürükləməklə sıralayın, lazımsız elementləri silin və ya 💡 Ağıllı Şablonlardan istifadə edin.
-4. **Yükləmə:** Düzəliş edilmiş faylı yenidən kompüterinizə yükləyin.
-5. **TV-yə quraşdırın:** USB sürücüsünü yenidən TV-yə qoşun və yeni siyahını idxal edin.
+1. **TV-dən USB-yə köçürmə:** TV menyusundan (Yayım > Gelişmiş Parametrlər), kanal siyahısını FAT32 formatlı USB diskinə köçürün.
+2. **Yükləmə:** Faylı USB sürücüsündən vebsayta sürükləyib buraxın.
+3. **Düzəliş:** Sürükləmə və buraxma ilə sıranı dəyişdirin, lazımsız elementləri silin və ya 💡 Ağıllı Şablonlardan istifadə edin.
+4. **Yüklə:** Düzəldilmiş faylı yenidən kompüterinizə yükləyin.
+5. **TV-yə quraşdırın:** USB sürücüsünü TV-yə yenidən daxil edin və yeni siyahını idxal edin.
 
-## 🛰️ Peyk və tezlik dəstəyi
+## 🛰️ Peyk və Tezlik Dəstəyi
 
-**DVB-S/S2** kanal siyahıları format baxımından problemsiz emal edilə bilər. **Avtomatik tezlik yoxlama xüsusiyyəti (köhnə/səhv tezlikləri aşkar etmə) hazırda yalnız Türksat 4A/5B məlumatları üçün aktivdir.** Digər peyklər (Hotbird, Astra və s.) çeşidləmə və redaktə üçün tam dəstəklənir.
+**DVB-S/S2** kanal siyahıları dəstəklənən qurğular (markalar) tərəfindən təqdim oluna bilər. **Avtomatik tezlik yoxlama funksiyası (köhnə/səhv tezlikləri aşkar etmək) hazırda yalnız Türksat 4A/5B məlumatları üçün aktivdir.** Digər peyklər (Hotbird, Astra və s.) çeşidləmə və redaktə üçün tam dəstəklənir.
 
 ---
 
@@ -90,24 +90,24 @@ Content-Type: application/json
 ```http
 GET /download/{session_id}/{filename}
 ```
-*(Emal olunmuş ikili/arxiv fayl yüklənir)*
+*(Düzəldilmiş binary/arxiv fayl yüklənir)*
 
 ## 🔐 Məxfilik və Təhlükəsizlik
 
-- Fayl ölçüsü üçün **2 MB** limit mövcuddur.
-- **Fayllar serverdə daimi saxlanılmır.** Yüklənmiş fayllar redaktə sessiyası müddətində müvəqqəti server yaddaşında emal olunur; onlar daimi arxivləşdirilmir və sessiya bitdikdə (təxminən 1 saat) avtomatik olaraq tamamilə silinir.
+- Fayl ölçüsü üçün **2 MB** həddi var.
+- **Fayllar serverdə daimi saxlanılmır.** Yüklənmiş fayllar redaktə sessiyası müddətində müvəqqəti server yaddaşında emal olunur; onlar daimi arxivləşdirilmir və sessiya bitdikdən sonra (təxminən 1 saat) avtomatik olaraq tamamilə silinirlər.
 - Hesab, üzvlük və ya verilənlər bazası qeydiyyatı yoxdur.
-- API-də XML parsite əməliyyatları (Billion Laughs hücumlarına qarşı) `defusedxml` ilə qorunur.
+- API-də XML parsite əməliyyatları (Billion Laughs hücumlarından qorunmaq üçün) `defusedxml` tərəfindən qorunur.
 
 ## 🧪 Test Sistemi (CI)
 
-Layihə **Gediş-dönüşlü (Round-Trip)** test memarlığından istifadə edir.
-- Real test fayllarından (fixtures) istifadə etməklə, sınaqlar aparılır ki, pozulmuş və ya dəyişdirilmiş mühərrik kodu orijinal TV verilənlər bazası strukturlarını korlamasın.
+Layihə **Geri Dönüşlü (Round-Trip)** test memarlığından istifadə edir.
+- Real test fayllarından (fixtures) istifadə edərək, korlanmış və ya dəyişdirilmiş mühərrik kodunun ilkin TV verilənlər bazası strukturlarını pozmadığını təsdiqləyirik.
 - Hər `push` və `PR` ilə `tests/test_roundtrip.py` GitHub Actions-da avtomatik işə düşür.
 
 ## 🌍 Dil Dəstəyi
 
-İnterfeys və istifadəçi bələdçiləri **11 dildə** mövcuddur: Türk, İngilis, Alman, Rus, İspan, İtalyan, Fransız, ərəb, fars, azərbaycanca və portuqal.
+İnterfeys və istifadəçi bələdçiləri **11 dildə** mövcuddur: Türk, İngilis, Alman, Rus, İspan, İtalyan, Fransız, ərəb, fars, azərbaycan və portuqal.
 
 ## 🏗️ Layihənin Strukturı
 
@@ -121,7 +121,7 @@ Layihə **Gediş-dönüşlü (Round-Trip)** test memarlığından istifadə edir
 ├── templates/ # Jinja2 HTML interfeysləri (11 dil)
 ├── static/ # CSS, JS, OpenAPI YAML sxemləri
 └── tests/
-    ├── test_roundtrip.py  # Bütün mühərriklər üçün geri-dönüş testləri
+    ├── test_roundtrip.py  # Bütün mühərriklər üçün round-trip testləri
     └── fixtures/ # Testlər üçün real TV verilənlər bazası nümunələri
 ```
 

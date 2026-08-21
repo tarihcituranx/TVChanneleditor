@@ -4,7 +4,7 @@
 
 # 📺 Editor dei canali TV
 
-> **Editor di elenchi di canali TV multimarca** — Modifica i tuoi elenchi di canali TV Samsung, LG, Sony e Hisense direttamente dal browser.
+> **Editor multi-brand per l'elenco dei canali TV** — Modifica gli elenchi dei canali TV di Samsung, LG, Sony e Hisense direttamente dal browser.
 
 [![Demo dal vivo](https://img.shields.io/badge/🌐_Canlı_Demo-tvchanneleditor.onrender.com-blue)](https://tvchanneleditor.onrender.com)
 [![Documentazione API](https://img.shields.io/badge/API-Swagger_UI-orange)](https://tvchanneleditor.onrender.com/api/docs)
@@ -16,14 +16,14 @@
 
 ## ✨ A cosa serve?
 
-È uno strumento open source che consente di modificare visivamente, tramite **drag-and-drop** nel browser, il file dell'elenco dei canali che la TV trasferisce su una chiavetta USB. Non richiede installazione, funziona direttamente dal browser o tramite API REST.
+È uno strumento open source che consente di modificare visivamente, tramite **drag-and-drop** nel browser, il file dell’elenco dei canali che la TV trasferisce su una chiavetta USB. Non richiede installazione, funziona direttamente dal browser o tramite API REST.
 
 ## 👤 Chi può utilizzarlo?
 
 - Chi desidera modificare l’elenco dei canali della TV Samsung dal computer
 - Chi desidera modificare i file XML `.tll` di LG GlobalClone
 - Chi lavora con gli elenchi `sdb.xml` di Sony e `servicelist.db` di Hisense
-- Sviluppatori che desiderano modificare la lista dei canali in modo programmatico
+- Gli sviluppatori che desiderano modificare la lista dei canali in modo programmatico
 - Chi desidera automatizzare la lista dei canali tramite agenti di intelligenza artificiale (AI Agent)
 
 ## 📺 Formati supportati (Matrice di compatibilità)
@@ -33,7 +33,7 @@
 | **Samsung `.scm`** | ✅ | ✅ | ✅ | Serie E/F/H (binario) |
 | **Samsung Tizen `.zip`** | ✅ | ✅ | ✅ | Serie J/K/M/Q/R/T (SQLite) |
 | **Sony `sdb.xml`** | ✅ | ✅ | ✅ | Serie BRAVIA |
-| **Hisense `servicelist.db`** | ✅ | ✅ | ✅ | Modelli 2017 e 2021 |
+| **Hisense `servicelist.db`** | ✅ | ✅ | ✅ | Modelli del 2017 e del 2021 |
 | **LG XML `.tll`** | ✅ | ✅ | ✅ | Solo GlobalClone XML (il formato binario non è supportato) |
 | **Panasonic `svl.*`** | 🔜 | 🔜 | 🔜 | In programma / In fase di sviluppo |
 
@@ -52,27 +52,27 @@ Prima dell’utilizzo, si prega di tenere in considerazione i seguenti limiti te
 ## 🚀 Guida rapida
 
 1. **Trasferisci dalla TV alla chiavetta USB:** dal menu della TV (Trasmissione > Impostazioni avanzate) trasferisci l’elenco dei canali su una chiavetta USB formattata in FAT32.
-2. **Carica:** trascina e rilascia il file dalla chiavetta USB sul sito.
-3. **Modifica:** ordina i canali con il drag-and-drop, elimina quelli non necessari oppure utilizza 💡 i modelli intelligenti.
-4. **Scarica:** scarica nuovamente il file modificato sul tuo computer.
-5. **Carica sulla TV:** ricollega la chiavetta USB alla TV e importa la nuova lista.
+2. **Carica:** trascina e rilascia il file presente sulla chiavetta USB sul sito.
+3. **Modifica:** ordina i canali con il drag-and-drop, elimina quelli non necessari o utilizza 💡 i modelli intelligenti.
+4. **Scarica:** Scarica il file modificato sul tuo computer.
+5. **Carica sulla TV:** Ri-collega la chiavetta USB alla TV e importa la nuova lista.
 
 ## 🛰️ Supporto per satelliti e frequenze
 
-Le liste dei canali **DVB-S/S2** possono essere elaborate senza problemi dal punto di vista del formato. **La funzione di verifica automatica delle frequenze (rilevamento di frequenze obsolete/errate) è attualmente attiva solo per i dati di Türksat 4A/5B.** Gli altri satelliti (Hotbird, Astra ecc.) sono pienamente supportati per l’ordinamento e la modifica.
+È possibile elaborare gli elenchi di canali **DVB-S/S2** forniti dai motori (marche) supportati. **La funzione di verifica automatica delle frequenze (rilevamento di frequenze obsolete o errate) è attualmente attiva solo per i dati di Türksat 4A/5B.** Gli altri satelliti (Hotbird, Astra ecc.) sono pienamente supportati per l'ordinamento e la modifica.
 
 ---
 
 ## 🔌 Come funziona l’API per sviluppatori (REST)?
 
-È disponibile un semplice flusso in 3 fasi per gli agenti AI e gli sviluppatori. Per ulteriori dettagli, è possibile consultare i link [Swagger UI](https://tvchanneleditor.onrender.com/api/docs) o [Schema OpenAPI](https://tvchanneleditor.onrender.com/api/openapi.txt).
+È disponibile un semplice flusso in 3 passaggi per gli agenti AI e gli sviluppatori. Per ulteriori dettagli, è possibile consultare i link [Swagger UI](https://tvchanneleditor.onrender.com/api/docs) o [Schema OpenAPI](https://tvchanneleditor.onrender.com/api/openapi.txt).
 
 **Passo 1: Caricamento (Upload)**
 ```http
 POST /upload
 Content-Type: multipart/form-data
 ```
-*(Restituisce come risposta un `session_id` e un elenco JSON dei canali)*
+*(Come risposta viene restituito un `session_id` e un elenco JSON dei canali)*
 
 **Passaggio 2: Creazione (Build)**
 ```http
@@ -93,16 +93,16 @@ GET /download/{session_id}/{filename}
 
 ## 🔐 Privacy e sicurezza
 
-- È previsto un limite di **2 MB** per le dimensioni dei file.
+- È previsto un limite di **2 MB** per la dimensione dei file.
 - **I file non vengono archiviati in modo permanente sul server.** I file caricati vengono elaborati nella memoria temporanea del server per tutta la durata della sessione di modifica, non vengono archiviati in modo permanente e vengono automaticamente cancellati per intero allo scadere della sessione (circa 1 ora).
 - Non è prevista alcuna registrazione di account, iscrizione o database.
-- Le operazioni di parsing XML sull'API (a protezione dagli attacchi "Billion Laughs") sono protette tramite `defusedxml`.
+- Le operazioni di parsing XML sull’API (a protezione dagli attacchi Billion Laughs) sono protette tramite `defusedxml`.
 
 ## 🧪 Sistema di test (CI)
 
-Il progetto presenta un’architettura di test **Round-Trip (andata e ritorno)**.
+Il progetto presenta un’architettura di test **Round-Trip (Andata e Ritorno)**.
 - Utilizzando file di test realistici (fixtures), si verifica che il codice del motore, anche se danneggiato o modificato, non comprometta le strutture originali del database televisivo.
-- Ad ogni operazione `push` e `PR`, su GitHub Actions viene eseguito automaticamente il file `tests/test_roundtrip.py`.
+- Ad ogni operazione `push` e `PR`, il file `tests/test_roundtrip.py` viene eseguito automaticamente su GitHub Actions.
 
 ## 🌍 Supporto linguistico
 
@@ -126,11 +126,11 @@ L’interfaccia e le guide all’uso sono disponibili in **11 lingue**: turco, i
 
 ## 🙏 Grazie
 
-- **[İltekin/scm-editor](https://github.com/iltekin/scm-editor)** — Fonte di ispirazione iniziale
+- **[İltekin/scm-editor](https://github.com/iltekin/scm-editor)** — Prima fonte di ispirazione
 - **[PredatH0r/ChanSort](https://github.com/PredatH0r/ChanSort)** — Riferimento di reverse engineering per i formati di più marchi
 - **[Türksat Satellite](https://uydu.turksat.com.tr/)** — Database delle frequenze Türksat
 
 ## 📄 Licenza
 
 Distribuito come software open source con licenza MIT.
-> “Samsung”, “LG”, “Sony”, “Hisense”, “Panasonic” e i relativi loghi sono marchi registrati delle rispettive società. Questo è uno strumento comunitario indipendente e open source.
+> "Samsung", "LG", "Sony", "Hisense", "Panasonic" e i relativi loghi sono marchi registrati delle rispettive società. Questo è uno strumento comunitario indipendente e open source.

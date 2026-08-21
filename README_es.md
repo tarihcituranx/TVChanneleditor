@@ -2,29 +2,29 @@
 
 **Última actualización:** 21/08/2026
 
-# 📺 Editor de canales de televisión
+# 📺 Editor de canales de TV
 
-> **Editor de listas de canales de televisión multimarca** — Edita las listas de canales de tus televisores Samsung, LG, Sony y Hisense a través del navegador.
+> **Editor de listas de canales de TV multimarca** — Edita tus listas de canales de TV de Samsung, LG, Sony y Hisense a través del navegador.
 
 [![Demostración en directo](https://img.shields.io/badge/🌐_Canlı_Demo-tvchanneleditor.onrender.com-blue)](https://tvchanneleditor.onrender.com)
 [![Documentación de la API](https://img.shields.io/badge/API-Swagger_UI-orange)](https://tvchanneleditor.onrender.com/api/docs)
 [![CI](https://github.com/tarihcituranx/TVChanneleditor/actions/workflows/test.yml/badge.svg)](https://github.com/tarihcituranx/TVChanneleditor/actions)
-[![Licencia: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENCIA)
+[![Licencia: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![Python 3.12+](https://img.shields.io/badge/Python-3.12+-blue)](https://python.org)
 
 ---
 
 ## ✨ ¿Para qué sirve?
 
-Es una herramienta de código abierto que te permite editar visualmente, mediante la función de **arrastrar y soltar** en tu navegador, el archivo de la lista de canales que tu televisor transfiere a una memoria USB. No requiere instalación, funciona directamente desde el navegador o a través de la API REST.
+Es una herramienta de código abierto que te permite editar visualmente, mediante **arrastrar y soltar** en tu navegador, el archivo de la lista de canales que tu televisor transfiere a una memoria USB. No requiere instalación, funciona directamente desde el navegador o a través de la API REST.
 
 ## 👤 ¿Quién puede utilizarlo?
 
 - Quienes deseen editar la lista de canales de un televisor Samsung desde el ordenador
 - Quienes deseen editar los archivos XML `.tll` de LG GlobalClone
 - Quienes trabajen con las listas `sdb.xml` de Sony y `servicelist.db` de Hisense
-- Desarrolladores que deseen modificar la lista de canales de forma programática
-- Quienes deseen automatizar la lista de canales mediante agentes de inteligencia artificial (AI Agent)
+- Desarrolladores que quieran modificar la lista de canales de forma programática
+- Aquellos que quieran automatizar la lista de canales con agentes de inteligencia artificial (AI Agent)
 
 ## 📺 Formatos compatibles (matriz de compatibilidad)
 
@@ -35,7 +35,7 @@ Es una herramienta de código abierto que te permite editar visualmente, mediant
 | **Sony `sdb.xml`** | ✅ | ✅ | ✅ | Serie BRAVIA |
 | **Hisense `servicelist.db`** | ✅ | ✅ | ✅ | Modelos de 2017 y 2021 |
 | **LG XML `.tll`** | ✅ | ✅ | ✅ | Solo GlobalClone XML (no se admite el formato binario) |
-| **Panasonic `svl.*`** | 🔜 | 🔜 | 🔜 | Planificado / En fase de desarrollo |
+| **Panasonic `svl.*`** | 🔜 | 🔜 | 🔜 | Programado / En fase de desarrollo |
 
 > **⚠️ Nota importante sobre la compatibilidad con LG:** No se admiten los archivos **binarios .tll** de la generación anterior de LG. Solo se pueden procesar los archivos `.tll` de nueva generación basados en XML (GlobalClone). Para los archivos antiguos, debes utilizar la aplicación de escritorio *ChanSort*.
 
@@ -47,25 +47,25 @@ Antes de utilizarlo, ten en cuenta las siguientes limitaciones técnicas:
 - **Panasonic SVL:** La compatibilidad se encuentra en fase de desarrollo (prevista).
 - **Verificación de frecuencias:** Solo está activa para los datos del satélite Türksat.
 - **Límite de tamaño de archivo:** Los archivos cargados pueden tener un tamaño máximo de **2 MB**.
-- **Sesión temporal:** Los archivos no se almacenan de forma permanente, sino que se borran automáticamente al finalizar la sesión.
+- **Sesión temporal:** Los archivos no se guardan de forma permanente, sino que se borran automáticamente al finalizar la sesión.
 
 ## 🚀 Inicio rápido
 
-1. **Transferir desde el televisor al USB:** Desde el menú del televisor (Emisión > Ajustes avanzados), transfiere la lista de canales a un USB formateado en FAT32.
-2. **Subir:** Arrastra y suelta el archivo del USB en la página web.
-3. **Edita:** Ordena los elementos arrastrando y soltando, elimina los que no necesites o utiliza 💡 las plantillas inteligentes.
-4. **Descarga:** Vuelve a descargar el archivo editado a tu ordenador.
-5. **Instálalo en el televisor:** vuelve a conectar la memoria USB al televisor e importa la nueva lista.
+1. **Transferir desde el televisor a un dispositivo USB:** Desde el menú del televisor (Emisión > Ajustes avanzados), transfiere la lista de canales a un dispositivo USB formateado en FAT32.
+2. **Cargar:** Arrastra y suelta el archivo del USB en la página web.
+3. **Editar:** Ordena los canales con la función de arrastrar y soltar, elimina los que no necesites o utiliza 💡 las plantillas inteligentes.
+4. **Descarga:** Descarga el archivo editado de nuevo en tu ordenador.
+5. **Instala en el televisor:** Vuelve a conectar la memoria USB al televisor e importa la nueva lista.
 
 ## 🛰️ Compatibilidad con satélites y frecuencias
 
-Las listas de canales **DVB-S/S2** se pueden procesar sin problemas en cuanto al formato. **La función de verificación automática de frecuencias (detección de frecuencias antiguas o erróneas) solo está activa actualmente para los datos de Türksat 4A/5B.** Los demás satélites (Hotbird, Astra, etc.) son totalmente compatibles para la clasificación y la edición.
+Se pueden procesar las listas de canales **DVB-S/S2** proporcionadas por los motores (marcas) compatibles. **La función de verificación automática de frecuencias (detección de frecuencias antiguas o erróneas) solo está activa actualmente para los datos de Türksat 4A/5B.** Los demás satélites (Hotbird, Astra, etc.) son totalmente compatibles para la clasificación y la edición.
 
 ---
 
 ## 🔌 ¿Cómo funciona la API para desarrolladores (REST)?
 
-Existe un sencillo flujo de 3 pasos para los agentes de IA y los desarrolladores. Para obtener más detalles, puedes consultar los enlaces a [Swagger UI](https://tvchanneleditor.onrender.com/api/docs) o al [esquema OpenAPI](https://tvchanneleditor.onrender.com/api/openapi.txt).
+Existe un sencillo flujo de tres pasos para los agentes de IA y los desarrolladores. Para obtener más detalles, puedes consultar los enlaces a [Swagger UI](https://tvchanneleditor.onrender.com/api/docs) o al [esquema OpenAPI](https://tvchanneleditor.onrender.com/api/openapi.txt).
 
 **Paso 1: Carga (Upload)**
 ```http
@@ -74,7 +74,7 @@ Content-Type: multipart/form-data
 ```
 *(Devuelve como respuesta un `session_id` y una lista JSON de canales)*
 
-**Paso 2: Compilación (Build)**
+**Paso 2: Creación (Build)**
 ```http
 POST /build
 Content-Type: application/json
@@ -83,7 +83,7 @@ Content-Type: application/json
   "channels": [ ... lista editada ... ]
 }
 ```
-*(Como respuesta, devuelve el enlace `/download/...` desde el que se puede descargar el archivo)*
+*(Como respuesta se devuelve el enlace `/download/...` desde el que se puede descargar el archivo)*
 
 **Paso 3: Descarga (Download)**
 ```http
@@ -96,13 +96,13 @@ GET /download/{session_id}/{filename}
 - Hay un límite de tamaño de archivo de **2 MB**.
 - **Los archivos no se almacenan de forma permanente en el servidor.** Los archivos subidos se procesan en el almacenamiento temporal del servidor durante la sesión de edición, no se archivan de forma permanente y se eliminan por completo de forma automática cuando expira la sesión (aproximadamente 1 hora).
 - No se realiza ningún registro de cuentas, suscripciones ni bases de datos.
-- Las operaciones de análisis de XML en la API (contra ataques «Billion Laughs») están protegidas con `defusedxml`.
+- Las operaciones de análisis de XML en la API (contra ataques «Billion Laughs») están protegidas mediante `defusedxml`.
 
 ## 🧪 Sistema de pruebas (CI)
 
 El proyecto cuenta con una arquitectura de pruebas **Round-Trip (ida y vuelta)**.
-- Mediante el uso de archivos de prueba del mundo real (fixtures), se comprueba que el código del motor, aunque se corrompa o se modifique, no altere las estructuras originales de la base de datos de televisión.
-- En cada operación de `push` y `PR`, se ejecuta automáticamente el archivo `tests/test_roundtrip.py` en GitHub Actions.
+- Mediante el uso de archivos de prueba del mundo real (fixtures), se comprueba que el código del motor, aunque se haya dañado o modificado, no altere las estructuras originales de la base de datos de televisión.
+- En cada operación de `push` y `PR`, el archivo `tests/test_roundtrip.py` se ejecuta automáticamente en GitHub Actions.
 
 ## 🌍 Compatibilidad lingüística
 
@@ -121,7 +121,7 @@ La interfaz y las guías de uso están disponibles en **11 idiomas**: turco, ing
 ├── static/ # CSS, JS, esquemas YAML de OpenAPI
 └── tests/
     ├── test_roundtrip.py  # Pruebas de ida y vuelta para todos los motores
-    └── fixtures/ # Ejemplos de bases de datos de televisores reales para las pruebas
+    └── fixtures/ # Ejemplos de bases de datos reales de televisores para las pruebas
 ```
 
 ## 🙏 Gracias
@@ -133,4 +133,4 @@ La interfaz y las guías de uso están disponibles en **11 idiomas**: turco, ing
 ## 📄 Licencia
 
 Se ofrece como código abierto bajo la licencia MIT.
-> «Samsung», «LG», «Sony», «Hisense», «Panasonic» y sus logotipos son marcas registradas de las empresas correspondientes. Se trata de una herramienta comunitaria independiente y de código abierto.
+> «Samsung», «LG», «Sony», «Hisense», «Panasonic» y sus logotipos son marcas registradas de sus respectivas empresas. Esta es una herramienta comunitaria independiente y de código abierto.

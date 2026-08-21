@@ -59,7 +59,7 @@ Kullanmadan önce lütfen aşağıdaki teknik sınırları göz önünde bulundu
 
 ## 🛰️ Uydu ve Frekans Desteği
 
-**DVB-S/S2** kanal listeleri format açısından sorunsuz şekilde işlenebilir. **Otomatik frekans doğrulama (Eski/yanlış frekansları tespit etme) özelliği şu anda sadece Türksat 4A/5B verileri için aktiftir.** Diğer uydular (Hotbird, Astra vb.) sıralama ve düzenleme için tamamen desteklenmektedir.
+Desteklenen motorlar (markalar) tarafından sağlanan **DVB-S/S2** kanal listeleri işlenebilir. **Otomatik frekans doğrulama (Eski/yanlış frekansları tespit etme) özelliği şu anda sadece Türksat 4A/5B verileri için aktiftir.** Diğer uydular (Hotbird, Astra vb.) sıralama ve düzenleme için tamamen desteklenmektedir.
 
 ---
 
