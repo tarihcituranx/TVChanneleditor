@@ -3,10 +3,12 @@ import glob
 import os
 import time
 
+# SET YOUR API KEY HERE OR PASS AS ENVIRONMENT VARIABLE
 DEEPL_KEY = os.environ.get('DEEPL_KEY', 'YOUR_DEEPL_API_KEY_HERE')
 URL = "https://api-free.deepl.com/v2/translate"
 
-langs = ['FA', 'AZ']
+# Full list of supported target languages
+langs = ['DE', 'RU', 'ES', 'IT', 'FR', 'AR', 'FA', 'AZ', 'PT']
 
 def translate_html(text, target_lang):
     headers = {
@@ -32,6 +34,7 @@ for lang in langs:
     print(f"\n--- Translating to {lang} ---")
     lang_lower = lang.lower()
     for file in en_files:
+        # Swagger and base_en.html are handled manually
         if 'swagger' in file or 'base_en.html' in file:
             continue
             
@@ -41,11 +44,13 @@ for lang in langs:
         
         translated = translate_html(html_content, lang)
         
-        if lang == 'FA':
+        # RTL support for Arabic and Farsi
+        if lang in ['AR', 'FA']:
             translated = translated.replace('lang="en"', f'lang="{lang_lower}" dir="rtl"')
         else:
             translated = translated.replace('lang="en"', f'lang="{lang_lower}"')
             
+        # Fix DeepL escaping Jinja quotes
         translated = translated.replace('&quot;', '"')
         translated = translated.replace('base_en.html', f'base_{lang_lower}.html')
         
@@ -53,4 +58,7 @@ for lang in langs:
         with open(out_file, 'w', encoding='utf-8') as f:
             f.write(translated)
             
+        # Sleep to avoid rate limiting
         time.sleep(1)
+
+print("Translation complete!")
