@@ -1,3 +1,5 @@
+[🇹🇷 TR](README.md) | [🇺🇸 EN](README_en.md) | [🇩🇪 DE](README_de.md) | [🇷🇺 RU](README_ru.md) | [🇪🇸 ES](README_es.md) | [🇮🇹 IT](README_it.md) | [🇫🇷 FR](README_fr.md) | [🇸🇦 AR](README_ar.md) | [🇮🇷 FA](README_fa.md) | [🇦🇿 AZ](README_az.md) | [🇵🇹 PT](README_pt.md)
+
 **Última actualización:** 21/08/2026
 
 # 📺 Editor de canales de televisión
@@ -5,8 +7,9 @@
 > **Editor de listas de canales de televisión multimarca** — Una única plataforma para Samsung, LG, Sony, Hisense y muchas más marcas.
 
 [![Demostración en directo](https://img.shields.io/badge/🌐_Canlı_Demo-tvchanneleditor.onrender.com-blue)](https://tvchanneleditor.onrender.com)
+[![CI](https://github.com/tarihcituranx/TVChanneleditor/actions/workflows/test.yml/badge.svg)](https://github.com/tarihcituranx/TVChanneleditor/actions)
 [![Licencia: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
-[![Python 3.9+](https://img.shields.io/badge/Python-3.9+-blue)](https://python.org)
+[![Python 3.12+](https://img.shields.io/badge/Python-3.12+-blue)](https://python.org)
 
 ---
 

@@ -1,3 +1,5 @@
+[🇹🇷 TR](README.md) | [🇺🇸 EN](README_en.md) | [🇩🇪 DE](README_de.md) | [🇷🇺 RU](README_ru.md) | [🇪🇸 ES](README_es.md) | [🇮🇹 IT](README_it.md) | [🇫🇷 FR](README_fr.md) | [🇸🇦 AR](README_ar.md) | [🇮🇷 FA](README_fa.md) | [🇦🇿 AZ](README_az.md) | [🇵🇹 PT](README_pt.md)
+
 **Son Güncelleme:** 2026-08-21
 
 # 📺 TV Channel Editor
@@ -5,8 +7,9 @@
 > **Multi-brand TV kanal listesi düzenleyici** — Samsung, LG, Sony, Hisense ve daha fazlası için tek platform.
 
 [![Canlı Demo](https://img.shields.io/badge/🌐_Canlı_Demo-tvchanneleditor.onrender.com-blue)](https://tvchanneleditor.onrender.com)
+[![CI](https://github.com/tarihcituranx/TVChanneleditor/actions/workflows/test.yml/badge.svg)](https://github.com/tarihcituranx/TVChanneleditor/actions)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
-[![Python 3.9+](https://img.shields.io/badge/Python-3.9+-blue)](https://python.org)
+[![Python 3.12+](https://img.shields.io/badge/Python-3.12+-blue)](https://python.org)
 
 ---
 

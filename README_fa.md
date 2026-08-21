@@ -1,3 +1,5 @@
+[🇹🇷 TR](README.md) | [🇺🇸 EN](README_en.md) | [🇩🇪 DE](README_de.md) | [🇷🇺 RU](README_ru.md) | [🇪🇸 ES](README_es.md) | [🇮🇹 IT](README_it.md) | [🇫🇷 FR](README_fr.md) | [🇸🇦 AR](README_ar.md) | [🇮🇷 FA](README_fa.md) | [🇦🇿 AZ](README_az.md) | [🇵🇹 PT](README_pt.md)
+
 **آخرین به‌روزرسانی:** ۲۱ اوت ۲۰۲۶
 
 # 📺 ویرایشگر کانال تلویزیون
@@ -5,8 +7,9 @@
 > **ویرایشگر لیست کانال تلویزیون چندبرند** — یک پلتفرم واحد برای سامسونگ، ال‌جی، سونی، هایسنس و غیره.
 
 [![دموی زنده](https://img.shields.io/badge/🌐_Live_Demo-tvchanneleditor.onrender.com-blue)](https://tvchanneleditor.onrender.com)
+[![CI](https://github.com/tarihcituranx/TVChanneleditor/actions/workflows/test.yml/badge.svg)](https://github.com/tarihcituranx/TVChanneleditor/actions)
 [![مجوز: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENCE)
-[![پایتون ۳.۹+](https://img.shields.io/badge/Python-3.9+-blue)](https://python.org)
+[![پایتون ۳.۹+](https://img.shields.io/badge/Python-3.12+-blue)](https://python.org)
 
 ---
 
