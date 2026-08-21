@@ -248,7 +248,7 @@ def upload():
     brand = _detect_brand(file.filename, file.stream)
     safe_name = _safe_filename(file.filename, brand)
     if not safe_name:
-        return jsonify({'error': 'Desteklenmeyen dosya formatı. (.scm, .zip, .tll, .db, .xml)'}), 400
+        return jsonify({'error': 'Desteklenmeyen dosya formatı. (.scm, .zip, .tll, .db, .xml)', 'code': 'INVALID_EXTENSION'}), 400
 
     ext = os.path.splitext(safe_name)[1].lower()
     tmpdir = tempfile.mkdtemp()
