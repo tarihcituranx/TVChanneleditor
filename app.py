@@ -21,18 +21,13 @@ import sony_core
 import hisense_core
 
 app = Flask(__name__)
+app.wsgi_app = ProxyFix(app.wsgi_app, x_for=1, x_proto=1, x_host=1, x_prefix=1)
+app.wsgi_app = ProxyFix(app.wsgi_app, x_for=1, x_proto=1, x_host=1, x_prefix=1)
 app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 2592000  # 30 days static cache for better Lighthouse scores
 
 
 
 def get_client_ip():
-    # Get real IP if behind Cloudflare or Render
-    cf_ip = request.headers.get('CF-Connecting-IP')
-    if cf_ip:
-        return cf_ip.split(',')[0].strip()
-    xff_ip = request.headers.get('X-Forwarded-For')
-    if xff_ip:
-        return xff_ip.split(',')[0].strip()
     return request.remote_addr
 
 limiter = Limiter(
@@ -422,7 +417,7 @@ def build():
     except Exception as e:
         return jsonify({'error': 'Dosya işlenirken beklenmeyen bir hata oluştu.'}), 500
 
-import random
+import secrets
 import string
 
 @limiter.limit("20 per minute")
@@ -437,7 +432,7 @@ def share_draft():
             return jsonify({'success': False, 'error': 'Geçersiz veri', 'code': 'INVALID_DATA'}), 400
             
         # Generate 6 digit random code
-        code = ''.join(random.choices(string.ascii_uppercase + string.digits, k=6))
+        code = ''.join(secrets.choice(string.ascii_uppercase + string.digits) for _ in range(8))
         
         _shares[code] = {
             'draft': data['draft'],

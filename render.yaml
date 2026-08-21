@@ -3,7 +3,7 @@ services:
     name: tvchanneleditor
     runtime: python
     buildCommand: ./build.sh
-    startCommand: python3 app.py
+    startCommand: gunicorn app:app
     envVars:
       - key: PYTHON_VERSION
         value: 3.11.0
