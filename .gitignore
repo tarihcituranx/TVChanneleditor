@@ -47,3 +47,17 @@ api_test.py
 test.py
 fix.py
 convert_*.py
+
+# Security & Local files
+.huawei_session.pkl
+*.json
+!static/data/*.json
+!package.json
+!package-lock.json
+test_files/
+temp_icons/
+*.sh
+!build.sh
+static/img/logo.jpg
+static/img/logo.png
+static/img/tv_icon.svg
