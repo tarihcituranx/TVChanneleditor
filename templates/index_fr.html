@@ -13,7 +13,7 @@
 <!-- Welcome Section -->
 <div id="welcome-section" style="max-width: 800px; margin: 0 auto; text-align: center; padding: 2rem 1rem;">
     <img src="/static/img/welcome_hero.webp" alt="Welcome to TV Channel Editor" width="1376" height="768" style="width: 100%; max-width: 600px; height: auto; border-radius: var(--radius-lg); box-shadow: var(--shadow-md); margin-bottom: 2rem;">
-    <h2 style="font-size: 2rem; margin-bottom: 1rem; color: var(--text-primary); font-weight: 800; letter-spacing: -0.03em;">Bienvenue dans l'éditeur de chaînes TV ! 👋</h2>
+    <h1 style="font-size: 2rem; margin-bottom: 1rem; color: var(--text-primary); font-weight: 800; letter-spacing: -0.03em;">Bienvenue dans l'éditeur de chaînes TV ! 👋</h2>
     <p style="color: var(--text-secondary); font-size: 1.1rem; line-height: 1.6; margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto;">
         
         Fini les heures passées à vous battre avec la télécommande de votre téléviseur ! 
@@ -63,7 +63,7 @@
     <div class="toolbar" style="display:flex; flex-direction:column; gap:15px; align-items:stretch;">
         <div style="display: flex; justify-content: space-between; width: 100%; align-items: center; flex-wrap: wrap; gap: 15px;">
             <div class="search-box" style="flex: 1; min-width: 250px;">
-                <input type="text" id="search-input" placeholder="Search channel...">
+                <input type="text" id="search-input" placeholder="Search channel..." aria-label="Search channel...">
             </div>
             <div class="actions" style="display: flex; gap: 10px; flex-wrap: wrap; justify-content: flex-end;">
                 <button class="btn primary-outline" id="magic-wand-btn" style="background:transparent; color:var(--accent); border:1px solid var(--accent);">
@@ -106,7 +106,7 @@
     <div class="table-wrapper">
         <div class="list-header" style="min-width: 600px;">
             <div class="col-drag"></div>
-            <div class="col-check"><input type="checkbox" id="select-all" title="Select All"></div>
+            <div class="col-check"><input type="checkbox" id="select-all" title="Select All" aria-label="Select All"></div>
             <div class="col-no">Non</div>
             <div class="col-name">Nom de la chaîne</div>
             <div class="col-type">Type</div>
@@ -121,7 +121,7 @@
     <div id="side-panel" style="width:300px; flex-shrink:0; background:var(--card-bg); border-radius:var(--radius-lg); border:1px solid var(--border-color); display:none; flex-direction:column; position:sticky; top:76px; max-height:calc(100vh - 100px); overflow-y:auto;">
         <div style="padding:1rem 1.25rem; border-bottom:1px solid var(--border-color); display:flex; justify-content:space-between; align-items:center; position:sticky; top:0; background:var(--card-bg); z-index:10;">
             <h3 style="margin:0; font-size:1rem; font-weight:700;">Informations sur la chaîne</h3>
-            <button id="close-side-panel" style="background:none; border:none; color:var(--text-muted); cursor:pointer; font-size:1.2rem; line-height:1; padding:2px;">✕</button>
+            <button id="close-side-panel" style="background:none; border:none; color:var(--text-muted); cursor:pointer; font-size:1.2rem; line-height:1; padding:2px;" aria-label="Fermer">✕</button>
         </div>
         <div style="padding:1.25rem; display:flex; flex-direction:column; gap:0.75rem;">
             <div style="display:flex; align-items:center; gap:12px; margin-bottom:0.5rem;">
@@ -190,7 +190,7 @@
         </div>
         
         <div id="import-input-box" style="display:none; margin-bottom: 1.5rem;">
-            <input type="text" id="import-code-input" placeholder="4 Haneli Kodu Girin" maxlength="4" style="font-size: 2rem; text-align: center; letter-spacing: 5px; text-transform: uppercase; width: 100%; max-width: 200px;">
+            <input type="text" id="import-code-input" placeholder="4 Haneli Kodu Girin" maxlength="4" style="font-size: 2rem; text-align: center; letter-spacing: 5px; text-transform: uppercase; width: 100%; max-width: 200px;" aria-label="4 Haneli Kodu Girin">
         </div>
         
         <p id="share-status" style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1.5rem;"></p>
@@ -210,7 +210,7 @@
                 <div id="info-avatar"></div>
                 <h2 id="info-name" style="margin:0; font-size:1.2rem;">Nom du canal</h2>
             </div>
-            <button id="close-info-btn" style="background:none; border:none; color:var(--text-secondary); cursor:pointer; font-size:1.5rem;">✕</button>
+            <button id="close-info-btn" style="background:none; border:none; color:var(--text-secondary); cursor:pointer; font-size:1.5rem;" aria-label="Fermer">✕</button>
         </div>
         <div id="info-body" style="display:flex; flex-direction:column; gap:12px;">
             <div style="display:flex; justify-content:space-between; padding:8px; background:rgba(0,0,0,0.02); border-radius:6px;">

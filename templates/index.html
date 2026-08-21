@@ -14,7 +14,7 @@
 <!-- Welcome Section -->
 <div id="welcome-section" style="max-width: 800px; margin: 0 auto; text-align: center; padding: 2rem 1rem;">
     <img src="/static/img/welcome_hero.webp" alt="Welcome to TV Channel Editor" width="1376" height="768" style="width: 100%; max-width: 600px; height: auto; border-radius: var(--radius-lg); box-shadow: var(--shadow-md); margin-bottom: 2rem;">
-    <h2 style="font-size: 2rem; margin-bottom: 1rem; color: var(--text-primary); font-weight: 800; letter-spacing: -0.03em;">TV Channel Editor'a Hoş Geldin! 👋</h2>
+    <h1 style="font-size: 2rem; margin-bottom: 1rem; color: var(--text-primary); font-weight: 800; letter-spacing: -0.03em;">TV Channel Editor'a Hoş Geldin! 👋</h2>
     <p style="color: var(--text-secondary); font-size: 1.1rem; line-height: 1.6; margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto;">
         Televizyonunun karmaşık kanal menüsünde saatlerce kumandayla boğuşmaya son! 
         USB belleğinle televizyonundan aldığın <b>kanal listesi dosyasını</b> buraya yükle; 
@@ -51,7 +51,7 @@
         <div class="toolbar">
             <div class="toolbar-main">
                 <div class="search-box">
-                    <input type="text" id="search-input" placeholder="Kanal ara...">
+                    <input type="text" id="search-input" placeholder="Kanal ara..." aria-label="Kanal ara...">
                 </div>
                 <div class="actions">
                     <button class="btn primary-outline" id="magic-wand-btn">
@@ -88,7 +88,7 @@
         <div class="table-wrapper">
             <div class="list-header" style="min-width: 600px;">
                 <div class="col-drag"></div>
-                <div class="col-check"><input type="checkbox" id="select-all" title="Tümünü Seç"></div>
+                <div class="col-check"><input type="checkbox" id="select-all" title="Tümünü Seç" aria-label="Tümünü Seç"></div>
                 <div class="col-no">No</div>
                 <div class="col-name">Kanal Adı</div>
                 <div class="col-type">Tür</div>
@@ -105,7 +105,7 @@
     <div id="side-panel" style="width:300px; flex-shrink:0; background:var(--card-bg); border-radius:var(--radius-lg); border:1px solid var(--border-color); display:none; flex-direction:column; position:sticky; top:76px; max-height:calc(100vh - 100px); overflow-y:auto;">
         <div style="padding:1rem 1.25rem; border-bottom:1px solid var(--border-color); display:flex; justify-content:space-between; align-items:center; position:sticky; top:0; background:var(--card-bg); z-index:10;">
             <h3 style="margin:0; font-size:1rem; font-weight:700;">Kanal Bilgileri</h3>
-            <button id="close-side-panel" style="background:none; border:none; color:var(--text-muted); cursor:pointer; font-size:1.2rem; line-height:1; padding:2px;">✕</button>
+            <button id="close-side-panel" style="background:none; border:none; color:var(--text-muted); cursor:pointer; font-size:1.2rem; line-height:1; padding:2px;" aria-label="Kapat">✕</button>
         </div>
         <div style="padding:1.25rem; display:flex; flex-direction:column; gap:0.75rem;">
             <div style="display:flex; align-items:center; gap:12px; margin-bottom:0.5rem;">
@@ -167,7 +167,7 @@
         <p id="share-desc" style="color:var(--text-secondary); margin-bottom:1.5rem;"></p>
         <div id="share-code-box" style="display:none; font-size:3rem; font-family:monospace; font-weight:bold; letter-spacing:5px; color:var(--accent); padding:1.25rem; background:var(--accent-dim); border-radius:var(--radius-lg); margin-bottom:1rem;">----</div>
         <div id="import-input-box" style="display:none; margin-bottom:1.5rem;">
-            <input type="text" id="import-code-input" placeholder="4 Haneli Kodu Girin" maxlength="4" style="font-size:2rem; text-align:center; letter-spacing:5px; text-transform:uppercase; width:100%; max-width:200px;">
+            <input type="text" id="import-code-input" placeholder="4 Haneli Kodu Girin" maxlength="4" style="font-size:2rem; text-align:center; letter-spacing:5px; text-transform:uppercase; width:100%; max-width:200px;" aria-label="4 Haneli Kodu Girin">
         </div>
         <p id="share-status" style="font-size:0.9rem; color:var(--text-muted); margin-bottom:1.5rem;"></p>
         <div class="modal-actions" style="justify-content:center;">
