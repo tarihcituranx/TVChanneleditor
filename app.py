@@ -32,8 +32,18 @@ def apply_security_headers(response):
     response.headers['Referrer-Policy'] = 'strict-origin-when-cross-origin'
     return response
 
+def get_client_ip():
+    # Get real IP if behind Cloudflare or Render
+    cf_ip = request.headers.get('CF-Connecting-IP')
+    if cf_ip:
+        return cf_ip.split(',')[0].strip()
+    xff_ip = request.headers.get('X-Forwarded-For')
+    if xff_ip:
+        return xff_ip.split(',')[0].strip()
+    return request.remote_addr
+
 limiter = Limiter(
-    get_remote_address,
+    get_client_ip,
     app=app,
     default_limits=["200 per day", "50 per hour"],
     storage_uri="memory://"
