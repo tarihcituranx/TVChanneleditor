@@ -46,7 +46,7 @@ TV'nizin USB'ye aktardığı kanal listesi dosyasını tarayıcıda **sürükle-
 - **⭐ Favori & Kilit** — Favori 1-5 ve çocuk kilidi düzenleme
 - **🗑️ Toplu İşlemler** — Şifreli kanalları, radyoları veya seçilileri toplu sil
 - **🌙 Karanlık/Aydınlık Tema & 👁️ Renk Körlüğü Modu** — Herkes için erişilebilir arayüz
-- **🌐 11 Dil Seçeneği** — Türkçe / English desteği
+- **🌐 11 Dil Seçeneği** — 
 - **📊 Tam Gizlilik (Çerezsiz Analitik)** — Çerez veya kişisel veri kullanmayan yerleşik istatistik
 - **📱 Tam Responsive** — Masaüstü, tablet ve mobil uyumlu
 
