@@ -35,12 +35,21 @@ def _service_type_name(st: int) -> str:
 _INVALID_CHAR_RE = re.compile(r'&#x([0-9a-fA-F])([0-9a-fA-F]);')
 
 def _replace_invalid_xml(text: str) -> str:
-    """Kontrol karakterlerini (< 0x20) &#xNN; ile maskele, XML parse edilebilsin."""
     out = []
     for c in text:
         code = ord(c)
-        if code < 0x20 and c not in ('\r', '\n', '\t'):
-            out.append(f'&#x{code >> 4:x}{code & 0xf:x};')
+        if (code < 0x20 and c not in ('\r', '\n', '\t')) or (0x7f <= code <= 0x9f):
+            out.append(chr(0xE000 + code))
+        else:
+            out.append(c)
+    return ''.join(out)
+
+def _restore_invalid_xml(text: str) -> str:
+    out = []
+    for c in text:
+        code = ord(c)
+        if 0xE000 <= code <= 0xE09F:
+            out.append(chr(code - 0xE000))
         else:
             out.append(c)
     return ''.join(out)
@@ -405,7 +414,7 @@ class LgEditor:
                         child.text = '0' if upd.get('deleted', False) else '1'
 
         # XML'i string'e çevir, geçersiz karakterleri geri yükle
-        xml_str = ET.tostring(self._root, encoding='unicode', xml_declaration=False)
+        xml_str = _restore_invalid_xml(ET.tostring(self._root, encoding='unicode', xml_declaration=False))
         xml_str = _restore_invalid_xml(xml_str)
 
         # LG formatı: <?xml ...?> + boş satır + içerik
