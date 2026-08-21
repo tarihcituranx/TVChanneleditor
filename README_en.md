@@ -4,7 +4,7 @@
 
 # 📺 TV Channel Editor
 
-> **Multi-brand TV channel list editor** — Edit your Samsung, LG, Sony, and Hisense TV channel lists right in your browser.
+> **Multi-brand TV channel list editor** — Edit your Samsung, LG, Sony, and Hisense TV channel lists directly in your browser.
 
 [![Live Demo](https://img.shields.io/badge/🌐_Live_Demo-tvchanneleditor.onrender.com-blue)](https://tvchanneleditor.onrender.com)
 [![API Docs](https://img.shields.io/badge/API-Swagger_UI-orange)](https://tvchanneleditor.onrender.com/api/docs)
@@ -16,7 +16,7 @@
 
 ## ✨ What Does It Do?
 
-It is an open-source tool that allows you to visually edit the channel list file that your TV transfers to a USB drive using the **drag-and-drop** method in your browser. It requires no installation and works directly through your browser or via the REST API.
+It’s an open-source tool that lets you visually edit the channel list file your TV transfers to a USB drive using the **drag-and-drop** method in your browser. It requires no installation and works directly through your browser or via the REST API.
 
 ## 👤 Who Can Use It?
 
@@ -24,7 +24,7 @@ It is an open-source tool that allows you to visually edit the channel list file
 - Those who want to edit LG GlobalClone XML `.tll` files
 - Those working with Sony `sdb.xml` and Hisense `servicelist.db` lists
 - Developers who want to modify the channel list programmatically
-- Those who want to automate the channel list using an AI agent
+- Those who want to automate channel list management using AI agents
 
 ## 📺 Supported Formats (Compatibility Matrix)
 
@@ -35,18 +35,18 @@ It is an open-source tool that allows you to visually edit the channel list file
 | **Sony `sdb.xml`** | ✅ | ✅ | ✅ | BRAVIA Series |
 | **Hisense `servicelist.db`** | ✅ | ✅ | ✅ | 2017 and 2021 Models |
 | **LG XML `.tll`** | ✅ | ✅ | ✅ | GlobalClone XML Only (Binary Not Supported) |
-| **Panasonic `svl.*`** | 🔜 | 🔜 | 🔜 | Planned / In Development |
+| **Panasonic `svl.*`** | 🔜 | 🔜 | 🔜 | Planned / In development |
 
-> **⚠️ Important LG Compatibility Note:** LG’s older-generation **binary .tll** files are not supported. Only the newer XML-based (GlobalClone) `.tll` files can be processed. For older files, you must use the desktop *ChanSort* application.
+> **⚠️ Important LG Compatibility Note:** LG’s older-generation **Binary .tll** files are not supported. Only newer-generation XML-based (GlobalClone) `.tll` files can be processed. For older files, you must use the desktop *ChanSort* application.
 
 
 ## ⚠️ Important Limitations
 
 Please keep the following technical limitations in mind before using the app:
 - **LG Binary TLL:** Older-generation binary `.tll` files are not supported.
-- **Panasonic SVL:** Support is currently in development (Planned).
+- **Panasonic SVL:** Support is under development (Planned).
 - **Frequency Verification:** Active only for Türksat satellite data.
-- **File Size Limit:** Uploaded files can be a maximum of **2 MB**.
+- **File Size Limit:** Uploaded files can be up to **2 MB**.
 - **Temporary Session:** Files are not stored permanently; they are automatically deleted at the end of the session.
 
 ## 🚀 Quick Start
@@ -96,7 +96,7 @@ GET /download/{session_id}/{filename}
 - There is a **2 MB** file size limit.
 - **Files are not permanently stored on the server.** Uploaded files are processed in temporary server storage for the duration of the editing session; they are not permanently archived and are automatically and completely deleted when the session expires (approximately 1 hour).
 - There is no account, membership, or database logging.
-- XML parsing operations on the API (to protect against Billion Laughs attacks) are safeguarded using `defusedxml`.
+- XML parsing operations on the API (to protect against Billion Laughs attacks) are protected using `defusedxml`.
 
 ## 🧪 Test System (CI)
 
@@ -127,7 +127,7 @@ The interface and user guides are available in **11 languages**: Turkish, Englis
 ## 🙏 Thanks
 
 - **[İltekin/scm-editor](https://github.com/iltekin/scm-editor)** — Initial source of inspiration
-- **[PredatH0r/ChanSort](https://github.com/PredatH0r/ChanSort)** — Reverse-engineering reference for multi-brand formats
+- **[PredatH0r/ChanSort](https://github.com/PredatH0r/ChanSort)** — Reverse-engineering reference for multiple channel formats
 - **[Türksat Satellite](https://uydu.turksat.com.tr/)** — Türksat frequency database
 
 ## 📄 License

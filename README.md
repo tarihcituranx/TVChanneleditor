@@ -24,7 +24,7 @@ TV'nizin USB belleğe aktardığı kanal listesi dosyasını tarayıcınızda **
 - LG GlobalClone XML `.tll` dosyalarını düzenlemek isteyenler
 - Sony `sdb.xml` ve Hisense `servicelist.db` listeleriyle çalışanlar
 - Kanal listesini programatik olarak değiştirmek isteyen geliştiriciler
-- AI agent ile kanal listesi otomasyonu yapmak isteyenler
+- Yapay zeka ajanlarıyla (AI Agent) kanal listesi otomasyonu yapmak isteyenler
 
 ## 📺 Desteklenen Formatlar (Uyumluluk Matrisi)
 
