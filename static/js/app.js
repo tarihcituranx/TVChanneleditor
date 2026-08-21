@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
             try {
                 const draft = JSON.parse(draftStr);
                 if (draft.channels && draft.channels.length > 0) {
-                    if (confirm('Kaydedilmemiş bir kanal düzenleme taslağınız var. Kaldığınız yerden devam etmek ister misiniz?')) {
+                    if (confirm(isEnglish() ? 'You have an unsaved channel edit draft. Do you want to continue where you left off?' : 'Kaydedilmemiş bir kanal düzenleme taslağınız var. Kaldığınız yerden devam etmek ister misiniz?')) {
                         isRestoringDraft = true;
                         channels = draft.channels;
                         currentFileName = draft.currentFileName;
@@ -152,7 +152,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function handleFile(file) {
         const nameLower = file.name.toLowerCase();
         if (!nameLower.endsWith('.scm') && !nameLower.endsWith('.zip') && !nameLower.endsWith('.tll') && !nameLower.endsWith('.xml') && !nameLower.endsWith('.db')) {
-            toast('Lütfen desteklenen bir dosya formatı yükleyin (.scm, .zip, .tll, sdb.xml, servicelist.db).', 'danger');
+            toast(isEnglish() ? 'Please upload a supported file format (.scm, .zip, .tll, sdb.xml, servicelist.db).' : 'Lütfen desteklenen bir dosya formatı yükleyin (.scm, .zip, .tll, sdb.xml, servicelist.db).', 'danger');
             return;
         }
         
@@ -175,7 +175,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
             if (!data.channels || data.channels.length === 0) {
-                toast('Geçersiz veya boş kanal listesi! Lütfen doğru formatta bir dosya yükleyin.', 'danger');
+                toast(isEnglish() ? 'Invalid or empty channel list! Please upload a valid format.' : 'Geçersiz veya boş kanal listesi! Lütfen doğru formatta bir dosya yükleyin.', 'danger');
                 browseBtn.classList.remove('tv-scanning');
                 return;
             }
@@ -456,9 +456,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Checkbox state tracking
 
-    function isEnglish() {
-        return window.location.pathname.includes('/en') || document.documentElement.lang === 'en';
-    }
+    function isEnglish() { return document.documentElement.lang !== 'tr'; }
 
     function updateSelectedCount() {
         const count = selectedIndices.size;
@@ -536,7 +534,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const customList = builderCart.map(c => c.Name);
         localStorage.setItem('scm_custom_' + tName, JSON.stringify(customList));
         builderModal.classList.add('hidden');
-        toast('Şablon başarıyla kaydedildi! ✨ Sihirli değnek menüsünden kullanabilirsiniz.', 'success');
+        toast(isEnglish() ? 'Template saved successfully! ✨ You can use it from the magic wand menu.' : 'Şablon başarıyla kaydedildi! ✨ Sihirli değnek menüsünden kullanabilirsiniz.', 'success');
     });
 
     applyBtn.addEventListener('click', () => {
@@ -557,7 +555,7 @@ document.addEventListener('DOMContentLoaded', () => {
         channels = [...newOrder, ...remaining];
         renderChannels(searchInput.value);
         modal.classList.add('hidden');
-        toast('Seçilen şablon başarıyla uygulandı! ✨', 'success');
+        toast(isEnglish() ? 'Selected template applied successfully! ✨' : 'Seçilen şablon başarıyla uygulandı! ✨', 'success');
     });
 
     // --- BULK ACTIONS ---
@@ -692,7 +690,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     editorSection.classList.remove('hidden');
                     renderChannels();
                     saveDraftToLocal();
-                    toast('Taslak başarıyla aktarıldı! ✨ Kaldığınız yerden devam edebilirsiniz.', 'success');
+                    toast(isEnglish() ? 'Draft imported successfully! ✨ You can continue editing.' : 'Taslak başarıyla aktarıldı! ✨ Kaldığınız yerden devam edebilirsiniz.', 'success');
                 } else {
                     toast('Hata: ' + data.error, 'danger');
                 }

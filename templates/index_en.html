@@ -195,39 +195,39 @@
             
             <div style="border-top:1px dashed var(--border-color); margin: 4px 0;"></div>
             
-            <div style="display:flex; justify-content:space-between; padding:4px 8px; border-radius:6px;" title="Modülasyon Sistemi: Yayının DVB-S (SD) veya DVB-S2 (HD) gibi standardını belirtir.">
+            <div style="display:flex; justify-content:space-between; padding:4px 8px; border-radius:6px;" title="Modulation System: Indicates standard like DVB-S (SD) or DVB-S2 (HD).">
                 <span style="color:var(--text-muted); font-size:0.85rem; cursor:help; border-bottom:1px dotted var(--text-muted);">Modulation System</span>
                 <strong id="info-mod" style="font-family:monospace; font-size:0.85rem;"></strong>
             </div>
-            <div style="display:flex; justify-content:space-between; padding:4px 8px; border-radius:6px;" title="Roll-Off Faktörü: Sinyal bant genişliğinin ne kadar keskin bir şekilde filtrelendiğini gösterir.">
+            <div style="display:flex; justify-content:space-between; padding:4px 8px; border-radius:6px;" title="Roll-Off Factor: Indicates how sharply the signal bandwidth is filtered.">
                 <span style="color:var(--text-muted); font-size:0.85rem; cursor:help; border-bottom:1px dotted var(--text-muted);">Roll-Off</span>
                 <strong id="info-rolloff" style="font-family:monospace; font-size:0.85rem;"></strong>
             </div>
-            <div style="display:flex; justify-content:space-between; padding:4px 8px; border-radius:6px;" title="Network ID: Bulunduğunuz uydu şebekesinin (Ağ) kimliğidir.">
+            <div style="display:flex; justify-content:space-between; padding:4px 8px; border-radius:6px;" title="Network ID: The ID of your satellite network.">
                 <span style="color:var(--text-muted); font-size:0.85rem; cursor:help; border-bottom:1px dotted var(--text-muted);">NID (Network ID)</span>
                 <strong id="info-nid" style="font-family:monospace; font-size:0.85rem;"></strong>
             </div>
-            <div style="display:flex; justify-content:space-between; padding:4px 8px; border-radius:6px;" title="Transport Stream ID: Kanalın bulunduğu veri paketinin (frekansın) kimlik numarası.">
+            <div style="display:flex; justify-content:space-between; padding:4px 8px; border-radius:6px;" title="Transport Stream ID: The ID of the data packet (frequency) containing the channel.">
                 <span style="color:var(--text-muted); font-size:0.85rem; cursor:help; border-bottom:1px dotted var(--text-muted);">TSID (Transport Stream ID)</span>
                 <strong id="info-tsid" style="font-family:monospace; font-size:0.85rem;"></strong>
             </div>
-            <div style="display:flex; justify-content:space-between; padding:4px 8px; border-radius:6px;" title="Original Network ID: Orijinal uydu ağının küresel kimlik kodu.">
+            <div style="display:flex; justify-content:space-between; padding:4px 8px; border-radius:6px;" title="Original Network ID: Global ID code of the original satellite network.">
                 <span style="color:var(--text-muted); font-size:0.85rem; cursor:help; border-bottom:1px dotted var(--text-muted);">ONID (Original Network ID)</span>
                 <strong id="info-onid" style="font-family:monospace; font-size:0.85rem;"></strong>
             </div>
-            <div style="display:flex; justify-content:space-between; padding:4px 8px; border-radius:6px;" title="Service ID: Yayıncının o kanala atadığı benzersiz servis kimliği.">
+            <div style="display:flex; justify-content:space-between; padding:4px 8px; border-radius:6px;" title="Service ID: Unique service ID assigned to the channel by the broadcaster.">
                 <span style="color:var(--text-muted); font-size:0.85rem; cursor:help; border-bottom:1px dotted var(--text-muted);">SID (Service ID)</span>
                 <strong id="info-sid" style="font-family:monospace; font-size:0.85rem;"></strong>
             </div>
-            <div style="display:flex; justify-content:space-between; padding:4px 8px; border-radius:6px;" title="Video Packet ID: Kanalın sadece görüntü (video) verilerini taşıyan şifre kodu.">
+            <div style="display:flex; justify-content:space-between; padding:4px 8px; border-radius:6px;" title="Video Packet ID: Packet ID carrying only video data.">
                 <span style="color:var(--text-muted); font-size:0.85rem; cursor:help; border-bottom:1px dotted var(--text-muted);">Video PID</span>
                 <strong id="info-vidpid" style="font-family:monospace; font-size:0.85rem;"></strong>
             </div>
-            <div style="display:flex; justify-content:space-between; padding:4px 8px; border-radius:6px;" title="Audio Packet ID: Kanalın sadece ses verilerini taşıyan şifre kodu.">
+            <div style="display:flex; justify-content:space-between; padding:4px 8px; border-radius:6px;" title="Audio Packet ID: Packet ID carrying only audio data.">
                 <span style="color:var(--text-muted); font-size:0.85rem; cursor:help; border-bottom:1px dotted var(--text-muted);">Audio PID</span>
                 <strong id="info-audpid" style="font-family:monospace; font-size:0.85rem;"></strong>
             </div>
-            <div style="display:flex; justify-content:space-between; padding:4px 8px; border-radius:6px;" title="Program Clock Reference: Ses ve görüntünün senkronize çalışmasını sağlayan saat kodu.">
+            <div style="display:flex; justify-content:space-between; padding:4px 8px; border-radius:6px;" title="Program Clock Reference: Clock code synchronizing audio and video.">
                 <span style="color:var(--text-muted); font-size:0.85rem; cursor:help; border-bottom:1px dotted var(--text-muted);">PCR PID</span>
                 <strong id="info-pcrpid" style="font-family:monospace; font-size:0.85rem;"></strong>
             </div>
@@ -246,7 +246,7 @@
         <p>Select the sequence template to be automatically applied to your list:</p>
         
         <div class="template-cards" id="template-cards-container">
-            <!-- Hazır Şablonlar -->
+            <!-- Ready Templates -->
             <div class="template-card selected" data-template="general">
                 <h3>🏆 General (Full Package) List</h3>
                 <p>A balanced mix of national, news, sports, documentary, and children’s channels.</p>
@@ -264,7 +264,7 @@
             </div>
         </div>
 
-        <!-- Kullanıcı Şablonları Buraya Eklenecek -->
+        <!-- User Templates Will Be Added Here -->
         <div id="custom-templates-container" style="display:none; margin-bottom:1.5rem;">
             <h3 style="font-size: 1rem; color: var(--text-secondary); margin-bottom: 0.5rem; text-transform:uppercase; letter-spacing:0.05em;">Your Own Templates</h3>
             <div class="template-cards" id="custom-cards-container" style="margin-top:0;">
