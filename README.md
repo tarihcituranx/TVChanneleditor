@@ -77,7 +77,7 @@ Tarayıcıda `http://127.0.0.1:5000` adresine gidin.
 ├── lg_core.py          # LG GlobalClone XML motoru
 ├── sony_core.py        # Sony sdb.xml motoru
 ├── hisense_core.py     # Hisense SQLite motoru
-├── templates/          # Jinja2 HTML şablonları (TR + EN)
+├── templates/          # Jinja2 HTML şablonları (11 Dil)
 ├── static/
 │   ├── css/style.css   # Dark/Light tema + tüm stiller
 │   ├── js/app.js       # Frontend (drag-drop, kanal render, template)
@@ -110,36 +110,7 @@ Bu proje yalnızca bir web sitesi değil, aynı zamanda yapay zeka ajanlarının
 > 
 > 🤖 **AI Ajanları İçin (ChatGPT, Claude, vb.):** Sistemin makine tarafından okunabilir Saf Metin (Plain-Text) OpenAPI şemasını yapay zekaya şu link üzerinden verebilirsiniz: [tvchanneleditor.onrender.com/api/openapi.txt](https://tvchanneleditor.onrender.com/api/openapi.txt)
 
-### 1. Kanal Listesini Oku (Upload)
-```bash
-curl -X POST -F "file=@channel_list.scm" https://tvchanneleditor.onrender.com/upload
-```
-**Yanıt (JSON):**
-Kanal listesi bozulmadan okunur ve JSON olarak döner.
-```json
-{
-  "brand": "samsung",
-  "session_id": "uuid-v4-session-id",
-  "channels": [
-    { "No": 1, "Name": "TRT 1", "Freq": "11958", "Pol": "V" }
-  ]
-}
-```
 
-### 2. Değiştirilmiş Listeyi İndir (Download)
-Düzenlediğiniz veya AI ajanının sıraladığı yeni JSON listesini aynı `session_id` ile sunucuya yollayın ve orijinal dosya uzantısında yeni kanal listenizi ikili (binary) olarak geri alın.
-```bash
-curl -X POST https://tvchanneleditor.onrender.com/download \
-     -H "Content-Type: application/json" \
-     -d '{"session_id": "uuid-v4-session-id", "channels": [{"No": 1, "Name": "TRT 1", "Freq": "11958", "Pol": "V"}]}' \
-     --output new_channel_list.scm
-```
-
-### 3. Rate Limit & API Key (Bypass)
-Sistem varsayılan olarak IP başına **50 istek/saat** kotasıyla çalışır (DDoS koruması). Yapay zeka servislerinin (örneğin OpenAI sunucularının) aynı IP üzerinden yüzlerce istek atıp banlanmasını engellemek için, API isteklerinize bir şifre ekleyebilirsiniz:
-```bash
-curl -H "X-API-Key: YOUR_SECRET_KEY" -F "file=@list.scm" ...
-```
 Bunun çalışması için sunucunun (veya bilgisayarınızın) çevre değişkenlerine (Environment Variables) yetkili şifreleri eklemeniz gerekir:
 ```bash
 export VALID_API_KEYS="secret-key-1,secret-key-2"

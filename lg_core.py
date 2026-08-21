@@ -54,13 +54,6 @@ def _restore_invalid_xml(text: str) -> str:
             out.append(c)
     return ''.join(out)
 
-def _restore_invalid_xml(text: str) -> str:
-    """&#xNN; kodlamasını geri orijinal karaktere dönüştür."""
-    def repl(m):
-        hi = int(m.group(1), 16)
-        lo = int(m.group(2), 16)
-        return chr((hi << 4) | lo)
-    return _INVALID_CHAR_RE.sub(repl, text)
 
 
 # --------------------------------------------------------------------------- #
@@ -415,7 +408,6 @@ class LgEditor:
 
         # XML'i string'e çevir, geçersiz karakterleri geri yükle
         xml_str = _restore_invalid_xml(ET.tostring(self._root, encoding='unicode', xml_declaration=False))
-        xml_str = _restore_invalid_xml(xml_str)
 
         # LG formatı: <?xml ...?> + boş satır + içerik
         output = '<?xml version="1.0" encoding="UTF-8"?>\r\n\r\n' + xml_str

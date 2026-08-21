@@ -74,10 +74,19 @@ class TizenEditor:
         # We need to get channels and their fav status
         # In Tizen, major = PrNr. lockMode, hidden, numSel(!skip)
         # We will map it to our format
-        query = """
+        # Check which columns exist in SRV_DVB
+        cursor.execute("PRAGMA table_info(SRV_DVB)")
+        columns = [row[1].lower() for row in cursor.fetchall()]
+        
+        onid_col = 'SRV_DVB.onid' if 'onid' in columns else '-1 as onid'
+        tsid_col = 'SRV_DVB.tsid' if 'tsid' in columns else '-1 as tsid'
+        vidpid_col = 'SRV_DVB.vidPid' if 'vidpid' in columns else '0 as vidPid'
+        provid_col = 'SRV_DVB.provId' if 'provid' in columns else '0 as provId'
+
+        query = f"""
             SELECT SRV.srvId, SRV.major as progNum, cast(SRV.srvName as blob) as srvNameBytes, 
                    SRV.hidden, SRV.lockMode, SRV.numSel, SRV.elim,
-                   CHNL.freq, SRV_DVB.onid, SRV_DVB.tsid, SRV_DVB.vidPid, SRV_DVB.provId
+                   CHNL.freq, {onid_col}, {tsid_col}, {vidpid_col}, {provid_col}
             FROM SRV_DVB
             INNER JOIN SRV ON SRV.srvId = SRV_DVB.srvId
             INNER JOIN CHNL ON CHNL.chId = SRV.chId
