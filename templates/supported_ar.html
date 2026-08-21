@@ -1,0 +1,211 @@
+{% extends "base_ar.html" %}
+
+{% block title %}العلامات التجارية والقنوات الفضائية المدعومة - محرر القنوات التلفزيونية{% endblock %}
+
+{% block head %}
+<style>
+    .content-container {
+        max-width: 960px;
+        margin: 40px auto;
+        padding: 20px;
+        background: var(--card-bg);
+        border-radius: 12px;
+        border: 1px solid var(--border-color);
+    }
+    
+    .section-title {
+        font-size: 24px;
+        font-weight: 600;
+        margin-bottom: 20px;
+        color: var(--text-primary);
+        border-bottom: 2px solid var(--border-color);
+        padding-bottom: 10px;
+    }
+
+    .grid-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 20px;
+        margin-bottom: 40px;
+    }
+
+    .card {
+        background: var(--bg-color);
+        border-radius: 12px;
+        padding: 28px 20px;
+        text-align: center;
+        border: 1px solid var(--border-color);
+        transition: transform 0.2s, border-color 0.2s;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .card:hover {
+        transform: translateY(-5px);
+        border-color: var(--accent);
+    }
+
+    .card-img {
+        max-width: 150px;
+        height: 60px;
+        object-fit: contain;
+        margin-bottom: 15px;
+    }
+
+    .card-img.light-logo {
+        
+    }
+
+    .card-title {
+        font-size: 16px;
+        font-weight: 600;
+        color: var(--text-primary);
+        margin-bottom: 8px;
+    }
+
+    .card-desc {
+        font-size: 13px;
+        color: var(--text-primary);
+        opacity: 0.95;
+        line-height: 1.6;
+    }
+
+    .badge {
+        display: inline-block;
+        font-size: 11px;
+        font-weight: 600;
+        padding: 3px 8px;
+        border-radius: 20px;
+        margin-bottom: 10px;
+        letter-spacing: 0.5px;
+    }
+
+    .badge-green { background: rgba(34,197,94,0.15); color: #16a34a; border: 1px solid rgba(34,197,94,0.3); }
+[data-theme="dark"] .badge-green { color: #4ade80; }
+    .badge-blue { background: rgba(var(--accent-rgb), 0.15); color: var(--accent); border: 1px solid rgba(var(--accent-rgb), 0.3); }
+    .badge-gray { background: rgba(156,163,175,0.15); color: #4b5563; border: 1px solid rgba(156,163,175,0.3); }
+[data-theme="dark"] .badge-gray { color: #9ca3af; }
+
+    .format-tag {
+        font-family: monospace;
+        font-size: 12px;
+        background: rgba(var(--accent-rgb), 0.1);
+        padding: 2px 7px;
+        border-radius: 4px;
+        color: var(--accent);
+        margin: 2px;
+        display: inline-block;
+    }
+    .formats {
+        margin-top: 8px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 4px;
+    }
+</style>{% endblock %}
+
+{% block content %}
+<div class="content-container">
+    <h2 class="section-title">العلامات التجارية المدعومة للتلفزيونات</h2>
+    <p style="color:var(--text-secondary); font-size:14px; margin-bottom:24px; margin-top:-10px;">
+        <strong style="color:var(--text-primary)">تتم معالجة</strong> جميع العمليات <strong style="color:var(--text-primary)">بأمان على ذاكرة الوصول العشوائي (RAM) المؤقتة للخادم</strong>؛ ويتم حذفها تلقائيًا بعد المعالجة.
+    </p>
+    <div class="grid-container">
+        <div class="card">
+            <img src="/static/img/samsung_logo.webp" alt="Samsung" class="card-img invert-in-light">
+            <span class="badge badge-green">✅ دعم كامل</span>
+            <div class="card-title">تلفزيونات سامسونج الذكية</div>
+            <div class="card-desc">
+                يتم دعم جميع الأجهزة من الجيل الأقدم (E، F، H) وسلسلة الجيل الأحدث Tizen (J، K، M، Q، R، T). وظائف الفرز وإعادة التسمية متوافقة تمامًا.
+            </div>
+            <div class="formats">
+                <span class="format-tag">.scm.zip (SQLite)</span>
+            </div>
+        </div>
+        <div class="card">
+            <img src="/static/img/lg_logo.svg" alt="LG" class="card-img">
+            <span class="badge badge-green">✅ دعم جزئي</span>
+            <div class="card-title">تلفزيون LG الذكي</div>
+            <div class="card-desc">
+                يدعم نظامنا ملفات <b>.tll</b> (GlobalClone) <b>المستندة إلى XML</b> من الجيل الجديد لـ LG. لا يتم دعم ملفات <b>.tll الثنائية</b> القديمة؛ بالنسبة لتلك الملفات، يرجى استخدام تطبيق ChanSort المكتبي.
+            </div>
+            <div class="formats">
+                <span class="format-tag">.tll (XML)</span>
+            </div>
+        </div>
+        <div class="card">
+            <img src="/static/img/sony_logo.svg" alt="Sony" class="card-img invert-in-light">
+            <span class="badge badge-green">✅ دعم كامل</span>
+            <div class="card-title">Sony BRAVIA</div>
+            <div class="card-desc">
+                تنسيق قائمة القنوات المستند إلى XML الخاص بـ سوني برافيا قابل للقراءة والكتابة. يشمل الطرز الجديدة لعام 2024 وما بعده. يدعم اسم القناة وإعادة ترتيبها.
+            </div>
+            <div class="formats">
+                <span class="format-tag">sdb.xml</span>
+            </div>
+        </div>
+        <div class="card">
+            <img src="/static/img/hisense_logo.svg" alt="Hisense" class="card-img">
+            <span class="badge badge-green">✅ دعم كامل</span>
+            <div class="card-title">تلفزيون Hisense الذكي</div>
+            <div class="card-desc">
+                يتم دعم تنسيق قائمة الخدمات المستند إلى SQLite للجيلين 2017 و2021. يتم دعم فرز القنوات وإعادة تسميتها وإخفائها.
+            </div>
+            <div class="formats">
+                <span class="format-tag">servicelist.db</span>
+            </div>
+        </div>
+        <div class="card">
+            <img src="/static/img/panasonic_logo.svg" alt="Panasonic" class="card-img">
+            <span class="badge badge-blue">🔄 بيتا</span>
+            <div class="card-title">باناسونيك VIERA</div>
+            <div class="card-desc">
+                دعم تنسيق SVL قيد التطوير حاليًا. قد تنجح عملية القراءة في بعض عائلات الطرازات.
+            </div>
+            <div class="formats">
+                <span class="format-tag">svl.db svl.bin</span>
+            </div>
+        </div>
+        <div class="card">
+            <div style="font-size:40px; margin-bottom:12px;">🔜</div>
+            <span class="badge badge-gray">قريبًا</span>
+            <div class="card-title">فيليبس، توشيبا...</div>
+            <div class="card-desc">
+                يجري حاليًا تطوير دعم فيليبس، وتوشيبا، وغرونديغ، والعلامات التجارية الأخرى بشكل نشط.
+            </div>
+            <div class="formats">
+                <span class="format-tag">*.db*.xml</span>
+            </div>
+        </div>
+    </div>
+
+    <h2 class="section-title">🛰️ الأقمار الصناعية المدعومة</h2>
+    <p style="color:var(--text-secondary); font-size:14px; margin-bottom:24px; margin-top:-10px;">
+        تتم معالجة جميع بيانات الترددات والمستجيبات بنفس الطريقة، بغض النظر عن تنسيق القمر الصناعي.
+    </p>
+    <div class="grid-container">
+        <div class="card">
+            <img src="/static/img/turksat_logo.png" alt="Türksat" class="card-img invert-in-light">
+            <div class="card-title">Türksat 4A / 5B</div>
+            <div class="card-desc">
+                متوافق تمامًا مع القنوات التركية الوطنية وحزم الأخبار والرياضة. تم تحسين قوالب Magic Wand لتتوافق مع ترددات Türksat. تم تمكين <b>التحقق التلقائي من التردد</b> لهذا القمر الصناعي.
+            </div>
+        </div>
+        <div class="card">
+            <img src="/static/img/hotbird_logo.svg" alt="Hotbird" class="card-img">
+            <div class="card-title">Hotbird 13E</div>
+            <div class="card-desc">
+                يتم دعم البث الأوروبي والدولي (Eutelsat). تتم معالجة جميع بيانات أجهزة الإرسال والاستقبال الخاصة بالأقمار الصناعية بنجاح.
+            </div>
+        </div>
+        <div class="card">
+            <img src="/static/img/astra_logo.svg" alt="Astra" class="card-img">
+            <div class="card-title">Astra 19.2E</div>
+            <div class="card-desc">
+                يتم قراءة وكتابة ترددات SES Astra، التي تستضيف القنوات الألمانية والأوروبية، بتوافق تام.
+            </div>
+        </div>
+    </div>
+</div>{% endblock %}

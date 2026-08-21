@@ -1,0 +1,333 @@
+{% extends "base_fr.html" %}
+
+{% block head %}
+<link rel="preload" href="/static/data/frekanslar.json" as="fetch" crossorigin="anonymous">{% endblock %}
+
+{% block content %}
+
+<script>
+    if (localStorage.getItem(&#x27;welcomed_v2&#x27;)) {
+        document.write(&#x27;&lt;style&gt;#welcome-section { display: none !important; } #upload-section { display: block !important; }&lt;/style&gt;&#x27;);
+    }
+</script>
+<!-- Welcome Section -->
+<div id="welcome-section" style="max-width: 800px; margin: 0 auto; text-align: center; padding: 2rem 1rem;">
+    <img src="/static/img/welcome_hero.webp" alt="Welcome to TV Channel Editor" width="1376" height="768" style="width: 100%; max-width: 600px; height: auto; border-radius: var(--radius-lg); box-shadow: var(--shadow-md); margin-bottom: 2rem;">
+    <h2 style="font-size: 2rem; margin-bottom: 1rem; color: var(--text-primary); font-weight: 800; letter-spacing: -0.03em;">Bienvenue dans l&#x27;éditeur de chaînes TV ! 👋</h2>
+    <p style="color: var(--text-secondary); font-size: 1.1rem; line-height: 1.6; margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto;">
+        
+        Fini les heures passées à vous battre avec la télécommande de votre téléviseur ! 
+        Il vous suffit d&#x27;exporter votre <b>fichier de liste de chaînes</b>
+        sur une clé USB et de le télécharger ici. 
+        Organisez facilement vos chaînes par glisser-déposer ou utilisez la <b>« baguette magique »</b>
+        🪄 pour les trier en quelques secondes.
+        <br><br>
+        <span style="font-size: 0.95rem; color: var(--accent);">Votre fichier n&#x27;est traité que temporairement sur notre serveur afin de lire la liste des chaînes. Il n&#x27;est jamais archivé de manière permanente.</span>
+    </p>
+    <button id="welcome-start-btn" class="btn primary" style="padding: 1rem 3rem; font-size: 1.25rem; border-radius: 100px; font-weight: 600; box-shadow: var(--shadow-sm);">Commencer</button>
+</div>
+
+<!-- Upload Section -->
+<div id="upload-section" class="card drop-zone" style="display: none;">
+    <input type="file" id="file-input" accept=".scm,.zip,.tll,.xml,.db" hidden>
+    <div class="upload-content">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+        <h2>Téléchargez un fichier .scm, .zip, sdb.xml ou servicelist.db</h2>
+        <p>Sélectionnez votre fichier de liste de chaînes Samsung, Sony ou Hisense</p>
+        <button id="browse-btn" class="btn primary">Sélectionner un fichier</button>
+        <p style="margin-top: 1rem; font-size: 0.85rem; color: var(--text-muted); max-width: 500px; margin-left: auto; margin-right: auto; line-height: 1.4; justify-content: center; text-align: center;">
+            <strong style="color: var(--accent);">Remarque (utilisateurs</strong>
+            de
+            <strong style="color: var(--accent);">téléviseurs LG) :</strong>
+            
+            Notre système prend en charge les fichiers <b>.tll</b>
+            (GlobalClone) de nouvelle génération de LG, <b>basés sur le format XML</b>
+            . Les anciens fichiers <b>binaires .tll</b>
+            ne sont pas pris en charge ; pour ces fichiers, veuillez utiliser l&#x27;application de bureau ChanSort.
+        </p>
+        
+        <div style="margin-top: 1.5rem; padding: 10px 15px; background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.2); border-radius: 8px; font-size: 0.85rem; color: var(--text-secondary); max-width: 600px; margin-left: auto; margin-right: auto; text-align: left;">
+            <strong style="color: var(--danger);">⚠️ Avertissement :</strong>
+            cet outil n&#x27;est affilié à aucun fabricant de téléviseurs. Veuillez enregistrer une sauvegarde de votre fichier de liste de chaînes d&#x27;origine dans un emplacement sûr avant d&#x27;effectuer toute modification. Notre système n&#x27;est pas responsable d&#x27;une éventuelle perte de données.
+        </div>
+        
+        <div style="margin-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1rem;">
+            <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 0.5rem;">Ou importez un brouillon depuis un autre appareil :</p>
+            <button id="import-share-btn" class="btn primary-outline" style="background:transparent; color:var(--accent); border:1px solid var(--accent);">📱 Importation via un code</button>
+        </div>
+    </div>
+</div>
+
+<div id="editor-section" class="hidden">
+    <div id="brand-badge" class="brand-badge hidden"></div>
+    <div class="toolbar" style="display:flex; flex-direction:column; gap:15px; align-items:stretch;">
+        <div style="display: flex; justify-content: space-between; width: 100%; align-items: center; flex-wrap: wrap; gap: 15px;">
+            <div class="search-box" style="flex: 1; min-width: 250px;">
+                <input type="text" id="search-input" placeholder="Search channel...">
+            </div>
+            <div class="actions" style="display: flex; gap: 10px; flex-wrap: wrap; justify-content: flex-end;">
+                <button class="btn primary-outline" id="magic-wand-btn" style="background:transparent; color:var(--accent); border:1px solid var(--accent);">
+                    <svg class="icon" width="16" height="16"><use href="#icon-wand"/></svg> Baguette magique
+                </button>
+                <div class="dropdown">
+                    <button class="btn secondary">⋮ Plus d&#x27;actions</button>
+                    <div class="dropdown-content">
+                        <button id="save-template-btn">📝 Créateur de modèles</button>
+                        <button id="export-share-btn">📲 Partager via un code</button>
+                    </div>
+                </div>
+                <button class="btn primary" id="save-btn">
+                    <svg class="icon" width="16" height="16"><use href="#icon-save"/></svg> Enregistrer et télécharger
+                </button>
+            </div>
+        </div>
+        
+        <div class="actions secondary-actions" style="display: flex; gap: 10px; flex-wrap: wrap; padding-top: 15px; border-top: 1px dashed var(--border-color); width: 100%; align-items: center;">
+            <span style="color: var(--text-secondary); font-size: 0.85rem; font-weight:600; text-transform:uppercase; letter-spacing:0.05em; margin-right:10px;">Actions groupées :</span>
+            <select id="bulk-actions-select" class="btn secondary" style="padding: 0.5rem; border-radius: var(--radius-sm); font-size: 0.85rem; cursor: pointer; outline: none; background: transparent; border: 1px solid var(--border-color); color: var(--text-primary);">
+                <option value="">Sélectionner une action...</option>
+                <option value="del_encrypted">🔒 Supprimer les éléments chiffrés</option>
+                <option value="del_radio">📻 Supprimer les stations de radio</option>
+                <option value="del_selected" id="opt-del-selected" disabled>🗑️ Supprimer les éléments sélectionnés (0)</option>
+                <option value="lock_selected" id="opt-lock-selected" disabled>🔒 Verrouiller les éléments sélectionnés</option>
+                <option value="fav_selected" id="opt-fav-selected" disabled>⭐ Ajouter aux favoris les éléments sélectionnés</option>
+            </select>
+        </div>
+    </div>
+
+    <div style="font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 15px; display: flex; flex-wrap: wrap; gap: 20px; align-items: center; padding: 10px 15px; background: rgba(0,0,0,0.1); border-radius: 6px; border: 1px solid var(--border-color);">
+        <span><strong style="color: var(--text-primary);">Icônes :</strong></span>
+        
+        <span><span style="opacity: 0.5;">⋮⋮</span> Glisser (déplacer) 🔒 Contrôle parental ⭐ Ajouter à mes favoris</span>
+        
+        <span><span style="color: var(--danger); font-weight: bold;">✕</span> Supprimer</span>
+    </div>
+
+    <div class="table-wrapper">
+        <div class="list-header" style="min-width: 600px;">
+            <div class="col-drag"></div>
+            <div class="col-check"><input type="checkbox" id="select-all" title="Select All"></div>
+            <div class="col-no">Non</div>
+            <div class="col-name">Nom de la chaîne</div>
+            <div class="col-type">Type</div>
+            <div class="col-freq">Fréquence</div>
+            <div class="col-flags">Statut</div>
+            <div class="col-action"></div>
+        </div>
+
+        <ul id="channel-list" style="min-width: 600px;"></ul>
+    </div>
+</div>
+
+<!-- Template Builder Modal (Split Screen) -->
+<div id="builder-modal" class="modal hidden">
+    <div class="modal-content builder-content">
+        <h2>🛠️ Créateur de modèles personnalisés</h2>
+        <p>Faites glisser les chaînes de votre choix depuis la liste de gauche vers celle de droite pour créer votre propre modèle idéal.</p>
+        
+        <div class="split-screen">
+            <div class="pane">
+                <h4 style="color:var(--text-secondary); margin-bottom:0.5rem;">Tous les canaux</h4>
+                <ul id="builder-source-list" class="builder-ul"></ul>
+            </div>
+            <div class="pane">
+                <h4 style="color:var(--accent); margin-bottom:0.5rem;">Mon modèle</h4>
+                <ul id="builder-target-list" class="builder-ul target-ul"></ul>
+            </div>
+        </div>
+        
+        <div class="modal-actions" style="margin-top:1.5rem;">
+            <button id="close-builder-btn" class="btn danger-outline">Annuler</button>
+            <button id="save-builder-btn" class="btn primary">Enregistrer le modèle</button>
+        </div>
+    </div>
+</div>
+
+<!-- Share Modal -->
+<div id="share-modal" class="modal hidden">
+    <div class="modal-content" style="max-width: 400px; text-align: center;">
+        <h2 id="share-title">📱 Importer via un code</h2>
+        <p id="share-desc" style="color:var(--text-secondary); margin-bottom:1.5rem;"></p>
+        
+        <div id="share-code-box" style="display:none; font-size: 3rem; font-family: monospace; font-weight: bold; letter-spacing: 5px; color: var(--accent); padding: 20px; background: rgba(59,130,246,0.1); border-radius: 12px; margin-bottom: 1rem;">
+            ----
+        </div>
+        
+        <div id="import-input-box" style="display:none; margin-bottom: 1.5rem;">
+            <input type="text" id="import-code-input" placeholder="4 Haneli Kodu Girin" maxlength="4" style="font-size: 2rem; text-align: center; letter-spacing: 5px; text-transform: uppercase; width: 100%; max-width: 200px;">
+        </div>
+        
+        <p id="share-status" style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1.5rem;"></p>
+        
+        <div class="modal-actions" style="justify-content: center;">
+            <button id="close-share-btn" class="btn danger-outline">Fermer</button>
+            <button id="submit-import-btn" class="btn primary" style="display:none;">Télécharger et appliquer</button>
+        </div>
+    </div>
+</div>
+
+<!-- Channel Info Modal -->
+<div id="info-modal" class="modal hidden">
+    <div class="modal-content" style="max-width: 450px;">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem; padding-bottom:1rem; border-bottom:1px solid var(--border-color);">
+            <div style="display:flex; align-items:center; gap:10px;">
+                <div id="info-avatar"></div>
+                <h2 id="info-name" style="margin:0; font-size:1.2rem;">Nom du canal</h2>
+            </div>
+            <button id="close-info-btn" style="background:none; border:none; color:var(--text-secondary); cursor:pointer; font-size:1.5rem;">✕</button>
+        </div>
+        <div id="info-body" style="display:flex; flex-direction:column; gap:12px;">
+            <div style="display:flex; justify-content:space-between; padding:8px; background:rgba(0,0,0,0.02); border-radius:6px;">
+                <span style="color:var(--text-secondary);">Numéro</span>
+                <strong id="info-no"></strong>
+                <span style="color:var(--text-secondary);">de chaîne</span>
+            </div>
+            <div style="display:flex; justify-content:space-between; padding:8px; background:rgba(0,0,0,0.02); border-radius:6px;">
+                <span style="color:var(--text-secondary);">Fréquence</span>
+                <strong id="info-freq"></strong>
+            </div>
+            <div style="display:flex; justify-content:space-between; padding:8px; background:rgba(0,0,0,0.02); border-radius:6px;">
+                <span style="color:var(--text-secondary);">Polarisation</span>
+                <strong id="info-pol"></strong>
+            </div>
+            <div style="display:flex; justify-content:space-between; padding:8px; background:rgba(0,0,0,0.02); border-radius:6px;">
+                <span style="color:var(--text-secondary);">Débit</span>
+                <strong id="info-sym"></strong>
+                <span style="color:var(--text-secondary);">symbole</span>
+            </div>
+            <div style="display:flex; justify-content:space-between; padding:8px; background:rgba(0,0,0,0.02); border-radius:6px;">
+                <span style="color:var(--text-secondary);">Type</span>
+                <strong id="info-type"></strong>
+                <span style="color:var(--text-secondary);">de diffusion</span>
+            </div>
+            <div style="display:flex; justify-content:space-between; padding:8px; background:rgba(0,0,0,0.02); border-radius:6px;">
+                <span style="color:var(--text-secondary);">Chaîne</span>
+                <strong id="info-enc"></strong>
+                <span style="color:var(--text-secondary);">cryptée</span>
+            </div>
+            
+            <div style="border-top:1px dashed var(--border-color); margin: 4px 0;"></div>
+            
+            <div style="display:flex; justify-content:space-between; padding:4px 8px; border-radius:6px;" title="Modülasyon Sistemi: Yayının DVB-S (SD) veya DVB-S2 (HD) gibi standardını belirtir.">
+                <span style="color:var(--text-muted); font-size:0.85rem; cursor:help; border-bottom:1px dotted var(--text-muted);">Système</span>
+                <strong id="info-mod" style="font-family:monospace; font-size:0.85rem;"></strong>
+                <span style="color:var(--text-muted); font-size:0.85rem; cursor:help; border-bottom:1px dotted var(--text-muted);">de modulation</span>
+            </div>
+            <div style="display:flex; justify-content:space-between; padding:4px 8px; border-radius:6px;" title="Roll-Off Faktörü: Sinyal bant genişliğinin ne kadar keskin bir şekilde filtrelendiğini gösterir.">
+                <span style="color:var(--text-muted); font-size:0.85rem; cursor:help; border-bottom:1px dotted var(--text-muted);">Pente de coupure</span>
+                <strong id="info-rolloff" style="font-family:monospace; font-size:0.85rem;"></strong>
+            </div>
+            <div style="display:flex; justify-content:space-between; padding:4px 8px; border-radius:6px;" title="Network ID: Bulunduğunuz uydu şebekesinin (Ağ) kimliğidir.">
+                <span style="color:var(--text-muted); font-size:0.85rem; cursor:help; border-bottom:1px dotted var(--text-muted);">NID (identifiant de réseau)</span>
+                <strong id="info-nid" style="font-family:monospace; font-size:0.85rem;"></strong>
+            </div>
+            <div style="display:flex; justify-content:space-between; padding:4px 8px; border-radius:6px;" title="Transport Stream ID: Kanalın bulunduğu veri paketinin (frekansın) kimlik numarası.">
+                <span style="color:var(--text-muted); font-size:0.85rem; cursor:help; border-bottom:1px dotted var(--text-muted);">TSID (identifiant du flux de transport)</span>
+                <strong id="info-tsid" style="font-family:monospace; font-size:0.85rem;"></strong>
+            </div>
+            <div style="display:flex; justify-content:space-between; padding:4px 8px; border-radius:6px;" title="Original Network ID: Orijinal uydu ağının küresel kimlik kodu.">
+                <span style="color:var(--text-muted); font-size:0.85rem; cursor:help; border-bottom:1px dotted var(--text-muted);">ONID (identifiant de réseau d&#x27;origine)</span>
+                <strong id="info-onid" style="font-family:monospace; font-size:0.85rem;"></strong>
+            </div>
+            <div style="display:flex; justify-content:space-between; padding:4px 8px; border-radius:6px;" title="Service ID: Yayıncının o kanala atadığı benzersiz servis kimliği.">
+                <span style="color:var(--text-muted); font-size:0.85rem; cursor:help; border-bottom:1px dotted var(--text-muted);">SID (identifiant de service)</span>
+                <strong id="info-sid" style="font-family:monospace; font-size:0.85rem;"></strong>
+            </div>
+            <div style="display:flex; justify-content:space-between; padding:4px 8px; border-radius:6px;" title="Video Packet ID: Kanalın sadece görüntü (video) verilerini taşıyan şifre kodu.">
+                <span style="color:var(--text-muted); font-size:0.85rem; cursor:help; border-bottom:1px dotted var(--text-muted);">PID</span>
+                <strong id="info-vidpid" style="font-family:monospace; font-size:0.85rem;"></strong>
+                <span style="color:var(--text-muted); font-size:0.85rem; cursor:help; border-bottom:1px dotted var(--text-muted);">vidéo</span>
+            </div>
+            <div style="display:flex; justify-content:space-between; padding:4px 8px; border-radius:6px;" title="Audio Packet ID: Kanalın sadece ses verilerini taşıyan şifre kodu.">
+                <span style="color:var(--text-muted); font-size:0.85rem; cursor:help; border-bottom:1px dotted var(--text-muted);">PID</span>
+                <strong id="info-audpid" style="font-family:monospace; font-size:0.85rem;"></strong>
+                <span style="color:var(--text-muted); font-size:0.85rem; cursor:help; border-bottom:1px dotted var(--text-muted);">audio</span>
+            </div>
+            <div style="display:flex; justify-content:space-between; padding:4px 8px; border-radius:6px;" title="Program Clock Reference: Ses ve görüntünün senkronize çalışmasını sağlayan saat kodu.">
+                <span style="color:var(--text-muted); font-size:0.85rem; cursor:help; border-bottom:1px dotted var(--text-muted);">PID</span>
+                <strong id="info-pcrpid" style="font-family:monospace; font-size:0.85rem;"></strong>
+                <span style="color:var(--text-muted); font-size:0.85rem; cursor:help; border-bottom:1px dotted var(--text-muted);">PCR</span>
+            </div>
+        </div>
+        
+        <div style="text-align: center; margin-top: 15px;">
+            <a href="/glossary" class="btn primary-outline" style="font-size: 0.8rem; padding: 4px 10px; border-radius: 20px;"><svg class="icon" width="14" height="14" style="vertical-align:-2px; margin-right:4px;"><use href="#icon-book"/></svg>Glossaire</a>
+        </div>
+    </div>
+</div>
+
+<!-- Magic Wand Modal -->
+<div id="magic-modal" class="modal hidden">
+    <div class="modal-content">
+        <h2>🪄 Baguette magique : sélection d&#x27;un modèle</h2>
+        <p>Sélectionnez le modèle de séquence à appliquer automatiquement à votre liste :</p>
+        
+        <div class="template-cards" id="template-cards-container">
+            <!-- Hazır Şablonlar -->
+            <div class="template-card selected" data-template="general">
+                <h3>🏆 Liste générale (offre complète)</h3>
+                <p>Un mélange équilibré de chaînes nationales, d&#x27;actualités, de sport, de documentaires et de chaînes pour enfants.</p>
+                <div class="preview">1. TRT1 HD | 2. KANAL D HD ... 8. TRT NEWS ... 15. A SPORTS ... 23. TLC HD</div>
+            </div>
+            <div class="template-card" data-template="news">
+                <h3>📰 Axée sur l&#x27;actualité</h3>
+                <p>Toutes les émissions d&#x27;actualités commencent immédiatement après les chaînes nationales. (Pas de chaînes sportives ni pour enfants)</p>
+                <div class="preview">1. TRT1 HD | 2. KANAL D HD ... 8. TRT NEWS ... 11. SZC ... 14. KRT</div>
+            </div>
+            <div class="template-card" data-template="sports">
+                <h3>⚽ Axé sur le sport</h3>
+                <p>Immédiatement après les chaînes nationales, seules les chaînes sportives sont répertoriées.</p>
+                <div class="preview">1. TRT1 HD | 2. KANAL D HD ... 8. A SPOR | 9. TRT SPOR HD ... 15. FB TV</div>
+            </div>
+        </div>
+
+        <!-- Kullanıcı Şablonları Buraya Eklenecek -->
+        <div id="custom-templates-container" style="display:none; margin-bottom:1.5rem;">
+            <h3 style="font-size: 1rem; color: var(--text-secondary); margin-bottom: 0.5rem; text-transform:uppercase; letter-spacing:0.05em;">Vos propres modèles</h3>
+            <div class="template-cards" id="custom-cards-container" style="margin-top:0;">
+            </div>
+        </div>
+        
+        <div class="modal-actions">
+            <button id="close-modal-btn" class="btn danger-outline">Annuler</button>
+            <button id="apply-template-btn" class="btn magic">Appliquer le modèle sélectionné</button>
+        </div>
+    </div>
+</div>
+
+
+
+<script>
+    document.addEventListener(&#x27;DOMContentLoaded&#x27;, () =&gt; {
+        if (!localStorage.getItem(&#x27;welcomed_v2&#x27;)) {
+            document.getElementById(&#x27;welcome-modal&#x27;).style.display = &#x27;flex&#x27;;
+        }
+        document.getElementById(&#x27;welcome-start-btn&#x27;).addEventListener(&#x27;click&#x27;, () =&gt; {
+            localStorage.setItem(&#x27;welcomed_v2&#x27;, &#x27;true&#x27;);
+            document.getElementById(&#x27;welcome-modal&#x27;).style.display = &#x27;none&#x27;;
+        });
+    });
+</script>{% endblock %}
+
+{% block scripts %}
+<script>
+    document.addEventListener(&#x27;DOMContentLoaded&#x27;, () =&gt; {
+        const welcomeSection = document.getElementById(&#x27;welcome-section&#x27;);
+        const uploadSection = document.getElementById(&#x27;upload-section&#x27;);
+        const startBtn = document.getElementById(&#x27;welcome-start-btn&#x27;);
+        
+        if (localStorage.getItem(&#x27;welcomed_v2&#x27;)) {
+            if(welcomeSection) welcomeSection.style.display = &#x27;none&#x27;;
+            if(uploadSection) uploadSection.style.display = &#x27;flex&#x27;;
+        } else {
+            if(uploadSection) uploadSection.style.display = &#x27;none&#x27;;
+        }
+        
+        startBtn?.addEventListener(&#x27;click&#x27;, () =&gt; {
+            localStorage.setItem(&#x27;welcomed_v2&#x27;, &#x27;true&#x27;);
+            if(welcomeSection) welcomeSection.style.display = &#x27;none&#x27;;
+            if(uploadSection) uploadSection.style.display = &#x27;flex&#x27;;
+        });
+    });
+</script>
+<script src="/static/js/app.js"></script>{% endblock %}

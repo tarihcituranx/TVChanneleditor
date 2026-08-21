@@ -1,0 +1,262 @@
+{% extends "base_ar.html" %}
+
+{% block title %}دليل المستخدم - محرر القنوات التلفزيونية{% endblock %}
+
+{% block head %}
+<style>
+    .content-container {
+        max-width: 900px;
+        margin: 40px auto;
+        padding: 28px 32px;
+        background: var(--card-bg);
+        border-radius: 12px;
+        border: 1px solid var(--border-color);
+    }
+    .section-title {
+        font-size: 22px;
+        font-weight: 700;
+        margin-bottom: 24px;
+        color: var(--text-primary);
+        border-bottom: 2px solid var(--border-color);
+        padding-bottom: 10px;
+    }
+    .brand-tabs {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-bottom: 28px;
+    }
+    .brand-tab {
+        padding: 7px 16px;
+        border-radius: 20px;
+        font-size: 13px;
+        font-weight: 600;
+        cursor: pointer;
+        border: 1px solid var(--border-color);
+        background: var(--bg-color);
+        color: var(--text-secondary);
+        transition: all 0.2s;
+    }
+    .brand-tab.active {
+        background: var(--accent);
+        color: white;
+        border-color: var(--accent);
+    }
+    .brand-guide { display: none; }
+    .brand-guide.active { display: block; }
+    .step-box {
+        margin-bottom: 22px;
+        padding: 16px 20px;
+        border-left: 3px solid var(--accent);
+        background: rgba(29,78,216,0.06);
+        border-radius: 0 8px 8px 0;
+    }
+    .step-title {
+        font-size: 16px;
+        font-weight: 700;
+        color: var(--text-primary);
+        margin-bottom: 6px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+    .step-num {
+        background: var(--accent);
+        color: white;
+        width: 24px; height: 24px;
+        border-radius: 50%;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 12px;
+        font-weight: 800;
+        flex-shrink: 0;
+    }
+    .step-desc {
+        font-size: 14px;
+        color: var(--text-primary);
+        opacity: 0.95;
+        line-height: 1.7;
+    }
+    .step-desc code {
+        background: var(--bg-color);
+        padding: 2px 6px;
+        border-radius: 4px;
+        font-family: monospace;
+        font-size: 13px;
+        color: #93c5fd;
+        border: 1px solid var(--border-color);
+    }
+    .tip-box {
+        background: rgba(34,197,94,0.08);
+        border: 1px solid rgba(34,197,94,0.25);
+        border-radius: 8px;
+        padding: 12px 16px;
+        font-size: 13px;
+        color: #4ade80;
+        margin-top: 20px;
+        line-height: 1.6;
+    }
+    .warn-box {
+        background: rgba(251,191,36,0.08);
+        border: 1px solid rgba(251,191,36,0.25);
+        border-radius: 8px;
+        padding: 12px 16px;
+        font-size: 13px;
+        color: #fbbf24;
+        margin-top: 12px;
+        line-height: 1.6;
+    }
+</style>{% endblock %}
+
+{% block content %}
+<div class="content-container">
+    <h2 class="section-title">دليل المستخدم</h2>
+
+    <div class="brand-tabs" role="tablist" aria-label="TV Brands">
+        <button class="brand-tab active" onclick="showGuide(\'samsung\')" role="tab" aria-selected="true" aria-controls="guide-samsung" id="tab-samsung">سامسونج</button>
+        <button class="brand-tab" onclick="showGuide(\'lg\')" role="tab" aria-selected="false" aria-controls="guide-lg" id="tab-lg">إل جي</button>
+        <button class="brand-tab" onclick="showGuide(\'sony\')" role="tab" aria-selected="false" aria-controls="guide-sony" id="tab-sony">سوني برافيا</button>
+        <button class="brand-tab" onclick="showGuide(\'hisense\')" role="tab" aria-selected="false" aria-controls="guide-hisense" id="tab-hisense">هيسنس</button>
+    </div>
+
+    <!-- SAMSUNG -->
+    <div class="brand-guide active" id="guide-samsung" role="tabpanel" aria-labelledby="tab-samsung">
+        <div class="step-box">
+            <div class="step-title"><span class="step-num">1</span> نقل قائمة القنوات إلى محرك أقراص USB</div>
+            <div class="step-desc">
+                باستخدام جهاز التحكم عن بُعد الخاص بالتلفزيون، اتبع الخطوات التالية: <strong>القائمة → البث → إعدادات القنوات → نقل قائمة القنوات</strong>.
+                أدخل رقم التعريف الشخصي (PIN) (عادةً <code>0000</code>
+                ) واختر خيار "<strong>نقل إلى USB"</strong>
+                .<br><br>
+                
+                <strong>الطرز القديمة (E/F/H):</strong>
+                <code>.scm</code>
+                يتم إنشاء ملف.<br>
+                
+                <strong>الطرازات الجديدة (J/K/M/Q/R/T - Tizen):</strong>
+                <code>.zip</code> يتم إنشاء ملف.
+            </div>
+        </div>
+        <div class="step-box">
+            <div class="step-title"><span class="step-num">2</span> تحميل الملف إلى الموقع الإلكتروني</div>
+            <div class="step-desc">
+                قم بتوصيل محرك أقراص USB بجهاز الكمبيوتر الخاص بك. اسحب الملف إلى منطقة التحميل على الصفحة الرئيسية <code>.scm</code> أو <code>.zip</code> اسحب الملف وأفلته في منطقة التحميل على الصفحة الرئيسية، أو انقر على زر "تحديد ملف".
+            </div>
+        </div>
+        <div class="step-box">
+            <div class="step-title"><span class="step-num">3.</span> تنظيم القنوات</div>
+            <div class="step-desc">
+                أعد ترتيب القنوات باستخدام <strong>السحب والإفلات</strong>. 🪄 قم بتطبيق القوالب الجاهزة باستخدام <strong>Magic Wand</strong> أو <strong>🛠️</strong> قم بإنشاء قوالبك الخاصة باستخدام <strong>Template Creator</strong>. يمكنك تغيير علامات القفل 🔒 والإضافة إلى المفضلة في كل صف من صفوف القنوات.
+            </div>
+        </div>
+        <div class="step-box">
+            <div class="step-title"><span class="step-num">4.</span> الحفظ والتحميل على التلفزيون</div>
+            <div class="step-desc">
+                انقر على زر
+                <strong>«حفظ وتنزيل»</strong>
+                
+                . انسخ الملف الذي تم تنزيله إلى محرك أقراص USB (استخدم <em>نفس اسم</em>
+                
+                الملف الأصلي!). قم بتحميله عبر قائمة التلفزيون باستخدام <strong>خيار</strong>
+                <strong>«تحميل من USB</strong>
+                ».
+            </div>
+        </div>
+        <div class="tip-box">💡 <strong>نصيحة:</strong> لا يتعرف التلفزيون إلا على ملفات SCM التي تحمل الاسم نفسه بالضبط. عند نسخ الملف الجديد إلى محرك USB، قم إما بالكتابة فوق الملف القديم أو بعمل نسخة احتياطية منه <code>.bak</code> مع امتداده.</div>
+        <div class="warn-box">⚠️ <strong>تحذير:</strong> لا تؤدي عملية تحرير القنوات إلى تغيير الترددات أو بيانات PID المشفرة للقنوات الموجودة؛ بل تقتصر على تحديث الترتيب والعلامات.</div>
+    </div>
+
+    <!-- LG -->
+    <div class="brand-guide" id="guide-lg" role="tabpanel" aria-labelledby="tab-lg">
+        <div class="step-box">
+            <div class="step-title"><span class="step-num">1</span> انقل قائمة القنوات إلى USB</div>
+            <div class="step-desc">
+                على تلفزيون LG الخاص بك، انتقل إلى <strong>الإعدادات → القنوات → إدارة القنوات → نسخ القنوات إلى USB</strong>.
+                على محرك USB <code>GlobalClone00001.TLL</code> أو <code>LG_DTV_*.tll</code> سيتم إنشاء ملف مثل هذا.
+            </div>
+        </div>
+        <div class="step-box">
+            <div class="step-title"><span class="step-num">2</span>. تحميل ملف .TLL</div>
+            <div class="step-desc">
+                قم بتحميل ملف بصيغة <code>.tll</code> . سيتعرف النظام تلقائيًا على تنسيق XML الخاص بـ GlobalClone.
+            </div>
+        </div>
+        <div class="step-box">
+            <div class="step-title"><span class="step-num">3.</span> التعديل والتنزيل</div>
+            <div class="step-desc">
+                قم بفرز القنوات باستخدام السحب والإفلات. انقر على زر "<strong>حفظ وتنزيل"</strong>
+                لتنزيل ملف TLL المحدث ونقله إلى محرك أقراص USB. أكمل العملية عن طريق تحديد "<strong>تحميل القنوات من USB"</strong>
+                من قائمة التلفزيون.
+            </div>
+        </div>
+        <div class="tip-box">💡 في أجهزة LG webOS 5، قد تُطبق أحيانًا قيود على استيراد قائمة القنوات. إذا ظهرت شاشة سوداء، فحاول إعادة تشغيل التلفزيون.</div>
+    </div>
+
+    <!-- SONY -->
+    <div class="brand-guide" id="guide-sony" role="tabpanel" aria-labelledby="tab-sony">
+        <div class="step-box">
+            <div class="step-title"><span class="step-num">1.</span> الحصول على ملف sdb.xml</div>
+            <div class="step-desc">
+                على تلفزيون Sony BRAVIA، اتبع الخطوات التالية: <strong>الإعدادات → إعداد القنوات → استيراد قائمة القنوات → استيراد إلى USB</strong>.
+                على محرك أقراص USB <code>sdb.xml</code> أو في المجلدات الفرعية <code>*.xml</code> سيتم إنشاء الملفات.
+            </div>
+        </div>
+        <div class="step-box">
+            <div class="step-title"><span class="step-num">2.</span> قم بتحميل ملف sdb.xml</div>
+            <div class="step-desc">
+                انتقل إلى الشاشة الرئيسية <code>sdb.xml</code> . يتعرف النظام تلقائيًا على الملف بتنسيق سوني ويعرض قائمة القنوات.
+            </div>
+        </div>
+        <div class="step-box">
+            <div class="step-title"><span class="step-num">3.</span> قم بالتحرير والتحميل على التلفزيون</div>
+            <div class="step-desc">
+                قم بتحرير القنوات، ثم انقر على <strong>«حفظ» و«تنزيل»</strong> <code>sdb.xml</code> لتنزيل الملف. انسخه إلى محرك أقراص USB وقم بتحميله على التلفزيون باستخدام خيار <strong>«استيراد من USB</strong>».
+            </div>
+        </div>
+    </div>
+
+    <!-- HISENSE -->
+    <div class="brand-guide" id="guide-hisense" role="tabpanel" aria-labelledby="tab-hisense">
+        <div class="step-box">
+            <div class="step-title"><span class="step-num">1.</span> الحصول على ملف servicelist.db</div>
+            <div class="step-desc">
+                على تلفزيون Hisense الخاص بك، انتقل إلى <strong>«القائمة» → «القنوات» → «تصدير قائمة القنوات»</strong> لنقل ملف قاعدة البيانات إلى محرك أقراص USB.
+                عادةً ما يكون اسم الملف <code>servicelist.db</code> (2017+) أو <code>channel.db</code> (2015–2016).
+            </div>
+        </div>
+        <div class="step-box">
+            <div class="step-title"><span class="step-num">2.</span> تثبيت قاعدة البيانات</div>
+            <div class="step-desc">
+                اسحب ملف <code>servicelist.db</code> . يقوم النظام بقراءة قاعدة بيانات SQLite وعرض قائمة بجميع القنوات.
+            </div>
+        </div>
+        <div class="step-box">
+            <div class="step-title"><span class="step-num">3.</span> التعديل والتحميل</div>
+            <div class="step-desc">
+                بعد إجراء التغييرات المطلوبة، انقر على زر "<strong>حفظ وتنزيل"</strong>
+                لتنزيل ملف قاعدة البيانات المحدث. انسخه إلى محرك أقراص USB واستخدم قائمة الاستيراد في التلفزيون لاستيراده.
+            </div>
+        </div>
+        <div class="warn-box">⚠️ تغييرات أسماء القنوات محدودة في طرازات Hisense؛ وفي بعض الطرازات، لا يمكن تطبيق سوى تغييرات الترتيب والقفل.</div>
+    </div>
+</div>
+
+<script>
+function showGuide(brand) {
+        document.querySelectorAll(&#x27;.brand-tab&#x27;).forEach(btn =&gt; {
+            btn.classList.remove(&#x27;active&#x27;);
+            btn.setAttribute(&#x27;aria-selected&#x27;, &#x27;false&#x27;);
+        });
+        document.querySelectorAll(&#x27;.brand-guide&#x27;).forEach(g =&gt; {
+            g.classList.remove(&#x27;active&#x27;);
+        });
+        
+        const activeBtn = document.querySelector(`.brand-tab[onclick*="${brand}"]`);
+        if (activeBtn) {
+            activeBtn.classList.add(&#x27;active&#x27;);
+            activeBtn.setAttribute(&#x27;aria-selected&#x27;, &#x27;true&#x27;);
+        }
+        document.getElementById(&#x27;guide-&#x27; + brand).classList.add(&#x27;active&#x27;);
+    }
+</script>{% endblock %}

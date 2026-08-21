@@ -1,0 +1,261 @@
+{% extends "base_es.html" %}
+
+{% block title %}Guía del usuario - Editor de canales de televisión{% endblock %}
+
+{% block head %}
+<style>
+    .content-container {
+        max-width: 900px;
+        margin: 40px auto;
+        padding: 28px 32px;
+        background: var(--card-bg);
+        border-radius: 12px;
+        border: 1px solid var(--border-color);
+    }
+    .section-title {
+        font-size: 22px;
+        font-weight: 700;
+        margin-bottom: 24px;
+        color: var(--text-primary);
+        border-bottom: 2px solid var(--border-color);
+        padding-bottom: 10px;
+    }
+    .brand-tabs {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-bottom: 28px;
+    }
+    .brand-tab {
+        padding: 7px 16px;
+        border-radius: 20px;
+        font-size: 13px;
+        font-weight: 600;
+        cursor: pointer;
+        border: 1px solid var(--border-color);
+        background: var(--bg-color);
+        color: var(--text-secondary);
+        transition: all 0.2s;
+    }
+    .brand-tab.active {
+        background: var(--accent);
+        color: white;
+        border-color: var(--accent);
+    }
+    .brand-guide { display: none; }
+    .brand-guide.active { display: block; }
+    .step-box {
+        margin-bottom: 22px;
+        padding: 16px 20px;
+        border-left: 3px solid var(--accent);
+        background: rgba(29,78,216,0.06);
+        border-radius: 0 8px 8px 0;
+    }
+    .step-title {
+        font-size: 16px;
+        font-weight: 700;
+        color: var(--text-primary);
+        margin-bottom: 6px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+    .step-num {
+        background: var(--accent);
+        color: white;
+        width: 24px; height: 24px;
+        border-radius: 50%;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 12px;
+        font-weight: 800;
+        flex-shrink: 0;
+    }
+    .step-desc {
+        font-size: 14px;
+        color: var(--text-primary);
+        opacity: 0.95;
+        line-height: 1.7;
+    }
+    .step-desc code {
+        background: var(--bg-color);
+        padding: 2px 6px;
+        border-radius: 4px;
+        font-family: monospace;
+        font-size: 13px;
+        color: #93c5fd;
+        border: 1px solid var(--border-color);
+    }
+    .tip-box {
+        background: rgba(34,197,94,0.08);
+        border: 1px solid rgba(34,197,94,0.25);
+        border-radius: 8px;
+        padding: 12px 16px;
+        font-size: 13px;
+        color: #4ade80;
+        margin-top: 20px;
+        line-height: 1.6;
+    }
+    .warn-box {
+        background: rgba(251,191,36,0.08);
+        border: 1px solid rgba(251,191,36,0.25);
+        border-radius: 8px;
+        padding: 12px 16px;
+        font-size: 13px;
+        color: #fbbf24;
+        margin-top: 12px;
+        line-height: 1.6;
+    }
+</style>{% endblock %}
+
+{% block content %}
+<div class="content-container">
+    <h2 class="section-title">Guía del usuario</h2>
+
+    <div class="brand-tabs" role="tablist" aria-label="TV Brands">
+        <button class="brand-tab active" onclick="showGuide(\'samsung\')" role="tab" aria-selected="true" aria-controls="guide-samsung" id="tab-samsung">Samsung</button>
+        <button class="brand-tab" onclick="showGuide(\'lg\')" role="tab" aria-selected="false" aria-controls="guide-lg" id="tab-lg">LG</button>
+        <button class="brand-tab" onclick="showGuide(\'sony\')" role="tab" aria-selected="false" aria-controls="guide-sony" id="tab-sony">Sony BRAVIA</button>
+        <button class="brand-tab" onclick="showGuide(\'hisense\')" role="tab" aria-selected="false" aria-controls="guide-hisense" id="tab-hisense">Hisense</button>
+    </div>
+
+    <!-- SAMSUNG -->
+    <div class="brand-guide active" id="guide-samsung" role="tabpanel" aria-labelledby="tab-samsung">
+        <div class="step-box">
+            <div class="step-title"><span class="step-num">1.</span> Transferir la lista de canales a una unidad USB</div>
+            <div class="step-desc">
+                Con el mando a distancia del televisor, sigue estos pasos: <strong>Menú → Emisión → Ajustes de canales → Transferir lista de canales</strong>.
+                Introduce tu PIN (normalmente <code>0000</code>
+                ) y selecciona la opción «<strong>Transferir a USB</strong>
+                ».<br><br>
+                
+                <strong>Modelos antiguos (E/F/H):</strong>
+                <code>.scm</code>
+                Se crea un archivo.<br>
+                
+                <strong>Modelos nuevos (J/K/M/Q/R/T - Tizen):</strong>
+                <code>.zip</code> se crea un archivo.
+            </div>
+        </div>
+        <div class="step-box">
+            <div class="step-title"><span class="step-num">2.</span> Subir el archivo a la página web</div>
+            <div class="step-desc">
+                Conecta la memoria USB a tu ordenador. Arrastra el archivo al área de subida de la página de inicio <code>.scm</code> o <code>.zip</code> arrastra y suelta el archivo en el área de subida de la página de inicio, o haz clic en el botón «Seleccionar archivo».
+            </div>
+        </div>
+        <div class="step-box">
+            <div class="step-title"><span class="step-num">3.</span> Organiza los canales</div>
+            <div class="step-desc">
+                Reordena los canales <strong>arrastrando</strong> <strong>y</strong> <strong>soltando</strong>. 🪄 Aplica plantillas prediseñadas con <strong>la Varita Mágica</strong> o <strong>🛠️</strong> crea las tuyas propias con <strong>el Creador de plantillas</strong>. Puedes cambiar los iconos de 🔒 bloqueo y favoritos en cada fila de canales.
+            </div>
+        </div>
+        <div class="step-box">
+            <div class="step-title"><span class="step-num">4.</span> Guardar y subir a la televisión</div>
+            <div class="step-desc">
+                Haz clic en el botón
+                <strong>«Guardar y descargar»</strong>
+                
+                . Copia el archivo descargado a una memoria USB (¡utiliza <em>el mismo nombre</em>
+                
+                que el archivo original!). Cárgalo a través del menú del televisor utilizando <strong>la opción «Cargar desde USB</strong>
+                ».
+            </div>
+        </div>
+        <div class="tip-box">💡 <strong>Consejo:</strong> El televisor solo reconoce archivos SCM con exactamente el mismo nombre. Al copiar el nuevo archivo a la memoria USB, sobrescribe el antiguo o haz una copia de seguridad de este <code>.bak</code> con su extensión.</div>
+        <div class="warn-box">⚠️ <strong>Advertencia:</strong> El proceso de edición de canales no modifica las frecuencias ni los datos PID cifrados de los canales existentes; solo actualiza el orden y las marcas.</div>
+    </div>
+
+    <!-- LG -->
+    <div class="brand-guide" id="guide-lg" role="tabpanel" aria-labelledby="tab-lg">
+        <div class="step-box">
+            <div class="step-title"><span class="step-num">1.</span> Transfiere la lista de canales a una memoria USB</div>
+            <div class="step-desc">
+                En tu televisor LG, ve a <strong>Ajustes → Canales → Gestión de canales → Copiar canales a USB</strong>.
+                En la memoria USB <code>GlobalClone00001.TLL</code> o <code>LG_DTV_*.tll</code> se creará un archivo como este.
+            </div>
+        </div>
+        <div class="step-box">
+            <div class="step-title"><span class="step-num">2</span>. Carga el archivo .TLL</div>
+            <div class="step-desc">
+                Sube un archivo con la extensión <code>.tll</code> . El sistema reconocerá automáticamente el formato XML de GlobalClone.
+            </div>
+        </div>
+        <div class="step-box">
+            <div class="step-title"><span class="step-num">3.</span> Editar y descargar</div>
+            <div class="step-desc">
+                Ordena los canales arrastrando y soltando. Haz clic en el botón «<strong>Guardar y descargar»</strong>
+                para descargar el archivo TLL actualizado y transfiere este a una memoria USB. Completa el proceso seleccionando «<strong>Cargar canales desde USB»</strong>
+                en el menú del televisor.
+            </div>
+        </div>
+        <div class="tip-box">💡 En los dispositivos LG con webOS 5, en ocasiones pueden aplicarse restricciones a la importación de la lista de canales. Si ves una pantalla en negro, prueba a reiniciar el televisor.</div>
+    </div>
+
+    <!-- SONY -->
+    <div class="brand-guide" id="guide-sony" role="tabpanel" aria-labelledby="tab-sony">
+        <div class="step-box">
+            <div class="step-title"><span class="step-num">1.</span> Obtén el archivo sdb.xml</div>
+            <div class="step-desc">
+                En un Sony BRAVIA, sigue estos pasos: <strong>Ajustes → Configuración de canales → Importación de lista de canales → Importar a USB</strong>.
+                En la memoria USB <code>sdb.xml</code> o en subcarpetas <code>*.xml</code> se crearán los archivos.
+            </div>
+        </div>
+        <div class="step-box">
+            <div class="step-title"><span class="step-num">2.</span> Carga el archivo sdb.xml</div>
+            <div class="step-desc">
+                Ve a la pantalla de inicio <code>sdb.xml</code> . El sistema reconoce automáticamente el archivo en formato Sony y muestra la lista de canales.
+            </div>
+        </div>
+        <div class="step-box">
+            <div class="step-title"><span class="step-num">3.</span> Editar y subir a la televisión</div>
+            <div class="step-desc">
+                Edita los canales y, a continuación, haz clic en <strong>«Guardar y descargar»</strong> para <code>sdb.xml</code> descargar el archivo. Cópialo en una memoria USB e impórtalo al televisor mediante la opción <strong>«Importar desde USB</strong>».
+            </div>
+        </div>
+    </div>
+
+    <!-- HISENSE -->
+    <div class="brand-guide" id="guide-hisense" role="tabpanel" aria-labelledby="tab-hisense">
+        <div class="step-box">
+            <div class="step-title"><span class="step-num">1.</span> Obtén el archivo servicelist.db</div>
+            <div class="step-desc">
+                En tu televisor Hisense, ve a <strong>Menú → Canales → Exportar lista de canales</strong> para transferir el archivo de la base de datos a una memoria USB.
+                El nombre del archivo suele ser <code>servicelist.db</code> (2017+) o <code>channel.db</code> (2015–2016).
+            </div>
+        </div>
+        <div class="step-box">
+            <div class="step-title"><span class="step-num">2.</span> Instala la base de datos</div>
+            <div class="step-desc">
+                Arrastra el <code>servicelist.db</code> . El sistema lee la base de datos SQLite y muestra una lista de todos los canales.
+            </div>
+        </div>
+        <div class="step-box">
+            <div class="step-title"><span class="step-num">3.</span> Editar y cargar</div>
+            <div class="step-desc">
+                Una vez realizados los cambios deseados, haz clic en el botón «<strong>Guardar y descargar»</strong>
+                para descargar el archivo de la base de datos actualizado. Cópialo en una memoria USB y utilice el menú de importación del televisor para importarlo.
+            </div>
+        </div>
+        <div class="warn-box">⚠️ Los cambios en los nombres de los canales están limitados en los modelos Hisense; en algunos modelos, solo se pueden aplicar cambios en el orden y en el bloqueo.</div>
+    </div>
+</div>
+
+<script>
+function showGuide(brand) {
+        document.querySelectorAll(&#x27;.brand-tab&#x27;).forEach(btn =&gt; {
+            btn.classList.remove(&#x27;active&#x27;);
+            btn.setAttribute(&#x27;aria-selected&#x27;, &#x27;false&#x27;);
+        });
+        document.querySelectorAll(&#x27;.brand-guide&#x27;).forEach(g =&gt; {
+            g.classList.remove(&#x27;active&#x27;);
+        });
+        
+        const activeBtn = document.querySelector(`.brand-tab[onclick*="${brand}"]`);
+        if (activeBtn) {
+            activeBtn.classList.add(&#x27;active&#x27;);
+            activeBtn.setAttribute(&#x27;aria-selected&#x27;, &#x27;true&#x27;);
+        }
+        document.getElementById(&#x27;guide-&#x27; + brand).classList.add(&#x27;active&#x27;);
+    }
+</script>{% endblock %}

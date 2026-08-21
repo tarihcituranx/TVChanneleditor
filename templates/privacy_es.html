@@ -1,0 +1,111 @@
+{% extends "base_es.html" %}
+
+{% block title %}Política de privacidad (KVKK / RGPD) - TV Channel Editor{% endblock %}
+
+{% block head %}
+<style>
+    .content-container {
+        max-width: 800px;
+        margin: 40px auto;
+        padding: 40px;
+        background: var(--card-bg);
+        border-radius: 12px;
+        border: 1px solid var(--border-color);
+        color: var(--text-primary);
+        line-height: 1.7;
+    }
+    .page-title {
+        font-size: 24px;
+        font-weight: 700;
+        margin-bottom: 30px;
+        border-bottom: 2px solid var(--border-color);
+        padding-bottom: 15px;
+    }
+    .policy-section {
+        margin-bottom: 30px;
+    }
+    .policy-title {
+        font-size: 18px;
+        font-weight: 600;
+        color: var(--accent);
+        margin-bottom: 10px;
+    }
+    .policy-text {
+        font-size: 15px;
+        opacity: 0.95;
+    }
+    .highlight-box {
+        background: rgba(34,197,94,0.08);
+        border-left: 4px solid #22c55e;
+        padding: 15px 20px;
+        margin-bottom: 20px;
+        border-radius: 0 8px 8px 0;
+        font-size: 14.5px;
+    }
+</style>{% endblock %}
+
+{% block content %}
+<div class="content-container">
+    <h1 class="page-title">🛡️ Política de privacidad (Aviso informativo sobre la KVKK y el RGPD)</h1>
+    
+    <div class="highlight-box">
+        <strong>En resumen:</strong>
+        
+        Operamos bajo el principio de «la privacidad es lo primero». No nos facilitas tu nombre, dirección de correo electrónico ni ningún dato personal. Los archivos de canales de televisión que subes al sistema se almacenan únicamente en el directorio temporal (temp) del servidor para su procesamiento y <strong>se eliminan de forma permanente una vez finalizado este (en el plazo máximo de 1 hora).</strong>
+        No vendemos, rastreamos ni archivamos ninguno de tus datos.
+    </div>
+
+    <div class="policy-section">
+        <h2 class="policy-title">1. ¿Qué datos recopilamos?</h2>
+        <div class="policy-text">
+            No existe ningún sistema de registro, afiliación ni inicio de sesión. Por lo tanto, no recopilamos ningún dato personal directamente identificable, como nombre, apellidos, correo electrónico, número de teléfono o información similar.<br><br>
+            
+            
+            Solo recopilamos los archivos de <strong>la lista de canales de televisión (.scm, .zip)</strong>
+            que usted sube intencionadamente al sistema como una necesidad técnica durante el proceso de edición.
+        </div>
+    </div>
+
+    <div class="policy-section">
+        <h2 class="policy-title">2. Plazo de conservación y eliminación de los archivos subidos</h2>
+        <div class="policy-text">
+            Los archivos de canales que subes al sistema se almacenan en una carpeta temporal para poder generar un enlace de descarga. 
+            <ul style="margin-top: 10px; padding-left: 20px;">
+                <li><strong>Archivos editados:</strong> una vez que la descarga se ha completado con éxito o exactamente <strong>60 minutos (1 hora)</strong> después de que se cargue la página, nuestro sistema los elimina de forma automática y permanente.</li>
+                <li><strong>Transferencia entre dispositivos (mediante código):</strong> La caché de borrador creada al utilizar el botón «Transferir al dispositivo» se elimina automáticamente al cabo de <strong>10 minutos</strong>.</li>
+            </ul>
+            Ninguna de tus listas de canales se archiva, se copia de seguridad ni se almacena en nuestros servidores.
+        </div>
+    </div>
+
+    <div class="policy-section">
+        <h2 class="policy-title">3. Cookies y almacenamiento local</h2>
+        <div class="policy-text">
+            <strong>No utilizamos en absoluto</strong>
+            cookies con fines publicitarios, de análisis de comportamiento ni de seguimiento de usuarios en nuestro sitio web<strong>.</strong>
+            Para evitar que se pierda su trabajo en caso de posibles cortes de Internet o de suministro eléctrico mientras edita sus canales, los datos se guardan automáticamente como borrador <strong>en el almacenamiento local de su navegador,</strong>
+            no en nuestros servidores. Una vez que haya descargado correctamente su archivo, este borrador se elimina automáticamente de su navegador.
+        </div>
+    </div>
+
+    <div class="policy-section">
+        <h2 class="policy-title">4. Intercambio de datos y terceros</h2>
+        <div class="policy-text">
+            Nuestro sistema no está afiliado a ningún fabricante de televisores (Samsung, LG, Sony, etc.) ni a empresas de marketing. Los datos que subas ni tus estadísticas de uso pueden ser vendidos, compartidos ni utilizados con fines de marketing por terceros.
+        </div>
+    </div>
+
+    <div class="policy-section">
+        <h2 class="policy-title">5. Tus derechos en virtud de la KVKK (Turquía) y el RGPD (Unión Europea)</h2>
+        <div class="policy-text">
+            El sistema se ha diseñado teniendo en cuenta los principios de minimización de datos y tratamiento temporal. Dado que los datos personales (incluidos los registros de IP) no se almacenan de forma permanente, no mantenemos una base de datos que te obligue a ejercer tu derecho de supresión o el derecho al olvido; el sistema te «olvida» por completo en el momento en que finaliza tu visita.
+        </div>
+    </div>
+
+    <div class="policy-section">
+        <h2 class="policy-title">6. Responsable del tratamiento e información de contacto</h2>
+        <div class="policy-text">
+            El sistema es una iniciativa independiente de desarrolladores de código abierto impulsada por voluntarios. Para cualquier consulta relacionada con la KVKK o los procesos técnicos, o para solicitudes de datos, puede ponerse en contacto con el responsable del tratamiento, <strong>Turan Kaya</strong>. Para contactarnos, puede abrir un «Issue» <strong><a href="https://github.com/tarihcituranx/TVChanneleditor" target="_blank" style="color:var(--accent);">en</a></strong> nuestra <strong><a href="https://github.com/tarihcituranx/TVChanneleditor" target="_blank" style="color:var(--accent);">página</a></strong> oficial <strong><a href="https://github.com/tarihcituranx/TVChanneleditor" target="_blank" style="color:var(--accent);">de GitHub</a></strong> o enviar un correo electrónico directamente a <strong><a href="mailto:tarihcituranx@proton.me" style="color:var(--accent);">tarihcituranx@proton.me</a></strong>.
+        </div>
+    </div>
+</div>{% endblock %}

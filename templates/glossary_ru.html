@@ -1,0 +1,127 @@
+{% extends "base_ru.html" %}
+
+{% block title %}Глоссарий — Редактор телеканалов{% endblock %}
+
+{% block content %}
+<div class="card border-0 shadow-sm" style="max-width: 800px; margin: 0 auto; text-align: left; padding: 30px;">
+    <h1 style="color: var(--text-primary); margin-bottom: 20px;">Глоссарий по спутниковому телевидению</h1>
+    <p style="color: var(--text-secondary); line-height: 1.6; margin-bottom: 30px;">
+        Ниже приведены значения технических терминов и сокращений (на английском и турецком языках), которые вы можете увидеть в настройках телеканалов или на нашей странице с подробной информацией.
+    </p>
+
+    <div class="glossary-list" style="display: flex; flex-direction: column; gap: 20px;">
+        <div class="glossary-item" style="background: var(--bg-subtle); padding: 15px; border-radius: 8px; border-left: 4px solid var(--accent);">
+            <h3 style="margin-top: 0; margin-bottom: 10px; color: var(--accent);">SID (Service ID)</h3>
+            <p style="margin: 0; color: var(--text-secondary); line-height: 1.5;">
+                <strong>Турецкий:</strong>
+                Идентификатор службы / Номер<br>
+                канала
+                <strong>Описание:</strong>
+                Уникальный идентификационный номер, присваиваемый каждому каналу, вещающему в пределах одной частоты (пакета). Ваш телевизор различает каналы по этому номеру SID, а не по их названиям.
+            </p>
+        </div>
+
+        <div class="glossary-item" style="background: var(--bg-subtle); padding: 15px; border-radius: 8px; border-left: 4px solid var(--accent);">
+            <h3 style="margin-top: 0; margin-bottom: 10px; color: var(--accent);">TSID (Transport Stream ID)</h3>
+            <p style="margin: 0; color: var(--text-secondary); line-height: 1.5;">
+                <strong>Турецкий:</strong>
+                Идентификатор<br>
+                транспортного потока
+                <strong>Описание:</strong>
+                уникальный код, присваиваемый каждому из сотен частотных пакетов (несущих) на одном спутнике. Он работает в сочетании с идентификатором исходной сети (ONID).
+            </p>
+        </div>
+
+        <div class="glossary-item" style="background: var(--bg-subtle); padding: 15px; border-radius: 8px; border-left: 4px solid var(--accent);">
+            <h3 style="margin-top: 0; margin-bottom: 10px; color: var(--accent);">Система модуляции (Modulation)</h3>
+            <p style="margin: 0; color: var(--text-secondary); line-height: 1.5;">
+                <strong>Перевод:</strong>
+                Стандарт вещания (DVB-S / DVB-S2)<br>
+                
+                <strong>Описание:</strong>
+                Определяет формат, в котором канал передается из космоса. В то время как в старых трансляциях (стандартного разрешения) обычно используется DVB-S, в трансляциях высокой четкости (HD / 4K) применяется стандарт DVB-S2, обеспечивающий более эффективное сжатие данных.
+            </p>
+        </div>
+
+        <div class="glossary-item" style="background: var(--bg-subtle); padding: 15px; border-radius: 8px; border-left: 4px solid var(--accent);">
+            <h3 style="margin-top: 0; margin-bottom: 10px; color: var(--accent);">Коэффициент спада</h3>
+            <p style="margin: 0; color: var(--text-secondary); line-height: 1.5;">
+                <strong>Турецкий:</strong>
+                Резкость<br>
+                фильтра
+                <strong>Описание:</strong>
+                Указывает, насколько резко фильтруется сигнал, чтобы предотвратить его проникновение на соседние частоты при распространении. (Используются такие значения, как 0,20; 0,25; 0,35.) Обычно этот параметр настраивается для пользователей автоматически.
+            </p>
+        </div>
+
+        <div class="glossary-item" style="background: var(--bg-subtle); padding: 15px; border-radius: 8px; border-left: 4px solid var(--accent);">
+            <h3 style="margin-top: 0; margin-bottom: 10px; color: var(--accent);">NID (идентификатор сети)</h3>
+            <p style="margin: 0; color: var(--text-secondary); line-height: 1.5;">
+                <strong>Турецкий:</strong>
+                Идентификатор<br>
+                сети
+                <strong>Описание:</strong>
+                Это идентификатор спутниковой сети, к которой вы подключены. Он работает в сочетании с ONID (исходным идентификатором сети). Для спутников Türksat это значение обычно равно 1070.
+            </p>
+        </div>
+
+        <div class="glossary-item" style="background: var(--bg-subtle); padding: 15px; border-radius: 8px; border-left: 4px solid var(--accent);">
+            <h3 style="margin-top: 0; margin-bottom: 10px; color: var(--accent);">ONID (оригинальный сетевой идентификатор)</h3>
+            <p style="margin: 0; color: var(--text-secondary); line-height: 1.5;">
+                <strong>Турецкий:</strong>
+                Идентификатор<br>
+                исходной сети
+                <strong>Описание:</strong>
+                Это зарегистрированный на глобальном уровне уникальный код сети вещателя (например, Türksat, Astra, Hotbird). Это позволяет вашему устройству определить, к какой спутниковой сети оно подключено.
+            </p>
+        </div>
+
+        <div class="glossary-item" style="background: var(--bg-subtle); padding: 15px; border-radius: 8px; border-left: 4px solid var(--accent);">
+            <h3 style="margin-top: 0; margin-bottom: 10px; color: var(--accent);">Video PID / Audio PID</h3>
+            <p style="margin: 0; color: var(--text-secondary); line-height: 1.5;">
+                <strong>Турецкий:</strong>
+                Идентификатор видео- и аудиопакетов (Packet Identifier)<br>
+                
+                <strong>Описание:</strong>
+                Когда данные канала поступают из космоса, они имеют вид отдельных пакетов. Video PID идентифицирует только видеопакеты, а Audio PID — только аудиопакеты. Телевизор извлекает эти пакеты и объединяет их.
+            </p>
+        </div>
+
+        <div class="glossary-item" style="background: var(--bg-subtle); padding: 15px; border-radius: 8px; border-left: 4px solid var(--accent);">
+            <h3 style="margin-top: 0; margin-bottom: 10px; color: var(--accent);">PID PCR (опорный тактовый сигнал программы)</h3>
+            <p style="margin: 0; color: var(--text-secondary); line-height: 1.5;">
+                <strong>Перевод:</strong>
+                Ориентир<br>
+                программного тактового генератора
+                <strong>. Объяснение:</strong>
+                Это код опорного тактового генератора, который обеспечивает синхронизацию аудио- и видеопакетов, принимаемых из космоса, с точностью до секунды (чтобы движения губ и звук происходили одновременно).
+            </p>
+        </div>
+
+        <div class="glossary-item" style="background: var(--bg-subtle); padding: 15px; border-radius: 8px; border-left: 4px solid var(--accent);">
+            <h3 style="margin-top: 0; margin-bottom: 10px; color: var(--accent);">FEC (Forward Error Correction)</h3>
+            <p style="margin: 0; color: var(--text-secondary); line-height: 1.5;">
+                <strong>Турецкий:</strong>
+                Коэффициент<br>
+                прямой коррекции ошибок
+                <strong>Описание:</strong>
+                Коэффициент, с помощью которого спутниковый приемник математически оценивает и исправляет утраченные данные при плохих погодных условиях или слабом сигнале. Обычно выражается в виде дробей, таких как 3/4 или 5/6.
+            </p>
+        </div>
+
+        <div class="glossary-item" style="background: var(--bg-subtle); padding: 15px; border-radius: 8px; border-left: 4px solid var(--accent);">
+            <h3 style="margin-top: 0; margin-bottom: 10px; color: var(--accent);">Скорость передачи символов</h3>
+            <p style="margin: 0; color: var(--text-secondary); line-height: 1.5;">
+                <strong>Турецкий:</strong>
+                Скорость<br>
+                передачи данных.
+                <strong>Пояснение:</strong>
+                Объем цифровых данных (символов), передаваемых со спутника на приемник за секунду. На спутнике Türksat она обычно составляет 27 500 (ksps) или 30 000 (ksps).
+            </p>
+        </div>
+    </div>
+
+    <div style="margin-top: 30px; text-align: center;">
+        <a href="/" class="btn primary">Вернуться на главную страницу</a>
+    </div>
+</div>{% endblock %}

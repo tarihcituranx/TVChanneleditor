@@ -1,0 +1,111 @@
+{% extends "base_ru.html" %}
+
+{% block title %}Политика конфиденциальности (KVKK / GDPR) — TV Channel Editor{% endblock %}
+
+{% block head %}
+<style>
+    .content-container {
+        max-width: 800px;
+        margin: 40px auto;
+        padding: 40px;
+        background: var(--card-bg);
+        border-radius: 12px;
+        border: 1px solid var(--border-color);
+        color: var(--text-primary);
+        line-height: 1.7;
+    }
+    .page-title {
+        font-size: 24px;
+        font-weight: 700;
+        margin-bottom: 30px;
+        border-bottom: 2px solid var(--border-color);
+        padding-bottom: 15px;
+    }
+    .policy-section {
+        margin-bottom: 30px;
+    }
+    .policy-title {
+        font-size: 18px;
+        font-weight: 600;
+        color: var(--accent);
+        margin-bottom: 10px;
+    }
+    .policy-text {
+        font-size: 15px;
+        opacity: 0.95;
+    }
+    .highlight-box {
+        background: rgba(34,197,94,0.08);
+        border-left: 4px solid #22c55e;
+        padding: 15px 20px;
+        margin-bottom: 20px;
+        border-radius: 0 8px 8px 0;
+        font-size: 14.5px;
+    }
+</style>{% endblock %}
+
+{% block content %}
+<div class="content-container">
+    <h1 class="page-title">🛡️ Политика конфиденциальности (Уведомление о KVKK и GDPR)</h1>
+    
+    <div class="highlight-box">
+        <strong>Вкратце:</strong>
+        
+        Мы работаем по принципу «Конфиденциальность превыше всего». Вы не предоставляете нам своё имя, адрес электронной почты или какие-либо личные данные. Файлы телеканалов, которые вы загружаете в систему, хранятся только во временном (temp) каталоге сервера для обработки и <strong>окончательно удаляются по завершении (не позднее чем через 1 час).</strong>
+        Мы не продаём, не отслеживаем и не архивируем ваши данные.
+    </div>
+
+    <div class="policy-section">
+        <h2 class="policy-title">1. Какие данные мы собираем?</h2>
+        <div class="policy-text">
+            У нас нет системы регистрации, членства или входа в систему. Поэтому мы не собираем никаких персональных данных, позволяющих непосредственно идентифицировать личность, таких как имя, фамилия, адрес электронной почты, номер телефона или аналогичная информация.<br><br>
+            
+            
+            Мы собираем только файлы со <strong>списками телеканалов (.scm, .zip)</strong>
+            , которые вы сознательно загружаете в систему в связи с технической необходимостью в процессе редактирования.
+        </div>
+    </div>
+
+    <div class="policy-section">
+        <h2 class="policy-title">2. Срок хранения и удаление загруженных файлов</h2>
+        <div class="policy-text">
+            Файлы с каналами, которые вы загружаете в систему, хранятся во временной папке, чтобы можно было сгенерировать ссылку для скачивания. 
+            <ul style="margin-top: 10px; padding-left: 20px;">
+                <li><strong>Отредактированные файлы:</strong> как только загрузка успешно завершится или ровно через <strong>60 минут (1 час)</strong> после загрузки страницы, наша система автоматически и безвозвратно удаляет их.</li>
+                <li><strong>Перенос между устройствами (по коду):</strong> кэш черновиков, создаваемый при использовании кнопки «Перенести на устройство», самоудаляется через <strong>10 минут</strong>.</li>
+            </ul>
+            Ни один из ваших списков каналов не архивируется, не резервируется и не хранится на наших серверах.
+        </div>
+    </div>
+
+    <div class="policy-section">
+        <h2 class="policy-title">3. Файлы cookie и локальное хранилище</h2>
+        <div class="policy-text">
+            <strong>Мы категорически не используем</strong>
+            файлы cookie для рекламы, поведенческой аналитики или отслеживания пользователей на нашем сайте<strong>.</strong>
+            Чтобы ваша работа не была утеряна в случае возможного отключения интернета или электроэнергии во время редактирования каналов, данные автоматически сохраняются в виде черновика <strong>в локальном хранилище вашего браузера —</strong>
+            а не на наших серверах. После успешной загрузки файла этот черновик автоматически удаляется из вашего браузера.
+        </div>
+    </div>
+
+    <div class="policy-section">
+        <h2 class="policy-title">4. Передача данных и третьи стороны</h2>
+        <div class="policy-text">
+            Наша система не связана ни с какими производителями телевизоров (Samsung, LG, Sony и т. д.), ни с маркетинговыми компаниями. Данные, которые вы загружаете, или ваша статистика использования не могут быть проданы, переданы или использованы в маркетинговых целях третьими сторонами.
+        </div>
+    </div>
+
+    <div class="policy-section">
+        <h2 class="policy-title">5. Ваши права в соответствии с KVKK (Турция) и GDPR (Европейский Союз)</h2>
+        <div class="policy-text">
+            Система разработана с учетом принципов минимизации данных и временной обработки. Поскольку персональные данные (включая журналы IP-адресов) не хранятся постоянно, у нас нет базы данных, которая требовала бы от вас реализации права на удаление или права на «забвение»; система полностью «забывает» вас в тот момент, когда заканчивается ваше посещение.
+        </div>
+    </div>
+
+    <div class="policy-section">
+        <h2 class="policy-title">6. Контролер данных и контактная информация</h2>
+        <div class="policy-text">
+            Система представляет собой независимую инициативу разработчиков с открытым исходным кодом, основанную на волонтерской работе. По любым вопросам, касающимся KVKK или технических процессов, а также для запросов о данных вы можете обратиться к оператору данных <strong>Турану Кая</strong>. Чтобы связаться с нами, вы можете открыть «заявку» <strong><a href="https://github.com/tarihcituranx/TVChanneleditor" target="_blank" style="color:var(--accent);">на</a></strong> нашей официальной <strong><a href="https://github.com/tarihcituranx/TVChanneleditor" target="_blank" style="color:var(--accent);">странице GitHub</a></strong> или отправить электронное письмо напрямую на адрес <strong><a href="mailto:tarihcituranx@proton.me" style="color:var(--accent);">tarihcituranx@proton.me</a></strong>.
+        </div>
+    </div>
+</div>{% endblock %}

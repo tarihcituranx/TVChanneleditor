@@ -1,0 +1,113 @@
+{% extends "base_ar.html" %}
+
+{% block title %}سياسة الخصوصية (KVKK / GDPR) - محرر القناة التلفزيونية{% endblock %}
+
+{% block head %}
+<style>
+    .content-container {
+        max-width: 800px;
+        margin: 40px auto;
+        padding: 40px;
+        background: var(--card-bg);
+        border-radius: 12px;
+        border: 1px solid var(--border-color);
+        color: var(--text-primary);
+        line-height: 1.7;
+    }
+    .page-title {
+        font-size: 24px;
+        font-weight: 700;
+        margin-bottom: 30px;
+        border-bottom: 2px solid var(--border-color);
+        padding-bottom: 15px;
+    }
+    .policy-section {
+        margin-bottom: 30px;
+    }
+    .policy-title {
+        font-size: 18px;
+        font-weight: 600;
+        color: var(--accent);
+        margin-bottom: 10px;
+    }
+    .policy-text {
+        font-size: 15px;
+        opacity: 0.95;
+    }
+    .highlight-box {
+        background: rgba(34,197,94,0.08);
+        border-left: 4px solid #22c55e;
+        padding: 15px 20px;
+        margin-bottom: 20px;
+        border-radius: 0 8px 8px 0;
+        font-size: 14.5px;
+    }
+</style>{% endblock %}
+
+{% block content %}
+<div class="content-container">
+    <h1 class="page-title">🛡️ سياسة الخصوصية (إشعار معلومات KVKK وGDPR)</h1>
+    
+    <div class="highlight-box">
+        <strong>باختصار:</strong>
+        
+        نحن نعمل وفقًا لمبدأ "الخصوصية أولاً". أنت لا تزودنا باسمك أو عنوان بريدك الإلكتروني أو أي معلومات شخصية. يتم تخزين ملفات القنوات التلفزيونية التي تحمّلها إلى النظام في الدليل المؤقت (temp) للخادم فقط من أجل المعالجة، <strong>ويتم حذفها نهائيًا عند الانتهاء (في غضون ساعة واحدة على الأكثر).</strong>
+        نحن لا نبيع أو نتتبع أو نحتفظ بأي من بياناتك.
+    </div>
+
+    <div class="policy-section">
+        <h2 class="policy-title">1. ما هي البيانات التي نجمعها؟</h2>
+        <div class="policy-text">
+            لا يوجد نظام تسجيل أو عضوية أو تسجيل دخول. لذلك، لا نجمع أي بيانات شخصية يمكن التعرف عليها مباشرةً مثل الاسم الأول أو الاسم الأخير أو البريد الإلكتروني أو رقم الهاتف أو أي معلومات مماثلة.<br><br>
+            
+            
+            نقوم فقط بجمع ملفات <strong>قائمة القنوات التلفزيونية (.scm، .zip)</strong>
+            التي تقوم بتحميلها عمدًا إلى النظام كضرورة فنية أثناء عملية التحرير.
+        </div>
+    </div>
+
+    <div class="policy-section">
+        <h2 class="policy-title">2. فترة الاحتفاظ بالملفات المحملة وحذفها</h2>
+        <div class="policy-text">
+            يتم تخزين ملفات القنوات التي تقوم بتحميلها إلى النظام في مجلد مؤقت حتى يمكن إنشاء رابط للتنزيل. 
+            <ul style="margin-top: 10px; padding-left: 20px;">
+                <li><strong>الملفات المحررة:</strong> بمجرد اكتمال التنزيل بنجاح أو بعد مرور <strong>60 دقيقة (ساعة واحدة)</strong> بالضبط من تحميل الصفحة، يقوم نظامنا بحذفها تلقائيًا وبشكل دائم.</li>
+                <li><strong>النقل بين الأجهزة (عبر الرمز):</strong> يتم حذف ذاكرة التخزين المؤقتة للمسودة التي يتم إنشاؤها عند استخدام زر «نقل إلى الجهاز» تلقائيًا بعد <strong>10 دقائق</strong>.</li>
+            </ul>
+            لا يتم أرشفة أي من قوائم قنواتك أو نسخها احتياطيًا أو تخزينها على خوادمنا.
+        </div>
+    </div>
+
+    <div class="policy-section">
+        <h2 class="policy-title">3. ملفات تعريف الارتباط والتخزين المحلي</h2>
+        <div class="policy-text">
+            <strong>نحن لا نستخدم</strong>
+            ملفات تعريف الارتباط
+            <strong>مطلقًا</strong>
+            لأغراض الإعلانات أو تحليل السلوك أو تتبع المستخدمين على موقعنا<strong>.</strong>
+            لمنع فقدان عملك في حالة انقطاع الإنترنت أو انقطاع التيار الكهربائي أثناء تحرير قنواتك، يتم حفظ البيانات تلقائيًا كمسودة <strong>في التخزين المحلي لمتصفحك —</strong>
+            وليس على خوادمنا. بمجرد تنزيل ملفك بنجاح، يتم حذف هذه المسودة تلقائيًا من متصفحك.
+        </div>
+    </div>
+
+    <div class="policy-section">
+        <h2 class="policy-title">4. مشاركة البيانات والأطراف الثالثة</h2>
+        <div class="policy-text">
+            نظامنا غير تابع لأي من شركات تصنيع أجهزة التلفزيون (سامسونج، إل جي، سوني، إلخ) أو شركات التسويق. لا يمكن بيع البيانات التي تقوم بتحميلها أو إحصائيات استخدامك أو مشاركتها أو استخدامها لأغراض تسويقية من قبل أطراف ثالثة.
+        </div>
+    </div>
+
+    <div class="policy-section">
+        <h2 class="policy-title">5. حقوقك بموجب قانون حماية البيانات الشخصية التركي (KVKK) واللائحة العامة لحماية البيانات (GDPR) (الاتحاد الأوروبي)</h2>
+        <div class="policy-text">
+            تم تصميم النظام مع مراعاة مبادئ تقليل البيانات والمعالجة المؤقتة. نظرًا لأن البيانات الشخصية (بما في ذلك سجلات عناوين IP) لا يتم تخزينها بشكل دائم، فإننا لا نحتفظ بقاعدة بيانات تتطلب منك ممارسة حقك في الحذف أو الحق في النسيان؛ فالنظام «ينساك» تمامًا بمجرد انتهاء زيارتك.
+        </div>
+    </div>
+
+    <div class="policy-section">
+        <h2 class="policy-title">6. المسؤول عن معالجة البيانات ومعلومات الاتصال</h2>
+        <div class="policy-text">
+            النظام عبارة عن مبادرة مستقلة لمطورين مفتوحة المصدر يقودها متطوعون. لأية أسئلة تتعلق بقانون حماية البيانات الشخصية التركي (KVKK) أو العمليات التقنية، أو لطلبات البيانات، يمكنك الاتصال بمسؤول معالجة البيانات، <strong>توران كايا</strong>. للتواصل معنا، يمكنك فتح «مشكلة» <strong><a href="https://github.com/tarihcituranx/TVChanneleditor" target="_blank" style="color:var(--accent);">على</a></strong> <strong><a href="https://github.com/tarihcituranx/TVChanneleditor" target="_blank" style="color:var(--accent);">صفحت</a></strong>نا الرسمية <strong><a href="https://github.com/tarihcituranx/TVChanneleditor" target="_blank" style="color:var(--accent);">على GitHub</a></strong> أو إرسال بريد إلكتروني مباشرةً إلى <strong><a href="mailto:tarihcituranx@proton.me" style="color:var(--accent);">tarihcituranx@proton.me</a></strong>.
+        </div>
+    </div>
+</div>{% endblock %}

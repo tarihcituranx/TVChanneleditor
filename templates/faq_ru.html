@@ -1,0 +1,231 @@
+{% extends "base_ru.html" %}
+
+{% block title %}Часто задаваемые вопросы — Редактор телеканалов{% endblock %}
+
+{% block head %}
+<style>
+    .content-container {
+        max-width: 900px;
+        margin: 40px auto;
+        padding: 28px 32px;
+        background: var(--card-bg);
+        border-radius: 12px;
+        border: 1px solid var(--border-color);
+    }
+    .section-title {
+        font-size: 22px;
+        font-weight: 700;
+        margin-bottom: 24px;
+        color: var(--text-primary);
+        border-bottom: 2px solid var(--border-color);
+        padding-bottom: 10px;
+    }
+    .faq-item {
+        margin-bottom: 12px;
+        border: 1px solid var(--border-color);
+        border-radius: 10px;
+        overflow: hidden;
+    }
+    .faq-q {
+        font-size: 15px;
+        font-weight: 600;
+        width: 100%;
+        border: none;
+        background: transparent;
+        text-align: left;
+        font-family: inherit;
+        color: var(--text-primary);
+        padding: 16px 20px;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 12px;
+        transition: background 0.2s;
+        user-select: none;
+    }
+    .faq-q:hover { background: rgba(59,130,246,0.06); }
+    .faq-q::after {
+        content: &amp;#x27;﹢&amp;#x27;;
+        font-size: 20px;
+        color: var(--accent);
+        transition: transform 0.2s;
+        flex-shrink: 0;
+    }
+    .faq-item.open .faq-q::after { content: &amp;#x27;−&amp;#x27;; }
+    .faq-a {
+        font-size: 14px;
+        color: var(--text-primary);
+        opacity: 0.95;
+        line-height: 1.75;
+        padding: 0 20px;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.35s ease, padding 0.2s;
+    }
+    .faq-item.open .faq-a {
+        max-height: 2000px;
+        padding: 0 20px 16px;
+    }
+    .faq-a code {
+        background: var(--bg-color);
+        padding: 2px 6px;
+        border-radius: 4px;
+        font-family: monospace;
+        font-size: 13px;
+        color: #93c5fd;
+        border: 1px solid var(--border-color);
+    }
+</style>{% endblock %}
+
+{% block content %}
+<div class="content-container">
+    <h2 class="section-title">Часто задаваемые вопросы</h2>
+
+    <h3 style="margin-top: 30px; margin-bottom: 15px; color: var(--accent); font-size: 18px; display: flex; align-items: center; gap: 8px;">
+        <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M12 16v-4"></path><path d="M12 8h.01"></path></svg> Общие вопросы
+    </h3>
+
+    <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">Какие бренды телевизоров поддерживаются?</button>
+        <div class="faq-a">
+            В настоящее время полностью поддерживаются <strong>Samsung</strong> (.scm и .zip), <strong>LG</strong> (.tll), <strong>Sony BRAVIA</strong> (sdb.xml) и <strong>Hisense</strong> (servicelist.db).
+            Panasonic находится в бета-версии; Philips, Toshiba и Grundig будут добавлены в ближайшее время.
+        </div>
+    </div>
+
+    <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">Как определить, какой файл нужно загрузить?</button>
+        <div class="faq-a">
+            Проверьте расширение файла в зависимости от марки вашего телевизора:<br>
+            
+            • <strong>Samsung (старая версия)</strong>
+            : <code>.scm</code><br>
+            • <strong>Samsung (Tizen/новые модели)</strong>: <code>.zip</code><br>
+            • <strong>LG</strong>: <code>.tll</code><br>
+            • <strong>Sony BRAVIA</strong>: <code>sdb.xml</code><br>
+            • <strong>Hisense</strong>: <code>servicelist.db</code> или <code>channel.db</code><br>
+            Редактор автоматически определит марку после загрузки файла.
+        </div>
+    </div>
+
+    <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">Как Magic Wand сопоставляет каналы?</button>
+        <div class="faq-a">
+            Magic Wand сопоставляет каналы по названию (не учитывая регистр). Если в вашем шаблоне указан канал «TRT1 HD», программа найдет строку «trt1 hd» в загруженном файле и переместит его на нужное место. Данные о частоте и PID при этом не изменяются.
+        </div>
+    </div>
+
+    <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">Как загрузить отредактированный список обратно на телевизор?</button>
+        <div class="faq-a">
+            Скопируйте загруженный файл на USB-накопитель (<strong>сохраните исходное имя файла!</strong>
+            ). Воспользуйтесь опцией <strong>«Импорт с USB»</strong>
+            в меню телевизора.
+        </div>
+    </div>
+
+    <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">Почему я не вижу новые бесплатные каналы в списке?</button>
+        <div class="faq-a">
+            Этот сайт редактирует только существующий список каналов телевизора; он <em>не может</em> добавлять новые каналы. Чтобы увидеть новый канал, сначала необходимо выполнить <strong>сканирование</strong> <strong>сети (автонастройку)</strong> на телевизоре, а затем экспортировать новый файл.
+        </div>
+    </div>
+    
+    <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">Что означает предупреждение о частоте (⚠️ Старая частота)?</button>
+        <div class="faq-a">
+            Система сравнивает сохраненную частоту канала с текущей базой данных частот Turksat. Если канал был найден на старой или другой частоте, отображается желтое предупреждение. Это только для вашей информации; канал будет продолжать работать, но рекомендуется перенести канал на его текущую частоту, выполнив новое сканирование сетей на телевизоре.
+        </div>
+    </div>
+
+    <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">Безопасны ли мои данные? Хранятся ли мои файлы на сервере?</button>
+        <div class="faq-a">
+            Загруженные файлы со списками каналов хранятся на нашем сервере только временно, на время обработки, и удаляются сразу после завершения процесса. Ни названия каналов, ни частоты, ни личные данные не регистрируются, не хранятся и не передаются третьим лицам. Вся обработка осуществляется на стороне сервера, и вам отправляется только выходной файл.
+        </div>
+    </div>
+
+    <h3 style="margin-top: 40px; margin-bottom: 15px; color: var(--accent); font-size: 18px; display: flex; align-items: center; gap: 8px;">
+        <img src="/static/img/samsung_logo.webp" style="height:20px; object-fit:contain;" class="invert-in-light" alt="Samsung">
+        Samsung Smart TV
+    </h3>
+
+    <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">Как экспортировать список каналов с телевизора Samsung на USB-накопитель?</button>
+        <div class="faq-a">
+            Для телевизоров Samsung: выполните следующие действия: <strong>«Меню» → «Вещание» → «Настройки каналов» → «Перенос списка каналов» → «Экспорт на USB</strong>». Обычно телевизор принимает только файлы с точно таким же именем, поэтому не переименовывайте файл при редактировании и восстановлении.
+        </div>
+    </div>
+
+    <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">Что такое файл SCM?</button>
+        <div class="faq-a">
+            <strong>SCM (Samsung Channel Map)</strong>
+            — это специальный архивный файл, в котором телевизоры Samsung хранят порядок каналов, списки избранного и данные о частотах. Он содержит двоичные файлы данных, такие как <code>map-SateD</code> (список каналов) и <code>TransponderDataBase.dat</code> (база данных частот).
+        </div>
+    </div>
+
+    <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">Использует ли телевизор Samsung Tizen файлы ZIP или SCM?</button>
+        <div class="faq-a">
+            <strong>Старые модели Samsung</strong>
+            (серии E, F, H, 2012–2014 гг.) используют <code>.scm</code>
+            файлы.<br>
+            
+            <strong>Более новые модели телевизоров Samsung на базе Tizen</strong>
+            (серии J, K, M, Q, R, T, 2015 года и позже) используют <code>.zip</code>
+            файлы, содержащие базу данных SQLite.<br>
+            Данный редактор автоматически распознаёт оба формата, анализируя содержимое, а не только расширение файла.
+        </div>
+    </div>
+
+    <h3 style="margin-top: 40px; margin-bottom: 15px; color: var(--accent); font-size: 18px; display: flex; align-items: center; gap: 8px;">
+        <img src="/static/img/lg_logo.svg" style="height:20px; object-fit:contain;" alt="LG">
+        LG Smart TV
+    </h3>
+
+    <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">Что такое файл TLL на телевизоре LG и как его экспортировать?</button>
+        <div class="faq-a">
+            <strong>TLL (TLL Channel List)</strong>
+            — это формат резервного копирования GlobalClone от LG. Подключите USB-накопитель и выполните экспорт через <strong>«Настройки» → «Общие» → «О программе» → «Настройки резервного копирования каналов» (CLONE)</strong>
+            . На некоторых моделях: <strong>«Меню» → «Поддержка» → «Обновление» → «Обновление с USB</strong>
+            ». Файл обычно имеет имя <code>xx########.tll</code>.
+        </div>
+    </div>
+
+    <h3 style="margin-top: 40px; margin-bottom: 15px; color: var(--accent); font-size: 18px; display: flex; align-items: center; gap: 8px;">
+        <img src="/static/img/sony_logo.svg" style="height:20px; object-fit:contain;" class="theme-invert" alt="Sony">
+        Sony BRAVIA
+    </h3>
+
+    <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">Где находится файл sdb.xml на телевизоре Sony BRAVIA?</button>
+        <div class="faq-a">
+            Для Sony BRAVIA подключите USB-накопитель и перейдите в <strong>«Настройки» → «Настройка каналов» → «Перенос списка каналов» → «Экспорт на USB</strong>». Будет создан файл с именем <code>sdb.xml</code> . Для моделей Android TV используйте <strong>«Настройки» → «Параметры устройства</strong>» <strong>→ «Каналы» → «Перенос списка каналов</strong>».
+        </div>
+    </div>
+
+    <h3 style="margin-top: 40px; margin-bottom: 15px; color: var(--accent); font-size: 18px; display: flex; align-items: center; gap: 8px;">
+        <img src="/static/img/hisense_logo.svg" style="height:20px; object-fit:contain;" alt="Hisense">
+        Смарт-телевизор Hisense
+    </h3>
+
+    <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">Как получить файл servicelist.db или channel.db на телевизоре Hisense?</button>
+        <div class="faq-a">
+            Перейдите в <strong>«Меню» → «Каналы» → «Экспорт списка каналов</strong>». Будет создан файл с именем <code>servicelist.db</code> или <code>channel.db</code> . Имя файла зависит от модели и версии прошивки, но поддерживаются оба формата SQLite.
+        </div>
+    </div>
+
+</div>
+
+<script>
+function toggleFaq(btn) {
+        let parent = btn.parentElement;
+        let isExpanded = btn.getAttribute(&#x27;aria-expanded&#x27;) === &#x27;true&#x27;;
+        btn.setAttribute(&#x27;aria-expanded&#x27;, !isExpanded);
+        parent.classList.toggle(&#x27;open&#x27;);
+    }
+</script>{% endblock %}

@@ -1,0 +1,211 @@
+{% extends "base_es.html" %}
+
+{% block title %}Marcas y satélites compatibles - Editor de canales de televisión{% endblock %}
+
+{% block head %}
+<style>
+    .content-container {
+        max-width: 960px;
+        margin: 40px auto;
+        padding: 20px;
+        background: var(--card-bg);
+        border-radius: 12px;
+        border: 1px solid var(--border-color);
+    }
+    
+    .section-title {
+        font-size: 24px;
+        font-weight: 600;
+        margin-bottom: 20px;
+        color: var(--text-primary);
+        border-bottom: 2px solid var(--border-color);
+        padding-bottom: 10px;
+    }
+
+    .grid-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 20px;
+        margin-bottom: 40px;
+    }
+
+    .card {
+        background: var(--bg-color);
+        border-radius: 12px;
+        padding: 28px 20px;
+        text-align: center;
+        border: 1px solid var(--border-color);
+        transition: transform 0.2s, border-color 0.2s;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .card:hover {
+        transform: translateY(-5px);
+        border-color: var(--accent);
+    }
+
+    .card-img {
+        max-width: 150px;
+        height: 60px;
+        object-fit: contain;
+        margin-bottom: 15px;
+    }
+
+    .card-img.light-logo {
+        
+    }
+
+    .card-title {
+        font-size: 16px;
+        font-weight: 600;
+        color: var(--text-primary);
+        margin-bottom: 8px;
+    }
+
+    .card-desc {
+        font-size: 13px;
+        color: var(--text-primary);
+        opacity: 0.95;
+        line-height: 1.6;
+    }
+
+    .badge {
+        display: inline-block;
+        font-size: 11px;
+        font-weight: 600;
+        padding: 3px 8px;
+        border-radius: 20px;
+        margin-bottom: 10px;
+        letter-spacing: 0.5px;
+    }
+
+    .badge-green { background: rgba(34,197,94,0.15); color: #16a34a; border: 1px solid rgba(34,197,94,0.3); }
+[data-theme="dark"] .badge-green { color: #4ade80; }
+    .badge-blue { background: rgba(var(--accent-rgb), 0.15); color: var(--accent); border: 1px solid rgba(var(--accent-rgb), 0.3); }
+    .badge-gray { background: rgba(156,163,175,0.15); color: #4b5563; border: 1px solid rgba(156,163,175,0.3); }
+[data-theme="dark"] .badge-gray { color: #9ca3af; }
+
+    .format-tag {
+        font-family: monospace;
+        font-size: 12px;
+        background: rgba(var(--accent-rgb), 0.1);
+        padding: 2px 7px;
+        border-radius: 4px;
+        color: var(--accent);
+        margin: 2px;
+        display: inline-block;
+    }
+    .formats {
+        margin-top: 8px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 4px;
+    }
+</style>{% endblock %}
+
+{% block content %}
+<div class="content-container">
+    <h2 class="section-title">Marcas de televisores compatibles</h2>
+    <p style="color:var(--text-secondary); font-size:14px; margin-bottom:24px; margin-top:-10px;">
+        Todas las operaciones <strong style="color:var(--text-primary)">se procesan de forma segura en la memoria RAM temporal del servidor</strong>; se eliminan automáticamente tras su procesamiento.
+    </p>
+    <div class="grid-container">
+        <div class="card">
+            <img src="/static/img/samsung_logo.webp" alt="Samsung" class="card-img invert-in-light">
+            <span class="badge badge-green">✅ Compatibilidad total</span>
+            <div class="card-title">Samsung Smart TV</div>
+            <div class="card-desc">
+                Se admiten todos los dispositivos de la generación anterior (E, F, H) y de la nueva generación Tizen (J, K, M, Q, R, T). Las funciones de ordenación y cambio de nombre son totalmente compatibles.
+            </div>
+            <div class="formats">
+                <span class="format-tag">.scm.zip (SQLite)</span>
+            </div>
+        </div>
+        <div class="card">
+            <img src="/static/img/lg_logo.svg" alt="LG" class="card-img">
+            <span class="badge badge-green">✅ Compatibilidad parcial</span>
+            <div class="card-title">LG Smart TV</div>
+            <div class="card-desc">
+                Nuestro sistema es compatible con los archivos <b>.tll</b> (GlobalClone) <b>basados en XML</b> de la nueva generación de LG. No se admiten los archivos <b>.tll binarios</b> más antiguos; para esos archivos, utiliza la aplicación de escritorio ChanSort.
+            </div>
+            <div class="formats">
+                <span class="format-tag">.tll (XML)</span>
+            </div>
+        </div>
+        <div class="card">
+            <img src="/static/img/sony_logo.svg" alt="Sony" class="card-img invert-in-light">
+            <span class="badge badge-green">✅ Compatibilidad total</span>
+            <div class="card-title">Sony BRAVIA</div>
+            <div class="card-desc">
+                El formato de lista de canales basado en XML de Sony BRAVIA es legible y editable. Incluye los nuevos modelos de 2024 en adelante. Se admiten los nombres de los canales y su reordenación.
+            </div>
+            <div class="formats">
+                <span class="format-tag">sdb.xml</span>
+            </div>
+        </div>
+        <div class="card">
+            <img src="/static/img/hisense_logo.svg" alt="Hisense" class="card-img">
+            <span class="badge badge-green">✅ Compatibilidad total</span>
+            <div class="card-title">Hisense Smart TV</div>
+            <div class="card-desc">
+                Se admite el formato de lista de servicios basado en SQLite para las generaciones de 2017 y 2021. Se admiten la ordenación, el cambio de nombre y la ocultación de canales.
+            </div>
+            <div class="formats">
+                <span class="format-tag">servicelist.db</span>
+            </div>
+        </div>
+        <div class="card">
+            <img src="/static/img/panasonic_logo.svg" alt="Panasonic" class="card-img">
+            <span class="badge badge-blue">🔄 Beta</span>
+            <div class="card-title">Panasonic VIERA</div>
+            <div class="card-desc">
+                La compatibilidad con el formato SVL se encuentra actualmente en desarrollo. Es posible que la lectura funcione correctamente en algunas familias de modelos.
+            </div>
+            <div class="formats">
+                <span class="format-tag">svl.db svl.bin</span>
+            </div>
+        </div>
+        <div class="card">
+            <div style="font-size:40px; margin-bottom:12px;">🔜</div>
+            <span class="badge badge-gray">Próximamente</span>
+            <div class="card-title">Philips, Toshiba...</div>
+            <div class="card-desc">
+                La compatibilidad con Philips, Toshiba, Grundig y otras marcas se encuentra actualmente en fase de desarrollo activo.
+            </div>
+            <div class="formats">
+                <span class="format-tag">*.db*.xml</span>
+            </div>
+        </div>
+    </div>
+
+    <h2 class="section-title">🛰️ Satélites compatibles</h2>
+    <p style="color:var(--text-secondary); font-size:14px; margin-bottom:24px; margin-top:-10px;">
+        Todos los datos de frecuencias y transpondedores se procesan de la misma manera, independientemente del formato del satélite.
+    </p>
+    <div class="grid-container">
+        <div class="card">
+            <img src="/static/img/turksat_logo.png" alt="Türksat" class="card-img invert-in-light">
+            <div class="card-title">Türksat 4A / 5B</div>
+            <div class="card-desc">
+                Totalmente compatible con los canales nacionales turcos, las noticias y los paquetes deportivos. Las plantillas de Magic Wand están optimizadas para las frecuencias de Türksat. <b>La verificación automática de frecuencias</b> está habilitada para este satélite.
+            </div>
+        </div>
+        <div class="card">
+            <img src="/static/img/hotbird_logo.svg" alt="Hotbird" class="card-img">
+            <div class="card-title">Hotbird 13E</div>
+            <div class="card-desc">
+                Se admiten emisiones europeas e internacionales (Eutelsat). Todos los datos de los transpondedores del satélite se procesan correctamente.
+            </div>
+        </div>
+        <div class="card">
+            <img src="/static/img/astra_logo.svg" alt="Astra" class="card-img">
+            <div class="card-title">Astra 19,2E</div>
+            <div class="card-desc">
+                Las frecuencias de SES Astra, que albergan canales alemanes y europeos, se leen y escriben con total compatibilidad.
+            </div>
+        </div>
+    </div>
+</div>{% endblock %}
