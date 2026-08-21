@@ -50,14 +50,6 @@ limiter = Limiter(
     storage_uri="memory://"
 )
 
-@limiter.request_filter
-def exempt_valid_api_keys():
-    api_key = request.headers.get('X-API-Key')
-    valid_keys = os.environ.get("VALID_API_KEYS", "")
-    if api_key and api_key in [k.strip() for k in valid_keys.split(",") if k.strip()]:
-        return True # Bypass rate limit for valid API keys
-    return False
-
 app.config['MAX_CONTENT_LENGTH'] = 2 * 1024 * 1024  # 2 MB upload limit
 
 # Session-based upload storage: session_id -> {'path': str, 'expires': float}
@@ -75,11 +67,6 @@ RATE_LIMIT_WINDOW = 60  # per 60 seconds
 ZIPBOMB_MAX_BYTES = 50 * 1024 * 1024  # 50 MB max uncompressed
 
 def _rate_check(ip):
-    api_key = request.headers.get('X-API-Key')
-    valid_keys = os.environ.get("VALID_API_KEYS", "")
-    if api_key and api_key in [k.strip() for k in valid_keys.split(",") if k.strip()]:
-        return True # Bypass custom rate limit
-        
     now = time.time()
     hits = _rate_limit[ip]
     _rate_limit[ip] = [t for t in hits if now - t < RATE_LIMIT_WINDOW]

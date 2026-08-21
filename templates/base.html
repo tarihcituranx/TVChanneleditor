@@ -28,7 +28,7 @@
     <meta name="twitter:title" content="TV Channel Editor — Akıllı Smart TV Kanal Listesi Düzenleyici">
     <meta name="twitter:description" content="Saniyeler içinde TV kanallarını sürükle-bırak ile veya Sihirli Değnek ile sırala. Tamamen ücretsiz ve tarayıcında çalışır.">
     <meta name="twitter:image" content="https://tvchanneleditor.onrender.com/static/img/welcome_hero.jpg">
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📺</text></svg>">
+    <link rel="icon" type="image/svg+xml" href="/static/img/favicon.svg">
     
     <!-- External Link Warning Modal removed -->
 
@@ -50,7 +50,7 @@
     <link rel="stylesheet" href="/static/css/style.css">
     {% block head %}{% endblock %}
 
-    <!-- Server-Side Umami Analytics Proxy (AdBlock Bypass) -->
+    <!-- Anonymous Usage Analytics -->
     <script defer src="/stats.js" data-website-id="0f00eaac-7976-4f61-9d41-5034ad68a1f4"></script>
 
 </head>
@@ -74,7 +74,10 @@
     <nav class="site-nav">
         <div class="nav-inner">
             <a href="/" class="nav-logo">
-                <img src="/static/img/logo_small.webp" alt="TV Channel Editor" width="206" height="115">
+                <div style="display: flex; align-items: center; color: var(--accent);">
+                    <svg width="24" height="24" viewBox="0 0 640 512" fill="currentColor"><path d="M64 64l0 288 512 0 0-288L64 64zM0 64C0 28.7 28.7 0 64 0L576 0c35.3 0 64 28.7 64 64l0 288c0 35.3-28.7 64-64 64L64 416c-35.3 0-64-28.7-64-64L0 64zM128 448l384 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-384 0c-17.7 0-32-14.3-32-32s14.3-32 32-32z"/></svg>
+                    <span style="font-weight: 800; font-size: 1.15rem; margin-left: 10px; color: var(--text); letter-spacing: -0.5px;">TV Channel Editor</span>
+                </div>
             </a>
             <div class="nav-links">
                 <a href="/" class="nav-link {% if request.path == '/' %}active{% endif %}">Editor</a>
