@@ -74,7 +74,7 @@
     <nav class="site-nav">
         <div class="nav-inner">
             <a href="/" class="nav-logo">
-                <img src="/static/img/logo_small.webp" width="206" height="115" alt="TV Channel Editor">
+                <img src="/static/img/logo_small.webp" alt="TV Channel Editor">
             </a>
             <div class="nav-links">
                 <a href="/" class="nav-link {% if request.path == '/' %}active{% endif %}">Editor</a>
@@ -340,7 +340,7 @@
             if (navigator.share) {
                 try {
                     const blob = await qrCode.getRawData("png");
-                    const shareText = 'Televizyon kanal listesini bilgisayarda saniyeler içinde kolayca düzenleyebileceğin harika ve ücretsiz bir araç buldum. Kesin denemelisin:';
+                    const shareText = 'Mobil ve bilgisayardan Samsung, LG, Sony, Hisense TV kanal listelerinizi (SCM, TLL, SDB.XML) tarayıcı üzerinden ücretsiz düzenleyin! Geliştiriciler ve Yapay Zekalar için API desteği de mevcut. Kesin denemelisin:';
                     if (blob) {
                         const file = new File([blob], "tvchanneleditor-qr.png", { type: "image/png" });
                         if (navigator.canShare && navigator.canShare({ files: [file] })) {
@@ -367,8 +367,8 @@
             
             // Fallback for Desktop
             document.getElementById('social-share-modal').style.display = 'flex';
-            const shareText = 'Televizyon kanal listesini bilgisayarda saniyeler içinde kolayca düzenleyebileceğin harika ve ücretsiz bir araç buldum. Kesin denemelisin:';
-            const shareTextLong = 'Smart TV kanal listelerini sürükle-bırak ile saniyeler içinde düzenleyebileceğiniz harika ve ücretsiz bir araç! 📺✨';
+            const shareText = 'Mobil ve bilgisayardan Samsung, LG, Sony, Hisense TV kanal listelerinizi (SCM, TLL, SDB.XML) tarayıcı üzerinden ücretsiz düzenleyin! Geliştiriciler ve Yapay Zekalar için API desteği de mevcut. Kesin denemelisin:';
+            const shareTextLong = '📱💻 Mobil & PC uyumlu harika bir ücretsiz Smart TV kanal düzenleme aracı! Samsung, LG, Sony, Hisense destekliyor. Üstelik geliştiriciler ve yapay zeka araçları için API desteği bile var! 📺✨';
             document.getElementById('share-wa').href = `https://wa.me/?text=${encodeURIComponent(shareText + ' ' + currentUrl)}`;
             document.getElementById('share-x').href = `https://x.com/intent/post?text=${encodeURIComponent(shareTextLong + ' ' + currentUrl)}`;
             document.getElementById('share-n').href = `https://nsosyal.com/share?text=${encodeURIComponent(shareTextLong + ' ' + currentUrl)}`;

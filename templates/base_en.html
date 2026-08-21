@@ -74,7 +74,7 @@
     <nav class="site-nav">
         <div class="nav-inner">
             <a href="/en" class="nav-logo">
-                <img src="/static/img/logo_small.webp" width="206" height="115" alt="TV Channel Editor">
+                <img src="/static/img/logo_small.webp" alt="TV Channel Editor">
             </a>
             <div class="nav-links">
                 <a href="/en" class="nav-link {% if request.path == '/en' %}active{% endif %}">Editor</a>
@@ -303,7 +303,7 @@
             if (navigator.share) {
                 try {
                     const blob = await qrCode.getRawData("png");
-                    const shareText = 'I found a great free tool to easily edit TV channel lists on your computer using a USB drive. Works right in the browser:';
+                    const shareText = 'Easily edit your Samsung, LG, Sony, and Hisense TV channel lists for free directly in your mobile or PC browser! It even features an API for developers and AI agents. You have to check this out:';
                     if (blob) {
                         const file = new File([blob], "tvchanneleditor-qr.png", { type: "image/png" });
                         if (navigator.canShare && navigator.canShare({ files: [file] })) {
@@ -330,8 +330,8 @@
             
             // Fallback for Desktop
             document.getElementById('social-share-modal').style.display = 'flex';
-            const shareText = 'I found a great free tool to easily edit TV channel lists on your computer using a USB drive. Works right in the browser:';
-            const shareTextLong = 'A fantastic free tool to edit Smart TV channel lists in seconds with drag-and-drop right in your browser! 📺✨';
+            const shareText = 'Easily edit your Samsung, LG, Sony, and Hisense TV channel lists for free directly in your mobile or PC browser! It even features an API for developers and AI agents. You have to check this out:';
+            const shareTextLong = '📱💻 A fantastic free Smart TV channel editor for Mobile & PC! Supports Samsung, LG, Sony, and Hisense. It even features an API for developers and AI agents! 📺✨';
             document.getElementById('share-wa').href = `https://wa.me/?text=${encodeURIComponent(shareText + ' ' + currentUrl)}`;
             document.getElementById('share-x').href = `https://x.com/intent/post?text=${encodeURIComponent(shareTextLong + ' ' + currentUrl)}`;
             document.getElementById('share-n').href = `https://nsosyal.com/share?text=${encodeURIComponent(shareTextLong + ' ' + currentUrl)}`;
