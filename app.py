@@ -539,11 +539,18 @@ def proxy_umami_script():
         return Response("console.error('Analytics script proxy failed');", mimetype='application/javascript', status=200)
 
 
+from urllib.parse import urlparse
+
 @app.route('/redirect')
 def external_redirect():
     url = request.args.get('url', '')
     if not url:
         return redirect('/')
+    
+    parsed = urlparse(url)
+    if parsed.scheme not in ['http', 'https']:
+        return "Geçersiz veya güvensiz bağlantı.", 400
+        
     return render_lang('redirect.html', url=url)
 
 @app.route('/api/send', methods=['POST'])
