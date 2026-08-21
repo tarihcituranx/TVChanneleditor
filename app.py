@@ -21,6 +21,7 @@ import sony_core
 import hisense_core
 
 app = Flask(__name__)
+app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 2592000  # 30 days static cache for better Lighthouse scores
 
 @app.after_request
 def apply_security_headers(response):

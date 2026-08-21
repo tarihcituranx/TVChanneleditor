@@ -74,7 +74,7 @@
     <nav class="site-nav">
         <div class="nav-inner">
             <a href="/" class="nav-logo">
-                <img src="/static/img/logo.png" alt="TV Channel Editor">
+                <img src="/static/img/logo_small.webp" width="206" height="115" alt="TV Channel Editor">
             </a>
             <div class="nav-links">
                 <a href="/" class="nav-link {% if request.path == '/' %}active{% endif %}">Editor</a>
@@ -285,7 +285,7 @@
             <div>
                 <p style="margin-bottom: 15px; color: var(--text-secondary); font-size: 0.9rem;">Tarayıcınızın kamerasıyla veya QR okuyucuyla kodu okutun.</p>
                 <div id="qr-code-container" style="display: flex; justify-content: center; align-items: center; margin-bottom: 20px;"></div>
-                <div style="display: flex; gap: 10px; justify-content: center;">
+                <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
                     <button class="btn primary-outline" onclick="navigator.clipboard.writeText(window.location.href); toast('Bağlantı kopyalandı! 📋', 'success');" style="display:flex; align-items:center; gap:6px;">🔗 Kopyala</button>
                     <a href="#" id="share-wa" target="_blank" class="btn" style="background: #25D366; color: white; border: none; display:flex; align-items:center; gap:6px;">
                         <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.82 9.82 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.81 11.81 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.88 11.88 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.82 11.82 0 0 0-3.48-8.413Z"/></svg>
@@ -298,6 +298,14 @@
                     <a href="#" id="share-n" target="_blank" class="btn" style="background: #2b55a0; color: white; border: none; display:flex; align-items:center; gap:6px;">
                         <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M4 22h4V8l8 14h4V2h-4v14L8 2H4v20z"/></svg>
                         Nsosyal
+                    </a>
+                    <a href="#" id="share-tg" target="_blank" class="btn" style="background: #24A1DE; color: white; border: none; display:flex; align-items:center; gap:6px;">
+                        <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.233-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.415-1.21.266-1.91.181-.188 3.315-3.046 3.377-3.306a.233.233 0 0 0-.025-.183.218.218 0 0 0-.17-.076c-.085.004-1.173.722-5.918 3.923-.694.477-1.324.71-1.891.696-.625-.015-1.826-.35-2.716-.64-1.09-.355-1.955-.543-1.884-1.146.037-.312.433-.63 1.187-.954 4.654-2.025 7.755-3.362 9.303-4.01 4.25-1.78 5.137-2.088 5.706-2.102z"/></svg>
+                        Telegram
+                    </a>
+                    <a href="#" id="share-bsky" target="_blank" class="btn" style="background: #0085FF; color: white; border: none; display:flex; align-items:center; gap:6px;">
+                        <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 10.8c-1.087-2.114-4.046-6.053-6.798-7.905C2.566 1.091 1.818 1.115 1.168 1.488c-.65.372-1.054 1.077-1.054 1.827v4.619c0 2.213 1.705 4.195 3.905 4.542l3.411.536c-2.316.326-5.066 1.298-5.32 4.108-.225 2.502 1.958 4.417 4.17 4.137 3.518-.445 5.72-3.832 5.72-3.832s2.202 3.387 5.72 3.832c2.212.28 4.395-1.635 4.17-4.137-.254-2.81-3.004-3.782-5.32-4.108l3.411-.536c2.2-.347 3.905-2.329 3.905-4.542V3.315c0-.75-.404-1.455-1.054-1.827-.65-.373-1.398-.397-4.034 1.407C16.046 4.747 13.087 8.686 12 10.8z"/></svg>
+                        Bluesky
                     </a>
                 </div>
             </div>
@@ -359,9 +367,13 @@
             
             // Fallback for Desktop
             document.getElementById('social-share-modal').style.display = 'flex';
-            document.getElementById('share-wa').href = `https://wa.me/?text=${encodeURIComponent('Televizyon kanal listesini bilgisayarda saniyeler içinde kolayca düzenleyebileceğin harika ve ücretsiz bir araç buldum. Kesin denemelisin: ' + currentUrl)}`;
-            document.getElementById('share-x').href = `https://x.com/intent/post?text=${encodeURIComponent('Smart TV kanal listelerini sürükle-bırak ile saniyeler içinde düzenleyebileceğiniz harika ve ücretsiz bir araç! 📺✨ ' + currentUrl)}`;
-            document.getElementById('share-n').href = `https://nsosyal.com/share?text=${encodeURIComponent('Smart TV kanal listelerini sürükle-bırak ile saniyeler içinde düzenleyebileceğiniz harika ve ücretsiz bir araç! 📺✨ ' + currentUrl)}`;
+            const shareText = 'Televizyon kanal listesini bilgisayarda saniyeler içinde kolayca düzenleyebileceğin harika ve ücretsiz bir araç buldum. Kesin denemelisin:';
+            const shareTextLong = 'Smart TV kanal listelerini sürükle-bırak ile saniyeler içinde düzenleyebileceğiniz harika ve ücretsiz bir araç! 📺✨';
+            document.getElementById('share-wa').href = `https://wa.me/?text=${encodeURIComponent(shareText + ' ' + currentUrl)}`;
+            document.getElementById('share-x').href = `https://x.com/intent/post?text=${encodeURIComponent(shareTextLong + ' ' + currentUrl)}`;
+            document.getElementById('share-n').href = `https://nsosyal.com/share?text=${encodeURIComponent(shareTextLong + ' ' + currentUrl)}`;
+            document.getElementById('share-tg').href = `https://t.me/share/url?url=${encodeURIComponent(currentUrl)}&text=${encodeURIComponent(shareText)}`;
+            document.getElementById('share-bsky').href = `https://bsky.app/intent/compose?text=${encodeURIComponent(shareTextLong + ' ' + currentUrl)}`;
             
             const qrContainer = document.getElementById('qr-code-container');
             if (qrContainer.innerHTML === '') {
@@ -385,7 +397,7 @@
             const link = e.target.closest('a');
             if (link && link.href && link.href.startsWith('http') && !link.href.includes(window.location.hostname)) {
                 // If it's a social share intent link (like Twitter/WhatsApp), don't block
-                if (link.href.includes('x.com/intent') || link.href.includes('wa.me') || link.href.includes('nsosyal.com/share')) return;
+                if (link.href.includes('x.com/intent') || link.href.includes('wa.me') || link.href.includes('nsosyal.com/share') || link.href.includes('t.me/share') || link.href.includes('bsky.app/intent')) return;
                 
                 e.preventDefault();
                 const redirectUrl = '/redirect?url=' + encodeURIComponent(link.href);
