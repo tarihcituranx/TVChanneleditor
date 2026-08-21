@@ -227,6 +227,25 @@ def health_check():
         "timestamp": datetime.utcnow().isoformat() + "Z"
     })
 
+@app.route('/api/help')
+@app.route('/api/')
+def api_help():
+    return jsonify({
+        'name': 'TV Channel Editor API',
+        'description': 'A REST API for parsing, editing, and building TV channel lists.',
+        'documentation_url': f'{request.host_url.rstrip("/")}/api/docs',
+        'endpoints': {
+            '/upload': 'POST - Upload a channel list file (.scm, .zip, .tll, .db, .xml)',
+            '/build': 'POST - Build a modified channel list back to binary format',
+            '/download/<session_id>/<filename>': 'GET - Download the built binary file',
+            '/api/share': 'POST - Create a 6-digit share code',
+            '/api/share/<code>': 'GET - Retrieve a shared channel list',
+            '/api/version': 'GET - Get API version and deployment status',
+            '/health': 'GET - Health check endpoint'
+        },
+        'supported_brands': ['samsung', 'lg', 'sony', 'hisense']
+    }), 200
+
 @app.route('/api/version')
 def api_version():
     return jsonify({

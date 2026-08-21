@@ -2,24 +2,26 @@ openapi: 3.0.3
 info:
   title: TV Channel Editor API
   version: 1.0.0
-  summary: Smart TV channel list parsing and repacking API
-  description: 'Parse, inspect, modify, and repack Smart TV channel list files.
+  summary: Akıllı TV kanal listesini ayrıştırma ve yeniden paketleme API’si
+  description: 'Akıllı TV kanal listesi dosyalarını ayrıştırın, inceleyin, değiştirin
+    ve yeniden paketleyin.
 
 
-    Supported brands include Samsung, LG, Sony, and Hisense.
+    Desteklenen markalar arasında Samsung, LG, Sony ve Hisense bulunmaktadır.
 
-    The API uses a session-based workflow:
+    API, oturum tabanlı bir iş akışı kullanır:
 
 
-    1. Upload a supported TV channel list file
+    1. Desteklenen bir TV kanal listesi dosyasını yükleyin
 
-    2. Read the returned `session_id`, `brand`, and `channels` array
+    2. Geri döndürülen `session_id`, `brand` ve `channels` dizisini okuyun
 
-    3. Modify the channel objects (e.g. change order, rename, set Fav/Lock)
+    3. Kanal nesnelerini değiştirin (örn. sırayı değiştirin, yeniden adlandırın, Fav/Lock
+    ayarlayın)
 
-    4. Send the `session_id` and modified `channels` array to `/download`
+    4. `session_id` ve değiştirilmiş `channels` dizisini `/download` adresine gönderin
 
-    5. Receive the rebuilt binary channel-list file
+    5. Yeniden oluşturulmuş ikili kanal listesi dosyasını alın
 
     '
   contact:
@@ -28,20 +30,20 @@ info:
     email: tarihcituranx@proton.me
 servers:
 - url: https://tvchanneleditor.onrender.com
-  description: Production Server
+  description: Üretim Sunucusu
 tags:
 - name: Channel Lists
-  description: Upload, parse, modify, and download channel lists
+  description: Kanal listelerini yükle, ayrıştır, değiştir ve indir
 components:
   securitySchemes:
     ApiKeyAuth:
       type: apiKey
       in: header
       name: X-API-Key
-      description: 'Optional API key to bypass the standard 50 requests/hour IP rate
-        limit.
+      description: 'Standart 50 istek/saat IP hız sınırını aşmak için isteğe bağlı
+        API anahtarı.
 
-        Without a key, the endpoint works normally up to the rate limit.
+        Anahtar olmadan, uç nokta hız sınırına kadar normal şekilde çalışır.
 
         '
   schemas:
@@ -55,59 +57,60 @@ components:
           example: Dosya bulunamadı
     Channel:
       type: object
-      description: A single TV or radio channel.
+      description: Tek bir televizyon veya radyo kanalı.
       required:
       - false
       - Name
       properties:
         false:
           type: integer
-          description: 'Current position/Logical Channel Number.
+          description: 'Mevcut konum/Mantıksal Kanal Numarası.
 
-            Note: The array order is authoritative for channel ordering during download.
+            Not: İndirme sırasında kanal sıralaması açısından dizi sırası belirleyicidir.
 
-            This ''No'' field is informational and may be recalculated during export.
+            Bu “Hayır” alanı bilgilendirme amaçlıdır ve dışa aktarım sırasında yeniden
+            hesaplanabilir.
 
             '
           minimum: 1
           example: 1
         Name:
           type: string
-          description: Display name of the channel.
+          description: Kanalın görüntü adı.
           example: TRT 1 HD
         Type:
           type: string
-          description: Channel type (e.g., TV, Radio, Data).
+          description: Kanal türü (örn. TV, Radyo, Veri).
           example: TV
         Freq:
           type: string
-          description: Satellite/transponder frequency in MHz.
+          description: Uydu/transponder frekansı (MHz cinsinden).
           example: '11958'
         Pol:
           type: string
-          description: Satellite polarization (V or H).
+          description: Uydu polarizasyonu (V veya H).
           example: V
         Sym:
           type: string
-          description: Symbol rate.
+          description: Sembol hızı.
           example: '27500'
         Fav:
           type: string
-          description: Whether the channel is marked as a favorite.
+          description: Kanalın favorilere eklenip eklenmediği.
           enum:
           - 'Yes'
           - 'No'
           example: 'No'
         Lock:
           type: string
-          description: Whether the channel is locked with PIN.
+          description: Kanalın PIN kodu ile kilitli olup olmadığı.
           enum:
           - 'Yes'
           - 'No'
           example: 'No'
         Encrypted:
           type: string
-          description: Whether the channel is encrypted (Pay TV).
+          description: Kanalın şifreli olup olmadığı (Ücretli TV).
           enum:
           - 'Yes'
           - 'No'
@@ -126,7 +129,7 @@ components:
           example: true
         brand:
           type: string
-          description: Detected TV brand.
+          description: Tespit edilen TV markası.
           enum:
           - samsung
           - lg
@@ -136,12 +139,12 @@ components:
           example: samsung
         original_filename:
           type: string
-          description: The name of the original uploaded file, useful for identifying
-            the TV model.
+          description: Yüklenen orijinal dosyanın adı; TV modelini belirlemek için
+            kullanışlıdır.
           example: lg_xxLA691S.tll
         format:
           type: string
-          description: Detected internal file format.
+          description: Dahili dosya biçimi algılandı.
           enum:
           - scm
           - zip
@@ -151,12 +154,12 @@ components:
           example: scm
         session_id:
           type: string
-          description: Temporary session identifier returned after successful parsing.
-            Pass this exact value to /download.
+          description: Ayrıştırma işlemi başarıyla tamamlandıktan sonra geçici oturum
+            tanımlayıcısı döndürüldü. Bu değeri aynen /download adresine aktarın.
           example: sess_01J8ABC123XYZ
         channels:
           type: array
-          description: Parsed channels in their current order.
+          description: Kanallar mevcut sıralamalarına göre ayrıştırıldı.
           items:
             $ref: '#/components/schemas/Channel'
     DownloadRequest:
@@ -167,12 +170,12 @@ components:
       properties:
         session_id:
           type: string
-          description: Session ID returned by /upload.
+          description: /upload tarafından döndürülen oturum kimliği.
           example: sess_01J8ABC123XYZ
         channels:
           type: array
-          description: Modified channel list. The array order determines the resulting
-            channel order.
+          description: Değiştirilmiş kanal listesi. Dizideki sıra, sonuçta ortaya
+            çıkan kanal sırasını belirler.
           minItems: 1
           items:
             $ref: '#/components/schemas/Channel'
@@ -197,12 +200,12 @@ paths:
       tags:
       - Channel Lists
       operationId: uploadChannelList
-      summary: Upload and parse a TV channel list
-      description: 'Upload a supported TV channel list file. The server detects the
-        TV brand, parses the channels, and creates a temporary editing session.
+      summary: Bir TV kanalı listesini yükle ve işleme al
+      description: 'Desteklenen bir TV kanal listesi dosyasını yükleyin. Sunucu, TV
+        markasını algılar, kanalları ayrıştırır ve geçici bir düzenleme oturumu oluşturur.
 
 
-        Supported formats by brand:
+        Markalara göre desteklenen biçimler:
 
         - Samsung: .scm, .zip
 
@@ -225,17 +228,18 @@ paths:
                 file:
                   type: string
                   format: binary
-                  description: TV channel list file (.scm, .zip, .tll, .xml, .db)
+                  description: TV kanalları listesi dosyası (.scm, .zip, .tll, .xml,
+                    .db)
       responses:
         '200':
-          description: Channel list successfully parsed.
+          description: Kanal listesi başarıyla ayrıştırıldı.
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/UploadResponse'
               examples:
                 samsung_upload:
-                  summary: Successful Samsung Parse
+                  summary: Başarılı Samsung Parse
                   value:
                     success: true
                     brand: samsung
@@ -252,19 +256,21 @@ paths:
                       Lock: 'No'
                       Encrypted: 'No'
         '400':
-          description: Invalid, unsupported, or malformed channel list file.
+          description: Geçersiz, desteklenmeyen veya biçim hatası içeren kanal listesi
+            dosyası.
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
         '413':
-          description: Uploaded file is too large (Max 2MB).
+          description: Yüklenen dosya çok büyük (En fazla 2 MB).
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
         '429':
-          description: Rate limit exceeded (50 per hour). Use X-API-Key to bypass.
+          description: İzin sınırı aşıldı (saatte 50). Bu sınırı aşmak için X-API-Key'i
+            kullanın.
           content:
             application/json:
               schema:
@@ -274,9 +280,9 @@ paths:
       tags:
       - Channel Lists
       operationId: buildChannelList
-      summary: Repack modified channel list
-      description: 'Rebuild the channel-list file associated with a session. The returned
-        JSON contains a `download_url` to fetch the binary file.
+      summary: Değiştirilmiş kanal listesini yeniden paketle
+      description: 'Bir oturumla ilişkili kanal listesi dosyasını yeniden oluşturur.
+        Döndürülen JSON, ikili dosyayı almak için bir `download_url` içerir.
 
         '
       requestBody:
@@ -287,7 +293,7 @@ paths:
               $ref: '#/components/schemas/DownloadRequest'
       responses:
         '200':
-          description: Rebuild successful.
+          description: Yeniden oluşturma işlemi başarıyla tamamlandı.
           content:
             application/json:
               schema:
@@ -299,13 +305,13 @@ paths:
                     type: string
                     example: /download/sess_123/channels.scm
         '400':
-          description: Invalid request or expired session_id.
+          description: Geçersiz istek veya geçerlilik süresi dolmuş session_id.
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
         '429':
-          description: Rate limit exceeded.
+          description: İstihdam sınırı aşıldı.
           content:
             application/json:
               schema:
@@ -315,7 +321,7 @@ paths:
       tags:
       - Channel Lists
       operationId: downloadBinaryFile
-      summary: Download the rebuilt binary file
+      summary: Yeniden derlenmiş ikili dosyayı indirin
       parameters:
       - name: session_id
         in: path
@@ -329,14 +335,14 @@ paths:
           type: string
       responses:
         '200':
-          description: Rebuilt binary channel-list file.
+          description: İkili kanal listesi dosyası yeniden oluşturuldu.
           content:
             application/octet-stream:
               schema:
                 type: string
                 format: binary
         '404':
-          description: File not found or expired.
+          description: Dosya bulunamadı veya süresi doldu.
           content:
             application/json:
               schema:
@@ -346,12 +352,12 @@ paths:
       tags:
       - System
       operationId: checkHealth
-      summary: Health check endpoint
-      description: Returns 200 OK if the API is running correctly. Used for UptimeRobot
-        and Render Health Checks.
+      summary: Sağlık kontrolü son noktası
+      description: API düzgün çalışıyorsa 200 OK yanıtı verir. UptimeRobot ve Render
+        Sağlık Kontrollerinde kullanılır.
       responses:
         '200':
-          description: Service is healthy.
+          description: Hizmet iyi durumda.
           content:
             application/json:
               schema:
@@ -365,13 +371,13 @@ paths:
       tags:
       - System
       operationId: getApiVersion
-      summary: Get current API version and deployment status
-      description: Returns the semantic version, latest git commit hash, and the exact
-        timestamp when the server was deployed/booted. Useful for cache-busting and
-        deployment verification.
+      summary: Güncel API sürümünü ve dağıtım durumunu al
+      description: Sunucunun dağıtıldığı/başlatıldığı zamana ait semantik sürümü,
+        en son Git commit hash değerini ve tam zaman damgasını döndürür. Önbellek
+        temizleme ve dağıtım doğrulaması için kullanışlıdır.
       responses:
         '200':
-          description: Version info
+          description: Sürüm bilgileri
           content:
             application/json:
               schema:
@@ -385,21 +391,21 @@ paths:
                     example: 1.0.0
                   commit:
                     type: string
-                    description: The active Git commit hash running on the server.
+                    description: Sunucuda çalışan aktif Git commit hash'i.
                     example: 97401a523...
                   deployed_at:
                     type: string
                     format: date-time
-                    description: Timestamp of when the server application booted.
+                    description: Sunucu uygulamasının başlatıldığı zamanın zaman damgası.
                     example: 2026-08-18 19:00:51.123456+00:00
   /api/share:
     post:
       tags:
       - Cloud Sync
       operationId: createShareCode
-      summary: Create a 6-digit share code
-      description: Save a channel list draft to the cloud and receive a unique 6-character
-        code to share with other devices.
+      summary: 6 haneli bir paylaşım kodu oluşturun
+      description: Bir kanal listesi taslağını buluta kaydedin ve diğer cihazlarla
+        paylaşmak üzere 6 karakterlik benzersiz bir kod alın.
       requestBody:
         required: true
         content:
@@ -411,10 +417,10 @@ paths:
               properties:
                 draft:
                   type: object
-                  description: The current channel list and session data
+                  description: Güncel kanal listesi ve oturum verileri
       responses:
         '200':
-          description: Share code created successfully
+          description: Paylaşım kodu başarıyla oluşturuldu
           content:
             application/json:
               schema:
@@ -429,27 +435,27 @@ paths:
                   message:
                     type: string
         '400':
-          description: Invalid data
+          description: Geçersiz veri
         '429':
-          description: Rate limit exceeded (20 per minute)
+          description: İstihdam sınırı aşıldı (dakikada 20)
   /api/share/{code}:
     get:
       tags:
       - Cloud Sync
       operationId: getSharedList
-      summary: Retrieve a shared channel list
-      description: Fetch a previously saved channel list using its 6-character share
-        code.
+      summary: Paylaşılan kanal listesini alma
+      description: 6 karakterlik paylaşım kodunu kullanarak önceden kaydedilmiş bir
+        kanal listesini getirin.
       parameters:
       - name: code
         in: path
         required: true
         schema:
           type: string
-        description: The 6-character share code
+        description: 6 karakterlik paylaşım kodu
       responses:
         '200':
-          description: Channel list retrieved successfully
+          description: Kanal listesi başarıyla alındı
           content:
             application/json:
               schema:
@@ -460,34 +466,6 @@ paths:
                   data:
                     type: object
         '404':
-          description: Code invalid or expired
+          description: Kod geçersiz veya süresi dolmuş
         '429':
-          description: Rate limit exceeded (20 per minute)
-
-  /api/help:
-    get:
-      tags:
-        - System
-      operationId: getApiHelp
-      summary: Quick API Help
-      description: Returns a quick JSON overview of all available API endpoints and the documentation URL.
-      responses:
-        '200':
-          description: API overview
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  name:
-                    type: string
-                  description:
-                    type: string
-                  documentation_url:
-                    type: string
-                  endpoints:
-                    type: object
-                  supported_brands:
-                    type: array
-                    items:
-                      type: string
+          description: İstikrar sınırı aşıldı (dakikada 20)

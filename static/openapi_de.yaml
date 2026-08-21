@@ -2,24 +2,26 @@ openapi: 3.0.3
 info:
   title: TV Channel Editor API
   version: 1.0.0
-  summary: Smart TV channel list parsing and repacking API
-  description: 'Parse, inspect, modify, and repack Smart TV channel list files.
+  summary: API zum Analysieren und Neuverpacken von Smart-TV-Senderlisten
+  description: 'Smart-TV-Senderlisten-Dateien analysieren, prüfen, ändern und neu
+    verpacken.
 
 
-    Supported brands include Samsung, LG, Sony, and Hisense.
+    Zu den unterstützten Marken gehören Samsung, LG, Sony und Hisense.
 
-    The API uses a session-based workflow:
+    Die API nutzt einen sitzungsbasierten Arbeitsablauf:
 
 
-    1. Upload a supported TV channel list file
+    1. Eine unterstützte TV-Senderlisten-Datei hochladen
 
-    2. Read the returned `session_id`, `brand`, and `channels` array
+    2. Die zurückgegebenen Werte `session_id`, `brand` und das Array `channels` auslesen
 
-    3. Modify the channel objects (e.g. change order, rename, set Fav/Lock)
+    3. Ändern Sie die Kanalobjekte (z. B. Reihenfolge ändern, umbenennen, als Favorit
+    markieren/sperren)
 
-    4. Send the `session_id` and modified `channels` array to `/download`
+    4. Senden Sie die `session_id` und das geänderte `channels`-Array an `/download`
 
-    5. Receive the rebuilt binary channel-list file
+    5. Empfangen Sie die neu erstellte binäre Kanal-Listendatei
 
     '
   contact:
@@ -31,17 +33,18 @@ servers:
   description: Production Server
 tags:
 - name: Channel Lists
-  description: Upload, parse, modify, and download channel lists
+  description: Kanallisten hochladen, analysieren, bearbeiten und herunterladen
 components:
   securitySchemes:
     ApiKeyAuth:
       type: apiKey
       in: header
       name: X-API-Key
-      description: 'Optional API key to bypass the standard 50 requests/hour IP rate
-        limit.
+      description: 'Optionaler API-Schlüssel zur Umgehung der standardmäßigen IP-Ratenbegrenzung
+        von 50 Anfragen pro Stunde.
 
-        Without a key, the endpoint works normally up to the rate limit.
+        Ohne Schlüssel funktioniert der Endpunkt bis zum Erreichen der Ratenbegrenzung
+        wie gewohnt.
 
         '
   schemas:
@@ -55,59 +58,61 @@ components:
           example: Dosya bulunamadı
     Channel:
       type: object
-      description: A single TV or radio channel.
+      description: Ein einzelner Fernseh- oder Radiosender.
       required:
       - false
       - Name
       properties:
         false:
           type: integer
-          description: 'Current position/Logical Channel Number.
+          description: 'Aktuelle Position/Logische Kanalnummer.
 
-            Note: The array order is authoritative for channel ordering during download.
+            Hinweis: Die Reihenfolge im Array ist maßgeblich für die Kanalreihenfolge
+            beim Herunterladen.
 
-            This ''No'' field is informational and may be recalculated during export.
+            Dieses Feld „Nein“ dient nur zu Informationszwecken und kann beim Export
+            neu berechnet werden.
 
             '
           minimum: 1
           example: 1
         Name:
           type: string
-          description: Display name of the channel.
+          description: Anzeigename des Kanals.
           example: TRT 1 HD
         Type:
           type: string
-          description: Channel type (e.g., TV, Radio, Data).
+          description: Kanaltyp (z. B. Fernsehen, Radio, Daten).
           example: TV
         Freq:
           type: string
-          description: Satellite/transponder frequency in MHz.
+          description: Satelliten-/Transponderfrequenz in MHz.
           example: '11958'
         Pol:
           type: string
-          description: Satellite polarization (V or H).
+          description: Satellitenpolarisation (V oder H).
           example: V
         Sym:
           type: string
-          description: Symbol rate.
+          description: Symbolrate.
           example: '27500'
         Fav:
           type: string
-          description: Whether the channel is marked as a favorite.
+          description: Ob der Kanal als Favorit markiert ist.
           enum:
           - 'Yes'
           - 'No'
           example: 'No'
         Lock:
           type: string
-          description: Whether the channel is locked with PIN.
+          description: Ob der Kanal mit einer PIN gesperrt ist.
           enum:
           - 'Yes'
           - 'No'
           example: 'No'
         Encrypted:
           type: string
-          description: Whether the channel is encrypted (Pay TV).
+          description: Ob der Sender verschlüsselt ist (Bezahlfernsehen).
           enum:
           - 'Yes'
           - 'No'
@@ -126,7 +131,7 @@ components:
           example: true
         brand:
           type: string
-          description: Detected TV brand.
+          description: Erkannte TV-Marke.
           enum:
           - samsung
           - lg
@@ -136,12 +141,12 @@ components:
           example: samsung
         original_filename:
           type: string
-          description: The name of the original uploaded file, useful for identifying
-            the TV model.
+          description: Der Name der ursprünglich hochgeladenen Datei; hilfreich zur
+            Identifizierung des TV-Modells.
           example: lg_xxLA691S.tll
         format:
           type: string
-          description: Detected internal file format.
+          description: Internes Dateiformat erkannt.
           enum:
           - scm
           - zip
@@ -151,12 +156,12 @@ components:
           example: scm
         session_id:
           type: string
-          description: Temporary session identifier returned after successful parsing.
-            Pass this exact value to /download.
+          description: Nach erfolgreicher Auswertung wird eine temporäre Sitzungskennung
+            zurückgegeben. Übergeben Sie genau diesen Wert an /download.
           example: sess_01J8ABC123XYZ
         channels:
           type: array
-          description: Parsed channels in their current order.
+          description: Die Kanäle wurden in ihrer aktuellen Reihenfolge analysiert.
           items:
             $ref: '#/components/schemas/Channel'
     DownloadRequest:
@@ -167,12 +172,12 @@ components:
       properties:
         session_id:
           type: string
-          description: Session ID returned by /upload.
+          description: Von /upload zurückgegebene Sitzungs-ID.
           example: sess_01J8ABC123XYZ
         channels:
           type: array
-          description: Modified channel list. The array order determines the resulting
-            channel order.
+          description: Geänderte Kanalliste. Die Reihenfolge im Array bestimmt die
+            Reihenfolge der Kanäle im Ergebnis.
           minItems: 1
           items:
             $ref: '#/components/schemas/Channel'
@@ -197,12 +202,13 @@ paths:
       tags:
       - Channel Lists
       operationId: uploadChannelList
-      summary: Upload and parse a TV channel list
-      description: 'Upload a supported TV channel list file. The server detects the
-        TV brand, parses the channels, and creates a temporary editing session.
+      summary: Eine TV-Senderliste hochladen und auswerten
+      description: 'Laden Sie eine Datei mit einer unterstützten TV-Senderliste hoch.
+        Der Server erkennt die TV-Marke, analysiert die Sender und erstellt eine temporäre
+        Bearbeitungssitzung.
 
 
-        Supported formats by brand:
+        Unterstützte Formate nach Marke:
 
         - Samsung: .scm, .zip
 
@@ -463,31 +469,3 @@ paths:
           description: Code invalid or expired
         '429':
           description: Rate limit exceeded (20 per minute)
-
-  /api/help:
-    get:
-      tags:
-        - System
-      operationId: getApiHelp
-      summary: Quick API Help
-      description: Returns a quick JSON overview of all available API endpoints and the documentation URL.
-      responses:
-        '200':
-          description: API overview
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  name:
-                    type: string
-                  description:
-                    type: string
-                  documentation_url:
-                    type: string
-                  endpoints:
-                    type: object
-                  supported_brands:
-                    type: array
-                    items:
-                      type: string

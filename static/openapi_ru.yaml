@@ -463,31 +463,3 @@ paths:
           description: Code invalid or expired
         '429':
           description: Rate limit exceeded (20 per minute)
-
-  /api/help:
-    get:
-      tags:
-        - System
-      operationId: getApiHelp
-      summary: Quick API Help
-      description: Returns a quick JSON overview of all available API endpoints and the documentation URL.
-      responses:
-        '200':
-          description: API overview
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  name:
-                    type: string
-                  description:
-                    type: string
-                  documentation_url:
-                    type: string
-                  endpoints:
-                    type: object
-                  supported_brands:
-                    type: array
-                    items:
-                      type: string
