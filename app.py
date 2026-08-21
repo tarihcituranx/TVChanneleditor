@@ -260,7 +260,7 @@ def api_help():
             '/upload': 'POST - Upload a channel list file (.scm, .zip, .tll, .db, .xml)',
             '/build': 'POST - Build a modified channel list back to binary format',
             '/download/<session_id>/<filename>': 'GET - Download the built binary file',
-            '/api/share': 'POST - Create a 6-digit share code',
+            '/api/share': 'POST - Create an 8-character share code',
             '/api/share/<code>': 'GET - Retrieve a shared channel list',
             '/api/version': 'GET - Get API version and deployment status',
             '/health': 'GET - Health check endpoint'

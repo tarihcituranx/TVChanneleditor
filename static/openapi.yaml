@@ -32,12 +32,6 @@ tags:
 
 components:
   securitySchemes:
-    ApiKeyAuth:
-      type: apiKey
-      in: header
-      name: X-API-Key
-      description: |
-        Optional API key to bypass the standard 50 requests/hour IP rate limit.
         Without a key, the endpoint works normally up to the rate limit.
 
   schemas:
@@ -370,8 +364,8 @@ paths:
       tags:
         - Cloud Sync
       operationId: createShareCode
-      summary: Create a 6-digit share code
-      description: Save a channel list draft to the cloud and receive a unique 6-character code to share with other devices.
+      summary: Create a 8-character share code
+      description: Save a channel list draft to the cloud and receive a unique 8-character code to share with other devices.
       requestBody:
         required: true
         content:
@@ -411,14 +405,14 @@ paths:
         - Cloud Sync
       operationId: getSharedList
       summary: Retrieve a shared channel list
-      description: Fetch a previously saved channel list using its 6-character share code.
+      description: Fetch a previously saved channel list using its 8-character share code.
       parameters:
         - name: code
           in: path
           required: true
           schema:
             type: string
-          description: The 6-character share code
+          description: The 8-character share code
       responses:
         '200':
           description: Channel list retrieved successfully

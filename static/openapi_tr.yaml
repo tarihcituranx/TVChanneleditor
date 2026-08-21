@@ -405,7 +405,7 @@ paths:
       operationId: createShareCode
       summary: 6 haneli bir paylaşım kodu oluşturun
       description: Bir kanal listesi taslağını buluta kaydedin ve diğer cihazlarla
-        paylaşmak üzere 6 karakterlik benzersiz bir kod alın.
+        paylaşmak üzere 8 karakterlik benzersiz bir kod alın.
       requestBody:
         required: true
         content:
@@ -444,7 +444,7 @@ paths:
       - Cloud Sync
       operationId: getSharedList
       summary: Paylaşılan kanal listesini alma
-      description: 6 karakterlik paylaşım kodunu kullanarak önceden kaydedilmiş bir
+      description: 8 karakterlik paylaşım kodunu kullanarak önceden kaydedilmiş bir
         kanal listesini getirin.
       parameters:
       - name: code
@@ -452,7 +452,7 @@ paths:
         required: true
         schema:
           type: string
-        description: 6 karakterlik paylaşım kodu
+        description: 8 karakterlik paylaşım kodu
       responses:
         '200':
           description: Kanal listesi başarıyla alındı
