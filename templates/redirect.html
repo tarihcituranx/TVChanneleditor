@@ -1,10 +1,20 @@
 <!DOCTYPE html>
-<html lang="tr" data-theme="dark">
+<html lang="tr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dış Bağlantı Uyarısı - TV Channel Editor</title>
     <link rel="stylesheet" href="/static/css/style.css">
+    <script>
+      (function() {
+        var state = localStorage.getItem('theme-state') || 'auto';
+        var t = state;
+        if (state === 'auto') {
+            t = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        }
+        if (t === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+      })();
+    </script>
     <style>
         body {
             display: flex;
@@ -46,11 +56,13 @@
             background: var(--bg-subtle);
             padding: 1rem;
             border-radius: var(--radius-md);
-            color: var(--accent);
+            color: var(--text-primary); /* Changed from --accent for better contrast */
+            border: 1px solid var(--border-color);
             word-break: break-all;
             margin-bottom: 2rem;
             font-family: monospace;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
+            font-weight: 500;
         }
         .buttons {
             display: flex;
