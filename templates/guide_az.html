@@ -1,0 +1,258 @@
+{% extends "base_az.html" %}
+
+{% block title %}İstifadəçi Bələdçisi - TV Kanalı Redaktoru{% endblock %}
+
+{% block head %}
+<style>
+    .content-container {
+        max-width: 900px;
+        margin: 40px auto;
+        padding: 28px 32px;
+        background: var(--card-bg);
+        border-radius: 12px;
+        border: 1px solid var(--border-color);
+    }
+    .section-title {
+        font-size: 22px;
+        font-weight: 700;
+        margin-bottom: 24px;
+        color: var(--text-primary);
+        border-bottom: 2px solid var(--border-color);
+        padding-bottom: 10px;
+    }
+    .brand-tabs {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-bottom: 28px;
+    }
+    .brand-tab {
+        padding: 7px 16px;
+        border-radius: 20px;
+        font-size: 13px;
+        font-weight: 600;
+        cursor: pointer;
+        border: 1px solid var(--border-color);
+        background: var(--bg-color);
+        color: var(--text-secondary);
+        transition: all 0.2s;
+    }
+    .brand-tab.active {
+        background: var(--accent);
+        color: white;
+        border-color: var(--accent);
+    }
+    .brand-guide { display: none; }
+    .brand-guide.active { display: block; }
+    .step-box {
+        margin-bottom: 22px;
+        padding: 16px 20px;
+        border-left: 3px solid var(--accent);
+        background: rgba(29,78,216,0.06);
+        border-radius: 0 8px 8px 0;
+    }
+    .step-title {
+        font-size: 16px;
+        font-weight: 700;
+        color: var(--text-primary);
+        margin-bottom: 6px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+    .step-num {
+        background: var(--accent);
+        color: white;
+        width: 24px; height: 24px;
+        border-radius: 50%;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 12px;
+        font-weight: 800;
+        flex-shrink: 0;
+    }
+    .step-desc {
+        font-size: 14px;
+        color: var(--text-primary);
+        opacity: 0.95;
+        line-height: 1.7;
+    }
+    .step-desc code {
+        background: var(--bg-color);
+        padding: 2px 6px;
+        border-radius: 4px;
+        font-family: monospace;
+        font-size: 13px;
+        color: #93c5fd;
+        border: 1px solid var(--border-color);
+    }
+    .tip-box {
+        background: rgba(34,197,94,0.08);
+        border: 1px solid rgba(34,197,94,0.25);
+        border-radius: 8px;
+        padding: 12px 16px;
+        font-size: 13px;
+        color: #4ade80;
+        margin-top: 20px;
+        line-height: 1.6;
+    }
+    .warn-box {
+        background: rgba(251,191,36,0.08);
+        border: 1px solid rgba(251,191,36,0.25);
+        border-radius: 8px;
+        padding: 12px 16px;
+        font-size: 13px;
+        color: #fbbf24;
+        margin-top: 12px;
+        line-height: 1.6;
+    }
+</style>{% endblock %}
+
+{% block content %}
+<div class="content-container">
+    <h2 class="section-title">İstifadəçi Bələdçisi</h2>
+
+    <div class="brand-tabs" role="tablist" aria-label="TV Brands">
+        <button class="brand-tab active" onclick="showGuide(\'samsung\')" role="tab" aria-selected="true" aria-controls="guide-samsung" id="tab-samsung">Samsung</button>
+        <button class="brand-tab" onclick="showGuide(\'lg\')" role="tab" aria-selected="false" aria-controls="guide-lg" id="tab-lg">LG</button>
+        <button class="brand-tab" onclick="showGuide(\'sony\')" role="tab" aria-selected="false" aria-controls="guide-sony" id="tab-sony">Sony BRAVIA</button>
+        <button class="brand-tab" onclick="showGuide(\'hisense\')" role="tab" aria-selected="false" aria-controls="guide-hisense" id="tab-hisense">Hisense</button>
+    </div>
+
+    <!-- SAMSUNG -->
+    <div class="brand-guide active" id="guide-samsung" role="tabpanel" aria-labelledby="tab-samsung">
+        <div class="step-box">
+            <div class="step-title"><span class="step-num">1.</span> Kanal siyahısını USB sürücüsünə köçürün</div>
+            <div class="step-desc">
+                TV pultundan istifadə edərək bu addımları yerinə yetirin: <strong>Menyu → Yayım → Kanal Tənzimləmələri → Kanal Siyahısının Köçürülməsi</strong>.
+                PIN kodunuzu daxil edin (adətən <code>0000</code>
+                ) daxil edin və "<strong>USB-yə köçür"</strong>
+                seçimini seçin.<br><br>
+                
+                <strong>Köhnə modellər (E/F/H):</strong>
+                <code>.scm</code>
+                Bir fayl yaradılır.<br>
+                
+                <strong>Yeni model (J/K/M/Q/R/T - Tizen):</strong>
+                <code>.zip</code> fayl yaradılır.
+            </div>
+        </div>
+        <div class="step-box">
+            <div class="step-title"><span class="step-num">2</span> Faylı Vebsayta Yükləyin</div>
+            <div class="step-desc">
+                USB sürücüsünü kompüterinizə qoşun. Faylı ana səhifədəki yükləmə sahəsinə sürükləyin <code>.scm</code> və ya <code>.zip</code> faylı ana səhifədəki yükləmə sahəsinə sürükləyib buraxın və ya "Faylı Seç" düyməsini vurun.
+            </div>
+        </div>
+        <div class="step-box">
+            <div class="step-title"><span class="step-num">3.</span> Kanalları Təşkil Et</div>
+            <div class="step-desc">
+                Kanalları <strong>sürükləmə və buraxma</strong> ilə yenidən sıralayın. <strong>🪄</strong> Hazır şablonları <strong>Magic Wand</strong> ilə tətbiq edin və ya <strong>🛠️ Template Creator</strong> ilə öz şablonunuzu yaradın. Hər kanal sətrindəki 🔒 kilid və sevimli işarələrini dəyişə bilərsiniz.
+            </div>
+        </div>
+        <div class="step-box">
+            <div class="step-title"><span class="step-num">4.</span> Yadda Saxla və TV-yə Yüklə</div>
+            <div class="step-desc">
+                <strong>Yüklə və Yüklə</strong>
+                düyməsini klikləyin. Yüklənmiş faylı USB sürücüsünə kopyalayın (orijinal faylın <em>eyni adından</em>
+                istifadə edin!). TV menyusundan <strong>"USB-dən yüklə</strong>
+                " seçimi ilə onu yükləyin.
+            </div>
+        </div>
+        <div class="tip-box">💡 <strong>Məsləhət:</strong> TV yalnız eyni adla olan SCM fayllarını tanıyır. Yeni faylı USB sürücüsünə köçürərkən ya köhnəsini üst-üstə yazın, ya da köhnə faylı ehtiyat nüsxə kimi saxlayın <code>.bak</code> uzantısı ilə.</div>
+        <div class="warn-box">⚠️ <strong>Xəbərdarlıq:</strong> Kanal redaktə prosesi mövcud kanalların tezliklərini və ya şifrələnmiş PID məlumatlarını dəyişdirmir; o, yalnız sıranı və bayraqları yeniləyir.</div>
+    </div>
+
+    <!-- LG -->
+    <div class="brand-guide" id="guide-lg" role="tabpanel" aria-labelledby="tab-lg">
+        <div class="step-box">
+            <div class="step-title"><span class="step-num">1.</span> Kanal siyahısını USB-yə köçürün</div>
+            <div class="step-desc">
+                LG televizorunuzda <strong>Parametrlər → Kanallar → Kanal idarəetməsi → Kanalları USB-yə köçür</strong> seçin.
+                USB sürücüsündə <code>GlobalClone00001.TLL</code> və ya <code>LG_DTV_*.tll</code> Belə bir fayl yaradılacaq.
+            </div>
+        </div>
+        <div class="step-box">
+            <div class="step-title"><span class="step-num">2</span>. .TLL faylını yükləyin</div>
+            <div class="step-desc">
+                Bir fayl yükləyin <code>.tll</code> . Sistem GlobalClone XML formatını avtomatik tanıyacaq.
+            </div>
+        </div>
+        <div class="step-box">
+            <div class="step-title"><span class="step-num">3.</span> Redaktə et və Yüklə</div>
+            <div class="step-desc">
+                Kanalları sürüklə-burax üsulu ilə sıralayın. Yenilənmiş TLL faylını yükləmək və onu USB sürücüsünə köçürmək üçün "<strong>Yadda saxla və Yüklə"</strong>
+                düyməsini basın. Prosesin tamamlanması üçün TV menyusundan "<strong>USB-dən kanalları yüklə"</strong>
+                seçimini seçin.
+            </div>
+        </div>
+        <div class="tip-box">💡 LG webOS 5 cihazlarında kanal siyahısının idxal məhdudiyyətləri bəzən tətbiq oluna bilər. Qara ekran görsəniz, televizoru yenidən başladın.</div>
+    </div>
+
+    <!-- SONY -->
+    <div class="brand-guide" id="guide-sony" role="tabpanel" aria-labelledby="tab-sony">
+        <div class="step-box">
+            <div class="step-title"><span class="step-num">1.</span> sdb.xml faylını əldə edin</div>
+            <div class="step-desc">
+                Sony BRAVIA-da bu addımları izləyin: <strong>Parametrlər → Kanal Təqdimatı → Kanal Siyahısının İdxalı → USB-yə İdxal et</strong>.
+                USB sürücüsündə <code>sdb.xml</code> və ya alt qovluqlarda <code>*.xml</code> fayllar yaradılacaq.
+            </div>
+        </div>
+        <div class="step-box">
+            <div class="step-title"><span class="step-num">2.</span> sdb.xml faylını yükləyin</div>
+            <div class="step-desc">
+                Baş ekrana keçin <code>sdb.xml</code> . Sistem faylı Sony formatında avtomatik tanıyır və kanalları siyahıya alır.
+            </div>
+        </div>
+        <div class="step-box">
+            <div class="step-title"><span class="step-num">3.</span> Redaktə edin və TV-yə yükləyin</div>
+            <div class="step-desc">
+                Kanaləri redaktə edin, sonra "<strong>Yadda saxla və endir</strong>" düyməsini basın <code>sdb.xml</code> faylı yükləyin. Onu USB sürücüsünə kopyalayın və "<strong>USB-dən idxal et</strong>" funksiyası ilə televizora yükləyin.
+            </div>
+        </div>
+    </div>
+
+    <!-- HISENSE -->
+    <div class="brand-guide" id="guide-hisense" role="tabpanel" aria-labelledby="tab-hisense">
+        <div class="step-box">
+            <div class="step-title"><span class="step-num">1.</span> servicelist.db faylını əldə edin</div>
+            <div class="step-desc">
+                Hisense televizorunuzda <strong>Menu → Channel → Export Channel List</strong> bölməsinə keçin və verilənlər bazası faylını USB sürücüsünə köçürün.
+                Faylın adı adətən <code>servicelist.db</code> (2017+) və ya <code>channel.db</code> (2015–2016).
+            </div>
+        </div>
+        <div class="step-box">
+            <div class="step-title"><span class="step-num">2.</span> Verilənlər bazasını quraşdırın</div>
+            <div class="step-desc">
+                Çəkin <code>servicelist.db</code> . Sistem SQLite verilənlər bazasını oxuyur və bütün kanalları siyahıya alır.
+            </div>
+        </div>
+        <div class="step-box">
+            <div class="step-title"><span class="step-num">3</span> Redaktə et və Yüklə</div>
+            <div class="step-desc">
+                Arzu olunan dəyişiklikləri etdikdən sonra "<strong>Yadda saxla və yüklə"</strong>
+                düyməsini basaraq yenilənmiş verilənlər bazası faylını yükləyin. Faylı USB sürücüsünə kopyalayın və TV-nin idxal menyusundan istifadə edərək onu idxal edin.
+            </div>
+        </div>
+        <div class="warn-box">⚠️ Hisense modellərində kanal adlarının dəyişdirilməsi məhduddur; bəzi modellərdə yalnız sıralama və kilid dəyişiklikləri tətbiq oluna bilər.</div>
+    </div>
+</div>
+
+<script>
+function showGuide(brand) {
+        document.querySelectorAll(&#x27;.brand-tab&#x27;).forEach(btn =&gt; {
+            btn.classList.remove(&#x27;active&#x27;);
+            btn.setAttribute(&#x27;aria-selected&#x27;, &#x27;false&#x27;);
+        });
+        document.querySelectorAll(&#x27;.brand-guide&#x27;).forEach(g =&gt; {
+            g.classList.remove(&#x27;active&#x27;);
+        });
+        
+        const activeBtn = document.querySelector(`.brand-tab[onclick*="${brand}"]`);
+        if (activeBtn) {
+            activeBtn.classList.add(&#x27;active&#x27;);
+            activeBtn.setAttribute(&#x27;aria-selected&#x27;, &#x27;true&#x27;);
+        }
+        document.getElementById(&#x27;guide-&#x27; + brand).classList.add(&#x27;active&#x27;);
+    }
+</script>{% endblock %}

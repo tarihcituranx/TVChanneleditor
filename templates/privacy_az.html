@@ -1,0 +1,113 @@
+{% extends "base_az.html" %}
+
+{% block title %}Məxfilik Siyasəti (KVKK / GDPR) - TV Kanalı Redaktoru{% endblock %}
+
+{% block head %}
+<style>
+    .content-container {
+        max-width: 800px;
+        margin: 40px auto;
+        padding: 40px;
+        background: var(--card-bg);
+        border-radius: 12px;
+        border: 1px solid var(--border-color);
+        color: var(--text-primary);
+        line-height: 1.7;
+    }
+    .page-title {
+        font-size: 24px;
+        font-weight: 700;
+        margin-bottom: 30px;
+        border-bottom: 2px solid var(--border-color);
+        padding-bottom: 15px;
+    }
+    .policy-section {
+        margin-bottom: 30px;
+    }
+    .policy-title {
+        font-size: 18px;
+        font-weight: 600;
+        color: var(--accent);
+        margin-bottom: 10px;
+    }
+    .policy-text {
+        font-size: 15px;
+        opacity: 0.95;
+    }
+    .highlight-box {
+        background: rgba(34,197,94,0.08);
+        border-left: 4px solid #22c55e;
+        padding: 15px 20px;
+        margin-bottom: 20px;
+        border-radius: 0 8px 8px 0;
+        font-size: 14.5px;
+    }
+</style>{% endblock %}
+
+{% block content %}
+<div class="content-container">
+    <h1 class="page-title">🛡️ Məxfilik Siyasəti (KVKK və GDPR Məlumat Bildirişi)</h1>
+    
+    <div class="highlight-box">
+        <strong>Qısaca:</strong>
+        
+        Biz "Məxfilik-Əvvəl" prinsipi ilə fəaliyyət göstəririk. Siz bizə adınızı, e-poçt ünvanınızı və ya hər hansı şəxsi məlumatınızı təqdim etmirsiniz. Sisteme yüklədiyiniz TV kanalı faylları emal üçün yalnız serverin müvəqqəti (temp) qovluğunda saxlanılır və <strong>tamamlandıqda (ən geci 1 saat ərzində) daimi olaraq silinir.</strong>
+        Biz heç bir məlumatınızı satmır, izləmir və ya arxivləmirik.
+    </div>
+
+    <div class="policy-section">
+        <h2 class="policy-title">1. Hansı Məlumatları Yığırıq?</h2>
+        <div class="policy-text">
+            Qeydiyyat, üzvlük və ya giriş sistemi yoxdur. Buna görə də biz ad, soyad, e-poçt ünvanı, telefon nömrəsi və ya oxşar məlumatlar kimi birbaşa şəxsiyyətinizi müəyyən edən heç bir şəxsi məlumat toplamırıq.<br><br>
+            
+            
+            Biz yalnız redaktə prosesi zamanı texniki zərurət olaraq sistemə qəsdən yüklədiyiniz <strong>TV kanalları siyahısı (.scm, .zip)</strong>
+            fayllarını toplayırıq.
+        </div>
+    </div>
+
+    <div class="policy-section">
+        <h2 class="policy-title">2. Saxlama müddəti və yüklənmiş faylların silinməsi</h2>
+        <div class="policy-text">
+            Sistemə yüklədiyiniz kanal faylları yükləmə linkinin yaradılması üçün müvəqqəti qovluqda saxlanılır. 
+            <ul style="margin-top: 10px; padding-left: 20px;">
+                <li><strong>Redaktə edilmiş Fayllar:</strong> Yükləmə uğurla başa çatdıqda və ya səhifə yükləndikdən düz <strong>60 dəqiqə (1 saat)</strong> sonra sistem onları avtomatik və daimi olaraq silir.</li>
+                <li><strong>Cihazlararası Transfer (Kodla):</strong> "Cihaza Transfer Et" düyməsini istifadə etdiyiniz zaman yaradılan layihə önbellemi <strong>10 dəqiqə</strong> sonra avtomatik olaraq silinir.</li>
+            </ul>
+            Heç bir kanal siyahınız arxivləşdirilmir, ehtiyat nüsxəsi alınmır və ya serverlərimizdə saxlanılmır.
+        </div>
+    </div>
+
+    <div class="policy-section">
+        <h2 class="policy-title">3. Kukilər və Yerli Saxlama</h2>
+        <div class="policy-text">
+            Saytımızda reklam, davranış analitikası və ya istifadəçi izləmə üçün
+            <strong>heç vaxt</strong>
+            kukilardan
+            <strong>istifadə etmirik.</strong>
+            Potensial internet və ya enerji kəsintiləri zamanı işinizin itməməsi üçün məlumatlar <strong>brauzerinizin yerli yaddaşında</strong>
+            —bizim serverlərimizdə deyil—avtomatik olaraq layihə (draft) kimi saxlanılır. Faylınızı uğurla yüklədikdən sonra bu layihə brauzerinizdən avtomatik silinir.
+        </div>
+    </div>
+
+    <div class="policy-section">
+        <h2 class="policy-title">4. Məlumatın paylaşılması və üçüncü tərəflər</h2>
+        <div class="policy-text">
+            Sistemimiz heç bir televizor istehsalçısı (Samsung, LG, Sony və s.) və ya marketinq şirkəti ilə əlaqəli deyil. Yüklədiyiniz məlumatlar və ya istifadə statistikası üçüncü tərəflər tərəfindən satıla, paylaşa və ya marketinq məqsədləri üçün istifadə oluna bilməz.
+        </div>
+    </div>
+
+    <div class="policy-section">
+        <h2 class="policy-title">5. KVKK (Türkiyə) və GDPR (Avropa İttifaqı) çərçivəsində hüquqlarınız</h2>
+        <div class="policy-text">
+            Sistem məlumatların minimallaşdırılması və müvəqqəti emal prinsipləri nəzərə alınmaqla hazırlanıb. Şəxsi məlumatlar (IP qeydləri daxil olmaqla) daimi saxlanılmadığından, silinmə və ya unudulma hüququnuza müraciət etməyinizi tələb edəcək verilənlər bazası saxlamırıq; sistem ziyarətiniz bitən kimi sizi tamamilə "unudub".
+        </div>
+    </div>
+
+    <div class="policy-section">
+        <h2 class="policy-title">6. Məlumat Nəzarətçisi və Əlaqə Məlumatları</h2>
+        <div class="policy-text">
+            Sistem müstəqil, könüllülər tərəfindən idarə olunan açıq mənbə inkişaf etdirici təşəbbüsüdür. KVKK və ya texniki proseslərlə bağlı hər hansı sualınız, eləcə də məlumat sorğularınız üçün Məlumat Nəzarətçisi <strong>Turan Kaya</strong> ilə əlaqə saxlaya bilərsiniz. Bizimlə əlaqə yaratmaq üçün rəsmi <strong><a href="https://github.com/tarihcituranx/TVChanneleditor" target="_blank" style="color:var(--accent);">GitHub səhifəmizdə</a></strong> "Issue" aça və ya birbaşa tarihcituranx@proton.me ünvanına e-poçt göndərə bilərsiniz.
+        </div>
+    </div>
+</div>{% endblock %}

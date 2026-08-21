@@ -6,7 +6,7 @@ import time
 DEEPL_KEY = os.environ.get('DEEPL_KEY', 'YOUR_DEEPL_API_KEY_HERE')
 URL = "https://api-free.deepl.com/v2/translate"
 
-langs = ['RU', 'ES', 'IT', 'FR', 'AR']
+langs = ['FA', 'AZ']
 
 def translate_html(text, target_lang):
     headers = {
@@ -41,13 +41,11 @@ for lang in langs:
         
         translated = translate_html(html_content, lang)
         
-        # Post processing
-        if lang == 'AR':
+        if lang == 'FA':
             translated = translated.replace('lang="en"', f'lang="{lang_lower}" dir="rtl"')
         else:
             translated = translated.replace('lang="en"', f'lang="{lang_lower}"')
             
-        # Fix Jinja quotes broken by DeepL
         translated = translated.replace('&quot;', '"')
         translated = translated.replace('base_en.html', f'base_{lang_lower}.html')
         

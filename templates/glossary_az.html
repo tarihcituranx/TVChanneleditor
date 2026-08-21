@@ -1,0 +1,127 @@
+{% extends "base_az.html" %}
+
+{% block title %}Lüğət - TV Kanal Redaktoru{% endblock %}
+
+{% block content %}
+<div class="card border-0 shadow-sm" style="max-width: 800px; margin: 0 auto; text-align: left; padding: 30px;">
+    <h1 style="color: var(--text-primary); margin-bottom: 20px;">Peyk və TV Lüğəti</h1>
+    <p style="color: var(--text-secondary); line-height: 1.6; margin-bottom: 30px;">
+        TV kanal parametrlərində və ya detallar səhifəmizdə gördüyünüz texniki terminlərin və qısaltmaların (ingilis və türk dillərində) mənalarını aşağıda tapa bilərsiniz.
+    </p>
+
+    <div class="glossary-list" style="display: flex; flex-direction: column; gap: 20px;">
+        <div class="glossary-item" style="background: var(--bg-subtle); padding: 15px; border-radius: 8px; border-left: 4px solid var(--accent);">
+            <h3 style="margin-top: 0; margin-bottom: 10px; color: var(--accent);">SID (Xidmət ID-si)</h3>
+            <p style="margin: 0; color: var(--text-secondary); line-height: 1.5;">
+                <strong>Türklər:</strong>
+                Xidmət ID-si / Kanal Nömrəsi<br>
+                
+                <strong>Təsvir:</strong>
+                Bir tezlik (paket) daxilində yayımlanan hər bir kanala təyin olunan unikal identifikasiya nömrəsidir. Televizorunuz kanalları onların adlarına görə deyil, məhz bu SID nömrəsinə görə fərqləndirir.
+            </p>
+        </div>
+
+        <div class="glossary-item" style="background: var(--bg-subtle); padding: 15px; border-radius: 8px; border-left: 4px solid var(--accent);">
+            <h3 style="margin-top: 0; margin-bottom: 10px; color: var(--accent);">TSID (Transport Stream ID)</h3>
+            <p style="margin: 0; color: var(--text-secondary); line-height: 1.5;">
+                <strong>Türklər:</strong>
+                Nəqliyyat Axını ID<br>
+                
+                <strong>Təsvir:</strong>
+                Eyni peykdəki yüzlərlə tezlik paketinə (daşıyıcıya) təyin olunan unikal kod. Bu, Orijinal Şəbəkə ID-si (ONID) ilə birlikdə işləyir.
+            </p>
+        </div>
+
+        <div class="glossary-item" style="background: var(--bg-subtle); padding: 15px; border-radius: 8px; border-left: 4px solid var(--accent);">
+            <h3 style="margin-top: 0; margin-bottom: 10px; color: var(--accent);">Modulyasiya sistemi (Modulyasiya)</h3>
+            <p style="margin: 0; color: var(--text-secondary); line-height: 1.5;">
+                <strong>Tərcümə:</strong>
+                Yayım Standartı (DVB-S / DVB-S2)<br>
+                
+                <strong>Təsvir:</strong>
+                Kanalın kosmik məkan vasitəsilə ötürüldüyü formatı göstərir. Köhnə (Standart Definisiya) yayımlar adətən DVB-S-dən istifadə edərkən, yüksək keyfiyyətli (HD / 4K) yayımlar daha yaxşı məlumat sıxılmasını təmin edən DVB-S2 standartından istifadə edir.
+            </p>
+        </div>
+
+        <div class="glossary-item" style="background: var(--bg-subtle); padding: 15px; border-radius: 8px; border-left: 4px solid var(--accent);">
+            <h3 style="margin-top: 0; margin-bottom: 10px; color: var(--accent);">Roll-Off Faktoru</h3>
+            <p style="margin: 0; color: var(--text-secondary); line-height: 1.5;">
+                <strong>Türklər:</strong>
+                Filter Kəskinliyi<br>
+                
+                <strong>Təsvir:</strong>
+                Siqnalın yayılarkən qonşu tezislərə keçməsinin qarşısını almaq üçün onun nə qədər kəskin filtrləndiyini göstərir. (0.20, 0.25, 0.35 kimi dəyərlər istifadə olunur.) Bu, adətən istifadəçilər üçün avtomatik olaraq təyin olunur.
+            </p>
+        </div>
+
+        <div class="glossary-item" style="background: var(--bg-subtle); padding: 15px; border-radius: 8px; border-left: 4px solid var(--accent);">
+            <h3 style="margin-top: 0; margin-bottom: 10px; color: var(--accent);">NID (Şəbəkə ID)</h3>
+            <p style="margin: 0; color: var(--text-secondary); line-height: 1.5;">
+                <strong>Türkcə:</strong>
+                Şəbəkə ID<br>
+                
+                <strong>Təsviri:</strong>
+                Bu, qoşulduğunuz peyk şəbəkəsinin identifikatorudur. ONID (Orijinal Şəbəkə ID) ilə birlikdə işləyir. Türksat peykləri üçün bu dəyər adətən 1070-dir.
+            </p>
+        </div>
+
+        <div class="glossary-item" style="background: var(--bg-subtle); padding: 15px; border-radius: 8px; border-left: 4px solid var(--accent);">
+            <h3 style="margin-top: 0; margin-bottom: 10px; color: var(--accent);">ONID (Orijinal Şəbəkə ID)</h3>
+            <p style="margin: 0; color: var(--text-secondary); line-height: 1.5;">
+                <strong>Türklər:</strong>
+                Orijinal Şəbəkə ID<br>
+                
+                <strong>Təsviri:</strong>
+                Bu, yayımçının şəbəkəsinin qlobal səviyyədə qeydiyyata alınmış yeganə kodudur (məsələn, Türksat, Astra, Hotbird). Bu, cihazınıza hansı peyk şəbəkəsinə qoşulduğunu müəyyən etməyə imkan verir.
+            </p>
+        </div>
+
+        <div class="glossary-item" style="background: var(--bg-subtle); padding: 15px; border-radius: 8px; border-left: 4px solid var(--accent);">
+            <h3 style="margin-top: 0; margin-bottom: 10px; color: var(--accent);">Video PID / Audio PID</h3>
+            <p style="margin: 0; color: var(--text-secondary); line-height: 1.5;">
+                <strong>Türklər:</strong>
+                Video və Audio Paket ID-si (Paket ID-si)<br>
+                
+                <strong>Təsvir:</strong>
+                Kanalın məlumatları kosmik məkanından ayrı paketlər şəklində gəldikdə, Video PID yalnız video paketlərini, Audio PID isə yalnız audio paketlərini müəyyən edir. Televizor bu paketləri çıxarıb birləşdirir.
+            </p>
+        </div>
+
+        <div class="glossary-item" style="background: var(--bg-subtle); padding: 15px; border-radius: 8px; border-left: 4px solid var(--accent);">
+            <h3 style="margin-top: 0; margin-bottom: 10px; color: var(--accent);">PCR PID (Proqram Saat İstinadı)</h3>
+            <p style="margin: 0; color: var(--text-secondary); line-height: 1.5;">
+                <strong>Tərcümə:</strong>
+                Proqram Saat İstinadı<br>
+                   
+                <strong>İzah:</strong>
+                Bu, kosmikdən gələn audio və video paketlərin saniyə-saniyə sinxronlaşdırılmasını təmin edən istinad saat kodudur (beləliklə dodaq hərəkətləri və səs eyni anda baş verir).
+            </p>
+        </div>
+
+        <div class="glossary-item" style="background: var(--bg-subtle); padding: 15px; border-radius: 8px; border-left: 4px solid var(--accent);">
+            <h3 style="margin-top: 0; margin-bottom: 10px; color: var(--accent);">FEC (Gələcək Xəta Düzəlişi)</h3>
+            <p style="margin: 0; color: var(--text-secondary); line-height: 1.5;">
+                <strong>Türklər:</strong>
+                İrəli Xəta Düzəliş Nisbəti<br>
+                
+                <strong>Təsvir:</strong>
+                Pis hava şəraiti və ya zəif siqnal zamanı peyk qəbuledicisi tərəfindən itirilmiş məlumatın riyazi olaraq qiymətləndirilib düzəldildiyi sürət. Adətən 3/4 və ya 5/6 kimi nisbətlərlə ifadə olunur.
+            </p>
+        </div>
+
+        <div class="glossary-item" style="background: var(--bg-subtle); padding: 15px; border-radius: 8px; border-left: 4px solid var(--accent);">
+            <h3 style="margin-top: 0; margin-bottom: 10px; color: var(--accent);">Simvol sürəti</h3>
+            <p style="margin: 0; color: var(--text-secondary); line-height: 1.5;">
+                <strong>Türklər:</strong>
+                Məlumat ötürmə sürəti<br>
+                
+                <strong>izahı:</strong>
+                Satelitdən qəbul edən cihazına saniyədə ötürülən rəqəmsal məlumat (simvollar) miqdarı. Türksat peyki üzərində bu adətən 27,500 (ksps) və ya 30,000 (ksps) olur.
+            </p>
+        </div>
+    </div>
+
+    <div style="margin-top: 30px; text-align: center;">
+        <a href="/" class="btn primary">Ana Səhifəyə Qayıt</a>
+    </div>
+</div>{% endblock %}

@@ -1,0 +1,260 @@
+{% extends "base_fa.html" %}
+
+{% block title %}راهنمای کاربر - ویرایشگر کانال تلویزیون{% endblock %}
+
+{% block head %}
+<style>
+    .content-container {
+        max-width: 900px;
+        margin: 40px auto;
+        padding: 28px 32px;
+        background: var(--card-bg);
+        border-radius: 12px;
+        border: 1px solid var(--border-color);
+    }
+    .section-title {
+        font-size: 22px;
+        font-weight: 700;
+        margin-bottom: 24px;
+        color: var(--text-primary);
+        border-bottom: 2px solid var(--border-color);
+        padding-bottom: 10px;
+    }
+    .brand-tabs {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-bottom: 28px;
+    }
+    .brand-tab {
+        padding: 7px 16px;
+        border-radius: 20px;
+        font-size: 13px;
+        font-weight: 600;
+        cursor: pointer;
+        border: 1px solid var(--border-color);
+        background: var(--bg-color);
+        color: var(--text-secondary);
+        transition: all 0.2s;
+    }
+    .brand-tab.active {
+        background: var(--accent);
+        color: white;
+        border-color: var(--accent);
+    }
+    .brand-guide { display: none; }
+    .brand-guide.active { display: block; }
+    .step-box {
+        margin-bottom: 22px;
+        padding: 16px 20px;
+        border-left: 3px solid var(--accent);
+        background: rgba(29,78,216,0.06);
+        border-radius: 0 8px 8px 0;
+    }
+    .step-title {
+        font-size: 16px;
+        font-weight: 700;
+        color: var(--text-primary);
+        margin-bottom: 6px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+    .step-num {
+        background: var(--accent);
+        color: white;
+        width: 24px; height: 24px;
+        border-radius: 50%;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 12px;
+        font-weight: 800;
+        flex-shrink: 0;
+    }
+    .step-desc {
+        font-size: 14px;
+        color: var(--text-primary);
+        opacity: 0.95;
+        line-height: 1.7;
+    }
+    .step-desc code {
+        background: var(--bg-color);
+        padding: 2px 6px;
+        border-radius: 4px;
+        font-family: monospace;
+        font-size: 13px;
+        color: #93c5fd;
+        border: 1px solid var(--border-color);
+    }
+    .tip-box {
+        background: rgba(34,197,94,0.08);
+        border: 1px solid rgba(34,197,94,0.25);
+        border-radius: 8px;
+        padding: 12px 16px;
+        font-size: 13px;
+        color: #4ade80;
+        margin-top: 20px;
+        line-height: 1.6;
+    }
+    .warn-box {
+        background: rgba(251,191,36,0.08);
+        border: 1px solid rgba(251,191,36,0.25);
+        border-radius: 8px;
+        padding: 12px 16px;
+        font-size: 13px;
+        color: #fbbf24;
+        margin-top: 12px;
+        line-height: 1.6;
+    }
+</style>{% endblock %}
+
+{% block content %}
+<div class="content-container">
+    <h2 class="section-title">راهنمای کاربر</h2>
+
+    <div class="brand-tabs" role="tablist" aria-label="TV Brands">
+        <button class="brand-tab active" onclick="showGuide(\'samsung\')" role="tab" aria-selected="true" aria-controls="guide-samsung" id="tab-samsung">سامسونگ</button>
+        <button class="brand-tab" onclick="showGuide(\'lg\')" role="tab" aria-selected="false" aria-controls="guide-lg" id="tab-lg">LG</button>
+        <button class="brand-tab" onclick="showGuide(\'sony\')" role="tab" aria-selected="false" aria-controls="guide-sony" id="tab-sony">سونی براویا</button>
+        <button class="brand-tab" onclick="showGuide(\'hisense\')" role="tab" aria-selected="false" aria-controls="guide-hisense" id="tab-hisense">هایسنس</button>
+    </div>
+
+    <!-- SAMSUNG -->
+    <div class="brand-guide active" id="guide-samsung" role="tabpanel" aria-labelledby="tab-samsung">
+        <div class="step-box">
+            <div class="step-title"><span class="step-num">۱.</span> فهرست کانال‌ها را به یک درایو USB منتقل کنید</div>
+            <div class="step-desc">
+                با استفاده از کنترل تلویزیون، این مراحل را دنبال کنید: <strong>منو → پخش → تنظیمات کانال → انتقال لیست کانال‌ها</strong>.
+                کد پین خود را وارد کنید (معمولاً <code>0000</code>
+                ) و گزینه «<strong>انتقال به USB»</strong>
+                را انتخاب کنید.<br><br>
+                
+                <strong>مدل‌های قدیمی‌تر (E/F/H):</strong>
+                <code>.scm</code>
+                یک فایل ایجاد می‌شود.<br>
+                
+                <strong>مدل جدید (J/K/M/Q/R/T - تایزن):</strong>
+                <code>.zip</code> یک فایل ایجاد می‌شود.
+            </div>
+        </div>
+        <div class="step-box">
+            <div class="step-title"><span class="step-num">۲.</span> فایل را در وب‌سایت بارگذاری کنید</div>
+            <div class="step-desc">
+                درایو USB را به کامپیوتر خود وصل کنید. فایل را به ناحیهٔ بارگذاری در صفحهٔ اصلی بکشید. <code>.scm</code> یا <code>.zip</code> فایل را به داخل ناحیهٔ بارگذاری در صفحهٔ اصلی بکشید و رها کنید، یا روی دکمهٔ «انتخاب فایل» کلیک کنید.
+            </div>
+        </div>
+        <div class="step-box">
+            <div class="step-title"><span class="step-num">۳.</span> سازماندهی کانال‌ها</div>
+            <div class="step-desc">
+                کانال‌ها را با <strong>کشیدن و رها کردن</strong> مرتب کنید. 🪄 با <strong>Magic Wand</strong> از قالب‌های آماده استفاده کنید یا <strong>🛠️</strong> با <strong>Template Creator</strong> قالب دلخواه خود را بسازید. می‌توانید پرچم‌های قفل 🔒 و مورد علاقه را در هر ردیف کانال تغییر دهید.
+            </div>
+        </div>
+        <div class="step-box">
+            <div class="step-title"><span class="step-num">۴.</span> ذخیره و بارگذاری روی تلویزیون</div>
+            <div class="step-desc">
+                روی دکمه
+                <strong>«ذخیره و</strong>
+                دانلود» کلیک کنید. فایل دانلود شده را به یک درایو USB کپی کنید (از<em> همان نام</em>
+                فایل اصلی استفاده کنید!). آن را از طریق منوی تلویزیون با <strong>استفاده</strong>
+                از <strong>گزینه «بارگذاری از</strong>
+                USB» بارگذاری کنید.
+            </div>
+        </div>
+        <div class="tip-box">💡 <strong>نکته:</strong> تلویزیون فقط فایل‌های SCM با نام دقیقاً یکسان را شناسایی می‌کند. هنگام کپی کردن فایل جدید روی درایو USB، یا فایل قدیمی را بازنویسی کنید یا از آن نسخه پشتیبان تهیه کنید. <code>.bak</code> با پسوند آن.</div>
+        <div class="warn-box">⚠️ <strong>هشدار:</strong> فرآیند ویرایش کانال، فرکانس‌ها یا داده‌های رمزگذاری‌شده PID کانال‌های موجود را تغییر نمی‌دهد؛ این فرآیند فقط ترتیب و نشان‌ها را به‌روزرسانی می‌کند.</div>
+    </div>
+
+    <!-- LG -->
+    <div class="brand-guide" id="guide-lg" role="tabpanel" aria-labelledby="tab-lg">
+        <div class="step-box">
+            <div class="step-title"><span class="step-num">۱.</span> لیست کانال‌ها را به USB منتقل کنید</div>
+            <div class="step-desc">
+                در تلویزیون ال‌جی خود به <strong>مسیر</strong> <strong>تنظیمات → کانال‌ها → مدیریت کانال‌ها → کپی کانال‌ها روی USB</strong> بروید.
+                روی درایو USB <code>GlobalClone00001.TLL</code> یا <code>LG_DTV_*.tll</code> فایلی مانند این ایجاد خواهد شد.
+            </div>
+        </div>
+        <div class="step-box">
+            <div class="step-title"><span class="step-num">۲</span>. بارگذاری فایل .TLL</div>
+            <div class="step-desc">
+                یک فایل با ... را بارگذاری کنید <code>.tll</code> . سیستم به‌طور خودکار فرمت XML GlobalClone را تشخیص می‌دهد.
+            </div>
+        </div>
+        <div class="step-box">
+            <div class="step-title"><span class="step-num">۳.</span> ویرایش و دانلود</div>
+            <div class="step-desc">
+                کانال‌ها را با کشیدن و رها کردن مرتب کنید. برای دانلود فایل TLL به‌روزرسانی‌شده و انتقال آن به یک درایو USB، روی دکمه «<strong>ذخیره و دانلود»</strong>
+                کلیک کنید. این فرآیند را با انتخاب «<strong>بارگذاری کانال‌ها از USB»</strong>
+                در منوی تلویزیون تکمیل کنید.
+            </div>
+        </div>
+        <div class="tip-box">💡 در دستگاه‌های LG webOS 5، ممکن است محدودیت‌هایی برای وارد کردن لیست کانال‌ها اعمال شود. اگر صفحه سیاه را مشاهده کردید، تلویزیون را مجدداً راه‌اندازی کنید.</div>
+    </div>
+
+    <!-- SONY -->
+    <div class="brand-guide" id="guide-sony" role="tabpanel" aria-labelledby="tab-sony">
+        <div class="step-box">
+            <div class="step-title"><span class="step-num">۱.</span> فایل sdb.xml را دریافت کنید</div>
+            <div class="step-desc">
+                در تلویزیون سونی براویا، این مراحل را دنبال کنید: <strong>تنظیمات → راه‌اندازی کانال → وارد کردن لیست کانال‌ها → وارد کردن به USB</strong>.
+                روی درایو USB <code>sdb.xml</code> یا در زیرپوشه‌ها <code>*.xml</code> فایل‌ها ایجاد خواهند شد.
+            </div>
+        </div>
+        <div class="step-box">
+            <div class="step-title"><span class="step-num">۲.</span> بارگذاری فایل sdb.xml</div>
+            <div class="step-desc">
+                به صفحه اصلی بروید <code>sdb.xml</code> . سیستم به طور خودکار فایل را با فرمت سونی تشخیص داده و کانال‌ها را فهرست می‌کند.
+            </div>
+        </div>
+        <div class="step-box">
+            <div class="step-title"><span class="step-num">۳.</span> ویرایش و بارگذاری روی تلویزیون</div>
+            <div class="step-desc">
+                کانال‌ها را ویرایش کنید، سپس روی <strong>«ذخیره و دانلود</strong> به» کلیک کنید <code>sdb.xml</code> فایل را دانلود کنید. آن را روی یک درایو USB کپی کرده و با استفاده از گزینه «<strong>Import from USB</strong>» (وارد کردن از <strong>USB</strong>) آن را روی تلویزیون بارگذاری کنید.
+            </div>
+        </div>
+    </div>
+
+    <!-- HISENSE -->
+    <div class="brand-guide" id="guide-hisense" role="tabpanel" aria-labelledby="tab-hisense">
+        <div class="step-box">
+            <div class="step-title"><span class="step-num">۱.</span> فایل servicelist.db را دریافت کنید</div>
+            <div class="step-desc">
+                در تلویزیون Hisense خود، به <strong>منو → کانال → صادر کردن فهرست کانال‌ها</strong> بروید تا فایل پایگاه داده را به یک درایو USB منتقل کنید.
+                نام فایل معمولاً <code>servicelist.db</code> (۲۰۱۷ به بعد) یا <code>channel.db</code> (۲۰۱۵–۲۰۱۶).
+            </div>
+        </div>
+        <div class="step-box">
+            <div class="step-title"><span class="step-num">۲.</span> نصب پایگاه داده</div>
+            <div class="step-desc">
+                کشیدن <code>servicelist.db</code> . سیستم پایگاه داده SQLite را می‌خواند و تمام کانال‌ها را فهرست می‌کند.
+            </div>
+        </div>
+        <div class="step-box">
+            <div class="step-title"><span class="step-num">۳.</span> ویرایش و بارگذاری</div>
+            <div class="step-desc">
+                پس از اعمال تغییرات دلخواه، روی دکمه «<strong>ذخیره و دانلود»</strong>
+                کلیک کنید تا فایل پایگاه داده به‌روزرسانی‌شده را دانلود کنید. آن را روی یک درایو USB کپی کرده و از منوی وارد کردن تلویزیون برای وارد کردن آن استفاده کنید.
+            </div>
+        </div>
+        <div class="warn-box">⚠️ تغییرات نام کانال در مدل‌های Hisense محدود است؛ در برخی مدل‌ها، فقط مرتب‌سازی و تغییرات قفل قابل اعمال هستند.</div>
+    </div>
+</div>
+
+<script>
+function showGuide(brand) {
+        document.querySelectorAll(&#x27;.brand-tab&#x27;).forEach(btn =&gt; {
+            btn.classList.remove(&#x27;active&#x27;);
+            btn.setAttribute(&#x27;aria-selected&#x27;, &#x27;false&#x27;);
+        });
+        document.querySelectorAll(&#x27;.brand-guide&#x27;).forEach(g =&gt; {
+            g.classList.remove(&#x27;active&#x27;);
+        });
+        
+        const activeBtn = document.querySelector(`.brand-tab[onclick*="${brand}"]`);
+        if (activeBtn) {
+            activeBtn.classList.add(&#x27;active&#x27;);
+            activeBtn.setAttribute(&#x27;aria-selected&#x27;, &#x27;true&#x27;);
+        }
+        document.getElementById(&#x27;guide-&#x27; + brand).classList.add(&#x27;active&#x27;);
+    }
+</script>{% endblock %}

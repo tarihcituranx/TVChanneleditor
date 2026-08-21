@@ -1,0 +1,127 @@
+{% extends "base_fa.html" %}
+
+{% block title %}واژه‌نامه - ویرایشگر کانال تلویزیون{% endblock %}
+
+{% block content %}
+<div class="card border-0 shadow-sm" style="max-width: 800px; margin: 0 auto; text-align: left; padding: 30px;">
+    <h1 style="color: var(--text-primary); margin-bottom: 20px;">واژه‌نامه ماهواره و تلویزیون</h1>
+    <p style="color: var(--text-secondary); line-height: 1.6; margin-bottom: 30px;">
+        شما می‌توانید معانی اصطلاحات فنی و مخفف‌هایی را که در تنظیمات کانال تلویزیون یا در صفحه جزئیات ما مشاهده می‌کنید (به زبان انگلیسی و ترکی)، در زیر بیابید.
+    </p>
+
+    <div class="glossary-list" style="display: flex; flex-direction: column; gap: 20px;">
+        <div class="glossary-item" style="background: var(--bg-subtle); padding: 15px; border-radius: 8px; border-left: 4px solid var(--accent);">
+            <h3 style="margin-top: 0; margin-bottom: 10px; color: var(--accent);">SID (شناسه سرویس)</h3>
+            <p style="margin: 0; color: var(--text-secondary); line-height: 1.5;">
+                <strong>ترکی:</strong>
+                شناسه سرویس / شماره<br>
+                کانال
+                <strong>توضیح:</strong>
+                یک شماره شناسایی منحصر به فرد که به هر کانال پخش‌شونده در یک فرکانس (پکت) اختصاص داده می‌شود. تلویزیون شما بین کانال‌ها بر اساس این شماره SID تمایز قائل می‌شود، نه بر اساس نام آن‌ها.
+            </p>
+        </div>
+
+        <div class="glossary-item" style="background: var(--bg-subtle); padding: 15px; border-radius: 8px; border-left: 4px solid var(--accent);">
+            <h3 style="margin-top: 0; margin-bottom: 10px; color: var(--accent);">TSID (شناسه جریان انتقالی)</h3>
+            <p style="margin: 0; color: var(--text-secondary); line-height: 1.5;">
+                <strong>ترکی:</strong>
+                شناسه<br>
+                جریان انتقالی (Transport Stream ID
+                <strong>) توضیح:</strong>
+                یک کد منحصر به فرد که به هر یک از صدها بسته فرکانسی (حامل) روی همان ماهواره اختصاص داده می‌شود. این کد در کنار شناسه شبکه اصلی (Original Network ID) (ONID) کار می‌کند.
+            </p>
+        </div>
+
+        <div class="glossary-item" style="background: var(--bg-subtle); padding: 15px; border-radius: 8px; border-left: 4px solid var(--accent);">
+            <h3 style="margin-top: 0; margin-bottom: 10px; color: var(--accent);">سیستم مدولاسیون (مدولاسیون)</h3>
+            <p style="margin: 0; color: var(--text-secondary); line-height: 1.5;">
+                <strong>مترجم:</strong>
+                استاندارد پخش (DVB-S / DVB-S2)<br>
+                
+                <strong>توضیح:</strong>
+                فرمت ارسال کانال از فضا را مشخص می‌کند. در حالی که پخش‌های قدیمی‌تر (استاندارد تعریف) معمولاً از DVB-S استفاده می‌کنند، پخش‌های با وضوح بالا (HD / 4K) از استاندارد DVB-S2 استفاده می‌کنند که فشرده‌سازی داده‌ی بهتری را ارائه می‌دهد.
+            </p>
+        </div>
+
+        <div class="glossary-item" style="background: var(--bg-subtle); padding: 15px; border-radius: 8px; border-left: 4px solid var(--accent);">
+            <h3 style="margin-top: 0; margin-bottom: 10px; color: var(--accent);">ضریب رول-آف</h3>
+            <p style="margin: 0; color: var(--text-secondary); line-height: 1.5;">
+                <strong>ترکی:</strong>
+                تیزی<br>
+                فیلتر (Filter Sharpness)
+                <strong>توضیح:</strong>
+                نشان می‌دهد که سیگنال تا چه حد با تیزی فیلتر می‌شود تا از سرایت آن به فرکانس‌های مجاور در حین انتشار جلوگیری شود. (اعدادی مانند 0.20، 0.25، 0.35 استفاده می‌شوند.) این مقدار معمولاً برای کاربران به طور خودکار تنظیم می‌شود.
+            </p>
+        </div>
+
+        <div class="glossary-item" style="background: var(--bg-subtle); padding: 15px; border-radius: 8px; border-left: 4px solid var(--accent);">
+            <h3 style="margin-top: 0; margin-bottom: 10px; color: var(--accent);">NID (شناسه شبکه)</h3>
+            <p style="margin: 0; color: var(--text-secondary); line-height: 1.5;">
+                <strong>ترکی: توضیحات</strong>
+                شناسه<br>
+                شبکه
+                <strong>:</strong>
+                این شناسه شبکه‌ای است که به آن متصل هستید. این شناسه همراه با ONID (شناسه شبکه اصلی) کار می‌کند. برای ماهواره‌های Türksat، این مقدار معمولاً 1070 است.
+            </p>
+        </div>
+
+        <div class="glossary-item" style="background: var(--bg-subtle); padding: 15px; border-radius: 8px; border-left: 4px solid var(--accent);">
+            <h3 style="margin-top: 0; margin-bottom: 10px; color: var(--accent);">ONID (شناسه شبکه اصلی)</h3>
+            <p style="margin: 0; color: var(--text-secondary); line-height: 1.5;">
+                <strong>ترکی:</strong>
+                شناسه<br>
+                شبکه اصلی
+                <strong>توضیح:</strong>
+                این کد منحصربه‌فرد و ثبت‌شده جهانی شبکه پخش‌کننده (مانند Türksat، Astra، Hotbird) است. این کد به دستگاه شما امکان می‌دهد تا تشخیص دهد به کدام شبکه ماهواره‌ای متصل است.
+            </p>
+        </div>
+
+        <div class="glossary-item" style="background: var(--bg-subtle); padding: 15px; border-radius: 8px; border-left: 4px solid var(--accent);">
+            <h3 style="margin-top: 0; margin-bottom: 10px; color: var(--accent);">PID ویدئو / PID صدا</h3>
+            <p style="margin: 0; color: var(--text-secondary); line-height: 1.5;">
+                <strong>ترکی:</strong>
+                شناسه‌ی بسته ویدئو و صدا (شناسه‌ی بسته)<br>
+                
+                <strong>توضیح:</strong>
+                هنگامی که داده‌های یک کانال از فضا می‌رسد، به شکل بسته‌های مجزا است. PID ویدئو فقط بسته‌های ویدئویی را شناسایی می‌کند، در حالی که PID صدا فقط بسته‌های صوتی را شناسایی می‌کند. تلویزیون این بسته‌ها را استخراج کرده و آن‌ها را ترکیب می‌کند.
+            </p>
+        </div>
+
+        <div class="glossary-item" style="background: var(--bg-subtle); padding: 15px; border-radius: 8px; border-left: 4px solid var(--accent);">
+            <h3 style="margin-top: 0; margin-bottom: 10px; color: var(--accent);">PCR PID (مرجع ساعت برنامه)</h3>
+            <p style="margin: 0; color: var(--text-secondary); line-height: 1.5;">
+                <strong>مترجم:</strong>
+                مرجع<br>
+                ساعت برنامه
+                <strong>توضیح:</strong>
+                این یک کد ساعت مرجع است که تضمین می‌کند بسته‌های صوتی و تصویری دریافت‌شده از فضا ثانیه‌به‌ثانیه همگام‌سازی شوند (تا حرکات لب و صدا همزمان رخ دهند).
+            </p>
+        </div>
+
+        <div class="glossary-item" style="background: var(--bg-subtle); padding: 15px; border-radius: 8px; border-left: 4px solid var(--accent);">
+            <h3 style="margin-top: 0; margin-bottom: 10px; color: var(--accent);">FEC (اصلاح خطای پیشرونده)</h3>
+            <p style="margin: 0; color: var(--text-secondary); line-height: 1.5;">
+                <strong>ترکی:</strong>
+                نرخ<br>
+                اصلاح خطای پیش‌رو
+                <strong>توضیح:</strong>
+                سرعتی که در آن داده‌های از دست رفته تحت شرایط آب و هوایی نامساعد یا زمانی که سیگنال ضعیف است، به صورت ریاضی تخمین زده شده و توسط گیرنده ماهواره اصلاح می‌شود. این نرخ معمولاً به صورت نسبت‌هایی مانند ۳/۴ یا ۵/۶ بیان می‌شود.
+            </p>
+        </div>
+
+        <div class="glossary-item" style="background: var(--bg-subtle); padding: 15px; border-radius: 8px; border-left: 4px solid var(--accent);">
+            <h3 style="margin-top: 0; margin-bottom: 10px; color: var(--accent);">نرخ سمبول</h3>
+            <p style="margin: 0; color: var(--text-secondary); line-height: 1.5;">
+                <strong>ترکی: توضیح</strong>
+                نرخ<br>
+                انتقال داده
+                <strong>:</strong>
+                میزان داده دیجیتال (نمادها) که در هر ثانیه از ماهواره به گیرنده منتقل می‌شود. در ماهواره تورک‌ست، این مقدار معمولاً ۲۷۵۰۰ (ksps) یا ۳۰٬۰۰۰ (ksps) است.
+            </p>
+        </div>
+    </div>
+
+    <div style="margin-top: 30px; text-align: center;">
+        <a href="/" class="btn primary">بازگشت به صفحه اصلی</a>
+    </div>
+</div>{% endblock %}

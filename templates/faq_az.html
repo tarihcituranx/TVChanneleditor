@@ -1,0 +1,231 @@
+{% extends "base_az.html" %}
+
+{% block title %}Tez-tez Verilən Suallar - TV Kanalı Redaktoru{% endblock %}
+
+{% block head %}
+<style>
+    .content-container {
+        max-width: 900px;
+        margin: 40px auto;
+        padding: 28px 32px;
+        background: var(--card-bg);
+        border-radius: 12px;
+        border: 1px solid var(--border-color);
+    }
+    .section-title {
+        font-size: 22px;
+        font-weight: 700;
+        margin-bottom: 24px;
+        color: var(--text-primary);
+        border-bottom: 2px solid var(--border-color);
+        padding-bottom: 10px;
+    }
+    .faq-item {
+        margin-bottom: 12px;
+        border: 1px solid var(--border-color);
+        border-radius: 10px;
+        overflow: hidden;
+    }
+    .faq-q {
+        font-size: 15px;
+        font-weight: 600;
+        width: 100%;
+        border: none;
+        background: transparent;
+        text-align: left;
+        font-family: inherit;
+        color: var(--text-primary);
+        padding: 16px 20px;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 12px;
+        transition: background 0.2s;
+        user-select: none;
+    }
+    .faq-q:hover { background: rgba(59,130,246,0.06); }
+    .faq-q::after {
+        content: &amp;#x27;﹢&amp;#x27;;
+        font-size: 20px;
+        color: var(--accent);
+        transition: transform 0.2s;
+        flex-shrink: 0;
+    }
+    .faq-item.open .faq-q::after { content: &amp;#x27;−&amp;#x27;; }
+    .faq-a {
+        font-size: 14px;
+        color: var(--text-primary);
+        opacity: 0.95;
+        line-height: 1.75;
+        padding: 0 20px;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.35s ease, padding 0.2s;
+    }
+    .faq-item.open .faq-a {
+        max-height: 2000px;
+        padding: 0 20px 16px;
+    }
+    .faq-a code {
+        background: var(--bg-color);
+        padding: 2px 6px;
+        border-radius: 4px;
+        font-family: monospace;
+        font-size: 13px;
+        color: #93c5fd;
+        border: 1px solid var(--border-color);
+    }
+</style>{% endblock %}
+
+{% block content %}
+<div class="content-container">
+    <h2 class="section-title">Tez-tez Verilən Suallar</h2>
+
+    <h3 style="margin-top: 30px; margin-bottom: 15px; color: var(--accent); font-size: 18px; display: flex; align-items: center; gap: 8px;">
+        <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M12 16v-4"></path><path d="M12 8h.01"></path></svg> Ümumi mövzular
+    </h3>
+
+    <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">Hansı TV markaları dəstəklənir?</button>
+        <div class="faq-a">
+            Hal-hazırda <strong>Samsung</strong> (.scm və .zip), <strong>LG</strong> (.tll), <strong>Sony BRAVIA</strong> (sdb.xml) və <strong>Hisense</strong> (servicelist.db) tam dəstəklənir.
+            Panasonic beta mərhələsindədir; Philips, Toshiba və Grundig tezliklə əlavə olunacaq.
+        </div>
+    </div>
+
+    <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">Hansı faylı yükləməliyəm?</button>
+        <div class="faq-a">
+            TV markanıza görə fayl uzantısını yoxlayın:<br>
+            
+            • <strong>Samsung (köhnə)</strong>
+            : <code>.scm</code><br>
+            • <strong>Samsung (Tizen/yeni)</strong>: <code>.zip</code><br>
+            • <strong>LG</strong>: <code>.tll</code><br>
+            • <strong>Sony BRAVIA</strong>: <code>sdb.xml</code><br>
+            • <strong>Hisense</strong>: <code>servicelist.db</code> və ya <code>channel.db</code><br>
+            Redaktor faylınızı yüklədikdən sonra markanı avtomatik olaraq tanıyacaq.
+        </div>
+    </div>
+
+    <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">Magic Wand kanalları necə uyğunlaşdırır?</button>
+        <div class="faq-a">
+            Magic Wand kanalları adlarına görə uyğunlaşdırır (böyük-kiçik hərf fərqi nəzərə alınmır). Şablonunuzda "TRT1 HD" varsa, yüklənmiş faylda "trt1 hd" tapır və onu düzgün yerə yerləşdirir. O, tezlik və PID məlumatlarına toxunmur.
+        </div>
+    </div>
+
+    <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">Düzəldilmiş siyahını yenidən televizora necə yükləməliyəm?</button>
+        <div class="faq-a">
+            Yüklənmiş faylı USB flash sürücüyə kopyalayın (<strong>orijinal fayl adını saxlayın!</strong>
+            ). Televizor menyusunda <strong>"USB-dən İdxal Et"</strong>
+            seçimini istifadə edin.
+        </div>
+    </div>
+
+    <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">Niyə siyahıda yeni pulsuz kanalları görə bilmirəm?</button>
+        <div class="faq-a">
+            Bu sayt yalnız televizorun mövcud kanal siyahısını redaktə edir; yeni kanallar əlavə edə <em>bilməz</em>. Yeni kanalı görmək üçün əvvəlcə televizorda <strong>Şəbəkə Axtarışı (Avtomatik Təngləmə)</strong> aparmalı, sonra yeni faylı ixrac etməlisiniz.
+        </div>
+    </div>
+    
+    <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">Yayım tezliyi xəbərdarlığı (⚠️ Köhnə Tezlik) nə deməkdir?</button>
+        <div class="faq-a">
+            Sistem kanaldakı yadda saxlanılmış tezliyi cari Turksat tezlik bazası ilə müqayisə edir. Kanal köhnə və ya fərqli tezlikdə skan edilibsə, sarı xəbərdarlıq göstərilir. Bu yalnız məlumatınız üçündür; kanal işləməyə davam edəcək, lakin TV-də yenidən Şəbəkə Axtarışı (Network Scan) apararaq kanalı cari tezliyinə köçürmək tövsiyə olunur.
+        </div>
+    </div>
+
+    <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">Məlumatlarım təhlükəsizdirmi? Fayllarım serverdə saxlanılırmı?</button>
+        <div class="faq-a">
+            Yüklənmiş kanal siyahısı faylları yalnız emal zamanı müvəqqəti olaraq serverimizdə saxlanılır və proses bitdikdən sonra dərhal silinir. Heç bir kanal adı, tezlik və ya şəxsi məlumat qeydə alınmır, saxlanılmır və üçüncü tərəflərlə paylaşılmır. Bütün emal server tərəfində aparılır və yalnız çıxış faylı sizə göndərilir.
+        </div>
+    </div>
+
+    <h3 style="margin-top: 40px; margin-bottom: 15px; color: var(--accent); font-size: 18px; display: flex; align-items: center; gap: 8px;">
+        <img src="/static/img/samsung_logo.webp" style="height:20px; object-fit:contain;" class="invert-in-light" alt="Samsung">
+        Samsung Ağıllı TV
+    </h3>
+
+    <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">Samsung televizorundan kanal siyahısını USB-yə necə ixrac edim?</button>
+        <div class="faq-a">
+            Samsung üçün: Aşağıdakı addımları izləyin: <strong>Menyu → Yayım → Kanal Tənzimləmələri → Kanal Siyahısının Köçürülməsi → USB-yə Eksport</strong>. Televizor adətən yalnız eyni adlı faylları qəbul edir, buna görə redaktə və bərpa edərkən faylın adını dəyişdirməyin.
+        </div>
+    </div>
+
+    <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">SCM faylı nədir?</button>
+        <div class="faq-a">
+            <strong>SCM (Samsung Kanal Xəritəsi)</strong>
+            Samsung televizorlarının kanal sırasını, sevimlilər siyahısını və tezlik məlumatlarını saxladığı xüsusi arxiv fayludur. O, aşağıdakılar kimi ikili məlumat fayllarını ehtiva edir <code>map-SateD</code> (kanal siyahısı) və <code>TransponderDataBase.dat</code> (tezlik verilənlər bazası).
+        </div>
+    </div>
+
+    <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">Samsung Tizen TV ZIP və ya SCM fayllarından istifadə edirmi?</button>
+        <div class="faq-a">
+            <strong>Daha köhnə Samsung modelləri</strong>
+            (E, F, H seriyaları, 2012–2014) istifadə edir <code>.scm</code>
+            fayllarından istifadə edir.<br>
+            
+            <strong>Daha yeni Samsung Tizen modelləri</strong>
+            (J, K, M, Q, R, T seriyaları, 2015 və sonrakı) isə SCM fayllarından istifadə edir. <code>.zip</code>
+            SQLite verilənlər bazası ehtiva edən fayllar.<br>
+            Bu redaktor yalnız fayl uzantısına görə deyil, məzmunu yoxlayaraq hər iki formatı avtomatik tanıyır.
+        </div>
+    </div>
+
+    <h3 style="margin-top: 40px; margin-bottom: 15px; color: var(--accent); font-size: 18px; display: flex; align-items: center; gap: 8px;">
+        <img src="/static/img/lg_logo.svg" style="height:20px; object-fit:contain;" alt="LG">
+        LG Smart TV
+    </h3>
+
+    <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">LG televizorunda TLL faylı nədir və onu necə ixrac etmək olar?</button>
+        <div class="faq-a">
+            <strong>TLL (TLL Kanal Siyahısı)</strong>
+            LG-nin GlobalClone ehtiyat nüsxə formatıdır. USB sürücüsünü qoşun və <strong>Parametrlər → Ümumi → Haqqında → Kanal Ehtiyat Nüsxə Təqdirləri (KLON)</strong>
+            bölməsindən ixrac edin. Bəzi modellərdə: <strong>Menyu → Dəstək → Yeniləmə → USB-dən yeniləmə</strong>
+            . Fayl adətən adlandırılır <code>xx########.tll</code>.
+        </div>
+    </div>
+
+    <h3 style="margin-top: 40px; margin-bottom: 15px; color: var(--accent); font-size: 18px; display: flex; align-items: center; gap: 8px;">
+        <img src="/static/img/sony_logo.svg" style="height:20px; object-fit:contain;" class="theme-invert" alt="Sony">
+        Sony BRAVIA
+    </h3>
+
+    <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">Sony BRAVIA-da sdb.xml faylı haradadır?</button>
+        <div class="faq-a">
+            Sony BRAVIA üçün USB sürücüsünü qoşun və <strong>Parametrlər → Kanal Təyiqi → Kanal Siyahısının Köçürülməsi → USB-yə Eksport</strong> edin. Adı <code>sdb.xml</code> yaranacaq. Android TV modelləri üçün <strong>Parametrlər → Cihaz parametrləri → Kanal → Kanal siyahısının köçürülməsi bölməsindən</strong> istifadə edin.
+        </div>
+    </div>
+
+    <h3 style="margin-top: 40px; margin-bottom: 15px; color: var(--accent); font-size: 18px; display: flex; align-items: center; gap: 8px;">
+        <img src="/static/img/hisense_logo.svg" style="height:20px; object-fit:contain;" alt="Hisense">
+        Hisense Smart TV
+    </h3>
+
+    <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">Hisense TV-də servicelist.db və ya channel.db faylını necə əldə etmək olar?</button>
+        <div class="faq-a">
+            <strong>Menyu → Kanal → Kanal Siyahısının Eksportuna</strong> keçin. Adı <code>servicelist.db</code> və ya <code>channel.db</code> yaranacaq. Faylın adı modelə və firmware-ə görə dəyişir, lakin hər iki SQLite formatı dəstəklənir.
+        </div>
+    </div>
+
+</div>
+
+<script>
+function toggleFaq(btn) {
+        let parent = btn.parentElement;
+        let isExpanded = btn.getAttribute(&#x27;aria-expanded&#x27;) === &#x27;true&#x27;;
+        btn.setAttribute(&#x27;aria-expanded&#x27;, !isExpanded);
+        parent.classList.toggle(&#x27;open&#x27;);
+    }
+</script>{% endblock %}
