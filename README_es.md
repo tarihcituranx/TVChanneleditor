@@ -115,7 +115,6 @@ Este proyecto no es solo un sitio web, sino que también está diseñado como un
 
 Para que esto funcione, debes añadir las claves autorizadas a las variables de entorno del servidor (o de tu ordenador):
 ```bash
-export VALID_API_KEYS="secret-key-1,secret-key-2"
 ```
 
 ### 4. Comprobación de la versión y la implementación (Version Check)
@@ -127,8 +126,8 @@ curl -sS https://tvchanneleditor.onrender.com/api/version
 {
   "status": "online",
   "version": "1.0.0",
-  "commit": "97401a5...",
-  "deployed_at": "2026-08-18T19:00:51.123Z"
+  "commit": "abc1234...",
+  "deployed_at": "2026-08-21T19:00:51.123Z"
 }
 ```
 

@@ -115,7 +115,6 @@ python3 app.py
 
 Чтобы это работало, вам необходимо добавить авторизационные ключи в переменные среды (Environment Variables) сервера (или вашего компьютера):
 ```bash
-export VALID_API_KEYS="secret-key-1,secret-key-2"
 ```
 
 ### 4. Проверка версии и развертывания (Version Check)
@@ -127,8 +126,8 @@ curl -sS https://tvchanneleditor.onrender.com/api/version
 {
   "status": "online",
   "version": "1.0.0",
-  "commit": "97401a5...",
-  "deployed_at": "2026-08-18T19:00:51.123Z"
+  "commit": "abc1234...",
+  "deployed_at": "2026-08-21T19:00:51.123Z"
 }
 ```
 

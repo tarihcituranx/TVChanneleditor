@@ -115,7 +115,6 @@ Bu proje yalnızca bir web sitesi değil, aynı zamanda yapay zeka ajanlarının
 
 Bunun çalışması için sunucunun (veya bilgisayarınızın) çevre değişkenlerine (Environment Variables) yetkili şifreleri eklemeniz gerekir:
 ```bash
-export VALID_API_KEYS="secret-key-1,secret-key-2"
 ```
 
 ### 4. Sürüm ve Deploy Doğrulaması (Version Check)
@@ -127,8 +126,8 @@ curl -sS https://tvchanneleditor.onrender.com/api/version
 {
   "status": "online",
   "version": "1.0.0",
-  "commit": "97401a5...",
-  "deployed_at": "2026-08-18T19:00:51.123Z"
+  "commit": "abc1234...",
+  "deployed_at": "2026-08-21T19:00:51.123Z"
 }
 ```
 
