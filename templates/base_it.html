@@ -10,6 +10,12 @@
 -->
 <html lang="it">
 <head>
+
+    <link rel="manifest" href="/static/manifest.json">
+    <meta name="theme-color" content="#0d1117">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="color-scheme" content="light dark">
@@ -53,6 +59,12 @@
     <!-- Anonymous Usage Analytics -->
     <script defer src="/stats.js" data-website-id="0f00eaac-7976-4f61-9d41-5034ad68a1f4"></script>
 
+
+    <link rel="canonical" href="https://tvchanneleditor.onrender.com{{ '' if current_lang == 'tr' else '/' + current_lang }}{{ current_path | replace('/' + current_lang, '') | replace('//', '/') }}">
+    {% for l in langs %}
+    <link rel="alternate" hreflang="{{ l }}" href="https://tvchanneleditor.onrender.com{{ '' if l == 'tr' else '/' + l }}{{ current_path | replace('/' + current_lang, '') | replace('//', '/') }}">
+    {% endfor %}
+    <link rel="alternate" hreflang="x-default" href="https://tvchanneleditor.onrender.com{{ current_path | replace('/' + current_lang, '') | replace('//', '/') }}">
 </head>
 <body>
     <!-- SVG Icon Sprite -->
@@ -234,7 +246,19 @@
         const langSel = document.getElementById('lang-selector');
         langSel.addEventListener('change', function(e) {
             document.cookie = "lang=" + e.target.value + "; path=/; max-age=" + (60*60*24*365);
-            window.location.reload();
+            let path = window.location.pathname;
+            let langs = ['en', 'de', 'ru', 'es', 'it', 'fr', 'ar', 'fa', 'az', 'pt'];
+            langs.forEach(l => {
+                if(path.startsWith('/' + l + '/') || path === '/' + l) {
+                    path = path.substring(l.length + 1);
+                }
+            });
+            if (e.target.value !== 'tr') {
+                path = '/' + e.target.value + (path.startsWith('/') ? path : '/' + path);
+            }
+            path = path.replace(/\/\//g, '/');
+            if(path === '') path = '/';
+            window.location.href = path;
         });
 
         var langCookie = null;

@@ -159,33 +159,54 @@ def add_security_headers(response):
         del response.headers['x-render-origin-server']
     return response
 
-def render_lang(template_name, **kwargs):
-    lang = request.cookies.get('lang')
-    if not lang:
-        best_match = request.accept_languages.best_match(['tr', 'en', 'de', 'ru', 'es', 'it', 'fr', 'ar', 'fa', 'az', 'pt'])
-        lang = best_match if best_match else 'tr'
-    if lang in ['en', 'de', 'ru', 'es', 'it', 'fr', 'ar', 'fa', 'az', 'pt']:
+def render_lang(template_name, url_lang=None, **kwargs):
+    if url_lang and url_lang in SUPPORTED_LANGS:
+        lang = url_lang
+    else:
+        lang = request.cookies.get('lang')
+        if not lang:
+            best_match = request.accept_languages.best_match(SUPPORTED_LANGS)
+            lang = best_match if best_match else 'tr'
+            
+    # Always pass supported languages and current lang to templates for hreflang tags
+    kwargs['langs'] = SUPPORTED_LANGS
+    kwargs['current_lang'] = lang
+    kwargs['current_path'] = request.path
+    
+    if lang != 'tr' and lang in SUPPORTED_LANGS:
         name, ext = os.path.splitext(template_name)
         loc_template = f"{name}_{lang}{ext}"
         if os.path.exists(os.path.join('templates', loc_template)):
             return render_template(loc_template, **kwargs)
     return render_template(template_name, **kwargs)
 
-@app.route('/')
-def index():
-    return render_lang('index.html')
+@app.route('/', defaults={'lang': None})
+@app.route('/<lang>/')
+def index(lang):
+    if lang and lang not in SUPPORTED_LANGS:
+        abort(404)
+    return render_lang('index.html', url_lang=lang)
 
-@app.route('/supported')
-def supported():
-    return render_lang('supported.html')
+@app.route('/supported', defaults={'lang': None})
+@app.route('/<lang>/supported')
+def supported(lang):
+    if lang and lang not in SUPPORTED_LANGS:
+        abort(404)
+    return render_lang('supported.html', url_lang=lang)
 
-@app.route('/guide')
-def guide():
-    return render_lang('guide.html')
+@app.route('/guide', defaults={'lang': None})
+@app.route('/<lang>/guide')
+def guide(lang):
+    if lang and lang not in SUPPORTED_LANGS:
+        abort(404)
+    return render_lang('guide.html', url_lang=lang)
 
-@app.route('/faq')
-def faq():
-    return render_lang('faq.html')
+@app.route('/faq', defaults={'lang': None})
+@app.route('/<lang>/faq')
+def faq(lang):
+    if lang and lang not in SUPPORTED_LANGS:
+        abort(404)
+    return render_lang('faq.html', url_lang=lang)
 
 @app.route('/privacy')
 @app.route("/security")
@@ -253,9 +274,12 @@ def api_version():
         "version": "1.0.0"
     })
 
-@app.route('/glossary')
-def glossary():
-    return render_lang('glossary.html')
+@app.route('/glossary', defaults={'lang': None})
+@app.route('/<lang>/glossary')
+def glossary(lang):
+    if lang and lang not in SUPPORTED_LANGS:
+        abort(404)
+    return render_lang('glossary.html', url_lang=lang)
 
 @limiter.limit("10 per minute")
 @app.route('/upload', methods=['POST'])
