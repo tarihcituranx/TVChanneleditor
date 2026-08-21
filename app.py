@@ -23,15 +23,7 @@ import hisense_core
 app = Flask(__name__)
 app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 2592000  # 30 days static cache for better Lighthouse scores
 
-@app.after_request
-def apply_security_headers(response):
-    response.headers.pop('Server', None)
-    response.headers.pop('x-render-origin-server', None)
-    response.headers['X-Frame-Options'] = 'DENY'
-    response.headers['X-Content-Type-Options'] = 'nosniff'
-    response.headers['Strict-Transport-Security'] = 'max-age=31536000; includeSubDomains'
-    response.headers['Referrer-Policy'] = 'strict-origin-when-cross-origin'
-    return response
+
 
 def get_client_ip():
     # Get real IP if behind Cloudflare or Render
@@ -154,10 +146,13 @@ def add_security_headers(response):
     response.headers['Content-Security-Policy'] = "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.jsdelivr.net; img-src 'self' data:; font-src 'self' data: https://fonts.gstatic.com; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none';"
     response.headers['Referrer-Policy'] = 'strict-origin-when-cross-origin'
     response.headers['Permissions-Policy'] = 'geolocation=(), microphone=(), camera=()'
+    response.headers['Cross-Origin-Embedder-Policy'] = 'require-corp'
     response.headers['Cross-Origin-Opener-Policy'] = 'same-origin'
     response.headers['Cross-Origin-Resource-Policy'] = 'same-origin'
     if 'Server' in response.headers:
         del response.headers['Server']
+    if 'x-render-origin-server' in response.headers:
+        del response.headers['x-render-origin-server']
     return response
 
 def render_lang(template_name):
