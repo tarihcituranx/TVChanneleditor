@@ -7,12 +7,12 @@
     <link rel="stylesheet" href="/static/css/style.css">
     <script>
       (function() {
-        var state = localStorage.getItem(&#x27;theme-state&#x27;) || &#x27;auto&#x27;;
+        var state = localStorage.getItem('theme-state') || 'auto';
         var t = state;
-        if (state === &#x27;auto&#x27;) {
-            t = window.matchMedia(&#x27;(prefers-color-scheme: dark)&#x27;).matches ? &#x27;dark&#x27; : &#x27;light&#x27;;
+        if (state === 'auto') {
+            t = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
         }
-        if (t === &#x27;dark&#x27;) document.documentElement.setAttribute(&#x27;data-theme&#x27;, &#x27;dark&#x27;);
+        if (t === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
       })();
     </script>
     <style>
@@ -23,7 +23,7 @@
             height: 100vh;
             margin: 0;
             background-color: var(--bg-color);
-            font-family: &#x27;Inter&#x27;, system-ui, sans-serif;
+            font-family: 'Inter', system-ui, sans-serif;
         }
         .redirect-box {
             background: var(--card-bg);

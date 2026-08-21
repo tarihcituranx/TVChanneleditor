@@ -107,10 +107,46 @@
         </div>
 
         <ul id="channel-list" style="min-width: 600px;"></ul>
+
+    <!-- Right Side Panel -->
+    <div id="side-panel" style="width:300px; flex-shrink:0; background:var(--card-bg); border-radius:var(--radius-lg); border:1px solid var(--border-color); display:none; flex-direction:column; position:sticky; top:76px; max-height:calc(100vh - 100px); overflow-y:auto;">
+        <div style="padding:1rem 1.25rem; border-bottom:1px solid var(--border-color); display:flex; justify-content:space-between; align-items:center; position:sticky; top:0; background:var(--card-bg); z-index:10;">
+            <h3 style="margin:0; font-size:1rem; font-weight:700;">Channel Info</h3>
+            <button id="close-side-panel" style="background:none; border:none; color:var(--text-muted); cursor:pointer; font-size:1.2rem; line-height:1; padding:2px;">✕</button>
+        </div>
+        <div style="padding:1.25rem; display:flex; flex-direction:column; gap:0.75rem;">
+            <div style="display:flex; align-items:center; gap:12px; margin-bottom:0.5rem;">
+                <div id="info-avatar"></div>
+                <div>
+                    <h2 id="info-name" style="margin:0; font-size:1.1rem; font-weight:700;">Channel Name</h2>
+                    <span id="info-no" style="color:var(--text-secondary); font-size:0.85rem;"></span>
+                </div>
+            </div>
+
+            <div class="info-row"><span>Type</span><strong id="info-type"></strong></div>
+            <div class="info-row"><span>Frequency</span><strong id="info-freq"></strong></div>
+            <div class="info-row"><span>Polarization</span><strong id="info-pol"></strong></div>
+            <div class="info-row"><span>Symbol Rate</span><strong id="info-sym"></strong></div>
+            <div class="info-row"><span>Encryption</span><strong id="info-enc"></strong></div>
+
+            <details style="margin-top:0.5rem;">
+                <summary style="cursor:pointer; color:var(--accent); font-weight:600; font-size:0.875rem; user-select:none;">Advanced Technical Details</summary>
+                <div style="margin-top:0.75rem; display:flex; flex-direction:column; gap:0.5rem; font-size:0.85rem;">
+                    <div style="display:flex; justify-content:space-between;"><span style="color:var(--text-secondary);">Modulation</span><strong id="info-mod"></strong></div>
+                    <div style="display:flex; justify-content:space-between;"><span style="color:var(--text-secondary);">Roll-Off</span><strong id="info-rolloff"></strong></div>
+                    <div style="display:flex; justify-content:space-between;"><span style="color:var(--text-secondary);">Network ID</span><strong id="info-nid"></strong></div>
+                    <div style="display:flex; justify-content:space-between;"><span style="color:var(--text-secondary);">TSID</span><strong id="info-tsid"></strong></div>
+                    <div style="display:flex; justify-content:space-between;"><span style="color:var(--text-secondary);">Service ID</span><strong id="info-sid"></strong></div>
+                    <div style="display:flex; justify-content:space-between;"><span style="color:var(--text-secondary);">Video PID</span><strong id="info-vidpid"></strong></div>
+                    <div style="display:flex; justify-content:space-between;"><span style="color:var(--text-secondary);">Audio PID</span><strong id="info-audpid"></strong></div>
+                </div>
+            </details>
+        </div>
     </div>
 </div>
 
 <!-- Template Builder Modal (Split Screen) -->
+
 <div id="builder-modal" class="modal hidden">
     <div class="modal-content builder-content">
         <h2>🛠️ Custom Template Builder</h2>
