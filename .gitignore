@@ -36,3 +36,14 @@ Thumbs.db
 # Project specific
 static/data/templates.json
 venv/
+
+# Temporary/Scratch/Test Scripts
+fix_*.py
+test_*.py
+add_*.py
+rewrite_*.py
+scratch*.py
+api_test.py
+test.py
+fix.py
+convert_*.py
