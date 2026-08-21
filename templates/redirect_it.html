@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="it">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>External Link Warning - TV Channel Editor</title>
+    <title>Avviso sui link esterni - Editor dei canali TV</title>
     <link rel="stylesheet" href="/static/css/style.css">
     <script>
       (function() {
@@ -74,12 +74,12 @@
 <body>
     <div class="redirect-box">
         <img src="/static/img/redirect_illustration.jpg" alt="Safe Redirect" class="illustration">
-        <h1>You Are Leaving the Site</h1>
-        <p>You are leaving the TV Channel Editor application. Use the button below to proceed to the link.</p>
+        <h1>Stai per uscire dal sito</h1>
+        <p>Stai uscendo dall'applicazione Editor dei canali TV. Utilizza il pulsante sottostante per procedere al collegamento.</p>
         <div class="url-box" id="target-url">{{ url }}</div>
         <div class="buttons">
-            <button onclick="window.history.back()" class="btn" style="background:var(--bg-subtle); color:var(--text-primary);">Go Back</button>
-            <a href="{{ url }}" class="btn danger" style="text-decoration: none;">Proceed Anyway</a>
+            <button onclick="window.history.back()" class="btn" style="background:var(--bg-subtle); color:var(--text-primary);">Torna indietro</button>
+            <a href="{{ url }}" class="btn danger" style="text-decoration: none;">Procedi comunque</a>
         </div>
     </div>
 </body>

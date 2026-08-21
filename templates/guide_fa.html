@@ -242,19 +242,19 @@
 
 <script>
 function showGuide(brand) {
-        document.querySelectorAll(&#x27;.brand-tab&#x27;).forEach(btn =&gt; {
-            btn.classList.remove(&#x27;active&#x27;);
-            btn.setAttribute(&#x27;aria-selected&#x27;, &#x27;false&#x27;);
+        document.querySelectorAll('.brand-tab').forEach(btn => {
+            btn.classList.remove('active');
+            btn.setAttribute('aria-selected', 'false');
         });
-        document.querySelectorAll(&#x27;.brand-guide&#x27;).forEach(g =&gt; {
-            g.classList.remove(&#x27;active&#x27;);
+        document.querySelectorAll('.brand-guide').forEach(g => {
+            g.classList.remove('active');
         });
         
         const activeBtn = document.querySelector(`.brand-tab[onclick*="${brand}"]`);
         if (activeBtn) {
-            activeBtn.classList.add(&#x27;active&#x27;);
-            activeBtn.setAttribute(&#x27;aria-selected&#x27;, &#x27;true&#x27;);
+            activeBtn.classList.add('active');
+            activeBtn.setAttribute('aria-selected', 'true');
         }
-        document.getElementById(&#x27;guide-&#x27; + brand).classList.add(&#x27;active&#x27;);
+        document.getElementById('guide-' + brand).classList.add('active');
     }
 </script>{% endblock %}

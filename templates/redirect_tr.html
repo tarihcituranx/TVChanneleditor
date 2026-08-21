@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Xarici keçid xəbərdarlığı - TV kanalı redaktoru</title>
+    <title>Dış Bağlantı Uyarısı - TV Kanalı Düzenleyicisi</title>
     <link rel="stylesheet" href="/static/css/style.css">
     <script>
       (function() {
@@ -74,12 +74,12 @@
 <body>
     <div class="redirect-box">
         <img src="/static/img/redirect_illustration.jpg" alt="Safe Redirect" class="illustration">
-        <h1>Saytı Tərk Edirsiniz</h1>
-        <p>TV Kanal Redaktoru tətbiqindən çıxırsınız. Linkə keçmək üçün aşağıdakı düyməni istifadə edin.</p>
+        <h1>Siteden Çıkıyorsunuz</h1>
+        <p>TV Kanalı Düzenleyici uygulamasından çıkıyorsunuz. Bağlantıya devam etmek için aşağıdaki düğmeyi kullanın.</p>
         <div class="url-box" id="target-url">{{ url }}</div>
         <div class="buttons">
-            <button onclick="window.history.back()" class="btn" style="background:var(--bg-subtle); color:var(--text-primary);">Geri Qayıt</button>
-            <a href="{{ url }}" class="btn danger" style="text-decoration: none;">Bununla da davam et</a>
+            <button onclick="window.history.back()" class="btn" style="background:var(--bg-subtle); color:var(--text-primary);">Geri Dön</button>
+            <a href="{{ url }}" class="btn danger" style="text-decoration: none;">Yine de Devam Et</a>
         </div>
     </div>
 </body>

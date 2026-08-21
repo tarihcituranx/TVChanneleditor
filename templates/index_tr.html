@@ -1,4 +1,4 @@
-{% extends "base_pt.html" %}
+{% extends "base_tr.html" %}
 
 {% block head %}
 <link rel="preload" href="/static/data/frekanslar.json" as="fetch" crossorigin="anonymous">{% endblock %}
@@ -13,19 +13,18 @@
 <!-- Welcome Section -->
 <div id="welcome-section" style="max-width: 800px; margin: 0 auto; text-align: center; padding: 2rem 1rem;">
     <img src="/static/img/welcome_hero.webp" alt="Welcome to TV Channel Editor" width="1376" height="768" style="width: 100%; max-width: 600px; height: auto; border-radius: var(--radius-lg); box-shadow: var(--shadow-md); margin-bottom: 2rem;">
-    <h2 style="font-size: 2rem; margin-bottom: 1rem; color: var(--text-primary); font-weight: 800; letter-spacing: -0.03em;">Bem-vindo ao TV Channel Editor! 👋</h2>
+    <h2 style="font-size: 2rem; margin-bottom: 1rem; color: var(--text-primary); font-weight: 800; letter-spacing: -0.03em;">TV Kanalı Düzenleyicisine hoş geldiniz! 👋</h2>
     <p style="color: var(--text-secondary); font-size: 1.1rem; line-height: 1.6; margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto;">
         
-        Chega de passar horas a lutar com o comando da sua televisão! 
-        Basta exportar <b>o ficheiro com a</b>
-        sua <b>lista de canais</b>
-        para uma pen USB e carregá-lo aqui. 
-        Organize facilmente os seus canais com a funcionalidade de arrastar e largar ou utilize os <b>«Modelos Inteligentes»</b>
-        🪄 para os ordenar em segundos.
+        Artık saatlerce TV'nizin uzaktan kumandasıyla uğraşmanıza gerek yok! 
+        <b>Kanal listesi</b>
+        dosyanızı bir USB sürücüsüne aktarın ve buraya yükleyin. 
+        Kanallarınızı sürükle ve bırak yöntemiyle kolayca düzenleyin veya <b>"Akıllı Şablonlar"</b>
+        ı 🪄 kullanarak saniyeler içinde sıralayın.
         <br><br>
-        <span style="font-size: 0.95rem; color: var(--accent);">O teu ficheiro é processado apenas temporariamente no nosso servidor para ler a lista de canais. Nunca é arquivado de forma permanente.</span>
+        <span style="font-size: 0.95rem; color: var(--accent);">Dosyanız, kanal listesini okumak için sunucumuzda yalnızca geçici olarak işlenir. Asla kalıcı olarak arşivlenmez.</span>
     </p>
-    <button id="welcome-start-btn" class="btn primary" style="padding: 1rem 3rem; font-size: 1.25rem; border-radius: 100px; font-weight: 600; box-shadow: var(--shadow-sm);">Começar</button>
+    <button id="welcome-start-btn" class="btn primary" style="padding: 1rem 3rem; font-size: 1.25rem; border-radius: 100px; font-weight: 600; box-shadow: var(--shadow-sm);">Başlayın</button>
 </div>
 
 <!-- Upload Section -->
@@ -33,26 +32,25 @@
     <input type="file" id="file-input" accept=".scm,.zip,.tll,.xml,.db" hidden>
     <div class="upload-content">
         <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
-        <h2>Carregue um ficheiro .scm, .zip, sdb.xml ou servicelist.db</h2>
-        <p>Selecione o seu ficheiro de lista de canais Samsung, Sony ou Hisense</p>
-        <button id="browse-btn" class="btn primary">Selecionar ficheiro</button>
+        <h2>Bir .scm, .zip, sdb.xml veya servicelist.db dosyası yükleyin</h2>
+        <p>Samsung, Sony veya Hisense kanal listesi dosyanızı seçin</p>
+        <button id="browse-btn" class="btn primary">Dosya Seç</button>
         <p style="margin-top: 1rem; font-size: 0.85rem; color: var(--text-muted); max-width: 500px; margin-left: auto; margin-right: auto; line-height: 1.4; justify-content: center; text-align: center;">
-            <strong style="color: var(--accent);">Nota (utilizadores de televisores LG):</strong>
+            <strong style="color: var(--accent);">Not (LG TV Kullanıcıları):</strong>
             
-            O nosso sistema suporta os ficheiros <b>.tll</b>
-            (GlobalClone) de nova geração da LG, <b>baseados em XML</b>
-            . Os ficheiros <b>.tll binários</b>
-            mais antigos não são suportados; para esses ficheiros, utilize a aplicação ChanSort para computador.
+            Sistemimiz, LG'nin yeni nesil <b>XML tabanlı .tll</b>
+            (GlobalClone) dosyalarını desteklemektedir. Eski <b>ikili .tll</b>
+            dosyaları desteklenmemektedir; bu dosyalar için lütfen masaüstü ChanSort uygulamasını kullanın.
         </p>
         
         <div style="margin-top: 1.5rem; padding: 10px 15px; background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.2); border-radius: 8px; font-size: 0.85rem; color: var(--text-secondary); max-width: 600px; margin-left: auto; margin-right: auto; text-align: left;">
-            <strong style="color: var(--danger);">⚠️ Aviso legal:</strong>
-            Esta ferramenta não está associada a nenhum fabricante de televisores. Guarde uma cópia de segurança do seu ficheiro original da lista de canais num local seguro antes de efetuar quaisquer alterações. O nosso sistema não se responsabiliza por qualquer eventual perda de dados.
+            <strong style="color: var(--danger);">⚠️ Yasal Uyarı:</strong>
+            Bu araç, hiçbir TV üreticisiyle bağlantılı değildir. Herhangi bir düzenleme yapmadan önce lütfen orijinal kanal listesi dosyanızın bir yedeğini güvenli bir yere kaydedin. Sistemimiz, olası veri kayıplarından sorumlu değildir.
         </div>
         
         <div style="margin-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1rem;">
-            <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 0.5rem;">Ou importe um rascunho de outro dispositivo:</p>
-            <button id="import-share-btn" class="btn primary-outline" style="background:transparent; color:var(--accent); border:1px solid var(--accent);">📱 Importar através de código</button>
+            <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 0.5rem;">Veya başka bir cihazdan bir taslak içe aktarın:</p>
+            <button id="import-share-btn" class="btn primary-outline" style="background:transparent; color:var(--accent); border:1px solid var(--accent);">📱 Kod yoluyla içe aktarma</button>
         </div>
     </div>
 </div>
@@ -66,51 +64,51 @@
             </div>
             <div class="actions" style="display: flex; gap: 10px; flex-wrap: wrap; justify-content: flex-end;">
                 <button class="btn primary-outline" id="magic-wand-btn" style="background:transparent; color:var(--accent); border:1px solid var(--accent);">
-                    <svg class="icon" width="16" height="16"><use href="#icon-wand"/></svg> Modelos inteligentes
+                    <svg class="icon" width="16" height="16"><use href="#icon-wand"/></svg> Akıllı Şablonlar
                 </button>
                 <div class="dropdown">
-                    <button class="btn secondary">⋮ Mais ações</button>
+                    <button class="btn secondary">⋮ Diğer İşlemler</button>
                     <div class="dropdown-content">
-                        <button id="save-template-btn">📝 Criador de modelos</button>
-                        <button id="export-share-btn">📲 Partilhar através de código</button>
+                        <button id="save-template-btn">📝 Şablon Oluşturucu</button>
+                        <button id="export-share-btn">📲 Kod yoluyla paylaş</button>
                     </div>
                 </div>
                 <button class="btn primary" id="save-btn">
-                    <svg class="icon" width="16" height="16"><use href="#icon-save"/></svg> Guardar e descarregar
+                    <svg class="icon" width="16" height="16"><use href="#icon-save"/></svg> Kaydet ve İndir
                 </button>
             </div>
         </div>
         
         <div class="actions secondary-actions" style="display: flex; gap: 10px; flex-wrap: wrap; padding-top: 15px; border-top: 1px dashed var(--border-color); width: 100%; align-items: center;">
-            <span style="color: var(--text-secondary); font-size: 0.85rem; font-weight:600; text-transform:uppercase; letter-spacing:0.05em; margin-right:10px;">Ações em massa:</span>
+            <span style="color: var(--text-secondary); font-size: 0.85rem; font-weight:600; text-transform:uppercase; letter-spacing:0.05em; margin-right:10px;">Toplu İşlemler:</span>
             <select id="bulk-actions-select" class="btn secondary" style="padding: 0.5rem; border-radius: var(--radius-sm); font-size: 0.85rem; cursor: pointer; outline: none; background: transparent; border: 1px solid var(--border-color); color: var(--text-primary);">
-                <option value="">Selecionar ação...</option>
-                <option value="del_encrypted">🔒 Eliminar encriptados</option>
-                <option value="del_radio">📻 Eliminar rádios</option>
-                <option value="del_selected" id="opt-del-selected" disabled>🗑️ Eliminar selecionados (0)</option>
-                <option value="lock_selected" id="opt-lock-selected" disabled>🔒 Bloquear os selecionados</option>
-                <option value="fav_selected" id="opt-fav-selected" disabled>⭐ Adicionar aos favoritos os selecionados</option>
+                <option value="">Eylem Seç...</option>
+                <option value="del_encrypted">🔒 Şifreli Sil</option>
+                <option value="del_radio">📻 Radyoları Sil</option>
+                <option value="del_selected" id="opt-del-selected" disabled>🗑️ Seçilenleri Sil (0)</option>
+                <option value="lock_selected" id="opt-lock-selected" disabled>🔒 Seçilenleri Kilitle</option>
+                <option value="fav_selected" id="opt-fav-selected" disabled>⭐ Seçilenleri Favorilere Ekle</option>
             </select>
         </div>
     </div>
 
     <div style="font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 15px; display: flex; flex-wrap: wrap; gap: 20px; align-items: center; padding: 10px 15px; background: rgba(0,0,0,0.1); border-radius: 6px; border: 1px solid var(--border-color);">
-        <span><strong style="color: var(--text-primary);">Ícones:</strong></span>
+        <span><strong style="color: var(--text-primary);">Simgeler:</strong></span>
         
-        <span><span style="opacity: 0.5;">⋮⋮</span> Arrastar (Mover) 🔒 Bloqueio parental ⭐ Adicionar canal aos favoritos</span>
+        <span><span style="opacity: 0.5;">⋮⋮</span> Sürükle (Taşı) 🔒 Çocuk Kilidi ⭐ Favori Kanal</span>
         
-        <span><span style="color: var(--danger); font-weight: bold;">✕</span> Apagar</span>
+        <span><span style="color: var(--danger); font-weight: bold;">✕</span> Sil</span>
     </div>
 
     <div class="table-wrapper">
         <div class="list-header" style="min-width: 600px;">
             <div class="col-drag"></div>
             <div class="col-check"><input type="checkbox" id="select-all" title="Select All"></div>
-            <div class="col-no">N.º</div>
-            <div class="col-name">Nome do canal</div>
-            <div class="col-type">Tipo</div>
-            <div class="col-freq">Freq</div>
-            <div class="col-flags">Estado</div>
+            <div class="col-no">Hayır</div>
+            <div class="col-name">Kanal Adı</div>
+            <div class="col-type">Tür</div>
+            <div class="col-freq">Frekans</div>
+            <div class="col-flags">Durum</div>
             <div class="col-action"></div>
         </div>
 
@@ -119,34 +117,34 @@
     <!-- Right Side Panel -->
     <div id="side-panel" style="width:300px; flex-shrink:0; background:var(--card-bg); border-radius:var(--radius-lg); border:1px solid var(--border-color); display:none; flex-direction:column; position:sticky; top:76px; max-height:calc(100vh - 100px); overflow-y:auto;">
         <div style="padding:1rem 1.25rem; border-bottom:1px solid var(--border-color); display:flex; justify-content:space-between; align-items:center; position:sticky; top:0; background:var(--card-bg); z-index:10;">
-            <h3 style="margin:0; font-size:1rem; font-weight:700;">Informações do canal</h3>
+            <h3 style="margin:0; font-size:1rem; font-weight:700;">Kanal Bilgisi</h3>
             <button id="close-side-panel" style="background:none; border:none; color:var(--text-muted); cursor:pointer; font-size:1.2rem; line-height:1; padding:2px;">✕</button>
         </div>
         <div style="padding:1.25rem; display:flex; flex-direction:column; gap:0.75rem;">
             <div style="display:flex; align-items:center; gap:12px; margin-bottom:0.5rem;">
                 <div id="info-avatar"></div>
                 <div>
-                    <h2 id="info-name" style="margin:0; font-size:1.1rem; font-weight:700;">Nome do canal</h2>
+                    <h2 id="info-name" style="margin:0; font-size:1.1rem; font-weight:700;">Kanal Adı</h2>
                     <span id="info-no" style="color:var(--text-secondary); font-size:0.85rem;"></span>
                 </div>
             </div>
 
-            <div class="info-row"><span>Tipo</span><strong id="info-type"></strong></div>
-            <div class="info-row"><span>Frequência</span><strong id="info-freq"></strong></div>
-            <div class="info-row"><span>Polarização</span><strong id="info-pol"></strong></div>
-            <div class="info-row"><span>Taxa</span><strong id="info-sym"></strong><span> de símbolos</span></div>
-            <div class="info-row"><span>Encriptação</span><strong id="info-enc"></strong></div>
+            <div class="info-row"><span>Tür</span><strong id="info-type"></strong></div>
+            <div class="info-row"><span>Frekans</span><strong id="info-freq"></strong></div>
+            <div class="info-row"><span>Polarizasyon</span><strong id="info-pol"></strong></div>
+            <div class="info-row"><span>Sembol Hızı</span><strong id="info-sym"></strong></div>
+            <div class="info-row"><span>Şifreleme</span><strong id="info-enc"></strong></div>
 
             <details style="margin-top:0.5rem;">
-                <summary style="cursor:pointer; color:var(--accent); font-weight:600; font-size:0.875rem; user-select:none;">Detalhes técnicos avançados</summary>
+                <summary style="cursor:pointer; color:var(--accent); font-weight:600; font-size:0.875rem; user-select:none;">Gelişmiş Teknik Ayrıntılar</summary>
                 <div style="margin-top:0.75rem; display:flex; flex-direction:column; gap:0.5rem; font-size:0.85rem;">
-                    <div style="display:flex; justify-content:space-between;"><span style="color:var(--text-secondary);">Modulação</span><strong id="info-mod"></strong></div>
-                    <div style="display:flex; justify-content:space-between;"><span style="color:var(--text-secondary);">Roll-off</span><strong id="info-rolloff"></strong></div>
-                    <div style="display:flex; justify-content:space-between;"><span style="color:var(--text-secondary);">ID</span><strong id="info-nid"></strong><span style="color:var(--text-secondary);"> de rede</span></div>
+                    <div style="display:flex; justify-content:space-between;"><span style="color:var(--text-secondary);">Modülasyon</span><strong id="info-mod"></strong></div>
+                    <div style="display:flex; justify-content:space-between;"><span style="color:var(--text-secondary);">Roll-Off</span><strong id="info-rolloff"></strong></div>
+                    <div style="display:flex; justify-content:space-between;"><span style="color:var(--text-secondary);">Ağ Kimliği</span><strong id="info-nid"></strong></div>
                     <div style="display:flex; justify-content:space-between;"><span style="color:var(--text-secondary);">TSID</span><strong id="info-tsid"></strong></div>
-                    <div style="display:flex; justify-content:space-between;"><span style="color:var(--text-secondary);">ID</span><strong id="info-sid"></strong><span style="color:var(--text-secondary);"> do serviço</span></div>
-                    <div style="display:flex; justify-content:space-between;"><span style="color:var(--text-secondary);">PID</span><strong id="info-vidpid"></strong><span style="color:var(--text-secondary);"> de vídeo</span></div>
-                    <div style="display:flex; justify-content:space-between;"><span style="color:var(--text-secondary);">PID</span><strong id="info-audpid"></strong><span style="color:var(--text-secondary);"> de áudio</span></div>
+                    <div style="display:flex; justify-content:space-between;"><span style="color:var(--text-secondary);">Hizmet Kimliği</span><strong id="info-sid"></strong></div>
+                    <div style="display:flex; justify-content:space-between;"><span style="color:var(--text-secondary);">Video PID</span><strong id="info-vidpid"></strong></div>
+                    <div style="display:flex; justify-content:space-between;"><span style="color:var(--text-secondary);">Ses PID'si</span><strong id="info-audpid"></strong></div>
                 </div>
             </details>
         </div>
@@ -157,23 +155,23 @@
 
 <div id="builder-modal" class="modal hidden">
     <div class="modal-content builder-content">
-        <h2>🛠️ Criador de modelos personalizados</h2>
-        <p>Arraste os canais que desejar da lista à esquerda para a lista à direita para criar o seu próprio modelo perfeito.</p>
+        <h2>🛠️ Özel Şablon Oluşturucu</h2>
+        <p>Sol taraftaki listeden istediğiniz kanalları sağ taraftaki listeye sürükleyerek kendinize özel mükemmel bir şablon oluşturun.</p>
         
         <div class="split-screen">
             <div class="pane">
-                <h4 style="color:var(--text-secondary); margin-bottom:0.5rem;">Todos os canais</h4>
+                <h4 style="color:var(--text-secondary); margin-bottom:0.5rem;">Tüm Kanallar</h4>
                 <ul id="builder-source-list" class="builder-ul"></ul>
             </div>
             <div class="pane">
-                <h4 style="color:var(--accent); margin-bottom:0.5rem;">O meu modelo</h4>
+                <h4 style="color:var(--accent); margin-bottom:0.5rem;">Şablonum</h4>
                 <ul id="builder-target-list" class="builder-ul target-ul"></ul>
             </div>
         </div>
         
         <div class="modal-actions" style="margin-top:1.5rem;">
-            <button id="close-builder-btn" class="btn danger-outline">Cancelar</button>
-            <button id="save-builder-btn" class="btn primary">Guardar modelo</button>
+            <button id="close-builder-btn" class="btn danger-outline">İptal</button>
+            <button id="save-builder-btn" class="btn primary">Şablonu Kaydet</button>
         </div>
     </div>
 </div>
@@ -181,7 +179,7 @@
 <!-- Share Modal -->
 <div id="share-modal" class="modal hidden">
     <div class="modal-content" style="max-width: 400px; text-align: center;">
-        <h2 id="share-title">📱 Importar através de código</h2>
+        <h2 id="share-title">📱 Kod Yoluyla İçe Aktar</h2>
         <p id="share-desc" style="color:var(--text-secondary); margin-bottom:1.5rem;"></p>
         
         <div id="share-code-box" style="display:none; font-size: 3rem; font-family: monospace; font-weight: bold; letter-spacing: 5px; color: var(--accent); padding: 20px; background: rgba(59,130,246,0.1); border-radius: 12px; margin-bottom: 1rem;">
@@ -195,8 +193,8 @@
         <p id="share-status" style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1.5rem;"></p>
         
         <div class="modal-actions" style="justify-content: center;">
-            <button id="close-share-btn" class="btn danger-outline">Fechar</button>
-            <button id="submit-import-btn" class="btn primary" style="display:none;">Descarregar e aplicar</button>
+            <button id="close-share-btn" class="btn danger-outline">Kapat</button>
+            <button id="submit-import-btn" class="btn primary" style="display:none;">İndir ve Uygula</button>
         </div>
     </div>
 </div>
@@ -207,86 +205,78 @@
         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem; padding-bottom:1rem; border-bottom:1px solid var(--border-color);">
             <div style="display:flex; align-items:center; gap:10px;">
                 <div id="info-avatar"></div>
-                <h2 id="info-name" style="margin:0; font-size:1.2rem;">Nome do canal</h2>
+                <h2 id="info-name" style="margin:0; font-size:1.2rem;">Kanal Adı</h2>
             </div>
             <button id="close-info-btn" style="background:none; border:none; color:var(--text-secondary); cursor:pointer; font-size:1.5rem;">✕</button>
         </div>
         <div id="info-body" style="display:flex; flex-direction:column; gap:12px;">
             <div style="display:flex; justify-content:space-between; padding:8px; background:rgba(0,0,0,0.02); border-radius:6px;">
-                <span style="color:var(--text-secondary);">Número</span>
+                <span style="color:var(--text-secondary);">Kanal Numarası</span>
                 <strong id="info-no"></strong>
-                <span style="color:var(--text-secondary);">do canal</span>
             </div>
             <div style="display:flex; justify-content:space-between; padding:8px; background:rgba(0,0,0,0.02); border-radius:6px;">
-                <span style="color:var(--text-secondary);">Frequência</span>
+                <span style="color:var(--text-secondary);">Frekans</span>
                 <strong id="info-freq"></strong>
             </div>
             <div style="display:flex; justify-content:space-between; padding:8px; background:rgba(0,0,0,0.02); border-radius:6px;">
-                <span style="color:var(--text-secondary);">Polarização</span>
+                <span style="color:var(--text-secondary);">Polarizasyon</span>
                 <strong id="info-pol"></strong>
             </div>
             <div style="display:flex; justify-content:space-between; padding:8px; background:rgba(0,0,0,0.02); border-radius:6px;">
-                <span style="color:var(--text-secondary);">Taxa</span>
+                <span style="color:var(--text-secondary);">Sembol Hızı</span>
                 <strong id="info-sym"></strong>
-                <span style="color:var(--text-secondary);">de símbolos</span>
             </div>
             <div style="display:flex; justify-content:space-between; padding:8px; background:rgba(0,0,0,0.02); border-radius:6px;">
-                <span style="color:var(--text-secondary);">Tipo</span>
+                <span style="color:var(--text-secondary);">Yayın Türü</span>
                 <strong id="info-type"></strong>
-                <span style="color:var(--text-secondary);">de transmissão</span>
             </div>
             <div style="display:flex; justify-content:space-between; padding:8px; background:rgba(0,0,0,0.02); border-radius:6px;">
-                <span style="color:var(--text-secondary);">Canal</span>
+                <span style="color:var(--text-secondary);">Şifreli Kanal</span>
                 <strong id="info-enc"></strong>
-                <span style="color:var(--text-secondary);">encriptado</span>
             </div>
             
             <div style="border-top:1px dashed var(--border-color); margin: 4px 0;"></div>
             
             <div style="display:flex; justify-content:space-between; padding:4px 8px; border-radius:6px;" title="Modulation System: Indicates standard like DVB-S (SD) or DVB-S2 (HD).">
-                <span style="color:var(--text-muted); font-size:0.85rem; cursor:help; border-bottom:1px dotted var(--text-muted);">Sistema</span>
+                <span style="color:var(--text-muted); font-size:0.85rem; cursor:help; border-bottom:1px dotted var(--text-muted);">Modülasyon Sistemi</span>
                 <strong id="info-mod" style="font-family:monospace; font-size:0.85rem;"></strong>
-                <span style="color:var(--text-muted); font-size:0.85rem; cursor:help; border-bottom:1px dotted var(--text-muted);">de modulação</span>
             </div>
             <div style="display:flex; justify-content:space-between; padding:4px 8px; border-radius:6px;" title="Roll-Off Factor: Indicates how sharply the signal bandwidth is filtered.">
-                <span style="color:var(--text-muted); font-size:0.85rem; cursor:help; border-bottom:1px dotted var(--text-muted);">Roll-off</span>
+                <span style="color:var(--text-muted); font-size:0.85rem; cursor:help; border-bottom:1px dotted var(--text-muted);">Roll-Off</span>
                 <strong id="info-rolloff" style="font-family:monospace; font-size:0.85rem;"></strong>
             </div>
             <div style="display:flex; justify-content:space-between; padding:4px 8px; border-radius:6px;" title="Network ID: The ID of your satellite network.">
-                <span style="color:var(--text-muted); font-size:0.85rem; cursor:help; border-bottom:1px dotted var(--text-muted);">NID (ID de rede)</span>
+                <span style="color:var(--text-muted); font-size:0.85rem; cursor:help; border-bottom:1px dotted var(--text-muted);">NID (Ağ Kimliği)</span>
                 <strong id="info-nid" style="font-family:monospace; font-size:0.85rem;"></strong>
             </div>
             <div style="display:flex; justify-content:space-between; padding:4px 8px; border-radius:6px;" title="Transport Stream ID: The ID of the data packet (frequency) containing the channel.">
-                <span style="color:var(--text-muted); font-size:0.85rem; cursor:help; border-bottom:1px dotted var(--text-muted);">TSID (Identificador do Fluxo de Transporte)</span>
+                <span style="color:var(--text-muted); font-size:0.85rem; cursor:help; border-bottom:1px dotted var(--text-muted);">TSID (Aktarım Akışı Kimliği)</span>
                 <strong id="info-tsid" style="font-family:monospace; font-size:0.85rem;"></strong>
             </div>
             <div style="display:flex; justify-content:space-between; padding:4px 8px; border-radius:6px;" title="Original Network ID: Global ID code of the original satellite network.">
-                <span style="color:var(--text-muted); font-size:0.85rem; cursor:help; border-bottom:1px dotted var(--text-muted);">ONID (Identificação da Rede Original)</span>
+                <span style="color:var(--text-muted); font-size:0.85rem; cursor:help; border-bottom:1px dotted var(--text-muted);">ONID (Orijinal Ağ Kimliği)</span>
                 <strong id="info-onid" style="font-family:monospace; font-size:0.85rem;"></strong>
             </div>
             <div style="display:flex; justify-content:space-between; padding:4px 8px; border-radius:6px;" title="Service ID: Unique service ID assigned to the channel by the broadcaster.">
-                <span style="color:var(--text-muted); font-size:0.85rem; cursor:help; border-bottom:1px dotted var(--text-muted);">SID (Identificação do Serviço)</span>
+                <span style="color:var(--text-muted); font-size:0.85rem; cursor:help; border-bottom:1px dotted var(--text-muted);">SID (Hizmet Kimliği)</span>
                 <strong id="info-sid" style="font-family:monospace; font-size:0.85rem;"></strong>
             </div>
             <div style="display:flex; justify-content:space-between; padding:4px 8px; border-radius:6px;" title="Video Packet ID: Packet ID carrying only video data.">
-                <span style="color:var(--text-muted); font-size:0.85rem; cursor:help; border-bottom:1px dotted var(--text-muted);">PID</span>
+                <span style="color:var(--text-muted); font-size:0.85rem; cursor:help; border-bottom:1px dotted var(--text-muted);">Video PID</span>
                 <strong id="info-vidpid" style="font-family:monospace; font-size:0.85rem;"></strong>
-                <span style="color:var(--text-muted); font-size:0.85rem; cursor:help; border-bottom:1px dotted var(--text-muted);">de vídeo</span>
             </div>
             <div style="display:flex; justify-content:space-between; padding:4px 8px; border-radius:6px;" title="Audio Packet ID: Packet ID carrying only audio data.">
-                <span style="color:var(--text-muted); font-size:0.85rem; cursor:help; border-bottom:1px dotted var(--text-muted);">PID</span>
+                <span style="color:var(--text-muted); font-size:0.85rem; cursor:help; border-bottom:1px dotted var(--text-muted);">Ses PID'si</span>
                 <strong id="info-audpid" style="font-family:monospace; font-size:0.85rem;"></strong>
-                <span style="color:var(--text-muted); font-size:0.85rem; cursor:help; border-bottom:1px dotted var(--text-muted);">de áudio</span>
             </div>
             <div style="display:flex; justify-content:space-between; padding:4px 8px; border-radius:6px;" title="Program Clock Reference: Clock code synchronizing audio and video.">
-                <span style="color:var(--text-muted); font-size:0.85rem; cursor:help; border-bottom:1px dotted var(--text-muted);">PID</span>
+                <span style="color:var(--text-muted); font-size:0.85rem; cursor:help; border-bottom:1px dotted var(--text-muted);">PCR PID</span>
                 <strong id="info-pcrpid" style="font-family:monospace; font-size:0.85rem;"></strong>
-                <span style="color:var(--text-muted); font-size:0.85rem; cursor:help; border-bottom:1px dotted var(--text-muted);">de PCR</span>
             </div>
         </div>
         
         <div style="text-align: center; margin-top: 15px;">
-            <a href="/glossary" class="btn primary-outline" style="font-size: 0.8rem; padding: 4px 10px; border-radius: 20px;"><svg class="icon" width="14" height="14" style="vertical-align:-2px; margin-right:4px;"><use href="#icon-book"/></svg>Glossário</a>
+            <a href="/glossary" class="btn primary-outline" style="font-size: 0.8rem; padding: 4px 10px; border-radius: 20px;">Terimler <svg class="icon" width="14" height="14" style="vertical-align:-2px; margin-right:4px;"><use href="#icon-book"/></svg>Sözlüğü</a>
         </div>
     </div>
 </div>
@@ -294,38 +284,38 @@
 <!-- Smart Templates Modal -->
 <div id="magic-modal" class="modal hidden">
     <div class="modal-content">
-        <h2>🪄 Modelos inteligentes: Seleção de modelos</h2>
-        <p>Selecione o modelo de sequência a ser aplicado automaticamente à sua lista:</p>
+        <h2>🪄 Akıllı Şablonlar: Şablon Seçimi</h2>
+        <p>Listenize otomatik olarak uygulanacak sekans şablonunu seçin:</p>
         
         <div class="template-cards" id="template-cards-container">
             <!-- Ready Templates -->
             <div class="template-card selected" data-template="general">
-                <h3>🏆 Lista Geral (Pacote Completo)</h3>
-                <p>Uma combinação equilibrada de canais nacionais, de notícias, desportivos, documentários e infantis.</p>
-                <div class="preview">1. TRT1 HD | 2. KANAL D HD ... 8. TRT NEWS ... 15. A SPORTS ... 23. TLC HD</div>
+                <h3>🏆 Genel (Tam Paket) Liste</h3>
+                <p>Ulusal, haber, spor, belgesel ve çocuk kanallarının dengeli bir karışımı.</p>
+                <div class="preview">1. TRT1 HD | 2. KANAL D HD ... 8. TRT HABER ... 15. A SPORTS ... 23. TLC HD</div>
             </div>
             <div class="template-card" data-template="news">
-                <h3>📰 Focada em notícias</h3>
-                <p>Todas as transmissões de notícias começam imediatamente a seguir aos canais nacionais. (Sem canais desportivos nem infantis)</p>
+                <h3>📰 Haber Odaklı</h3>
+                <p>Tüm haber yayınları ulusal kanalların hemen ardından başlar. (Spor veya çocuk kanalları yoktur)</p>
                 <div class="preview">1. TRT1 HD | 2. KANAL D HD ... 8. TRT NEWS ... 11. SZC ... 14. KRT</div>
             </div>
             <div class="template-card" data-template="sports">
-                <h3>⚽ Focados no desporto</h3>
-                <p>Imediatamente a seguir aos canais nacionais, são apresentados apenas canais desportivos.</p>
+                <h3>⚽ Spor Odaklı</h3>
+                <p>Ulusal kanalların hemen ardından sadece spor kanalları listelenir.</p>
                 <div class="preview">1. TRT1 HD | 2. KANAL D HD ... 8. A SPOR | 9. TRT SPOR HD ... 15. FB TV</div>
             </div>
         </div>
 
         <!-- User Templates Will Be Added Here -->
         <div id="custom-templates-container" style="display:none; margin-bottom:1.5rem;">
-            <h3 style="font-size: 1rem; color: var(--text-secondary); margin-bottom: 0.5rem; text-transform:uppercase; letter-spacing:0.05em;">Os seus próprios modelos</h3>
+            <h3 style="font-size: 1rem; color: var(--text-secondary); margin-bottom: 0.5rem; text-transform:uppercase; letter-spacing:0.05em;">Kendi Şablonlarınız</h3>
             <div class="template-cards" id="custom-cards-container" style="margin-top:0;">
             </div>
         </div>
         
         <div class="modal-actions">
-            <button id="close-modal-btn" class="btn danger-outline">Cancelar</button>
-            <button id="apply-template-btn" class="btn magic">Aplicar modelo selecionado</button>
+            <button id="close-modal-btn" class="btn danger-outline">İptal</button>
+            <button id="apply-template-btn" class="btn magic">Seçilen Şablonu Uygula</button>
         </div>
     </div>
 </div>

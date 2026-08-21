@@ -1,6 +1,6 @@
-{% extends &quot;base_en.html&quot; %}
+{% extends "base_TEST.html" %}
 
-{% block title %}Guide d&#x27;utilisation - Éditeur de chaînes de télévision{% endblock %}
+{% block title %}Guide d'utilisation - Éditeur de chaînes de télévision{% endblock %}
 
 {% block head %}
 <style>
@@ -111,7 +111,7 @@
 
 {% block content %}
 <div class="content-container">
-    <h2 class="section-title">Guide d&#x27;utilisation</h2>
+    <h2 class="section-title">Guide d'utilisation</h2>
 
     <div class="brand-tabs" role="tablist" aria-label="TV Brands">
         <button class="brand-tab active" onclick="showGuide(\'samsung\')" role="tab" aria-selected="true" aria-controls="guide-samsung" id="tab-samsung">Samsung</button>
@@ -125,9 +125,9 @@
         <div class="step-box">
             <div class="step-title"><span class="step-num">1</span> Transférer la liste des chaînes sur une clé USB</div>
             <div class="step-desc">
-                À l&#x27;aide de la télécommande du téléviseur, procédez comme suit : <strong>Menu → Diffusion → Paramètres des chaînes → Transférer la liste des chaînes</strong>.
+                À l'aide de la télécommande du téléviseur, procédez comme suit : <strong>Menu → Diffusion → Paramètres des chaînes → Transférer la liste des chaînes</strong>.
                 Saisissez votre code PIN (généralement <code>0000</code>
-                ) et sélectionnez l&#x27;option « <strong>Transférer vers USB</strong>
+                ) et sélectionnez l'option « <strong>Transférer vers USB</strong>
                 ».<br><br>
                 
                 <strong>Anciens modèles (E/F/H) :</strong>
@@ -141,7 +141,7 @@
         <div class="step-box">
             <div class="step-title"><span class="step-num">2</span> Téléverser le fichier sur le site web</div>
             <div class="step-desc">
-                Branchez la clé USB sur votre ordinateur. Faites glisser le fichier vers la zone de téléchargement sur la page d&#x27;accueil <code>.scm</code> ou <code>.zip</code> glissez-déposez le fichier dans la zone de téléchargement de la page d&#x27;accueil, ou cliquez sur le bouton « Sélectionner un fichier ».
+                Branchez la clé USB sur votre ordinateur. Faites glisser le fichier vers la zone de téléchargement sur la page d'accueil <code>.scm</code> ou <code>.zip</code> glissez-déposez le fichier dans la zone de téléchargement de la page d'accueil, ou cliquez sur le bouton « Sélectionner un fichier ».
             </div>
         </div>
         <div class="step-box">
@@ -205,13 +205,13 @@
         <div class="step-box">
             <div class="step-title"><span class="step-num">2.</span> Chargez le fichier sdb.xml</div>
             <div class="step-desc">
-                Accédez à l&#x27;écran d&#x27;accueil <code>sdb.xml</code> . Le système reconnaît automatiquement le fichier au format Sony et affiche la liste des chaînes.
+                Accédez à l'écran d'accueil <code>sdb.xml</code> . Le système reconnaît automatiquement le fichier au format Sony et affiche la liste des chaînes.
             </div>
         </div>
         <div class="step-box">
             <div class="step-title"><span class="step-num">3.</span> Modifier et télécharger sur le téléviseur</div>
             <div class="step-desc">
-                Modifiez la liste des chaînes, puis cliquez sur « <strong>Enregistrer et télécharger »</strong> pour <code>sdb.xml</code> télécharger le fichier. Copiez-le sur une clé USB et chargez-le sur le téléviseur à l&#x27;aide de la fonction « <strong>Importer depuis une clé USB</strong> ».
+                Modifiez la liste des chaînes, puis cliquez sur « <strong>Enregistrer et télécharger »</strong> pour <code>sdb.xml</code> télécharger le fichier. Copiez-le sur une clé USB et chargez-le sur le téléviseur à l'aide de la fonction « <strong>Importer depuis une clé USB</strong> ».
             </div>
         </div>
     </div>
@@ -244,19 +244,19 @@
 
 <script>
 function showGuide(brand) {
-        document.querySelectorAll(&#x27;.brand-tab&#x27;).forEach(btn =&gt; {
-            btn.classList.remove(&#x27;active&#x27;);
-            btn.setAttribute(&#x27;aria-selected&#x27;, &#x27;false&#x27;);
+        document.querySelectorAll('.brand-tab').forEach(btn => {
+            btn.classList.remove('active');
+            btn.setAttribute('aria-selected', 'false');
         });
-        document.querySelectorAll(&#x27;.brand-guide&#x27;).forEach(g =&gt; {
-            g.classList.remove(&#x27;active&#x27;);
+        document.querySelectorAll('.brand-guide').forEach(g => {
+            g.classList.remove('active');
         });
         
-        const activeBtn = document.querySelector(`.brand-tab[onclick*=&quot;${brand}&quot;]`);
+        const activeBtn = document.querySelector(`.brand-tab[onclick*="${brand}"]`);
         if (activeBtn) {
-            activeBtn.classList.add(&#x27;active&#x27;);
-            activeBtn.setAttribute(&#x27;aria-selected&#x27;, &#x27;true&#x27;);
+            activeBtn.classList.add('active');
+            activeBtn.setAttribute('aria-selected', 'true');
         }
-        document.getElementById(&#x27;guide-&#x27; + brand).classList.add(&#x27;active&#x27;);
+        document.getElementById('guide-' + brand).classList.add('active');
     }
 </script>{% endblock %}

@@ -17,10 +17,9 @@
     <p style="color: var(--text-secondary); font-size: 1.1rem; line-height: 1.6; margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto;">
         
         ¡Se acabaron las horas de lucha con el mando a distancia de tu televisor! 
-        Solo tienes que exportar el <b>archivo con la lista de</b>
-        <b>canales</b>
+        Solo tienes que exportar tu <b>archivo de lista de canales</b>
         a una memoria USB y subirlo aquí. 
-        Organiza fácilmente tus canales arrastrando y soltando, o utiliza la <b>«varita mágica»</b>
+        Organiza fácilmente tus canales arrastrando y soltando, o utiliza las <b>«plantillas inteligentes»</b>
         🪄 para ordenarlos en segundos.
         <br><br>
         <span style="font-size: 0.95rem; color: var(--accent);">Tu archivo solo se procesa temporalmente en nuestro servidor para leer la lista de canales. Nunca se archiva de forma permanente.</span>
@@ -41,7 +40,7 @@
             
             Nuestro sistema es compatible con los archivos <b>.tll</b>
             (GlobalClone) de nueva generación de LG, <b>basados en XML</b>
-            . No es compatible con los archivos <b>.tll binarios</b>
+            . No se admiten los archivos <b>.tll binarios</b>
             más antiguos; para esos archivos, utiliza la aplicación de escritorio ChanSort.
         </p>
         
@@ -66,7 +65,7 @@
             </div>
             <div class="actions" style="display: flex; gap: 10px; flex-wrap: wrap; justify-content: flex-end;">
                 <button class="btn primary-outline" id="magic-wand-btn" style="background:transparent; color:var(--accent); border:1px solid var(--accent);">
-                    <svg class="icon" width="16" height="16"><use href="#icon-wand"/></svg> Varita mágica
+                    <svg class="icon" width="16" height="16"><use href="#icon-wand"/></svg> Plantillas inteligentes
                 </button>
                 <div class="dropdown">
                     <button class="btn secondary">⋮ Más acciones</button>
@@ -87,7 +86,7 @@
                 <option value="">Seleccionar acción...</option>
                 <option value="del_encrypted">🔒 Eliminar cifrado</option>
                 <option value="del_radio">📻 Eliminar radios</option>
-                <option value="del_selected" id="opt-del-selected" disabled>🗑️ Eliminar seleccionados (0)</option>
+                <option value="del_selected" id="opt-del-selected" disabled>🗑️ Eliminar los seleccionados (0)</option>
                 <option value="lock_selected" id="opt-lock-selected" disabled>🔒 Bloquear los seleccionados</option>
                 <option value="fav_selected" id="opt-fav-selected" disabled>⭐ Añadir a favoritos lo seleccionado</option>
             </select>
@@ -97,7 +96,7 @@
     <div style="font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 15px; display: flex; flex-wrap: wrap; gap: 20px; align-items: center; padding: 10px 15px; background: rgba(0,0,0,0.1); border-radius: 6px; border: 1px solid var(--border-color);">
         <span><strong style="color: var(--text-primary);">Iconos:</strong></span>
         
-        <span><span style="opacity: 0.5;">⋮⋮</span> Arrastrar (Mover) 🔒 Bloqueo infantil ⭐ Canal favorito</span>
+        <span><span style="opacity: 0.5;">⋮⋮</span> Arrastrar (mover) 🔒 Bloqueo infantil ⭐ Canal favorito</span>
         
         <span><span style="color: var(--danger); font-weight: bold;">✕</span> Eliminar</span>
     </div>
@@ -119,34 +118,34 @@
     <!-- Right Side Panel -->
     <div id="side-panel" style="width:300px; flex-shrink:0; background:var(--card-bg); border-radius:var(--radius-lg); border:1px solid var(--border-color); display:none; flex-direction:column; position:sticky; top:76px; max-height:calc(100vh - 100px); overflow-y:auto;">
         <div style="padding:1rem 1.25rem; border-bottom:1px solid var(--border-color); display:flex; justify-content:space-between; align-items:center; position:sticky; top:0; background:var(--card-bg); z-index:10;">
-            <h3 style="margin:0; font-size:1rem; font-weight:700;">Channel Info</h3>
+            <h3 style="margin:0; font-size:1rem; font-weight:700;">Información del canal</h3>
             <button id="close-side-panel" style="background:none; border:none; color:var(--text-muted); cursor:pointer; font-size:1.2rem; line-height:1; padding:2px;">✕</button>
         </div>
         <div style="padding:1.25rem; display:flex; flex-direction:column; gap:0.75rem;">
             <div style="display:flex; align-items:center; gap:12px; margin-bottom:0.5rem;">
                 <div id="info-avatar"></div>
                 <div>
-                    <h2 id="info-name" style="margin:0; font-size:1.1rem; font-weight:700;">Channel Name</h2>
+                    <h2 id="info-name" style="margin:0; font-size:1.1rem; font-weight:700;">Nombre del canal</h2>
                     <span id="info-no" style="color:var(--text-secondary); font-size:0.85rem;"></span>
                 </div>
             </div>
 
-            <div class="info-row"><span>Type</span><strong id="info-type"></strong></div>
-            <div class="info-row"><span>Frequency</span><strong id="info-freq"></strong></div>
-            <div class="info-row"><span>Polarization</span><strong id="info-pol"></strong></div>
-            <div class="info-row"><span>Symbol Rate</span><strong id="info-sym"></strong></div>
-            <div class="info-row"><span>Encryption</span><strong id="info-enc"></strong></div>
+            <div class="info-row"><span>Tipo</span><strong id="info-type"></strong></div>
+            <div class="info-row"><span>Frecuencia</span><strong id="info-freq"></strong></div>
+            <div class="info-row"><span>Polarización</span><strong id="info-pol"></strong></div>
+            <div class="info-row"><span>Velocidad</span><strong id="info-sym"></strong><span> de símbolos</span></div>
+            <div class="info-row"><span>Cifrado</span><strong id="info-enc"></strong></div>
 
             <details style="margin-top:0.5rem;">
-                <summary style="cursor:pointer; color:var(--accent); font-weight:600; font-size:0.875rem; user-select:none;">Advanced Technical Details</summary>
+                <summary style="cursor:pointer; color:var(--accent); font-weight:600; font-size:0.875rem; user-select:none;">Detalles técnicos avanzados</summary>
                 <div style="margin-top:0.75rem; display:flex; flex-direction:column; gap:0.5rem; font-size:0.85rem;">
-                    <div style="display:flex; justify-content:space-between;"><span style="color:var(--text-secondary);">Modulation</span><strong id="info-mod"></strong></div>
-                    <div style="display:flex; justify-content:space-between;"><span style="color:var(--text-secondary);">Roll-Off</span><strong id="info-rolloff"></strong></div>
-                    <div style="display:flex; justify-content:space-between;"><span style="color:var(--text-secondary);">Network ID</span><strong id="info-nid"></strong></div>
+                    <div style="display:flex; justify-content:space-between;"><span style="color:var(--text-secondary);">Modulación</span><strong id="info-mod"></strong></div>
+                    <div style="display:flex; justify-content:space-between;"><span style="color:var(--text-secondary);">Attenuación</span><strong id="info-rolloff"></strong></div>
+                    <div style="display:flex; justify-content:space-between;"><span style="color:var(--text-secondary);">Identificador</span><strong id="info-nid"></strong><span style="color:var(--text-secondary);"> de red</span></div>
                     <div style="display:flex; justify-content:space-between;"><span style="color:var(--text-secondary);">TSID</span><strong id="info-tsid"></strong></div>
-                    <div style="display:flex; justify-content:space-between;"><span style="color:var(--text-secondary);">Service ID</span><strong id="info-sid"></strong></div>
-                    <div style="display:flex; justify-content:space-between;"><span style="color:var(--text-secondary);">Video PID</span><strong id="info-vidpid"></strong></div>
-                    <div style="display:flex; justify-content:space-between;"><span style="color:var(--text-secondary);">Audio PID</span><strong id="info-audpid"></strong></div>
+                    <div style="display:flex; justify-content:space-between;"><span style="color:var(--text-secondary);">ID</span><strong id="info-sid"></strong><span style="color:var(--text-secondary);"> de servicio</span></div>
+                    <div style="display:flex; justify-content:space-between;"><span style="color:var(--text-secondary);">PID</span><strong id="info-vidpid"></strong><span style="color:var(--text-secondary);"> de vídeo</span></div>
+                    <div style="display:flex; justify-content:space-between;"><span style="color:var(--text-secondary);">PID</span><strong id="info-audpid"></strong><span style="color:var(--text-secondary);"> de audio</span></div>
                 </div>
             </details>
         </div>
@@ -243,42 +242,42 @@
             
             <div style="border-top:1px dashed var(--border-color); margin: 4px 0;"></div>
             
-            <div style="display:flex; justify-content:space-between; padding:4px 8px; border-radius:6px;" title="Modülasyon Sistemi: Yayının DVB-S (SD) veya DVB-S2 (HD) gibi standardını belirtir.">
+            <div style="display:flex; justify-content:space-between; padding:4px 8px; border-radius:6px;" title="Modulation System: Indicates standard like DVB-S (SD) or DVB-S2 (HD).">
                 <span style="color:var(--text-muted); font-size:0.85rem; cursor:help; border-bottom:1px dotted var(--text-muted);">Sistema</span>
                 <strong id="info-mod" style="font-family:monospace; font-size:0.85rem;"></strong>
                 <span style="color:var(--text-muted); font-size:0.85rem; cursor:help; border-bottom:1px dotted var(--text-muted);">de modulación</span>
             </div>
-            <div style="display:flex; justify-content:space-between; padding:4px 8px; border-radius:6px;" title="Roll-Off Faktörü: Sinyal bant genişliğinin ne kadar keskin bir şekilde filtrelendiğini gösterir.">
+            <div style="display:flex; justify-content:space-between; padding:4px 8px; border-radius:6px;" title="Roll-Off Factor: Indicates how sharply the signal bandwidth is filtered.">
                 <span style="color:var(--text-muted); font-size:0.85rem; cursor:help; border-bottom:1px dotted var(--text-muted);">Attenuación</span>
                 <strong id="info-rolloff" style="font-family:monospace; font-size:0.85rem;"></strong>
             </div>
-            <div style="display:flex; justify-content:space-between; padding:4px 8px; border-radius:6px;" title="Network ID: Bulunduğunuz uydu şebekesinin (Ağ) kimliğidir.">
+            <div style="display:flex; justify-content:space-between; padding:4px 8px; border-radius:6px;" title="Network ID: The ID of your satellite network.">
                 <span style="color:var(--text-muted); font-size:0.85rem; cursor:help; border-bottom:1px dotted var(--text-muted);">NID (identificador de red)</span>
                 <strong id="info-nid" style="font-family:monospace; font-size:0.85rem;"></strong>
             </div>
-            <div style="display:flex; justify-content:space-between; padding:4px 8px; border-radius:6px;" title="Transport Stream ID: Kanalın bulunduğu veri paketinin (frekansın) kimlik numarası.">
+            <div style="display:flex; justify-content:space-between; padding:4px 8px; border-radius:6px;" title="Transport Stream ID: The ID of the data packet (frequency) containing the channel.">
                 <span style="color:var(--text-muted); font-size:0.85rem; cursor:help; border-bottom:1px dotted var(--text-muted);">TSID (identificador de flujo de transporte)</span>
                 <strong id="info-tsid" style="font-family:monospace; font-size:0.85rem;"></strong>
             </div>
-            <div style="display:flex; justify-content:space-between; padding:4px 8px; border-radius:6px;" title="Original Network ID: Orijinal uydu ağının küresel kimlik kodu.">
+            <div style="display:flex; justify-content:space-between; padding:4px 8px; border-radius:6px;" title="Original Network ID: Global ID code of the original satellite network.">
                 <span style="color:var(--text-muted); font-size:0.85rem; cursor:help; border-bottom:1px dotted var(--text-muted);">ONID (identificador de red original)</span>
                 <strong id="info-onid" style="font-family:monospace; font-size:0.85rem;"></strong>
             </div>
-            <div style="display:flex; justify-content:space-between; padding:4px 8px; border-radius:6px;" title="Service ID: Yayıncının o kanala atadığı benzersiz servis kimliği.">
+            <div style="display:flex; justify-content:space-between; padding:4px 8px; border-radius:6px;" title="Service ID: Unique service ID assigned to the channel by the broadcaster.">
                 <span style="color:var(--text-muted); font-size:0.85rem; cursor:help; border-bottom:1px dotted var(--text-muted);">SID (identificador de servicio)</span>
                 <strong id="info-sid" style="font-family:monospace; font-size:0.85rem;"></strong>
             </div>
-            <div style="display:flex; justify-content:space-between; padding:4px 8px; border-radius:6px;" title="Video Packet ID: Kanalın sadece görüntü (video) verilerini taşıyan şifre kodu.">
+            <div style="display:flex; justify-content:space-between; padding:4px 8px; border-radius:6px;" title="Video Packet ID: Packet ID carrying only video data.">
                 <span style="color:var(--text-muted); font-size:0.85rem; cursor:help; border-bottom:1px dotted var(--text-muted);">PID</span>
                 <strong id="info-vidpid" style="font-family:monospace; font-size:0.85rem;"></strong>
                 <span style="color:var(--text-muted); font-size:0.85rem; cursor:help; border-bottom:1px dotted var(--text-muted);">de vídeo</span>
             </div>
-            <div style="display:flex; justify-content:space-between; padding:4px 8px; border-radius:6px;" title="Audio Packet ID: Kanalın sadece ses verilerini taşıyan şifre kodu.">
+            <div style="display:flex; justify-content:space-between; padding:4px 8px; border-radius:6px;" title="Audio Packet ID: Packet ID carrying only audio data.">
                 <span style="color:var(--text-muted); font-size:0.85rem; cursor:help; border-bottom:1px dotted var(--text-muted);">PID</span>
                 <strong id="info-audpid" style="font-family:monospace; font-size:0.85rem;"></strong>
                 <span style="color:var(--text-muted); font-size:0.85rem; cursor:help; border-bottom:1px dotted var(--text-muted);">de audio</span>
             </div>
-            <div style="display:flex; justify-content:space-between; padding:4px 8px; border-radius:6px;" title="Program Clock Reference: Ses ve görüntünün senkronize çalışmasını sağlayan saat kodu.">
+            <div style="display:flex; justify-content:space-between; padding:4px 8px; border-radius:6px;" title="Program Clock Reference: Clock code synchronizing audio and video.">
                 <span style="color:var(--text-muted); font-size:0.85rem; cursor:help; border-bottom:1px dotted var(--text-muted);">PID</span>
                 <strong id="info-pcrpid" style="font-family:monospace; font-size:0.85rem;"></strong>
                 <span style="color:var(--text-muted); font-size:0.85rem; cursor:help; border-bottom:1px dotted var(--text-muted);">de PCR</span>
@@ -291,14 +290,14 @@
     </div>
 </div>
 
-<!-- Magic Wand Modal -->
+<!-- Smart Templates Modal -->
 <div id="magic-modal" class="modal hidden">
     <div class="modal-content">
-        <h2>🪄 Varita mágica: Selección de plantillas</h2>
+        <h2>🪄 Plantillas inteligentes: Selección de plantillas</h2>
         <p>Selecciona la plantilla de secuencia que se aplicará automáticamente a tu lista:</p>
         
         <div class="template-cards" id="template-cards-container">
-            <!-- Hazır Şablonlar -->
+            <!-- Ready Templates -->
             <div class="template-card selected" data-template="general">
                 <h3>🏆 Lista general (paquete completo)</h3>
                 <p>Una combinación equilibrada de canales nacionales, de noticias, deportivos, documentales e infantiles.</p>
@@ -316,7 +315,7 @@
             </div>
         </div>
 
-        <!-- Kullanıcı Şablonları Buraya Eklenecek -->
+        <!-- User Templates Will Be Added Here -->
         <div id="custom-templates-container" style="display:none; margin-bottom:1.5rem;">
             <h3 style="font-size: 1rem; color: var(--text-secondary); margin-bottom: 0.5rem; text-transform:uppercase; letter-spacing:0.05em;">Tus propias plantillas</h3>
             <div class="template-cards" id="custom-cards-container" style="margin-top:0;">
@@ -342,7 +341,8 @@
             document.getElementById('welcome-modal').style.display = 'none';
         });
     });
-</script>{% endblock %}
+</script>
+{% endblock %}
 
 {% block scripts %}
 <script>
@@ -365,4 +365,4 @@
         });
     });
 </script>
-<script src="/static/js/app.js"></script>{% endblock %}
+<script src="/static/js/app.js"></script>{% endblock %}</div>

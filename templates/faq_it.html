@@ -46,13 +46,13 @@
     }
     .faq-q:hover { background: rgba(59,130,246,0.06); }
     .faq-q::after {
-        content: &#x27;﹢&#x27;;
+        content: '﹢';
         font-size: 20px;
         color: var(--accent);
         transition: transform 0.2s;
         flex-shrink: 0;
     }
-    .faq-item.open .faq-q::after { content: &#x27;−&#x27;; }
+    .faq-item.open .faq-q::after { content: '−'; }
     .faq-a {
         font-size: 14px;
         color: var(--text-primary);
@@ -105,7 +105,7 @@
             • <strong>LG</strong>: <code>.tll</code><br>
             • <strong>Sony BRAVIA</strong>: <code>sdb.xml</code><br>
             • <strong>Hisense</strong>: <code>servicelist.db</code> oppure <code>channel.db</code><br>
-            L&#x27;editor rileverà automaticamente la marca una volta caricato il file.
+            L'editor rileverà automaticamente la marca una volta caricato il file.
         </div>
     </div>
 
@@ -224,8 +224,8 @@
 <script>
 function toggleFaq(btn) {
         let parent = btn.parentElement;
-        let isExpanded = btn.getAttribute(&#x27;aria-expanded&#x27;) === &#x27;true&#x27;;
-        btn.setAttribute(&#x27;aria-expanded&#x27;, !isExpanded);
-        parent.classList.toggle(&#x27;open&#x27;);
+        let isExpanded = btn.getAttribute('aria-expanded') === 'true';
+        btn.setAttribute('aria-expanded', !isExpanded);
+        parent.classList.toggle('open');
     }
 </script>{% endblock %}

@@ -1,127 +1,127 @@
 {% extends "base_it.html" %}
 
-{% block title %}Glossary - TV Channel Editor{% endblock %}
+{% block title %}Glossario - Editor dei canali TV{% endblock %}
 
 {% block content %}
 <div class="card border-0 shadow-sm" style="max-width: 800px; margin: 0 auto; text-align: left; padding: 30px;">
-    <h1 style="color: var(--text-primary); margin-bottom: 20px;">Satellite and TV Glossary</h1>
+    <h1 style="color: var(--text-primary); margin-bottom: 20px;">Glossario satellitare e televisivo</h1>
     <p style="color: var(--text-secondary); line-height: 1.6; margin-bottom: 30px;">
-        You can find the meanings of the technical terms and abbreviations (in English and Turkish) that you see in TV channel settings or on our details page below.
+        Di seguito sono riportati i significati dei termini tecnici e delle abbreviazioni (in inglese e turco) presenti nelle impostazioni dei canali TV o nella nostra pagina dei dettagli.
     </p>
 
     <div class="glossary-list" style="display: flex; flex-direction: column; gap: 20px;">
         <div class="glossary-item" style="background: var(--bg-subtle); padding: 15px; border-radius: 8px; border-left: 4px solid var(--accent);">
-            <h3 style="margin-top: 0; margin-bottom: 10px; color: var(--accent);">SID (Service ID)</h3>
+            <h3 style="margin-top: 0; margin-bottom: 10px; color: var(--accent);">SID (ID servizio)</h3>
             <p style="margin: 0; color: var(--text-secondary); line-height: 1.5;">
-                <strong>Turkish:</strong>
-                Service ID / Channel Number<br>
-                
-                <strong>Description:</strong>
-                A unique identification number assigned to each channel broadcasting within a frequency (packet). Your TV distinguishes between channels based on this SID number, not by their names.
+                <strong>Turco:</strong>
+                ID servizio / Numero<br>
+                canale
+                <strong>Descrizione:</strong>
+                Un numero di identificazione univoco assegnato a ciascun canale che trasmette all’interno di una frequenza (pacchetto). Il televisore distingue i canali in base a questo numero SID, non ai loro nomi.
             </p>
         </div>
 
         <div class="glossary-item" style="background: var(--bg-subtle); padding: 15px; border-radius: 8px; border-left: 4px solid var(--accent);">
             <h3 style="margin-top: 0; margin-bottom: 10px; color: var(--accent);">TSID (Transport Stream ID)</h3>
             <p style="margin: 0; color: var(--text-secondary); line-height: 1.5;">
-                <strong>Turkish:</strong>
+                <strong>Turco:</strong>
                 Transport Stream ID<br>
                 
-                <strong>Description:</strong>
-                A unique code assigned to each of the hundreds of frequency packets (carriers) on the same satellite. It works in conjunction with the Original Network ID (ONID).
+                <strong>Descrizione:</strong>
+                un codice univoco assegnato a ciascuno delle centinaia di pacchetti di frequenza (portanti) presenti sullo stesso satellite. Funziona in combinazione con l’Original Network ID (ONID).
             </p>
         </div>
 
         <div class="glossary-item" style="background: var(--bg-subtle); padding: 15px; border-radius: 8px; border-left: 4px solid var(--accent);">
-            <h3 style="margin-top: 0; margin-bottom: 10px; color: var(--accent);">Modulation System (Modulation)</h3>
+            <h3 style="margin-top: 0; margin-bottom: 10px; color: var(--accent);">Sistema di modulazione (Modulazione)</h3>
             <p style="margin: 0; color: var(--text-secondary); line-height: 1.5;">
-                <strong>Translation:</strong>
-                Broadcast Standard (DVB-S / DVB-S2)<br>
+                <strong>Traduzione:</strong>
+                Standard di trasmissione (DVB-S / DVB-S2)<br>
                 
-                <strong>Description:</strong>
-                Specifies the format in which the channel is transmitted from space. While older (Standard Definition) broadcasts generally use DVB-S, high-definition (HD / 4K) broadcasts use the DVB-S2 standard, which offers better data compression.
+                <strong>Descrizione:</strong>
+                Specifica il formato in cui il canale viene trasmesso dallo spazio. Mentre le trasmissioni più vecchie (a definizione standard) utilizzano generalmente il DVB-S, quelle ad alta definizione (HD / 4K) utilizzano lo standard DVB-S2, che offre una migliore compressione dei dati.
             </p>
         </div>
 
         <div class="glossary-item" style="background: var(--bg-subtle); padding: 15px; border-radius: 8px; border-left: 4px solid var(--accent);">
-            <h3 style="margin-top: 0; margin-bottom: 10px; color: var(--accent);">Roll-Off Factor</h3>
+            <h3 style="margin-top: 0; margin-bottom: 10px; color: var(--accent);">Fattore di roll-off</h3>
             <p style="margin: 0; color: var(--text-secondary); line-height: 1.5;">
-                <strong>Turkish:</strong>
-                Filter Sharpness<br>
-                
-                <strong>Description:</strong>
-                Indicates how sharply the signal is filtered to prevent it from spilling into adjacent frequencies as it propagates. (Values such as 0.20, 0.25, 0.35 are used.) This is generally set automatically for users.
+                <strong>Turco:</strong>
+                Nitidezza<br>
+                del filtro
+                <strong>Descrizione:</strong>
+                Indica il grado di nitidezza con cui il segnale viene filtrato per impedire che si diffonda nelle frequenze adiacenti durante la propagazione. (Vengono utilizzati valori quali 0,20, 0,25, 0,35.) Generalmente questa impostazione viene configurata automaticamente per gli utenti.
             </p>
         </div>
 
         <div class="glossary-item" style="background: var(--bg-subtle); padding: 15px; border-radius: 8px; border-left: 4px solid var(--accent);">
-            <h3 style="margin-top: 0; margin-bottom: 10px; color: var(--accent);">NID (Network ID)</h3>
+            <h3 style="margin-top: 0; margin-bottom: 10px; color: var(--accent);">NID (ID di rete)</h3>
             <p style="margin: 0; color: var(--text-secondary); line-height: 1.5;">
-                <strong>Turkish:</strong>
-                Network ID<br>
-                
-                <strong>Description:</strong>
-                This is the identifier of the satellite network you are connected to. It works in conjunction with the ONID (Original Network ID). For Türksat satellites, this value is typically 1070.
+                <strong>Turco:</strong>
+                ID<br>
+                di rete
+                <strong>Descrizione:</strong>
+                È l’identificatore della rete satellitare a cui si è collegati. Funziona in combinazione con l’ONID (ID di rete originale). Per i satelliti Türksat, questo valore è in genere 1070.
             </p>
         </div>
 
         <div class="glossary-item" style="background: var(--bg-subtle); padding: 15px; border-radius: 8px; border-left: 4px solid var(--accent);">
-            <h3 style="margin-top: 0; margin-bottom: 10px; color: var(--accent);">ONID (Original Network ID)</h3>
+            <h3 style="margin-top: 0; margin-bottom: 10px; color: var(--accent);">ONID (ID di rete originale)</h3>
             <p style="margin: 0; color: var(--text-secondary); line-height: 1.5;">
-                <strong>Turkish:</strong>
-                Original Network ID<br>
-                
-                <strong>Description:</strong>
-                This is the globally registered, unique code of the broadcaster’s network (e.g., Türksat, Astra, Hotbird). This allows your device to determine which satellite network it is connected to.
+                <strong>Turco:</strong>
+                ID<br>
+                di rete originale
+                <strong>Descrizione:</strong>
+                si tratta del codice univoco, registrato a livello globale, della rete dell’emittente (ad es. Türksat, Astra, Hotbird). Consente al dispositivo di determinare a quale rete satellitare è connesso.
             </p>
         </div>
 
         <div class="glossary-item" style="background: var(--bg-subtle); padding: 15px; border-radius: 8px; border-left: 4px solid var(--accent);">
-            <h3 style="margin-top: 0; margin-bottom: 10px; color: var(--accent);">Video PID / Audio PID</h3>
+            <h3 style="margin-top: 0; margin-bottom: 10px; color: var(--accent);">PID video / PID audio</h3>
             <p style="margin: 0; color: var(--text-secondary); line-height: 1.5;">
-                <strong>Turkish:</strong>
-                Video and Audio Packet Identifier (Packet Identifier)<br>
+                <strong>Turco:</strong>
+                Identificatore di pacchetti video e audio (Packet Identifier)<br>
                 
-                <strong>Description:</strong>
-                When a channel’s data arrives from space, it is in the form of separate packets. The Video PID identifies only the video packets, while the Audio PID identifies only the audio packets. The television extracts these packets and combines them.
+                <strong>Descrizione:</strong>
+                Quando i dati di un canale arrivano dallo spazio, si presentano sotto forma di pacchetti separati. Il PID video identifica solo i pacchetti video, mentre il PID audio identifica solo i pacchetti audio. Il televisore estrae questi pacchetti e li combina.
             </p>
         </div>
 
         <div class="glossary-item" style="background: var(--bg-subtle); padding: 15px; border-radius: 8px; border-left: 4px solid var(--accent);">
-            <h3 style="margin-top: 0; margin-bottom: 10px; color: var(--accent);">PCR PID (Program Clock Reference)</h3>
+            <h3 style="margin-top: 0; margin-bottom: 10px; color: var(--accent);">PID PCR (Riferimento orologio programma)</h3>
             <p style="margin: 0; color: var(--text-secondary); line-height: 1.5;">
-                <strong>Translation:</strong>
-                Program Clock Reference<br>
-                
-                <strong>Explanation:</strong>
-                This is a reference clock code that ensures the audio and video packets received from space are synchronized second by second (so that lip movements and sound occur simultaneously).
+                <strong>Traduzione:</strong>
+                Riferimento<br>
+                di clock del programma
+                <strong>Spiegazione:</strong>
+                Si tratta di un codice di clock di riferimento che garantisce la sincronizzazione, secondo per secondo, dei pacchetti audio e video ricevuti dallo spazio (in modo che i movimenti delle labbra e il suono avvengano simultaneamente).
             </p>
         </div>
 
         <div class="glossary-item" style="background: var(--bg-subtle); padding: 15px; border-radius: 8px; border-left: 4px solid var(--accent);">
             <h3 style="margin-top: 0; margin-bottom: 10px; color: var(--accent);">FEC (Forward Error Correction)</h3>
             <p style="margin: 0; color: var(--text-secondary); line-height: 1.5;">
-                <strong>Turkish:</strong>
-                Forward Error Correction Rate<br>
-                
-                <strong>Description:</strong>
-                The rate at which lost data is mathematically estimated and corrected by the satellite receiver under poor weather conditions or when the signal is weak. It is typically expressed as ratios such as 3/4 or 5/6.
+                <strong>Turcho:</strong>
+                Tasso<br>
+                di correzione degli errori in avanti
+                <strong>Descrizione:</strong>
+                Il tasso con cui i dati persi vengono stimati matematicamente e corretti dal ricevitore satellitare in condizioni meteorologiche avverse o quando il segnale è debole. È tipicamente espresso come rapporti quali 3/4 o 5/6.
             </p>
         </div>
 
         <div class="glossary-item" style="background: var(--bg-subtle); padding: 15px; border-radius: 8px; border-left: 4px solid var(--accent);">
-            <h3 style="margin-top: 0; margin-bottom: 10px; color: var(--accent);">Symbol Rate</h3>
+            <h3 style="margin-top: 0; margin-bottom: 10px; color: var(--accent);">Velocità di trasmissione dei simboli</h3>
             <p style="margin: 0; color: var(--text-secondary); line-height: 1.5;">
-                <strong>Turkish:</strong>
-                Data Transmission Rate<br>
-                
-                <strong>Explanation:</strong>
-                The amount of digital data (symbols) transmitted from the satellite to the receiver per second. On the Türksat satellite, it is typically 27,500 (ksps) or 30,000 (ksps).
+                <strong>Turco:</strong>
+                Velocità<br>
+                di trasmissione dati
+                <strong>Spiegazione:</strong>
+                La quantità di dati digitali (simboli) trasmessi dal satellite al ricevitore al secondo. Sul satellite Türksat è in genere pari a 27.500 (ksps) o 30.000 (ksps).
             </p>
         </div>
     </div>
 
     <div style="margin-top: 30px; text-align: center;">
-        <a href="/" class="btn primary">Return to Home Page</a>
+        <a href="/" class="btn primary">Torna alla pagina iniziale</a>
     </div>
 </div>{% endblock %}

@@ -4,7 +4,7 @@
 
 {% block content %}
 <div class="card border-0 shadow-sm" style="max-width: 800px; margin: 0 auto; text-align: left; padding: 30px;">
-    <h1 style="color: var(--text-primary); margin-bottom: 20px;">Glosario de satélites y televisión</h1>
+    <h1 style="color: var(--text-primary); margin-bottom: 20px;">Glosario de satélite y televisión</h1>
     <p style="color: var(--text-secondary); line-height: 1.6; margin-bottom: 30px;">
         A continuación encontrarás el significado de los términos técnicos y las abreviaturas (en inglés y turco) que aparecen en la configuración de los canales de televisión o en nuestra página de detalles.
     </p>
@@ -17,7 +17,7 @@
                 ID de servicio / Número<br>
                 de canal
                 <strong>Descripción:</strong>
-                Número de identificación único asignado a cada canal que emite dentro de una frecuencia (paquete). Tu televisor distingue los canales en función de este número SID, no por sus nombres.
+                Un número de identificación único asignado a cada canal que emite dentro de una frecuencia (paquete). Tu televisor distingue los canales en función de este número SID, no por sus nombres.
             </p>
         </div>
 
@@ -28,7 +28,7 @@
                 Identificador<br>
                 de flujo de transporte
                 <strong>Descripción:</strong>
-                Código único asignado a cada uno de los cientos de paquetes de frecuencia (portadoras) del mismo satélite. Funciona conjuntamente con el identificador de red original (ONID).
+                Código único asignado a cada uno de los cientos de paquetes de frecuencia (portadoras) del mismo satélite. Funciona junto con el identificador de red original (ONID).
             </p>
         </div>
 
@@ -39,7 +39,7 @@
                 Estándar de emisión (DVB-S / DVB-S2)<br>
                 
                 <strong>Descripción:</strong>
-                Especifica el formato en el que se transmite el canal desde el espacio. Mientras que las emisiones más antiguas (de definición estándar) suelen utilizar DVB-S, las de alta definición (HD / 4K) utilizan el estándar DVB-S2, que ofrece una mejor compresión de datos.
+                Especifica el formato en el que se transmite el canal desde el espacio. Mientras que las emisiones más antiguas (de definición estándar) suelen utilizar DVB-S, las emisiones de alta definición (HD / 4K) utilizan el estándar DVB-S2, que ofrece una mejor compresión de datos.
             </p>
         </div>
 
@@ -50,7 +50,7 @@
                 Nitidez<br>
                 del filtro
                 <strong>Descripción:</strong>
-                Indica el grado de nitidez con el que se filtra la señal para evitar que se extienda a frecuencias adyacentes a medida que se propaga. (Se utilizan valores como 0,20, 0,25 o 0,35). Por lo general, este parámetro se configura automáticamente para los usuarios.
+                Indica el grado de nitidez con el que se filtra la señal para evitar que se extienda a frecuencias adyacentes a medida que se propaga. (Se utilizan valores como 0,20; 0,25 o 0,35.) Por lo general, este parámetro se configura automáticamente para los usuarios.
             </p>
         </div>
 
@@ -61,7 +61,7 @@
                 ID<br>
                 de red
                 <strong>Descripción:</strong>
-                Es el identificador de la red de satélite a la que está conectado. Funciona conjuntamente con el ONID (ID de red original). Para los satélites Türksat, este valor suele ser 1070.
+                Es el identificador de la red de satélite a la que estás conectado. Funciona junto con el ONID (ID de red original). Para los satélites Türksat, este valor suele ser 1070.
             </p>
         </div>
 
@@ -72,7 +72,7 @@
                 ID<br>
                 de red original
                 <strong>Descripción:</strong>
-                Es el código único registrado a nivel mundial de la red de la emisora (p. ej., Türksat, Astra, Hotbird). Esto permite que tu dispositivo determine a qué red de satélite está conectado.
+                Es el código único y registrado a nivel mundial de la red de la emisora (por ejemplo, Türksat, Astra, Hotbird). Esto permite a tu dispositivo determinar a qué red de satélite está conectado.
             </p>
         </div>
 
@@ -80,7 +80,7 @@
             <h3 style="margin-top: 0; margin-bottom: 10px; color: var(--accent);">PID de vídeo / PID de audio</h3>
             <p style="margin: 0; color: var(--text-secondary); line-height: 1.5;">
                 <strong>Turco:</strong>
-                Identificador de paquetes de vídeo y audio (identificador de paquetes)<br>
+                Identificador de paquetes de vídeo y audio (Packet Identifier)<br>
                 
                 <strong>Descripción:</strong>
                 Cuando los datos de un canal llegan desde el espacio, lo hacen en forma de paquetes separados. El PID de vídeo identifica únicamente los paquetes de vídeo, mientras que el PID de audio identifica únicamente los paquetes de audio. El televisor extrae estos paquetes y los combina.
@@ -88,13 +88,13 @@
         </div>
 
         <div class="glossary-item" style="background: var(--bg-subtle); padding: 15px; border-radius: 8px; border-left: 4px solid var(--accent);">
-            <h3 style="margin-top: 0; margin-bottom: 10px; color: var(--accent);">PID de PCR (Referencia del reloj del programa)</h3>
+            <h3 style="margin-top: 0; margin-bottom: 10px; color: var(--accent);">PID de PCR (Referencia de reloj de programa)</h3>
             <p style="margin: 0; color: var(--text-secondary); line-height: 1.5;">
                 <strong>Traducción:</strong>
                 Referencia<br>
-                del reloj del programa
+                de reloj del programa.
                 <strong>Explicación:</strong>
-                Se trata de un código de reloj de referencia que garantiza que los paquetes de audio y vídeo recibidos desde el espacio estén sincronizados segundo a segundo (de modo que los movimientos de los labios y el sonido se produzcan simultáneamente).
+                Se trata de un código de reloj de referencia que garantiza que los paquetes de audio y vídeo recibidos del espacio estén sincronizados segundo a segundo (para que los movimientos de los labios y el sonido se produzcan simultáneamente).
             </p>
         </div>
 
@@ -105,7 +105,7 @@
                 Tasa<br>
                 de corrección de errores hacia adelante
                 <strong>Descripción:</strong>
-                Tasa a la que el receptor de satélite estima matemáticamente y corrige los datos perdidos en condiciones meteorológicas adversas o cuando la señal es débil. Suele expresarse como fracciones, por ejemplo, 3/4 o 5/6.
+                Tasa a la que el receptor de satélite estima matemáticamente y corrige los datos perdidos en condiciones meteorológicas adversas o cuando la señal es débil. Suele expresarse en forma de fracciones, como 3/4 o 5/6.
             </p>
         </div>
 
@@ -116,7 +116,7 @@
                 Velocidad<br>
                 de transmisión de datos
                 <strong>. Explicación:</strong>
-                La cantidad de datos digitales (símbolos) transmitidos desde el satélite al receptor por segundo. En el satélite Türksat, suele ser de 27 500 (ksps) o 30 000 (ksps).
+                La cantidad de datos digitales (símbolos) transmitidos desde el satélite al receptor por segundo. En el satélite Türksat, suele ser de 27.500 (ksps) o 30.000 (ksps).
             </p>
         </div>
     </div>

@@ -1,6 +1,6 @@
 {% extends "base_it.html" %}
 
-{% block title %}Guida per l&#x27;utente - Editor dei canali TV{% endblock %}
+{% block title %}Guida per l'utente - Editor dei canali TV{% endblock %}
 
 {% block head %}
 <style>
@@ -111,7 +111,7 @@
 
 {% block content %}
 <div class="content-container">
-    <h2 class="section-title">Guida per l&#x27;utente</h2>
+    <h2 class="section-title">Guida per l'utente</h2>
 
     <div class="brand-tabs" role="tablist" aria-label="TV Brands">
         <button class="brand-tab active" onclick="showGuide(\'samsung\')" role="tab" aria-selected="true" aria-controls="guide-samsung" id="tab-samsung">Samsung</button>
@@ -123,7 +123,7 @@
     <!-- SAMSUNG -->
     <div class="brand-guide active" id="guide-samsung" role="tabpanel" aria-labelledby="tab-samsung">
         <div class="step-box">
-            <div class="step-title"><span class="step-num">1</span> Trasferimento dell&#x27;elenco dei canali su un&#x27;unità USB</div>
+            <div class="step-title"><span class="step-num">1</span> Trasferimento dell'elenco dei canali su un'unità USB</div>
             <div class="step-desc">
                 Utilizzando il telecomando della TV, segui questi passaggi: <strong>Menu → Trasmissione → Impostazioni canali → Trasferisci elenco canali</strong>.
                 Inserisci il tuo PIN (di solito <code>0000</code>
@@ -243,19 +243,19 @@
 
 <script>
 function showGuide(brand) {
-        document.querySelectorAll(&#x27;.brand-tab&#x27;).forEach(btn =&gt; {
-            btn.classList.remove(&#x27;active&#x27;);
-            btn.setAttribute(&#x27;aria-selected&#x27;, &#x27;false&#x27;);
+        document.querySelectorAll('.brand-tab').forEach(btn => {
+            btn.classList.remove('active');
+            btn.setAttribute('aria-selected', 'false');
         });
-        document.querySelectorAll(&#x27;.brand-guide&#x27;).forEach(g =&gt; {
-            g.classList.remove(&#x27;active&#x27;);
+        document.querySelectorAll('.brand-guide').forEach(g => {
+            g.classList.remove('active');
         });
         
         const activeBtn = document.querySelector(`.brand-tab[onclick*="${brand}"]`);
         if (activeBtn) {
-            activeBtn.classList.add(&#x27;active&#x27;);
-            activeBtn.setAttribute(&#x27;aria-selected&#x27;, &#x27;true&#x27;);
+            activeBtn.classList.add('active');
+            activeBtn.setAttribute('aria-selected', 'true');
         }
-        document.getElementById(&#x27;guide-&#x27; + brand).classList.add(&#x27;active&#x27;);
+        document.getElementById('guide-' + brand).classList.add('active');
     }
 </script>{% endblock %}

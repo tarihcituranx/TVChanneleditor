@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>External Link Warning - TV Channel Editor</title>
+    <title>تحذير بشأن الروابط الخارجية - محرر القنوات التلفزيونية</title>
     <link rel="stylesheet" href="/static/css/style.css">
     <script>
       (function() {
@@ -74,12 +74,12 @@
 <body>
     <div class="redirect-box">
         <img src="/static/img/redirect_illustration.jpg" alt="Safe Redirect" class="illustration">
-        <h1>You Are Leaving the Site</h1>
-        <p>You are leaving the TV Channel Editor application. Use the button below to proceed to the link.</p>
+        <h1>أنت على وشك مغادرة الموقع</h1>
+        <p>أنت على وشك مغادرة تطبيق محرر القنوات التلفزيونية. استخدم الزر أدناه للمتابعة إلى الرابط.</p>
         <div class="url-box" id="target-url">{{ url }}</div>
         <div class="buttons">
-            <button onclick="window.history.back()" class="btn" style="background:var(--bg-subtle); color:var(--text-primary);">Go Back</button>
-            <a href="{{ url }}" class="btn danger" style="text-decoration: none;">Proceed Anyway</a>
+            <button onclick="window.history.back()" class="btn" style="background:var(--bg-subtle); color:var(--text-primary);">العودة</button>
+            <a href="{{ url }}" class="btn danger" style="text-decoration: none;">المضي قدمًا على أي حال</a>
         </div>
     </div>
 </body>

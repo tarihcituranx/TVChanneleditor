@@ -46,13 +46,13 @@
     }
     .faq-q:hover { background: rgba(59,130,246,0.06); }
     .faq-q::after {
-        content: &#x27;﹢&#x27;;
+        content: '﹢';
         font-size: 20px;
         color: var(--accent);
         transition: transform 0.2s;
         flex-shrink: 0;
     }
-    .faq-item.open .faq-q::after { content: &#x27;−&#x27;; }
+    .faq-item.open .faq-q::after { content: '−'; }
     .faq-a {
         font-size: 14px;
         color: var(--text-primary);
@@ -97,7 +97,7 @@
     <div class="faq-item">
         <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">Comment savoir quel fichier télécharger ?</button>
         <div class="faq-a">
-            Vérifiez l&#x27;extension du fichier en fonction de la marque de votre téléviseur :<br>
+            Vérifiez l'extension du fichier en fonction de la marque de votre téléviseur :<br>
             
             • <strong>Samsung (ancienne génération)</strong>
             : <code>.scm</code><br>
@@ -105,7 +105,7 @@
             • <strong>LG</strong> : <code>.tll</code><br>
             • <strong>Sony BRAVIA</strong> : <code>sdb.xml</code><br>
             • <strong>Hisense</strong> : <code>servicelist.db</code> ou <code>channel.db</code><br>
-            L&#x27;éditeur détectera automatiquement la marque une fois le fichier importé.
+            L'éditeur détectera automatiquement la marque une fois le fichier importé.
         </div>
     </div>
 
@@ -126,16 +126,16 @@
     </div>
 
     <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">Pourquoi les nouvelles chaînes gratuites n&#x27;apparaissent-elles pas dans la liste ?</button>
+        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">Pourquoi les nouvelles chaînes gratuites n'apparaissent-elles pas dans la liste ?</button>
         <div class="faq-a">
             Ce site modifie uniquement la liste des chaînes existantes du téléviseur ; il <em>ne peut pas</em> ajouter de nouvelles chaînes. Pour voir une nouvelle chaîne, vous devez d’abord effectuer un <strong>balayage du réseau (réglage automatique)</strong> sur le téléviseur, puis exporter le nouveau fichier.
         </div>
     </div>
     
     <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">Que signifie l&#x27;avertissement concernant la fréquence (⚠️ Ancienne fréquence) ?</button>
+        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">Que signifie l'avertissement concernant la fréquence (⚠️ Ancienne fréquence) ?</button>
         <div class="faq-a">
-            Le système compare la fréquence enregistrée de la chaîne avec la base de données actuelle des fréquences Turksat. Si la chaîne a été détectée sur une ancienne fréquence ou une fréquence différente, un avertissement jaune s&#x27;affiche. Il s&#x27;agit simplement d&#x27;une information à titre indicatif ; la chaîne continuera de fonctionner, mais il est recommandé de la faire passer à sa fréquence actuelle en effectuant un nouveau balayage du réseau sur le téléviseur.
+            Le système compare la fréquence enregistrée de la chaîne avec la base de données actuelle des fréquences Turksat. Si la chaîne a été détectée sur une ancienne fréquence ou une fréquence différente, un avertissement jaune s'affiche. Il s'agit simplement d'une information à titre indicatif ; la chaîne continuera de fonctionner, mais il est recommandé de la faire passer à sa fréquence actuelle en effectuant un nouveau balayage du réseau sur le téléviseur.
         </div>
     </div>
 
@@ -154,7 +154,7 @@
     <div class="faq-item">
         <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">Comment exporter la liste des chaînes d’un téléviseur Samsung vers une clé USB ?</button>
         <div class="faq-a">
-            Pour Samsung : suivez les étapes suivantes : <strong>Menu → Diffusion → Paramètres des chaînes → Transférer la liste des chaînes → Exporter vers une clé USB</strong>. Le téléviseur n&#x27;accepte généralement que les fichiers portant exactement le même nom ; veillez donc à ne pas renommer le fichier lors de la modification et de la restauration.
+            Pour Samsung : suivez les étapes suivantes : <strong>Menu → Diffusion → Paramètres des chaînes → Transférer la liste des chaînes → Exporter vers une clé USB</strong>. Le téléviseur n'accepte généralement que les fichiers portant exactement le même nom ; veillez donc à ne pas renommer le fichier lors de la modification et de la restauration.
         </div>
     </div>
 
@@ -186,10 +186,10 @@
     </h3>
 
     <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">Qu&#x27;est-ce qu&#x27;un fichier TLL sur un téléviseur LG et comment l&#x27;exporter ?</button>
+        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">Qu'est-ce qu'un fichier TLL sur un téléviseur LG et comment l'exporter ?</button>
         <div class="faq-a">
             <strong>TLL (TLL Channel List)</strong>
-            est le format de sauvegarde GlobalClone de LG. Insérez une clé USB et effectuez l&#x27;exportation depuis <strong>Paramètres → Général → À propos → Configuration de la sauvegarde des chaînes (CLONE)</strong>
+            est le format de sauvegarde GlobalClone de LG. Insérez une clé USB et effectuez l'exportation depuis <strong>Paramètres → Général → À propos → Configuration de la sauvegarde des chaînes (CLONE)</strong>
             . Sur certains modèles : <strong>Menu → Assistance → Mise à jour → Mise à jour depuis une clé USB</strong>
             . Le fichier est généralement nommé <code>xx########.tll</code>.
         </div>
@@ -224,8 +224,8 @@
 <script>
 function toggleFaq(btn) {
         let parent = btn.parentElement;
-        let isExpanded = btn.getAttribute(&#x27;aria-expanded&#x27;) === &#x27;true&#x27;;
-        btn.setAttribute(&#x27;aria-expanded&#x27;, !isExpanded);
-        parent.classList.toggle(&#x27;open&#x27;);
+        let isExpanded = btn.getAttribute('aria-expanded') === 'true';
+        btn.setAttribute('aria-expanded', !isExpanded);
+        parent.classList.toggle('open');
     }
 </script>{% endblock %}

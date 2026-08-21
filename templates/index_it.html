@@ -17,10 +17,10 @@
     <p style="color: var(--text-secondary); font-size: 1.1rem; line-height: 1.6; margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto;">
         
         Non dovrai più passare ore a lottare con il telecomando della TV! 
-        Basta esportare il <b>file con l’elenco dei</b>
+        Basta esportare il <b>file con l'elenco dei</b>
         <b>canali</b>
         su una chiavetta USB e caricarlo qui. 
-        Organizza facilmente i tuoi canali con il drag-and-drop oppure usa la <b>"bacchetta magica"</b>
+        Organizza facilmente i tuoi canali con il drag-and-drop oppure usa gli <b>"Smart Templates"</b>
         🪄 per ordinarli in pochi secondi.
         <br><br>
         <span style="font-size: 0.95rem; color: var(--accent);">Il tuo file viene elaborato solo temporaneamente sul nostro server per leggere l’elenco dei canali. Non viene mai archiviato in modo permanente.</span>
@@ -37,14 +37,12 @@
         <p>Seleziona il tuo file con l’elenco dei canali Samsung, Sony o Hisense</p>
         <button id="browse-btn" class="btn primary">Seleziona file</button>
         <p style="margin-top: 1rem; font-size: 0.85rem; color: var(--text-muted); max-width: 500px; margin-left: auto; margin-right: auto; line-height: 1.4; justify-content: center; text-align: center;">
-            <strong style="color: var(--accent);">Nota (utenti</strong>
-            di
-            <strong style="color: var(--accent);">TV LG):</strong>
+            <strong style="color: var(--accent);">Nota (utenti di TV LG):</strong>
             
             Il nostro sistema supporta i file <b>.tll</b>
             (GlobalClone) di nuova generazione <b>basati su XML</b>
             di LG. I file <b>.tll binari</b>
-            più vecchi non sono supportati; per quei file, si prega di utilizzare l&#x27;applicazione desktop ChanSort.
+            meno recenti non sono supportati; per tali file, si prega di utilizzare l'applicazione desktop ChanSort.
         </p>
         
         <div style="margin-top: 1.5rem; padding: 10px 15px; background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.2); border-radius: 8px; font-size: 0.85rem; color: var(--text-secondary); max-width: 600px; margin-left: auto; margin-right: auto; text-align: left;">
@@ -68,7 +66,7 @@
             </div>
             <div class="actions" style="display: flex; gap: 10px; flex-wrap: wrap; justify-content: flex-end;">
                 <button class="btn primary-outline" id="magic-wand-btn" style="background:transparent; color:var(--accent); border:1px solid var(--accent);">
-                    <svg class="icon" width="16" height="16"><use href="#icon-wand"/></svg> Bacchetta magica
+                    <svg class="icon" width="16" height="16"><use href="#icon-wand"/></svg> Modelli intelligenti
                 </button>
                 <div class="dropdown">
                     <button class="btn secondary">⋮ Altre azioni</button>
@@ -87,7 +85,7 @@
             <span style="color: var(--text-secondary); font-size: 0.85rem; font-weight:600; text-transform:uppercase; letter-spacing:0.05em; margin-right:10px;">Azioni in blocco:</span>
             <select id="bulk-actions-select" class="btn secondary" style="padding: 0.5rem; border-radius: var(--radius-sm); font-size: 0.85rem; cursor: pointer; outline: none; background: transparent; border: 1px solid var(--border-color); color: var(--text-primary);">
                 <option value="">Seleziona azione...</option>
-                <option value="del_encrypted">🔒 Elimina crittografati</option>
+                <option value="del_encrypted">🔒 Elimina crittografato</option>
                 <option value="del_radio">📻 Elimina radio</option>
                 <option value="del_selected" id="opt-del-selected" disabled>🗑️ Elimina selezionati (0)</option>
                 <option value="lock_selected" id="opt-lock-selected" disabled>🔒 Blocca selezionati</option>
@@ -121,34 +119,34 @@
     <!-- Right Side Panel -->
     <div id="side-panel" style="width:300px; flex-shrink:0; background:var(--card-bg); border-radius:var(--radius-lg); border:1px solid var(--border-color); display:none; flex-direction:column; position:sticky; top:76px; max-height:calc(100vh - 100px); overflow-y:auto;">
         <div style="padding:1rem 1.25rem; border-bottom:1px solid var(--border-color); display:flex; justify-content:space-between; align-items:center; position:sticky; top:0; background:var(--card-bg); z-index:10;">
-            <h3 style="margin:0; font-size:1rem; font-weight:700;">Channel Info</h3>
+            <h3 style="margin:0; font-size:1rem; font-weight:700;">Informazioni sul canale</h3>
             <button id="close-side-panel" style="background:none; border:none; color:var(--text-muted); cursor:pointer; font-size:1.2rem; line-height:1; padding:2px;">✕</button>
         </div>
         <div style="padding:1.25rem; display:flex; flex-direction:column; gap:0.75rem;">
             <div style="display:flex; align-items:center; gap:12px; margin-bottom:0.5rem;">
                 <div id="info-avatar"></div>
                 <div>
-                    <h2 id="info-name" style="margin:0; font-size:1.1rem; font-weight:700;">Channel Name</h2>
+                    <h2 id="info-name" style="margin:0; font-size:1.1rem; font-weight:700;">Nome canale</h2>
                     <span id="info-no" style="color:var(--text-secondary); font-size:0.85rem;"></span>
                 </div>
             </div>
 
-            <div class="info-row"><span>Type</span><strong id="info-type"></strong></div>
-            <div class="info-row"><span>Frequency</span><strong id="info-freq"></strong></div>
-            <div class="info-row"><span>Polarization</span><strong id="info-pol"></strong></div>
-            <div class="info-row"><span>Symbol Rate</span><strong id="info-sym"></strong></div>
-            <div class="info-row"><span>Encryption</span><strong id="info-enc"></strong></div>
+            <div class="info-row"><span>Tipo</span><strong id="info-type"></strong></div>
+            <div class="info-row"><span>Frequenza</span><strong id="info-freq"></strong></div>
+            <div class="info-row"><span>Polarizzazione</span><strong id="info-pol"></strong></div>
+            <div class="info-row"><span>Velocità</span><strong id="info-sym"></strong><span> di trasmissione dei simboli</span></div>
+            <div class="info-row"><span>Crittografia</span><strong id="info-enc"></strong></div>
 
             <details style="margin-top:0.5rem;">
-                <summary style="cursor:pointer; color:var(--accent); font-weight:600; font-size:0.875rem; user-select:none;">Advanced Technical Details</summary>
+                <summary style="cursor:pointer; color:var(--accent); font-weight:600; font-size:0.875rem; user-select:none;">Dettagli tecnici avanzati</summary>
                 <div style="margin-top:0.75rem; display:flex; flex-direction:column; gap:0.5rem; font-size:0.85rem;">
-                    <div style="display:flex; justify-content:space-between;"><span style="color:var(--text-secondary);">Modulation</span><strong id="info-mod"></strong></div>
-                    <div style="display:flex; justify-content:space-between;"><span style="color:var(--text-secondary);">Roll-Off</span><strong id="info-rolloff"></strong></div>
-                    <div style="display:flex; justify-content:space-between;"><span style="color:var(--text-secondary);">Network ID</span><strong id="info-nid"></strong></div>
+                    <div style="display:flex; justify-content:space-between;"><span style="color:var(--text-secondary);">Modulazione</span><strong id="info-mod"></strong></div>
+                    <div style="display:flex; justify-content:space-between;"><span style="color:var(--text-secondary);">Roll-off</span><strong id="info-rolloff"></strong></div>
+                    <div style="display:flex; justify-content:space-between;"><span style="color:var(--text-secondary);">ID</span><strong id="info-nid"></strong><span style="color:var(--text-secondary);"> di rete</span></div>
                     <div style="display:flex; justify-content:space-between;"><span style="color:var(--text-secondary);">TSID</span><strong id="info-tsid"></strong></div>
-                    <div style="display:flex; justify-content:space-between;"><span style="color:var(--text-secondary);">Service ID</span><strong id="info-sid"></strong></div>
-                    <div style="display:flex; justify-content:space-between;"><span style="color:var(--text-secondary);">Video PID</span><strong id="info-vidpid"></strong></div>
-                    <div style="display:flex; justify-content:space-between;"><span style="color:var(--text-secondary);">Audio PID</span><strong id="info-audpid"></strong></div>
+                    <div style="display:flex; justify-content:space-between;"><span style="color:var(--text-secondary);">ID</span><strong id="info-sid"></strong><span style="color:var(--text-secondary);"> servizio</span></div>
+                    <div style="display:flex; justify-content:space-between;"><span style="color:var(--text-secondary);">PID</span><strong id="info-vidpid"></strong><span style="color:var(--text-secondary);"> video</span></div>
+                    <div style="display:flex; justify-content:space-between;"><span style="color:var(--text-secondary);">PID</span><strong id="info-audpid"></strong><span style="color:var(--text-secondary);"> audio</span></div>
                 </div>
             </details>
         </div>
@@ -160,7 +158,7 @@
 <div id="builder-modal" class="modal hidden">
     <div class="modal-content builder-content">
         <h2>🛠️ Generatore di modelli personalizzati</h2>
-        <p>Trascina i canali che desideri dall&#x27;elenco a sinistra a quello a destra per creare il tuo modello perfetto.</p>
+        <p>Trascina i canali che desideri dall'elenco a sinistra a quello a destra per creare il tuo modello perfetto.</p>
         
         <div class="split-screen">
             <div class="pane">
@@ -245,42 +243,42 @@
             
             <div style="border-top:1px dashed var(--border-color); margin: 4px 0;"></div>
             
-            <div style="display:flex; justify-content:space-between; padding:4px 8px; border-radius:6px;" title="Modülasyon Sistemi: Yayının DVB-S (SD) veya DVB-S2 (HD) gibi standardını belirtir.">
+            <div style="display:flex; justify-content:space-between; padding:4px 8px; border-radius:6px;" title="Modulation System: Indicates standard like DVB-S (SD) or DVB-S2 (HD).">
                 <span style="color:var(--text-muted); font-size:0.85rem; cursor:help; border-bottom:1px dotted var(--text-muted);">Sistema</span>
                 <strong id="info-mod" style="font-family:monospace; font-size:0.85rem;"></strong>
                 <span style="color:var(--text-muted); font-size:0.85rem; cursor:help; border-bottom:1px dotted var(--text-muted);">di modulazione</span>
             </div>
-            <div style="display:flex; justify-content:space-between; padding:4px 8px; border-radius:6px;" title="Roll-Off Faktörü: Sinyal bant genişliğinin ne kadar keskin bir şekilde filtrelendiğini gösterir.">
+            <div style="display:flex; justify-content:space-between; padding:4px 8px; border-radius:6px;" title="Roll-Off Factor: Indicates how sharply the signal bandwidth is filtered.">
                 <span style="color:var(--text-muted); font-size:0.85rem; cursor:help; border-bottom:1px dotted var(--text-muted);">Roll-off</span>
                 <strong id="info-rolloff" style="font-family:monospace; font-size:0.85rem;"></strong>
             </div>
-            <div style="display:flex; justify-content:space-between; padding:4px 8px; border-radius:6px;" title="Network ID: Bulunduğunuz uydu şebekesinin (Ağ) kimliğidir.">
+            <div style="display:flex; justify-content:space-between; padding:4px 8px; border-radius:6px;" title="Network ID: The ID of your satellite network.">
                 <span style="color:var(--text-muted); font-size:0.85rem; cursor:help; border-bottom:1px dotted var(--text-muted);">NID (ID di rete)</span>
                 <strong id="info-nid" style="font-family:monospace; font-size:0.85rem;"></strong>
             </div>
-            <div style="display:flex; justify-content:space-between; padding:4px 8px; border-radius:6px;" title="Transport Stream ID: Kanalın bulunduğu veri paketinin (frekansın) kimlik numarası.">
+            <div style="display:flex; justify-content:space-between; padding:4px 8px; border-radius:6px;" title="Transport Stream ID: The ID of the data packet (frequency) containing the channel.">
                 <span style="color:var(--text-muted); font-size:0.85rem; cursor:help; border-bottom:1px dotted var(--text-muted);">TSID (ID del flusso di trasporto)</span>
                 <strong id="info-tsid" style="font-family:monospace; font-size:0.85rem;"></strong>
             </div>
-            <div style="display:flex; justify-content:space-between; padding:4px 8px; border-radius:6px;" title="Original Network ID: Orijinal uydu ağının küresel kimlik kodu.">
+            <div style="display:flex; justify-content:space-between; padding:4px 8px; border-radius:6px;" title="Original Network ID: Global ID code of the original satellite network.">
                 <span style="color:var(--text-muted); font-size:0.85rem; cursor:help; border-bottom:1px dotted var(--text-muted);">ONID (ID di rete originale)</span>
                 <strong id="info-onid" style="font-family:monospace; font-size:0.85rem;"></strong>
             </div>
-            <div style="display:flex; justify-content:space-between; padding:4px 8px; border-radius:6px;" title="Service ID: Yayıncının o kanala atadığı benzersiz servis kimliği.">
+            <div style="display:flex; justify-content:space-between; padding:4px 8px; border-radius:6px;" title="Service ID: Unique service ID assigned to the channel by the broadcaster.">
                 <span style="color:var(--text-muted); font-size:0.85rem; cursor:help; border-bottom:1px dotted var(--text-muted);">SID (ID servizio)</span>
                 <strong id="info-sid" style="font-family:monospace; font-size:0.85rem;"></strong>
             </div>
-            <div style="display:flex; justify-content:space-between; padding:4px 8px; border-radius:6px;" title="Video Packet ID: Kanalın sadece görüntü (video) verilerini taşıyan şifre kodu.">
+            <div style="display:flex; justify-content:space-between; padding:4px 8px; border-radius:6px;" title="Video Packet ID: Packet ID carrying only video data.">
                 <span style="color:var(--text-muted); font-size:0.85rem; cursor:help; border-bottom:1px dotted var(--text-muted);">PID</span>
                 <strong id="info-vidpid" style="font-family:monospace; font-size:0.85rem;"></strong>
                 <span style="color:var(--text-muted); font-size:0.85rem; cursor:help; border-bottom:1px dotted var(--text-muted);">video</span>
             </div>
-            <div style="display:flex; justify-content:space-between; padding:4px 8px; border-radius:6px;" title="Audio Packet ID: Kanalın sadece ses verilerini taşıyan şifre kodu.">
+            <div style="display:flex; justify-content:space-between; padding:4px 8px; border-radius:6px;" title="Audio Packet ID: Packet ID carrying only audio data.">
                 <span style="color:var(--text-muted); font-size:0.85rem; cursor:help; border-bottom:1px dotted var(--text-muted);">PID</span>
                 <strong id="info-audpid" style="font-family:monospace; font-size:0.85rem;"></strong>
                 <span style="color:var(--text-muted); font-size:0.85rem; cursor:help; border-bottom:1px dotted var(--text-muted);">audio</span>
             </div>
-            <div style="display:flex; justify-content:space-between; padding:4px 8px; border-radius:6px;" title="Program Clock Reference: Ses ve görüntünün senkronize çalışmasını sağlayan saat kodu.">
+            <div style="display:flex; justify-content:space-between; padding:4px 8px; border-radius:6px;" title="Program Clock Reference: Clock code synchronizing audio and video.">
                 <span style="color:var(--text-muted); font-size:0.85rem; cursor:help; border-bottom:1px dotted var(--text-muted);">PID</span>
                 <strong id="info-pcrpid" style="font-family:monospace; font-size:0.85rem;"></strong>
                 <span style="color:var(--text-muted); font-size:0.85rem; cursor:help; border-bottom:1px dotted var(--text-muted);">PCR</span>
@@ -293,14 +291,14 @@
     </div>
 </div>
 
-<!-- Magic Wand Modal -->
+<!-- Smart Templates Modal -->
 <div id="magic-modal" class="modal hidden">
     <div class="modal-content">
-        <h2>🪄 Bacchetta magica: selezione del modello</h2>
-        <p>Seleziona il modello di sequenza da applicare automaticamente alla tua lista:</p>
+        <h2>🪄 Modelli intelligenti: Selezione del modello</h2>
+        <p>Seleziona il modello di sequenza da applicare automaticamente al tuo elenco:</p>
         
         <div class="template-cards" id="template-cards-container">
-            <!-- Hazır Şablonlar -->
+            <!-- Ready Templates -->
             <div class="template-card selected" data-template="general">
                 <h3>🏆 Elenco generale (pacchetto completo)</h3>
                 <p>Un mix equilibrato di canali nazionali, di informazione, sportivi, documentari e per bambini.</p>
@@ -308,17 +306,17 @@
             </div>
             <div class="template-card" data-template="news">
                 <h3>📰 Incentrato sulle notizie</h3>
-                <p>Tutte le trasmissioni di attualità iniziano subito dopo i canali nazionali. (Nessun canale sportivo o per bambini)</p>
+                <p>Tutte le trasmissioni di informazione iniziano subito dopo i canali nazionali. (Nessun canale sportivo o per bambini)</p>
                 <div class="preview">1. TRT1 HD | 2. KANAL D HD ... 8. TRT NEWS ... 11. SZC ... 14. KRT</div>
             </div>
             <div class="template-card" data-template="sports">
                 <h3>⚽ Dedicati allo sport</h3>
-                <p>Subito dopo i canali nazionali, sono elencati solo canali sportivi.</p>
+                <p>Subito dopo i canali nazionali sono elencati solo canali sportivi.</p>
                 <div class="preview">1. TRT1 HD | 2. KANAL D HD ... 8. A SPOR | 9. TRT SPOR HD ... 15. FB TV</div>
             </div>
         </div>
 
-        <!-- Kullanıcı Şablonları Buraya Eklenecek -->
+        <!-- User Templates Will Be Added Here -->
         <div id="custom-templates-container" style="display:none; margin-bottom:1.5rem;">
             <h3 style="font-size: 1rem; color: var(--text-secondary); margin-bottom: 0.5rem; text-transform:uppercase; letter-spacing:0.05em;">I tuoi modelli personalizzati</h3>
             <div class="template-cards" id="custom-cards-container" style="margin-top:0;">
@@ -344,7 +342,8 @@
             document.getElementById('welcome-modal').style.display = 'none';
         });
     });
-</script>{% endblock %}
+</script>
+{% endblock %}
 
 {% block scripts %}
 <script>
@@ -367,4 +366,4 @@
         });
     });
 </script>
-<script src="/static/js/app.js"></script>{% endblock %}
+<script src="/static/js/app.js"></script>{% endblock %}</div>
