@@ -307,7 +307,7 @@
                     const shareText = `Easily edit your Samsung, LG, Sony, and Hisense TV channel lists for free directly in your mobile or PC browser!
 🤖 API for Developers & AI: ${baseUrl}/api/docs
 
-#Ad #Sponsored`;
+(According to T.C. Ticaret Bakanlığı regulations: #Ad #Sponsored)`;
                     if (blob) {
                         const file = new File([blob], "tvchanneleditor-qr.png", { type: "image/png" });
                         if (navigator.canShare && navigator.canShare({ files: [file] })) {
@@ -340,14 +340,14 @@
 🔗 For Users: ${baseUrl}/en
 🤖 API for Developers & AI: ${baseUrl}/api/docs
 
-#Ad #Sponsored`;
+(According to T.C. Ticaret Bakanlığı regulations: #Ad #Sponsored)`;
             
             const shareTextLong = `📱💻 A fantastic free Smart TV channel editor for Mobile & PC! Supports Samsung, LG, Sony, and Hisense.
 
 🔗 Try it now: ${baseUrl}/en
 🤖 Developer / AI API: ${baseUrl}/api/docs
 
-#Ad #Sponsored`;
+(According to T.C. Ticaret Bakanlığı regulations: #Ad #Sponsored)`;
 
             document.getElementById('share-wa').href = `https://wa.me/?text=${encodeURIComponent(shareText)}`;
             document.getElementById('share-x').href = `https://x.com/intent/post?text=${encodeURIComponent(shareTextLong)}`;
