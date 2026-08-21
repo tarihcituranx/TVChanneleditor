@@ -92,10 +92,10 @@
                 </div>
             </a>
             <div class="nav-links">
-                <a href="{{ '' if current_lang == 'tr' else '/' + current_lang }}/" class="nav-link {% if request.path == '/' %}active{% endif %}">Editör</a>
-                <a href="{{ '' if current_lang == 'tr' else '/' + current_lang }}/guide" class="nav-link {% if request.path == '/guide' %}active{% endif %}">Rehber</a>
-                <a href="{{ '' if current_lang == 'tr' else '/' + current_lang }}/supported" class="nav-link {% if request.path == '/supported' %}active{% endif %}">Destek</a>
-                <a href="{{ '' if current_lang == 'tr' else '/' + current_lang }}/faq" class="nav-link {% if request.path == '/faq' %}active{% endif %}">SSS</a>
+                <a href="{{ '' if current_lang == 'tr' else '/' + current_lang }}/" class="nav-link {% if request.path == '/' or request.path == '/' + current_lang + '/' %}active{% endif %}">Editör</a>
+                <a href="{{ '' if current_lang == 'tr' else '/' + current_lang }}/guide" class="nav-link {% if '/guide' in request.path %}active{% endif %}">Rehber</a>
+                <a href="{{ '' if current_lang == 'tr' else '/' + current_lang }}/supported" class="nav-link {% if '/supported' in request.path %}active{% endif %}">Destek</a>
+                <a href="{{ '' if current_lang == 'tr' else '/' + current_lang }}/faq" class="nav-link {% if '/faq' in request.path %}active{% endif %}">SSS</a>
             </div>
             <div class="nav-actions">
                 <button id="share-site-btn" class="icon-btn" aria-label="Siteyi Paylaş" title="Siteyi Paylaş"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" x2="15.42" y1="13.51" y2="17.49"/><line x1="15.41" x2="8.59" y1="6.51" y2="10.49"/></svg></button>

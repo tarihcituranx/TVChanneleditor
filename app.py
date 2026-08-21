@@ -487,7 +487,7 @@ def share_draft():
         if not data or 'draft' not in data:
             return api_error('INVALID_DATA', 400)
             
-        # Generate 6 digit random code
+        # Generate 8 char random code
         code = ''.join(secrets.choice(string.ascii_uppercase + string.digits) for _ in range(8))
         
         _shares[code] = {

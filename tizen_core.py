@@ -126,12 +126,12 @@ class TizenEditor:
                 'id': srv_id,  # We use srvId as the unique identifier
                 'num': r['progNum'],
                 'name': name,
-                'type': 'TV' if r['vidPid'] != 0 else 'Radio',  # Approximation
+                'type': 'TV' if r['vidPid'] != 0 else 'Radio', 'type_known': False,
                 'freq': freq_mhz,
                 'skip': is_skipped,
                 'lock': is_locked,
                 'hide': is_hidden,
-                'encrypted': False, # Approximation
+                'encrypted': None, 'encrypted_known': False,
                 'fav1': fav_flags[0],
                 'fav2': fav_flags[1],
                 'fav3': fav_flags[2],
@@ -141,7 +141,7 @@ class TizenEditor:
                 'tsid': r['tsid'],
                 'onid': r['onid'],
                 'vidpid': r['vidPid'],
-                'pcrpid': r['vidPid']
+                'pcrpid': r['vidPid'], 'pcrpid_known': False
             }
             channels.append(ch)
             
@@ -165,17 +165,19 @@ class TizenEditor:
                 hidden = 1 if ch.get('hide') else 0
                 numSel = 0 if ch.get('skip') else 1
                 
-                # We won't update srvName for now due to the high risk of DB corruption with Sqlite TEXT/BLOB types in Tizen
-                # Just update the major (program number) and flags.
+                # Check if name was edited
+                name_bytes = ch.get('name', '').encode('utf-16le')
+                # Tizen stores it as a blob. We will update srvName.
                 cursor.execute("""
                     UPDATE SRV SET 
                         major = ?, 
                         lockMode = ?, 
                         hidden = ?, 
                         hideGuide = ?, 
-                        numSel = ?
+                        numSel = ?,
+                        srvName = ?
                     WHERE srvId = ?
-                """, (progNum, lockMode, hidden, hidden, numSel, srv_id))
+                """, (progNum, lockMode, hidden, hidden, numSel, name_bytes, srv_id))
                 
                 # Update Favs (Only Fav1 for now, or all 5 if provided)
                 # First delete existing favs for this srvId

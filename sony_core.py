@@ -310,10 +310,17 @@ class SonyEditor:
 
     def _get_current_source_name(self, section_node) -> str:
         tag = section_node.tag.lower()
-        if 's' in tag:
+        if tag in ['sdbgs', 'sdbps', 'sdbcis']:
             return 'DVB-S'
-        if 'c' in tag:
+        elif tag == 'sdbc':
             return 'DVB-C'
+        elif tag == 'sdbt':
+            return 'DVB-T'
+        
+        # Fallback for unexpected tags
+        if 'sdbc' in tag: return 'DVB-C'
+        if 'sdbt' in tag: return 'DVB-T'
+        if 'sdb' in tag and 's' in tag.replace('sdb', ''): return 'DVB-S'
         return 'DVB-T'
 
     # ----------------------------------------------------------------------- #
