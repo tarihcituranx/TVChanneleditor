@@ -10,6 +10,7 @@
 [![CI](https://github.com/tarihcituranx/TVChanneleditor/actions/workflows/test.yml/badge.svg)](https://github.com/tarihcituranx/TVChanneleditor/actions)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![Python 3.12+](https://img.shields.io/badge/Python-3.12+-blue)](https://python.org)
+[![API Docs](https://img.shields.io/badge/API-Swagger_UI-orange)](https://tvchanneleditor.onrender.com/api/docs)
 
 ---
 
@@ -39,14 +40,14 @@ TV'nizin USB'ye aktardığı kanal listesi dosyasını tarayıcıda **sürükle-
 
 ## ✨ Özellikler
 
-- **🪄 Sihirli Değnek** — Genel / Haber / Spor şablonlarını tek tıkla uygula
+- **💡 Akıllı Şablonlar** — Genel / Haber / Spor şablonlarını tek tıkla uygula
 - **🛠️ Şablon Oluşturucu** — Kendi ideal listenizi oluşturup kaydedin
 - **📱 Kod ile Cihaza Aktarım** — 8 karakterlik kod ile kanal listesini TV yanındaki cep telefonundan bilgisayara kolayca aktarın
 - **🔍 Otomatik Frekans Doğrulama** — Eski/yanlış frekansları otomatik tespit eder (Türksat)
 - **⭐ Favori & Kilit** — Favori 1-5 ve çocuk kilidi düzenleme
 - **🗑️ Toplu İşlemler** — Şifreli kanalları, radyoları veya seçilileri toplu sil
 - **🌙 Karanlık/Aydınlık Tema & 👁️ Renk Körlüğü Modu** — Herkes için erişilebilir arayüz
-- **🌐 11 Dil Seçeneği** — 
+- **🌐 11 Dil Desteği**
 - **📊 Tam Gizlilik (Çerezsiz Analitik)** — Çerez veya kişisel veri kullanmayan yerleşik istatistik
 - **📱 Tam Responsive** — Masaüstü, tablet ve mobil uyumlu
 

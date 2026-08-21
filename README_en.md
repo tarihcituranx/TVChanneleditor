@@ -1,21 +1,22 @@
 [🇹🇷 TR](README.md) | [🇺🇸 EN](README_en.md) | [🇩🇪 DE](README_de.md) | [🇷🇺 RU](README_ru.md) | [🇪🇸 ES](README_es.md) | [🇮🇹 IT](README_it.md) | [🇫🇷 FR](README_fr.md) | [🇸🇦 AR](README_ar.md) | [🇮🇷 FA](README_fa.md) | [🇦🇿 AZ](README_az.md) | [🇵🇹 PT](README_pt.md)
 
-**Last Updated:** August 21, 2026
+**Last Updated:** 2026-08-21
 
 # 📺 TV Channel Editor
 
 > **Multi-brand TV channel list editor** — A single platform for Samsung, LG, Sony, Hisense, and more.
 
-[![Live Demo](https://img.shields.io/badge/🌐_Canlı_Demo-tvchanneleditor.onrender.com-blue)](https://tvchanneleditor.onrender.com)
+[![Live Demo](https://img.shields.io/badge/🌐_Live_Demo-tvchanneleditor.onrender.com-blue)](https://tvchanneleditor.onrender.com)
 [![CI](https://github.com/tarihcituranx/TVChanneleditor/actions/workflows/test.yml/badge.svg)](https://github.com/tarihcituranx/TVChanneleditor/actions)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![Python 3.12+](https://img.shields.io/badge/Python-3.12+-blue)](https://python.org)
+[![API Docs](https://img.shields.io/badge/API-Swagger_UI-orange)](https://tvchanneleditor.onrender.com/api/docs)
 
 ---
 
 ## 🎯 What Does It Do?
 
-You can visually edit the channel list file transferred by your TV to a USB drive using **drag-and-drop** in your browser and then reload it onto your TV. **Data is only temporarily stored (in RAM/Temp) during the process; it is not saved permanently.**
+You can visually edit the channel list file transferred by your TV to a USB drive using **drag-and-drop** in your browser and then re-upload it to your TV. **Data is stored only temporarily (in RAM/Temp) during the process; it is not saved permanently.**
 
 ---
 
@@ -39,14 +40,14 @@ You can visually edit the channel list file transferred by your TV to a USB driv
 
 ## ✨ Features
 
-- **🪄 Magic Wand** — Apply General / News / Sports templates with a single click
-- **🛠️ Template Creator** — Create and save your own ideal list
+- **💡 Smart Templates** — Apply General / News / Sports templates with a single click
+- **🛠️ Template Builder** — Create and save your own ideal list
 - **📱 Transfer to Device via Code** — Easily transfer the channel list from your smartphone next to the TV to your computer using an 8-character code
 - **🔍 Automatic Frequency Verification** — Automatically detects old or incorrect frequencies (Türksat)
 - **⭐ Favorites & Lock** — Manage Favorites 1–5 and the child lock
-- **🗑️ Bulk Actions** — Delete encrypted channels, radio stations, or selected items in bulk
+- **🗑️ Batch Actions** — Batch-delete encrypted channels, radio stations, or selected items
 - **🌙 Dark/Light Theme & 👁️ Color Blind Mode** — An accessible interface for everyone
-- **🌐 11 Language Options** — Supports Turkish and English
+- **🌐 Support for 11 Languages**
 - **📊 Full Privacy (Cookie-Free Analytics)** — Built-in statistics that do not use cookies or personal data
 - **📱 Fully Responsive** — Compatible with desktop, tablet, and mobile
 
@@ -107,18 +108,18 @@ If you’re developing with the AI assistant, read the [AI_INSTRUCTIONS.md](AI_I
 
 ---
 
-## 🔌 Using the Developer API & AI Agents
+## 🔌 Developer API & AI Agent Usage (Developer API)
 
-This project is not just a website; it’s also designed as a full-featured **REST API** that AI agents and developers can use directly via code.
+This project is not just a website; it is also designed as a full-fledged **REST API** that AI agents and developers can use directly through code.
 
-> 🧑‍💻 **For Developers:** You can view the interactive Swagger UI documentation at [tvchanneleditor.onrender.com/api/docs](https://tvchanneleditor.onrender.com/api/docs).
+> 🧑‍💻 **For Developers:** You can review the interactive Swagger UI documentation at [tvchanneleditor.onrender.com/api/docs](https://tvchanneleditor.onrender.com/api/docs).
 > 
 > 🤖 **For AI Agents (ChatGPT, Claude, etc.):** You can provide the system’s machine-readable Plain-Text OpenAPI schema to the AI via this link: [tvchanneleditor.onrender.com/api/openapi.txt](https://tvchanneleditor.onrender.com/api/openapi.txt)
 
 
 
 ### Version and Deployment Verification (Version Check)
-To instantly test whether the render server has deployed the latest GitHub commit or is still running from the cache:
+To instantly test whether the render server’s latest GitHub commit has been deployed or is still cached:
 ```bash
 curl -sS https://tvchanneleditor.onrender.com/api/version
 ```
@@ -135,8 +136,8 @@ curl -sS https://tvchanneleditor.onrender.com/api/version
 
 ## 🙏 Thanks
 
-- **[İltekin/scm-editor](https://github.com/iltekin/scm-editor)** — Initial source of inspiration
-- **[PredatH0r/ChanSort](https://github.com/PredatH0r/ChanSort)** — Reverse engineering reference for SCM + multi-brand formats
+- **[İltekin/scm-editor](https://github.com/iltekin/scm-editor)** — Initial inspiration
+- **[PredatH0r/ChanSort](https://github.com/PredatH0r/ChanSort)** — Reverse engineering reference for SCM and multi-brand formats
 - **[Türksat Satellite](https://uydu.turksat.com.tr/)** — Türksat frequency verification database
 
 ---

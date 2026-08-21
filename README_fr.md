@@ -2,20 +2,21 @@
 
 **Dernière mise à jour :** 21/08/2026
 
-# 📺 TV Channel Editor
+# 📺 Éditeur de chaînes TV
 
-> **Éditeur de liste de chaînes TV multimarques** — Une plateforme unique pour Samsung, LG, Sony, Hisense et bien d'autres.
+> **Éditeur de listes de chaînes TV multimarques** — Une plateforme unique pour Samsung, LG, Sony, Hisense et bien d'autres.
 
 [![Démonstration en direct](https://img.shields.io/badge/🌐_Canlı_Demo-tvchanneleditor.onrender.com-blue)](https://tvchanneleditor.onrender.com)
 [![CI](https://github.com/tarihcituranx/TVChanneleditor/actions/workflows/test.yml/badge.svg)](https://github.com/tarihcituranx/TVChanneleditor/actions)
-[![Licence : MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENCE)
+[![Licence : MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![Python 3.12+](https://img.shields.io/badge/Python-3.12+-blue)](https://python.org)
+[![Documentation de l'API](https://img.shields.io/badge/API-Swagger_UI-orange)](https://tvchanneleditor.onrender.com/api/docs)
 
 ---
 
-## 🎯 Que fait-il ?
+## 🎯 À quoi ça sert ?
 
-Vous pouvez modifier visuellement dans votre navigateur, par **glisser-déposer**, le fichier de liste de chaînes que votre téléviseur a transféré sur la clé USB, puis le réimporter sur le téléviseur. **Les données ne sont conservées que temporairement (RAM/Temp) pendant le traitement ; elles ne sont pas stockées de manière permanente.**
+Vous pouvez modifier visuellement le fichier de liste des chaînes que votre téléviseur a transféré sur le port USB à l'aide de la fonction **glisser-déposer** dans votre navigateur, puis le réimporter sur votre téléviseur. **Les données ne sont conservées que temporairement (RAM/Temp) pendant le traitement et ne sont pas stockées de manière permanente.**
 
 ---
 
@@ -29,7 +30,7 @@ Vous pouvez modifier visuellement dans votre navigateur, par **glisser-déposer*
 | **Sony BRAVIA** | `sdb.xml` | ✅ Prise en charge complète |
 | **Hisense** (2017+) | `servicelist.db` | ✅ Prise en charge complète |
 | **Panasonic VIERA** | `svl.db / svl.bin` | 🔄 Bêta |
-| Philips, Toshiba, Grundig... | `*.db / *.xml` | 🔜 Bientôt |
+| Philips, Toshiba, Grundig... | `*.db / *.xml` | 🔜 Bientôt disponible |
 
 ## 🛰️ Satellites pris en charge
 
@@ -39,14 +40,14 @@ Vous pouvez modifier visuellement dans votre navigateur, par **glisser-déposer*
 
 ## ✨ Fonctionnalités
 
-- **🪄 Baguette magique** — Appliquez les modèles Général / Actualités / Sport en un seul clic
+- **💡 Modèles intelligents** — Appliquez les modèles Général / Actualités / Sport en un seul clic
 - **🛠️ Créateur de modèles** — Créez et enregistrez votre liste idéale
 - **📱 Transfert vers l'appareil via un code** — Transférez facilement la liste des chaînes de votre téléphone portable vers votre ordinateur à l'aide d'un code à 8 caractères
 - **🔍 Vérification automatique des fréquences** — Détecte automatiquement les fréquences obsolètes ou erronées (Türksat)
 - **⭐ Favoris & Verrouillage** — Gestion des favoris (1 à 5) et du verrouillage parental
-- **🗑️ Opérations groupées** — Suppression groupée des chaînes cryptées, des stations de radio ou des éléments sélectionnés
+- **🗑️ Opérations groupées** — Supprimez en masse les chaînes cryptées, les stations de radio ou les éléments sélectionnés
 - **🌙 Thème sombre/clair & 👁️ Mode daltonisme** — Une interface accessible à tous
-- **🌐 11 langues disponibles** — Prise en charge du turc et de l'anglais
+- **🌐 Prise en charge de 11 langues**
 - **📊 Confidentialité totale (analyses sans cookies)** — Statistiques intégrées n’utilisant ni cookies ni données personnelles
 - **📱 Entièrement responsive** — Compatible avec les ordinateurs de bureau, les tablettes et les mobiles
 
@@ -69,7 +70,7 @@ pip install -r requirements.txt
 python3 app.py
 ```
 
-Rendez-vous à l'adresse `http://127.0.0.1:5000` dans votre navigateur.
+Rendez-vous à l’adresse `http://127.0.0.1:5000` dans votre navigateur.
 
 ---
 
@@ -78,8 +79,8 @@ Rendez-vous à l'adresse `http://127.0.0.1:5000` dans votre navigateur.
 ```
 ├── app.py # Application principale Flask et en-têtes de sécurité
 ├── scm_core.py # Moteur Samsung SCM (binaire)
-├── tizen_core.py # Moteur Samsung Tizen SQLite
-├── lg_core.py # Moteur LG GlobalClone XML
+├── tizen_core.py # Moteur SQLite Samsung Tizen
+├── lg_core.py # Moteur XML LG GlobalClone
 ├── sony_core.py # Moteur sdb.xml de Sony
 ├── hisense_core.py     # Moteur SQLite de Hisense
 ├── templates/ # Modèles HTML Jinja2 (11 langues)
@@ -95,21 +96,21 @@ Rendez-vous à l'adresse `http://127.0.0.1:5000` dans votre navigateur.
 
 - Tous les en-têtes de sécurité sont activés (CSP, HSTS, CORP, COOP, Referrer-Policy...)
 - Limite de taille des fichiers : 2 Mo
-- Les fichiers téléchargés sont supprimés une fois traités
-- Aucune donnée relative aux canaux n’est enregistrée sur le serveur
+- Les fichiers téléchargés sont supprimés après leur traitement
+- Aucune donnée de canal n’est enregistrée sur le serveur
 - Contact sécurité : `tarihcituranx@proton.me`
 
 ---
 
-## 🤖 Guide sur l’intelligence artificielle
+## 🤖 Guide de l’IA
 
 Si vous développez avec l’assistant IA, consultez le fichier [AI_INSTRUCTIONS.md](AI_INSTRUCTIONS.md).
 
 ---
 
-## 🔌 Utilisation de l’API pour développeurs et des agents IA (Developer API)
+## 🔌 Utilisation de l’API développeur et des agents IA (Developer API)
 
-Ce projet n’est pas seulement un site web, mais aussi une **API REST** à part entière que les agents IA (AI Agents) et les développeurs peuvent utiliser directement via le code.
+Ce projet n’est pas seulement un site web, mais aussi une **API REST** à part entière, conçue pour être utilisée directement par les agents IA (AI Agents) et les développeurs via leur code.
 
 > 🧑‍💻 **Pour les développeurs :** vous pouvez consulter la documentation interactive Swagger UI à l'adresse [tvchanneleditor.onrender.com/api/docs](https://tvchanneleditor.onrender.com/api/docs).
 > 
@@ -118,7 +119,7 @@ Ce projet n’est pas seulement un site web, mais aussi une **API REST** à part
 
 
 ### Vérification de la version et du déploiement (Version Check)
-Pour vérifier en une seconde si le dernier commit GitHub du serveur de rendu a bien été mis en production ou s’il est encore en cache :
+Pour vérifier en une seconde si le dernier commit GitHub du serveur de rendu a bien été mis en production ou s’il est resté en cache :
 ```bash
 curl -sS https://tvchanneleditor.onrender.com/api/version
 ```
@@ -133,10 +134,10 @@ curl -sS https://tvchanneleditor.onrender.com/api/version
 
 ---
 
-## 🙏 Merci
+## 🙏 Remerciements
 
-- **[İltekin/scm-editor](https://github.com/iltekin/scm-editor)** — Première source d’inspiration
-- **[PredatH0r/ChanSort](https://github.com/PredatH0r/ChanSort)** — Référence de rétro-ingénierie pour les formats SCM + multi-marques
+- **[İltekin/scm-editor](https://github.com/iltekin/scm-editor)** — Première source d'inspiration
+- **[PredatH0r/ChanSort](https://github.com/PredatH0r/ChanSort)** — Référence de rétro-ingénierie pour SCM et les formats multimarques
 - **[Türksat Satellite](https://uydu.turksat.com.tr/)** — Base de données de vérification des fréquences Türksat
 
 ---
@@ -145,4 +146,4 @@ curl -sS https://tvchanneleditor.onrender.com/api/version
 
 Distribué en open source sous licence MIT.
 
-> « Samsung », « LG », « Sony », « Hisense », « Panasonic » et leurs logos sont des marques déposées des sociétés respectives. Il s'agit d'un outil communautaire indépendant et open source.
+> « Samsung », « LG », « Sony », « Hisense », « Panasonic » et leurs logos sont des marques déposées des sociétés concernées. Il s'agit d'un outil communautaire indépendant et open source.

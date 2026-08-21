@@ -2,20 +2,21 @@
 
 **Última actualización:** 21/08/2026
 
-# 📺 Editor de canales de televisión
+# 📺 Editor de canales de TV
 
-> **Editor de listas de canales de televisión multimarca** — Una única plataforma para Samsung, LG, Sony, Hisense y muchas más marcas.
+> **Editor de listas de canales de TV multimarca** — Una única plataforma para Samsung, LG, Sony, Hisense y muchas más.
 
 [![Demostración en directo](https://img.shields.io/badge/🌐_Canlı_Demo-tvchanneleditor.onrender.com-blue)](https://tvchanneleditor.onrender.com)
 [![CI](https://github.com/tarihcituranx/TVChanneleditor/actions/workflows/test.yml/badge.svg)](https://github.com/tarihcituranx/TVChanneleditor/actions)
-[![Licencia: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+[![Licencia: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENCIA)
 [![Python 3.12+](https://img.shields.io/badge/Python-3.12+-blue)](https://python.org)
+[![Documentación de la API](https://img.shields.io/badge/API-Swagger_UI-orange)](https://tvchanneleditor.onrender.com/api/docs)
 
 ---
 
 ## 🎯 ¿Qué hace?
 
-Puedes editar visualmente en el navegador, mediante **arrastrar y soltar**, el archivo de la lista de canales que tu televisor ha transferido al USB y volver a cargarlo en el televisor. **Los datos solo se almacenan de forma temporal (en RAM/Temp) durante el proceso; no se guardan de forma permanente.**
+Puedes editar visualmente en el navegador, mediante **arrastrar y soltar**, el archivo de la lista de canales que tu televisor ha transferido al USB y volver a cargarlo en el televisor. **Los datos solo se almacenan de forma temporal (RAM/Temp) durante el proceso; no se guardan de forma permanente.**
 
 ---
 
@@ -39,20 +40,20 @@ Puedes editar visualmente en el navegador, mediante **arrastrar y soltar**, el a
 
 ## ✨ Características
 
-- **🪄 Varita mágica** — Aplica plantillas de «General», «Noticias» y «Deportes» con un solo clic
+- **💡 Plantillas inteligentes** — Aplica las plantillas General / Noticias / Deportes con un solo clic
 - **🛠️ Creador de plantillas** — Crea y guarda tu propia lista ideal
 - **📱 Transferencia al dispositivo mediante código** — Transfiere fácilmente la lista de canales desde el móvil que tienes junto al televisor al ordenador con un código de 8 caracteres
 - **🔍 Verificación automática de frecuencias** — Detecta automáticamente frecuencias antiguas o erróneas (Türksat)
-- **⭐ Favoritos y bloqueo** — Configuración de favoritos (1-5) y bloqueo infantil
-- **🗑️ Acciones masivas** — Elimina de forma masiva canales encriptados, emisoras de radio o elementos seleccionados
+- **⭐ Favoritos y bloqueo** — Configuración de favoritos (1-5) y bloqueo parental
+- **🗑️ Acciones masivas** — Elimina de forma masiva canales codificados, emisoras de radio o elementos seleccionados
 - **🌙 Tema oscuro/claro y 👁️ Modo para daltónicos** — Interfaz accesible para todos
-- **🌐 11 idiomas disponibles** — Compatible con turco e inglés
+- **🌐 Compatibilidad con 11 idiomas**
 - **📊 Privacidad total (análisis sin cookies)** — Estadísticas integradas que no utilizan cookies ni datos personales
-- **📱 Totalmente adaptable** — Compatible con ordenador, tableta y móvil
+- **📱 Totalmente adaptativo** — Compatible con ordenadores de sobremesa, tabletas y móviles
 
 ---
 
-## 🚀 Uso en vivo
+## 🚀 Uso en directo
 
 Úsalo directamente en el navegador sin necesidad de instalación:
 
@@ -69,7 +70,7 @@ pip install -r requirements.txt
 python3 app.py
 ```
 
-Ve a la dirección `http://127.0.0.1:5000` en el navegador.
+Accede a la dirección `http://127.0.0.1:5000` en el navegador.
 
 ---
 
@@ -109,16 +110,16 @@ Si estás desarrollando con el asistente de IA, lee el archivo [AI_INSTRUCTIONS.
 
 ## 🔌 Uso de la API para desarrolladores y los agentes de IA (Developer API)
 
-Este proyecto no es solo un sitio web, sino que también está diseñado como una **API REST** completa que los agentes de IA (AI Agents) y los desarrolladores pueden utilizar directamente mediante código.
+Este proyecto no es solo un sitio web, sino que también está diseñado como una **API REST** completa que los agentes de inteligencia artificial (AI Agents) y los desarrolladores pueden utilizar directamente mediante código.
 
 > 🧑‍💻 **Para desarrolladores:** Puedes consultar la documentación interactiva de Swagger UI en [tvchanneleditor.onrender.com/api/docs](https://tvchanneleditor.onrender.com/api/docs).
 > 
-> 🤖 **Para agentes de IA (ChatGPT, Claude, etc.):** Podéis proporcionar a la IA el esquema OpenAPI en texto plano (Plain-Text), legible por máquina, a través de este enlace: [tvchanneleditor.onrender.com/api/openapi.txt](https://tvchanneleditor.onrender.com/api/openapi.txt)
+> 🤖 **Para agentes de IA (ChatGPT, Claude, etc.):** Puedes proporcionar a la IA el esquema OpenAPI en texto plano (Plain-Text), legible por máquina, a través de este enlace: [tvchanneleditor.onrender.com/api/openapi.txt](https://tvchanneleditor.onrender.com/api/openapi.txt)
 
 
 
-### Comprobación de la versión y la implementación (Version Check)
-Para comprobar en cuestión de segundos si el servidor de renderizado ha publicado el último commit de GitHub o si sigue en la caché:
+### Comprobación de versión y despliegue (Version Check)
+Para comprobar en cuestión de segundos si el servidor de renderización ha publicado el último commit de GitHub o si sigue en la caché:
 ```bash
 curl -sS https://tvchanneleditor.onrender.com/api/version
 ```
@@ -137,7 +138,7 @@ curl -sS https://tvchanneleditor.onrender.com/api/version
 
 - **[İltekin/scm-editor](https://github.com/iltekin/scm-editor)** — Primera fuente de inspiración
 - **[PredatH0r/ChanSort](https://github.com/PredatH0r/ChanSort)** — Referencia de ingeniería inversa para SCM y formatos multimarca
-- **[Satélite Türksat](https://uydu.turksat.com.tr/)** — Base de datos de verificación de frecuencias de Türksat
+- **[Türksat Uydu](https://uydu.turksat.com.tr/)** — Base de datos de verificación de frecuencias de Türksat
 
 ---
 

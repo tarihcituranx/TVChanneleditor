@@ -4,18 +4,19 @@
 
 # 📺 TV Channel Editor
 
-> **Editor di elenchi di canali TV multimarca** — Un'unica piattaforma per Samsung, LG, Sony, Hisense e molti altri.
+> **Editor di elenchi di canali TV multimarca** — Una piattaforma unica per Samsung, LG, Sony, Hisense e altri.
 
 [![Demo dal vivo](https://img.shields.io/badge/🌐_Canlı_Demo-tvchanneleditor.onrender.com-blue)](https://tvchanneleditor.onrender.com)
 [![CI](https://github.com/tarihcituranx/TVChanneleditor/actions/workflows/test.yml/badge.svg)](https://github.com/tarihcituranx/TVChanneleditor/actions)
 [![Licenza: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENZA)
 [![Python 3.12+](https://img.shields.io/badge/Python-3.12+-blue)](https://python.org)
+[![Documentazione API](https://img.shields.io/badge/API-Swagger_UI-orange)](https://tvchanneleditor.onrender.com/api/docs)
 
 ---
 
 ## 🎯 Cosa fa?
 
-È possibile modificare visivamente nel browser il file con l’elenco dei canali trasferito dalla TV sulla porta USB tramite **drag-and-drop** e ricaricarlo sulla TV. **I dati vengono conservati solo temporaneamente (RAM/Temp) durante l’operazione e non vengono salvati in modo permanente.**
+È possibile modificare visivamente nel browser il file con l'elenco dei canali trasferito dalla TV sulla porta USB tramite **drag-and-drop** e ricaricarlo sulla TV. **I dati vengono conservati solo temporaneamente (RAM/Temp) durante l'operazione e non vengono salvati in modo permanente.**
 
 ---
 
@@ -37,16 +38,16 @@
 
 ---
 
-## ✨ Funzionalità
+## ✨ Caratteristiche
 
-- **🪄 Bacchetta magica** — Applica i modelli Generale / Notizie / Sport con un solo clic
+- **💡 Modelli intelligenti** — Applica i modelli Generale / Notizie / Sport con un solo clic
 - **🛠️ Generatore di modelli** — Crea e salva la tua lista ideale
-- **📱 Trasferimento al dispositivo tramite codice** — Trasferisci facilmente l’elenco dei canali dal cellulare vicino alla TV al computer tramite un codice di 8 caratteri
+- **📱 Trasferimento al dispositivo tramite codice** — Trasferisci facilmente la lista dei canali dal cellulare accanto alla TV al computer tramite un codice di 8 caratteri
 - **🔍 Verifica automatica delle frequenze** — Rileva automaticamente le frequenze obsolete o errate (Türksat)
 - **⭐ Preferiti e Blocco** — Gestione dei preferiti da 1 a 5 e blocco bambini
 - **🗑️ Operazioni in blocco** — Elimina in blocco i canali criptati, le stazioni radio o gli elementi selezionati
 - **🌙 Tema scuro/chiaro e 👁️ Modalità per daltonici** — Interfaccia accessibile a tutti
-- **🌐 11 lingue disponibili** — Supporto per turco e inglese
+- **🌐 Supporto in 11 lingue**
 - **📊 Privacy totale (analisi senza cookie)** — Statistiche integrate che non utilizzano cookie né dati personali
 - **📱 Completamente reattivo** — Compatibile con desktop, tablet e dispositivi mobili
 
@@ -54,7 +55,7 @@
 
 ## 🚀 Utilizzo in tempo reale
 
-Utilizzabile direttamente nel browser senza alcuna installazione:
+Utilizzalo direttamente nel browser senza alcuna configurazione:
 
 👉 **[tvchanneleditor.onrender.com](https://tvchanneleditor.onrender.com)**
 
@@ -69,7 +70,7 @@ pip install -r requirements.txt
 python3 app.py
 ```
 
-Vai all'indirizzo `http://127.0.0.1:5000` nel browser.
+Accedi all'indirizzo `http://127.0.0.1:5000` nel browser.
 
 ---
 
@@ -79,12 +80,12 @@ Vai all'indirizzo `http://127.0.0.1:5000` nel browser.
 ├── app.py # Applicazione principale Flask e header di sicurezza
 ├── scm_core.py # Motore Samsung SCM (binario)
 ├── tizen_core.py # Motore Samsung Tizen SQLite
-├── lg_core.py # Motore LG GlobalClone XML
-├── sony_core.py # Motore sdb.xml di Sony
-├── hisense_core.py     # Motore SQLite di Hisense
+├── lg_core.py # Motore XML LG GlobalClone
+├── sony_core.py # Motore sdb.xml Sony
+├── hisense_core.py     # Motore SQLite Hisense
 ├── templates/ # Modelli HTML Jinja2 (11 lingue)
 ├── static/
-│   ├── css/style.css   # Tema scuro/chiaro + tutti gli stili
+│   ├── css/style.css   # Tema Dark/Light + tutti gli stili
 │   ├── js/app.js # Frontend (drag-and-drop, rendering dei canali, template)
 │   └── data/ # frequenze.json, templates.json
 ```
@@ -95,7 +96,7 @@ Vai all'indirizzo `http://127.0.0.1:5000` nel browser.
 
 - Tutti gli header di sicurezza sono attivi (CSP, HSTS, CORP, COOP, Referrer-Policy...)
 - Limite di dimensione dei file: 2 MB
-- I file caricati vengono eliminati dopo l’elaborazione
+- I file caricati vengono eliminati dopo l'elaborazione
 - Nessun dato dei canali viene registrato sul server
 - Contatto per la sicurezza: `tarihcituranx@proton.me`
 
@@ -103,22 +104,22 @@ Vai all'indirizzo `http://127.0.0.1:5000` nel browser.
 
 ## 🤖 Guida all’intelligenza artificiale
 
-Se state sviluppando con l’assistente AI, leggete il file [AI_INSTRUCTIONS.md](AI_INSTRUCTIONS.md).
+Se state sviluppando con l’assistente AI, consultate il file [AI_INSTRUCTIONS.md](AI_INSTRUCTIONS.md).
 
 ---
 
-## 🔌 Utilizzo dell’API per sviluppatori e degli agenti IA (Developer API)
+## 🔌 Utilizzo dell’API per sviluppatori e degli agenti di intelligenza artificiale (Developer API)
 
 Questo progetto non è solo un sito web, ma è stato progettato anche come una **API REST** completa che gli agenti di intelligenza artificiale (AI Agents) e gli sviluppatori possono utilizzare direttamente tramite codice.
 
 > 🧑‍💻 **Per gli sviluppatori:** potete consultare la documentazione interattiva di Swagger UI all’indirizzo [tvchanneleditor.onrender.com/api/docs](https://tvchanneleditor.onrender.com/api/docs).
 > 
-> 🤖 **Per gli agenti AI (ChatGPT, Claude, ecc.):** Potete fornire all’intelligenza artificiale lo schema OpenAPI in testo semplice (plain-text) leggibile dalla macchina tramite questo link: [tvchanneleditor.onrender.com/api/openapi.txt](https://tvchanneleditor.onrender.com/api/openapi.txt)
+> 🤖 **Per gli agenti AI (ChatGPT, Claude, ecc.):** È possibile fornire all’intelligenza artificiale lo schema OpenAPI in testo semplice (plain-text) leggibile da macchina tramite questo link: [tvchanneleditor.onrender.com/api/openapi.txt](https://tvchanneleditor.onrender.com/api/openapi.txt)
 
 
 
 ### Verifica della versione e del deploy (Version Check)
-Per verificare in un attimo se il server di rendering ha pubblicato l'ultimo commit su GitHub o se è ancora in cache:
+Per verificare in un istante se l'ultimo commit GitHub del server di rendering è stato pubblicato o se è rimasto nella cache:
 ```bash
 curl -sS https://tvchanneleditor.onrender.com/api/version
 ```
@@ -136,7 +137,7 @@ curl -sS https://tvchanneleditor.onrender.com/api/version
 ## 🙏 Grazie
 
 - **[İltekin/scm-editor](https://github.com/iltekin/scm-editor)** — Prima fonte di ispirazione
-- **[PredatH0r/ChanSort](https://github.com/PredatH0r/ChanSort)** — Riferimento di reverse engineering per SCM e formati multibrand
+- **[PredatH0r/ChanSort](https://github.com/PredatH0r/ChanSort)** — Riferimento di reverse engineering per SCM e formati multimarca
 - **[Türksat Satellite](https://uydu.turksat.com.tr/)** — Database di verifica delle frequenze Türksat
 
 ---
