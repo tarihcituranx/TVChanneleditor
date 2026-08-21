@@ -206,8 +206,12 @@ def api_docs():
 
 @app.route('/api/openapi.txt')
 def openapi_txt():
-    # Yapay zekaların YAML MIME tipine takılmadan saf metin olarak okuyabilmesi için
-    with open('static/openapi.yaml', 'r') as f:
+    lang = request.cookies.get('lang', 'en').lower()
+    file_path = f'static/openapi_{lang}.yaml'
+    import os
+    if not os.path.exists(file_path):
+        file_path = 'static/openapi_en.yaml'
+    with open(file_path, 'r', encoding='utf-8') as f:
         return Response(f.read(), mimetype='text/plain')
 
 from datetime import datetime
