@@ -2,148 +2,117 @@
 
 **Última actualización:** 21/08/2026
 
-# 📺 Editor de canales de TV
+# 📺 Editor de canales de televisión
 
-> **Editor de listas de canales de TV multimarca** — Una única plataforma para Samsung, LG, Sony, Hisense y muchas más.
+> **Editor de listas de canales de televisión multimarca** — Edita tus listas de canales de televisión de Samsung, LG, Sony y Hisense a través del navegador.
 
 [![Demostración en directo](https://img.shields.io/badge/🌐_Canlı_Demo-tvchanneleditor.onrender.com-blue)](https://tvchanneleditor.onrender.com)
-[![CI](https://github.com/tarihcituranx/TVChanneleditor/actions/workflows/test.yml/badge.svg)](https://github.com/tarihcituranx/TVChanneleditor/actions)
-[![Licencia: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENCIA)
-[![Python 3.12+](https://img.shields.io/badge/Python-3.12+-blue)](https://python.org)
 [![Documentación de la API](https://img.shields.io/badge/API-Swagger_UI-orange)](https://tvchanneleditor.onrender.com/api/docs)
+[![CI](https://github.com/tarihcituranx/TVChanneleditor/actions/workflows/test.yml/badge.svg)](https://github.com/tarihcituranx/TVChanneleditor/actions)
+[![Licencia: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+[![Python 3.12+](https://img.shields.io/badge/Python-3.12+-blue)](https://python.org)
 
 ---
 
-## 🎯 ¿Qué hace?
+## ✨ ¿Para qué sirve?
 
-Puedes editar visualmente en el navegador, mediante **arrastrar y soltar**, el archivo de la lista de canales que tu televisor ha transferido al USB y volver a cargarlo en el televisor. **Los datos solo se almacenan de forma temporal (RAM/Temp) durante el proceso; no se guardan de forma permanente.**
+Es una herramienta de código abierto que te permite editar visualmente, mediante **arrastrar y soltar** en tu navegador, el archivo de la lista de canales que tu televisor ha copiado a una memoria USB. No requiere instalación, funciona directamente desde el navegador o a través de la API REST.
 
----
+## 📺 Formatos compatibles (matriz de compatibilidad)
 
-## 📺 Marcas de televisores compatibles
+| Formato | Lectura | Edición | Reconstrucción | Nota |
+|--------|:---:|:---:|:---:|-----|
+| **Samsung `.scm`** | ✅ | ✅ | ✅ | Series E/F/H (binario) |
+| **Samsung Tizen `.zip`** | ✅ | ✅ | ✅ | Series J/K/M/Q/R/T (SQLite) |
+| **Sony `sdb.xml`** | ✅ | ✅ | ✅ | Serie BRAVIA |
+| **Hisense `servicelist.db`** | ✅ | ✅ | ✅ | Modelos de 2017 y 2021 |
+| **LG XML `.tll`** | ✅ | ✅ | ✅ | Solo GlobalClone XML (no se admite el formato binario) |
+| **Panasonic `svl.*`** | 🔜 | 🔜 | 🔜 | Programado / En fase de desarrollo |
 
-| Marca | Formato | Estado |
-|-------|--------|-------|
-| **Samsung** (series E/F/H) | `.scm` | ✅ Compatibilidad total |
-| **Samsung** (J/K/M/Q/R/T - Tizen) | `.zip` (SQLite) | ✅ Compatibilidad total |
-| **LG** (webOS 5+) | `.tll` (XML) | ✅ Compatibilidad total |
-| **Sony BRAVIA** | `sdb.xml` | ✅ Compatibilidad total |
-| **Hisense** (2017+) | `servicelist.db` | ✅ Compatibilidad total |
-| **Panasonic VIERA** | `svl.db / svl.bin` | 🔄 Beta |
-| Philips, Toshiba, Grundig... | `*.db / *.xml` | 🔜 Próximamente |
+> **⚠️ Nota importante sobre la compatibilidad con LG:** No se admiten los archivos **binarios .tll** de la generación anterior de LG. Solo se pueden procesar los archivos `.tll` de nueva generación basados en XML (GlobalClone). Para los archivos antiguos, debes utilizar la aplicación de escritorio *ChanSort*.
 
-## 🛰️ Satélites compatibles
+## 🚀 Inicio rápido
 
-**Türksat 4A/5B** · **Hotbird 13E** · **Astra 19.2E** · y todos los demás satélites DVB-S
+1. **Transfiere desde el televisor al USB:** Desde el menú del televisor (Emisión > Ajustes avanzados), transfiere la lista de canales a un USB con formato FAT32.
+2. **Sube el archivo:** Arrastra y suelta el archivo del USB en la página web.
+3. **Edita:** Ordena los canales arrastrando y soltando, elimina los que no necesites o utiliza 💡 las plantillas inteligentes.
+4. **Descarga:** Vuelve a descargar el archivo editado a tu ordenador.
+5. **Instala en el televisor:** vuelve a conectar la memoria USB al televisor e importa la nueva lista.
 
----
+## 🛰️ Compatibilidad con satélites y frecuencias
 
-## ✨ Características
-
-- **💡 Plantillas inteligentes** — Aplica las plantillas General / Noticias / Deportes con un solo clic
-- **🛠️ Creador de plantillas** — Crea y guarda tu propia lista ideal
-- **📱 Transferencia al dispositivo mediante código** — Transfiere fácilmente la lista de canales desde el móvil que tienes junto al televisor al ordenador con un código de 8 caracteres
-- **🔍 Verificación automática de frecuencias** — Detecta automáticamente frecuencias antiguas o erróneas (Türksat)
-- **⭐ Favoritos y bloqueo** — Configuración de favoritos (1-5) y bloqueo parental
-- **🗑️ Acciones masivas** — Elimina de forma masiva canales codificados, emisoras de radio o elementos seleccionados
-- **🌙 Tema oscuro/claro y 👁️ Modo para daltónicos** — Interfaz accesible para todos
-- **🌐 Compatibilidad con 11 idiomas**
-- **📊 Privacidad total (análisis sin cookies)** — Estadísticas integradas que no utilizan cookies ni datos personales
-- **📱 Totalmente adaptativo** — Compatible con ordenadores de sobremesa, tabletas y móviles
+Las listas de canales **DVB-S/S2** se pueden procesar sin problemas en cuanto al formato. **La función de verificación automática de frecuencias (detección de frecuencias antiguas o erróneas) solo está activa actualmente para los datos de Türksat 4A/5B.** Los demás satélites (Hotbird, Astra, etc.) son totalmente compatibles para la clasificación y la edición.
 
 ---
 
-## 🚀 Uso en directo
+## 🔌 ¿Cómo funciona la API para desarrolladores (REST)?
 
-Úsalo directamente en el navegador sin necesidad de instalación:
+Existe un flujo sencillo de 3 pasos para los agentes de IA y los desarrolladores. Para obtener más detalles, puedes consultar los enlaces a [Swagger UI](https://tvchanneleditor.onrender.com/api/docs) o al [esquema OpenAPI](https://tvchanneleditor.onrender.com/api/openapi.txt).
 
-👉 **[tvchanneleditor.onrender.com](https://tvchanneleditor.onrender.com)**
-
----
-
-## 💻 Instalación local
-
-```bash
-git clone https://github.com/tarihcituranx/TVChanneleditor.git
-cd TVChanneleditor
-pip install -r requirements.txt
-python3 app.py
+**Paso 1: Carga (Upload)**
+```http
+POST /upload
+Content-Type: multipart/form-data
 ```
+*(Devuelve como respuesta un `session_id` y una lista JSON de canales)*
 
-Accede a la dirección `http://127.0.0.1:5000` en el navegador.
+**Paso 2: Compilación (Build)**
+```http
+POST /build
+Content-Type: application/json
+{
+  "session_id": "uuid-...",
+  "channels": [ ... lista editada ... ]
+}
+```
+*(Como respuesta, devuelve el enlace `/download/...` desde el que se puede descargar el archivo)*
 
----
+**Paso 3: Descarga (Download)**
+```http
+GET /download/{session_id}/{filename}
+```
+*(Se descarga el archivo binario o comprimido editado)*
+
+## 🔐 Privacidad y seguridad
+
+- Hay un límite de tamaño de archivo de **2 MB**.
+- **Los archivos no se almacenan de forma permanente en el servidor.** Los archivos subidos se guardan en la memoria temporal durante la sesión de edición y se eliminan por completo de forma automática cuando expira la sesión (aproximadamente 1 hora).
+- No hay registros de cuentas, suscripciones ni bases de datos.
+- Las operaciones de análisis de XML en la API (contra ataques «Billion Laughs») están protegidas mediante `defusedxml`.
+
+## 🧪 Sistema de pruebas (CI)
+
+El proyecto cuenta con una arquitectura de pruebas **Round-Trip (ida y vuelta)**.
+- Mediante el uso de archivos de prueba del mundo real (fixtures), se comprueba que el código del motor, aunque se haya dañado o modificado, no altere las estructuras originales de la base de datos de televisión.
+- En cada operación de `push` y `PR`, se ejecuta automáticamente el archivo `tests/test_roundtrip.py` en GitHub Actions.
+
+## 🌍 Compatibilidad con idiomas
+
+La interfaz y las guías de uso están disponibles **en 11 idiomas**: turco, inglés, alemán, ruso, español, italiano, francés, árabe, persa, azerbaiyano y portugués.
 
 ## 🏗️ Estructura del proyecto
 
 ```
-├── app.py # Aplicación principal de Flask y encabezados de seguridad
-├── scm_core.py # Motor SCM (binario) de Samsung
+├── app.py # Servidor Flask, rutas de la API e i18n
+├── scm_core.py # Motor SCM de Samsung
 ├── tizen_core.py # Motor SQLite de Samsung Tizen
-├── lg_core.py # Motor XML de LG GlobalClone
-├── sony_core.py # Motor sdb.xml de Sony
+├── lg_core.py # Motor XML de LG
+├── sony_core.py # Motor XML de Sony
 ├── hisense_core.py     # Motor SQLite de Hisense
-├── templates/ # Plantillas HTML de Jinja2 (11 idiomas)
-├── static/
-│   ├── css/style.css   # Tema oscuro/claro + todos los estilos
-│   ├── js/app.js # Frontend (arrastrar y soltar, renderizado de canales, plantilla)
-│   └── data/ # frecuencias.json, plantillas.json
+├── templates/ # Interfaces HTML de Jinja2 (11 idiomas)
+├── static/ # CSS, JS, esquemas YAML de OpenAPI
+└── tests/
+    ├── test_roundtrip.py  # Pruebas de ida y vuelta para todos los motores
+    └── fixtures/ # Ejemplos de bases de datos de televisores reales para las pruebas
 ```
-
----
-
-## 🔐 Seguridad
-
-- Todos los encabezados de seguridad están activos (CSP, HSTS, CORP, COOP, Referrer-Policy...)
-- Límite de tamaño de archivo: 2 MB
-- Los archivos subidos se eliminan tras su procesamiento
-- No se registra ningún dato de los canales en el servidor
-- Contacto de seguridad: `tarihcituranx@proton.me`
-
----
-
-## 🤖 Guía de inteligencia artificial
-
-Si estás desarrollando con el asistente de IA, lee el archivo [AI_INSTRUCTIONS.md](AI_INSTRUCTIONS.md).
-
----
-
-## 🔌 Uso de la API para desarrolladores y los agentes de IA (Developer API)
-
-Este proyecto no es solo un sitio web, sino que también está diseñado como una **API REST** completa que los agentes de inteligencia artificial (AI Agents) y los desarrolladores pueden utilizar directamente mediante código.
-
-> 🧑‍💻 **Para desarrolladores:** Puedes consultar la documentación interactiva de Swagger UI en [tvchanneleditor.onrender.com/api/docs](https://tvchanneleditor.onrender.com/api/docs).
-> 
-> 🤖 **Para agentes de IA (ChatGPT, Claude, etc.):** Puedes proporcionar a la IA el esquema OpenAPI en texto plano (Plain-Text), legible por máquina, a través de este enlace: [tvchanneleditor.onrender.com/api/openapi.txt](https://tvchanneleditor.onrender.com/api/openapi.txt)
-
-
-
-### Comprobación de versión y despliegue (Version Check)
-Para comprobar en cuestión de segundos si el servidor de renderización ha publicado el último commit de GitHub o si sigue en la caché:
-```bash
-curl -sS https://tvchanneleditor.onrender.com/api/version
-```
-```json
-{
-  "status": "online",
-  "version": "1.0.0",
-  "commit": "abc1234...",
-  "deployed_at": "2026-08-21T19:00:51.123Z"
-}
-```
-
----
 
 ## 🙏 Gracias
 
-- **[İltekin/scm-editor](https://github.com/iltekin/scm-editor)** — Primera fuente de inspiración
-- **[PredatH0r/ChanSort](https://github.com/PredatH0r/ChanSort)** — Referencia de ingeniería inversa para SCM y formatos multimarca
-- **[Türksat Uydu](https://uydu.turksat.com.tr/)** — Base de datos de verificación de frecuencias de Türksat
-
----
+- **[İltekin/scm-editor](https://github.com/iltekin/scm-editor)** — Fuente de inspiración inicial
+- **[PredatH0r/ChanSort](https://github.com/PredatH0r/ChanSort)** — Referencia de ingeniería inversa para formatos de múltiples marcas
+- **[Türksat Uydu](https://uydu.turksat.com.tr/)** — Base de datos de frecuencias de Türksat
 
 ## 📄 Licencia
 
 Se ofrece como código abierto bajo la licencia MIT.
-
-> «Samsung», «LG», «Sony», «Hisense», «Panasonic» y sus logotipos son marcas registradas de las empresas correspondientes. Se trata de una herramienta comunitaria independiente y de código abierto.
+> «Samsung», «LG», «Sony», «Hisense», «Panasonic» y sus logotipos son marcas registradas de las empresas correspondientes. Esta es una herramienta comunitaria independiente y de código abierto.

@@ -4,146 +4,116 @@
 
 # 📺 TV Kanal Redaktoru
 
-> **Çoxmarkalı TV kanal siyahısı redaktoru** — Samsung, LG, Sony, Hisense və daha çoxu üçün tək bir platforma.
+> **Çoxmarkalı TV kanal siyahısı redaktoru** — Samsung, LG, Sony və Hisense TV kanal siyahılarınızı brauzeriniz vasitəsilə redaktə edin.
 
-[![Canlı Demo](https://img.shields.io/badge/🌐_Live_Demo-tvchanneleditor.onrender.com-blue)](https://tvchanneleditor.onrender.com)
+[![Canlı Demo](https://img.shields.io/badge/🌐_Canlı_Demo-tvchanneleditor.onrender.com-blue)](https://tvchanneleditor.onrender.com)
+[![API sənədləri](https://img.shields.io/badge/API-Swagger_UI-orange)](https://tvchanneleditor.onrender.com/api/docs)
 [![CI](https://github.com/tarihcituranx/TVChanneleditor/actions/workflows/test.yml/badge.svg)](https://github.com/tarihcituranx/TVChanneleditor/actions)
 [![Lisenziya: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENCE)
 [![Python 3.12+](https://img.shields.io/badge/Python-3.12+-blue)](https://python.org)
-[![API sənədləri](https://img.shields.io/badge/API-Swagger_UI-orange)](https://tvchanneleditor.onrender.com/api/docs)
 
 ---
 
-## 🎯 Bu nə edir?
+## ✨ Nə edir?
 
-Brauzerinizdə **çəkmə-buraxma** (drag-and-drop) funksiyası ilə televizorunuzun USB diskə köçürdüyü kanal siyahısı faylını vizual şəkildə redaktə edib sonra onu yenidən televizora yükləyə bilərsiniz. **Məlumat yalnız proses zamanı müvəqqəti (RAM/Temp) saxlanılır; daimi yadda saxlanılmır.**
+Açıq mənbəli alətdir, TV-nizin USB yaddaşına ötürdüyü kanal siyahısı faylını brauzerinizdə **çəkmə-buraxma** üsulu ilə vizual redaktə etməyə imkan verir. Quraşdırma tələb etmir və birbaşa brauzerdə və ya REST API vasitəsilə işləyir.
 
----
+## 📺 Dəstəklənən Formatlar (Uyğunluq Matrisi)
 
-## 📺 Dəstəklənən TV Markaları
+| Format | Oxu | Redaktə | Yenidən yaradın | Qeyd |
+|--------|:---:|:---:|:---:|-----|
+| **Samsung `.scm`** | ✅ | ✅ | ✅ | E/F/H Seriyaları (Binary) |
+| **Samsung Tizen `.zip`** | ✅ | ✅ | ✅ | J/K/M/Q/R/T seriyaları (SQLite) |
+| **Sony `sdb.xml`** | ✅ | ✅ | ✅ | BRAVIA Seriyası |
+| **Hisense `servicelist.db`** | ✅ | ✅ | ✅ | 2017 və 2021 modelləri |
+| **LG XML `.tll`** | ✅ | ✅ | ✅ | Yalnız GlobalClone XML (Binary dəstəklənmir) |
+| **Panasonic `svl.*`** | 🔜 | 🔜 | 🔜 | Planlaşdırılır / İnkişaf mərhələsindədir |
 
-| Marka | Format | Status |
-|-------|--------|-------|
-| **Samsung** (E/F/H seriyaları) | `.scm` | ✅ Tam dəstək |
-| **Samsung** (J/K/M/Q/R/T – Tizen) | `.zip` (SQLite) | ✅ Tam dəstək |
-| **LG** (webOS 5+) | `.tll` (XML) | ✅ Tam Dəstək |
-| **Sony BRAVIA** | `sdb.xml` | ✅ Tam Dəstək |
-| **Hisense** (2017+) | `servicelist.db` | ✅ Tam dəstək |
-| **Panasonic VIERA** | `svl.db / svl.bin` | 🔄 Beta |
-| Philips, Toshiba, Grundig... | `*.db / *.xml` | 🔜 Tezliklə |
+> **⚠️ Vacib LG Uyğunluq Qeyd:** LG-nin köhnə nəsil **Binary .tll** faylları dəstəklənmir. Yalnız yeni nəsil XML-əsaslı (GlobalClone) `.tll` faylları emal edilə bilər. Köhnə fayllar üçün masaüstü *ChanSort* tətbiqindən istifadə etməlisiniz.
 
-## 🛰️ Dəstəklənən Peyklər
+## 🚀 Sürətli Başlanğıc
 
-**Türksat 4A/5B** · **Hotbird 13E** · **Astra 19.2E** · və digər bütün DVB-S peykları
+1. **TV-dən USB-yə köçürmə:** TV menyusundan (Yayım > Ekspert parametrləri) kanal siyahısını FAT32 formatlı USB sürücüsünə köçürün.
+2. **Yükləmə:** USB sürücüsündən faylı vebsayta sürükləyib buraxın.
+3. **Düzəliş:** Faylı sürükləyib buraxmaqla sıralayın, lazımsız qeydləri silin və ya 💡 Ağıllı Şablonlardan (Smart Templates) istifadə edin.
+4. **Yükləmə:** Düzəliş edilmiş faylı yenidən kompüterinizə yükləyin.
+5. **TV-yə quraşdırın:** USB sürücüsünü yenidən TV-yə qoşun və yeni siyahını idxal edin.
 
----
+## 🛰️ Peyk və tezlik dəstəyi
 
-## ✨ Xüsusiyyətlər
-
-- **💡 Ağıllı Şablonlar** — Ümumi / Xəbərlər / İdman şablonlarını tək kliklə tətbiq edin
-- **🛠️ Şablon Yaradıcısı** — Öz ideal siyahınızı yaradın və yadda saxlayın
-- **📱 Kod vasitəsilə Cihaza Köçürmə** — Televizorun yanındakı mobil telefonunuzdan kanallar siyahısını kompüterinizə 8 simvoldan ibarət kodla asanlıqla köçürün
-- **🔍 Avtomatik tezlik yoxlaması** — Köhnə və ya düzgün olmayan tezlikləri (Türksat) avtomatik aşkar edir
-- **⭐ Sevimlilər & Kilid** — Sevimlilər 1–5 və uşaq kilidi parametrlərini idarə edin
-- **🗑️ Kütləvi Əməliyyatlar** — Şifrələnmiş kanalları, radio stansiyalarını və ya seçilmiş elementləri kütləvi şəkildə silin
-- **🌙 Qaranlıq/Açıq Tema & 👁️ Rəng Kökü Modu** — Hər kəs üçün əlçatan interfeys
-- **🌐 11 Dili Dəstəkləyir**
-- **📊 Tam Məxfilik (Cookie-siz Analitika)** — Kukilərdən və şəxsi məlumatlardan istifadə etməyən daxili statistika
-- **📱 Tamamilə adaptiv** — Masaüstü, planşet və mobil cihazlarla uyğun gəlir
+**DVB-S/S2** kanal siyahıları format baxımından problemsiz emal edilə bilər. **Avtomatik tezlik yoxlama funksiyası (köhnə/səhv tezlikləri aşkar etmə) hazırda yalnız Türksat 4A/5B məlumatları üçün aktivdir.** Digər peyklər (Hotbird, Astra və s.) çeşidləmə və redaktə üçün tam dəstəklənir.
 
 ---
 
-## 🚀 Canlı nümayiş
+## 🔌 Tərtibatçı API (REST) necə işləyir?
 
-Heç bir quraşdırma olmadan brauzerinizdə birbaşa istifadə edin:
+AI agentləri və tərtibatçılar üçün sadə 3 addımlı iş axını mövcuddur. Əlavə məlumat üçün [Swagger UI](https://tvchanneleditor.onrender.com/api/docs) və ya [OpenAPI Schema](https://tvchanneleditor.onrender.com/api/openapi.txt) keçidlərinə baxın.
 
-👉 **[tvchanneleditor.onrender.com](https://tvchanneleditor.onrender.com)**
-
----
-
-## 💻 Yerli Quraşdırma
-
-```bash
-git clone https://github.com/tarihcituranx/TVChanneleditor.git
-cd TVChanneleditor
-pip install -r requirements.txt
-python3 app.py
+**Addım 1: Yükləmə**
+```http
+POST /build
+Content-Type: application/json
+{
+  "session_id": "uuid-...",
+  "channels": [ ... sıralanmış siyahı ... ]
+}
 ```
+```http
+POST /build
+Content-Type: application/json
+{
+  "session_id": "uuid-...",
+  "channels": [ ... redaktə olunmuş siyahı ... ]
+}
+```
+*(Faylın yüklənməsi üçün `/download/...` linki qaytarılır)*
 
-Brauzerinizdə `http://127.0.0.1:5000` ünvanına keçin.
+**3-cü addım: Yükləmə**
+```http
+GET /download/{session_id}/{filename}
+```
+*(Düzəldilmiş binary/arxiv fayl yüklənir)*
 
----
+## 🔐 Məxfilik və Təhlükəsizlik
+
+- Fayl ölçüsü üçün **2 MB** həddi var.
+- **Fayllar serverdə daimi saxlanılmır.** Yüklənmiş fayllar redaktə sessiyası müddətində müvəqqəti yaddaşda saxlanılır və sessiya bitdikdən sonra (təxminən 1 saat) avtomatik olaraq tamamilə silinir.
+- Hesab, üzvlük və ya verilənlər bazası qeydiyyatı yoxdur.
+- API-də XML parsite əməliyyatları (Billion Laughs hücumlarından qorunmaq üçün) `defusedxml` tərəfindən qorunur.
+
+## 🧪 Test Sistemi (CI)
+
+Layihə **Round-Trip** test memarlığından istifadə edir.
+- Real test fayllarından (fixtures) istifadə edərək, dəyişdirilmiş və ya təkmilləşdirilmiş mühərrik kodunun ilkin TV verilənlər bazası strukturlarını korlamadığını təsdiqləyirik.
+- Hər `push` və `PR` ilə, `tests/test_roundtrip.py` GitHub Actions vasitəsilə avtomatik işə düşür.
+
+## 🌍 Dil Dəstəyi
+
+İnterfeys və istifadəçi bələdçiləri **11 dildə** mövcuddur: Türk, İngilis, Alman, Rus, İspan, İtalyan, Fransız, ərəb, fars, azərbaycanca və portuqal.
 
 ## 🏗️ Layihənin Strukturı
 
 ```
-├── app.py # Flask əsas tətbiqi və təhlükəsizlik başlıqları
-├── scm_core.py # Samsung SCM (ikili) mühərriki
+├── app.py # Flask serveri, API marşrutları və i18n
+├── scm_core.py # Samsung SCM mühərriki
 ├── tizen_core.py # Samsung Tizen SQLite mühərriki
-├── lg_core.py # LG GlobalClone XML mühərriki
-├── sony_core.py # Sony sdb.xml mühərriki
+├── lg_core.py # LG XML mühərriki
+├── sony_core.py # Sony XML mühərriki
 ├── hisense_core.py     # Hisense SQLite mühərriki
-├── templates/ # Jinja2 HTML şablonları (11 dil)
-├── static/
-│   ├── css/style.css   # Tünd/Açıq tema + bütün stillər
-│   ├── js/app.js # Frontend (çəkmə-buraxma, kanal renderləmə, şablonlar)
-│   └── data/ # frequencies.json, templates.json
+├── templates/ # Jinja2 HTML interfeysləri (11 dil)
+├── static/ # CSS, JS, OpenAPI YAML sxemləri
+└── tests/
+    ├── test_roundtrip.py  # Bütün mühərriklər üçün round-trip testləri
+    └── fixtures/ # Testlər üçün real TV verilənlər bazası nümunələri
 ```
-
----
-
-## 🔐 Təhlükəsizlik
-
-- Bütün təhlükəsizlik başlıqları aktivləşdirilib (CSP, HSTS, CORP, COOP, Referrer-Policy...)
-- Fayl ölçüsü limiti: 2MB
-- Yüklənmiş fayllar emaldan sonra silinir
-- Serverdə heç bir kanal məlumatı qeydə alınmır
-- Təhlükəsizlik üzrə əlaqə: `tarihcituranx@proton.me`
-
----
-
-## 🤖 AI Bələdçisi
-
-Əgər AI köməkçisi ilə inkişaf edirsinizsə, zəhmət olmasa [AI_INSTRUCTIONS.md](AI_INSTRUCTIONS.md) faylını oxuyun.
-
----
-
-## 🔌 Tərtibatçı API-dən və AI Agentlərindən İstifadə
-
-Bu layihə yalnız vebsayt deyil; o, həmçinin AI agentləri və tərtibatçıların kod vasitəsilə birbaşa istifadə edə biləcəyi tam funksional **REST API** kimi hazırlanıb.
-
-> 🧑‍💻 **İnkişaf etdiricilər üçün:** İnteraktiv Swagger UI sənədlərini [tvchanneleditor.onrender.com/api/docs](https://tvchanneleditor.onrender.com/api/docs) ünvanında görə bilərsiniz.
-> 
-> 🤖 **AI agentləri üçün (ChatGPT, Claude və s.):** Sistemin maşın oxunaqlı Plain-Text OpenAPI sxemini bu link vasitəsilə AI-yə təqdim edə bilərsiniz: [tvchanneleditor.onrender.com/api/openapi.txt](https://tvchanneleditor.onrender.com/api/openapi.txt)
-
-
-
-### Versiya və Yerləşdirmə Təsdiqi (Versiya yoxlaması)
-Render serverinin ən son GitHub komitini yerləşdirib-yerləşdirmədiyini və ya hələ də keşlənib-keşlənmədiyini dərhal yoxlamaq üçün:
-```bash
-curl -sS https://tvchanneleditor.onrender.com/api/version
-```
-```json
-{
-  "status": "online",
-  "version": "1.0.0",
-  "commit": "abc1234...",
-  "deployed_at": "2026-08-21T19:00:51.123Z"
-}
-```
-
----
 
 ## 🙏 Təşəkkürlər
 
 - **[İltekin/scm-editor](https://github.com/iltekin/scm-editor)** — İlkin ilham mənbəyi
-- **[PredatH0r/ChanSort](https://github.com/PredatH0r/ChanSort)** — SCM və çoxmarkalı formatlar üçün tərs mühəndislik istinadı
-- **[Türksat Satellite](https://uydu.turksat.com.tr/)** — Türksat tezlik təsdiqləmə verilənlər bazası
-
----
+- **[PredatH0r/ChanSort](https://github.com/PredatH0r/ChanSort)** — Çoxmarkalı formatlar üçün tərs mühəndislik istinadı
+- **[Türksat Satellite](https://uydu.turksat.com.tr/)** — Türksat tezlik bazası
 
 ## 📄 Lisenziya
 
 MIT lisenziyası altında açıq mənbə kimi yayımlanıb.
-
-> "Samsung", "LG", "Sony", "Hisense", "Panasonic" və onların loqotipləri müvafiq şirkətlərin qeydiyyatdan keçmiş ticarət nişanlarıdır. Bu, müstəqil, açıq mənbə icması üçün bir alətdir.
+> "Samsung", "LG", "Sony", "Hisense", "Panasonic" və onların loqotipləri müvafiq şirkətlərin qeydiyyatdan keçmiş ticarət nişanlarıdır. Bu, müstəqil, açıq mənbə icma alətidir.

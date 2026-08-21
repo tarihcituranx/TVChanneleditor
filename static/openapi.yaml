@@ -31,9 +31,6 @@ tags:
     description: Upload, parse, modify, and download channel lists
 
 components:
-  securitySchemes:
-        Without a key, the endpoint works normally up to the rate limit.
-
   schemas:
     ErrorResponse:
       type: object
@@ -160,10 +157,6 @@ components:
             Lock: "No"
             Encrypted: "No"
 
-# Explicitly make auth optional
-security:
-  - {}
-  - ApiKeyAuth: []
 
 paths:
   /upload:
@@ -231,7 +224,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
         '429':
-          description: Rate limit exceeded (50 per hour). Use X-API-Key to bypass.
+          description: Rate limit exceeded (50 per hour)
           content:
             application/json:
               schema:

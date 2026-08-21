@@ -35,18 +35,6 @@ tags:
 - name: Channel Lists
   description: Kanallisten hochladen, analysieren, bearbeiten und herunterladen
 components:
-  securitySchemes:
-    ApiKeyAuth:
-      type: apiKey
-      in: header
-      name: X-API-Key
-      description: 'Optionaler API-Schlüssel zur Umgehung der standardmäßigen IP-Ratenbegrenzung
-        von 50 Anfragen pro Stunde.
-
-        Ohne Schlüssel funktioniert der Endpunkt bis zum Erreichen der Ratenbegrenzung
-        wie gewohnt.
-
-        '
   schemas:
     ErrorResponse:
       type: object
@@ -270,7 +258,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
         '429':
-          description: Rate limit exceeded (50 per hour). Use X-API-Key to bypass.
+          description: Rate limit exceeded (50 per hour)
           content:
             application/json:
               schema:

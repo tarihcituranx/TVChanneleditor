@@ -4,146 +4,115 @@
 
 # 📺 TV Channel Editor
 
-> **Multi-brand TV kanal listesi düzenleyici** — Samsung, LG, Sony, Hisense ve daha fazlası için tek platform.
+> **Multi-brand TV kanal listesi düzenleyici** — Tarayıcı üzerinden Samsung, LG, Sony, Hisense TV kanal listelerinizi düzenleyin.
 
 [![Canlı Demo](https://img.shields.io/badge/🌐_Canlı_Demo-tvchanneleditor.onrender.com-blue)](https://tvchanneleditor.onrender.com)
+[![API Docs](https://img.shields.io/badge/API-Swagger_UI-orange)](https://tvchanneleditor.onrender.com/api/docs)
 [![CI](https://github.com/tarihcituranx/TVChanneleditor/actions/workflows/test.yml/badge.svg)](https://github.com/tarihcituranx/TVChanneleditor/actions)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![Python 3.12+](https://img.shields.io/badge/Python-3.12+-blue)](https://python.org)
-[![API Docs](https://img.shields.io/badge/API-Swagger_UI-orange)](https://tvchanneleditor.onrender.com/api/docs)
 
 ---
 
-## 🎯 Ne Yapıyor?
+## ✨ Ne İşe Yarar?
 
-TV'nizin USB'ye aktardığı kanal listesi dosyasını tarayıcıda **sürükle-bırak** ile görsel olarak düzenleyip tekrar TV'ye yükleyebilirsiniz. **Veriler sadece işlem sırasında geçici olarak (RAM/Temp) tutulur, kalıcı olarak saklanmaz.**
+TV'nizin USB belleğe aktardığı kanal listesi dosyasını tarayıcınızda **sürükle-bırak** yöntemiyle görsel olarak düzenlemenizi sağlayan, açık kaynaklı bir araçtır. Kurulum gerektirmez, doğrudan tarayıcı veya REST API üzerinden çalışır.
 
----
+## 📺 Desteklenen Formatlar (Uyumluluk Matrisi)
 
-## 📺 Desteklenen TV Markaları
+| Format | Okuma | Düzenleme | Yeniden oluşturma | Not |
+|--------|:---:|:---:|:---:|-----|
+| **Samsung `.scm`** | ✅ | ✅ | ✅ | E/F/H Serisi (Binary) |
+| **Samsung Tizen `.zip`** | ✅ | ✅ | ✅ | J/K/M/Q/R/T Serisi (SQLite) |
+| **Sony `sdb.xml`** | ✅ | ✅ | ✅ | BRAVIA Serisi |
+| **Hisense `servicelist.db`** | ✅ | ✅ | ✅ | 2017 ve 2021 Modelleri |
+| **LG XML `.tll`** | ✅ | ✅ | ✅ | Sadece GlobalClone XML (Binary desteklenmez) |
+| **Panasonic `svl.*`** | 🔜 | 🔜 | 🔜 | Planlandı / Geliştirme aşamasında |
 
-| Marka | Format | Durum |
-|-------|--------|-------|
-| **Samsung** (E/F/H Serisi) | `.scm` | ✅ Tam Destek |
-| **Samsung** (J/K/M/Q/R/T - Tizen) | `.zip` (SQLite) | ✅ Tam Destek |
-| **LG** (webOS 5+) | `.tll` (XML) | ✅ Tam Destek |
-| **Sony BRAVIA** | `sdb.xml` | ✅ Tam Destek |
-| **Hisense** (2017+) | `servicelist.db` | ✅ Tam Destek |
-| **Panasonic VIERA** | `svl.db / svl.bin` | 🔄 Beta |
-| Philips, Toshiba, Grundig... | `*.db / *.xml` | 🔜 Yakında |
+> **⚠️ Önemli LG Uyumluluk Notu:** LG'nin eski nesil **Binary .tll** dosyaları desteklenmemektedir. Sadece yeni nesil XML tabanlı (GlobalClone) `.tll` dosyaları işlenebilir. Eski dosyalar için masaüstü *ChanSort* uygulamasını kullanmanız gerekir.
 
-## 🛰️ Desteklenen Uydular
+## 🚀 Hızlı Başlangıç
 
-**Türksat 4A/5B** · **Hotbird 13E** · **Astra 19.2E** · ve diğer tüm DVB-S uyduları
+1. **TV'den USB'ye Aktarın:** TV menüsünden (Yayın > Uzman Ayarları) kanal listesini FAT32 formatlı USB'ye aktarın.
+2. **Yükleyin:** USB'deki dosyayı siteye sürükleyip bırakın.
+3. **Düzenleyin:** Sürükle-bırak ile sıralayın, gereksizleri silin veya 💡 Akıllı Şablonları kullanın.
+4. **İndirin:** Düzenlenmiş dosyayı bilgisayarınıza geri indirin.
+5. **TV'ye Yükleyin:** USB'yi tekrar TV'ye takıp yeni listeyi içe aktarın.
 
----
+## 🛰️ Uydu ve Frekans Desteği
 
-## ✨ Özellikler
-
-- **💡 Akıllı Şablonlar** — Genel / Haber / Spor şablonlarını tek tıkla uygula
-- **🛠️ Şablon Oluşturucu** — Kendi ideal listenizi oluşturup kaydedin
-- **📱 Kod ile Cihaza Aktarım** — 8 karakterlik kod ile kanal listesini TV yanındaki cep telefonundan bilgisayara kolayca aktarın
-- **🔍 Otomatik Frekans Doğrulama** — Eski/yanlış frekansları otomatik tespit eder (Türksat)
-- **⭐ Favori & Kilit** — Favori 1-5 ve çocuk kilidi düzenleme
-- **🗑️ Toplu İşlemler** — Şifreli kanalları, radyoları veya seçilileri toplu sil
-- **🌙 Karanlık/Aydınlık Tema & 👁️ Renk Körlüğü Modu** — Herkes için erişilebilir arayüz
-- **🌐 11 Dil Desteği**
-- **📊 Tam Gizlilik (Çerezsiz Analitik)** — Çerez veya kişisel veri kullanmayan yerleşik istatistik
-- **📱 Tam Responsive** — Masaüstü, tablet ve mobil uyumlu
+**DVB-S/S2** kanal listeleri format açısından sorunsuz şekilde işlenebilir. **Otomatik frekans doğrulama (Eski/yanlış frekansları tespit etme) özelliği şu anda sadece Türksat 4A/5B verileri için aktiftir.** Diğer uydular (Hotbird, Astra vb.) sıralama ve düzenleme için tamamen desteklenmektedir.
 
 ---
 
-## 🚀 Canlı Kullanım
+## 🔌 Geliştirici API (REST) Nasıl Çalışır?
 
-Hiçbir kurulum yapmadan doğrudan tarayıcıda kullanın:
+AI Ajanları ve geliştiriciler için 3 adımlı basit bir akış mevcuttur. Daha fazla detay için [Swagger UI](https://tvchanneleditor.onrender.com/api/docs) veya [OpenAPI Şeması](https://tvchanneleditor.onrender.com/api/openapi.txt) bağlantılarına bakabilirsiniz.
 
-👉 **[tvchanneleditor.onrender.com](https://tvchanneleditor.onrender.com)**
-
----
-
-## 💻 Yerel Kurulum
-
-```bash
-git clone https://github.com/tarihcituranx/TVChanneleditor.git
-cd TVChanneleditor
-pip install -r requirements.txt
-python3 app.py
+**Adım 1: Yükleme (Upload)**
+```http
+POST /upload
+Content-Type: multipart/form-data
 ```
+*(Yanıt olarak bir `session_id` ve kanalların JSON listesi döner)*
 
-Tarayıcıda `http://127.0.0.1:5000` adresine gidin.
+**Adım 2: İnşa Etme (Build)**
+```http
+POST /build
+Content-Type: application/json
+{
+  "session_id": "uuid-...",
+  "channels": [ ... düzenlenmiş liste ... ]
+}
+```
+*(Yanıt olarak dosyanın indirilebileceği `/download/...` linki döner)*
 
----
+**Adım 3: İndirme (Download)**
+```http
+GET /download/{session_id}/{filename}
+```
+*(Düzenlenmiş ikili/arşiv dosyası indirilir)*
+
+## 🔐 Gizlilik ve Güvenlik
+
+- **2 MB** dosya boyutu sınırı vardır.
+- **Dosyalar sunucuda kalıcı saklanmaz.** Yüklenen dosyalar düzenleme oturumu boyunca geçici bellekte tutulur ve oturum süresi dolduğunda (yaklaşık 1 saat) otomatik olarak tamamen silinir.
+- Herhangi bir hesap, üyelik veya veritabanı loglaması yoktur.
+- API üzerinde XML ayrıştırma işlemleri (Billion Laughs saldırılarına karşı) `defusedxml` ile korunmaktadır.
+
+## 🧪 Test Sistemi (CI)
+
+Proje, **Round-Trip (Gidiş-Dönüş)** test mimarisine sahiptir.
+- Gerçek dünya test dosyaları (fixtures) kullanılarak, bozulan veya değiştirilen motor kodlarının orijinal TV veritabanı yapılarını bozmadığı test edilir.
+- Her `push` ve `PR` işleminde GitHub Actions üzerinde `tests/test_roundtrip.py` otomatik çalışır.
+
+## 🌍 Dil Desteği
+
+Arayüz ve kullanım kılavuzları **11 dilde** mevcuttur: Türkçe, İngilizce, Almanca, Rusça, İspanyolca, İtalyanca, Fransızca, Arapça, Farsça, Azerbaycanca ve Portekizce.
 
 ## 🏗️ Proje Yapısı
 
 ```
-├── app.py              # Flask ana uygulama & güvenlik header'ları
-├── scm_core.py         # Samsung SCM (binary) motoru
+├── app.py              # Flask sunucu, API rotaları ve i18n
+├── scm_core.py         # Samsung SCM motoru
 ├── tizen_core.py       # Samsung Tizen SQLite motoru
-├── lg_core.py          # LG GlobalClone XML motoru
-├── sony_core.py        # Sony sdb.xml motoru
+├── lg_core.py          # LG XML motoru
+├── sony_core.py        # Sony XML motoru
 ├── hisense_core.py     # Hisense SQLite motoru
-├── templates/          # Jinja2 HTML şablonları (11 Dil)
-├── static/
-│   ├── css/style.css   # Dark/Light tema + tüm stiller
-│   ├── js/app.js       # Frontend (drag-drop, kanal render, template)
-│   └── data/           # frekanslar.json, templates.json
+├── templates/          # Jinja2 HTML arayüzleri (11 Dil)
+├── static/             # CSS, JS, OpenAPI YAML şemaları
+└── tests/
+    ├── test_roundtrip.py  # Tüm motorlar için gidiş-dönüş testleri
+    └── fixtures/          # Testler için gerçek TV veritabanı örnekleri
 ```
-
----
-
-## 🔐 Güvenlik
-
-- Tüm güvenlik header'ları aktif (CSP, HSTS, CORP, COOP, Referrer-Policy...)
-- Dosya boyutu limiti: 2MB
-- Yüklenen dosyalar işlendikten sonra silinir
-- Hiçbir kanal verisi sunucuda loglanmaz
-- Security contact: `tarihcituranx@proton.me`
-
----
-
-## 🤖 Yapay Zeka Rehberi
-
-AI asistanı ile geliştirme yapıyorsanız [AI_INSTRUCTIONS.md](AI_INSTRUCTIONS.md) dosyasını okutun.
-
----
-
-## 🔌 Geliştirici API & AI Ajanı Kullanımı (Developer API)
-
-Bu proje yalnızca bir web sitesi değil, aynı zamanda yapay zeka ajanlarının (AI Agents) ve geliştiricilerin doğrudan kodla kullanabileceği tam teşekküllü bir **REST API** olarak tasarlanmıştır.
-
-> 🧑‍💻 **Geliştiriciler İçin:** Etkileşimli Swagger UI dökümantasyonunu [tvchanneleditor.onrender.com/api/docs](https://tvchanneleditor.onrender.com/api/docs) adresinden inceleyebilirsiniz.
-> 
-> 🤖 **AI Ajanları İçin (ChatGPT, Claude, vb.):** Sistemin makine tarafından okunabilir Saf Metin (Plain-Text) OpenAPI şemasını yapay zekaya şu link üzerinden verebilirsiniz: [tvchanneleditor.onrender.com/api/openapi.txt](https://tvchanneleditor.onrender.com/api/openapi.txt)
-
-
-
-### Sürüm ve Deploy Doğrulaması (Version Check)
-Render sunucusunun güncel Github Commit'ini yayına alıp almadığını veya önbellekte kalıp kalmadığını saniyesinde test etmek için:
-```bash
-curl -sS https://tvchanneleditor.onrender.com/api/version
-```
-```json
-{
-  "status": "online",
-  "version": "1.0.0",
-  "commit": "abc1234...",
-  "deployed_at": "2026-08-21T19:00:51.123Z"
-}
-```
-
----
 
 ## 🙏 Teşekkürler
 
 - **[İltekin/scm-editor](https://github.com/iltekin/scm-editor)** — İlk ilham kaynağı
-- **[PredatH0r/ChanSort](https://github.com/PredatH0r/ChanSort)** — SCM + çoklu marka formatları için tersine mühendislik referansı
-- **[Türksat Uydu](https://uydu.turksat.com.tr/)** — Türksat frekans doğrulama veritabanı
-
----
+- **[PredatH0r/ChanSort](https://github.com/PredatH0r/ChanSort)** — Çoklu marka formatları için tersine mühendislik referansı
+- **[Türksat Uydu](https://uydu.turksat.com.tr/)** — Türksat frekans veritabanı
 
 ## 📄 Lisans
 
 MIT Lisansı ile açık kaynak olarak sunulmuştur.
-
 > "Samsung", "LG", "Sony", "Hisense", "Panasonic" ve logoları ilgili şirketlerin tescilli ticari markalarıdır. Bu bağımsız, açık kaynaklı bir topluluk aracıdır.

@@ -35,17 +35,6 @@ tags:
 - name: Channel Lists
   description: Kanal listelerini yükle, ayrıştır, değiştir ve indir
 components:
-  securitySchemes:
-    ApiKeyAuth:
-      type: apiKey
-      in: header
-      name: X-API-Key
-      description: 'Standart 50 istek/saat IP hız sınırını aşmak için isteğe bağlı
-        API anahtarı.
-
-        Anahtar olmadan, uç nokta hız sınırına kadar normal şekilde çalışır.
-
-        '
   schemas:
     ErrorResponse:
       type: object
@@ -269,8 +258,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
         '429':
-          description: İzin sınırı aşıldı (saatte 50). Bu sınırı aşmak için X-API-Key'i
-            kullanın.
+          description: İzin sınırı aşıldı (saatte 50)
           content:
             application/json:
               schema:

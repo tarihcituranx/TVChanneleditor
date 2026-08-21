@@ -4,146 +4,115 @@
 
 # 📺 TV Channel Editor
 
-> **Multi-brand TV channel list editor** — A single platform for Samsung, LG, Sony, Hisense, and more.
+> **Multi-brand TV channel list editor** — Edit your Samsung, LG, Sony, and Hisense TV channel lists directly in your browser.
 
 [![Live Demo](https://img.shields.io/badge/🌐_Live_Demo-tvchanneleditor.onrender.com-blue)](https://tvchanneleditor.onrender.com)
+[![API Docs](https://img.shields.io/badge/API-Swagger_UI-orange)](https://tvchanneleditor.onrender.com/api/docs)
 [![CI](https://github.com/tarihcituranx/TVChanneleditor/actions/workflows/test.yml/badge.svg)](https://github.com/tarihcituranx/TVChanneleditor/actions)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![Python 3.12+](https://img.shields.io/badge/Python-3.12+-blue)](https://python.org)
-[![API Docs](https://img.shields.io/badge/API-Swagger_UI-orange)](https://tvchanneleditor.onrender.com/api/docs)
 
 ---
 
-## 🎯 What Does It Do?
+## ✨ What Does It Do?
 
-You can visually edit the channel list file transferred by your TV to a USB drive using **drag-and-drop** in your browser and then re-upload it to your TV. **Data is stored only temporarily (in RAM/Temp) during the process; it is not saved permanently.**
+It is an open-source tool that allows you to visually edit the channel list file transferred by your TV to a USB drive using the **drag-and-drop** method in your browser. It requires no installation and works directly through the browser or via the REST API.
 
----
+## 📺 Supported Formats (Compatibility Matrix)
 
-## 📺 Supported TV Brands
+| Format | Read | Edit | Regenerate | Note |
+|--------|:---:|:---:|:---:|-----|
+| **Samsung `.scm`** | ✅ | ✅ | ✅ | E/F/H Series (Binary) |
+| **Samsung Tizen `.zip`** | ✅ | ✅ | ✅ | J/K/M/Q/R/T Series (SQLite) |
+| **Sony `sdb.xml`** | ✅ | ✅ | ✅ | BRAVIA Series |
+| **Hisense `servicelist.db`** | ✅ | ✅ | ✅ | 2017 and 2021 Models |
+| **LG XML `.tll`** | ✅ | ✅ | ✅ | GlobalClone XML only (Binary not supported) |
+| **Panasonic `svl.*`** | 🔜 | 🔜 | 🔜 | Planned / Under development |
 
-| Brand | Format | Status |
-|-------|--------|-------|
-| **Samsung** (E/F/H Series) | `.scm` | ✅ Full Support |
-| **Samsung** (J/K/M/Q/R/T - Tizen) | `.zip` (SQLite) | ✅ Full Support |
-| **LG** (webOS 5+) | `.tll` (XML) | ✅ Full Support |
-| **Sony BRAVIA** | `sdb.xml` | ✅ Full Support |
-| **Hisense** (2017+) | `servicelist.db` | ✅ Full Support |
-| **Panasonic VIERA** | `svl.db / svl.bin` | 🔄 Beta |
-| Philips, Toshiba, Grundig... | `*.db / *.xml` | 🔜 Coming Soon |
+> **⚠️ Important LG Compatibility Note:** LG’s older-generation **Binary .tll** files are not supported. Only the newer XML-based (GlobalClone) `.tll` files can be processed. For older files, you must use the desktop *ChanSort* application.
 
-## 🛰️ Supported Satellites
+## 🚀 Quick Start
 
-**Türksat 4A/5B** · **Hotbird 13E** · **Astra 19.2E** · and all other DVB-S satellites
+1. **Transfer from TV to USB:** From the TV menu (Broadcast > Expert Settings), transfer the channel list to a FAT32-formatted USB drive.
+2. **Upload:** Drag and drop the file from the USB drive onto the site.
+3. **Edit:** Sort using drag-and-drop, delete unnecessary entries, or use 💡 Smart Templates.
+4. **Download:** Download the edited file back to your computer.
+5. **Load onto TV:** Plug the USB drive back into the TV and import the new list.
 
----
+## 🛰️ Satellite and Frequency Support
 
-## ✨ Features
-
-- **💡 Smart Templates** — Apply General / News / Sports templates with a single click
-- **🛠️ Template Builder** — Create and save your own ideal list
-- **📱 Transfer to Device via Code** — Easily transfer the channel list from your smartphone next to the TV to your computer using an 8-character code
-- **🔍 Automatic Frequency Verification** — Automatically detects old or incorrect frequencies (Türksat)
-- **⭐ Favorites & Lock** — Manage Favorites 1–5 and the child lock
-- **🗑️ Batch Actions** — Batch-delete encrypted channels, radio stations, or selected items
-- **🌙 Dark/Light Theme & 👁️ Color Blind Mode** — An accessible interface for everyone
-- **🌐 Support for 11 Languages**
-- **📊 Full Privacy (Cookie-Free Analytics)** — Built-in statistics that do not use cookies or personal data
-- **📱 Fully Responsive** — Compatible with desktop, tablet, and mobile
+**DVB-S/S2** channel lists can be processed seamlessly in terms of format. **The automatic frequency verification feature (detecting old/incorrect frequencies) is currently active only for Türksat 4A/5B data.** Other satellites (Hotbird, Astra, etc.) are fully supported for sorting and editing.
 
 ---
 
-## 🚀 Live Demo
+## 🔌 How Does the Developer API (REST) Work?
 
-Use it directly in your browser without any setup:
+There is a simple 3-step workflow for AI agents and developers. For more details, please refer to the [Swagger UI](https://tvchanneleditor.onrender.com/api/docs) or [OpenAPI Schema](https://tvchanneleditor.onrender.com/api/openapi.txt) links.
 
-👉 **[tvchanneleditor.onrender.com](https://tvchanneleditor.onrender.com)**
-
----
-
-## 💻 Local Installation
-
-```bash
-git clone https://github.com/tarihcituranx/TVChanneleditor.git
-cd TVChanneleditor
-pip install -r requirements.txt
-python3 app.py
+**Step 1: Upload**
+```http
+POST /upload
+Content-Type: multipart/form-data
 ```
+*(Returns a `session_id` and a JSON list of channels in the response)*
 
-Go to `http://127.0.0.1:5000` in your browser.
+**Step 2: Build**
+```http
+POST /build
+Content-Type: application/json
+{
+  "session_id": "uuid-...",
+  "channels": [ ... formatted list ... ]
+}
+```
+*(Returns a `/download/...` link where the file can be downloaded)*
 
----
+**Step 3: Download**
+```http
+GET /download/{session_id}/{filename}
+```
+*(The edited binary/archive file is downloaded)*
+
+## 🔐 Privacy and Security
+
+- There is a **2 MB** file size limit.
+- **Files are not permanently stored on the server.** Uploaded files are kept in temporary storage for the duration of the editing session and are automatically and completely deleted when the session expires (approximately 1 hour).
+- There is no account, membership, or database logging.
+- XML parsing operations on the API (to protect against Billion Laughs attacks) are protected using `defusedxml`.
+
+## 🧪 Test System (CI)
+
+The project employs a **Round-Trip** test architecture.
+- Using real-world test files (fixtures), we verify that broken or modified engine code does not corrupt the original TV database structures.
+- With every `push` and `PR`, `tests/test_roundtrip.py` runs automatically on GitHub Actions.
+
+## 🌍 Language Support
+
+The interface and user guides are available in **11 languages**: Turkish, English, German, Russian, Spanish, Italian, French, Arabic, Persian, Azerbaijani, and Portuguese.
 
 ## 🏗️ Project Structure
 
 ```
-├── app.py # Flask main application & security headers
-├── scm_core.py # Samsung SCM (binary) engine
+├── app.py # Flask server, API routes, and i18n
+├── scm_core.py # Samsung SCM engine
 ├── tizen_core.py # Samsung Tizen SQLite engine
-├── lg_core.py # LG GlobalClone XML engine
-├── sony_core.py # Sony sdb.xml engine
+├── lg_core.py # LG XML engine
+├── sony_core.py # Sony XML engine
 ├── hisense_core.py     # Hisense SQLite engine
-├── templates/ # Jinja2 HTML templates (11 languages)
-├── static/
-│   ├── css/style.css   # Dark/Light theme + all styles
-│   ├── js/app.js # Frontend (drag-and-drop, channel rendering, templates)
-│   └── data/ # frequencies.json, templates.json
+├── templates/ # Jinja2 HTML interfaces (11 languages)
+├── static/ # CSS, JS, OpenAPI YAML schemas
+└── tests/
+    ├── test_roundtrip.py  # Round-trip tests for all engines
+    └── fixtures/ # Real TV database samples for tests
 ```
-
----
-
-## 🔐 Security
-
-- All security headers are enabled (CSP, HSTS, CORP, COOP, Referrer-Policy...)
-- File size limit: 2MB
-- Uploaded files are deleted after processing
-- No channel data is logged on the server
-- Security contact: `tarihcituranx@proton.me`
-
----
-
-## 🤖 AI Guide
-
-If you’re developing with the AI assistant, read the [AI_INSTRUCTIONS.md](AI_INSTRUCTIONS.md) file.
-
----
-
-## 🔌 Developer API & AI Agent Usage (Developer API)
-
-This project is not just a website; it is also designed as a full-fledged **REST API** that AI agents and developers can use directly through code.
-
-> 🧑‍💻 **For Developers:** You can review the interactive Swagger UI documentation at [tvchanneleditor.onrender.com/api/docs](https://tvchanneleditor.onrender.com/api/docs).
-> 
-> 🤖 **For AI Agents (ChatGPT, Claude, etc.):** You can provide the system’s machine-readable Plain-Text OpenAPI schema to the AI via this link: [tvchanneleditor.onrender.com/api/openapi.txt](https://tvchanneleditor.onrender.com/api/openapi.txt)
-
-
-
-### Version and Deployment Verification (Version Check)
-To instantly test whether the render server’s latest GitHub commit has been deployed or is still cached:
-```bash
-curl -sS https://tvchanneleditor.onrender.com/api/version
-```
-```json
-{
-  "status": "online",
-  "version": "1.0.0",
-  "commit": "abc1234...",
-  "deployed_at": "2026-08-21T19:00:51.123Z"
-}
-```
-
----
 
 ## 🙏 Thanks
 
-- **[İltekin/scm-editor](https://github.com/iltekin/scm-editor)** — Initial inspiration
-- **[PredatH0r/ChanSort](https://github.com/PredatH0r/ChanSort)** — Reverse engineering reference for SCM and multi-brand formats
-- **[Türksat Satellite](https://uydu.turksat.com.tr/)** — Türksat frequency verification database
-
----
+- **[İltekin/scm-editor](https://github.com/iltekin/scm-editor)** — Initial source of inspiration
+- **[PredatH0r/ChanSort](https://github.com/PredatH0r/ChanSort)** — Reverse-engineering reference for multi-brand formats
+- **[Türksat Satellite](https://uydu.turksat.com.tr/)** — Türksat frequency database
 
 ## 📄 License
 
 Released as open source under the MIT License.
-
-> “Samsung,” “LG,” “Sony,” “Hisense,” “Panasonic,” and their logos are registered trademarks of their respective companies. This is an independent, open-source community tool.
+> "Samsung," "LG," "Sony," "Hisense," "Panasonic," and their logos are registered trademarks of their respective companies. This is an independent, open-source community tool.
