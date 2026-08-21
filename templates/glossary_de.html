@@ -1,0 +1,127 @@
+{% extends "base_de.html" %}
+
+{% block title %}Glossar – TV-Sender-Editor{% endblock %}
+
+{% block content %}
+<div class="card border-0 shadow-sm" style="max-width: 800px; margin: 0 auto; text-align: left; padding: 30px;">
+    <h1 style="color: var(--text-primary); margin-bottom: 20px;">Satelliten- und TV-Glossar</h1>
+    <p style="color: var(--text-secondary); line-height: 1.6; margin-bottom: 30px;">
+        Nachfolgend finden Sie die Bedeutungen der Fachbegriffe und Abkürzungen (auf Englisch und Türkisch), die in den TV-Sender-Einstellungen oder auf unserer Detailseite verwendet werden.
+    </p>
+
+    <div class="glossary-list" style="display: flex; flex-direction: column; gap: 20px;">
+        <div class="glossary-item" style="background: var(--bg-subtle); padding: 15px; border-radius: 8px; border-left: 4px solid var(--accent);">
+            <h3 style="margin-top: 0; margin-bottom: 10px; color: var(--accent);">SID (Service-ID)</h3>
+            <p style="margin: 0; color: var(--text-secondary); line-height: 1.5;">
+                <strong>Türkisch:</strong>
+                Service-ID / Kanalnummer<br>
+                
+                <strong>Beschreibung:</strong>
+                Eine eindeutige Identifikationsnummer, die jedem Kanal zugewiesen wird, der innerhalb einer Frequenz (eines Pakets) sendet. Ihr Fernseher unterscheidet die Kanäle anhand dieser SID-Nummer und nicht anhand ihrer Namen.
+            </p>
+        </div>
+
+        <div class="glossary-item" style="background: var(--bg-subtle); padding: 15px; border-radius: 8px; border-left: 4px solid var(--accent);">
+            <h3 style="margin-top: 0; margin-bottom: 10px; color: var(--accent);">TSID (Transport Stream ID)</h3>
+            <p style="margin: 0; color: var(--text-secondary); line-height: 1.5;">
+                <strong>Türkisch:</strong>
+                Transport Stream ID<br>
+                
+                <strong>Beschreibung:</strong>
+                Ein eindeutiger Code, der jedem der Hunderte von Frequenzpaketen (Trägern) auf demselben Satelliten zugewiesen wird. Er arbeitet in Verbindung mit der Original Network ID (ONID).
+            </p>
+        </div>
+
+        <div class="glossary-item" style="background: var(--bg-subtle); padding: 15px; border-radius: 8px; border-left: 4px solid var(--accent);">
+            <h3 style="margin-top: 0; margin-bottom: 10px; color: var(--accent);">Modulationssystem (Modulation)</h3>
+            <p style="margin: 0; color: var(--text-secondary); line-height: 1.5;">
+                <strong>Übersetzung:</strong>
+                Übertragungsstandard (DVB-S / DVB-S2)<br>
+                
+                <strong>Beschreibung:</strong>
+                Gibt das Format an, in dem der Kanal aus dem Weltraum übertragen wird. Während ältere (Standard-Definition-)Sendungen in der Regel DVB-S verwenden, nutzen hochauflösende (HD / 4K-)Sendungen den DVB-S2-Standard, der eine bessere Datenkomprimierung bietet.
+            </p>
+        </div>
+
+        <div class="glossary-item" style="background: var(--bg-subtle); padding: 15px; border-radius: 8px; border-left: 4px solid var(--accent);">
+            <h3 style="margin-top: 0; margin-bottom: 10px; color: var(--accent);">Roll-Off-Faktor</h3>
+            <p style="margin: 0; color: var(--text-secondary); line-height: 1.5;">
+                <strong>Türkisch:</strong>
+                Filterschärfe<br>
+                
+                <strong>Beschreibung:</strong>
+                Gibt an, wie scharf das Signal gefiltert wird, um zu verhindern, dass es bei der Ausbreitung auf benachbarte Frequenzen übergreift. (Es werden Werte wie 0,20, 0,25, 0,35 verwendet.) Diese Einstellung erfolgt für Nutzer in der Regel automatisch.
+            </p>
+        </div>
+
+        <div class="glossary-item" style="background: var(--bg-subtle); padding: 15px; border-radius: 8px; border-left: 4px solid var(--accent);">
+            <h3 style="margin-top: 0; margin-bottom: 10px; color: var(--accent);">NID (Netzwerk-ID)</h3>
+            <p style="margin: 0; color: var(--text-secondary); line-height: 1.5;">
+                <strong>Türkisch:</strong>
+                Netzwerk-ID<br>
+                
+                <strong>Beschreibung:</strong>
+                Dies ist die Kennung des Satellitennetzwerks, mit dem Sie verbunden sind. Sie funktioniert in Verbindung mit der ONID (Original Network ID). Bei Türksat-Satelliten beträgt dieser Wert typischerweise 1070.
+            </p>
+        </div>
+
+        <div class="glossary-item" style="background: var(--bg-subtle); padding: 15px; border-radius: 8px; border-left: 4px solid var(--accent);">
+            <h3 style="margin-top: 0; margin-bottom: 10px; color: var(--accent);">ONID (Original Network ID)</h3>
+            <p style="margin: 0; color: var(--text-secondary); line-height: 1.5;">
+                <strong>Türkisch:</strong>
+                Original-Netzwerk-ID<br>
+                
+                <strong>Beschreibung:</strong>
+                Dies ist der weltweit registrierte, eindeutige Code des Netzwerks des Senders (z. B. Türksat, Astra, Hotbird). Dadurch kann Ihr Gerät feststellen, mit welchem Satellitennetzwerk es verbunden ist.
+            </p>
+        </div>
+
+        <div class="glossary-item" style="background: var(--bg-subtle); padding: 15px; border-radius: 8px; border-left: 4px solid var(--accent);">
+            <h3 style="margin-top: 0; margin-bottom: 10px; color: var(--accent);">Video-PID / Audio-PID</h3>
+            <p style="margin: 0; color: var(--text-secondary); line-height: 1.5;">
+                <strong>Türkisch:</strong>
+                Video- und Audio-Paket-Identifikator (Paket-Identifikator)<br>
+                
+                <strong>Beschreibung:</strong>
+                Wenn die Daten eines Kanals aus dem Weltraum eintreffen, liegen sie in Form separater Pakete vor. Die Video-PID identifiziert ausschließlich die Videopakete, während die Audio-PID ausschließlich die Audiopakete identifiziert. Das Fernsehgerät extrahiert diese Pakete und fügt sie wieder zusammen.
+            </p>
+        </div>
+
+        <div class="glossary-item" style="background: var(--bg-subtle); padding: 15px; border-radius: 8px; border-left: 4px solid var(--accent);">
+            <h3 style="margin-top: 0; margin-bottom: 10px; color: var(--accent);">PCR-PID (Program Clock Reference)</h3>
+            <p style="margin: 0; color: var(--text-secondary); line-height: 1.5;">
+                <strong>Übersetzung:</strong>
+                Programm-Takt-Referenz<br>
+                
+                <strong>Erklärung:</strong>
+                Hierbei handelt es sich um einen Referenztaktcode, der sicherstellt, dass die aus dem Weltraum empfangenen Audio- und Videopakete Sekunde für Sekunde synchronisiert sind (sodass Lippenbewegungen und Ton gleichzeitig erfolgen).
+            </p>
+        </div>
+
+        <div class="glossary-item" style="background: var(--bg-subtle); padding: 15px; border-radius: 8px; border-left: 4px solid var(--accent);">
+            <h3 style="margin-top: 0; margin-bottom: 10px; color: var(--accent);">FEC (Forward Error Correction)</h3>
+            <p style="margin: 0; color: var(--text-secondary); line-height: 1.5;">
+                <strong>Türkisch:</strong>
+                Forward Error Correction Rate<br>
+                
+                <strong>Beschreibung:</strong>
+                Die Rate, mit der verlorene Daten vom Satellitenempfänger bei schlechten Wetterbedingungen oder bei schwachem Signal mathematisch geschätzt und korrigiert werden. Sie wird typischerweise als Verhältnis wie 3/4 oder 5/6 angegeben.
+            </p>
+        </div>
+
+        <div class="glossary-item" style="background: var(--bg-subtle); padding: 15px; border-radius: 8px; border-left: 4px solid var(--accent);">
+            <h3 style="margin-top: 0; margin-bottom: 10px; color: var(--accent);">Symbolrate</h3>
+            <p style="margin: 0; color: var(--text-secondary); line-height: 1.5;">
+                <strong>Türkisch:</strong>
+                Datenübertragungsrate<br>
+                
+                <strong>Erklärung:</strong>
+                Die Menge an digitalen Daten (Symbolen), die pro Sekunde vom Satelliten zum Empfänger übertragen wird. Beim Türksat-Satelliten beträgt sie in der Regel 27.500 (ksps) oder 30.000 (ksps).
+            </p>
+        </div>
+    </div>
+
+    <div style="margin-top: 30px; text-align: center;">
+        <a href="/" class="btn primary">Zurück zur Startseite</a>
+    </div>
+</div>{% endblock %}

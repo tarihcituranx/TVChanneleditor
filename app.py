@@ -158,13 +158,13 @@ def add_security_headers(response):
 def render_lang(template_name, **kwargs):
     lang = request.cookies.get('lang')
     if not lang:
-        best_match = request.accept_languages.best_match(['tr', 'en'])
+        best_match = request.accept_languages.best_match(['tr', 'en', 'de'])
         lang = best_match if best_match else 'tr'
-    if lang == 'en':
+    if lang in ['en', 'de']:
         name, ext = os.path.splitext(template_name)
-        en_template = f"{name}_en{ext}"
-        if os.path.exists(os.path.join('templates', en_template)):
-            return render_template(en_template, **kwargs)
+        loc_template = f"{name}_{lang}{ext}"
+        if os.path.exists(os.path.join('templates', loc_template)):
+            return render_template(loc_template, **kwargs)
     return render_template(template_name, **kwargs)
 
 @app.route('/')

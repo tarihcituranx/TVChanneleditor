@@ -8,25 +8,25 @@
                                                        
    [ 🚀 Crafted by @tarihcituranx ]
 -->
-<html lang="tr">
+<html lang="de">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="color-scheme" content="light dark">
     <meta name="darkreader-lock">
-    <meta name="description" content="Samsung, LG, Sony, Hisense Smart TV kanal listelerini ücretsiz düzenleyin. SCM, TLL, sdb.xml ve SQLite formatlarını destekler. Tarayıcı tabanlı, kurulum gerektirmez.">
+    <meta name="description" content="Edit Samsung, LG, Sony, Hisense Smart TV channel lists for free. Supports SCM, TLL, sdb.xml and SQLite formats. Browser-based, no installation required.">
 
     <!-- OpenGraph SEO & Social Share -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://tvchanneleditor.onrender.com/">
-    <meta property="og:title" content="TV Channel Editor — Akıllı Smart TV Kanal Listesi Düzenleyici">
-    <meta property="og:description" content="Samsung, LG, Sony, Hisense Smart TV kanal listelerinizi ücretsiz düzenleyin. SCM, TLL, sdb.xml ve SQLite destekli!">
+    <meta property="og:title" content="TV Channel Editor — Smart TV Channel List Editor">
+    <meta property="og:description" content="Free Smart TV channel editor for Samsung, LG, Sony, Hisense. Supports SCM, TLL, sdb.xml and SQLite formats!">
     <meta property="og:image" content="https://tvchanneleditor.onrender.com/static/img/welcome_hero.jpg">
     
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="TV Channel Editor — Akıllı Smart TV Kanal Listesi Düzenleyici">
-    <meta name="twitter:description" content="Saniyeler içinde TV kanallarını sürükle-bırak ile veya Sihirli Değnek ile sırala. Tamamen ücretsiz ve tarayıcında çalışır.">
+    <meta name="twitter:title" content="TV Channel Editor — Smart TV Channel List Editor">
+    <meta name="twitter:description" content="Organize your TV channels in seconds with drag-and-drop or Magic Wand. 100% free and runs locally in your browser.">
     <meta name="twitter:image" content="https://tvchanneleditor.onrender.com/static/img/welcome_hero.jpg">
     <link rel="icon" type="image/svg+xml" href="/static/img/favicon.svg">
     
@@ -73,23 +73,23 @@
     <!-- Sticky Nav -->
     <nav class="site-nav">
         <div class="nav-inner">
-            <a href="/" class="nav-logo">
+            <a href="/de" class="nav-logo">
                 <div style="display: flex; align-items: center; color: var(--accent);">
                     <svg width="24" height="24" viewBox="0 0 640 512" fill="currentColor"><path d="M64 64l0 288 512 0 0-288L64 64zM0 64C0 28.7 28.7 0 64 0L576 0c35.3 0 64 28.7 64 64l0 288c0 35.3-28.7 64-64 64L64 416c-35.3 0-64-28.7-64-64L0 64zM128 448l384 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-384 0c-17.7 0-32-14.3-32-32s14.3-32 32-32z"/></svg>
                     <span style="font-weight: 800; font-size: 1.15rem; margin-left: 10px; color: var(--text); letter-spacing: -0.5px;">TV Channel Editor</span>
                 </div>
             </a>
             <div class="nav-links">
-                <a href="/" class="nav-link {% if request.path == '/' %}active{% endif %}">Editör</a>
-                <a href="/guide" class="nav-link {% if request.path == '/guide' %}active{% endif %}">Rehber</a>
-                <a href="/supported" class="nav-link {% if request.path == '/supported' %}active{% endif %}">Destek</a>
-                <a href="/faq" class="nav-link {% if request.path == '/faq' %}active{% endif %}">SSS</a>
+                <a href="/" class="nav-link {% if request.path == '/' %}active{% endif %}">Editor</a>
+                <a href="/guide" class="nav-link {% if request.path == '/guide' %}active{% endif %}">Anleitung</a>
+                <a href="/supported" class="nav-link {% if request.path == '/supported' %}active{% endif %}">Unterstützte TVs</a>
+                <a href="/faq" class="nav-link {% if request.path == '/faq' %}active{% endif %}">FAQ</a>
             </div>
             <div class="nav-actions">
-                <button id="share-site-btn" class="icon-btn" aria-label="Siteyi Paylaş" title="Siteyi Paylaş"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" x2="15.42" y1="13.51" y2="17.49"/><line x1="15.41" x2="8.59" y1="6.51" y2="10.49"/></svg></button>
-                <button id="colorblind-toggle" class="icon-btn" aria-label="Renk Körlüğü Modu" title="Renk Körlüğü Modu"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22a1 1 0 0 1 0-20 10 9 0 0 1 10 9 5 5 0 0 1-5 5h-2.25a1.75 1.75 0 0 0-1.4 2.8l.3.4a1.75 1.75 0 0 1-1.4 2.8z"/><circle cx="13.5" cy="6.5" r=".5" fill="currentColor"/><circle cx="17.5" cy="10.5" r=".5" fill="currentColor"/><circle cx="6.5" cy="12.5" r=".5" fill="currentColor"/><circle cx="8.5" cy="7.5" r=".5" fill="currentColor"/></svg></button>
-                <button id="theme-toggle" class="icon-btn" aria-label="Tema Değiştir" title="Karanlık/Aydınlık Tema"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></button>
-                <select id="lang-selector" class="lang-select" aria-label="Dil Seçimi">
+                <button id="share-site-btn" class="icon-btn" aria-label="Website teilen" title="Website teilen"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" x2="15.42" y1="13.51" y2="17.49"/><line x1="15.41" x2="8.59" y1="6.51" y2="10.49"/></svg></button>
+                <button id="colorblind-toggle" class="icon-btn" aria-label="Farbenblind-Modus" title="Farbenblind-Modus"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22a1 1 0 0 1 0-20 10 9 0 0 1 10 9 5 5 0 0 1-5 5h-2.25a1.75 1.75 0 0 0-1.4 2.8l.3.4a1.75 1.75 0 0 1-1.4 2.8z"/><circle cx="13.5" cy="6.5" r=".5" fill="currentColor"/><circle cx="17.5" cy="10.5" r=".5" fill="currentColor"/><circle cx="6.5" cy="12.5" r=".5" fill="currentColor"/><circle cx="8.5" cy="7.5" r=".5" fill="currentColor"/></svg></button>
+                <button id="theme-toggle" class="icon-btn" aria-label="Design umschalten" title="Dark/Light Theme">Theme</button>
+                <select id="lang-selector" class="lang-select" aria-label="Language">
                     <option value="tr">🇹🇷 TR</option>
                     <option value="en">🇬🇧 EN</option>
                     <option value="de">🇩🇪 DE</option>
@@ -104,73 +104,36 @@
         </main>
 
         <footer>
-            <!-- References / Teşekkürler -->
-            <div style="margin-bottom: 2.5rem;">
-                <p style="text-align:center; font-size:0.72rem; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:var(--text-muted); margin-bottom:1.25rem;">Açık Kaynak Referanslar & Teşekkürler</p>
-                <div style="display:flex; align-items:center; justify-content:center; gap:2rem; flex-wrap:wrap;">
-                    <!-- Türksat -->
-                    <a href="https://www.turksat.com.tr/uydu" target="_blank" rel="noopener"
-                       style="display:flex; align-items:center; gap:0.6rem; padding:0.6rem 1.1rem; background:var(--card-bg); border:1px solid var(--border-color); border-radius:var(--radius-md); text-decoration:none; color:var(--text-secondary); font-size:0.8rem; font-weight:500; transition:border-color 0.15s, transform 0.15s;"
-                       onmouseover="this.style.borderColor='var(--accent)';this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='var(--border-color)';this.style.transform='translateY(0)'">
-                        <img src="/static/img/turksat_logo.svg" alt="Türksat" style="height:18px; width:auto; filter:var(--logo-filter); opacity:0.75;">
-                        <span>Frekans Veritabanı</span>
-                    </a>
-                    <!-- ChanSort -->
-                    <a href="https://github.com/PredatH0r/ChanSort" target="_blank" rel="noopener"
-                       style="display:flex; align-items:center; gap:0.6rem; padding:0.6rem 1.1rem; background:var(--card-bg); border:1px solid var(--border-color); border-radius:var(--radius-md); text-decoration:none; color:var(--text-secondary); font-size:0.8rem; font-weight:500; transition:border-color 0.15s, transform 0.15s;"
-                       onmouseover="this.style.borderColor='var(--accent)';this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='var(--border-color)';this.style.transform='translateY(0)'">
-                        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z"/></svg>
-                        <span>ChanSort / SamyGO</span>
-                    </a>
-                    <!-- İltekin -->
-                    <a href="https://github.com/iltekin/scm-editor" target="_blank" rel="noopener"
-                       style="display:flex; align-items:center; gap:0.6rem; padding:0.6rem 1.1rem; background:var(--card-bg); border:1px solid var(--border-color); border-radius:var(--radius-md); text-decoration:none; color:var(--text-secondary); font-size:0.8rem; font-weight:500; transition:border-color 0.15s, transform 0.15s;"
-                       onmouseover="this.style.borderColor='var(--accent)';this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='var(--border-color)';this.style.transform='translateY(0)'">
-                        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z"/></svg>
-                        <span>İltekin — İlham Kaynağı</span>
-                    </a>
-                    <!-- GitHub -->
-                    <a href="https://github.com/tarihcituranx/TVChanneleditor" target="_blank" rel="noopener"
-                       style="display:flex; align-items:center; gap:0.6rem; padding:0.6rem 1.1rem; background:var(--accent-dim); border:1px solid var(--accent); border-radius:var(--radius-md); text-decoration:none; color:var(--accent); font-size:0.8rem; font-weight:600; transition:background 0.15s, transform 0.15s;"
-                       onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">
-                        <svg width="15" height="15" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z"/></svg>
-                        GitHub'da Yıldızla
-                    </a>
-                </div>
-            </div>
-
-            <!-- Footer Grid -->
             <div class="footer-grid">
                 <div class="footer-col">
                     <h3>TV Channel Editor</h3>
-                    <p>Samsung, Sony & Hisense kanal listelerinizi tarayıcınızda saniyeler içinde güvenle düzenleyin.</p>
+                    <p>Channel editing runs in your browser. Some file-processing operations use temporary server memory.</p>
                 </div>
                 <div class="footer-col">
-                    <h3>Sayfalar</h3>
+                    <h3>Open Source References</h3>
                     <ul>
-                        <li><a href="/guide">Rehber</a></li>
-                        <li><a href="/supported">Desteklenen TV'ler</a></li>
-                        <li><a href="/faq">Sık Sorulan Sorular</a></li>
-                        <li><a href="/security">🔒 Güvenlik Merkezi</a></li>
-                        <li><a href="/privacy">🛡️ Gizlilik (KVKK / GDPR)</a></li>
-                        <li><a href="/api/docs" target="_blank">💻 API Dokümantasyonu</a></li>
+                        <li><a href="https://github.com/tarihcituranx/TVChanneleditor" target="_blank">GitHub Repository</a></li>
+                        <li><a href="/api/docs" target="_blank">API Documentation</a></li>
+                        <li><a href="https://github.com/iltekin/scm-editor" target="_blank">İltekin (inspiration)</a></li>
+                        <li><a href="https://github.com/PredatH0r/ChanSort" target="_blank">ChanSort / SamyGO</a></li>
+                        <li><a href="https://uydu.turksat.com.tr" target="_blank">Türksat A.Ş.</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
-                    <h3>Güvenlik</h3>
+                    <h3>Legal & Privacy</h3>
                     <ul>
-                        <li><span style="color:var(--text-secondary); font-size:0.85rem;">✓ Tarayıcı üzerinden sunucuya iletilir</span></li>
-                        <li><span style="color:var(--text-secondary); font-size:0.85rem;">✓ RAM/Temp dizininde anlık işlenir</span></li>
-                        <li><span style="color:var(--text-secondary); font-size:0.85rem;">✓ İşlem sonrası sunucudan otomatik silinir</span></li>
+                        <li><a href="/security">🔒 Sicherheitscenter</a></li>
+                        <li><a href="/privacy">🛡️ Privacy Policy (KVKK / GDPR)</a></li>
+                        <li><span style="color:var(--text-secondary); font-size:0.8rem;">Temporary data is automatically deleted after processing.</span></li>
+                        <li><span style="color:var(--text-secondary); font-size:0.8rem;"></span></li>
                     </ul>
                 </div>
             </div>
 
-            <!-- Legal -->
-            <div style="max-width:820px; margin:0 auto 1.5rem; padding:1rem 1.25rem; background:var(--bg-subtle); border:1px solid var(--border-color); border-radius:var(--radius-md); font-size:0.78rem; color:var(--text-muted); line-height:1.65;">
-                <strong style="color:var(--text-secondary);">Yasal Uyarı (AS-IS):</strong>
-                Samsung, LG, Sony ve Hisense logoları ile kanal logoları ilgili şirketlerin tescilli ticari markalarıdır. Bu araç hiçbir üreticiyle bağlantısı olmayan açık kaynaklı bir yazılımdır.
-                MIT Lisansı kapsamında <strong>"OLDUĞU GİBİ"</strong> sunulmaktadır; veri kaybı veya cihaz ayarı bozulmalarından doğacak zararlardan geliştiriciler sorumlu tutulamaz.
+            <div style="max-width:800px; margin:0 auto 1.5rem; padding:1rem; background:var(--bg-subtle); border:1px solid var(--border-color); border-radius:var(--radius-md); font-size:0.8rem; color:var(--text-muted); line-height:1.6;">
+                <strong style="color:var(--text-secondary);">Legal Notice &amp; Disclaimer (AS-IS):</strong>
+                The Samsung, LG, Sony, and Hisense logos, as well as the logos of the channels, are registered trademarks of their respective companies and broadcasters. This tool is open-source software with no affiliation to any manufacturer or broadcaster.
+                In accordance with Open Source Software Law (MIT License / CRA Compliance): This software is provided <strong>"AS IS"</strong> without any warranty. Developers cannot be held legally liable for any direct or indirect damages resulting from data loss, corruption of device settings, or user errors. Users are deemed to have accepted all risks.
             </div>
 
             <div class="footer-bottom">
@@ -178,7 +141,7 @@
                     &copy; 2026 TV Channel Editor &middot; Crafted by <a href="https://github.com/tarihcituranx" target="_blank" style="color: #60a5fa; text-decoration: underline; text-underline-offset: 3px;">Turan Kaya</a>
                 </div>
                 <div style="display: flex; justify-content: center; gap: 20px; align-items: center;">
-                    <a href="https://github.com/tarihcituranx" target="_blank" style="color: var(--text-secondary); text-decoration: none; transition: color 0.2s;" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='var(--text-secondary)'" title="GitHub Profilim">
+                    <a href="https://github.com/tarihcituranx" target="_blank" style="color: var(--text-secondary); text-decoration: none; transition: color 0.2s;" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='var(--text-secondary)'" title="My GitHub Profile">
                         <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
                     </a>
                     <a href="https://x.com/turanka1919" target="_blank" style="color: var(--text-secondary); text-decoration: none; transition: color 0.2s;" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='var(--text-secondary)'" title="X (Twitter)">
@@ -218,11 +181,11 @@
             if (state === 'auto') {
                 html.setAttribute('data-theme', getAutoTheme());
                 themeToggle.textContent = '⏱️';
-                themeToggle.title = 'Otomatik Tema (Gündüz/Gece)';
+                themeToggle.title = 'Auto Theme (Day/Night)';
             } else {
                 html.setAttribute('data-theme', state);
                 themeToggle.textContent = state === 'light' ? '☀️' : '🌙';
-                themeToggle.title = state === 'light' ? 'Aydınlık Mod' : 'Karanlık Mod';
+                themeToggle.title = state === 'light' ? 'Light Mode' : 'Dark Mode';
             }
         }
 
@@ -284,21 +247,21 @@
     <div id="social-share-modal" class="modal" style="display: none;">
         <div class="modal-content" style="max-width: 400px; text-align: center;">
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
-                <h3 style="margin: 0;">📤 Bu Siteyi Paylaş</h3>
+                <h3 style="margin: 0;">📤 Share This Site</h3>
                 <button class="modal-close" onclick="document.getElementById('social-share-modal').style.display='none'" style="background:none; border:none; font-size:1.5rem; cursor:pointer; color:var(--text-muted);">&times;</button>
             </div>
             <div>
-                <p style="margin-bottom: 15px; color: var(--text-secondary); font-size: 0.9rem;">Tarayıcınızın kamerasıyla veya QR okuyucuyla kodu okutun.</p>
+                <p style="margin-bottom: 15px; color: var(--text-secondary); font-size: 0.9rem;">Scan the code with your browser camera or a QR reader.</p>
                 <div id="qr-code-container" style="display: flex; justify-content: center; align-items: center; margin-bottom: 20px;"></div>
                 <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
-                    <button class="btn primary-outline" onclick="navigator.clipboard.writeText(window.location.href); toast('Bağlantı kopyalandı! 📋', 'success');" style="display:flex; align-items:center; gap:6px;">🔗 Kopyala</button>
+                    <button class="btn primary-outline" onclick="navigator.clipboard.writeText(window.location.href); toast('Link copied! 📋', 'success');" style="display:flex; align-items:center; gap:6px;">🔗 Copy</button>
                     <a href="#" id="share-wa" target="_blank" class="btn" style="background: #25D366; color: white; border: none; display:flex; align-items:center; gap:6px;">
                         <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.82 9.82 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.81 11.81 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.88 11.88 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.82 11.82 0 0 0-3.48-8.413Z"/></svg>
                         WhatsApp
                     </a>
                     <a href="#" id="share-x" target="_blank" class="btn" style="background: #000; color: white; border: none; display:flex; align-items:center; gap:6px;">
                         <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 22.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.008 5.925H5.033z"></path></svg>
-                        Gönder
+                        Post
                     </a>
                     <a href="#" id="share-n" target="_blank" class="btn" style="background: #2b55a0; color: white; border: none; display:flex; align-items:center; gap:6px;">
                         <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M4 22h4V8l8 14h4V2h-4v14L8 2H4v20z"/></svg>
@@ -320,7 +283,7 @@
     <script src="https://cdn.jsdelivr.net/npm/qr-code-styling@1.6.0-rc.1/lib/qr-code-styling.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.2/Sortable.min.js"></script>
     <script>
-                document.getElementById('share-site-btn')?.addEventListener('click', async () => {
+        document.getElementById('share-site-btn')?.addEventListener('click', async () => {
             const currentUrl = window.location.href;
             
             // Generate QR Code with pure white background and black dots for perfect contrast
@@ -346,10 +309,10 @@
                 try {
                     const blob = await qrCode.getRawData("png");
                     const baseUrl = window.location.origin;
-                    const shareText = `Mobil ve bilgisayardan Samsung, LG, Sony, Hisense TV kanal listelerinizi (SCM, TLL, SDB.XML) tarayıcı üzerinden ücretsiz düzenleyin!
-🤖 Geliştiriciler & Yapay Zeka (API): ${baseUrl}/api/docs
+                    const shareText = `Easily edit your Samsung, LG, Sony, and Hisense TV channel lists for free directly in your mobile or PC browser!
+🤖 API for Developers & AI: ${baseUrl}/api/docs
 
-(T.C. Ticaret Bakanlığı yönergeleri gereği: #Reklam #İşbirliği)`;
+(According to the Republic of Türkiye Ministry of Trade regulations: #Ad #Sponsored)`;
                     if (blob) {
                         const file = new File([blob], "tvchanneleditor-qr.png", { type: "image/png" });
                         if (navigator.canShare && navigator.canShare({ files: [file] })) {
@@ -377,19 +340,19 @@
             // Fallback for Desktop
             document.getElementById('social-share-modal').style.display = 'flex';
             const baseUrl = window.location.origin;
-            const shareText = `Mobil ve bilgisayardan Samsung, LG, Sony, Hisense TV kanal listelerinizi (SCM, TLL, SDB.XML) tarayıcı üzerinden ücretsiz düzenleyin!
+            const shareText = `Easily edit your Samsung, LG, Sony, and Hisense TV channel lists for free directly in your mobile or PC browser!
 
-🔗 Kullanıcılar İçin: ${baseUrl}/
-🤖 Geliştiriciler & Yapay Zeka (API): ${baseUrl}/api/docs
+🔗 For Users: ${baseUrl}/
+🤖 API for Developers & AI: ${baseUrl}/api/docs
 
-(T.C. Ticaret Bakanlığı yönergeleri gereği: #Reklam #İşbirliği)`;
+(According to the Republic of Türkiye Ministry of Trade regulations: #Ad #Sponsored)`;
             
-            const shareTextLong = `📱💻 Mobil & PC uyumlu harika bir ücretsiz Smart TV kanal düzenleme aracı! Samsung, LG, Sony, Hisense destekliyor.
+            const shareTextLong = `📱💻 A fantastic free Smart TV channel editor for Mobile & PC! Supports Samsung, LG, Sony, and Hisense.
 
-🔗 Hemen Düzenle: ${baseUrl}/
-🤖 Geliştirici / AI API: ${baseUrl}/api/docs
+🔗 Try it now: ${baseUrl}/
+🤖 Developer / AI API: ${baseUrl}/api/docs
 
-(T.C. Ticaret Bakanlığı yönergeleri gereği: #Reklam #İşbirliği)`;
+(According to the Republic of Türkiye Ministry of Trade regulations: #Ad #Sponsored)`;
 
             document.getElementById('share-wa').href = `https://wa.me/?text=${encodeURIComponent(shareText)}`;
             document.getElementById('share-x').href = `https://x.com/intent/post?text=${encodeURIComponent(shareTextLong)}`;

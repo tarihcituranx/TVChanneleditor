@@ -80,7 +80,7 @@
                 </div>
             </a>
             <div class="nav-links">
-                <a href="/en" class="nav-link {% if request.path == '/en' %}active{% endif %}">Editor</a>
+                <a href="/" class="nav-link {% if request.path == '/' %}active{% endif %}">Editor</a>
                 <a href="/guide" class="nav-link {% if request.path == '/guide' %}active{% endif %}">Guide</a>
                 <a href="/supported" class="nav-link {% if request.path == '/supported' %}active{% endif %}">Supported TVs</a>
                 <a href="/faq" class="nav-link {% if request.path == '/faq' %}active{% endif %}">FAQ</a>
@@ -92,6 +92,7 @@
                 <select id="lang-selector" class="lang-select" aria-label="Language">
                     <option value="tr">🇹🇷 TR</option>
                     <option value="en">🇬🇧 EN</option>
+                    <option value="de">🇩🇪 DE</option>
                 </select>
             </div>
         </div>
