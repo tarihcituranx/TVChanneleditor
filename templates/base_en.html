@@ -239,14 +239,14 @@
         }
     </script>
     <!-- Share Modal -->
-    <div id="social-share-modal" class="modal-overlay" style="display: none;">
-        <div class="modal">
-            <div class="modal-header">
-                <h3>📤 Share This Site</h3>
-                <button class="modal-close" onclick="document.getElementById('social-share-modal').style.display='none'">&times;</button>
+    <div id="social-share-modal" class="modal" style="display: none;">
+        <div class="modal-content" style="max-width: 400px; text-align: center;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                <h3 style="margin: 0;">📤 Share This Site</h3>
+                <button class="modal-close" onclick="document.getElementById('social-share-modal').style.display='none'" style="background:none; border:none; font-size:1.5rem; cursor:pointer; color:var(--text-muted);">&times;</button>
             </div>
-            <div class="modal-body" style="text-align: center;">
-                <p style="margin-bottom: 15px; color: var(--text-secondary);">Scan this QR code with your browser camera or QR reader.</p>
+            <div>
+                <p style="margin-bottom: 15px; color: var(--text-secondary); font-size: 0.9rem;">Scan the code with your browser camera or a QR reader.</p>
                 <div id="qr-code-container" style="display: flex; justify-content: center; align-items: center; margin-bottom: 20px;"></div>
                 <div style="display: flex; gap: 10px; justify-content: center;">
                     <button class="btn primary-outline" onclick="navigator.clipboard.writeText(window.location.href); toast('Link copied! 📋', 'success');">🔗 Copy</button>
@@ -260,7 +260,7 @@
     <script src="https://cdn.jsdelivr.net/npm/qr-code-styling@1.6.0-rc.1/lib/qr-code-styling.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.2/Sortable.min.js"></script>
     <script>
-                document.getElementById('share-site-btn')?.addEventListener('click', async () => {
+        document.getElementById('share-site-btn')?.addEventListener('click', async () => {
             const currentUrl = window.location.href;
             
             // Generate QR Code with pure white background and black dots for perfect contrast

@@ -276,14 +276,14 @@
         }
     </script>
     <!-- Share Modal -->
-    <div id="social-share-modal" class="modal-overlay" style="display: none;">
-        <div class="modal">
-            <div class="modal-header">
-                <h3>📤 Bu Siteyi Paylaş</h3>
-                <button class="modal-close" onclick="document.getElementById('social-share-modal').style.display='none'">&times;</button>
+    <div id="social-share-modal" class="modal" style="display: none;">
+        <div class="modal-content" style="max-width: 400px; text-align: center;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                <h3 style="margin: 0;">📤 Bu Siteyi Paylaş</h3>
+                <button class="modal-close" onclick="document.getElementById('social-share-modal').style.display='none'" style="background:none; border:none; font-size:1.5rem; cursor:pointer; color:var(--text-muted);">&times;</button>
             </div>
-            <div class="modal-body" style="text-align: center;">
-                <p style="margin-bottom: 15px; color: var(--text-secondary);">Tarayıcınızın kamerasıyla veya QR okuyucuyla kodu okutun.</p>
+            <div>
+                <p style="margin-bottom: 15px; color: var(--text-secondary); font-size: 0.9rem;">Tarayıcınızın kamerasıyla veya QR okuyucuyla kodu okutun.</p>
                 <div id="qr-code-container" style="display: flex; justify-content: center; align-items: center; margin-bottom: 20px;"></div>
                 <div style="display: flex; gap: 10px; justify-content: center;">
                     <button class="btn primary-outline" onclick="navigator.clipboard.writeText(window.location.href); toast('Bağlantı kopyalandı! 📋', 'success');">🔗 Kopyala</button>
