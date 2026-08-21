@@ -28,31 +28,17 @@
 </div>
 
 <!-- Upload Section -->
-<div id="upload-section" class="card drop-zone" style="display: none;">
-    <input type="file" id="file-input" accept=".scm,.zip,.tll,.xml,.db" hidden>
-    <div class="upload-content">
-        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
-        <h2>قم بتحميل ملف بتنسيق .scm أو .zip أو sdb.xml أو servicelist.db</h2>
-        <p>اختر ملف قائمة القنوات الخاص بك من Samsung أو Sony أو Hisense</p>
-        <button id="browse-btn" class="btn primary">اختر ملفًا</button>
-        <p style="margin-top: 1rem; font-size: 0.85rem; color: var(--text-muted); max-width: 500px; margin-left: auto; margin-right: auto; line-height: 1.4; justify-content: center; text-align: center;">
-            <strong style="color: var(--accent);">ملاحظة (لمستخدمي تلفزيونات LG):</strong>
-            
-            يدعم نظامنا ملفات <b>.tll</b>
-            (GlobalClone) من الجيل الجديد <b>المستندة إلى XML</b>
-            من LG. لا يتم دعم ملفات <b>.tll الثنائية</b>
-            القديمة؛ بالنسبة لتلك الملفات، يرجى استخدام تطبيق ChanSort المخصص لأجهزة الكمبيوتر المكتبية.
+<div id="upload-section" style="padding: 2rem 0; display: none;">
+    <div id="drop-zone" class="drop-zone" onclick="document.getElementById('file-input').click()">
+        <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+        <h3>قم بإفلات قائمة القنوات الخاصة بك هنا</h3>
+        <p>.scm &middot; .zip &middot; sdb.xml &middot; servicelist.db</p>
+        <input type="file" id="file-input" accept=".scm,.zip,.tll,.xml,.db" style="display:none;">
+        <button class="btn primary" style="margin-top:0.5rem; padding:0.65rem 2rem; border-radius:100px; font-size:1rem;" onclick="event.stopPropagation(); document.getElementById('file-input').click()">اختر ملف</button>
+        <p style="font-size:0.8rem; color:var(--text-muted); display:flex; align-items:center; justify-content:center; gap:5px; margin-top:0.25rem; text-align:center;">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            عملية آمنة: تتم معالجة ملفاتك فقط أثناء التحرير ولا يتم تخزينها.
         </p>
-        
-        <div style="margin-top: 1.5rem; padding: 10px 15px; background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.2); border-radius: 8px; font-size: 0.85rem; color: var(--text-secondary); max-width: 600px; margin-left: auto; margin-right: auto; text-align: left;">
-            <strong style="color: var(--danger);">⚠️ إخلاء المسؤولية:</strong>
-            هذه الأداة ليست تابعة لأي شركة مصنعة للتلفزيونات. يرجى حفظ نسخة احتياطية من ملف قائمة القنوات الأصلي في مكان آمن قبل إجراء أي تعديلات. نظامنا غير مسؤول عن أي فقدان محتمل للبيانات.
-        </div>
-        
-        <div style="margin-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1rem;">
-            <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 0.5rem;">أو استيراد مسودة من جهاز آخر:</p>
-            <button id="import-share-btn" class="btn primary-outline" style="background:transparent; color:var(--accent); border:1px solid var(--accent);">📱 الاستيراد عبر الرمز</button>
-        </div>
     </div>
 </div>
 
@@ -353,7 +339,7 @@
         
         if (localStorage.getItem('welcomed_v2')) {
             if(welcomeSection) welcomeSection.style.display = 'none';
-            if(uploadSection) uploadSection.style.display = 'flex';
+            if(uploadSection) uploadSection.style.display = 'block';
         } else {
             if(uploadSection) uploadSection.style.display = 'none';
         }
@@ -361,7 +347,7 @@
         startBtn?.addEventListener('click', () => {
             localStorage.setItem('welcomed_v2', 'true');
             if(welcomeSection) welcomeSection.style.display = 'none';
-            if(uploadSection) uploadSection.style.display = 'flex';
+            if(uploadSection) uploadSection.style.display = 'block';
         });
     });
 </script>
