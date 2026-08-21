@@ -272,7 +272,7 @@ def api_help():
 def api_version():
     return jsonify({
         "status": "online",
-        "version": "1.0.0"
+        "version": "1.1.0"
     })
 
 @app.route('/glossary', defaults={'lang': None})
