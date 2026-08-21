@@ -258,6 +258,10 @@
                         <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 22.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.008 5.925H5.033z"></path></svg>
                         Post
                     </a>
+                    <a href="#" id="share-n" target="_blank" class="btn" style="background: #2b55a0; color: white; border: none; display:flex; align-items:center; gap:6px;">
+                        <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M4 22h4V8l8 14h4V2h-4v14L8 2H4v20z"/></svg>
+                        Nsosyal
+                    </a>
                 </div>
             </div>
         </div>
@@ -319,6 +323,7 @@
             document.getElementById('social-share-modal').style.display = 'flex';
             document.getElementById('share-wa').href = `https://wa.me/?text=${encodeURIComponent('I found a great free tool to easily edit TV channel lists on your computer using a USB drive. Works right in the browser: ' + currentUrl)}`;
             document.getElementById('share-x').href = `https://x.com/intent/post?text=${encodeURIComponent('A fantastic free tool to edit Smart TV channel lists in seconds with drag-and-drop right in your browser! 📺✨ ' + currentUrl)}`;
+            document.getElementById('share-n').href = `https://nsosyal.com/share?text=${encodeURIComponent('A fantastic free tool to edit Smart TV channel lists in seconds with drag-and-drop right in your browser! 📺✨ ' + currentUrl)}`;
             
             const qrContainer = document.getElementById('qr-code-container');
             if (qrContainer.innerHTML === '') {
@@ -342,7 +347,7 @@
             const link = e.target.closest('a');
             if (link && link.href && link.href.startsWith('http') && !link.href.includes(window.location.hostname)) {
                 // If it's a social share intent link (like Twitter/WhatsApp), don't block
-                if (link.href.includes('x.com/intent') || link.href.includes('wa.me')) return;
+                if (link.href.includes('x.com/intent') || link.href.includes('wa.me') || link.href.includes('nsosyal.com/share')) return;
                 
                 e.preventDefault();
                 const redirectUrl = '/redirect?url=' + encodeURIComponent(link.href);
