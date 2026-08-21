@@ -92,10 +92,10 @@
                 </div>
             </a>
             <div class="nav-links">
-                <a href="/" class="nav-link {% if request.path == '/' %}active{% endif %}">Editor</a>
-                <a href="/guide" class="nav-link {% if request.path == '/guide' %}active{% endif %}">Guía</a>
-                <a href="/supported" class="nav-link {% if request.path == '/supported' %}active{% endif %}">TVs compatibles</a>
-                <a href="/faq" class="nav-link {% if request.path == '/faq' %}active{% endif %}">Preguntas frecuentes</a>
+                <a href="{{ '' if current_lang == 'tr' else '/' + current_lang }}/" class="nav-link {% if request.path == '/' %}active{% endif %}">Editor</a>
+                <a href="{{ '' if current_lang == 'tr' else '/' + current_lang }}/guide" class="nav-link {% if request.path == '/guide' %}active{% endif %}">Guía</a>
+                <a href="{{ '' if current_lang == 'tr' else '/' + current_lang }}/supported" class="nav-link {% if request.path == '/supported' %}active{% endif %}">TVs compatibles</a>
+                <a href="{{ '' if current_lang == 'tr' else '/' + current_lang }}/faq" class="nav-link {% if request.path == '/faq' %}active{% endif %}">Preguntas frecuentes</a>
             </div>
             <div class="nav-actions">
                 <button id="share-site-btn" class="icon-btn" aria-label="Compartir web" title="Compartir web"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" x2="15.42" y1="13.51" y2="17.49"/><line x1="15.41" x2="8.59" y1="6.51" y2="10.49"/></svg></button>
@@ -142,8 +142,8 @@
                 <div class="footer-col">
                     <h3>Aviso legal y política de privacidad</h3>
                     <ul>
-                        <li><a href="/security">🔒 Centro de seguridad</a></li>
-                        <li><a href="/privacy">🛡️ Política de privacidad (KVKK / RGPD)</a></li>
+                        <li><a href="{{ '' if current_lang == 'tr' else '/' + current_lang }}/security">🔒 Centro de seguridad</a></li>
+                        <li><a href="{{ '' if current_lang == 'tr' else '/' + current_lang }}/privacy">🛡️ Política de privacidad (KVKK / RGPD)</a></li>
                         <li><span style="color:var(--text-secondary); font-size:0.8rem;">Los datos temporales se eliminan automáticamente tras su procesamiento.</span></li>
                         <li><span style="color:var(--text-secondary); font-size:0.8rem;"></span></li>
                     </ul>
