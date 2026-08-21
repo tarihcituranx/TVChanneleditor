@@ -20,6 +20,15 @@ import tizen_core
 import lg_core
 import sony_core
 import hisense_core
+from api_locales import API_LOCALES
+
+def api_error(code, status=400):
+    lang = request.cookies.get('lang', 'tr').upper()
+    if lang not in API_LOCALES:
+        lang = 'TR'
+    msg = API_LOCALES[lang].get(code, API_LOCALES['TR'].get(code, 'Bilinmeyen Hata'))
+    return jsonify({'success': False, 'error': msg, 'code': code}), status
+
 
 app = Flask(__name__)
 app.wsgi_app = ProxyFix(app.wsgi_app, x_for=1, x_proto=1, x_host=1, x_prefix=1)
@@ -230,20 +239,20 @@ def glossary():
 def upload():
     client_ip = get_client_ip()
     if not _rate_check(client_ip):
-        return jsonify({'error': 'Çok fazla istek. Lütfen bir dakika bekleyin.'}), 429
+        return api_error('TOO_MANY_REQUESTS', 429)
 
     _cleanup_expired()
 
     if 'file' not in request.files:
-        return jsonify({'error': 'Dosya bulunamadı', 'code': 'FILE_NOT_FOUND'}), 400
+        return api_error('FILE_NOT_FOUND', 400)
     file = request.files['file']
     if not file.filename:
-        return jsonify({'error': 'Dosya seçilmedi'}), 400
+        return api_error('NO_FILE_SELECTED', 400)
 
     brand = _detect_brand(file.filename, file.stream)
     safe_name = _safe_filename(file.filename, brand)
     if not safe_name:
-        return jsonify({'error': 'Desteklenmeyen dosya formatı. (.scm, .zip, .tll, .db, .xml)', 'code': 'INVALID_EXTENSION'}), 400
+        return api_error('INVALID_EXTENSION', 400)
 
     ext = os.path.splitext(safe_name)[1].lower()
     tmpdir = tempfile.mkdtemp()
@@ -257,15 +266,15 @@ def upload():
                 total = sum(i.file_size for i in z.infolist())
                 if total > ZIPBOMB_MAX_BYTES:
                     shutil.rmtree(tmpdir, ignore_errors=True)
-                    return jsonify({'error': 'ZIP dosyası çok büyük (açılmış boyut limiti aşıldı).'}), 400
+                    return api_error('ZIP_TOO_LARGE', 400)
                 # Ayrıca Path Traversal kontrolü (Sadece önlem, extract eden core sınıfları da yapıyor)
                 for info in z.infolist():
                     if info.filename.startswith('/') or '..' in info.filename:
                         shutil.rmtree(tmpdir, ignore_errors=True)
-                        return jsonify({'error': 'Güvenlik ihlali: Dosya içinde tehlikeli dizin yolları tespit edildi.'}), 400
+                        return api_error('SECURITY_VIOLATION', 400)
         except Exception as e:
             shutil.rmtree(tmpdir, ignore_errors=True)
-            return jsonify({'error': 'Geçersiz veya bozuk arşiv dosyası formatı.'}), 400
+            return api_error('CORRUPT_ARCHIVE', 400)
 
     session_id = str(uuid.uuid4())
     _sessions[session_id] = {
@@ -310,7 +319,7 @@ def upload():
     except Exception as e:
         shutil.rmtree(tmpdir, ignore_errors=True)
         del _sessions[session_id]
-        return jsonify({'error': 'Dosya işlenirken beklenmeyen bir hata oluştu.'}), 500
+        return api_error('UNEXPECTED_ERROR', 500)
 
 @limiter.limit("20 per minute")
 @app.route('/build', methods=['POST'])
@@ -321,7 +330,7 @@ def build():
     original_name = data.get('filename', 'channel_list.scm')
 
     if session_id not in _sessions:
-        return jsonify({'error': 'Oturum süresi doldu veya geçersiz. Lütfen dosyayı tekrar yükleyin.'}), 400
+        return api_error('SESSION_EXPIRED', 400)
 
     session = _sessions[session_id]
     filepath = session['path']
@@ -413,9 +422,9 @@ def build():
             safe_name_dl = urllib.parse.quote(os.path.basename(original_name))
             return jsonify({'success': True, 'download_url': f'/download/{session_id}/{safe_name_dl}'})
         else:
-            return jsonify({'error': 'Dosya oluşturulamadı', 'code': 'FILE_BUILD_ERROR'}), 500
+            return api_error('FILE_BUILD_ERROR', 500)
     except Exception as e:
-        return jsonify({'error': 'Dosya işlenirken beklenmeyen bir hata oluştu.'}), 500
+        return api_error('UNEXPECTED_ERROR', 500)
 
 import secrets
 import string
@@ -429,7 +438,7 @@ def share_draft():
         # Create a new share code
         data = request.json
         if not data or 'draft' not in data:
-            return jsonify({'success': False, 'error': 'Geçersiz veri', 'code': 'INVALID_DATA'}), 400
+            return api_error('INVALID_DATA', 400)
             
         # Generate 6 digit random code
         code = ''.join(secrets.choice(string.ascii_uppercase + string.digits) for _ in range(8))
@@ -445,7 +454,7 @@ def share_draft():
         # GET request to retrieve draft
         code = request.args.get('code', '').upper()
         if not code or code not in _shares:
-            return jsonify({'success': False, 'error': 'Kod geçersiz veya süresi dolmuş.', 'code': 'INVALID_CODE'}), 404
+            return api_error('INVALID_CODE', 404)
             
         return jsonify({'success': True, 'draft': _shares[code]['draft']})
 
