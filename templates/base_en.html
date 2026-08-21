@@ -311,8 +311,8 @@
             
             // Fallback for Desktop
             document.getElementById('social-share-modal').style.display = 'flex';
-            document.getElementById('share-wa').href = `https://wa.me/?text=${encodeURIComponent('Check out this free Smart TV channel editor: ' + currentUrl)}`;
-            document.getElementById('share-x').href = `https://twitter.com/intent/tweet?text=${encodeURIComponent('Free Smart TV channel editor: ' + currentUrl)}`;
+            document.getElementById('share-wa').href = `https://wa.me/?text=${encodeURIComponent('I found a great free tool to easily edit TV channel lists on your computer using a USB drive. Works right in the browser: ' + currentUrl)}`;
+            document.getElementById('share-x').href = `https://x.com/intent/post?text=${encodeURIComponent('A fantastic free tool to edit Smart TV channel lists in seconds with drag-and-drop right in your browser! 📺✨ ' + currentUrl)}`;
             
             const qrContainer = document.getElementById('qr-code-container');
             if (qrContainer.innerHTML === '') {
@@ -336,7 +336,7 @@
             const link = e.target.closest('a');
             if (link && link.href && link.href.startsWith('http') && !link.href.includes(window.location.hostname)) {
                 // If it's a social share intent link (like Twitter/WhatsApp), don't block
-                if (link.href.includes('twitter.com/intent') || link.href.includes('wa.me')) return;
+                if (link.href.includes('x.com/intent') || link.href.includes('wa.me')) return;
                 
                 e.preventDefault();
                 const redirectUrl = '/redirect?url=' + encodeURIComponent(link.href);
