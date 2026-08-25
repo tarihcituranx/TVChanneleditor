@@ -52,13 +52,65 @@
       })();
     </script>
     <title>{% block title %}TV Channel Editor — Smart TV Channel List Editor{% endblock %}</title>
-    <link rel="stylesheet" href="/static/css/fonts.css">
-    <link rel="stylesheet" href="/static/css/style.css?v=2.2">
+    <link rel="stylesheet" href="/static/css/style.css?v=3.0">
     {% block head %}{% endblock %}
 
-    <!-- Anonymous Usage Analytics -->
-    <script defer src="/stats.js" data-website-id="0f00eaac-7976-4f61-9d41-5034ad68a1f4"></script>
+    <!-- Analytics is intentionally delayed until the browser is idle. -->
+    <script>
+    (function () {
+        const startAnalytics = () => {
+            if (document.querySelector('script[data-analytics-loaded]')) return;
+            const script = document.createElement("script");
+            script.src = "/stats.js";
+            script.defer = true;
+            script.dataset.websiteId = "0f00eaac-7976-4f61-9d41-5034ad68a1f4";
+            script.dataset.analyticsLoaded = 'true';
+            document.head.appendChild(script);
+        };
+        if ("requestIdleCallback" in window) {
+            requestIdleCallback(startAnalytics, { timeout: 3000 });
+        } else {
+            window.setTimeout(startAnalytics, 2000);
+        }
+    })();
+    </script>
 
+    <script>
+    window.PerformanceLoaders = {
+        sortable: null,
+        qr: null,
+        async sortableJS() {
+            if (window.Sortable) return window.Sortable;
+            if (this.sortable) return this.sortable;
+            this.sortable = new Promise((resolve, reject) => {
+                const script = document.createElement("script");
+                script.src = "https://cdn.jsdelivr.net/npm/sortablejs@1.15.2/Sortable.min.js";
+                script.async = true;
+                script.onload = () => resolve(window.Sortable);
+                script.onerror = () => reject(new Error("SortableJS load failed"));
+                document.head.appendChild(script);
+            });
+            return this.sortable;
+        },
+        async qrCodeStyling() {
+            if (window.QRCodeStyling) return window.QRCodeStyling;
+            if (this.qr) return this.qr;
+            this.qr = new Promise((resolve, reject) => {
+                const script = document.createElement("script");
+                script.src = "https://cdn.jsdelivr.net/npm/qr-code-styling@1.6.0-rc.1/lib/qr-code-styling.js";
+                script.async = true;
+                script.onload = () => resolve(window.QRCodeStyling);
+                script.onerror = () => reject(new Error("QRCodeStyling load failed"));
+                document.head.appendChild(script);
+            });
+            return this.qr;
+        }
+    };
+    </script>
+
+
+    <!-- Anonymous Usage Analytics -->
+    
 
     <link rel="canonical" href="https://tvchanneleditor.onrender.com{{ '' if current_lang == 'tr' else '/' + current_lang }}{{ current_path | replace('/' + current_lang, '') | replace('//', '/') }}">
     {% for l in langs %}
@@ -323,13 +375,12 @@
         </div>
     </div>
 
-    <script defer src="https://cdn.jsdelivr.net/npm/qr-code-styling@1.6.0-rc.1/lib/qr-code-styling.js"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.2/Sortable.min.js"></script>
-    <script>
+            <script>
         document.getElementById('share-site-btn')?.addEventListener('click', async () => {
             const currentUrl = window.location.href;
             
             // Generate QR Code with pure white background and black dots for perfect contrast
+            const QRCodeStyling = await window.PerformanceLoaders.qrCodeStyling();
             const qrCode = new QRCodeStyling({
                 width: 250,
                 height: 250,

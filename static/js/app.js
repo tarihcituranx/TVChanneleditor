@@ -169,6 +169,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         editorSection.classList.remove('hidden');
                         
                         renderChannels();
+            if (typeof initializeChannelSorting === 'function') initializeChannelSorting().catch(e => console.warn(e));
                         isRestoringDraft = false;
                     } else {
                         localStorage.removeItem('channel_draft');
@@ -224,16 +225,26 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Güncel frekansları yükle
-    fetch('/static/data/TURKIYE/TURKSAT/frekanslar.json')
-        .then(res => res.json())
-        .then(data => {
-            frekansData = data;
-            checkDraftOnLoad();
+    let frekansPromise = null;
+function loadFrequencyData() {
+    if (frekansPromise) return frekansPromise;
+    frekansPromise = fetch('/static/data/TURKIYE/TURKSAT/frekanslar.json', { method: 'GET', credentials: 'same-origin', cache: 'force-cache' })
+        .then(response => {
+            if (!response.ok) throw new Error(`Frequency data HTTP ${response.status}`);
+            return response.json();
         })
-        .catch(err => {
-            console.log('Frekans datası bulunamadı', err);
-            checkDraftOnLoad();
+        .then(data => {
+            frekansData = data || {};
+            return frekansData;
+        })
+        .catch(error => {
+            console.warn('Frequency data could not be loaded:', error);
+            frekansData = {};
+            return frekansData;
         });
+    return frekansPromise;
+}
+checkDraftOnLoad();
 
     // Drag & Drop Upload
     dropZone.addEventListener('dragover', (e) => {
@@ -306,6 +317,7 @@ document.addEventListener('DOMContentLoaded', () => {
             currentSessionId = data.session_id;
             showBrandBadge(data.brand, channels.length);
             renderChannels();
+            if (typeof initializeChannelSorting === 'function') initializeChannelSorting().catch(e => console.warn(e));
             dropZone.classList.add('hidden');
             editorSection.classList.remove('hidden');
         })
@@ -378,7 +390,7 @@ document.addEventListener('DOMContentLoaded', () => {
         filtered.forEach((ch, index) => {
             const li = document.createElement('li');
             li.draggable = true;
-            li.style.display = 'flex'; li.style.padding = '12px 15px'; li.style.borderBottom = '1px solid var(--border-color)'; li.style.background = 'var(--card-bg)';
+            li.className = 'channel-row';
             li.dataset.index = channels.indexOf(ch);
             
             let freqWarning = '';
@@ -455,20 +467,28 @@ document.addEventListener('DOMContentLoaded', () => {
         saveDraftToLocal();
     }
 
-    // Initialize SortableJS
-    new Sortable(channelList, {
-        handle: '.col-drag', // handle's class
-        animation: 150,
-        ghostClass: 'sortable-ghost',
-        dragClass: 'sortable-drag',
-        onEnd: function (evt) {
-            if (evt.oldIndex === evt.newIndex) return;
-            const item = channels.splice(evt.oldIndex, 1)[0];
-            channels.splice(evt.newIndex, 0, item);
-            renderChannels(searchInput.value);
-            saveDraftToLocal();
-        }
-    });
+    // Initialize SortableJS asynchronously
+    async function initializeChannelSorting() {
+        const Sortable = await window.PerformanceLoaders.sortableJS();
+        const list = document.getElementById("channel-list");
+        if (!list || list.dataset.sortableInitialized === "true") return;
+        
+        Sortable.create(list, {
+            animation: 150,
+            handle: ".col-drag",
+            ghostClass: "sortable-ghost",
+            chosenClass: "sortable-chosen",
+            dragClass: "sortable-drag",
+            onEnd: function (evt) {
+                if (evt.oldIndex === evt.newIndex) return;
+                const item = channels.splice(evt.oldIndex, 1)[0];
+                channels.splice(evt.newIndex, 0, item);
+                renderChannels(searchInput.value);
+                saveDraftToLocal();
+            }
+        });
+        list.dataset.sortableInitialized = "true";
+    }
 
     // Custom Toast Notification System
     
@@ -823,6 +843,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     dropZone.classList.add('hidden');
                     editorSection.classList.remove('hidden');
                     renderChannels();
+            if (typeof initializeChannelSorting === 'function') initializeChannelSorting().catch(e => console.warn(e));
                     saveDraftToLocal();
                     toast(isEnglish() ? 'Draft imported successfully! ✨ You can continue editing.' : 'Taslak başarıyla aktarıldı! ✨ Kaldığınız yerden devam edebilirsiniz.', 'success');
                 } else {
@@ -843,7 +864,8 @@ document.addEventListener('DOMContentLoaded', () => {
         infoModal.style.display = 'none';
     });
 
-    window.showChannelInfo = function(idx) {
+    window.showChannelInfo = async function(idx) {
+        await loadFrequencyData();
         const ch = channels[idx];
         if (!ch) return;
 
