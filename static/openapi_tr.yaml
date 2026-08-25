@@ -778,6 +778,102 @@ paths:
                           example: 1070
 
 
+
+  /api/actions/preview:
+    post:
+      tags:
+      - Tools & Actions
+      operationId: actionPreview
+      summary: Channel list preview/statistics
+      description: Returns statistical information (total, radio, HD, encrypted, etc.) for a given channel list.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [channels]
+              properties:
+                channels:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/Channel'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  preview:
+                    type: object
+                    properties:
+                      total:
+                        type: integer
+                      tv:
+                        type: integer
+                      radio:
+                        type: integer
+                      hd:
+                        type: integer
+                      sd:
+                        type: integer
+                      encrypted:
+                        type: integer
+                      locked:
+                        type: integer
+  /api/actions/diff:
+    post:
+      tags:
+      - Tools & Actions
+      operationId: actionDiff
+      summary: Compare two channel lists
+      description: Compares an old channel list with a new one and returns what was added, removed, or moved.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [old_channels, new_channels]
+              properties:
+                old_channels:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/Channel'
+                new_channels:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/Channel'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  diff:
+                    type: object
+                    properties:
+                      added:
+                        type: array
+                        items:
+                          type: object
+                      removed:
+                        type: array
+                        items:
+                          type: object
+                      moved:
+                        type: array
+                        items:
+                          type: object
+
   /api/validate:
     post:
       tags:
