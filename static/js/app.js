@@ -413,7 +413,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div class="col-check" style="margin-right:10px;">
                     <input type="checkbox" class="row-checkbox" data-idx="${li.dataset.index}">
                 </div>
-                <div class="col-no" style="font-weight:bold;">${ch.No}</div>
+                <div class="col-no" style="font-weight:bold;">${channels.indexOf(ch) + 1}</div>
                 <div class="col-name" contenteditable="true" spellcheck="false" onblur="updateChannelName(${li.dataset.index}, this.innerText)" title="${escapeHTML(ch.Name)}">${escapeHTML(ch.Name)}</div>
                 <div class="col-type">
                     <span style="background:var(--bg-color); padding:2px 6px; border-radius:4px; border:1px solid var(--border-color);">${ch.Type === 'HD' ? 'TV &middot; HD' : (ch.Type === 'SD' ? 'TV' : ch.Type)}</span>
@@ -856,7 +856,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         document.getElementById('info-avatar').innerHTML = `<div class="channel-avatar" style="background: hsl(${hue}, 65%, 45%); width:40px; height:40px; font-size:16px;">${letters}</div>`;
         document.getElementById('info-name')?.textContent = ch.Name;
-        document.getElementById('info-no')?.textContent = ch.No;
+        document.getElementById('info-no')?.textContent = channels.indexOf(ch) + 1;
         document.getElementById('info-freq').innerHTML = `<span class="font-monospace">${escapeHTML(String(ch.Freq))} MHz</span>`;
         document.getElementById('info-pol')?.textContent = ch.Pol === 'V' ? 'Dikey (V)' : ch.Pol === 'H' ? 'Yatay (H)' : ch.Pol;
         document.getElementById('info-sym').innerHTML = `<span class="font-monospace">${escapeHTML(String(ch.Sym))} ksps</span>`;
