@@ -481,6 +481,7 @@ import string
 
 @limiter.limit("20 per minute")
 
+
 @app.route('/api/share', methods=['POST', 'GET'])
 def share_draft():
     _cleanup_expired()

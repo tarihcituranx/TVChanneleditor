@@ -668,6 +668,111 @@ paths:
                     items:
                       $ref: '#/components/schemas/Channel'
 
+
+  /api/satellites:
+    get:
+      tags:
+      - Satellite & Frequencies
+      operationId: getSatellites
+      summary: List supported satellites
+      description: Returns a list of supported countries, satellites, and their metadata (orbit, last updated date).
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        country:
+                          type: string
+                          example: TURKIYE
+                        country_code:
+                          type: string
+                          example: TR
+                        satellite:
+                          type: string
+                          example: TURKSAT
+                        name:
+                          type: string
+                          example: Türksat 3A/4A
+                        orbit:
+                          type: string
+                          example: 42.0°E
+                        last_updated:
+                          type: string
+                          format: date-time
+                          example: "2026-08-25T00:00:00Z"
+  /api/satellites/{country}/{satellite}:
+    get:
+      tags:
+      - Satellite & Frequencies
+      operationId: getFrequencies
+      summary: Get frequency list
+      description: Returns the detailed technical frequency data for a specific country and satellite.
+      parameters:
+      - name: country
+        in: path
+        required: true
+        schema:
+          type: string
+          example: TURKIYE
+      - name: satellite
+        in: path
+        required: true
+        schema:
+          type: string
+          example: TURKSAT
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  country:
+                    type: string
+                  satellite:
+                    type: string
+                  last_updated:
+                    type: string
+                    format: date-time
+                  total_channels:
+                    type: integer
+                  channels:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        name:
+                          type: string
+                          example: TRT 1 HD
+                        freq:
+                          type: integer
+                          example: 11305
+                        mod:
+                          type: string
+                          example: DVB-S2
+                        rolloff:
+                          type: string
+                          example: "0.20"
+                        apid:
+                          type: string
+                          example: "266"
+                        nid:
+                          type: integer
+                          example: 1070
+
   /api/share:
     post:
       tags:
