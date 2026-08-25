@@ -67,6 +67,34 @@ Desteklenen motorlar (markalar) tarafından sağlanan **DVB-S/S2** kanal listele
 
 AI Ajanları ve geliştiriciler için 3 adımlı basit bir akış mevcuttur. Daha fazla detay için [Swagger UI](https://tvchanneleditor.onrender.com/api/docs) veya [OpenAPI Şeması](https://tvchanneleditor.onrender.com/api/openapi.txt) bağlantılarına bakabilirsiniz.
 
+
+### 🚀 Tam Uçtan Uca (End-to-End) Örnek
+
+Yapay zekâ veya otomasyon betiği yazıyorsanız aşağıdaki 4 adımı izleyebilirsiniz:
+
+**1. Dosyayı Yükle:**
+```bash
+curl -X POST https://tvchanneleditor.onrender.com/upload \
+  -F "file=@channels.scm"
+```
+*(Yanıt: `{"session_id": "uuid-1234", "brand": "samsung", "channels": [...]}`)*
+
+**2. Listeyi Düzenle (İsteğe Bağlı):**
+JSON listesindeki kanalları filtreleyebilir, silebilir veya `/api/actions/delete-radios` gibi uç noktalarımızı kullanarak zahmetsizce değiştirebilirsiniz.
+
+**3. Yeni Dosyayı İnşa Et:**
+```bash
+curl -X POST https://tvchanneleditor.onrender.com/build \
+  -H "Content-Type: application/json" \
+  -d '{"session_id": "uuid-1234", "channels": [{"No": 1, "Name": "TRT 1 HD"}]}'
+```
+*(Yanıt: `{"download_url": "/download/uuid-1234/channels.scm"}`)*
+
+**4. İndir:**
+```bash
+curl -O https://tvchanneleditor.onrender.com/download/uuid-1234/channels.scm
+```
+
 **Adım 1: Yükleme (Upload)**
 ```http
 POST /upload

@@ -234,8 +234,7 @@ components:
       example:
         session_id: sess_01J8ABC123XYZ
         channels:
-        - false: 1
-          No: 1
+        -         No: 1
 
           Slot: 0
 
@@ -266,9 +265,6 @@ components:
           Fav4: false
 
           Fav5: false
-security:
-- {}
-- ApiKeyAuth: []
 paths:
   /upload:
     post:
@@ -321,8 +317,7 @@ paths:
                     format: scm
                     session_id: sess_01J8ABC123XYZ
                     channels:
-                    - false: 1
-                      No: 1
+                    -                     No: 1
 
                       Slot: 0
 

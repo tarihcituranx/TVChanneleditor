@@ -234,8 +234,7 @@ components:
       example:
         session_id: sess_01J8ABC123XYZ
         channels:
-        - false: 1
-          No: 1
+        -         No: 1
 
           Slot: 0
 
@@ -266,9 +265,6 @@ components:
           Fav4: false
 
           Fav5: false
-security:
-- {}
-- ApiKeyAuth: []
 paths:
   /upload:
     post:
@@ -321,8 +317,7 @@ paths:
                     format: scm
                     session_id: sess_01J8ABC123XYZ
                     channels:
-                    - false: 1
-                      No: 1
+                    -                     No: 1
 
                       Slot: 0
 
@@ -928,7 +923,7 @@ paths:
       operationId: createShareCode
       summary: 8 haneli bir paylaşım kodu oluşturun
       description: Bir kanal listesi taslağını buluta kaydedin ve diğer cihazlarla
-        paylaşmak üzere 8 karakterlik benzersiz bir kod alın. Paylaşılan listeler 60 dakika sonra otomatik olarak silinir.
+        paylaşmak üzere 8 karakterlik benzersiz (A-Z, 0-9) bir kod alın. Güvenlik ve Gizlilik: Paylaşılan listeler tek kullanımlık/geçici yapıdadır, kesin olarak 60 dakika sonra sunucudan kalıcı olarak silinir ve kişisel veri barındırmaz.
       requestBody:
         required: true
         content:

@@ -205,7 +205,7 @@ components:
         session_id:
           type: string
           description: Temporary session identifier returned after successful parsing.
-            Pass this exact value to /download.
+            Pass this exact value to /build.
           example: sess_01J8ABC123XYZ
         channels:
           type: array
@@ -232,8 +232,7 @@ components:
       example:
         session_id: sess_01J8ABC123XYZ
         channels:
-        - false: 1
-          No: 1
+        -         No: 1
 
           Slot: 0
 
@@ -264,9 +263,6 @@ components:
           Fav4: false
 
           Fav5: false
-security:
-- {}
-- ApiKeyAuth: []
 paths:
   /upload:
     post:
@@ -318,8 +314,7 @@ paths:
                     format: scm
                     session_id: sess_01J8ABC123XYZ
                     channels:
-                    - false: 1
-                      No: 1
+                    -                     No: 1
 
                       Slot: 0
 
