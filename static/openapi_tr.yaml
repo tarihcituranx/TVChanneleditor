@@ -466,7 +466,7 @@ paths:
       tags:
       - Cloud Sync
       operationId: createShareCode
-      summary: 6 haneli bir paylaşım kodu oluşturun
+      summary: 8 haneli bir paylaşım kodu oluşturun
       description: Bir kanal listesi taslağını buluta kaydedin ve diğer cihazlarla
         paylaşmak üzere 8 karakterlik benzersiz bir kod alın.
       requestBody:
