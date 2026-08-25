@@ -275,7 +275,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const formData = new FormData();
         formData.append('file', file);
 
-        browseBtn.classList.add('tv-scanning');
+        browseBtn?.classList.add('tv-scanning');
 
         fetch('/upload', {
             method: 'POST',
@@ -294,12 +294,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
                 toast(msg, 'danger');
 
-                browseBtn.classList.remove('tv-scanning');
+                browseBtn?.classList.remove('tv-scanning');
                 return;
             }
             if (!data.channels || data.channels.length === 0) {
                 toast(isEnglish() ? 'Invalid or empty channel list! Please upload a valid format.' : 'Geçersiz veya boş kanal listesi! Lütfen doğru formatta bir dosya yükleyin.', 'danger');
-                browseBtn.classList.remove('tv-scanning');
+                browseBtn?.classList.remove('tv-scanning');
                 return;
             }
             channels = data.channels.map((ch, i) => normalizeChannel(ch, i));
@@ -312,7 +312,7 @@ document.addEventListener('DOMContentLoaded', () => {
         .catch(err => {
             console.error(err);
             toast('An error occurred during upload.', 'danger');
-            browseBtn.classList.remove('tv-scanning');
+            browseBtn?.classList.remove('tv-scanning');
         });
     }
 
