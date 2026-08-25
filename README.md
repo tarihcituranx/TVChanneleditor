@@ -74,6 +74,16 @@ Content-Type: multipart/form-data
 ```
 *(Yanıt olarak bir `session_id` ve kanalların JSON listesi döner)*
 
+
+**Adım 1.5: İsteğe Bağlı Düzenleme (Actions API)**
+Kendi döngülerinizi yazmak yerine yerleşik özellikleri kullanabilirsiniz:
+- `POST /api/actions/delete-radios`
+- `POST /api/actions/delete-encrypted`
+- `POST /api/actions/uppercase`
+- `POST /api/actions/sort-az`
+- `POST /api/actions/apply-template`
+*(Radyoları siler, BÜYÜK HARF yapar, A-Z sıralar veya şablon (news, sports) uygular.)*
+
 **Adım 2: İnşa Etme (Build)**
 ```http
 POST /build

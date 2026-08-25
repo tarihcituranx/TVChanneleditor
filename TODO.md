@@ -8,3 +8,5 @@
 
 ## Diğer Bekleyen İşler
 - [ ] Kullanıcı deneyimi (UX) testlerinin yapılması ve mobil tasarımlarda olası ince ayarlar.
+
+- [x] **API Geliştirmeleri (V1.5):** Sitedeki zeki fonksiyonların (Radyoları sil, Büyük harf yap, Şablon uygula vb.) bağımsız stateless API uç noktaları (Tools & Actions) olarak dış kullanıma açılması. (Tamamlandı)

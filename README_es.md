@@ -74,6 +74,16 @@ Content-Type: multipart/form-data
 ```
 *(Devuelve como respuesta un `session_id` y una lista JSON de canales)*
 
+
+**Paso 1.5: Modificadores Opcionales (Actions API)**
+En lugar de escribir tus propios bucles, usa funciones integradas:
+- `POST /api/actions/delete-radios`
+- `POST /api/actions/delete-encrypted`
+- `POST /api/actions/uppercase`
+- `POST /api/actions/sort-az`
+- `POST /api/actions/apply-template`
+*(Elimina radios, convierte a MAYÚSCULAS, ordena A-Z o aplica plantillas.)*
+
 **Paso 2: Creación (Build)**
 ```http
 POST /build

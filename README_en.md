@@ -74,6 +74,16 @@ Content-Type: multipart/form-data
 ```
 *(Returns a `session_id` and a JSON list of channels in the response)*
 
+
+**Step 1.5: Optional Modifiers (Actions API)**
+Instead of writing your own loops, you can use built-in features:
+- `POST /api/actions/delete-radios`
+- `POST /api/actions/delete-encrypted`
+- `POST /api/actions/uppercase`
+- `POST /api/actions/sort-az`
+- `POST /api/actions/apply-template`
+*(Deletes radios, makes UPPERCASE, sorts A-Z or applies templates (news, sports).)*
+
 **Step 2: Build**
 ```http
 POST /build

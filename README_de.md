@@ -74,6 +74,16 @@ Content-Type: multipart/form-data
 ```
 *(Als Antwort werden eine `session_id` und eine JSON-Liste der Kanäle zurückgegeben)*
 
+
+**Schritt 1.5: Optionale Bearbeitung (Actions API)**
+Anstatt eigene Schleifen zu schreiben, nutzen Sie integrierte Funktionen:
+- `POST /api/actions/delete-radios`
+- `POST /api/actions/delete-encrypted`
+- `POST /api/actions/uppercase`
+- `POST /api/actions/sort-az`
+- `POST /api/actions/apply-template`
+*(Löscht Radios, GROSSBUCHSTABEN, sortiert A-Z oder wendet Vorlagen an.)*
+
 **Schritt 2: Erstellen (Build)**
 ```http
 POST /build

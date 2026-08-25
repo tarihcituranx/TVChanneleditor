@@ -74,6 +74,15 @@ Content-Type: multipart/form-data
 ```
 *(در پاسخ، یک `session_id` و یک لیست JSON از کانال‌ها بازگردانده می‌شود)*
 
+**مرحله 1.5: ویرایش اختیاری (Actions API)**
+به جای نوشتن حلقه ها، از ویژگی های داخلی استفاده کنید:
+- `POST /api/actions/delete-radios`
+- `POST /api/actions/delete-encrypted`
+- `POST /api/actions/uppercase`
+- `POST /api/actions/sort-az`
+- `POST /api/actions/apply-template`
+*(حذف رادیوها، حروف بزرگ، مرتب سازی یا اعمال قالب ها.)*
+
 **مرحله ۲: ساخت**
 ```http
 POST /build

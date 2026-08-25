@@ -74,6 +74,16 @@ Content-Type: multipart/form-data
 ```
 *(В ответе возвращается `session_id` и список каналов в формате JSON)*
 
+
+**Шаг 1.5: Дополнительные действия (Actions API)**
+Вместо написания циклов, используйте встроенные функции:
+- `POST /api/actions/delete-radios`
+- `POST /api/actions/delete-encrypted`
+- `POST /api/actions/uppercase`
+- `POST /api/actions/sort-az`
+- `POST /api/actions/apply-template`
+*(Удаляет радио, делает ЗАГЛАВНЫМИ, сортирует А-Я или применяет шаблоны.)*
+
 **Шаг 2: Сборка (Build)**
 ```http
 POST /build

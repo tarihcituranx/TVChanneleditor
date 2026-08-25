@@ -74,6 +74,16 @@ Content-Type: multipart/form-data
 ```
 *(يُرجع كاستجابة `session_id` وقائمة القنوات بتنسيق JSON)*
 
+
+**الخطوة 1.5: تعديلات اختيارية (Actions API)**
+بدلًا من كتابة الحلقات، استخدم الميزات المضمنة:
+- `POST /api/actions/delete-radios`
+- `POST /api/actions/delete-encrypted`
+- `POST /api/actions/uppercase`
+- `POST /api/actions/sort-az`
+- `POST /api/actions/apply-template`
+*(يحذف الراديو، ويحول للأحرف الكبيرة، أو يطبق قوالب.)*
+
 **الخطوة 2: الإنشاء (Build)**
 ```http
 POST /build

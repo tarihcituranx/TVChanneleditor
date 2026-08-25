@@ -67,6 +67,15 @@ Bu, brauzerinizdə **çəkmə-buraxma** üsulu ilə televizorunuzun USB yaddaş�
 
 AI agentləri və tərtibatçılar üçün sadə 3 addımlı iş axını mövcuddur. Əlavə məlumat üçün [Swagger UI](https://tvchanneleditor.onrender.com/api/docs) və ya [OpenAPI Schema](https://tvchanneleditor.onrender.com/api/openapi.txt) keçidlərinə baxın.
 
+**Addım 1.5: İstəyə bağlı tənzimləmə (Actions API)**
+Öz döngülərinizi yazmaq əvəzinə daxili xüsusiyyətlərdən istifadə edin:
+- `POST /api/actions/delete-radios`
+- `POST /api/actions/delete-encrypted`
+- `POST /api/actions/uppercase`
+- `POST /api/actions/sort-az`
+- `POST /api/actions/apply-template`
+*(Radioları silir, BÖYÜK HƏRFLƏ yazır, A-Z sıralayır və ya şablon tətbiq edir.)*
+
 **Addım 1: Yükləmə**
 ```http
 POST /build
