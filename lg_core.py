@@ -8,7 +8,7 @@ Desteklenen format: LG TV'lerin GlobalClone XML formatındaki .tll dosyaları
   - Her kanal: <ITEM> elemanı içinde prNum, vchName, sourceIndex, isBlocked, isSkipped, isInvisable, frequency, serviceType vb.
 """
 
-import xml.etree.ElementTree as ET
+from defusedxml import ElementTree as ET
 import re
 import os
 
