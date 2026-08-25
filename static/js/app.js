@@ -360,6 +360,16 @@ document.addEventListener('DOMContentLoaded', () => {
     function renderChannels(filter = '') {
         channelList.innerHTML = '';
         
+        if (channels.length > 0 && !document.getElementById('drag-hint-msg')) {
+            const hintEl = document.createElement('div');
+            hintEl.id = 'drag-hint-msg';
+            hintEl.style.cssText = 'font-size:0.85rem; color:var(--text-secondary); margin: 0 0 12px 0; display:flex; align-items:center; gap:8px; background:var(--bg-subtle); padding:10px 14px; border-radius:var(--radius-md); border:1px dashed var(--border-color); line-height: 1.4;';
+            hintEl.innerHTML = `<svg class="icon" width="18" height="18"><use href="#icon-info"/></svg> <span>${isEnglish() ? '<strong>Tip:</strong> Drag and drop the handle (&#8942;&#8942;) on the left to reorder channels. Click a channel name to rename it.' : '<strong>İpucu:</strong> Sıralamayı değiştirmek için soldaki (&#8942;&#8942;) tutamaçtan sürükleyip bırakın. Yeniden adlandırmak için kanal ismine tıklayın.'}</span>`;
+            const listHeader = document.querySelector('.list-header');
+            if (listHeader) listHeader.parentNode.insertBefore(hintEl, listHeader);
+        }
+
+        
         let filtered = channels;
         if (filter) {
             filtered = channels.filter(c => c.Name.toLowerCase().includes(filter.toLowerCase()));

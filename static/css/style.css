@@ -58,9 +58,9 @@
     --card-bg: #ffffff;
     --card-bg-hover: #f8fafc;
     --text-primary: #0f172a;
-    --text-secondary: #475569;
-    --text-muted: #94a3b8;
-    --border-color: #dde3ed;
+    --text-secondary: #334155;
+    --text-muted: #64748b;
+    --border-color: #cbd5e1;
     --border-subtle: #edf2f7;
     --accent: #2563eb;
     --accent-hover: #1d4ed8;
@@ -83,9 +83,9 @@
         --card-bg: #ffffff;
         --card-bg-hover: #f8fafc;
         --text-primary: #0f172a;
-        --text-secondary: #475569;
-        --text-muted: #94a3b8;
-        --border-color: #dde3ed;
+        --text-secondary: #334155;
+        --text-muted: #64748b;
+        --border-color: #cbd5e1;
         --border-subtle: #edf2f7;
         --accent: #2563eb;
         --accent-hover: #1d4ed8;
