@@ -1,4 +1,4 @@
 Contact: mailto:tarihcituranx@proton.me
-Expires: 2027-08-18T00:00:00.000Z
+Expires: 2028-08-18T00:00:00.000Z
 Preferred-Languages: tr, en
 Policy: https://tvchanneleditor.onrender.com/security
