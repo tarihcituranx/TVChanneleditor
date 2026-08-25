@@ -637,7 +637,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         builderCart.forEach((ch, idx) => {
             const li = document.createElement('li');
-            li.innerHTML = `<b>${idx + 1}.</b> ${ch.Name}`;
+            li.innerHTML = `<b>${idx + 1}.</b> ${escapeHTML(String(ch.Name))}`;
             li.onclick = () => {
                 builderCart.splice(idx, 1);
                 renderBuilderLists();
@@ -847,11 +847,11 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('info-avatar').innerHTML = `<div class="channel-avatar" style="background: hsl(${hue}, 65%, 45%); width:40px; height:40px; font-size:16px;">${letters}</div>`;
         document.getElementById('info-name').textContent = ch.Name;
         document.getElementById('info-no').textContent = ch.No;
-        document.getElementById('info-freq').innerHTML = `<span class="font-monospace">${ch.Freq} MHz</span>`;
+        document.getElementById('info-freq').innerHTML = `<span class="font-monospace">${escapeHTML(String(ch.Freq))} MHz</span>`;
         document.getElementById('info-pol').textContent = ch.Pol === 'V' ? 'Dikey (V)' : ch.Pol === 'H' ? 'Yatay (H)' : ch.Pol;
         document.getElementById('info-sym').innerHTML = `<span class="font-monospace">${escapeHTML(String(ch.Sym))} ksps</span>`;
         
-        let typeHtml = ch.Type === 'HD' ? `<span class="badge" style="background:var(--accent); color:white; padding:4px 8px; border-radius:4px; font-size:12px;">TV HD</span>` : ch.Type;
+        let typeHtml = ch.Type === 'HD' ? `<span class="badge" style="background:var(--accent); color:white; padding:4px 8px; border-radius:4px; font-size:12px;">TV HD</span>` : escapeHTML(String(ch.Type));
         document.getElementById('info-type').innerHTML = typeHtml;
         
         document.getElementById('info-enc').innerHTML = ch.Encrypted === 'Yes' ? '<svg class="icon" width="14" height="14"><use href="#icon-lock"/></svg> Evet' : '<svg class="icon" width="14" height="14"><use href="#icon-unlock"/></svg> Hayır';
