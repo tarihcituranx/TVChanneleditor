@@ -39,8 +39,16 @@ components:
     ErrorResponse:
       type: object
       required:
-      - error
+        - success
+        - error
+        - code
       properties:
+        success:
+          type: boolean
+          example: false
+        code:
+          type: string
+          example: FILE_NOT_FOUND
         error:
           type: string
           example: Dosya bulunamadı

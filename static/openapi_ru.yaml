@@ -17,7 +17,7 @@ info:
 
     3. Modify the channel objects (e.g. change order, rename, set Fav/Lock)
 
-    4. Send the `session_id` and modified `channels` array to `/download`
+    4. Send the `session_id` and modified `channels` array to `/build`
 
     5. Receive the rebuilt binary channel-list file
 
@@ -37,8 +37,16 @@ components:
     ErrorResponse:
       type: object
       required:
-      - error
+        - success
+        - error
+        - code
       properties:
+        success:
+          type: boolean
+          example: false
+        code:
+          type: string
+          example: FILE_NOT_FOUND
         error:
           type: string
           example: Dosya bulunamadı

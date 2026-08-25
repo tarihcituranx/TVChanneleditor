@@ -19,7 +19,7 @@ info:
     3. Kanal nesnelerini değiştirin (örn. sırayı değiştirin, yeniden adlandırın, Fav/Lock
     ayarlayın)
 
-    4. `session_id` ve değiştirilmiş `channels` dizisini `/download` adresine gönderin
+    4. `session_id` ve değiştirilmiş `channels` dizisini `/build` adresine gönderin
 
     5. Yeniden oluşturulmuş ikili kanal listesi dosyasını alın
 
@@ -39,8 +39,16 @@ components:
     ErrorResponse:
       type: object
       required:
-      - error
+        - success
+        - error
+        - code
       properties:
+        success:
+          type: boolean
+          example: false
+        code:
+          type: string
+          example: FILE_NOT_FOUND
         error:
           type: string
           example: Dosya bulunamadı
@@ -671,7 +679,7 @@ paths:
       operationId: createShareCode
       summary: 8 haneli bir paylaşım kodu oluşturun
       description: Bir kanal listesi taslağını buluta kaydedin ve diğer cihazlarla
-        paylaşmak üzere 8 karakterlik benzersiz bir kod alın.
+        paylaşmak üzere 8 karakterlik benzersiz bir kod alın. Paylaşılan listeler 60 dakika sonra otomatik olarak silinir.
       requestBody:
         required: true
         content:
