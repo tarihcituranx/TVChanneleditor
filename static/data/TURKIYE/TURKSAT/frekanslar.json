@@ -1,0 +1,3712 @@
+{
+    "TRT 1 HD": {
+        "freq": 11305,
+        "mod": "DVB-S2",
+        "rolloff": "0.20",
+        "apid": "266",
+        "nid": 1070
+    },
+    "ATV HD": {
+        "freq": 12207,
+        "mod": "DVB-S2",
+        "rolloff": "0.35",
+        "apid": "256",
+        "nid": 1070
+    },
+    "KANAL D HD": {
+        "freq": 12245,
+        "mod": "DVB-S2",
+        "rolloff": "0.35",
+        "apid": "401",
+        "nid": 1070
+    },
+    "STAR TV HD": {
+        "freq": 12015,
+        "mod": "DVB-S2",
+        "rolloff": "0.35",
+        "apid": "401",
+        "nid": 1070
+    },
+    "SHOW HD": {
+        "freq": 12303,
+        "mod": "DVB-S2",
+        "rolloff": "0.35",
+        "apid": "401",
+        "nid": 1070
+    },
+    "BEYAZ TV HD": {
+        "freq": 11996,
+        "mod": "DVB-S2",
+        "rolloff": "0.35",
+        "apid": "401",
+        "nid": 1070
+    },
+    "KANAL 7 HD": {
+        "freq": 12458,
+        "mod": "DVB-S2",
+        "rolloff": "0.35",
+        "apid": "401",
+        "nid": 1070
+    },
+    "TV8 HD": {
+        "freq": 11901,
+        "mod": "DVB-S2",
+        "rolloff": "0.35",
+        "apid": "401",
+        "nid": 1070
+    },
+    "NOW HD": {
+        "freq": 11887,
+        "mod": "DVB-S2",
+        "rolloff": "0.35",
+        "apid": "401",
+        "nid": 1070
+    },
+    "ULKE TV HD": {
+        "freq": 12111,
+        "mod": "DVB-S2",
+        "rolloff": "0.35",
+        "apid": "401",
+        "nid": 1070
+    },
+    "TRT HABER HD": {
+        "freq": 12226,
+        "mod": "DVB-S2",
+        "rolloff": "0.35",
+        "apid": "401",
+        "nid": 1070
+    },
+    "A HABER HD": {
+        "freq": 12207,
+        "mod": "DVB-S2",
+        "rolloff": "0.35",
+        "apid": "401",
+        "nid": 1070
+    },
+    "TVNET HD": {
+        "freq": 11225,
+        "mod": "DVB-S2",
+        "rolloff": "0.35",
+        "apid": "401",
+        "nid": 1070
+    },
+    "HABERTÜRK HD": {
+        "freq": 11845,
+        "mod": "DVB-S2",
+        "rolloff": "0.35",
+        "apid": "401",
+        "nid": 1070
+    },
+    "SEMERKAND HD TV": {
+        "freq": 11425,
+        "mod": "DVB-S2",
+        "rolloff": "0.35",
+        "apid": "401",
+        "nid": 1070
+    },
+    "TV 2 HD": {
+        "freq": 12245,
+        "mod": "DVB-S2",
+        "rolloff": "0.35",
+        "apid": "401",
+        "nid": 1070
+    },
+    "NTV HD": {
+        "freq": 12015,
+        "mod": "DVB-S2",
+        "rolloff": "0.35",
+        "apid": "401",
+        "nid": 1070
+    },
+    "CNN TURK HD": {
+        "freq": 12034,
+        "mod": "DVB-S2",
+        "rolloff": "0.35",
+        "apid": "401",
+        "nid": 1070
+    },
+    "TRT TÜRK HD": {
+        "freq": 12226,
+        "mod": "DVB-S2",
+        "rolloff": "0.35",
+        "apid": "401",
+        "nid": 1070
+    },
+    "360 HD": {
+        "freq": 11862,
+        "mod": "DVB-S2",
+        "rolloff": "0.35",
+        "apid": "401",
+        "nid": 1070
+    },
+    "24 HD": {
+        "freq": 11862,
+        "mod": "DVB-S2",
+        "rolloff": "0.35",
+        "apid": "401",
+        "nid": 1070
+    },
+    "HABER GLOBAL HD": {
+        "freq": 12034,
+        "mod": "DVB-S2",
+        "rolloff": "0.35",
+        "apid": "401",
+        "nid": 1070
+    },
+    "BLOOMBERG HT HD": {
+        "freq": 11845,
+        "mod": "DVB-S2",
+        "rolloff": "0.35",
+        "apid": "401",
+        "nid": 1070
+    },
+    "EKOTÜRK HD": {
+        "freq": 12345,
+        "mod": "DVB-S2",
+        "rolloff": "0.35",
+        "apid": "401",
+        "nid": 1070
+    },
+    "TGRT HABER HD": {
+        "freq": 12380,
+        "mod": "DVB-S2",
+        "rolloff": "0.35",
+        "apid": "401",
+        "nid": 1070
+    },
+    "TRT WORLD HD": {
+        "freq": 12226,
+        "mod": "DVB-S2",
+        "rolloff": "0.35",
+        "apid": "401",
+        "nid": 1070
+    },
+    "TV 100 HD": {
+        "freq": 11225,
+        "mod": "DVB-S2",
+        "rolloff": "0.35",
+        "apid": "401",
+        "nid": 1070
+    },
+    "FLASH HABER HD": {
+        "freq": 12111,
+        "mod": "DVB-S2",
+        "rolloff": "0.35",
+        "apid": "401",
+        "nid": 1070
+    },
+    "AKİT TV HD": {
+        "freq": 11996,
+        "mod": "DVB-S2",
+        "rolloff": "0.35",
+        "apid": "401",
+        "nid": 1070
+    },
+    "FM TV": {
+        "freq": 12423,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "TRT 2 HD": {
+        "freq": 11958,
+        "mod": "DVB-S2",
+        "rolloff": "0.35",
+        "apid": "401",
+        "nid": 1070
+    },
+    "TRT AVAZ HD": {
+        "freq": 11958,
+        "mod": "DVB-S2",
+        "rolloff": "0.35",
+        "apid": "401",
+        "nid": 1070
+    },
+    "TRT KURDİ": {
+        "freq": 12226,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "TLC HD": {
+        "freq": 12015,
+        "mod": "DVB-S2",
+        "rolloff": "0.35",
+        "apid": "401",
+        "nid": 1070
+    },
+    "DMAX HD": {
+        "freq": 12015,
+        "mod": "DVB-S2",
+        "rolloff": "0.35",
+        "apid": "401",
+        "nid": 1070
+    },
+    "HALK TV HD": {
+        "freq": 11225,
+        "mod": "DVB-S2",
+        "rolloff": "0.35",
+        "apid": "401",
+        "nid": 1070
+    },
+    "TV 5": {
+        "freq": 11225,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "KON TV HD": {
+        "freq": 11996,
+        "mod": "DVB-S2",
+        "rolloff": "0.35",
+        "apid": "401",
+        "nid": 1070
+    },
+    "ULUSAL 1 TV": {
+        "freq": 12423,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "TRT ARAPÇA HD": {
+        "freq": 12092,
+        "mod": "DVB-S2",
+        "rolloff": "0.35",
+        "apid": "401",
+        "nid": 1070
+    },
+    "KANAL B": {
+        "freq": 12149,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "BENGÜ TÜRK HD": {
+        "freq": 11996,
+        "mod": "DVB-S2",
+        "rolloff": "0.35",
+        "apid": "401",
+        "nid": 1070
+    },
+    "EKOL TV HD": {
+        "freq": 12345,
+        "mod": "DVB-S2",
+        "rolloff": "0.35",
+        "apid": "401",
+        "nid": 1070
+    },
+    "MELTEM TV": {
+        "freq": 12423,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "GZT": {
+        "freq": 11225,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "KRT TV HD": {
+        "freq": 11996,
+        "mod": "DVB-S2",
+        "rolloff": "0.35",
+        "apid": "401",
+        "nid": 1070
+    },
+    "Bİ KANAL": {
+        "freq": 11425,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "TARIM ORMAN EKRANI HD": {
+        "freq": 11425,
+        "mod": "DVB-S2",
+        "rolloff": "0.35",
+        "apid": "401",
+        "nid": 1070
+    },
+    "KANAL AVRUPA": {
+        "freq": 12458,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "CNBC-E": {
+        "freq": 12245,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "DİYANET TV HD": {
+        "freq": 12380,
+        "mod": "DVB-S2",
+        "rolloff": "0.35",
+        "apid": "401",
+        "nid": 1070
+    },
+    "TGRT": {
+        "freq": 12149,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "TYT TÜRK": {
+        "freq": 11425,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "VAV TV": {
+        "freq": 12207,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "A NEWS HD": {
+        "freq": 11833,
+        "mod": "DVB-S2",
+        "rolloff": "0.35",
+        "apid": "401",
+        "nid": 1070
+    },
+    "A PARA HD": {
+        "freq": 12207,
+        "mod": "DVB-S2",
+        "rolloff": "0.35",
+        "apid": "401",
+        "nid": 1070
+    },
+    "TV8.5 HD": {
+        "freq": 11901,
+        "mod": "DVB-S2",
+        "rolloff": "0.35",
+        "apid": "401",
+        "nid": 1070
+    },
+    "TRT SPOR": {
+        "freq": 12092,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "TRT 3 SPOR": {
+        "freq": 11958,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "A SPOR HD": {
+        "freq": 12207,
+        "mod": "DVB-S2",
+        "rolloff": "0.35",
+        "apid": "401",
+        "nid": 1070
+    },
+    "HT SPOR": {
+        "freq": 11845,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "TİVİBU SPOR HD": {
+        "freq": 11853,
+        "mod": "DVB-S2",
+        "rolloff": "0.35",
+        "apid": "401",
+        "nid": 1070
+    },
+    "FB TV": {
+        "freq": 11425,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "TRT SPOR HD": {
+        "freq": 11385,
+        "mod": "DVB-S2",
+        "rolloff": "0.35",
+        "apid": "401",
+        "nid": 1070
+    },
+    "BEIN SPORTS HABER.": {
+        "freq": 12379,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "TRT SPOR YILDIZ": {
+        "freq": 11958,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "TRT ÇOCUK HD": {
+        "freq": 12226,
+        "mod": "DVB-S2",
+        "rolloff": "0.35",
+        "apid": "401",
+        "nid": 1070
+    },
+    "MİNİKA ÇOCUK": {
+        "freq": 12207,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "CARTON NETWORK": {
+        "freq": 12245,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "TV4 HD": {
+        "freq": 11862,
+        "mod": "DVB-S2",
+        "rolloff": "0.35",
+        "apid": "401",
+        "nid": 1070
+    },
+    "TRT DİYANET ÇOCUK": {
+        "freq": 12092,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "MİNİKA GO": {
+        "freq": 12207,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "STOON TV": {
+        "freq": 12380,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "TRT EBA HD": {
+        "freq": 12458,
+        "mod": "DVB-S2",
+        "rolloff": "0.35",
+        "apid": "401",
+        "nid": 1070
+    },
+    "TRT GENÇ": {
+        "freq": 12092,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "TRT EBA": {
+        "freq": 12149,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "0 SIFIR TV": {
+        "freq": 12379,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "TÜRKSAT TANITIM": {
+        "freq": 12423,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "TRT BELGESEL": {
+        "freq": 12092,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "TGRT BELGESEL HD": {
+        "freq": 12380,
+        "mod": "DVB-S2",
+        "rolloff": "0.35",
+        "apid": "401",
+        "nid": 1070
+    },
+    "ÇİFTÇİ TV": {
+        "freq": 12265,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "AGRO TV": {
+        "freq": 12345,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "KÖY TV": {
+        "freq": 11996,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "TRT BELGESEL HD": {
+        "freq": 12226,
+        "mod": "DVB-S2",
+        "rolloff": "0.35",
+        "apid": "401",
+        "nid": 1070
+    },
+    "TRT ULTRA HD TV": {
+        "freq": 11767,
+        "mod": "DVB-S2",
+        "rolloff": "0.35",
+        "apid": "401",
+        "nid": 1070
+    },
+    "CEM TV.": {
+        "freq": 11425,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "KANAL 3 HD": {
+        "freq": 11996,
+        "mod": "DVB-S2",
+        "rolloff": "0.35",
+        "apid": "401",
+        "nid": 1070
+    },
+    "TÜRKMENELİ TV HD": {
+        "freq": 11825,
+        "mod": "DVB-S2",
+        "rolloff": "0.35",
+        "apid": "401",
+        "nid": 1070
+    },
+    "DOST TV": {
+        "freq": 11996,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "TELENEWS": {
+        "freq": 11425,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "24KZ TV": {
+        "freq": 11425,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "LALEGÜL": {
+        "freq": 12423,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "ON4 TV": {
+        "freq": 12265,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "REHBER TV": {
+        "freq": 11425,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "KUDÜS TV": {
+        "freq": 12458,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "ALİKHBARİA TV": {
+        "freq": 12111,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "YILDIZ EN": {
+        "freq": 11225,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "TRT MÜZİK HD": {
+        "freq": 12226,
+        "mod": "DVB-S2",
+        "rolloff": "0.35",
+        "apid": "401",
+        "nid": 1070
+    },
+    "DREAM TÜRK HD": {
+        "freq": 12245,
+        "mod": "DVB-S2",
+        "rolloff": "0.35",
+        "apid": "401",
+        "nid": 1070
+    },
+    "TMB TV": {
+        "freq": 11996,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "NR1 TÜRK TV HD": {
+        "freq": 12458,
+        "mod": "DVB-S2",
+        "rolloff": "0.35",
+        "apid": "401",
+        "nid": 1070
+    },
+    "POWERTURK HD": {
+        "freq": 12265,
+        "mod": "DVB-S2",
+        "rolloff": "0.35",
+        "apid": "401",
+        "nid": 1070
+    },
+    "CAN TEMPO TV": {
+        "freq": 12265,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "LİNE TV": {
+        "freq": 12423,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "GÜNEYDOĞU TV": {
+        "freq": 12423,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "KANAL URFA": {
+        "freq": 12423,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "EDESSA TV": {
+        "freq": 12111,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "SAT 7 TÜRK": {
+        "freq": 12265,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "A2 HD": {
+        "freq": 12207,
+        "mod": "DVB-S2",
+        "rolloff": "0.35",
+        "apid": "401",
+        "nid": 1070
+    },
+    "AL HADATH NEWS CHANNEL": {
+        "freq": 12149,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "LİDER HABER HD": {
+        "freq": 12245,
+        "mod": "DVB-S2",
+        "rolloff": "0.35",
+        "apid": "401",
+        "nid": 1070
+    },
+    "HDKARADENİZ.": {
+        "freq": 12458,
+        "mod": "DVB-S2",
+        "rolloff": "0.35",
+        "apid": "401",
+        "nid": 1070
+    },
+    "TH TÜRKHABER": {
+        "freq": 12423,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "ZAROK TV": {
+        "freq": 12111,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "TV 1": {
+        "freq": 11996,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "K KARDELEN TV": {
+        "freq": 12423,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "MERCAN TV": {
+        "freq": 12265,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "TV 41": {
+        "freq": 12265,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "VAN65": {
+        "freq": 12265,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "MALATYA VUSLAT TV": {
+        "freq": 12265,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "TEK RUMELİ TV.": {
+        "freq": 12345,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "TV 52": {
+        "freq": 11996,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "KADIRGA TV": {
+        "freq": 12423,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "ORDU ALTAŞ TV": {
+        "freq": 11996,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "İLKE  TV": {
+        "freq": 12458,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "KANAL 1": {
+        "freq": 11845,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "ÇAY TV": {
+        "freq": 11425,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "TV2020": {
+        "freq": 12458,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "EGEMAX TV": {
+        "freq": 11996,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "GONCA TV": {
+        "freq": 12149,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "KOZA TV HD": {
+        "freq": 12111,
+        "mod": "DVB-S2",
+        "rolloff": "0.35",
+        "apid": "401",
+        "nid": 1070
+    },
+    "TV 264": {
+        "freq": 11996,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "TİVİ 6": {
+        "freq": 12265,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "TV42": {
+        "freq": 11996,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "GENÇ TV": {
+        "freq": 12458,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "MK TV": {
+        "freq": 12265,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "KANAL 33": {
+        "freq": 12458,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "HRT TV": {
+        "freq": 12423,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "ASFTV": {
+        "freq": 12034,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "TV KAYSERİ": {
+        "freq": 11996,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "RUMELİ TV": {
+        "freq": 12034,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "KANAL 12": {
+        "freq": 12265,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "SERCEM TV": {
+        "freq": 12111,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "EKİN TÜRK TV": {
+        "freq": 11996,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "AYAZ TV": {
+        "freq": 12423,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "NEO": {
+        "freq": 12111,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "AKSU TV": {
+        "freq": 12265,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "SUN RTV": {
+        "freq": 12265,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "AS": {
+        "freq": 11425,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "SHOW MAX HD": {
+        "freq": 12303,
+        "mod": "DVB-S2",
+        "rolloff": "0.35",
+        "apid": "401",
+        "nid": 1070
+    },
+    "ER TV": {
+        "freq": 12265,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "KANAL V": {
+        "freq": 12265,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "KANAL 26": {
+        "freq": 12265,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "KOCAELİ TV": {
+        "freq": 12245,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "D ANADOLU": {
+        "freq": 12034,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "TELE 1 HD": {
+        "freq": 12034,
+        "mod": "DVB-S2",
+        "rolloff": "0.35",
+        "apid": "401",
+        "nid": 1070
+    },
+    "VAN TV": {
+        "freq": 12345,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "KANAL FIRAT": {
+        "freq": 12265,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "KANAL 23": {
+        "freq": 12265,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "KANAL 58": {
+        "freq": 12265,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "SZC": {
+        "freq": 12111,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "KANAL 15": {
+        "freq": 12265,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "İKRA TV": {
+        "freq": 12265,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "KANAL 32": {
+        "freq": 11996,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "TV DEN": {
+        "freq": 11996,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "TV3": {
+        "freq": 12265,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "PATI TV": {
+        "freq": 12458,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "BRT 1 HD": {
+        "freq": 12600,
+        "mod": "DVB-S2",
+        "rolloff": "0.35",
+        "apid": "401",
+        "nid": 1070
+    },
+    "BRT 3": {
+        "freq": 12149,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "ADA TV": {
+        "freq": 12458,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "KANAL T": {
+        "freq": 12458,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "KIBRIS TV HD": {
+        "freq": 12458,
+        "mod": "DVB-S2",
+        "rolloff": "0.35",
+        "apid": "401",
+        "nid": 1070
+    },
+    "BRT 2 HD": {
+        "freq": 12458,
+        "mod": "DVB-S2",
+        "rolloff": "0.35",
+        "apid": "401",
+        "nid": 1070
+    },
+    "SHOW TURK HD": {
+        "freq": 11845,
+        "mod": "DVB-S2",
+        "rolloff": "0.35",
+        "apid": "401",
+        "nid": 1070
+    },
+    "ATV AVRUPA": {
+        "freq": 11833,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "EURO D HD": {
+        "freq": 12034,
+        "mod": "DVB-S2",
+        "rolloff": "0.35",
+        "apid": "401",
+        "nid": 1070
+    },
+    "KANAL 7 AVRUPA HD": {
+        "freq": 12111,
+        "mod": "DVB-S2",
+        "rolloff": "0.35",
+        "apid": "401",
+        "nid": 1070
+    },
+    "TRT MÜZİK": {
+        "freq": 12092,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "AL QURAN AL KAREEM TV.": {
+        "freq": 11425,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "AL SUNNAH AL NABAWIYAH TV.": {
+        "freq": 11425,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "TRT HABER": {
+        "freq": 12092,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "A HABER.": {
+        "freq": 11833,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "KABLO INFO HD": {
+        "freq": 12423,
+        "mod": "DVB-S2",
+        "rolloff": "0.35",
+        "apid": "401",
+        "nid": 1070
+    },
+    "TÜRKSAT SAAT": {
+        "freq": 12458,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "GRT.": {
+        "freq": 12265,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "TRT 1": {
+        "freq": 11958,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "TRT AVAZ ULUSLARARASI HD": {
+        "freq": 12423,
+        "mod": "DVB-S2",
+        "rolloff": "0.35",
+        "apid": "401",
+        "nid": 1070
+    },
+    "TNT INT": {
+        "freq": 11727,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "WITNESS EYE": {
+        "freq": 11425,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "RTR PLANETA": {
+        "freq": 11727,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "RUSSIA 24": {
+        "freq": 11727,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "NTV STYLE": {
+        "freq": 11727,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "NTV PRAVO": {
+        "freq": 11727,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "NTV SERIAL": {
+        "freq": 11727,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "NTV MIR": {
+        "freq": 11727,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "ES TV": {
+        "freq": 12265,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "TNT MUSIC": {
+        "freq": 11727,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "UNKNOWN RUSSIA": {
+        "freq": 11727,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "MOSCOW 24": {
+        "freq": 11727,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "UMKA": {
+        "freq": 11727,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "START EPIC": {
+        "freq": 11727,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "START AIR": {
+        "freq": 11727,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "START WORLD": {
+        "freq": 11727,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "BRTV": {
+        "freq": 12265,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "IZVESTIYA": {
+        "freq": 11727,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "REN INTERNATIONAL": {
+        "freq": 11727,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "BİR TV": {
+        "freq": 11996,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "STS INTERNATIONAL": {
+        "freq": 11727,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "PERETS INTERNATIONAL": {
+        "freq": 11727,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "5 INTERNATIONAL": {
+        "freq": 11727,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "DOMASHNIY INTERNATIONAL": {
+        "freq": 11727,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "GRT": {
+        "freq": 12423,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "PERSIANA TÜRKİYE": {
+        "freq": 12458,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "NHK WORLD-JAPAN": {
+        "freq": 12245,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "TV8 INT HD": {
+        "freq": 12034,
+        "mod": "DVB-S2",
+        "rolloff": "0.35",
+        "apid": "401",
+        "nid": 1070
+    },
+    "FREEDOM.": {
+        "freq": 11996,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "AL ZAHRA TV": {
+        "freq": 12149,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "LUYS TV": {
+        "freq": 12458,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "SEMERKAND WAY": {
+        "freq": 11425,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "DMAX": {
+        "freq": 12015,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "TRT KURD": {
+        "freq": 12092,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "EUROSTAR": {
+        "freq": 12111,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "TRT ÇOCUK": {
+        "freq": 12092,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "TRT ARAPÇA": {
+        "freq": 12092,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "TLC": {
+        "freq": 12015,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "DİYANET TV": {
+        "freq": 12423,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "TRT TÜRK": {
+        "freq": 12092,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "TGRT HABER": {
+        "freq": 12149,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "HALK TV": {
+        "freq": 12380,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "AL QURAN AL KAREEM TV": {
+        "freq": 12149,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "AL SUNNAH AL NABAWIYAH TV": {
+        "freq": 12149,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "VIASAT HISTORY": {
+        "freq": 12188,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "BBC EARTH HD": {
+        "freq": 11265,
+        "mod": "DVB-S2",
+        "rolloff": "0.35",
+        "apid": "401",
+        "nid": 1070
+    },
+    "FASHION TV": {
+        "freq": 11385,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "FILMSCREEN": {
+        "freq": 12188,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "DOCUSCREEN": {
+        "freq": 12188,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "NATURE ESCAPE": {
+        "freq": 12188,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "AZOOMEE": {
+        "freq": 12188,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "COSMO EN": {
+        "freq": 12245,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "SPOR SMART": {
+        "freq": 12188,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "DREAM TV HD": {
+        "freq": 12188,
+        "mod": "DVB-S2",
+        "rolloff": "0.35",
+        "apid": "401",
+        "nid": 1070
+    },
+    "DA VINCI": {
+        "freq": 12188,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "BABY TV": {
+        "freq": 11385,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "ID HD": {
+        "freq": 12188,
+        "mod": "DVB-S2",
+        "rolloff": "0.35",
+        "apid": "401",
+        "nid": 1070
+    },
+    "COSMOSPORTS": {
+        "freq": 12188,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "DİZİ SMART MAX": {
+        "freq": 12188,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "ÇOCUK SMART HD": {
+        "freq": 12245,
+        "mod": "DVB-S2",
+        "rolloff": "0.35",
+        "apid": "401",
+        "nid": 1070
+    },
+    "CNN INTERNATIONAL": {
+        "freq": 12245,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "DISCOVERY CHANNEL HD": {
+        "freq": 12188,
+        "mod": "DVB-S2",
+        "rolloff": "0.35",
+        "apid": "401",
+        "nid": 1070
+    },
+    "EUROSPORT 1": {
+        "freq": 11385,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "LOVE NATURE": {
+        "freq": 12245,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "EUROSPORT 2 HD": {
+        "freq": 11265,
+        "mod": "DVB-S2",
+        "rolloff": "0.35",
+        "apid": "401",
+        "nid": 1070
+    },
+    "T.A.Y. TV": {
+        "freq": 12245,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "SPORSMART 2": {
+        "freq": 12245,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "BBC WORLD NEWS": {
+        "freq": 12188,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "MOVIE CLASSIC": {
+        "freq": 12188,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "MOVIE TÜRK": {
+        "freq": 12188,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "CARTOONITO": {
+        "freq": 12188,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "SİNEMA TV 2 HD": {
+        "freq": 11853,
+        "mod": "DVB-S2",
+        "rolloff": "0.35",
+        "apid": "401",
+        "nid": 1070
+    },
+    "SİNEMA 1001 HD": {
+        "freq": 11789,
+        "mod": "DVB-S2",
+        "rolloff": "0.35",
+        "apid": "401",
+        "nid": 1070
+    },
+    "SİNEMA AİLE HD": {
+        "freq": 11789,
+        "mod": "DVB-S2",
+        "rolloff": "0.35",
+        "apid": "401",
+        "nid": 1070
+    },
+    "SİNEMA 1002 HD": {
+        "freq": 11789,
+        "mod": "DVB-S2",
+        "rolloff": "0.35",
+        "apid": "401",
+        "nid": 1070
+    },
+    "SINEMA AKSIYON HD": {
+        "freq": 11853,
+        "mod": "DVB-S2",
+        "rolloff": "0.35",
+        "apid": "401",
+        "nid": 1070
+    },
+    "SİNEMA YERLİ 2 HD": {
+        "freq": 11880,
+        "mod": "DVB-S2",
+        "rolloff": "0.35",
+        "apid": "401",
+        "nid": 1070
+    },
+    "NAT GEO HD": {
+        "freq": 11345,
+        "mod": "DVB-S2",
+        "rolloff": "0.35",
+        "apid": "401",
+        "nid": 1070
+    },
+    "FX HD": {
+        "freq": 11880,
+        "mod": "DVB-S2",
+        "rolloff": "0.35",
+        "apid": "401",
+        "nid": 1070
+    },
+    "DISNEY JUNIOR": {
+        "freq": 11789,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "SİNEMA KOMEDİ HD": {
+        "freq": 11789,
+        "mod": "DVB-S2",
+        "rolloff": "0.35",
+        "apid": "401",
+        "nid": 1070
+    },
+    "WILD HD": {
+        "freq": 11807,
+        "mod": "DVB-S2",
+        "rolloff": "0.35",
+        "apid": "401",
+        "nid": 1070
+    },
+    "SİNEMA YERLİ HD": {
+        "freq": 11789,
+        "mod": "DVB-S2",
+        "rolloff": "0.35",
+        "apid": "401",
+        "nid": 1070
+    },
+    "SINEMA TV HD": {
+        "freq": 11853,
+        "mod": "DVB-S2",
+        "rolloff": "0.35",
+        "apid": "401",
+        "nid": 1070
+    },
+    "BBC FIRST HD": {
+        "freq": 11789,
+        "mod": "DVB-S2",
+        "rolloff": "0.35",
+        "apid": "401",
+        "nid": 1070
+    },
+    "SİNEMA AİLE 2 HD": {
+        "freq": 11789,
+        "mod": "DVB-S2",
+        "rolloff": "0.35",
+        "apid": "401",
+        "nid": 1070
+    },
+    "SİNEMA KOMEDİ 2 HD": {
+        "freq": 11789,
+        "mod": "DVB-S2",
+        "rolloff": "0.35",
+        "apid": "401",
+        "nid": 1070
+    },
+    "SİNEMA AKSİYON 2 HD": {
+        "freq": 11789,
+        "mod": "DVB-S2",
+        "rolloff": "0.35",
+        "apid": "401",
+        "nid": 1070
+    },
+    "EPIC DRAMA": {
+        "freq": 11880,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "NICKELODEON HD": {
+        "freq": 11385,
+        "mod": "DVB-S2",
+        "rolloff": "0.35",
+        "apid": "401",
+        "nid": 1070
+    },
+    "MOONBUG": {
+        "freq": 11880,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "TİVİBU SPOR 1 HD": {
+        "freq": 11853,
+        "mod": "DVB-S2",
+        "rolloff": "0.35",
+        "apid": "401",
+        "nid": 1070
+    },
+    "TİVİBU TANITIM HD": {
+        "freq": 11853,
+        "mod": "DVB-S2",
+        "rolloff": "0.35",
+        "apid": "401",
+        "nid": 1070
+    },
+    "HABİTAT TV HD": {
+        "freq": 11853,
+        "mod": "DVB-S2",
+        "rolloff": "0.35",
+        "apid": "401",
+        "nid": 1070
+    },
+    "TİVİBU SPOR 4 HD": {
+        "freq": 11880,
+        "mod": "DVB-S2",
+        "rolloff": "0.35",
+        "apid": "401",
+        "nid": 1070
+    },
+    "TİVİBU SPOR 4 HD TİCARİ": {
+        "freq": 11880,
+        "mod": "DVB-S2",
+        "rolloff": "0.35",
+        "apid": "401",
+        "nid": 1070
+    },
+    "TİVİBU SPOR 1 HD TİCARİ": {
+        "freq": 11853,
+        "mod": "DVB-S2",
+        "rolloff": "0.35",
+        "apid": "401",
+        "nid": 1070
+    },
+    "TARİH TV": {
+        "freq": 11789,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "TİVİBU SPOR 2 HD TİCARİ": {
+        "freq": 11880,
+        "mod": "DVB-S2",
+        "rolloff": "0.35",
+        "apid": "401",
+        "nid": 1070
+    },
+    "FIGHT NETWORK HD": {
+        "freq": 11880,
+        "mod": "DVB-S2",
+        "rolloff": "0.35",
+        "apid": "401",
+        "nid": 1070
+    },
+    "TİVİBU SPOR 2 HD": {
+        "freq": 11880,
+        "mod": "DVB-S2",
+        "rolloff": "0.35",
+        "apid": "401",
+        "nid": 1070
+    },
+    "NICKTOONS": {
+        "freq": 11853,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "TİVİBU SPOR 3 HD": {
+        "freq": 11880,
+        "mod": "DVB-S2",
+        "rolloff": "0.35",
+        "apid": "401",
+        "nid": 1070
+    },
+    "TİVİBU SPOR 3 HD TİCARİ": {
+        "freq": 11880,
+        "mod": "DVB-S2",
+        "rolloff": "0.35",
+        "apid": "401",
+        "nid": 1070
+    },
+    "DIGITURK 4K": {
+        "freq": 11305,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "EUROSPORT 1 HD": {
+        "freq": 11345,
+        "mod": "DVB-S2",
+        "rolloff": "0.35",
+        "apid": "401",
+        "nid": 1070
+    },
+    "BEIN SPORTS": {
+        "freq": 11385,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "TJK TV HD": {
+        "freq": 11345,
+        "mod": "DVB-S2",
+        "rolloff": "0.35",
+        "apid": "401",
+        "nid": 1070
+    },
+    "BEIN SPORTS 1": {
+        "freq": 12073,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "BEIN SPORTS 2": {
+        "freq": 11265,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "BEIN SPORTS 3": {
+        "freq": 12073,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "BEIN SPORTS 4": {
+        "freq": 11265,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "BEIN SPORTS MAX 1": {
+        "freq": 12073,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "BEIN SPORTS MAX2": {
+        "freq": 11345,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "BEIN SPORTS INTERNATIONAL": {
+        "freq": 11305,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "BEIN SPORTS INTERNATIONAL TICARI": {
+        "freq": 11305,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "BEIN SPORTS 5": {
+        "freq": 11345,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "TİCARİ BEIN SPORTS 5": {
+        "freq": 11345,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "FB TV HD": {
+        "freq": 11305,
+        "mod": "DVB-S2",
+        "rolloff": "0.35",
+        "apid": "401",
+        "nid": 1070
+    },
+    "BLOOMBERG": {
+        "freq": 11385,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "TARAFTAR": {
+        "freq": 12073,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "TARAFTAR 2": {
+        "freq": 11265,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "TARAFTAR 3": {
+        "freq": 12073,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "TİCARİ BEIN SPORTS 1": {
+        "freq": 12073,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "TİCARİ BEIN SPORTS 2": {
+        "freq": 11265,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "TİCARİ BEIN SPORTS 3": {
+        "freq": 12073,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "TİCARİ BEIN SPORTS 4": {
+        "freq": 11265,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "BEIN": {
+        "freq": 11385,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "BEIN SERIES 1": {
+        "freq": 12073,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "BEIN SERIES 2": {
+        "freq": 12073,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "BEIN MOVIES PREMIERE": {
+        "freq": 12073,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "BEIN MOVIES PREMIERE 2": {
+        "freq": 11345,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "BEIN MOVIES STARS": {
+        "freq": 12073,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "BEIN MOVIES TURK": {
+        "freq": 12073,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "BEIN BOXOFFICE": {
+        "freq": 11305,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "BEIN İZ": {
+        "freq": 12073,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "BEIN H&E": {
+        "freq": 11345,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "BEIN GURME": {
+        "freq": 12073,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "AL JAZEERA CHANNEL": {
+        "freq": 11305,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "YABAN TV HD": {
+        "freq": 11305,
+        "mod": "DVB-S2",
+        "rolloff": "0.35",
+        "apid": "401",
+        "nid": 1070
+    },
+    "DISCOVERY": {
+        "freq": 11385,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "NATIONAL GEOGRAPHIC WILD HD": {
+        "freq": 11345,
+        "mod": "DVB-S2",
+        "rolloff": "0.35",
+        "apid": "401",
+        "nid": 1070
+    },
+    "CGTN DOCUMENTARY HD": {
+        "freq": 11305,
+        "mod": "DVB-S2",
+        "rolloff": "0.35",
+        "apid": "401",
+        "nid": 1070
+    },
+    "ŞÖMİNE KEYFİ": {
+        "freq": 11305,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "DA VINCI HD": {
+        "freq": 11305,
+        "mod": "DVB-S2",
+        "rolloff": "0.35",
+        "apid": "401",
+        "nid": 1070
+    },
+    "NICK JR.": {
+        "freq": 11345,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "BBC CBEEBIES HD": {
+        "freq": 11265,
+        "mod": "DVB-S2",
+        "rolloff": "0.35",
+        "apid": "401",
+        "nid": 1070
+    },
+    "AL JAZEERA INTERNATINAL HD": {
+        "freq": 11305,
+        "mod": "DVB-S2",
+        "rolloff": "0.35",
+        "apid": "401",
+        "nid": 1070
+    },
+    "EURONEWS HD": {
+        "freq": 11265,
+        "mod": "DVB-S2",
+        "rolloff": "0.35",
+        "apid": "401",
+        "nid": 1070
+    },
+    "BBC WORLD NEWS HD": {
+        "freq": 11265,
+        "mod": "DVB-S2",
+        "rolloff": "0.35",
+        "apid": "401",
+        "nid": 1070
+    },
+    "CNN INT HD": {
+        "freq": 11385,
+        "mod": "DVB-S2",
+        "rolloff": "0.35",
+        "apid": "401",
+        "nid": 1070
+    },
+    "FRANCE 24 HD": {
+        "freq": 11265,
+        "mod": "DVB-S2",
+        "rolloff": "0.35",
+        "apid": "401",
+        "nid": 1070
+    },
+    "RAI 1": {
+        "freq": 11385,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "CGTN HD": {
+        "freq": 11265,
+        "mod": "DVB-S2",
+        "rolloff": "0.35",
+        "apid": "401",
+        "nid": 1070
+    },
+    "TV5 MONDE EUROPE HD": {
+        "freq": 11265,
+        "mod": "DVB-S2",
+        "rolloff": "0.35",
+        "apid": "401",
+        "nid": 1070
+    },
+    "HOTTEST HITS": {
+        "freq": 11305,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "LOVE SONGS": {
+        "freq": 11305,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "IN LOVE": {
+        "freq": 11305,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "90'S HITS": {
+        "freq": 11305,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "80'S HITS": {
+        "freq": 11305,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "PARTY": {
+        "freq": 11305,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "CONCERT": {
+        "freq": 11305,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "AMERICA'S CLASSICS": {
+        "freq": 11305,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "CLASSICAL MUSIC": {
+        "freq": 11305,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "ROCK": {
+        "freq": 11305,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "ENERGETIC": {
+        "freq": 11305,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "CLASSIC ROCK": {
+        "freq": 12188,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "NU JAZZ": {
+        "freq": 11305,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "JAZZ": {
+        "freq": 11305,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "BLUES": {
+        "freq": 11305,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "REGGAE": {
+        "freq": 11305,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "OLDIES BUT GOLDIES": {
+        "freq": 11305,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "MORNING COFFEE": {
+        "freq": 11305,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "CHILLOUT/LOUNGE": {
+        "freq": 11305,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "HIP HOP R&B": {
+        "freq": 11305,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "EASY LISTENING": {
+        "freq": 12188,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "RELAXATION": {
+        "freq": 11305,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "INTERNATIONAL": {
+        "freq": 11305,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "DREAMY": {
+        "freq": 11305,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "MELANCHOLIC": {
+        "freq": 11305,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "SMOOTH JAZZ": {
+        "freq": 11305,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "HAPPY": {
+        "freq": 11305,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "5+1 CONCERTS": {
+        "freq": 11305,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "GREEK SONGS": {
+        "freq": 11305,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "MASAL RADYO": {
+        "freq": 11305,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "MCM TOP HD": {
+        "freq": 11265,
+        "mod": "DVB-S2",
+        "rolloff": "0.35",
+        "apid": "401",
+        "nid": 1070
+    },
+    "MEZZO HD": {
+        "freq": 11385,
+        "mod": "DVB-S2",
+        "rolloff": "0.35",
+        "apid": "401",
+        "nid": 1070
+    },
+    "BEST FM.": {
+        "freq": 11305,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "RADYO SPOR": {
+        "freq": 12423,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "POWERTURK FM": {
+        "freq": 12265,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "KRAL POP": {
+        "freq": 12015,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "POLİS RADYOSU": {
+        "freq": 12423,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "KRAL FM": {
+        "freq": 12015,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "NTV RADYO": {
+        "freq": 12015,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "TRT FM": {
+        "freq": 11958,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "A SPOR RADYO": {
+        "freq": 12207,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "ANTALYA RADYO": {
+        "freq": 11958,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "ÇUKUROVA RADYO": {
+        "freq": 11958,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "ERZURUM RADYO": {
+        "freq": 11958,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "TRT RADYO KURDİ": {
+        "freq": 11958,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "TRABZON RADYO": {
+        "freq": 11958,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "TSR TURKÇE": {
+        "freq": 11958,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "VOT EAST": {
+        "freq": 11958,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "VOT WEST": {
+        "freq": 11958,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "VOT WORLD": {
+        "freq": 11958,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "TRT VOT 1": {
+        "freq": 12092,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "A HABER RADYO": {
+        "freq": 12207,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "RADYO 7": {
+        "freq": 12111,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "RADYO MARS": {
+        "freq": 12034,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "CNNTURK RADYO": {
+        "freq": 12034,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "RADYO D": {
+        "freq": 12034,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "SLOWTÜRK": {
+        "freq": 12034,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "VAV RADYO": {
+        "freq": 12207,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "RADYO TURKUVAZ": {
+        "freq": 12207,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "TRT HABER RADYO": {
+        "freq": 11958,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "RADYO 1": {
+        "freq": 11958,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "RADYO 3": {
+        "freq": 11958,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "RADYO GAP": {
+        "freq": 11958,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "TRT MEMLEKETİM": {
+        "freq": 11958,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "TRT NAGME": {
+        "freq": 11958,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "TRT TURKU": {
+        "freq": 11958,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "METEOROLOJININ SESI": {
+        "freq": 11958,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "NR1 FM": {
+        "freq": 12729,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "TRT WORLD RD": {
+        "freq": 12226,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "RD SEYMEN": {
+        "freq": 12034,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "DIS YAY ORTA DALGA ARAPÇA": {
+        "freq": 12092,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "SAHİL GÜVENLİK RADYOSU": {
+        "freq": 12380,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "ERKAM RADYO": {
+        "freq": 12149,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "FENOMENTÜRK": {
+        "freq": 12265,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "KAFA RADYO": {
+        "freq": 12265,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "AKRA FM": {
+        "freq": 12149,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "KARADENIZ FM": {
+        "freq": 12380,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "HT SPOR RADYO": {
+        "freq": 12303,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "BLOOMBERGHT RD": {
+        "freq": 12303,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "RADYO 7 HD": {
+        "freq": 12458,
+        "mod": "DVB-S2",
+        "rolloff": "0.35",
+        "apid": "401",
+        "nid": 1070
+    },
+    "LALEGÜL FM": {
+        "freq": 12423,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "HABERTÜRK RADYO": {
+        "freq": 12303,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "TV NET RADYO": {
+        "freq": 11225,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "RADYO FENOMEN": {
+        "freq": 12265,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "ALEM FM": {
+        "freq": 11862,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "LİG RADYO": {
+        "freq": 11862,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "SHOW RADYO": {
+        "freq": 11977,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "VIVA RADYO": {
+        "freq": 11977,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "24 RADYO": {
+        "freq": 11862,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "BAYRAK FM": {
+        "freq": 12149,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "BRT RADYO": {
+        "freq": 12149,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "SÜPER FM": {
+        "freq": 11977,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "VIRGIN RADIO": {
+        "freq": 11977,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "JOYTÜRK": {
+        "freq": 11977,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "METRO FM": {
+        "freq": 11977,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "JOY FM TÜRKİYE": {
+        "freq": 11977,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "45'LİK": {
+        "freq": 12034,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "KALP FM": {
+        "freq": 12034,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "SEYR FM": {
+        "freq": 12265,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "NR1 TÜRK FM": {
+        "freq": 12729,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "POWER FM": {
+        "freq": 12265,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "PRD 2": {
+        "freq": 12265,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "PRD 4": {
+        "freq": 12265,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "KIBRIS FM": {
+        "freq": 12458,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "DİYALOG FM": {
+        "freq": 12458,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "KURAN RADYO": {
+        "freq": 12380,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "TGRT FM": {
+        "freq": 12380,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "SEMERKAND RADYO": {
+        "freq": 11425,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "PAL STATION": {
+        "freq": 12149,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "PAL NOSTALJİ": {
+        "freq": 12149,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "RD 2000 FM": {
+        "freq": 12380,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "KÜPE FM": {
+        "freq": 12380,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "RADIOSPUTNIK": {
+        "freq": 12423,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "ÇAĞRI FM": {
+        "freq": 11425,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "RİBAT FM": {
+        "freq": 11996,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "DIYANET RADYO": {
+        "freq": 12380,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "DİYANET RİSALET RADYO": {
+        "freq": 12380,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "BEST FM": {
+        "freq": 12380,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "BAYRAM FM": {
+        "freq": 12380,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "AROUND THE WORLD": {
+        "freq": 12188,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "POPCORN": {
+        "freq": 12188,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "TÜRKÇE MÜZİK": {
+        "freq": 12188,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "TURKISH SILK": {
+        "freq": 12188,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "TURK SANAT MUZIGI": {
+        "freq": 12188,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "HOUSE": {
+        "freq": 12188,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "OPERA": {
+        "freq": 12188,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "2000'LER": {
+        "freq": 12188,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "90S": {
+        "freq": 12188,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "80S": {
+        "freq": 12188,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "SOHO 70'S": {
+        "freq": 12188,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "60S": {
+        "freq": 12188,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "BAROQUE": {
+        "freq": 12188,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "DANCEFLOOR FILLERS": {
+        "freq": 12188,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "CLASSIC MASTERS": {
+        "freq": 12188,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "CHILLOUT": {
+        "freq": 12188,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "COOL JAZZ": {
+        "freq": 12188,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "JAZZ CLASSICS": {
+        "freq": 12188,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "CLASSICAL ORCHESTRAL": {
+        "freq": 12188,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "CLASSICAL GREATS": {
+        "freq": 12188,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "BROADWAY": {
+        "freq": 12188,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "DEEP BLUES": {
+        "freq": 12188,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "HOT COUNTRY UK": {
+        "freq": 12188,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "RIDDIM": {
+        "freq": 12188,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "HIP HOP": {
+        "freq": 12188,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "TRANCE": {
+        "freq": 12188,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "LATINO TROPICAL": {
+        "freq": 12188,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "MEDITERREAN MUSIC": {
+        "freq": 12188,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "JAZZ NOW": {
+        "freq": 12188,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "JAZZ LATINO": {
+        "freq": 12188,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "CLASSICAL CALM": {
+        "freq": 12188,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "ROCK'N'ROLL": {
+        "freq": 12188,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "ROCK ANTHEMS": {
+        "freq": 12188,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "SILK (LOVE SONGS)": {
+        "freq": 12188,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "CHANSONS": {
+        "freq": 12188,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "TÜRKÇE POP": {
+        "freq": 12188,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "ROMANCE LATINO": {
+        "freq": 12188,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "NICE/COZY": {
+        "freq": 12188,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "TANGO": {
+        "freq": 12188,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "GROOVE DISCO &": {
+        "freq": 12188,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "THE CHILL LOUNGE": {
+        "freq": 12188,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "FOLK ROODS": {
+        "freq": 12188,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "GREATEST HITS": {
+        "freq": 12188,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "HIT LIST": {
+        "freq": 12188,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "URBAN BEATS": {
+        "freq": 12188,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "DANCE CLUBBIN": {
+        "freq": 12188,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "MAXIMUM PARTY": {
+        "freq": 12188,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "RADYO MUTLU": {
+        "freq": 11880,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "RADYO ÇALIŞIYORİKEN": {
+        "freq": 11880,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "RADYO YABANCI SLOW": {
+        "freq": 11880,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "RADYO RETRO": {
+        "freq": 11880,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "RADYO FİLM MÜZİKLERİ": {
+        "freq": 11880,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "RADYO JAZZ": {
+        "freq": 11880,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "RADYO OLDIES": {
+        "freq": 11880,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "RADYO YABANCI POP": {
+        "freq": 11880,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "RADYO YABANCI ROCK": {
+        "freq": 11880,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "RADYO KLASİK": {
+        "freq": 11880,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "RADYO TÜRKÇE POP": {
+        "freq": 11880,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "RADYO TÜRKÇE SLOW": {
+        "freq": 11880,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "RADYO TİVİBU ÇOCUK": {
+        "freq": 11880,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "RADYO TÜRK HALK MÜZİGİ": {
+        "freq": 11880,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "RADYO TÜRK SANAT MÜZİGİ": {
+        "freq": 11880,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "RADYO ARABESK": {
+        "freq": 11880,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "RADYO DİNİ MUSİKİ": {
+        "freq": 11880,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "RADYO AKUSTİK": {
+        "freq": 11880,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "RADYO TAŞPLAK": {
+        "freq": 11880,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "RADYO 90'LAR": {
+        "freq": 11880,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "RADYO LOUNGE": {
+        "freq": 11880,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    },
+    "RADYO BLUES": {
+        "freq": 11880,
+        "mod": "DVB-S",
+        "rolloff": "0.20",
+        "apid": "401",
+        "nid": 1070
+    }
+}

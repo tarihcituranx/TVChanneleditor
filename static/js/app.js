@@ -855,10 +855,10 @@ document.addEventListener('DOMContentLoaded', () => {
         let hue = Math.abs(hash % 360);
 
         document.getElementById('info-avatar').innerHTML = `<div class="channel-avatar" style="background: hsl(${hue}, 65%, 45%); width:40px; height:40px; font-size:16px;">${letters}</div>`;
-        document.getElementById('info-name')?.textContent = ch.Name;
-        document.getElementById('info-no')?.textContent = channels.indexOf(ch) + 1;
+        if(document.getElementById('info-name')) document.getElementById('info-name').textContent = ch.Name;
+        if(document.getElementById('info-no')) document.getElementById('info-no').textContent = channels.indexOf(ch) + 1;
         document.getElementById('info-freq').innerHTML = `<span class="font-monospace">${escapeHTML(String(ch.Freq))} MHz</span>`;
-        document.getElementById('info-pol')?.textContent = ch.Pol === 'V' ? 'Dikey (V)' : ch.Pol === 'H' ? 'Yatay (H)' : ch.Pol;
+        if(document.getElementById('info-pol')) document.getElementById('info-pol').textContent = ch.Pol === 'V' ? 'Dikey (V)' : ch.Pol === 'H' ? 'Yatay (H)' : ch.Pol;
         document.getElementById('info-sym').innerHTML = `<span class="font-monospace">${escapeHTML(String(ch.Sym))} ksps</span>`;
         
         let typeHtml = ch.Type === 'HD' ? `<span class="badge" style="background:var(--accent); color:white; padding:4px 8px; border-radius:4px; font-size:12px;">TV HD</span>` : escapeHTML(String(ch.Type));
@@ -881,15 +881,15 @@ document.addEventListener('DOMContentLoaded', () => {
             if (extraData.apid) advAudioPid = extraData.apid;
         }
 
-        document.getElementById('info-mod')?.textContent = advMod;
-        document.getElementById('info-rolloff')?.textContent = advRollOff;
-        document.getElementById('info-nid')?.textContent = ch.ONID !== undefined ? ch.ONID : '-'; // NID is usually same as ONID
-        document.getElementById('info-tsid')?.textContent = ch.TSID !== undefined ? ch.TSID : '-';
-        document.getElementById('info-onid')?.textContent = ch.ONID !== undefined ? ch.ONID : '-';
-        document.getElementById('info-sid')?.textContent = ch.SID !== undefined ? ch.SID : '-';
-        document.getElementById('info-vidpid')?.textContent = ch.VidPID !== undefined ? ch.VidPID : '-';
-        document.getElementById('info-audpid')?.textContent = advAudioPid;
-        document.getElementById('info-pcrpid')?.textContent = ch.PcrPID !== undefined ? ch.PcrPID : '-';
+        if(document.getElementById('info-mod')) document.getElementById('info-mod').textContent = advMod;
+        if(document.getElementById('info-rolloff')) document.getElementById('info-rolloff').textContent = advRollOff;
+        if(document.getElementById('info-nid')) document.getElementById('info-nid').textContent = ch.ONID !== undefined ? ch.ONID : '-'; // NID is usually same as ONID
+        if(document.getElementById('info-tsid')) document.getElementById('info-tsid').textContent = ch.TSID !== undefined ? ch.TSID : '-';
+        if(document.getElementById('info-onid')) document.getElementById('info-onid').textContent = ch.ONID !== undefined ? ch.ONID : '-';
+        if(document.getElementById('info-sid')) document.getElementById('info-sid').textContent = ch.SID !== undefined ? ch.SID : '-';
+        if(document.getElementById('info-vidpid')) document.getElementById('info-vidpid').textContent = ch.VidPID !== undefined ? ch.VidPID : '-';
+        if(document.getElementById('info-audpid')) document.getElementById('info-audpid').textContent = advAudioPid;
+        if(document.getElementById('info-pcrpid')) document.getElementById('info-pcrpid').textContent = ch.PcrPID !== undefined ? ch.PcrPID : '-';
 
         infoModal.style.display = 'flex';
     };
