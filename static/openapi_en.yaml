@@ -44,29 +44,26 @@ components:
           example: Dosya bulunamadı
     Channel:
       type: object
-      description: 'A single TV or radio channel. Fields are returned by `/upload`
-        and accepted by `/build`. Samsung/Tizen files use PascalCase fields; LG/Sony/Hisense
-        files are normalised to the same schema on the server side before being returned.
-
-        '
+      description: >
+        A single TV or radio channel. Fields are returned by /upload and accepted by /build.
+        Samsung/Tizen files use PascalCase fields; LG/Sony/Hisense files are normalised to the
+        same schema on the server side before being returned.
       required:
-      - Name
+        - Name
       properties:
-        false:
+        "No":
           type: integer
-          description: 'Logical Channel Number (display position). The **array order**
-            in the `channels` list is authoritative for ordering during `/build`.
-            This field is informational and will be recalculated during export.
-
-            '
+          description: >
+            Logical Channel Number (display position). The array order in the channels
+            list is authoritative for ordering during /build. This field is informational
+            and will be recalculated during export.
           minimum: 1
           example: 1
         Slot:
           type: integer
-          description: 'Internal hardware slot index. Required by the firmware for
-            SCM/TLL formats. Do not modify unless you know what you are doing.
-
-            '
+          description: >
+            Internal hardware slot index. Required by the firmware for SCM/TLL formats.
+            Do not modify unless you know what you are doing.
           example: 0
         Name:
           type: string
@@ -75,49 +72,37 @@ components:
           example: TRT 1 HD
         Type:
           type: string
-          description: Channel type. `HD` indicates an HD channel, `SD` standard definition,
-            `Radio` for audio-only.
-          enum:
-          - TV
-          - HD
-          - SD
-          - Radio
-          - Data
-          - ''
+          description: "Channel type: HD, SD, Radio, Data or empty."
+          enum: [TV, HD, SD, Radio, Data, ""]
           example: HD
         Freq:
           type: string
           description: Satellite/transponder frequency in MHz.
-          example: '11958'
+          example: "11958"
         Pol:
           type: string
           description: Satellite polarization.
-          enum:
-          - V
-          - H
-          - ''
+          enum: [V, H, ""]
           example: V
         Sym:
           type: string
           description: Symbol rate in ksps.
-          example: '27500'
+          example: "27500"
         Mod:
           type: string
-          description: Modulation type (e.g. DVB-S2, 8PSK, QPSK). Present on Samsung
-            SCM files.
+          description: Modulation type (e.g. DVB-S2, 8PSK, QPSK). Present on Samsung SCM files.
           example: DVB-S2
         RollOff:
           type: string
           description: Roll-off factor. Present on Samsung SCM files.
-          example: '0.35'
+          example: "0.35"
         Lock:
           type: boolean
           description: Whether the channel is PIN-locked.
           example: false
         Hide:
           type: boolean
-          description: Whether the channel is hidden from the channel list on the
-            TV.
+          description: Whether the channel is hidden from the channel list on the TV.
           example: false
         Skip:
           type: boolean
@@ -126,10 +111,8 @@ components:
         Encrypted:
           type: string
           description: Whether the channel is encrypted (Pay TV / conditional access).
-          enum:
-          - 'Yes'
-          - 'No'
-          example: 'No'
+          enum: ["Yes", "No"]
+          example: "No"
         Fav1:
           type: boolean
           description: Favourite list 1 membership.
@@ -168,11 +151,8 @@ components:
           example: 1221
         AudPID:
           type: string
-          description: 'Audio Elementary Stream PID(s). May be a single integer or
-            a comma-separated list when multiple audio tracks exist.
-
-            '
-          example: 1222,1223
+          description: Audio Elementary Stream PID(s). May be a single integer or a comma-separated list.
+          example: "1222,1223"
         PcrPID:
           type: integer
           description: Program Clock Reference PID. Present in Samsung SCM files.
