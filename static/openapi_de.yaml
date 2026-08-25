@@ -776,6 +776,54 @@ paths:
                           type: integer
                           example: 1070
 
+
+  /api/validate:
+    post:
+      tags:
+      - Tools & Actions
+      operationId: validateChannels
+      summary: Validate a channel list
+      description: Validates an array of channels against the API schema rules. Returns a list of validation errors if any fields are invalid (e.g. wrong enums, wrong types).
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [channels]
+              properties:
+                channels:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/Channel'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  valid:
+                    type: boolean
+                  total_errors:
+                    type: integer
+                  errors:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        index:
+                          type: integer
+                        channel:
+                          type: string
+                        field:
+                          type: string
+                        message:
+                          type: string
+
   /api/share:
     post:
       tags:
