@@ -1,4 +1,25 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
 Contact: mailto:tarihcituranx@proton.me
 Expires: 2028-08-18T00:00:00.000Z
 Preferred-Languages: tr, en
 Policy: https://tvchanneleditor.onrender.com/security
+Encryption: https://tvchanneleditor.onrender.com/static/pgp-key.txt
+-----BEGIN PGP SIGNATURE-----
+
+iQJMBAEBCgA2FiEEChzAdHHHgJrCPgjvGqFnrl6fXLAFAmqNjZQYHHRhcmloY2l0
+dXJhbnhAcHJvdG9uLm1lAAoJEBqhZ65en1ywiIQQAIcZxsnG9wnXi/HY1B0MjIQw
+pcPvHFoOpf/E0+BoA3bifFZJqxUAD0ukA9Vyvs1u0oUNhAnGZLH6N5+A7Xqu0PRV
+XgbmBv0NZdBKcqqM49IfMeJ7eeqFFX08ZHvEZSR7V7gI7ytp5n4Zd5PBsNUJFHSH
+H8IT6cVvUaJjh7uinuQsRQbqG48rJtzsU3skKsoQ8GRnYokbUK+wFiL+vRL6P3G9
+vldJcmBHeMkFDSy7GcGiu7C5AcvOH7nr/zlBWycc3kpAIrYflUU/ZYBusq6rjbC8
+p3u1olz1hBFhif0R2OklUw6VEIImzheNaXDfMp5/RZ7eQPWUGz5zThP3t1jHy4DL
+NfoGc3civHLpmfiGAqQ6gGb5fmS06kZePAW7MA6Dzal/9CP7+ZorzBeV50Iz+I2M
+r6KB437EgTg4kBTfybfCiHiA/v0E2hIcTJsFI4CTj16evnz5b+VoQYtO5WY5xX5E
+a05hVIoKPjJrK8/Up8CJLyUT3cuNzdB43/KK9zV83XCUm5jPGklvgunSUXFlK7Vw
+BV4mlG2C29EDM6/WqpMwNYRr5o9Ag/pvUv8TsEd3KQTLA/yec5Be6Zc9hQJlQRXL
+dI1o3HSvahGT2eXst3qy9Xks6RHANZL9spVHCR4hbKwgsAPDmM+r1xxrZOPLL9yK
+ZUf5cjalBI0cWiW+rK+K
+=os0W
+-----END PGP SIGNATURE-----
