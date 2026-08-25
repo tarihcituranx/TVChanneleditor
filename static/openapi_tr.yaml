@@ -227,14 +227,37 @@ components:
         session_id: sess_01J8ABC123XYZ
         channels:
         - false: 1
+          No: 1
+
+          Slot: 0
+
           Name: TRT 1 HD
+
           Type: TV
+
           Freq: '11958'
+
           Pol: V
+
           Sym: '27500'
-          Fav: 'Yes'
-          Lock: 'No'
+
+          Lock: false
+
+          Hide: false
+
+          Skip: false
+
           Encrypted: 'No'
+
+          Fav1: false
+
+          Fav2: false
+
+          Fav3: false
+
+          Fav4: false
+
+          Fav5: false
 security:
 - {}
 - ApiKeyAuth: []
@@ -291,14 +314,37 @@ paths:
                     session_id: sess_01J8ABC123XYZ
                     channels:
                     - false: 1
+                      No: 1
+
+                      Slot: 0
+
                       Name: TRT 1 HD
+
                       Type: TV
+
                       Freq: '11958'
+
                       Pol: V
+
                       Sym: '27500'
-                      Fav: 'Yes'
-                      Lock: 'No'
+
+                      Lock: false
+
+                      Hide: false
+
+                      Skip: false
+
                       Encrypted: 'No'
+
+                      Fav1: false
+
+                      Fav2: false
+
+                      Fav3: false
+
+                      Fav4: false
+
+                      Fav5: false
         '400':
           description: Geçersiz, desteklenmeyen veya biçim hatası içeren kanal listesi
             dosyası.
