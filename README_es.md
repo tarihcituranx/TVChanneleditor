@@ -6,7 +6,7 @@
 
 > **Editor de listas de canales de TV multimarca** — Edita tus listas de canales de TV de Samsung, LG, Sony y Hisense a través del navegador.
 
-[![Demostración en directo](https://img.shields.io/badge/🌐_Canlı_Demo-tvchanneleditor.onrender.com-blue)](https://tvchanneleditor.onrender.com)
+[![Demo en vivo](https://img.shields.io/badge/🌐_Demo-tvchanneleditor.onrender.com_es-blue)](https://tvchanneleditor.onrender.com/es/)
 [![Documentación de la API](https://img.shields.io/badge/API-Swagger_UI-orange)](https://tvchanneleditor.onrender.com/api/docs)
 [![CI](https://github.com/tarihcituranx/TVChanneleditor/actions/workflows/test.yml/badge.svg)](https://github.com/tarihcituranx/TVChanneleditor/actions)
 [![Licencia: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)

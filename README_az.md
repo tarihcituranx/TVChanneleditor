@@ -6,7 +6,7 @@
 
 > **Çoxmarkalı TV kanal siyahısı redaktoru** — Samsung, LG, Sony və Hisense TV kanal siyahılarınızı brauzeriniz vasitəsilə redaktə edin.
 
-[![Canlı Demo](https://img.shields.io/badge/🌐_Canlı_Demo-tvchanneleditor.onrender.com-blue)](https://tvchanneleditor.onrender.com)
+[![Canlı Demo](https://img.shields.io/badge/🌐_Demo-tvchanneleditor.onrender.com_az-blue)](https://tvchanneleditor.onrender.com/az/)
 [![API sənədləri](https://img.shields.io/badge/API-Swagger_UI-orange)](https://tvchanneleditor.onrender.com/api/docs)
 [![CI](https://github.com/tarihcituranx/TVChanneleditor/actions/workflows/test.yml/badge.svg)](https://github.com/tarihcituranx/TVChanneleditor/actions)
 [![Lisenziya: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENCE)

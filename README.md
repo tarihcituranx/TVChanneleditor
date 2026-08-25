@@ -6,7 +6,7 @@
 
 > **Multi-brand TV kanal listesi düzenleyici** — Tarayıcı üzerinden Samsung, LG, Sony, Hisense TV kanal listelerinizi düzenleyin.
 
-[![Canlı Demo](https://img.shields.io/badge/🌐_Canlı_Demo-tvchanneleditor.onrender.com-blue)](https://tvchanneleditor.onrender.com)
+[![Canlı Demo](https://img.shields.io/badge/🌐_Demo-tvchanneleditor.onrender.com_tr_-blue)](https://tvchanneleditor.onrender.com/tr/)
 [![API Docs](https://img.shields.io/badge/API-Swagger_UI-orange)](https://tvchanneleditor.onrender.com/api/docs)
 [![CI](https://github.com/tarihcituranx/TVChanneleditor/actions/workflows/test.yml/badge.svg)](https://github.com/tarihcituranx/TVChanneleditor/actions)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)

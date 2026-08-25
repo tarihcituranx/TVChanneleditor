@@ -6,7 +6,7 @@
 
 > **ویرایشگر لیست کانال تلویزیون چند برند** — لیست کانال‌های تلویزیون سامسونگ، ال‌جی، سونی و هایسنس خود را از طریق مرورگرتان ویرایش کنید.
 
-[![دموی زنده](https://img.shields.io/badge/🌐_Canlı_Demo-tvchanneleditor.onrender.com-blue)](https://tvchanneleditor.onrender.com)
+[![نسخه نمایشی](https://img.shields.io/badge/🌐_Demo-tvchanneleditor.onrender.com_fa-blue)](https://tvchanneleditor.onrender.com/fa/)
 [![مستندات API](https://img.shields.io/badge/API-Swagger_UI-orange)](https://tvchanneleditor.onrender.com/api/docs)
 [![CI](https://github.com/tarihcituranx/TVChanneleditor/actions/workflows/test.yml/badge.svg)](https://github.com/tarihcituranx/TVChanneleditor/actions)
 [![مجوز: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENCE)

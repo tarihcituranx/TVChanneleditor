@@ -6,7 +6,7 @@
 
 > **محرر قوائم قنوات التلفزيون متعددة العلامات التجارية** — قم بتنظيم قوائم قنوات التلفزيون الخاصة بك من Samsung وLG وSony وHisense عبر المتصفح.
 
-[![عرض توضيحي مباشر](https://img.shields.io/badge/🌐_Canlı_Demo-tvchanneleditor.onrender.com-blue)](https://tvchanneleditor.onrender.com)
+[![عرض توضيحي](https://img.shields.io/badge/🌐_Demo-tvchanneleditor.onrender.com_ar-blue)](https://tvchanneleditor.onrender.com/ar/)
 [![وثائق واجهة برمجة التطبيقات](https://img.shields.io/badge/API-Swagger_UI-orange)](https://tvchanneleditor.onrender.com/api/docs)
 [![CI](https://github.com/tarihcituranx/TVChanneleditor/actions/workflows/test.yml/badge.svg)](https://github.com/tarihcituranx/TVChanneleditor/actions)
 [![الترخيص: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)

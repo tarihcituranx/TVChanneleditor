@@ -6,7 +6,7 @@
 
 > **Editor für TV-Kanallisten verschiedener Marken** — Bearbeiten Sie Ihre TV-Kanallisten für Samsung, LG, Sony und Hisense über Ihren Browser.
 
-[![Live-Demo](https://img.shields.io/badge/🌐_Canlı_Demo-tvchanneleditor.onrender.com-blue)](https://tvchanneleditor.onrender.com)
+[![Live Demo](https://img.shields.io/badge/🌐_Demo-tvchanneleditor.onrender.com_de_-blue)](https://tvchanneleditor.onrender.com/de/)
 [![API-Dokumentation](https://img.shields.io/badge/API-Swagger_UI-orange)](https://tvchanneleditor.onrender.com/api/docs)
 [![CI](https://github.com/tarihcituranx/TVChanneleditor/actions/workflows/test.yml/badge.svg)](https://github.com/tarihcituranx/TVChanneleditor/actions)
 [![Lizenz: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
