@@ -262,6 +262,10 @@ def api_help():
             '/upload': 'POST - Upload a channel list file (.scm, .zip, .tll, .db, .xml)',
             '/build': 'POST - Build a modified channel list back to binary format',
             '/download/<session_id>/<filename>': 'GET - Download the built binary file',
+            '/api/actions/*': 'POST - Tools & Actions (e.g. /delete-radios, /diff, /preview, /apply-template)',
+            '/api/validate': 'POST - Validate a channel list against schema rules',
+            '/api/satellites': 'GET - List supported countries and satellites',
+            '/api/satellites/<country>/<satellite>': 'GET - Detailed frequency list',
             '/api/share': 'POST - Create an 8-character share code',
             '/api/share/<code>': 'GET - Retrieve a shared channel list',
             '/api/version': 'GET - Get API version and deployment status',
@@ -482,33 +486,32 @@ import string
 @limiter.limit("20 per minute")
 
 
-@app.route('/api/share', methods=['POST', 'GET'])
-def share_draft():
+@app.route('/api/share', methods=['POST'])
+def share_draft_post():
     _cleanup_expired()
+    # Create a new share code
+    data = request.json
+    if not data or 'draft' not in data:
+        return api_error('INVALID_DATA', 400)
+        
+    # Generate 8 char random code
+    code = ''.join(secrets.choice(string.ascii_uppercase + string.digits) for _ in range(8))
     
-    if request.method == 'POST':
-        # Create a new share code
-        data = request.json
-        if not data or 'draft' not in data:
-            return api_error('INVALID_DATA', 400)
-            
-        # Generate 8 char random code
-        code = ''.join(secrets.choice(string.ascii_uppercase + string.digits) for _ in range(8))
+    _shares[code] = {
+        'draft': data['draft'],
+        'expires': time.time() + SHARE_TTL
+    }
+    
+    return jsonify({'success': True, 'code': code})
+
+@app.route('/api/share/<code>', methods=['GET'])
+def share_draft_get(code):
+    _cleanup_expired()
+    code = code.upper()
+    if not code or code not in _shares:
+        return api_error('INVALID_CODE', 404)
         
-        _shares[code] = {
-            'draft': data['draft'],
-            'expires': time.time() + SHARE_TTL
-        }
-        
-        return jsonify({'success': True, 'code': code})
-        
-    else:
-        # GET request to retrieve draft
-        code = request.args.get('code', '').upper()
-        if not code or code not in _shares:
-            return api_error('INVALID_CODE', 404)
-            
-        return jsonify({'success': True, 'draft': _shares[code]['draft']})
+    return jsonify({'success': True, 'draft': _shares[code]['draft']})
 
 @app.route('/download/<session_id>/<filename>')
 def download(session_id, filename):

@@ -1,7 +1,7 @@
 openapi: 3.0.3
 info:
   title: TV Channel Editor API
-  version: 1.0.0
+  version: 1.1.0
   summary: Akıllı TV kanal listesini ayrıştırma ve yeniden paketleme API’si
   description: 'Akıllı TV kanal listesi dosyalarını ayrıştırın, inceleyin, değiştirin
     ve yeniden paketleyin.
@@ -457,7 +457,17 @@ paths:
                 properties:
                   status:
                     type: string
-                    example: healthy
+                    example: alive_and_breathing
+                  pulse:
+                    type: string
+                    example: normal
+                  message_en:
+                    type: string
+                  message_tr:
+                    type: string
+                  timestamp:
+                    type: string
+                    format: date-time
   /api/version:
     get:
       tags:

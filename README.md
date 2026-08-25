@@ -65,7 +65,7 @@ Desteklenen motorlar (markalar) tarafından sağlanan **DVB-S/S2** kanal listele
 
 ## 🔌 Geliştirici API (REST) Nasıl Çalışır?
 
-AI Ajanları ve geliştiriciler için 3 adımlı basit bir akış mevcuttur. Daha fazla detay için [Swagger UI](https://tvchanneleditor.onrender.com/api/docs) veya [OpenAPI Şeması](https://tvchanneleditor.onrender.com/api/openapi.txt) bağlantılarına bakabilirsiniz.
+AI Ajanları ve geliştiriciler için 4 adımlı basit bir akış mevcuttur. Daha fazla detay için [Swagger UI](https://tvchanneleditor.onrender.com/api/docs) veya [OpenAPI Şeması](https://tvchanneleditor.onrender.com/api/openapi.txt) bağlantılarına bakabilirsiniz.
 
 
 ### 🚀 Tam Uçtan Uca (End-to-End) Örnek

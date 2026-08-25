@@ -1,7 +1,7 @@
 openapi: 3.0.3
 info:
   title: TV Channel Editor API
-  version: 1.0.0
+  version: 1.1.0
   summary: Smart TV channel list parsing and repacking API
   description: 'Parse, inspect, modify, and repack Smart TV channel list files.
 
@@ -358,7 +358,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
         '429':
-          description: Rate limit exceeded (50 per hour)
+          description: Rate limit exceeded (50 per hour or 10 per minute per IP)
           content:
             application/json:
               schema:
@@ -453,7 +453,17 @@ paths:
                 properties:
                   status:
                     type: string
-                    example: healthy
+                    example: alive_and_breathing
+                  pulse:
+                    type: string
+                    example: normal
+                  message_en:
+                    type: string
+                  message_tr:
+                    type: string
+                  timestamp:
+                    type: string
+                    format: date-time
   /api/version:
     get:
       tags:
