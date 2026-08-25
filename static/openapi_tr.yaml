@@ -441,6 +441,183 @@ paths:
                     format: date-time
                     description: Sunucu uygulamasının başlatıldığı zamanın zaman damgası.
                     example: 2026-08-18 19:00:51.123456+00:00
+
+  /api/actions/delete-radios:
+    post:
+      tags:
+      - Tools & Actions
+      operationId: actionDeleteRadios
+      summary: Remove all radio channels
+      description: Returns the channel list with all radio (audio) channels removed.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [channels]
+              properties:
+                channels:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/Channel'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  deleted:
+                    type: integer
+                  channels:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Channel'
+  /api/actions/delete-encrypted:
+    post:
+      tags:
+      - Tools & Actions
+      operationId: actionDeleteEncrypted
+      summary: Remove all encrypted channels
+      description: Returns the channel list with all encrypted (Pay TV) channels removed.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [channels]
+              properties:
+                channels:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/Channel'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  deleted:
+                    type: integer
+                  channels:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Channel'
+  /api/actions/uppercase:
+    post:
+      tags:
+      - Tools & Actions
+      operationId: actionUppercase
+      summary: Uppercase all channel names
+      description: Returns the channel list with all channel names converted to UPPERCASE.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [channels]
+              properties:
+                channels:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/Channel'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  channels:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Channel'
+  /api/actions/sort-az:
+    post:
+      tags:
+      - Tools & Actions
+      operationId: actionSortAZ
+      summary: Sort channels A-Z
+      description: Returns the channel list alphabetically sorted by channel name.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [channels]
+              properties:
+                channels:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/Channel'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  channels:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Channel'
+  /api/actions/apply-template:
+    post:
+      tags:
+      - Tools & Actions
+      operationId: actionApplyTemplate
+      summary: Apply a Smart Template
+      description: Reorders the channels based on a predefined smart template (e.g. 'general', 'news', 'sports', 'movies', 'music', 'documentary', 'kids'). Unmatched channels are appended to the end.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [channels, template]
+              properties:
+                template:
+                  type: string
+                  example: general
+                  description: "Template ID (e.g., general, news, sports)"
+                channels:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/Channel'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  template_applied:
+                    type: string
+                  channels:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Channel'
+
   /api/share:
     post:
       tags:
