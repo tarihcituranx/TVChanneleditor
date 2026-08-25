@@ -44,63 +44,139 @@ components:
           example: Dosya bulunamadı
     Channel:
       type: object
-      description: A single TV or radio channel.
+      description: 'A single TV or radio channel. Fields are returned by `/upload`
+        and accepted by `/build`. Samsung/Tizen files use PascalCase fields; LG/Sony/Hisense
+        files are normalised to the same schema on the server side before being returned.
+
+        '
       required:
-      - false
       - Name
       properties:
         false:
           type: integer
-          description: 'Current position/Logical Channel Number.
-
-            Note: The array order is authoritative for channel ordering during download.
-
-            This ''No'' field is informational and may be recalculated during export.
+          description: 'Logical Channel Number (display position). The **array order**
+            in the `channels` list is authoritative for ordering during `/build`.
+            This field is informational and will be recalculated during export.
 
             '
           minimum: 1
           example: 1
+        Slot:
+          type: integer
+          description: 'Internal hardware slot index. Required by the firmware for
+            SCM/TLL formats. Do not modify unless you know what you are doing.
+
+            '
+          example: 0
         Name:
           type: string
-          description: Display name of the channel.
+          description: Display name of the channel shown on the TV.
+          maxLength: 40
           example: TRT 1 HD
         Type:
           type: string
-          description: Channel type (e.g., TV, Radio, Data).
-          example: TV
+          description: Channel type. `HD` indicates an HD channel, `SD` standard definition,
+            `Radio` for audio-only.
+          enum:
+          - TV
+          - HD
+          - SD
+          - Radio
+          - Data
+          - ''
+          example: HD
         Freq:
           type: string
           description: Satellite/transponder frequency in MHz.
           example: '11958'
         Pol:
           type: string
-          description: Satellite polarization (V or H).
+          description: Satellite polarization.
+          enum:
+          - V
+          - H
+          - ''
           example: V
         Sym:
           type: string
-          description: Symbol rate.
+          description: Symbol rate in ksps.
           example: '27500'
-        Fav:
+        Mod:
           type: string
-          description: Whether the channel is marked as a favorite.
-          enum:
-          - 'Yes'
-          - 'No'
-          example: 'No'
+          description: Modulation type (e.g. DVB-S2, 8PSK, QPSK). Present on Samsung
+            SCM files.
+          example: DVB-S2
+        RollOff:
+          type: string
+          description: Roll-off factor. Present on Samsung SCM files.
+          example: '0.35'
         Lock:
-          type: string
-          description: Whether the channel is locked with PIN.
-          enum:
-          - 'Yes'
-          - 'No'
-          example: 'No'
+          type: boolean
+          description: Whether the channel is PIN-locked.
+          example: false
+        Hide:
+          type: boolean
+          description: Whether the channel is hidden from the channel list on the
+            TV.
+          example: false
+        Skip:
+          type: boolean
+          description: Whether the channel is skipped during up/down channel surfing.
+          example: false
         Encrypted:
           type: string
-          description: Whether the channel is encrypted (Pay TV).
+          description: Whether the channel is encrypted (Pay TV / conditional access).
           enum:
           - 'Yes'
           - 'No'
           example: 'No'
+        Fav1:
+          type: boolean
+          description: Favourite list 1 membership.
+          example: false
+        Fav2:
+          type: boolean
+          description: Favourite list 2 membership.
+          example: false
+        Fav3:
+          type: boolean
+          description: Favourite list 3 membership.
+          example: false
+        Fav4:
+          type: boolean
+          description: Favourite list 4 membership.
+          example: false
+        Fav5:
+          type: boolean
+          description: Favourite list 5 membership.
+          example: false
+        SID:
+          type: integer
+          description: Service ID (DVB). Present in LG, Sony, Hisense files.
+          example: 8280
+        TSID:
+          type: integer
+          description: Transport Stream ID (DVB). Present in LG, Sony, Hisense files.
+          example: 1071
+        ONID:
+          type: integer
+          description: Original Network ID (DVB). Present in LG, Sony, Hisense files.
+          example: 1
+        VidPID:
+          type: integer
+          description: Video Elementary Stream PID. Present in Samsung SCM files.
+          example: 1221
+        AudPID:
+          type: string
+          description: 'Audio Elementary Stream PID(s). May be a single integer or
+            a comma-separated list when multiple audio tracks exist.
+
+            '
+          example: 1222,1223
+        PcrPID:
+          type: integer
+          description: Program Clock Reference PID. Present in Samsung SCM files.
+          example: 1221
     UploadResponse:
       type: object
       required:
@@ -452,14 +528,14 @@ paths:
           description: Code invalid or expired
         '429':
           description: Rate limit exceeded (20 per minute)
-
   /api/help:
     get:
       tags:
-        - System
+      - System
       operationId: getApiHelp
       summary: Quick API Help
-      description: Returns a quick JSON overview of all available API endpoints and the documentation URL.
+      description: Returns a quick JSON overview of all available API endpoints and
+        the documentation URL.
       responses:
         '200':
           description: API overview
