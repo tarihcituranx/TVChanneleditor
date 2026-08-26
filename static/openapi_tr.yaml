@@ -303,6 +303,18 @@ paths:
                     .db)
       responses:
         '200':
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '429':
+          description: Too Many Requests
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
           description: Kanal listesi başarıyla ayrıştırıldı.
           content:
             application/json:
@@ -385,6 +397,18 @@ paths:
               $ref: '#/components/schemas/DownloadRequest'
       responses:
         '200':
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '429':
+          description: Too Many Requests
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
           description: Yeniden oluşturma işlemi başarıyla tamamlandı.
           content:
             application/json:
@@ -427,6 +451,18 @@ paths:
           type: string
       responses:
         '200':
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '429':
+          description: Too Many Requests
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
           description: İkili kanal listesi dosyası yeniden oluşturuldu.
           content:
             application/octet-stream:
@@ -449,6 +485,18 @@ paths:
         Sağlık Kontrollerinde kullanılır.
       responses:
         '200':
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '429':
+          description: Too Many Requests
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
           description: Hizmet iyi durumda.
           content:
             application/json:
@@ -479,6 +527,18 @@ paths:
         temizleme ve dağıtım doğrulaması için kullanışlıdır.
       responses:
         '200':
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '429':
+          description: Too Many Requests
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
           description: Sürüm bilgileri
           content:
             application/json:
@@ -522,6 +582,18 @@ paths:
                     $ref: '#/components/schemas/Channel'
       responses:
         '200':
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '429':
+          description: Too Many Requests
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
           description: OK
           content:
             application/json:
@@ -557,6 +629,18 @@ paths:
                     $ref: '#/components/schemas/Channel'
       responses:
         '200':
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '429':
+          description: Too Many Requests
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
           description: OK
           content:
             application/json:
@@ -592,6 +676,18 @@ paths:
                     $ref: '#/components/schemas/Channel'
       responses:
         '200':
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '429':
+          description: Too Many Requests
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
           description: OK
           content:
             application/json:
@@ -625,6 +721,18 @@ paths:
                     $ref: '#/components/schemas/Channel'
       responses:
         '200':
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '429':
+          description: Too Many Requests
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
           description: OK
           content:
             application/json:
@@ -662,6 +770,18 @@ paths:
                     $ref: '#/components/schemas/Channel'
       responses:
         '200':
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '429':
+          description: Too Many Requests
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
           description: OK
           content:
             application/json:
@@ -687,6 +807,18 @@ paths:
       description: Returns a list of supported countries, satellites, and their metadata (orbit, last updated date).
       responses:
         '200':
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '429':
+          description: Too Many Requests
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
           description: OK
           content:
             application/json:
@@ -741,6 +873,18 @@ paths:
           example: TURKSAT
       responses:
         '200':
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '429':
+          description: Too Many Requests
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
           description: OK
           content:
             application/json:
@@ -805,6 +949,18 @@ paths:
                     $ref: '#/components/schemas/Channel'
       responses:
         '200':
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '429':
+          description: Too Many Requests
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
           description: OK
           content:
             application/json:
@@ -855,6 +1011,18 @@ paths:
                     $ref: '#/components/schemas/Channel'
       responses:
         '200':
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '429':
+          description: Too Many Requests
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
           description: OK
           content:
             application/json:
@@ -900,6 +1068,18 @@ paths:
                     $ref: '#/components/schemas/Channel'
       responses:
         '200':
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '429':
+          description: Too Many Requests
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
           description: OK
           content:
             application/json:
@@ -948,6 +1128,18 @@ paths:
                   description: Güncel kanal listesi ve oturum verileri
       responses:
         '200':
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '429':
+          description: Too Many Requests
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
           description: Paylaşım kodu başarıyla oluşturuldu
           content:
             application/json:
@@ -983,6 +1175,18 @@ paths:
         description: 8 karakterlik paylaşım kodu
       responses:
         '200':
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '429':
+          description: Too Many Requests
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
           description: Kanal listesi başarıyla alındı
           content:
             application/json:

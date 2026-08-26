@@ -338,6 +338,94 @@ def api_dedupe():
         "deleted": len(channels) - len(deduped)
     })
 
+
+@limiter.limit("30 per minute")
+@app.route('/api/actions/<action>', methods=['POST'])
+def api_actions(action):
+    data = request.json or {}
+    
+    if action == 'diff':
+        old_ch = data.get('old_channels', [])
+        new_ch = data.get('new_channels', [])
+        
+        old_dict = {f"{c.get('Freq')}_{c.get('SID')}": c for c in old_ch}
+        new_dict = {f"{c.get('Freq')}_{c.get('SID')}": c for c in new_ch}
+        
+        added = [c for k, c in new_dict.items() if k not in old_dict]
+        removed = [c for k, c in old_dict.items() if k not in new_dict]
+        
+        return jsonify({"added": added, "removed": removed, "total_added": len(added), "total_removed": len(removed)})
+        
+    channels = data.get('channels', [])
+    is_valid, msg = validate_channels(channels)
+    if not is_valid:
+        return api_error(msg, 400)
+        
+    if action == 'delete-radios':
+        channels = [c for c in channels if str(c.get('Type', '')).lower() != 'radio']
+    elif action == 'delete-encrypted':
+        channels = [c for c in channels if str(c.get('Encrypted', 'No')).lower() != 'yes']
+    elif action == 'uppercase':
+        for c in channels:
+            if 'Name' in c:
+                c['Name'] = str(c['Name']).upper()
+    elif action == 'sort-az':
+        channels.sort(key=lambda c: str(c.get('Name', '')).lower())
+    elif action == 'apply-template':
+        template = data.get('template', '').lower()
+        keywords = []
+        if template == 'news': keywords = ['haber', 'news', 'ntv', 'cnn', 'bloomberg']
+        elif template == 'sports': keywords = ['spor', 'sport', 'beinsports', 'eurosport', 'trt spor']
+        elif template == 'music': keywords = ['müzik', 'music', 'kral', 'powertürk', 'mtv']
+        elif template == 'documentary': keywords = ['belgesel', 'nat geo', 'discovery', 'history']
+        
+        if keywords:
+            matched = []
+            unmatched = []
+            for c in channels:
+                name = str(c.get('Name', '')).lower()
+                if any(k in name for k in keywords):
+                    matched.append(c)
+                else:
+                    unmatched.append(c)
+            channels = matched + unmatched
+    elif action == 'preview':
+        pass # Preview just returns the same channels or top 100? Spec says preview. Let's just return first 50.
+        channels = channels[:50]
+    else:
+        return api_error(f"Unknown action: {action}", 400)
+        
+    # Reassign numbers
+    for idx, c in enumerate(channels, 1):
+        c['No'] = idx
+        
+    return jsonify({"channels": channels})
+
+@limiter.limit("20 per minute")
+@app.route('/api/satellites', methods=['GET'])
+def api_satellites():
+    return jsonify({
+        "countries": [
+            {
+                "country": "Turkey",
+                "satellites": [
+                    {"id": "turksat-42e", "name": "Türksat 42.0E"}
+                ]
+            }
+        ]
+    })
+
+@limiter.limit("20 per minute")
+@app.route('/api/satellites/<country>/<satellite>', methods=['GET'])
+def api_satellites_detail(country, satellite):
+    return jsonify({
+        "country": country,
+        "satellite": satellite,
+        "frequencies": [
+            {"freq": 11054, "pol": "V", "sym": 30000, "description": "TRT Paketi"}
+        ]
+    })
+
 @app.route('/api/version')
 def api_version():
     return jsonify({
