@@ -31,6 +31,9 @@ def extract_to_csv(scm_path, csv_path):
     print(f"[*] Dosya okunuyor: {scm_path}")
     try:
         with zipfile.ZipFile(scm_path, 'r') as z:
+            total_size = sum([info.file_size for info in z.infolist()])
+            if total_size > 50 * 1024 * 1024:
+                raise Exception("Decompression bomb detected")
             # Frekansları oku
             tp_dict = parse_transponders(z, 'TransponderDataBase.dat')
             tp_dict.update(parse_transponders(z, 'UserTransponderDataBase.dat'))
@@ -109,6 +112,9 @@ def build_from_csv(original_scm, csv_path, new_scm):
     print(f"[*] Orijinal SCM açılıyor ve yeni liste oluşturuluyor: {new_scm}")
     try:
         with zipfile.ZipFile(original_scm, 'r') as zin:
+            total_size = sum([info.file_size for info in zin.infolist()])
+            if total_size > 50 * 1024 * 1024:
+                raise Exception("Decompression bomb detected")
             with zipfile.ZipFile(new_scm, 'w', compression=zipfile.ZIP_DEFLATED) as zout:
                 for item in zin.infolist():
                     data = zin.read(item.filename)
@@ -156,6 +162,9 @@ def build_from_csv(original_scm, csv_path, new_scm):
 def get_channels(scm_path):
     try:
         with zipfile.ZipFile(scm_path, 'r') as z:
+            total_size = sum([info.file_size for info in z.infolist()])
+            if total_size > 50 * 1024 * 1024:
+                raise Exception("Decompression bomb detected")
             tp_dict = parse_transponders(z, 'TransponderDataBase.dat')
             tp_dict.update(parse_transponders(z, 'UserTransponderDataBase.dat'))
             sd = z.read('map-SateD')
@@ -225,6 +234,9 @@ def get_channels(scm_path):
 def build_scm_direct(original_scm, new_scm, edited_channels):
     try:
         with zipfile.ZipFile(original_scm, 'r') as zin:
+            total_size = sum([info.file_size for info in zin.infolist()])
+            if total_size > 50 * 1024 * 1024:
+                raise Exception("Decompression bomb detected")
             with zipfile.ZipFile(new_scm, 'w', compression=zipfile.ZIP_DEFLATED) as zout:
                 for item in zin.infolist():
                     data = zin.read(item.filename)

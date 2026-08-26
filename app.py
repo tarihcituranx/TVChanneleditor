@@ -97,18 +97,29 @@ def _cleanup_expired():
         del _shares[code]
 
 def _detect_brand(filename: str, file_obj=None) -> str:
-    """Dosya adı/uzantısına ve ZIP içeriğine göre marka tespit et."""
+    """Dosya adı/uzantısına ve içeriğe (magic bytes) göre marka tespit et."""
     name_lower = filename.lower()
+    magic = b''
+    if file_obj:
+        file_obj.seek(0)
+        magic = file_obj.read(16)
+        file_obj.seek(0)
+    
     if name_lower.endswith('.tll'):
         return 'lg'
     if 'sdb.xml' in name_lower:
         return 'sony'
     if 'servicelist.db' in name_lower or 'channel.db' in name_lower:
+        if magic and not magic.startswith(b'SQLite format 3'):
+            return 'unknown'
         return 'hisense'
     if name_lower.endswith('.scm'):
+        if magic and not magic.startswith(b'PK\x03\x04'):
+            return 'unknown'
         return 'samsung'
     if name_lower.endswith('.zip') and file_obj is not None:
-        # ZIP içini okuyarak Tizen mi Samsung mı ayırt et
+        if magic and not magic.startswith(b'PK\x03\x04'):
+            return 'unknown'
         import zipfile as _zf
         try:
             file_obj.seek(0)
@@ -274,6 +285,59 @@ def api_help():
         'supported_brands': ['samsung', 'lg', 'sony', 'hisense']
     }), 200
 
+
+def validate_channels(channels):
+    if not isinstance(channels, list):
+        return False, "channels must be a list"
+    if len(channels) == 0:
+        return False, "channels list cannot be empty"
+    for idx, c in enumerate(channels):
+        if not isinstance(c, dict):
+            return False, f"Channel at index {idx} is not an object"
+        if 'Name' in c and len(str(c.get('Name', ''))) > 40:
+            return False, f"Channel '{c.get('Name')}' name exceeds 40 characters"
+        for num_field in ('Slot', 'SID', 'TSID', 'ONID'):
+            if num_field in c and isinstance(c[num_field], (int, float)) and c[num_field] < 0:
+                return False, f"Channel '{c.get('Name', 'Unknown')}' has negative {num_field}"
+    return True, "Valid"
+
+
+@limiter.limit("30 per minute")
+@app.route('/api/validate', methods=['POST'])
+def api_validate():
+    data = request.json or {}
+    channels = data.get('channels', [])
+    is_valid, msg = validate_channels(channels)
+    if is_valid:
+        return jsonify({"valid": True, "message": "Schema is valid"})
+    else:
+        return api_error(msg, 400)
+
+
+@limiter.limit("20 per minute")
+@app.route('/api/actions/dedupe', methods=['POST'])
+def api_dedupe():
+    data = request.json or {}
+    channels = data.get('channels', [])
+    is_valid, msg = validate_channels(channels)
+    if not is_valid:
+        return api_error(msg, 400)
+    
+    seen = set()
+    deduped = []
+    for c in channels:
+        freq = c.get('Freq', 0)
+        sid = c.get('SID', 0)
+        key = f"{freq}_{sid}"
+        if key not in seen:
+            seen.add(key)
+            deduped.append(c)
+    
+    return jsonify({
+        "channels": deduped,
+        "deleted": len(channels) - len(deduped)
+    })
+
 @app.route('/api/version')
 def api_version():
     return jsonify({
@@ -330,7 +394,7 @@ def upload():
             shutil.rmtree(tmpdir, ignore_errors=True)
             return api_error('CORRUPT_ARCHIVE', 400)
 
-    session_id = str(uuid.uuid4())
+    session_id = secrets.token_urlsafe(24)
     _sessions[session_id] = {
         'path': filepath,
         'tmpdir': tmpdir,
@@ -381,9 +445,15 @@ def build():
     data = request.json or {}
     session_id = data.get('session_id', '')
     edited_list = data.get('channels', [])
+    
     original_name = data.get('filename', 'channel_list.scm')
 
+    is_valid, val_msg = validate_channels(edited_list)
+    if not is_valid:
+        return api_error(val_msg, 400)
+
     if session_id not in _sessions:
+
         return api_error('SESSION_EXPIRED', 400)
 
     session = _sessions[session_id]

@@ -14,6 +14,9 @@ class TizenEditor:
 
     def extract(self):
         with zipfile.ZipFile(self.zip_path, 'r') as zip_ref:
+            total_size = sum([info.file_size for info in zip_ref.infolist()])
+            if total_size > 50 * 1024 * 1024:
+                raise Exception("Decompression bomb detected")
             for info in zip_ref.infolist():
                 # Path traversal korumasi
                 if info.filename.startswith('/') or '..' in info.filename:
@@ -25,7 +28,7 @@ class TizenEditor:
             path = os.path.join(self.temp_dir, f)
             if os.path.isfile(path) and not f.startswith('vconf_') and not f.endswith('-shm') and not f.endswith('-wal'):
                 try:
-                    conn = sqlite3.connect(path)
+                    conn = sqlite3.connect(f'file:{path}?mode=ro', uri=True)
                     cursor = conn.cursor()
                     cursor.execute("SELECT name FROM sqlite_master WHERE type='table'")
                     tables = [row[0].upper() for row in cursor.fetchall()]
@@ -67,7 +70,7 @@ class TizenEditor:
         if not self.channel_db_path:
             return []
 
-        conn = sqlite3.connect(self.channel_db_path)
+        conn = sqlite3.connect(f'file:{self.channel_db_path}?mode=ro', uri=True)
         conn.row_factory = sqlite3.Row
         cursor = conn.cursor()
         

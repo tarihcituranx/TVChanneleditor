@@ -146,7 +146,7 @@ class HisenseEditor:
     def extract(self):
         """SQLite dosyasını oku ve parse et."""
         try:
-            conn = sqlite3.connect(self.file_path)
+            conn = sqlite3.connect(f'file:{self.file_path}?mode=ro', uri=True)
             conn.row_factory = sqlite3.Row
             cur = conn.cursor()
         except Exception as e:
