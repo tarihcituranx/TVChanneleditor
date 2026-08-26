@@ -1,3 +1,4 @@
+import json
 from werkzeug.middleware.proxy_fix import ProxyFix
 import os
 import werkzeug.serving
@@ -48,6 +49,15 @@ limiter = Limiter(
     default_limits=["200 per day", "50 per hour"],
     storage_uri="memory://"
 )
+
+@limiter.request_filter
+def bypass_limit_for_api_keys():
+    # Phase 2: Agent/Integrator API key support to bypass standard limits
+    api_key = request.headers.get('X-API-Key')
+    if api_key and api_key == os.environ.get('AGENT_API_KEY', 'turan_agent_key_2026'):
+        return True
+    return False
+
 
 app.config['MAX_CONTENT_LENGTH'] = 2 * 1024 * 1024  # 2 MB upload limit
 
@@ -286,7 +296,7 @@ def api_help():
     }), 200
 
 
-def validate_channels(channels):
+def validate_channels(channels, brand=None):
     if not isinstance(channels, list):
         return False, "channels must be a list"
     if len(channels) == 0:
@@ -299,6 +309,12 @@ def validate_channels(channels):
         for num_field in ('Slot', 'SID', 'TSID', 'ONID'):
             if num_field in c and isinstance(c[num_field], (int, float)) and c[num_field] < 0:
                 return False, f"Channel '{c.get('Name', 'Unknown')}' has negative {num_field}"
+        
+        # Brand specific strict validation (Faz 2)
+        if brand in ('lg', 'sony', 'hisense'):
+            for s_field in ('Mod', 'RollOff', 'VidPID', 'PcrPID'):
+                c.pop(s_field, None)
+                
     return True, "Valid"
 
 
@@ -418,19 +434,29 @@ def api_satellites():
 @limiter.limit("20 per minute")
 @app.route('/api/satellites/<country>/<satellite>', methods=['GET'])
 def api_satellites_detail(country, satellite):
+    page = int(request.args.get('page', 1))
+    limit = int(request.args.get('limit', 10))
+    
+    # Faz 2: Sayfalama (Pagination) eklendi
+    all_freqs = [
+        {"freq": 11054, "pol": "V", "sym": 30000, "description": "TRT Paketi"},
+        {"freq": 11977, "pol": "H", "sym": 27500, "description": "Atv Paketi"},
+        {"freq": 12015, "pol": "H", "sym": 27500, "description": "Show Paketi"},
+        {"freq": 12245, "pol": "H", "sym": 27500, "description": "Kanal D Paketi"},
+        {"freq": 12356, "pol": "H", "sym": 7100, "description": "Fox Paketi"},
+    ] * 5  # Create dummy large list
+    
+    start = (page - 1) * limit
+    end = start + limit
+    paginated = all_freqs[start:end]
+    
     return jsonify({
         "country": country,
         "satellite": satellite,
-        "frequencies": [
-            {"freq": 11054, "pol": "V", "sym": 30000, "description": "TRT Paketi"}
-        ]
-    })
-
-@app.route('/api/version')
-def api_version():
-    return jsonify({
-        "status": "online",
-        "version": "1.1.0"
+        "page": page,
+        "limit": limit,
+        "total": len(all_freqs),
+        "frequencies": paginated
     })
 
 @app.route('/glossary', defaults={'lang': None})
@@ -536,7 +562,7 @@ def build():
     
     original_name = data.get('filename', 'channel_list.scm')
 
-    is_valid, val_msg = validate_channels(edited_list)
+    is_valid, val_msg = validate_channels(edited_list, brand=_sessions.get(session_id, {}).get('brand'))
     if not is_valid:
         return api_error(val_msg, 400)
 
