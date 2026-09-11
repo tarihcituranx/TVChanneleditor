@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     console.log('%c Crafted by @tarihcituranx 🚀 ', 'background: #0d1117; color: #58a6ff; font-size: 14px; padding: 6px 12px; border-radius: 4px; font-family: monospace; border: 1px solid #30363d;');
     
-    const dropZone = document.getElementById('upload-section');
+    const dropZone = document.getElementById('drop-zone') || document.getElementById('upload-section');
     const fileInput = document.getElementById('file-input');
     const browseBtn = document.getElementById('browse-btn');
     const editorSection = document.getElementById('editor-section');
@@ -246,23 +246,44 @@ function loadFrequencyData() {
 }
 checkDraftOnLoad();
 
-    // Drag & Drop Upload
-    dropZone.addEventListener('dragover', (e) => {
+    // Global Drag & Drop Koruması (Kullanıcı dosyayı sayfanın herhangi bir yerine bıraktığında tarayıcının file:/// açmasını engeller)
+    window.addEventListener('dragover', (e) => {
         e.preventDefault();
-        dropZone.classList.add('dragover');
-    });
+    }, false);
 
-    dropZone.addEventListener('dragleave', () => {
-        dropZone.classList.remove('dragover');
-    });
-
-    dropZone.addEventListener('drop', (e) => {
+    window.addEventListener('drop', (e) => {
         e.preventDefault();
-        dropZone.classList.remove('dragover');
-        if (e.dataTransfer.files.length) {
+        if (e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files.length) {
+            const welcomeSec = document.getElementById('welcome-section');
+            const uploadSec = document.getElementById('upload-section');
+            if (welcomeSec && uploadSec) {
+                localStorage.setItem('welcomed_v2', 'true');
+                welcomeSec.style.display = 'none';
+                uploadSec.style.display = 'block';
+            }
             handleFile(e.dataTransfer.files[0]);
         }
-    });
+    }, false);
+
+    // Drag & Drop Upload alanı görsel efektleri
+    if (dropZone) {
+        dropZone.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            dropZone.classList.add('dragover');
+        });
+
+        dropZone.addEventListener('dragleave', () => {
+            dropZone.classList.remove('dragover');
+        });
+
+        dropZone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            dropZone.classList.remove('dragover');
+            if (e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files.length) {
+                handleFile(e.dataTransfer.files[0]);
+            }
+        });
+    }
 
     if (browseBtn) {
         browseBtn.addEventListener('click', () => fileInput.click());
