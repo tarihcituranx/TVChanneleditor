@@ -300,18 +300,6 @@ paths:
                   description: TV channel list file (.scm, .zip, .tll, .xml, .db)
       responses:
         '200':
-        '400':
-          description: Bad Request
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResponse'
-        '429':
-          description: Too Many Requests
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResponse'
           description: Channel list successfully parsed.
           content:
             application/json:
@@ -393,18 +381,6 @@ paths:
               $ref: '#/components/schemas/DownloadRequest'
       responses:
         '200':
-        '400':
-          description: Bad Request
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResponse'
-        '429':
-          description: Too Many Requests
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResponse'
           description: Rebuild successful.
           content:
             application/json:
@@ -447,18 +423,6 @@ paths:
           type: string
       responses:
         '200':
-        '400':
-          description: Bad Request
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResponse'
-        '429':
-          description: Too Many Requests
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResponse'
           description: Rebuilt binary channel-list file.
           content:
             application/octet-stream:
@@ -481,18 +445,6 @@ paths:
         and Render Health Checks.
       responses:
         '200':
-        '400':
-          description: Bad Request
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResponse'
-        '429':
-          description: Too Many Requests
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResponse'
           description: Service is healthy.
           content:
             application/json:
@@ -523,18 +475,6 @@ paths:
         deployment verification.
       responses:
         '200':
-        '400':
-          description: Bad Request
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResponse'
-        '429':
-          description: Too Many Requests
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResponse'
           description: Version info
           content:
             application/json:
@@ -578,18 +518,6 @@ paths:
                     $ref: '#/components/schemas/Channel'
       responses:
         '200':
-        '400':
-          description: Bad Request
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResponse'
-        '429':
-          description: Too Many Requests
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResponse'
           description: OK
           content:
             application/json:
@@ -625,18 +553,6 @@ paths:
                     $ref: '#/components/schemas/Channel'
       responses:
         '200':
-        '400':
-          description: Bad Request
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResponse'
-        '429':
-          description: Too Many Requests
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResponse'
           description: OK
           content:
             application/json:
@@ -672,18 +588,6 @@ paths:
                     $ref: '#/components/schemas/Channel'
       responses:
         '200':
-        '400':
-          description: Bad Request
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResponse'
-        '429':
-          description: Too Many Requests
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResponse'
           description: OK
           content:
             application/json:
@@ -717,18 +621,6 @@ paths:
                     $ref: '#/components/schemas/Channel'
       responses:
         '200':
-        '400':
-          description: Bad Request
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResponse'
-        '429':
-          description: Too Many Requests
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResponse'
           description: OK
           content:
             application/json:
@@ -766,18 +658,6 @@ paths:
                     $ref: '#/components/schemas/Channel'
       responses:
         '200':
-        '400':
-          description: Bad Request
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResponse'
-        '429':
-          description: Too Many Requests
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResponse'
           description: OK
           content:
             application/json:
@@ -803,18 +683,6 @@ paths:
       description: Returns a list of supported countries, satellites, and their metadata (orbit, last updated date).
       responses:
         '200':
-        '400':
-          description: Bad Request
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResponse'
-        '429':
-          description: Too Many Requests
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResponse'
           description: OK
           content:
             application/json:
@@ -869,18 +737,6 @@ paths:
           example: TURKSAT
       responses:
         '200':
-        '400':
-          description: Bad Request
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResponse'
-        '429':
-          description: Too Many Requests
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResponse'
           description: OK
           content:
             application/json:
@@ -945,18 +801,6 @@ paths:
                     $ref: '#/components/schemas/Channel'
       responses:
         '200':
-        '400':
-          description: Bad Request
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResponse'
-        '429':
-          description: Too Many Requests
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResponse'
           description: OK
           content:
             application/json:
@@ -1007,18 +851,6 @@ paths:
                     $ref: '#/components/schemas/Channel'
       responses:
         '200':
-        '400':
-          description: Bad Request
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResponse'
-        '429':
-          description: Too Many Requests
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResponse'
           description: OK
           content:
             application/json:
@@ -1064,18 +896,6 @@ paths:
                     $ref: '#/components/schemas/Channel'
       responses:
         '200':
-        '400':
-          description: Bad Request
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResponse'
-        '429':
-          description: Too Many Requests
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResponse'
           description: OK
           content:
             application/json:
@@ -1124,18 +944,6 @@ paths:
                   description: The current channel list and session data
       responses:
         '200':
-        '400':
-          description: Bad Request
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResponse'
-        '429':
-          description: Too Many Requests
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResponse'
           description: Share code created successfully
           content:
             application/json:
@@ -1171,18 +979,6 @@ paths:
         description: The 8-character share code
       responses:
         '200':
-        '400':
-          description: Bad Request
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResponse'
-        '429':
-          description: Too Many Requests
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResponse'
           description: Channel list retrieved successfully
           content:
             application/json:
@@ -1207,18 +1003,6 @@ paths:
         the documentation URL.
       responses:
         '200':
-        '400':
-          description: Bad Request
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResponse'
-        '429':
-          description: Too Many Requests
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResponse'
           description: API overview
           content:
             application/json:
