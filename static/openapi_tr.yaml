@@ -234,7 +234,7 @@ components:
       example:
         session_id: sess_01J8ABC123XYZ
         channels:
-        -         No: 1
+        - No: 1
 
           Slot: 0
 
@@ -329,7 +329,7 @@ paths:
                     format: scm
                     session_id: sess_01J8ABC123XYZ
                     channels:
-                    -                     No: 1
+                    - No: 1
 
                       Slot: 0
 
@@ -1112,7 +1112,8 @@ paths:
       - Cloud Sync
       operationId: createShareCode
       summary: 8 haneli bir paylaşım kodu oluşturun
-      description: Bir kanal listesi taslağını buluta kaydedin ve diğer cihazlarla
+      description: >-
+        Bir kanal listesi taslağını buluta kaydedin ve diğer cihazlarla
         paylaşmak üzere 8 karakterlik benzersiz (A-Z, 0-9) bir kod alın. Güvenlik ve Gizlilik: Paylaşılan listeler tek kullanımlık/geçici yapıdadır, kesin olarak 60 dakika sonra sunucudan kalıcı olarak silinir ve kişisel veri barındırmaz.
       requestBody:
         required: true

@@ -234,7 +234,7 @@ components:
       example:
         session_id: sess_01J8ABC123XYZ
         channels:
-        -         No: 1
+        - No: 1
 
           Slot: 0
 
@@ -329,7 +329,7 @@ paths:
                     format: scm
                     session_id: sess_01J8ABC123XYZ
                     channels:
-                    -                     No: 1
+                    - No: 1
 
                       Slot: 0
 
