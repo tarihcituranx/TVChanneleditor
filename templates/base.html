@@ -246,6 +246,16 @@
             </div>
 
             <div class="footer-bottom">
+                <div id="live-site-stats" style="margin-bottom: 15px; display: inline-flex; align-items: center; justify-content: center; gap: 12px; font-size: 0.82rem; background: var(--bg-subtle); border: 1px solid var(--border-color); padding: 5px 14px; border-radius: 9999px; color: var(--text-secondary); flex-wrap: wrap;">
+                    <span style="display: inline-flex; align-items: center; gap: 6px;">
+                        <span style="width: 8px; height: 8px; background-color: #22c55e; border-radius: 50%; display: inline-block; box-shadow: 0 0 6px #22c55e;"></span>
+                        <strong id="stat-online" style="color: var(--text-primary);">1</strong> çevrimiçi
+                    </span>
+                    <span style="color: var(--border-color);">•</span>
+                    <span>👁️ <strong id="stat-views" style="color: var(--text-primary);">-</strong> görüntülenme</span>
+                    <span style="color: var(--border-color);">•</span>
+                    <span>👥 <strong id="stat-visitors" style="color: var(--text-primary);">-</strong> ziyaretçi</span>
+                </div>
                 <div style="margin-bottom: 15px;">
                     &copy; 2026 TV Channel Editor &middot; Crafted by <a href="https://github.com/tarihcituranx" target="_blank" style="color: #60a5fa; text-decoration: underline; text-underline-offset: 3px;">Turan Kaya</a>
                 </div>
@@ -512,6 +522,28 @@
                 }
             }
         });
+
+        // Canlı Ziyaretçi ve İstatistik Sayacı (Gizli & Güvenli Proxy)
+        (function() {
+            async function updateLiveStats() {
+                try {
+                    const res = await fetch('/api/stats/summary');
+                    if (res.ok) {
+                        const data = await res.json();
+                        const elOnline = document.getElementById('stat-online');
+                        const elViews = document.getElementById('stat-views');
+                        const elVisitors = document.getElementById('stat-visitors');
+                        if (elOnline && data.online !== undefined) elOnline.textContent = data.online;
+                        if (elViews && data.pageviews !== undefined) elViews.textContent = Number(data.pageviews).toLocaleString();
+                        if (elVisitors && data.visitors !== undefined) elVisitors.textContent = Number(data.visitors).toLocaleString();
+                    }
+                } catch (err) {
+                    // Sessizce yutulur
+                }
+            }
+            updateLiveStats();
+            setInterval(updateLiveStats, 30000);
+        })();
 
 </script>
     {% block scripts %}{% endblock %}

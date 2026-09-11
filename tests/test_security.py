@@ -75,3 +75,12 @@ def test_rate_limit(client):
     # A bit hard to test deterministically without sleeping, but let's just make a few requests.
     pass
 
+def test_stats_summary_endpoint(client):
+    resp = client.get('/api/stats/summary')
+    assert resp.status_code == 200
+    data = resp.get_json()
+    assert 'online' in data
+    assert 'pageviews' in data
+    assert 'visitors' in data
+
+

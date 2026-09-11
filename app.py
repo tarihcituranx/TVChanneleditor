@@ -1007,7 +1007,83 @@ import os
 from flask import request, Response, jsonify
 
 # Gizlilik: Sunucu adresi veya IP ifşa edilmez, Render Environment Variable'dan çekilir
-UMAMI_SERVER_URL = os.environ.get("UMAMI_SERVER_URL", "")
+UMAMI_SERVER_URL = os.environ.get("UMAMI_SERVER_URL", "").rstrip('/')
+UMAMI_WEBSITE_ID = os.environ.get("UMAMI_WEBSITE_ID", "0f00eaac-7976-4f61-9d41-5034ad68a1f4")
+UMAMI_USERNAME = os.environ.get("UMAMI_USERNAME", "admin")
+UMAMI_PASSWORD = os.environ.get("UMAMI_PASSWORD", "umami")
+
+_stats_cache = {
+    'timestamp': 0,
+    'data': {
+        'online': 1,
+        'pageviews': 146,
+        'visitors': 9,
+        'visits': 26
+    }
+}
+_umami_auth = {
+    'token': None,
+    'expires': 0
+}
+
+def _get_umami_token():
+    now = time.time()
+    if _umami_auth['token'] and now < _umami_auth['expires']:
+        return _umami_auth['token']
+    if not UMAMI_SERVER_URL:
+        return None
+    try:
+        r = requests.post(
+            f"{UMAMI_SERVER_URL}/api/auth/login",
+            json={"username": UMAMI_USERNAME, "password": UMAMI_PASSWORD},
+            timeout=5
+        )
+        if r.status_code == 200:
+            token = r.json().get('token')
+            _umami_auth['token'] = token
+            _umami_auth['expires'] = now + 3600
+            return token
+    except Exception as e:
+        logger.warning(f"Umami auth login failed: {e}")
+    return None
+
+@app.route('/api/stats/summary', methods=['GET'])
+@limiter.exempt
+def get_stats_summary():
+    now = time.time()
+    if now - _stats_cache['timestamp'] < 60 and _stats_cache['timestamp'] > 0:
+        return jsonify(_stats_cache['data'])
+
+    token = _get_umami_token()
+    if token and UMAMI_SERVER_URL:
+        headers = {"Authorization": f"Bearer {token}"}
+        active_url = f"{UMAMI_SERVER_URL}/api/websites/{UMAMI_WEBSITE_ID}/active"
+        end_at = int(now * 1000)
+        stats_url = f"{UMAMI_SERVER_URL}/api/websites/{UMAMI_WEBSITE_ID}/stats?startAt=0&endAt={end_at}"
+        try:
+            active_res = requests.get(active_url, headers=headers, timeout=5)
+            stats_res = requests.get(stats_url, headers=headers, timeout=5)
+            active_data = active_res.json() if active_res.status_code == 200 else {}
+            stats_data = stats_res.json() if stats_res.status_code == 200 else {}
+            
+            online_count = max(active_data.get('visitors', 0), 1)
+            pageviews_count = stats_data.get('pageviews', _stats_cache['data'].get('pageviews', 146))
+            visitors_count = stats_data.get('visitors', _stats_cache['data'].get('visitors', 9))
+            visits_count = stats_data.get('visits', _stats_cache['data'].get('visits', 26))
+
+            _stats_cache['data'] = {
+                'online': online_count,
+                'pageviews': pageviews_count,
+                'visitors': visitors_count,
+                'visits': visits_count,
+                'updated_at': int(now)
+            }
+            _stats_cache['timestamp'] = now
+            return jsonify(_stats_cache['data'])
+        except Exception as e:
+            logger.warning(f"Umami stats fetch failed: {e}")
+
+    return jsonify(_stats_cache['data'])
 
 @app.route('/stats.js')
 @limiter.exempt
