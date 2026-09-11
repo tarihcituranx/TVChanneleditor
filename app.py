@@ -41,12 +41,20 @@ app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 2592000  # 30 days static cache for be
 
 
 def get_client_ip():
-    return request.remote_addr
+    # Behind Cloudflare or reverse proxies:
+    cf_ip = request.headers.get('CF-Connecting-IP')
+    if cf_ip:
+        return cf_ip.strip()
+    xff = request.headers.get('X-Forwarded-For')
+    if xff:
+        # First IP in X-Forwarded-For is the originating client IP
+        return xff.split(',')[0].strip()
+    return request.remote_addr or '127.0.0.1'
 
 limiter = Limiter(
     get_client_ip,
     app=app,
-    default_limits=["200 per day", "50 per hour"],
+    default_limits=["1000 per hour"],
     storage_uri="memory://"
 )
 
@@ -106,6 +114,12 @@ def _cleanup_expired():
     for code in expired_shares:
         del _shares[code]
 
+    # Clean up stale rate limit entries to prevent memory growth
+    for ip in list(_rate_limit.keys()):
+        _rate_limit[ip] = [t for t in _rate_limit[ip] if now - t < RATE_LIMIT_WINDOW]
+        if not _rate_limit[ip]:
+            del _rate_limit[ip]
+
 def _detect_brand(filename: str, file_obj=None) -> str:
     """Dosya adı/uzantısına ve içeriğe (magic bytes) göre marka tespit et."""
     name_lower = filename.lower()
@@ -116,8 +130,12 @@ def _detect_brand(filename: str, file_obj=None) -> str:
         file_obj.seek(0)
     
     if name_lower.endswith('.tll'):
+        if magic and not magic.strip().startswith(b'<'):
+            return 'unknown'
         return 'lg'
     if 'sdb.xml' in name_lower:
+        if magic and not magic.strip().startswith(b'<'):
+            return 'unknown'
         return 'sony'
     if 'servicelist.db' in name_lower or 'channel.db' in name_lower:
         if magic and not magic.startswith(b'SQLite format 3'):
@@ -145,9 +163,10 @@ def _detect_brand(filename: str, file_obj=None) -> str:
                 if has_db:
                     return 'tizen'
         except Exception:
-            pass
+            file_obj.seek(0)
+            return 'unknown'
         return 'tizen'   # varsayılan: zip → tizen
-    return 'samsung'   # varsayılan .scm
+    return 'unknown'
 
 def _brand_ext(brand: str) -> str:
     """Marka → dosya uzantısı."""
@@ -160,6 +179,8 @@ def _brand_ext(brand: str) -> str:
 
 def _safe_filename(filename, brand):
     """Allow only specific extensions based on detected brand."""
+    if brand == 'unknown':
+        return None
     ext = os.path.splitext(filename)[1].lower()
     allowed = ('.scm', '.zip', '.tll', '.db', '.xml')
     if ext not in allowed:
@@ -206,6 +227,7 @@ def render_lang(template_name, url_lang=None, **kwargs):
 
 @app.route('/', defaults={'lang': None})
 @app.route('/<lang>/')
+@limiter.exempt
 def index(lang):
     if lang and lang not in SUPPORTED_LANGS:
         abort(404)
@@ -213,6 +235,7 @@ def index(lang):
 
 @app.route('/supported', defaults={'lang': None})
 @app.route('/<lang>/supported')
+@limiter.exempt
 def supported(lang):
     if lang and lang not in SUPPORTED_LANGS:
         abort(404)
@@ -220,6 +243,7 @@ def supported(lang):
 
 @app.route('/guide', defaults={'lang': None})
 @app.route('/<lang>/guide')
+@limiter.exempt
 def guide(lang):
     if lang and lang not in SUPPORTED_LANGS:
         abort(404)
@@ -227,29 +251,40 @@ def guide(lang):
 
 @app.route('/faq', defaults={'lang': None})
 @app.route('/<lang>/faq')
+@limiter.exempt
 def faq(lang):
     if lang and lang not in SUPPORTED_LANGS:
         abort(404)
     return render_lang('faq.html', url_lang=lang)
 
-@app.route('/privacy')
-@app.route("/security")
+@app.route('/privacy', defaults={'lang': None})
+@app.route('/<lang>/privacy')
 @limiter.exempt
-def security():
-    return render_lang("security")
+def privacy(lang):
+    if lang and lang not in SUPPORTED_LANGS:
+        abort(404)
+    return render_lang('privacy.html', url_lang=lang)
 
-def privacy():
-    return render_lang('privacy.html')
+@app.route('/security', defaults={'lang': None})
+@app.route('/<lang>/security')
+@limiter.exempt
+def security(lang):
+    if lang and lang not in SUPPORTED_LANGS:
+        abort(404)
+    return render_lang('security.html', url_lang=lang)
 
 @app.route('/.well-known/security.txt')
+@limiter.exempt
 def security_txt():
     return app.send_static_file('security.txt')
 
 @app.route('/api/docs')
+@limiter.exempt
 def api_docs():
     return render_template('swagger.html')
 
 @app.route('/api/openapi.txt')
+@limiter.exempt
 def openapi_txt():
     lang = request.cookies.get('lang', 'en').lower()
     file_path = f'static/openapi_{lang}.yaml'
@@ -259,21 +294,23 @@ def openapi_txt():
     with open(file_path, 'r', encoding='utf-8') as f:
         return Response(f.read(), mimetype='text/plain')
 
-from datetime import datetime
-STARTUP_TIME = datetime.utcnow().isoformat() + "Z"
+from datetime import datetime, timezone
+STARTUP_TIME = datetime.now(timezone.utc).isoformat()
 
 @app.route('/health')
+@limiter.exempt
 def health_check():
     return jsonify({
         "status": "alive_and_breathing",
         "pulse": "normal",
         "message_en": "Still breathing boss! The server is healthy as a horse.",
         "message_tr": "Nefes alıyorum patron, sunucu turp gibi!",
-        "timestamp": datetime.utcnow().isoformat() + "Z"
+        "timestamp": datetime.now(timezone.utc).isoformat()
     })
 
 @app.route('/api/help')
 @app.route('/api/')
+@limiter.exempt
 def api_help():
     return jsonify({
         'name': 'TV Channel Editor API',
@@ -364,8 +401,11 @@ def api_actions(action):
         old_ch = data.get('old_channels', [])
         new_ch = data.get('new_channels', [])
         
-        old_dict = {f"{c.get('Freq')}_{c.get('SID')}": c for c in old_ch}
-        new_dict = {f"{c.get('Freq')}_{c.get('SID')}": c for c in new_ch}
+        if not isinstance(old_ch, list) or not isinstance(new_ch, list):
+            return api_error("old_channels and new_channels must be lists", 400)
+            
+        old_dict = {f"{c.get('Freq')}_{c.get('SID')}": c for c in old_ch if isinstance(c, dict)}
+        new_dict = {f"{c.get('Freq')}_{c.get('SID')}": c for c in new_ch if isinstance(c, dict)}
         
         added = [c for k, c in new_dict.items() if k not in old_dict]
         removed = [c for k, c in old_dict.items() if k not in new_dict]
@@ -417,7 +457,7 @@ def api_actions(action):
         
     return jsonify({"channels": channels})
 
-@limiter.limit("20 per minute")
+@limiter.limit("30 per minute")
 @app.route('/api/satellites', methods=['GET'])
 def api_satellites():
     return jsonify({
@@ -431,11 +471,15 @@ def api_satellites():
         ]
     })
 
-@limiter.limit("20 per minute")
+@limiter.limit("30 per minute")
 @app.route('/api/satellites/<country>/<satellite>', methods=['GET'])
 def api_satellites_detail(country, satellite):
-    page = int(request.args.get('page', 1))
-    limit = int(request.args.get('limit', 10))
+    try:
+        page = max(1, int(request.args.get('page', 1)))
+        limit = max(1, min(100, int(request.args.get('limit', 10))))
+    except (ValueError, TypeError):
+        page = 1
+        limit = 10
     
     # Faz 2: Sayfalama (Pagination) eklendi
     all_freqs = [
@@ -461,6 +505,7 @@ def api_satellites_detail(country, satellite):
 
 @app.route('/glossary', defaults={'lang': None})
 @app.route('/<lang>/glossary')
+@limiter.exempt
 def glossary(lang):
     if lang and lang not in SUPPORTED_LANGS:
         abort(404)
@@ -482,6 +527,8 @@ def upload():
         return api_error('NO_FILE_SELECTED', 400)
 
     brand = _detect_brand(file.filename, file.stream)
+    if brand == 'unknown':
+        return api_error('CORRUPT_ARCHIVE', 400)
     safe_name = _safe_filename(file.filename, brand)
     if not safe_name:
         return api_error('INVALID_EXTENSION', 400)
@@ -489,6 +536,7 @@ def upload():
     ext = os.path.splitext(safe_name)[1].lower()
     tmpdir = tempfile.mkdtemp()
     filepath = os.path.join(tmpdir, safe_name)
+    file.seek(0)
     file.save(filepath)
 
     if ext in ['.zip', '.scm']:
@@ -566,8 +614,7 @@ def build():
     if not is_valid:
         return api_error(val_msg, 400)
 
-    if session_id not in _sessions:
-
+    if session_id not in _sessions or _sessions[session_id]['expires'] < time.time():
         return api_error('SESSION_EXPIRED', 400)
 
     session = _sessions[session_id]
@@ -697,9 +744,10 @@ def share_draft_get(code):
         
     return jsonify({'success': True, 'draft': _shares[code]['draft']})
 
+@limiter.limit("60 per minute")
 @app.route('/download/<session_id>/<filename>')
 def download(session_id, filename):
-    if session_id not in _sessions:
+    if session_id not in _sessions or _sessions[session_id]['expires'] < time.time():
         return "Oturum bulunamadı veya süresi doldu.", 404
     output_path = _sessions[session_id].get('output')
     if not output_path or not os.path.exists(output_path):
@@ -707,7 +755,75 @@ def download(session_id, filename):
     safe_dl = os.path.basename(urllib.parse.unquote(filename))
     return send_file(output_path, as_attachment=True, download_name=safe_dl)
 
+@app.route('/api/version')
+@limiter.exempt
+def api_version():
+    return jsonify({
+        "status": "online",
+        "version": "1.2.0",
+        "startup_time": STARTUP_TIME
+    })
+
+import io
+import csv
+
+@limiter.limit("20 per minute")
+@app.route('/api/export/csv', methods=['POST'])
+def export_csv():
+    data = request.json or {}
+    channels = data.get('channels', [])
+    
+    if not channels or not isinstance(channels, list):
+        return api_error("No channels provided", 400)
+        
+    output = io.StringIO()
+    keys = set()
+    for c in channels:
+        if isinstance(c, dict):
+            keys.update(c.keys())
+    
+    std_keys = ['No', 'Name', 'Freq', 'Pol', 'Sym', 'Type', 'Encrypted']
+    fieldnames = [k for k in std_keys if k in keys] + [k for k in keys if k not in std_keys]
+    
+    writer = csv.DictWriter(output, fieldnames=fieldnames)
+    writer.writeheader()
+    for c in channels:
+        if isinstance(c, dict):
+            writer.writerow(c)
+    
+    mem = io.BytesIO()
+    mem.write(output.getvalue().encode('utf-8'))
+    mem.seek(0)
+    
+    return send_file(
+        mem,
+        mimetype='text/csv',
+        as_attachment=True,
+        download_name='channels_export.csv'
+    )
+
+@limiter.limit("20 per minute")
+@app.route('/api/export/json', methods=['POST'])
+def export_json():
+    data = request.json or {}
+    channels = data.get('channels', [])
+    
+    if not channels or not isinstance(channels, list):
+        return api_error("No channels provided", 400)
+        
+    mem = io.BytesIO()
+    mem.write(json.dumps(channels, indent=2, ensure_ascii=False).encode('utf-8'))
+    mem.seek(0)
+    
+    return send_file(
+        mem,
+        mimetype='application/json',
+        as_attachment=True,
+        download_name='channels_export.json'
+    )
+
 @app.route('/robots.txt')
+@limiter.exempt
 def robots():
     content = """User-agent: *
 Allow: /
@@ -734,6 +850,7 @@ Sitemap: https://tvchanneleditor.onrender.com/sitemap.xml
     return content, 200, {'Content-Type': 'text/plain; charset=utf-8'}
 
 @app.route('/sitemap.xml')
+@limiter.exempt
 def sitemap():
     content = """<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
@@ -746,6 +863,15 @@ def sitemap():
 
 
 # Error Handlers
+@app.errorhandler(429)
+def ratelimit_handler(error):
+    return jsonify({
+        "error": "429 Too Many Requests",
+        "message": "Çok fazla istek yapıldı. Lütfen biraz bekleyin.",
+        "message_en": "Too many requests. Please slow down and try again later.",
+        "status": "rate_limited"
+    }), 429
+
 @app.errorhandler(404)
 def not_found_error(error):
     return jsonify({
@@ -776,6 +902,7 @@ from flask import request, Response, jsonify
 UMAMI_SERVER_URL = os.environ.get("UMAMI_SERVER_URL", "")
 
 @app.route('/stats.js')
+@limiter.exempt
 def proxy_umami_script():
     if not UMAMI_SERVER_URL:
         return Response("console.error('Umami URL not configured');", mimetype='application/javascript', status=200)
@@ -790,19 +917,20 @@ def proxy_umami_script():
 from urllib.parse import urlparse
 
 @app.route('/redirect')
+@limiter.exempt
 def external_redirect():
     url = request.args.get('url', '')
     if not url:
         return redirect('/')
     
     parsed = urlparse(url)
-    if parsed.scheme not in ['http', 'https']:
+    if parsed.scheme not in ['http', 'https'] or not parsed.netloc:
         return "Geçersiz veya güvensiz bağlantı.", 400
         
     return render_lang('redirect.html', url=url)
 
 @app.route('/api/send', methods=['POST'])
-
+@limiter.limit("60 per minute")
 def proxy_umami_send():
     if not UMAMI_SERVER_URL:
         return jsonify({"error": "Umami URL not configured"}), 500

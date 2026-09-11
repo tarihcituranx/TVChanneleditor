@@ -43,10 +43,16 @@ test_*.py
 add_*.py
 rewrite_*.py
 scratch*.py
+patch_*.py
+update_*.py
 api_test.py
 test.py
 fix.py
 convert_*.py
+gen-key-script
+gh_logs/
+gh_logs2/
+venv2/
 
 # Security & Local files
 .huawei_session.pkl

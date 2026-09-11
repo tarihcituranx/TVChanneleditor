@@ -24,7 +24,7 @@ def test_upload_bad_magic(client):
     data = {'file': (io.BytesIO(b"badmagicbytes123"), 'test.scm')}
     response = client.post('/upload', data=data, content_type='multipart/form-data')
     assert response.status_code == 400
-    assert b'INVALID_EXTENSION' in response.data or b'Parse_error' in response.data
+    assert b'INVALID_EXTENSION' in response.data or b'Parse_error' in response.data or b'CORRUPT_ARCHIVE' in response.data
 
 def test_validation_logic():
     valid, msg = validate_channels([])

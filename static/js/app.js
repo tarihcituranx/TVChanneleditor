@@ -834,7 +834,7 @@ checkDraftOnLoad();
             if (!code) return;
             
             importShareBtn.textContent = '⏳ Yükleniyor...';
-            fetch(`/api/share?code=${code}`)
+            fetch(`/api/share/${code}`)
             .then(res => res.json())
             .then(data => {
                 importShareBtn.textContent = '📱 Kod ile İçe Aktar';
