@@ -41,15 +41,18 @@ app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 2592000  # 30 days static cache for be
 
 
 def get_client_ip():
-    # Behind Cloudflare or reverse proxies:
+    # 1. Cloudflare provides the genuine, tamper-proof client IP connecting to edge:
     cf_ip = request.headers.get('CF-Connecting-IP')
     if cf_ip:
         return cf_ip.strip()
+    # 2. Werkzeug ProxyFix sets request.remote_addr from trusted proxy hops:
+    if request.remote_addr:
+        return request.remote_addr
+    # 3. Fallback:
     xff = request.headers.get('X-Forwarded-For')
     if xff:
-        # First IP in X-Forwarded-For is the originating client IP
-        return xff.split(',')[0].strip()
-    return request.remote_addr or '127.0.0.1'
+        return xff.split(',')[-1].strip()
+    return '127.0.0.1'
 
 limiter = Limiter(
     get_client_ip,
@@ -65,6 +68,97 @@ def bypass_limit_for_api_keys():
     if api_key and api_key == os.environ.get('AGENT_API_KEY', 'turan_agent_key_2026'):
         return True
     return False
+
+
+# --------------------------------------------------------------------------- #
+# Anti-DDoS, Bot/Scanner Engelleme ve AKN (Adil Kullanım Kotası) Koruması
+# --------------------------------------------------------------------------- #
+
+BLOCKED_USER_AGENTS = {
+    'sqlmap', 'nikto', 'masscan', 'dirbuster', 'acunetix', 'nmap',
+    'zgrab', 'censys', 'shodan', 'havij', 'w3af', 'gobuster', 'wfuzz', 'hydra'
+}
+
+# DDoS / Flood Takip: ip -> [zaman damgaları]
+_burst_tracker = defaultdict(list)
+BURST_WINDOW = 5       # 5 saniye
+BURST_MAX = 40         # 5 saniyede max 40 istek (insan yapamaz, bot/flood)
+
+# Geçici Ceza / Ban Listesi: ip -> unban_timestamp
+_banned_ips = {}
+BAN_DURATION = 600     # 10 dakika ceza
+
+# Günlük AKN (Adil Kullanım Kotası) Sayacı: (ip, gün_damgası) -> sayaç
+_daily_akn_usage = defaultdict(int)
+DAILY_AKN_LIMIT = 1500  # Günlük IP başına max 1500 istek kotası
+
+@app.before_request
+def anti_ddos_and_akn_guard():
+    # 1. Dahili ve izleme rotalarını doğrudan geçir
+    if request.path in ('/health', '/robots.txt', '/sitemap.xml'):
+        return None
+
+    # 2. X-API-Key ile gelen entegratör/admin bypass
+    api_key = request.headers.get('X-API-Key')
+    if api_key and api_key == os.environ.get('AGENT_API_KEY', 'turan_agent_key_2026'):
+        return None
+
+    ip = get_client_ip()
+    now = time.time()
+
+    # 3. Geçici Ban Kontrolü (DDoS / Flood / Scanner Cezası)
+    if ip in _banned_ips:
+        if now < _banned_ips[ip]:
+            remaining = int(_banned_ips[ip] - now)
+            return jsonify({
+                "success": False,
+                "error": "DDoS ve Suistimal Koruması (Geçici Engelleme)",
+                "message": f"Aşırı yoğun istek tespit edildi. IP adresiniz güvenlik nedeniyle askıya alındı. Kalan süre: {remaining} saniye.",
+                "code": "DDOS_TEMPORARY_BAN",
+                "retry_after": remaining
+            }), 429
+        else:
+            del _banned_ips[ip]
+
+    # 4. Bilinen Saldırı / Scanner Bot Tespiti
+    ua = request.headers.get('User-Agent', '').lower()
+    if any(scanner in ua for scanner in BLOCKED_USER_AGENTS):
+        _banned_ips[ip] = now + BAN_DURATION
+        return jsonify({
+            "success": False,
+            "error": "Erişim Reddedildi (Zararlı Araç Tespiti)",
+            "message": "Otomasyonlu tarama ve saldırı araçlarının erişimi engellenmiştir.",
+            "code": "SECURITY_SCANNER_BLOCKED"
+        }), 403
+
+    # 5. Anti-DDoS Anlık Burst (Flood) Tespiti (5 saniyede 40 istek)
+    recent = [t for t in _burst_tracker[ip] if now - t < BURST_WINDOW]
+    if len(recent) >= BURST_MAX:
+        _banned_ips[ip] = now + BAN_DURATION
+        _burst_tracker[ip] = []
+        return jsonify({
+            "success": False,
+            "error": "DDoS / Flood Saldırısı Algılandı",
+            "message": "Anlık istek sıklığı sınırı aşıldı. IP adresiniz 10 dakika boyunca engellenmiştir.",
+            "code": "BURST_LIMIT_EXCEEDED"
+        }), 429
+    recent.append(now)
+    _burst_tracker[ip] = recent
+
+    # 6. Günlük AKN (Adil Kullanım Kotası) Kontrolü
+    today_key = time.strftime('%Y-%m-%d', time.gmtime(now))
+    akn_key = (ip, today_key)
+    _daily_akn_usage[akn_key] += 1
+
+    if _daily_akn_usage[akn_key] > DAILY_AKN_LIMIT:
+        return jsonify({
+            "success": False,
+            "error": "AKN (Adil Kullanım Kotası) Aşıldı",
+            "message": f"Bu IP için günlük adil kullanım kotası ({DAILY_AKN_LIMIT} istek) dolmuştur. Hizmet kalitesini ve herkesin adil kullanım hakkını korumak için kotanız 00:00 UTC'de sıfırlanacaktır.",
+            "code": "AKN_QUOTA_EXCEEDED"
+        }), 429
+
+    return None
 
 
 app.config['MAX_CONTENT_LENGTH'] = 2 * 1024 * 1024  # 2 MB upload limit
@@ -119,6 +213,20 @@ def _cleanup_expired():
         _rate_limit[ip] = [t for t in _rate_limit[ip] if now - t < RATE_LIMIT_WINDOW]
         if not _rate_limit[ip]:
             del _rate_limit[ip]
+
+    for ip in list(_burst_tracker.keys()):
+        _burst_tracker[ip] = [t for t in _burst_tracker[ip] if now - t < BURST_WINDOW]
+        if not _burst_tracker[ip]:
+            del _burst_tracker[ip]
+
+    for ip, unban_t in list(_banned_ips.items()):
+        if now >= unban_t:
+            del _banned_ips[ip]
+
+    today_str = time.strftime('%Y-%m-%d', time.gmtime(now))
+    for (ip, day) in list(_daily_akn_usage.keys()):
+        if day != today_str:
+            del _daily_akn_usage[(ip, day)]
 
 def _detect_brand(filename: str, file_obj=None) -> str:
     """Dosya adı/uzantısına ve içeriğe (magic bytes) göre marka tespit et."""
